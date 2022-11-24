@@ -3,7 +3,6 @@ import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useSelector } from 'react-redux';
 
-import Login from 'app/screens/Login';
 import ForgotPassword from 'app/screens/Loading';
 
 import ThemeController from '../components/ThemeController';
@@ -11,7 +10,7 @@ import { ILoginState } from 'app/models/reducers/login';
 import Landing from 'app/screens/Landing';
 import SignUp from 'app/screens/SignUp';
 import Language from 'app/screens/Language';
-import useGetOnboardingStatus from 'app/hooks/useGetOnboardingStatus';
+import SignIn from 'app/screens/SignIn';
 
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
@@ -45,8 +44,8 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
-        name="Login"
-        component={Login}
+        name="Sign In"
+        component={SignIn}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation

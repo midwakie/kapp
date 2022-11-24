@@ -8,7 +8,7 @@ import styles from './styles';
 import NavigationService from 'app/navigation/NavigationService';
 import { ScrollView } from 'react-native-gesture-handler';
 
-const Login: React.FC = () => {
+const SignIn: React.FC = () => {
   const dispatch = useDispatch();
   const onLogin = () => dispatch(loginActions.requestLogin('test', '1234'));
   const onForgot = () => NavigationService.navigate('ForgotPassword');
@@ -90,4 +90,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+export default SignIn;

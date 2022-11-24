@@ -29,7 +29,7 @@ const Language: React.FC = () => {
 
   useEffect(() => {
     if (isFirstLaunch === true) {
-      NavigationService.navigate('Welcome');
+      NavigationService.navigate('Sign In');
     }
   }, [isFirstLaunch]);
 
