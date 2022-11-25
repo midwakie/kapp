@@ -16,31 +16,6 @@ const SignUp: React.FC = () => {
   return (
     <ScrollView>
       <View style={styles.container}>
-        <Image
-          source={require('../../assets/signup.png')}
-          style={styles.imageStyle}
-        />
-        <Text style={styles.loginTitle}>Sign Up</Text>
-        <View style={styles.socialContainer}>
-          <TouchableOpacity style={styles.itemContainer}>
-            <Image
-              source={require('../../assets/google.png')}
-              style={styles.socialImageStyle}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.itemContainer}>
-            <Image
-              source={require('../../assets/fb.png')}
-              style={styles.socialImageStyle}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.itemContainer}>
-            <Image
-              source={require('../../assets/apple.png')}
-              style={styles.socialImageStyle}
-            />
-          </TouchableOpacity>
-        </View>
         <Text style={styles.orLogin}>Or, register with email...</Text>
         <View style={{ width: '100%', paddingHorizontal: 30, marginTop: 20 }}>
           <TextInput
