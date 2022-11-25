@@ -41,7 +41,7 @@ const SelectRole: React.FC = () => {
           <TouchableOpacity
             style={styles.rolesContainer}
             onPress={() => {
-              NavigationService.navigate('Sign In');
+              NavigationService.navigate('Sign Up');
             }}>
             <Text style={styles.titleParent}>I am Parent</Text>
             <HorizontalLine width={38} />
@@ -50,7 +50,11 @@ const SelectRole: React.FC = () => {
               source={require('../../assets/parent.png')}
             />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.rolesContainer}>
+          <TouchableOpacity
+            style={styles.rolesContainer}
+            onPress={() => {
+              NavigationService.navigate('Sign Up');
+            }}>
             <Image
               style={styles.image}
               source={require('../../assets/student.png')}
@@ -58,7 +62,11 @@ const SelectRole: React.FC = () => {
             <HorizontalLine width={38} />
             <Text style={styles.titleStudent}>I am Student</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.rolesContainer}>
+          <TouchableOpacity
+            style={styles.rolesContainer}
+            onPress={() => {
+              NavigationService.navigate('Sign Up');
+            }}>
             <Text style={styles.titleTeacher}>I am Teacher</Text>
             <HorizontalLine width={38} />
             <Image
