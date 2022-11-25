@@ -1,68 +1,133 @@
 import { Dimensions, StyleSheet } from 'react-native';
 
+const width =
+  Dimensions.get('window').width >= Dimensions.get('window').height
+    ? Dimensions.get('window').height
+    : Dimensions.get('window').width;
+
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    backgroundColor: '#FFFFFF',
-  },
-  login: {
-    padding: 8,
-  },
-  orLogin: {
-    padding: 20,
-  },
-  newToHM: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'center',
-    flexDirection: 'row',
-  },
-  loginTitle: {
-    paddingHorizontal: 30,
     width: '100%',
-    textAlign: 'left',
-    fontSize: 32,
-    fontWeight: 'bold',
+    height: '100%',
+    backgroundColor: '#E5E5E5',
   },
-  forgot: {
-    marginVertical: 12,
+  container2: {
+    paddingHorizontal: 30,
+    marginTop: 2,
+    width: '100%',
+    height: '100%',
+    paddingBottom: 25,
   },
-  labelStyle: {
+  safeAreaView: { alignSelf: 'stretch' },
+  gradientTextStyle: {
+    fontSize: 24,
+    // fontFamily: 'Nunito',
+    fontWeight: '800',
+  },
+  gradientTextContainer: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 33,
+    marginBottom: 60,
+    marginTop: 25,
+  },
+  inputTextContainer: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  labelTextContainer: {
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+    alignSelf: 'flex-end',
+    marginBottom: 20,
+    width: width - 60,
+  },
+  forgotPasswordContainer: {
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    marginBottom: 39,
+  },
+  forgotPassword: {
+    color: '#FE4C3E',
+    textAlign: 'right',
     fontSize: 12,
+    fontWeight: '600',
+    backgroundColor: 'transparent',
   },
+  rightComponent: { right: 20, position: 'absolute' },
   imageStyle: {
-    marginBottom: 30,
     justifyContent: 'center',
     resizeMode: 'contain',
-    width: Dimensions.get('screen').width,
-    height: 250,
+    width: 100,
+    height: 100,
   },
-  socialImageStyle: {
+  imageContainer: {
+    width: 118,
+    height: 118,
+    borderRadius: 118,
+    borderWidth: 1,
+    borderColor: '#FFFFFF',
     justifyContent: 'center',
-    resizeMode: 'contain',
-    width: 30,
-    height: 30,
+    alignItems: 'center',
+    backgroundColor: '#DADEE0',
   },
-  loginButtonStyle: {
-    width: '80%',
-    borderRadius: 12,
+  neomorphContainer: {
+    marginTop: 52,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  inputContainer: {
+    width: width - 60,
+    height: 50,
+    borderRadius: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#DADEE0',
   },
   socialContainer: {
-    flexDirection: 'row',
-    width: '85%',
+    width: width - 60,
     height: 50,
-    justifyContent: 'space-between',
+    flexDirection: 'row',
+    marginTop: 40,
+    marginBottom: 30,
+    justifyContent: 'center',
   },
-  itemContainer: {
-    padding: 10,
-    borderWidth: 1,
-    borderRadius: 10,
+  socialButtonContainer: {
+    width: 50,
+    height: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    width: 100,
-    borderColor: '#CCCCCC'
+  },
+  socialButtonStyle: {
+    width: 23,
+    height: 23,
+    resizeMode: 'contain',
+  },
+  bottomContainer: {
+    height: 20,
+    width: width - 60,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  bottomText: {
+    color: '#758DAC',
+    fontWeight: '600',
+    fontSize: 12,
+  },
+  signUpButton: {
+    color: '#03A0E3',
+    fontSize: 12,
+    fontWeight: '700',
+    backgroundColor: 'transparent',
+  },
+  signUpButtonContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 20,
   },
 });
 

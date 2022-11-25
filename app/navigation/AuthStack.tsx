@@ -11,6 +11,7 @@ import Landing from 'app/screens/Landing';
 import SignUp from 'app/screens/SignUp';
 import Language from 'app/screens/Language';
 import SignIn from 'app/screens/SignIn';
+import SelectRole from 'app/screens/SelectRole';
 
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
@@ -29,13 +30,23 @@ const AuthStack = () => {
         name="Language"
         component={Language}
         options={{
-          title: '',
           headerShown: false,
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
         }}
       />
       <Stack.Screen
         name="Welcome"
         component={Landing}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Select Role"
+        component={SelectRole}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
@@ -50,7 +61,7 @@ const AuthStack = () => {
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerRight: () => <ThemeController />,
+          headerShown: false,
         }}
       />
       <Stack.Screen
@@ -60,7 +71,7 @@ const AuthStack = () => {
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerRight: () => <ThemeController />,
+          headerShown: false,
         }}
       />
       <Stack.Screen
@@ -70,7 +81,7 @@ const AuthStack = () => {
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerRight: () => <ThemeController />,
+          headerShown: false,
         }}
       />
     </AuthenticationStack.Navigator>

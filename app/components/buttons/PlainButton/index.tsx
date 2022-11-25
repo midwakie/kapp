@@ -1,10 +1,9 @@
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
-import styles from './styles';
-const PlainButton = ({ onPress }: any) => {
+const PlainButton = ({ onPress, style, containerStyle, text }: any) => {
   return (
-    <TouchableOpacity style={styles.touchableOpacity} onPress={onPress}>
-      <Text style={styles.buttonText}>Skip</Text>
+    <TouchableOpacity style={containerStyle} onPress={onPress}>
+      <Text style={style}>{text}</Text>
     </TouchableOpacity>
   );
 };

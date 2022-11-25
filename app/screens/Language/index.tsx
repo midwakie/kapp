@@ -29,7 +29,7 @@ const Language: React.FC = () => {
 
   useEffect(() => {
     if (isFirstLaunch === true) {
-      NavigationService.navigate('Sign In');
+      NavigationService.navigate('Welcome');
     }
   }, [isFirstLaunch]);
 
@@ -85,6 +85,8 @@ const Language: React.FC = () => {
             }}
             text={'Save'}
             radius={50}
+            height={50}
+            width={'100%'}
             colors={['#03BBE3', '#14A9FD']}
           />
         </View>
