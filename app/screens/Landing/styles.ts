@@ -108,6 +108,20 @@ const styles = StyleSheet.create({
     height: 24,
     marginHorizontal: 4,
   },
+  skipButtonText: {
+    fontSize: 18,
+    // fontFamily: 'Gill Sans',
+    textAlign: 'center',
+    fontWeight: '400',
+    color: '#03A0E3',
+    backgroundColor: 'transparent',
+  },
+  skipButtonContainer: {
+    height: 50,
+    paddingHorizontal: 5,
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+  },
 });
 
 export default styles;

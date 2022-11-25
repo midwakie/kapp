@@ -15,9 +15,10 @@ import AppIntroSlider from 'react-native-app-intro-slider';
 import PlainButton from 'app/components/buttons/PlainButton';
 import RegularButton from 'app/components/buttons/RegularButton';
 import Neumorphism from 'react-native-neumorphism';
+import NavigationService from 'app/navigation/NavigationService';
 const Landing: React.FC = () => {
   const dispatch = useDispatch();
-  const refSlider = useRef();
+  const refSlider = useRef(null);
   const [slides, setSlides] = useState([
     {
       title: 'Browse various \nreading E-books',
@@ -58,7 +59,9 @@ const Landing: React.FC = () => {
     dispatch(loginActions.requestLogin(email));
   };
 
-  const onDone = () => {};
+  const onDone = () => {
+    NavigationService.navigate('Select Role');
+  };
   const slideChanged = (index: any) => {};
 
   return (
@@ -74,11 +77,16 @@ const Landing: React.FC = () => {
               width={38}
               colors={['#EBECF0', '#EBECF0']}
             /> */}
-            <PlainButton />
+            <PlainButton
+              onPress={onDone}
+              style={styles.skipButtonText}
+              containerStyle={styles.skipButtonContainer}
+              text={'Skip'}
+            />
           </View>
           <View style={styles.walkThroughContainer}>
             <AppIntroSlider
-              // ref={refSlider}
+              ref={refSlider}
               data={slides}
               onDone={onDone}
               renderPagination={(activeIndex: number) => (
@@ -119,7 +127,7 @@ const Landing: React.FC = () => {
           <View style={styles.buttonContainer}>
             <View style={{ width: '45%' }}>
               <RegularButton
-                onPress={() => {}}
+                onPress={onDone}
                 text={'Sign up'}
                 radius={50}
                 height={50}
@@ -129,7 +137,7 @@ const Landing: React.FC = () => {
             </View>
             <View style={{ width: '45%' }}>
               <RegularButton
-                onPress={() => {}}
+                onPress={onDone}
                 text={'Sign in'}
                 radius={50}
                 height={50}
