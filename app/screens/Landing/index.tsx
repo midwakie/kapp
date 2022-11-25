@@ -59,8 +59,11 @@ const Landing: React.FC = () => {
     dispatch(loginActions.requestLogin(email));
   };
 
-  const onDone = () => {
+  const onSignUp = () => {
     NavigationService.navigate('Select Role');
+  };
+  const onSignIn = () => {
+    NavigationService.navigate('Sign In');
   };
   const slideChanged = (index: any) => {};
 
@@ -78,7 +81,9 @@ const Landing: React.FC = () => {
               colors={['#EBECF0', '#EBECF0']}
             /> */}
             <PlainButton
-              onPress={onDone}
+              onPress={() => {
+                refSlider?.current.goToSlide(5);
+              }}
               style={styles.skipButtonText}
               containerStyle={styles.skipButtonContainer}
               text={'Skip'}
@@ -88,7 +93,6 @@ const Landing: React.FC = () => {
             <AppIntroSlider
               ref={refSlider}
               data={slides}
-              onDone={onDone}
               renderPagination={(activeIndex: number) => (
                 <View style={styles.paginationContainer}>
                   <SafeAreaView>
@@ -127,7 +131,7 @@ const Landing: React.FC = () => {
           <View style={styles.buttonContainer}>
             <View style={{ width: '45%' }}>
               <RegularButton
-                onPress={onDone}
+                onPress={onSignUp}
                 text={'Sign up'}
                 radius={50}
                 height={50}
@@ -137,7 +141,7 @@ const Landing: React.FC = () => {
             </View>
             <View style={{ width: '45%' }}>
               <RegularButton
-                onPress={onDone}
+                onPress={onSignIn}
                 text={'Sign in'}
                 radius={50}
                 height={50}

@@ -15,6 +15,8 @@ const styles = StyleSheet.create({
     marginTop: 2,
     width: '100%',
     height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   safeView: { alignSelf: 'stretch' },
   gradientTextStyle: {
