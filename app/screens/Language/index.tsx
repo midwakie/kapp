@@ -64,6 +64,7 @@ const Language: React.FC = () => {
                   onPress={onPressRadioButtonEnglish}
                   selected={radioButtonEnglish}
                   color={'#03A0E3'}
+                  labelStyle={styles.radioLabel}
                 />
                 <HorizontalLine width={'100%'} stroke={1} color={'#E2E2E2'} />
                 <RadioButton

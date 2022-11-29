@@ -21,8 +21,9 @@ const styles = StyleSheet.create({
   safeAreaView: { alignSelf: 'stretch' },
   gradientTextStyle: {
     fontSize: 24,
-    // fontFamily: 'Nunito',
+    fontFamily: 'Nunito-Regular',
     fontWeight: '800',
+    lineHeight: 33,
   },
   gradientTextContainer: {
     width: '100%',
@@ -119,11 +120,14 @@ const styles = StyleSheet.create({
     color: '#758DAC',
     fontWeight: '600',
     fontSize: 12,
+    fontFamily: 'Nunito-Regular',
   },
   agreeDisagreeText: {
     color: '#758DAC',
     fontWeight: '600',
     fontSize: 12,
+    fontFamily: 'Nunito-Regular',
+    lineHeight: 16,
   },
   agreeDisagreeContainer: {
     flexDirection: 'row',
@@ -135,6 +139,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '700',
     backgroundColor: 'transparent',
+    fontFamily: 'Nunito-Regular',
   },
   signUpButtonContainer: {
     justifyContent: 'center',
