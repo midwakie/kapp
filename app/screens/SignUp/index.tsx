@@ -247,21 +247,21 @@ const SignUp: React.FC = () => {
             </TouchableOpacity>
             {Platform.OS === 'ios' && (
               <>
-            <HorizontalLine width={43} />
-            <TouchableOpacity>
-              <Neumorphism
-                lightColor={'#ffffff'}
-                darkColor={'#A8A8A8'}
-                shapeType={'flat'}
-                radius={50}>
-                <View style={styles.socialButtonContainer}>
-                  <Image
-                    source={require('../../assets/apple.png')}
-                    style={styles.socialButtonStyle}
-                  />
-                </View>
-              </Neumorphism>
-            </TouchableOpacity>
+                <HorizontalLine width={43} />
+                <TouchableOpacity>
+                  <Neumorphism
+                    lightColor={'#ffffff'}
+                    darkColor={'#A8A8A8'}
+                    shapeType={'flat'}
+                    radius={50}>
+                    <View style={styles.socialButtonContainer}>
+                      <Image
+                        source={require('../../assets/apple.png')}
+                        style={styles.socialButtonStyle}
+                      />
+                    </View>
+                  </Neumorphism>
+                </TouchableOpacity>
               </>
             )}
           </View>

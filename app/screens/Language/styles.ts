@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   },
   gradientTextStyle: {
     fontSize: 18,
-    // fontFamily: 'Nunito',
+    fontFamily: 'Nunito-Regular',
     fontWeight: '700',
   },
   gradientTextContainer: {
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     fontSize: 12,
-    // fontFamily: 'Poppins',
+    fontFamily: 'Nunito-Regular',
     fontWeight: '500',
     color: '#758DAC',
   },
@@ -84,6 +84,11 @@ const styles = StyleSheet.create({
     // height: 200,
     width: '100%',
     marginBottom: 60,
+  },
+  radioLabel: {
+    fontFamily: 'Nunito-Regular',
+    fontSize: 16,
+    fontWeight: '600',
   },
 });
 

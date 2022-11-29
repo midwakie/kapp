@@ -75,17 +75,17 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     color: '#03A0E3',
-    fontWeight: '700',
-    // fontFamily: 'CeraRoundPro-Medium',
-    lineHeight: 24,
+    fontWeight: '800',
+    fontFamily: 'Nunito-Regular',
+    lineHeight: 33,
     textAlign: 'center',
   },
   subTitle: {
     fontSize: 16,
     color: '#758DAC',
     fontWeight: '600',
-    // fontFamily: 'CeraRoundPro-Medium',
-    lineHeight: 24,
+    fontFamily: 'Nunito-Regular',
+    lineHeight: 22,
     textAlign: 'center',
   },
   paginationContainer: {
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
   },
   skipButtonText: {
     fontSize: 18,
-    // fontFamily: 'Gill Sans',
+    fontFamily: 'Nunito-Regular',
     textAlign: 'center',
     fontWeight: '400',
     color: '#03A0E3',
