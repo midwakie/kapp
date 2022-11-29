@@ -1,5 +1,12 @@
 import React, { useRef } from 'react';
-import { Image, SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
+import {
+  Image,
+  Platform,
+  SafeAreaView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { useDispatch } from 'react-redux';
 
 import * as loginActions from 'app/store/actions/loginActions';
@@ -140,21 +147,25 @@ const SignIn: React.FC = () => {
                 </View>
               </Neumorphism>
             </TouchableOpacity>
-            <HorizontalLine width={43} />
-            <TouchableOpacity>
-              <Neumorphism
-                lightColor={'#ffffff'}
-                darkColor={'#A8A8A8'}
-                shapeType={'flat'}
-                radius={50}>
-                <View style={styles.socialButtonContainer}>
-                  <Image
-                    source={require('../../assets/apple.png')}
-                    style={styles.socialButtonStyle}
-                  />
-                </View>
-              </Neumorphism>
-            </TouchableOpacity>
+            {Platform.OS === 'ios' && (
+              <>
+                <HorizontalLine width={43} />
+                <TouchableOpacity>
+                  <Neumorphism
+                    lightColor={'#ffffff'}
+                    darkColor={'#A8A8A8'}
+                    shapeType={'flat'}
+                    radius={50}>
+                    <View style={styles.socialButtonContainer}>
+                      <Image
+                        source={require('../../assets/apple.png')}
+                        style={styles.socialButtonStyle}
+                      />
+                    </View>
+                  </Neumorphism>
+                </TouchableOpacity>
+              </>
+            )}
           </View>
           <View style={styles.bottomContainer}>
             <Text style={styles.bottomText}>Don’t have an account?</Text>

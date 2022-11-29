@@ -2,22 +2,10 @@ import React, { useImperativeHandle, useRef } from 'react';
 import { View, Text, TextInput, StyleSheet, Dimensions } from 'react-native';
 import { Controller } from 'react-hook-form';
 import Neumorphism from 'react-native-neumorphism';
-
-const CustomInput = React.forwardRef(
-  (
-    {
-      control,
-      name,
-      rules = {},
-      placeholder,
-      secureTextEntry = false,
-      keyboardType,
-      autoCapitalize,
-      rightComponent,
-      onSubmitEditing,
-    }: any,
-    ref,
-  ) => {
+import OTPInputView from '@twotalltotems/react-native-otp-input';
+import HorizontalLine from '../lines/HorizontalLine';
+const CustomOTPInput = React.forwardRef(
+  ({ control, name, rules = {} }: any, ref) => {
     const [placeHolderOtherText, setPlaceHolderOtherText] = React.useState('*');
     const [isFocused, setIsFocused] = React.useState(false);
     const refInput = useRef(null);
@@ -42,46 +30,43 @@ const CustomInput = React.forwardRef(
               darkColor={'#A8A8A8'}
               shapeType={'pressed'}
               radius={50}>
+              <View style={styles.seperatorContainer}>
+                <View style={styles.boxItem}>
+                  <HorizontalLine width={5} color={'#ABBBC1'} stroke={1} />
+                </View>
+                <View style={styles.boxItem}>
+                  <HorizontalLine width={5} color={'#ABBBC1'} stroke={1} />
+                </View>
+                <View style={styles.boxItem}>
+                  <HorizontalLine width={5} color={'#ABBBC1'} stroke={1} />
+                </View>
+                <View style={styles.boxItem}>
+                  <HorizontalLine width={5} color={'#ABBBC1'} stroke={1} />
+                </View>
+                <View style={styles.boxItem}>
+                  <HorizontalLine width={5} color={'#ABBBC1'} stroke={1} />
+                </View>
+              </View>
               <View
                 style={[
                   styles.container,
                   { borderColor: error ? 'red' : 'transparent' },
                 ]}>
-                <TextInput
-                  ref={refInput}
-                  keyboardType={keyboardType}
-                  autoCapitalize={autoCapitalize}
-                  value={value}
-                  // clearButtonMode="while-editing"
-                  onSubmitEditing={onSubmitEditing}
-                  onChangeText={onChange}
-                  onBlur={() => {
-                    setIsFocused(false);
+                <OTPInputView
+                  style={{ width: '100%', height: 50 }}
+                  pinCount={6}
+                  code={value}
+                  onCodeChanged={code => {
+                    onChange(code);
+                  }}
+                  secureTextEntry={false}
+                  autoFocusOnLoad
+                  codeInputFieldStyle={styles.underlineStyleBase}
+                  onCodeFilled={code => {
+                    console.log(`Code is ${code}, you are good to go!`);
                     onBlur();
                   }}
-                  onFocus={() => {
-                    setIsFocused(true);
-                  }}
-                  placeholder={`${placeholder}${rules.required ? '*' : ''}`}
-                  placeholderTextColor={'#758DAC'}
-                  style={styles.input}
-                  secureTextEntry={secureTextEntry}
                 />
-                {!isFocused && !value && (
-                  <Text
-                    style={styles.placeHolderText}
-                    onPress={() => {
-                      refInput?.current.focus();
-                    }}>
-                    {placeholder}
-                    {rules.required && (
-                      <Text style={styles.placeHolderOtherText}>
-                        {placeHolderOtherText}
-                      </Text>
-                    )}
-                  </Text>
-                )}
-                {rightComponent}
               </View>
             </Neumorphism>
             {error && (
@@ -113,6 +98,26 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginVertical: 5,
   },
+  seperatorContainer: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+    flexDirection: 'row',
+    marginLeft: 15,
+  },
+  boxItem: {
+    width: (width - 80) / 6,
+    height: 50,
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+    // backgroundColor: 'red'
+  },
+  underlineStyleBase: {
+    color: '#3B3B48',
+    borderWidth: 0,
+    width: (width - 80) / 6,
+  },
   input: {
     height: 40,
     padding: 10,
@@ -127,4 +132,4 @@ const styles = StyleSheet.create({
   errorText: { color: '#EB7376', alignSelf: 'stretch' },
 });
 
-export default CustomInput;
+export default CustomOTPInput;
