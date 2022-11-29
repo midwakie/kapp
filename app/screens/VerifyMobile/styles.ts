@@ -28,15 +28,14 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 33,
-    marginBottom: 60,
-    marginTop: 25,
+    marginBottom: 44,
+    marginTop: 195,
   },
   inputTextContainer: {
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 40,
   },
   labelTextContainer: {
     justifyContent: 'flex-end',
@@ -79,34 +78,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  inputContainer: {
-    width: width - 60,
-    height: 50,
-    borderRadius: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#DADEE0',
-  },
-  socialContainer: {
-    width: width - 60,
-    height: 50,
-    flexDirection: 'row',
-    marginTop: 40,
-    marginBottom: 30,
-    justifyContent: 'center',
-    alignSelf: 'center',
-  },
-  socialButtonContainer: {
-    width: 50,
-    height: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  socialButtonStyle: {
-    width: 23,
-    height: 23,
-    resizeMode: 'contain',
-  },
   bottomContainer: {
     height: 20,
     width: width - 60,
@@ -114,21 +85,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     alignSelf: 'center',
+    marginTop: 30,
   },
   bottomText: {
     color: '#758DAC',
     fontWeight: '600',
     fontSize: 12,
-  },
-  agreeDisagreeText: {
-    color: '#758DAC',
-    fontWeight: '600',
-    fontSize: 12,
-  },
-  agreeDisagreeContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 22,
   },
   signUpButton: {
     color: '#03A0E3',
@@ -140,6 +102,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     height: 20,
+  },
+  subTextStyle: {
+    color: '#758DAC',
+    fontSize: 14,
+    fontWeight: '600',
+    textAlign: 'center',
+    marginTop: 2,
+  },
+  subText2Style: {
+    color: '#03A0E3',
+    fontSize: 12,
+    fontWeight: '600',
+    marginTop: 18,
   },
 });
 

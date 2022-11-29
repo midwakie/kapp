@@ -12,6 +12,8 @@ import SignUp from 'app/screens/SignUp';
 import Language from 'app/screens/Language';
 import SignIn from 'app/screens/SignIn';
 import SelectRole from 'app/screens/SelectRole';
+import VerifyEmail from 'app/screens/VerifyEmail';
+import VerifyMobile from 'app/screens/VerifyMobile';
 
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
@@ -67,6 +69,26 @@ const AuthStack = () => {
       <Stack.Screen
         name="Sign Up"
         component={SignUp}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Verify Email"
+        component={VerifyEmail}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Verify Mobile"
+        component={VerifyMobile}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
