@@ -58,22 +58,27 @@ const Language: React.FC = () => {
               shapeType={'flat'}
               radius={14}>
               <View style={styles.touchableOpacity}>
-                <RadioButton
-                  id={'1'}
-                  label={'English'}
-                  onPress={onPressRadioButtonEnglish}
-                  selected={radioButtonEnglish}
-                  color={'#03A0E3'}
-                  labelStyle={styles.radioLabel}
-                />
+                <View style={{paddingVertical:25}}>
+
+                  <RadioButton
+                    id={'1'}
+                    label={'English'}
+                    onPress={onPressRadioButtonEnglish}
+                    selected={radioButtonEnglish}
+                    color={'#03A0E3'}
+                    labelStyle={styles.radioLabel}
+                  />
+                </View>
                 <HorizontalLine width={'100%'} stroke={1} color={'#E2E2E2'} />
-                <RadioButton
-                  id={'2'}
-                  label={'Arabic'}
-                  onPress={onPressRadioButtonArabic}
-                  selected={radioButtonArabic}
-                  color={'#03A0E3'}
-                />
+                <View style={{paddingVertical:25}}>
+                  <RadioButton
+                    id={'2'}
+                    label={'Arabic'}
+                    onPress={onPressRadioButtonArabic}
+                    selected={radioButtonArabic}
+                    color={'#03A0E3'}
+                  />
+                </View>
               </View>
             </Neumorphism>
           </View>

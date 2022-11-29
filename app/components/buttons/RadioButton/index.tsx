@@ -26,7 +26,7 @@ export default function RadioButton({
 
   let orientation: any = { flexDirection: 'row' };
   let margin: any = { marginLeft: 15 };
-  let marginV: any = { marginVertical: 25, color: '#323A3D', fontSize: 16 };
+  let marginV: any = { color: '#323A3D', fontSize: 16 };
   let specificStyle: any = { opacity: disabled ? 0.2 : 1, marginLeft: 42 };
 
   if (layout === 'column') {

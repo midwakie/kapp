@@ -23,7 +23,7 @@ import RegularButton from 'app/components/buttons/RegularButton';
 import HorizontalLine from 'app/components/lines/HorizontalLine';
 import CustomOTPInput from 'app/components/inputs/CustomOTPInput';
 
-const VerifyMobile: React.FC = () => {
+const NewPassword: React.FC = () => {
   const dispatch = useDispatch();
   const onLogin = () => dispatch(loginActions.requestLogin('test', '1234'));
   const onForgot = () => NavigationService.navigate('ForgotPassword');
@@ -36,30 +36,38 @@ const VerifyMobile: React.FC = () => {
     <ScrollView style={styles.container} bounces={false}>
       <SafeAreaView style={styles.safeAreaView}>
         <View style={styles.container2}>
+        <View style={styles.topContainer}>
+            <RegularButton
+              onPress={() => {}}
+              icon={'arrow-back'}
+              radius={38}
+              height={38}
+              width={38}
+              colors={['#EBECF0', '#EBECF0']}
+            />
+            </View>
           <View style={styles.gradientTextContainer}>
             <GradientText
               colors={['#0EAFF4', '#0D93CD']}
-              text="Verify Mobile Number"
+              text="OTP Verification"
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
               textStyle={styles.gradientTextStyle}
             />
             <Text style={styles.subTextStyle}>
-              {`We have sent you SMS with 6 digits \nlong OTP code to verify mobile number`}
+              {`We have sent you an Email with 6 digits \n long OTP code to set a new password `}
             </Text>
             <Text style={styles.subText2Style}>Enter OTP below</Text>
           </View>
           <View style={styles.inputTextContainer}>
             <CustomOTPInput
               control={control}
-              name="otp_mobile"
+              name="otp_email"
               rules={rules.AuthRules.email}
             />
           </View>
           <RegularButton
-            onPress={() => {
-              NavigationService.navigate('NewPassword');
-            }}
+            onPress={() => {NavigationService.navigate('AvatarCreation')}}
             text={'Verify'}
             radius={50}
             height={50}
@@ -82,4 +90,4 @@ const VerifyMobile: React.FC = () => {
   );
 };
 
-export default VerifyMobile;
+export default NewPassword;
