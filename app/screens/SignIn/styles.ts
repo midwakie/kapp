@@ -94,6 +94,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
     marginBottom: 30,
     justifyContent: 'center',
+    alignSelf: 'center',
   },
   socialButtonContainer: {
     width: 50,
@@ -112,6 +113,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
+    alignSelf: 'center',
   },
   bottomText: {
     color: '#758DAC',

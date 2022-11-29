@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import {
   Image,
+  Platform,
   SafeAreaView,
   Text,
   TouchableOpacity,
@@ -196,12 +197,18 @@ const SignUp: React.FC = () => {
                 setChecked(!checked);
               }}
             />
-            <Text style={styles.agreeDisagreeText}>
+            <Text
+              style={styles.agreeDisagreeText}
+              onPress={() => {
+                setChecked(!checked);
+              }}>
               {'I Agree to Terms & Conditions'}
             </Text>
           </View>
           <RegularButton
-            onPress={() => {}}
+            onPress={() => {
+              NavigationService.navigate('Verify Email');
+            }}
             text={'Sign Up'}
             radius={50}
             height={50}
@@ -238,6 +245,8 @@ const SignUp: React.FC = () => {
                 </View>
               </Neumorphism>
             </TouchableOpacity>
+            {Platform.OS === 'ios' && (
+              <>
             <HorizontalLine width={43} />
             <TouchableOpacity>
               <Neumorphism
@@ -253,6 +262,8 @@ const SignUp: React.FC = () => {
                 </View>
               </Neumorphism>
             </TouchableOpacity>
+              </>
+            )}
           </View>
           <View style={styles.bottomContainer}>
             <Text style={styles.bottomText}>Already have an account?</Text>
