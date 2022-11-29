@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   safeAreaView: { alignSelf: 'stretch' },
   gradientTextStyle: {
     fontSize: 24,
-    // fontFamily: 'Nunito',
+    fontFamily: 'Nunito-Regular',
     fontWeight: '800',
   },
   gradientTextContainer: {
@@ -91,12 +91,14 @@ const styles = StyleSheet.create({
     color: '#758DAC',
     fontWeight: '600',
     fontSize: 12,
+    fontFamily: 'Nunito-Regular',
   },
   signUpButton: {
     color: '#03A0E3',
     fontSize: 12,
     fontWeight: '700',
     backgroundColor: 'transparent',
+    fontFamily: 'Nunito-Regular',
   },
   signUpButtonContainer: {
     justifyContent: 'center',
@@ -109,12 +111,15 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     textAlign: 'center',
     marginTop: 2,
+    lineHeight: 19,
+    fontFamily: 'Nunito-Regular',
   },
   subText2Style: {
     color: '#03A0E3',
     fontSize: 12,
     fontWeight: '600',
     marginTop: 18,
+    fontFamily: 'Nunito-Regular',
   },
 });
 

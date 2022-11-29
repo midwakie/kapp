@@ -11,7 +11,8 @@ const styles = StyleSheet.create({
   }),
   buttonText: {
     fontSize: 18,
-    // fontFamily: 'Gill Sans',
+    fontFamily: 'Nunito-Regular',
+    fontWeight: '800',
     textAlign: 'center',
     margin: 10,
     color: '#ffffff',

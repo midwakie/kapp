@@ -119,12 +119,23 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     flex: 1,
     color: '#758DAC',
+    fontFamily: 'Nunito-Regular',
   },
-  placeHolderText: { color: '#758DAC', position: 'absolute', left: 30 },
+  placeHolderText: {
+    color: '#758DAC',
+    position: 'absolute',
+    left: 30,
+    fontFamily: 'Nunito-Regular',
+  },
   placeHolderOtherText: {
     color: '#EB7376',
+    fontFamily: 'Nunito-Regular',
   },
-  errorText: { color: '#EB7376', alignSelf: 'stretch' },
+  errorText: {
+    color: '#EB7376',
+    alignSelf: 'stretch',
+    fontFamily: 'Nunito-Regular',
+  },
 });
 
 export default CustomInput;
