@@ -6,6 +6,13 @@ const styles = StyleSheet.create({
     height: '100%',
     backgroundColor: '#E5E5E5',
   },
+  loaderContainer: {
+    width: '100%',
+    height: '100%',
+    backgroundColor: '#E5E5E5',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   container2: {
     paddingHorizontal: 30,
     marginTop: 2,

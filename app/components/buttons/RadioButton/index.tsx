@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { PixelRatio, Pressable, Text, View } from 'react-native';
 import styles from './styles';
 
@@ -23,9 +24,15 @@ export default function RadioButton({
   const borderWidth = PixelRatio.roundToNearestPixel(size * 0.08);
   const sizeHalf = PixelRatio.roundToNearestPixel(size * 0.7);
   const sizeFull = PixelRatio.roundToNearestPixel(size);
+  const { i18n } = useTranslation();
 
-  let orientation: any = { flexDirection: 'row' };
-  let margin: any = { marginLeft: 15 };
+  let orientation: any = {
+    flexDirection: i18n.dir() === 'rtl' ? 'row-reverse' : 'row',
+  };
+  let margin: any = {
+    marginLeft: i18n.dir() === 'rtl' ? 0 : 15,
+    marginRight: i18n.dir() === 'rtl' ? 15 : 0,
+  };
   let marginV: any = { marginVertical: 25, color: '#323A3D', fontSize: 16 };
   let specificStyle: any = { opacity: disabled ? 0.2 : 1, marginLeft: 42 };
 

@@ -1,4 +1,20 @@
 {
   "Hi": "أهلاً",
-  "Name": "اسم"
+  "Name": "اسم",
+  "Skip": "يتخطى",
+  "Select Your Language preference": "حدد تفضيلات لغتك",
+  "You can change later if you want": "يمكنك التغيير لاحقًا إذا أردت",
+  "English": "إنجليزي",
+  "Arabic": "عربي",
+  "Save": "يحفظ",
+  "Browse various reading E-books": "تصفح الكتب الإلكترونية \nالمتنوعة للقراءة",
+  "Manage Your Children and Track Activities": "إدارة أطفالك \n وتعقب الأنشطة",
+  "Earn Rewards": "كسب المكافآت",
+  "Reading books & Completing activities": "قراءة الكتب والأنشطة التكميلية",
+  "Feeds based on your hobbies": "يتغذى على هواياتك",
+  "Manage Your Channels": "إدارة قنواتك",
+  "Personal & Classroom": "شخصي وقاعة الدراسة",
+  "Publish videos with exciting features": "انشر مقاطع فيديو \n بميزات مثيرة",
+  "Sign up": "اشتراك",
+  "Sign in": "تسجيل الدخول"
 }
