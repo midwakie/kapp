@@ -91,6 +91,7 @@ const styles = StyleSheet.create({
     color: '#758DAC',
     fontWeight: '600',
     fontSize: 12,
+    fontFamily: 'Nunito-Regular',
   },
   signUpButton: {
     color: '#03A0E3',
@@ -109,6 +110,8 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     textAlign: 'center',
     marginTop: 2,
+    lineHeight: 19,
+    fontFamily: 'Nunito-Regular',
   },
   subText2Style: {
     color: '#03A0E3',
