@@ -3,8 +3,6 @@ import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useSelector } from 'react-redux';
 
-import ForgotPassword from 'app/screens/Loading';
-
 import ThemeController from '../components/ThemeController';
 import { ILoginState } from 'app/models/reducers/login';
 import Landing from 'app/screens/Landing';
@@ -14,6 +12,8 @@ import SignIn from 'app/screens/SignIn';
 import SelectRole from 'app/screens/SelectRole';
 import VerifyEmail from 'app/screens/VerifyEmail';
 import VerifyMobile from 'app/screens/VerifyMobile';
+import ForgotPassword from 'app/screens/ForgotPassword';
+import ChangePassword from 'app/screens/ChangePassword';
 
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
@@ -89,6 +89,16 @@ const AuthStack = () => {
       <Stack.Screen
         name="Verify Mobile"
         component={VerifyMobile}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ChangePassword"
+        component={ChangePassword}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation

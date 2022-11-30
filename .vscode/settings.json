@@ -1,8 +1,10 @@
 {
-    "cSpell.words": [
-        "Kutubi",
-        "Neomorph",
-        "Nunito",
-        "Pressable"
-    ]
+  "cSpell.words": [
+    "Kutubi",
+    "Neomorph",
+    "Nunito",
+    "Pressable",
+    "Unorderedlist"
+  ],
+  "java.configuration.updateBuildConfiguration": "disabled"
 }
