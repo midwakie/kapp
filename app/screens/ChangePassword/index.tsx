@@ -19,8 +19,10 @@ const ChangePassword: React.FC = () => {
   const dispatch = useDispatch();
   const [text, setText] = React.useState('');
   const [showPassword, setShowPassword] = React.useState(false);
+  const [showSecPassword, setShowSecPassword] = React.useState(false);
   const { control, handleSubmit, setValue, watch, reset } = useForm();
   const inputRef = React.createRef();
+  const inputSecRef = React.createRef();
   return (
     <View style={styles.container}>
       <SafeAreaView style={styles.safeAreaView}>
@@ -85,6 +87,9 @@ const ChangePassword: React.FC = () => {
               autoCapitalize="none"
               returnKeyType="next"
               secureTextEntry={!showPassword}
+              onSubmitEditing={() => {
+                inputSecRef?.current.setFocus();
+              }}
               rightComponent={
                 <TouchableOpacity
                   style={styles.rightComponent}
@@ -102,24 +107,24 @@ const ChangePassword: React.FC = () => {
           </View>
           <View style={styles.inputTextContainer}>
             <CustomInput
-              ref={inputRef}
+              ref={inputSecRef}
               control={control}
-              name="password"
+              name="confirm_password"
               rules={rules.AuthRules.password}
               placeholder="Confirm New Password"
               label="Confirm New Password"
               keyboardType="default"
               autoCapitalize="none"
               returnKeyType="next"
-              secureTextEntry={!showPassword}
+              secureTextEntry={!showSecPassword}
               rightComponent={
                 <TouchableOpacity
                   style={styles.rightComponent}
                   onPress={() => {
-                    setShowPassword(!showPassword);
+                    setShowSecPassword(!showSecPassword);
                   }}>
                   <MaterialIcon
-                    name={showPassword ? 'eye' : 'eye-off'}
+                    name={showSecPassword ? 'eye' : 'eye-off'}
                     size={20}
                     color={'#758DAC'}
                   />
