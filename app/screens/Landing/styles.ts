@@ -3,6 +3,7 @@ const width =
   Dimensions.get('window').width >= Dimensions.get('window').height
     ? Dimensions.get('window').height
     : Dimensions.get('window').width;
+
 const styles = StyleSheet.create({
   container: {
     width: '100%',
@@ -17,14 +18,14 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   safeView: { alignSelf: 'stretch' },
-  topContainer: {
-    flexDirection: 'row',
+  topContainer: (direction: string) => ({
+    flexDirection: direction,
     justifyContent: 'flex-end',
     alignItems: 'center',
     width: '100%',
     paddingRight: 30,
     marginVertical: 25,
-  },
+  }),
   walkThroughContainer: {
     height: width + 71,
     marginBottom: 63,
@@ -39,15 +40,15 @@ const styles = StyleSheet.create({
   textInputStyle: {
     height: 55,
   },
-  buttonContainer: {
+  buttonContainer: (direction: string) => ({
     marginTop: 50,
     marginBottom: 20,
     paddingHorizontal: 20,
-    flexDirection: 'row',
+    flexDirection: direction,
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
-  },
+  }),
   buttonStyle: {
     marginTop: 20,
     borderRadius: 25,
@@ -96,13 +97,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     top: width + 71,
   },
-  paginationDots: {
+  paginationDots: (direction: string) => ({
     height: 16,
     margin: 16,
-    flexDirection: 'row',
+    flexDirection: direction,
     justifyContent: 'center',
     alignItems: 'center',
-  },
+  }),
   dot: {
     width: 24,
     height: 24,

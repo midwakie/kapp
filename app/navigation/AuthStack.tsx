@@ -29,14 +29,6 @@ const AuthStack = () => {
   return (
     <AuthenticationStack.Navigator>
       <Stack.Screen
-        name="Language"
-        component={Language}
-        options={{
-          headerShown: false,
-          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-        }}
-      />
-      <Stack.Screen
         name="Welcome"
         component={Landing}
         options={{

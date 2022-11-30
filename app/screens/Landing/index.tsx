@@ -16,17 +16,22 @@ import PlainButton from 'app/components/buttons/PlainButton';
 import RegularButton from 'app/components/buttons/RegularButton';
 import Neumorphism from 'react-native-neumorphism';
 import NavigationService from 'app/navigation/NavigationService';
+import RNRestart from 'react-native-restart';
+import { useTranslation } from 'react-i18next';
+import { persistSelectedLanguage } from 'app/utils/storageUtils';
 const Landing: React.FC = () => {
   const dispatch = useDispatch();
   const refSlider = useRef(null);
-  const [slides, setSlides] = useState([
+  const { t, i18n } = useTranslation();
+  const direction = i18n.dir() === 'rtl' ? 'row-reverse' : 'row';
+  const slides = [
     {
-      title: 'Browse various \nreading E-books',
+      title: 'Browse various reading E-books',
       subTitle: '',
       image: require('../../assets/slide1.png'),
     },
     {
-      title: 'Manage Your Children \nand Track Activities ',
+      title: 'Manage Your Children and Track Activities',
       subTitle: '',
       image: require('../../assets/slide2.png'),
     },
@@ -46,11 +51,11 @@ const Landing: React.FC = () => {
       image: require('../../assets/slide5.png'),
     },
     {
-      title: 'Publish videos with \nexciting features',
+      title: 'Publish videos with exciting features',
       subTitle: '',
       image: require('../../assets/slide6.png'),
     },
-  ]);
+  ];
   const onDashboard = () => dispatch(loginActions.onLoginResponse({ id: '' }));
   const onLogin = async (data: any) => {
     // NavigationService.navigate('Login');
@@ -71,7 +76,7 @@ const Landing: React.FC = () => {
     <ScrollView style={styles.container} bounces={false}>
       <SafeAreaView style={styles.safeView}>
         <View style={styles.container2}>
-          <View style={styles.topContainer}>
+          <View style={styles.topContainer(direction)}>
             {/* <RegularButton
               onPress={() => {}}
               icon={'arrow-back'}
@@ -86,7 +91,7 @@ const Landing: React.FC = () => {
               }}
               style={styles.skipButtonText}
               containerStyle={styles.skipButtonContainer}
-              text={'Skip'}
+              text={t('Skip')}
             />
           </View>
           <View style={styles.walkThroughContainer}>
@@ -96,7 +101,7 @@ const Landing: React.FC = () => {
               renderPagination={(activeIndex: number) => (
                 <View style={styles.paginationContainer}>
                   <SafeAreaView>
-                    <View style={styles.paginationDots}>
+                    <View style={styles.paginationDots(direction)}>
                       {slides.length > 1 &&
                         slides.map((_, i) => (
                           <Image
@@ -121,18 +126,18 @@ const Landing: React.FC = () => {
               showNextButton={false}
               renderItem={({ item }) => (
                 <View style={styles.mainContent}>
-                  <Text style={styles.title}>{item.title}</Text>
-                  <Text style={styles.subTitle}>{item.subTitle}</Text>
+                  <Text style={styles.title}>{t(item.title)}</Text>
+                  <Text style={styles.subTitle}>{t(item.subTitle)}</Text>
                   <Image style={styles.image} source={item.image} />
                 </View>
               )}
             />
           </View>
-          <View style={styles.buttonContainer}>
+          <View style={styles.buttonContainer(direction)}>
             <View style={{ width: '45%' }}>
               <RegularButton
                 onPress={onSignUp}
-                text={'Sign up'}
+                text={t('Sign up')}
                 radius={50}
                 height={50}
                 width={'100%'}
@@ -142,7 +147,7 @@ const Landing: React.FC = () => {
             <View style={{ width: '45%' }}>
               <RegularButton
                 onPress={onSignIn}
-                text={'Sign in'}
+                text={t('Sign in')}
                 radius={50}
                 height={50}
                 width={'100%'}

@@ -4,9 +4,13 @@ import AsyncStorage from '@react-native-community/async-storage';
 async function checkIfFirstLaunch() {
   try {
     const hasFirstLaunched = await AsyncStorage.getItem(
-      '@kutubi_user_on_boarded',
+      '@kutubi_user_on_boarded_status',
     );
     if (hasFirstLaunched === null) {
+      AsyncStorage.setItem(
+        '@kutubi_user_on_boarded_status',
+        'kutubi_user_on_boarded',
+      );
       return true;
     }
     return false;
