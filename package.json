@@ -3,9 +3,10 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "start": "react-native start --reset-cache",
+    "android": "npx react-native run-android",
+    "ios": "npx react-native run-ios",
+    "ipad": "npx react-native run-ios --simulator='iPad Pro (12.9-inch) (5th generation)'",
+    "start": "npx react-native start --reset-cache",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "update:pods": "npx pod-install ios",
