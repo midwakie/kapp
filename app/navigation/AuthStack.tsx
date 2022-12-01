@@ -12,6 +12,8 @@ import SignIn from 'app/screens/SignIn';
 import SelectRole from 'app/screens/SelectRole';
 import VerifyEmail from 'app/screens/VerifyEmail';
 import VerifyMobile from 'app/screens/VerifyMobile';
+import NewPassword from 'app/screens/NewPasswordVerification';
+import AvatarCreation from 'app/screens/AvatarCreation';
 import ForgotPassword from 'app/screens/ForgotPassword';
 import ChangePassword from 'app/screens/ChangePassword';
 import { useTranslation } from 'react-i18next';
@@ -114,6 +116,26 @@ const AuthStack = () => {
       <Stack.Screen
         name="ForgotPassword"
         component={ForgotPassword}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="NewPassword"
+        component={NewPassword}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="AvatarCreation"
+        component={AvatarCreation}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
