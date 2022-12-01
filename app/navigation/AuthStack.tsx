@@ -1,9 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useSelector } from 'react-redux';
-
-import ForgotPassword from 'app/screens/Loading';
 
 import ThemeController from '../components/ThemeController';
 import { ILoginState } from 'app/models/reducers/login';
@@ -16,10 +14,13 @@ import VerifyEmail from 'app/screens/VerifyEmail';
 import VerifyMobile from 'app/screens/VerifyMobile';
 import NewPassword from 'app/screens/NewPasswordVerification';
 import AvatarCreation from 'app/screens/AvatarCreation';
+import ForgotPassword from 'app/screens/ForgotPassword';
+import ChangePassword from 'app/screens/ChangePassword';
+import { useTranslation } from 'react-i18next';
+import { retrieveSelectedLanguage } from 'app/utils/storageUtils';
 
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
-
 interface IState {
   loginReducer: ILoginState;
 }
@@ -28,6 +29,18 @@ const AuthStack = () => {
   const isLoggedIn = useSelector(
     (state: IState) => state.loginReducer.isLoggedIn,
   );
+
+  const { i18n } = useTranslation();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const setLanguage = async () => {
+    let lang: string = (await retrieveSelectedLanguage()) as string;
+    i18n.changeLanguage(lang);
+  };
+
+  useEffect(() => {
+    setLanguage();
+  },[]);
+
   return (
     <AuthenticationStack.Navigator>
       <Stack.Screen
@@ -83,6 +96,16 @@ const AuthStack = () => {
       <Stack.Screen
         name="Verify Mobile"
         component={VerifyMobile}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ChangePassword"
+        component={ChangePassword}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation

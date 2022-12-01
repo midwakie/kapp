@@ -38,27 +38,32 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 20,
   },
-  labelTextContainer: {
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
-    alignSelf: 'flex-end',
+  labelTextContainer: (direction: string) => ({
+    justifyContent: direction === 'rtl' ? 'flex-start' : 'flex-end',
+    alignItems: direction === 'rtl' ? 'flex-start' : 'flex-end',
+    alignSelf: direction === 'rtl' ? 'flex-start' : 'flex-end',
     marginBottom: 20,
     width: width - 60,
-  },
-  forgotPasswordContainer: {
-    justifyContent: 'flex-end',
+  }),
+  forgotPasswordContainer: (direction: string) => ({
+    justifyContent: direction === 'rtl' ? 'flex-start' : 'flex-end',
     alignItems: 'center',
     marginBottom: 39,
-  },
-  forgotPassword: {
+  }),
+  forgotPassword: (direction: string) => ({
     color: '#FE4C3E',
-    textAlign: 'right',
+    textAlign: direction === 'rtl' ? 'left' : 'right',
     fontSize: 12,
     fontWeight: '600',
     backgroundColor: 'transparent',
     fontFamily: 'Nunito-Regular',
-  },
-  rightComponent: { right: 20, position: 'absolute' },
+  }),
+  rightComponent: (direction: string) => ({
+    flexDirection: direction === 'rtl' ? 'row-reverse' : 'row',
+    left: direction === 'rtl' ? 20 : undefined,
+    right: direction === 'rtl' ? undefined : 20,
+    position: 'absolute',
+  }),
   imageStyle: {
     justifyContent: 'center',
     resizeMode: 'contain',
