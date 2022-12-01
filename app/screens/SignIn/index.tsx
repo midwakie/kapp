@@ -103,7 +103,9 @@ const SignIn: React.FC = () => {
           </View>
           <View style={styles.labelTextContainer}>
             <PlainButton
-              onPress={() => {}}
+              onPress={() => {
+                NavigationService.navigate('ForgotPassword');
+              }}
               style={styles.forgotPassword}
               containerStyle={styles.forgotPasswordContainer}
               text={'Forgot Password?'}
