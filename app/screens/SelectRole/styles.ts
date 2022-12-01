@@ -63,12 +63,12 @@ const styles = StyleSheet.create({
     lineHeight: 33,
     textAlign: 'center',
   },
-  rolesContainer: {
-    flexDirection: 'row',
+  rolesContainer: (direction: string) => ({
+    flexDirection: direction === 'rtl' ? 'row-reverse' : 'row',
     width: width,
     justifyContent: 'center',
     alignItems: 'center',
-  },
+  }),
 });
 
 export default styles;

@@ -101,7 +101,7 @@ const Landing: React.FC = () => {
               renderPagination={(activeIndex: number) => (
                 <View style={styles.paginationContainer}>
                   <SafeAreaView>
-                    <View style={styles.paginationDots(direction)}>
+                    <View style={styles.paginationDots}>
                       {slides.length > 1 &&
                         slides.map((_, i) => (
                           <Image

@@ -97,13 +97,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     top: width + 71,
   },
-  paginationDots: (direction: string) => ({
+  paginationDots: {
     height: 16,
     margin: 16,
-    flexDirection: direction,
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-  }),
+  },
   dot: {
     width: 24,
     height: 24,
