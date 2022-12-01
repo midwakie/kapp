@@ -6,7 +6,7 @@ const width =
     : Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
-  container: {
+ container : {
     width: '100%',
     height: '100%',
     backgroundColor: '#E5E5E5',
