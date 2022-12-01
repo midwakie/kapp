@@ -36,8 +36,8 @@ const styles = StyleSheet.create({
   image: {
     marginVertical: 20,
     resizeMode: 'contain',
-    height: 142,
-    width: 142,
+    height: width / 3,
+    width: width / 3,
   },
   titleParent: {
     fontSize: 24,
