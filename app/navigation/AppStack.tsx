@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { DrawerActions } from '@react-navigation/routers';
 import {
   createDrawerNavigator,
@@ -17,12 +17,24 @@ import {
 import FaIcon from 'react-native-vector-icons/FontAwesome';
 
 import HomeStack from './DrawerStacks/HomeStack';
+import { useTranslation } from 'react-i18next';
+import { retrieveSelectedLanguage } from 'app/utils/storageUtils';
 
 const Drawer = createDrawerNavigator();
 
 const AppStack = props => {
   let lastGroupName = '';
   let newGroup = false;
+  const { i18n } = useTranslation();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const setLanguage = async () => {
+    let lang: string = (await retrieveSelectedLanguage()) as string;
+    i18n.changeLanguage(lang);
+  };
+
+  useEffect(() => {
+    setLanguage();
+  },[]);
   return (
     <Drawer.Navigator
       initialRouteName="Home"

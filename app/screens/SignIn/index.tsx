@@ -22,6 +22,7 @@ import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import PlainButton from 'app/components/buttons/PlainButton';
 import RegularButton from 'app/components/buttons/RegularButton';
 import HorizontalLine from 'app/components/lines/HorizontalLine';
+import { useTranslation } from 'react-i18next';
 
 const SignIn: React.FC = () => {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ const SignIn: React.FC = () => {
   const [showPassword, setShowPassword] = React.useState(false);
   const { control, handleSubmit, setValue, watch, reset } = useForm();
   const inputRef = React.createRef();
+  const { t, i18n } = useTranslation();
   return (
     <ScrollView style={styles.container} bounces={false}>
       <SafeAreaView style={styles.safeAreaView}>
@@ -53,7 +55,7 @@ const SignIn: React.FC = () => {
           <View style={styles.gradientTextContainer}>
             <GradientText
               colors={['#0EAFF4', '#0D93CD']}
-              text="Sign In to Continue"
+              text={t('Sign In to Continue')}
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
               textStyle={styles.gradientTextStyle}
@@ -64,8 +66,8 @@ const SignIn: React.FC = () => {
               control={control}
               name="email"
               rules={rules.AuthRules.email}
-              placeholder="Email / Mobile Number"
-              label="Email / Mobile Number"
+              placeholder={t('Email / Mobile Number')}
+              label={t('Email / Mobile Number')}
               keyboardType="email-address"
               autoCapitalize="none"
               returnKeyType="next"
@@ -80,15 +82,15 @@ const SignIn: React.FC = () => {
               control={control}
               name="password"
               rules={rules.AuthRules.password}
-              placeholder="Password"
-              label="Password"
+              placeholder={t('Password')}
+              label={t('Password')}
               keyboardType="default"
               autoCapitalize="none"
               returnKeyType="next"
               secureTextEntry={!showPassword}
               rightComponent={
                 <TouchableOpacity
-                  style={styles.rightComponent}
+                  style={styles.rightComponent(i18n.dir())}
                   onPress={() => {
                     setShowPassword(!showPassword);
                   }}>
@@ -101,19 +103,19 @@ const SignIn: React.FC = () => {
               }
             />
           </View>
-          <View style={styles.labelTextContainer}>
+          <View style={styles.labelTextContainer(i18n.dir())}>
             <PlainButton
               onPress={() => {
                 NavigationService.navigate('ForgotPassword');
               }}
-              style={styles.forgotPassword}
-              containerStyle={styles.forgotPasswordContainer}
-              text={'Forgot Password?'}
+              style={styles.forgotPassword(i18n.dir())}
+              containerStyle={styles.forgotPasswordContainer(i18n.dir())}
+              text={t('Forgot Password?')}
             />
           </View>
           <RegularButton
             onPress={() => {}}
-            text={'Sign In'}
+            text={t('Sign in')}
             radius={50}
             height={50}
             width={'100%'}
@@ -170,13 +172,13 @@ const SignIn: React.FC = () => {
             )}
           </View>
           <View style={styles.bottomContainer}>
-            <Text style={styles.bottomText}>Don’t have an account?</Text>
+            <Text style={styles.bottomText}>{t('Don’t have an account?')}</Text>
             <HorizontalLine width={8} />
             <PlainButton
               onPress={() => {}}
               style={styles.signUpButton}
               containerStyle={styles.signUpButtonContainer}
-              text={'Sign up'}
+              text={t('Sign up')}
             />
           </View>
         </View>

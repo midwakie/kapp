@@ -36,8 +36,8 @@ const styles = StyleSheet.create({
   image: {
     marginVertical: 20,
     resizeMode: 'contain',
-    height: 142,
-    width: 142,
+    height: width / 3,
+    width: width / 3,
   },
   titleParent: {
     fontSize: 24,
@@ -63,12 +63,12 @@ const styles = StyleSheet.create({
     lineHeight: 33,
     textAlign: 'center',
   },
-  rolesContainer: {
-    flexDirection: 'row',
+  rolesContainer: (direction: string) => ({
+    flexDirection: direction === 'rtl' ? 'row-reverse' : 'row',
     width: width,
     justifyContent: 'center',
     alignItems: 'center',
-  },
+  }),
 });
 
 export default styles;

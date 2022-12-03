@@ -6,7 +6,7 @@ const width =
     : Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
- container : {
+  container: {
     width: '100%',
     height: '100%',
     backgroundColor: '#E5E5E5',
@@ -28,42 +28,35 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 33,
-    marginBottom: 60,
-    marginTop: 25,
+    marginBottom: 44,
+    marginTop: 126,
   },
   inputTextContainer: {
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 40,
   },
-  labelTextContainer: (direction: string) => ({
-    justifyContent: direction === 'rtl' ? 'flex-start' : 'flex-end',
-    alignItems: direction === 'rtl' ? 'flex-start' : 'flex-end',
-    alignSelf: direction === 'rtl' ? 'flex-start' : 'flex-end',
+  labelTextContainer: {
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+    alignSelf: 'flex-end',
     marginBottom: 20,
     width: width - 60,
-  }),
-  forgotPasswordContainer: (direction: string) => ({
-    justifyContent: direction === 'rtl' ? 'flex-start' : 'flex-end',
+  },
+  forgotPasswordContainer: {
+    justifyContent: 'flex-end',
     alignItems: 'center',
     marginBottom: 39,
-  }),
-  forgotPassword: (direction: string) => ({
+  },
+  forgotPassword: {
     color: '#FE4C3E',
-    textAlign: direction === 'rtl' ? 'left' : 'right',
+    textAlign: 'right',
     fontSize: 12,
     fontWeight: '600',
     backgroundColor: 'transparent',
-    fontFamily: 'Nunito-Regular',
-  }),
-  rightComponent: (direction: string) => ({
-    flexDirection: direction === 'rtl' ? 'row-reverse' : 'row',
-    left: direction === 'rtl' ? 20 : undefined,
-    right: direction === 'rtl' ? undefined : 20,
-    position: 'absolute',
-  }),
+  },
+  rightComponent: { right: 20, position: 'absolute' },
   imageStyle: {
     justifyContent: 'center',
     resizeMode: 'contain',
@@ -85,34 +78,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  inputContainer: {
-    width: width - 60,
-    height: 50,
-    borderRadius: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#DADEE0',
-  },
-  socialContainer: {
-    width: width - 60,
-    height: 50,
-    flexDirection: 'row',
-    marginTop: 40,
-    marginBottom: 30,
-    justifyContent: 'center',
-    alignSelf: 'center',
-  },
-  socialButtonContainer: {
-    width: 50,
-    height: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  socialButtonStyle: {
-    width: 23,
-    height: 23,
-    resizeMode: 'contain',
-  },
   bottomContainer: {
     height: 20,
     width: width - 60,
@@ -120,6 +85,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     alignSelf: 'center',
+    marginTop: 30,
   },
   bottomText: {
     color: '#758DAC',
@@ -132,12 +98,33 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '700',
     backgroundColor: 'transparent',
-    fontFamily: 'Nunito-Regular',
   },
   signUpButtonContainer: {
     justifyContent: 'center',
     alignItems: 'center',
     height: 20,
+  },
+  subTextStyle: {
+    color: '#758DAC',
+    fontSize: 14,
+    fontWeight: '600',
+    textAlign: 'center',
+    marginTop: 2,
+    lineHeight: 19,
+    fontFamily: 'Nunito-Regular',
+  },
+  subText2Style: {
+    color: '#03A0E3',
+    fontSize: 12,
+    fontWeight: '600',
+    marginTop: 18,
+  },
+  topContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    width: '100%',
+    marginVertical: 25,
   },
 });
 
