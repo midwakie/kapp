@@ -2,17 +2,21 @@ import React from 'react';
 import { SafeAreaView, Text, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import styles from './styles';
+import { ScrollView } from 'react-native-gesture-handler';
 import RegularButton from 'app/components/buttons/RegularButton';
 import GradientText from 'app/components/texts/GradientText';
 import CustomInput from 'app/components/inputs/CustomInput';
 import rules from 'app/rules';
 import { useForm } from 'react-hook-form';
 import NavigationService from 'app/navigation/NavigationService';
+import { useTranslation } from 'react-i18next';
 
 const ForgotPassword: React.FC = () => {
   const { control, handleSubmit, setValue, watch, reset } = useForm();
+  const { t, i18n } = useTranslation();
+  const direction = i18n.dir() === 'rtl' ? 'row-reverse' : 'row';
   return (
-    <>
+    <ScrollView style={styles.container} bounces={false}>
       <View style={styles.container}>
         <SafeAreaView style={styles.safeAreaView}>
           <View style={styles.topContainer}>
@@ -32,7 +36,7 @@ const ForgotPassword: React.FC = () => {
             <View style={styles.gradientTextContainer}>
               <GradientText
                 colors={['#0EAFF4', '#0D93CD']}
-                text="Forgot Password"
+                text={t('Forgot Password')}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 0, y: 1 }}
                 textStyle={styles.gradientTextStyle}
@@ -40,7 +44,7 @@ const ForgotPassword: React.FC = () => {
             </View>
             <View style={styles.subTextContainer}>
               <Text style={styles.subText}>
-                Enter your registered email or Mobile Number
+                {t('Enter your registered email or Mobile Number')}
               </Text>
             </View>
 
@@ -49,8 +53,8 @@ const ForgotPassword: React.FC = () => {
                 control={control}
                 name="email"
                 rules={rules.AuthRules.email}
-                placeholder="Email / Mobile Number"
-                label="Email / Mobile Number"
+                placeholder={t('Email / Mobile Number')}
+                label={t('Email / Mobile Number')}
                 keyboardType="email-address"
                 autoCapitalize="none"
                 returnKeyType="next"
@@ -63,7 +67,7 @@ const ForgotPassword: React.FC = () => {
               onPress={() => {
                 NavigationService.navigate('ChangePassword');
               }}
-              text={'Send'}
+              text={t('Send')}
               radius={50}
               height={50}
               width={'100%'}
@@ -72,7 +76,7 @@ const ForgotPassword: React.FC = () => {
           </View>
         </SafeAreaView>
       </View>
-    </>
+    </ScrollView>
   );
 };
 export default ForgotPassword;

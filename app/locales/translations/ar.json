@@ -16,5 +16,18 @@
   "Personal & Classroom": "شخصي وقاعة الدراسة",
   "Publish videos with exciting features": "انشر مقاطع فيديو \n بميزات مثيرة",
   "Sign up": "اشتراك",
-  "Sign in": "تسجيل الدخول"
+  "Sign in": "تسجيل الدخول",
+  "Forgot Password": "هل نسيت كلمة السر",
+  "Enter your registered email or Mobile Number": "أدخل بريدك الإلكتروني المسجل أو رقم هاتفك المحمول",
+  "Email / Mobile Number": " البريد الإلكتروني",
+  "Send":"إرسال",
+  "Change Your Password": "غير كلمة المرور الخاصة بك",
+  "Password must Contain":"يجب أن يحتوي على كلمة المرور",
+  "Uppercase characters (A-Z)":"الأحرف الكبيرة (A-Z)",
+  "Lowercase characters (a-z)":"أحرف صغيرة (من الألف إلى الياء)",
+  "Digits (0-9)" : "أرقام (0-9)",
+  "Special characters":"الشخصيات الخاصة",
+  "New Password":"كلمة السر الجديدة",
+  "Confirm New Password":"تأكيد كلمة المرور الجديدة"
+
 }
