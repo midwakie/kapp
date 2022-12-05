@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     backgroundColor: 'transparent',
   },
-  rightComponent: { right: 20, position: 'absolute' },
+  rightComponent: { right: 8, position: 'absolute' },
   imageStyle: {
     justifyContent: 'center',
     resizeMode: 'contain',

@@ -23,8 +23,10 @@ import PlainButton from 'app/components/buttons/PlainButton';
 import RegularButton from 'app/components/buttons/RegularButton';
 import HorizontalLine from 'app/components/lines/HorizontalLine';
 import { Checkbox } from 'react-native-paper';
+import { useTranslation } from 'react-i18next';
 
 const AvatarCreation: React.FC = () => {
+  const { t, i18n } = useTranslation();
   const { control, handleSubmit, setValue, watch, reset } = useForm();
   const [radioButtonMale, setRadioButtonMale] = useState(true);
   const [radioButtonFemale, setRadioButtonFemale] = useState(false);
@@ -44,7 +46,7 @@ const AvatarCreation: React.FC = () => {
         <View style={styles.container2}>
           <View style={styles.topContainer}>
             <RegularButton
-              onPress={() => {}}
+              onPress={() => {NavigationService.goBack()}}
               icon={'arrow-back'}
               radius={38}
               height={38}
@@ -57,7 +59,7 @@ const AvatarCreation: React.FC = () => {
               }}
               style={styles.skipButtonText}
               containerStyle={styles.skipButtonContainer}
-              text={'Skip'}
+              text={t('Skip')}
             />
           </View>
           <View style={styles.neomorphContainer}>
@@ -66,13 +68,20 @@ const AvatarCreation: React.FC = () => {
               darkColor={'#A8A8A8'}
               shapeType={'flat'}
               radius={118}>
-              <View style={styles.profilePicture}></View>
+              <View style={styles.profilePicture}>
+                <View style={{ backgroundColor: 'red' }}>
+                  <Image
+                    source={require('../../assets/student.png')}
+                    style={styles.imageStyle}
+                  />
+                </View>
+              </View>
             </Neumorphism>
           </View>
           <View style={styles.gradientTextContainer}>
             <GradientText
               colors={['#0EAFF4', '#0D93CD']}
-              text="Create Avatar"
+              text={t('Create Avatar')}
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
               textStyle={styles.gradientTextStyle}
@@ -87,7 +96,7 @@ const AvatarCreation: React.FC = () => {
               <View style={styles.touchableOpacity}>
                 <RadioButton
                   id={'1'}
-                  label={'Male'}
+                  label={t('Male')}
                   onPress={onPressRadioButtonMale}
                   selected={radioButtonMale}
                   color={'#03A0E3'}
@@ -95,7 +104,7 @@ const AvatarCreation: React.FC = () => {
                 {/* <HorizontalLine width={'100%'} stroke={1} color={'#E2E2E2'} /> */}
                 <RadioButton
                   id={'2'}
-                  label={'Female'}
+                  label={t('Female')}
                   onPress={onPressRadioButtonFemale}
                   selected={radioButtonFemale}
                   color={'#03A0E3'}
@@ -108,7 +117,7 @@ const AvatarCreation: React.FC = () => {
               control={control}
               name="first_name"
               //   rules={rules.CustomerRules.first_name}
-              placeholder="Nickname"
+              placeholder={t('Nickname')}
               //   label="First Name*"
               keyboardType="default"
               autoCapitalize="none"

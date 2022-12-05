@@ -62,8 +62,8 @@ const styles = StyleSheet.create({
   imageStyle: {
     justifyContent: 'center',
     resizeMode: 'contain',
-    width: 100,
-    height: 100,
+    width: '100%',
+    height: '100%',
   },
   imageContainer: {
     width: 118,
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
   },
   topContainer: {
     flexDirection: 'row',
-    justifyContent:'space-between',
+    justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
     // paddingRight: 30,
@@ -164,10 +164,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'flex-end',
   },
-  profilePicture:{
-    height:140,
-    width:140,
-    borderRadius:200/2,
+  profilePicture: {
+    height: 140,
+    width: 140,
+    borderRadius: 200 / 2,
+    justifyContent: 'center',
+    alignItems: 'center',
     //  backgroundColor:'white',
   },
   radioButtonContainer: {
@@ -184,8 +186,8 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   touchableOpacity: {
-    flexDirection:'row',
-    height:65,
+    flexDirection: 'row',
+    height: 65,
     width: '100%',
   },
 });

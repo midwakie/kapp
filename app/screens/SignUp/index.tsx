@@ -23,8 +23,11 @@ import PlainButton from 'app/components/buttons/PlainButton';
 import RegularButton from 'app/components/buttons/RegularButton';
 import HorizontalLine from 'app/components/lines/HorizontalLine';
 import { Checkbox } from 'react-native-paper';
+import { useTranslation } from 'react-i18next';
+
 
 const SignUp: React.FC = () => {
+  const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
   const onLogin = () => dispatch(loginActions.requestLogin('test', '1234'));
   const onForgot = () => NavigationService.navigate('ForgotPassword');
@@ -55,7 +58,7 @@ const SignUp: React.FC = () => {
           <View style={styles.gradientTextContainer}>
             <GradientText
               colors={['#0EAFF4', '#0D93CD']}
-              text="Sign Up to Continue"
+              text={t('Sign Up to Continue')}
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
               textStyle={styles.gradientTextStyle}
@@ -64,10 +67,10 @@ const SignUp: React.FC = () => {
           <View style={styles.inputTextContainer}>
             <CustomInput
               control={control}
-              name="first_name"
+              name={t('First_name')}
               rules={rules.CustomerRules.first_name}
-              placeholder="First Name"
-              label="First Name*"
+              placeholder={t('First_name')}
+              label={t('First_name')}
               keyboardType="default"
               autoCapitalize="none"
               returnKeyType="next"
@@ -79,11 +82,11 @@ const SignUp: React.FC = () => {
           <View style={styles.inputTextContainer}>
             <CustomInput
               control={control}
-              name="last_name"
+              name={t('Last_name')}
               rules={rules.CustomerRules.last_name}
-              placeholder="Last Name"
-              label="Last Name"
-              keyboardType="default"
+              placeholder={t('Last_name')}
+              label={t('Last_name')}
+              keyboardType="defaultEmail"
               autoCapitalize="none"
               returnKeyType="next"
               onSubmitEditing={() => {
@@ -94,10 +97,10 @@ const SignUp: React.FC = () => {
           <View style={styles.inputTextContainer}>
             <CustomInput
               control={control}
-              name="email"
+              name={t('Email')}
               rules={rules.AuthRules.email}
-              placeholder="Email"
-              label="Email"
+              placeholder={t('Email')}
+              label={t('Email')}
               keyboardType="email-address"
               autoCapitalize="none"
               returnKeyType="next"
@@ -109,9 +112,9 @@ const SignUp: React.FC = () => {
           <View style={styles.inputTextContainer}>
             <CustomInput
               control={control}
-              name="mobile_number"
-              placeholder="Mobile Number"
-              label="Mobile Number"
+              name={t('Mobile-Number')}
+              placeholder={t('Mobile-Number')}
+              label={t('Mobile-Number')}
               keyboardType="default"
               autoCapitalize="none"
               returnKeyType="next"
@@ -123,9 +126,9 @@ const SignUp: React.FC = () => {
           <View style={styles.inputTextContainer}>
             <CustomInput
               control={control}
-              name="invitation_code"
-              placeholder="Invitation Code"
-              label="Invitation Code"
+              name={t('Invitation Code')}
+              placeholder={t('Invitation Code')}
+              label={t('Invitation Code')}
               keyboardType="default"
               autoCapitalize="none"
               returnKeyType="next"
@@ -138,10 +141,10 @@ const SignUp: React.FC = () => {
             <CustomInput
               ref={inputRef}
               control={control}
-              name="password"
+              name={t('Password')}
               rules={rules.AuthRules.password}
-              placeholder="Password"
-              label="Password"
+              placeholder={t('Password')}
+              label={t('Password')}
               keyboardType="default"
               autoCapitalize="none"
               returnKeyType="next"
@@ -165,10 +168,10 @@ const SignUp: React.FC = () => {
             <CustomInput
               ref={inputRef}
               control={control}
-              name="confirm_password"
+              name={t('Confirm Password')}
               rules={rules.AuthRules.password}
-              placeholder="Confirm Password"
-              label="Confirm Password"
+              placeholder={t('Confirm Password')}
+              label={t('Confirm Password')}
               keyboardType="default"
               autoCapitalize="none"
               returnKeyType="next"
@@ -202,14 +205,14 @@ const SignUp: React.FC = () => {
               onPress={() => {
                 setChecked(!checked);
               }}>
-              {'I Agree to Terms & Conditions'}
+              {t('I Agree to Terms & Conditions')}
             </Text>
           </View>
           <RegularButton
             onPress={() => {
               NavigationService.navigate('Verify Email');
             }}
-            text={'Sign Up'}
+            text={t('Sign Up')}
             radius={50}
             height={50}
             width={'100%'}
@@ -266,13 +269,15 @@ const SignUp: React.FC = () => {
             )}
           </View>
           <View style={styles.bottomContainer}>
-            <Text style={styles.bottomText}>Already have an account?</Text>
+            <Text style={styles.bottomText}>
+              {t('Already have an account?')}
+            </Text>
             <HorizontalLine width={8} />
             <PlainButton
               onPress={() => {}}
               style={styles.signUpButton}
               containerStyle={styles.signUpButtonContainer}
-              text={'Sign in'}
+              text={t('Sign in')}
             />
           </View>
         </View>
