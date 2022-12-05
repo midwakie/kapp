@@ -29,6 +29,14 @@ const CustomInput = React.forwardRef(
     useImperativeHandle(ref, () => ({
       setFocus,
     }));
+
+    const rtlPlaceHolder = () => {
+      if (i18n.dir() === 'rtl' && secureTextEntry) {
+        return `${rules.required ? '*' : ''}${placeholder}`;
+      } else {
+        return `${placeholder}${rules.required ? '*' : ''}`;
+      }
+    };
     return (
       <Controller
         control={control}
@@ -64,7 +72,7 @@ const CustomInput = React.forwardRef(
                   onFocus={() => {
                     setIsFocused(true);
                   }}
-                  placeholder={`${placeholder}${rules.required ? '*' : ''}`}
+                  placeholder={`${rtlPlaceHolder()}`}
                   placeholderTextColor={'#758DAC'}
                   style={styles.input(i18n.dir())}
                   secureTextEntry={secureTextEntry}
@@ -118,8 +126,8 @@ const styles = StyleSheet.create({
   input: (direction: string) => ({
     height: 40,
     padding: 10,
-    marginLeft: direction === 'rtl' ? 0: 10,
-    marginRight: direction === 'rtl' ? 10 : 0,
+    marginLeft: direction === 'rtl' ? undefined : 10,
+    marginRight: direction === 'rtl' ? 10 : undefined,
     textAlign: direction === 'rtl' ? 'right' : 'left',
     flex: 1,
     color: '#758DAC',
@@ -128,8 +136,8 @@ const styles = StyleSheet.create({
   placeHolderText: (direction: string) => ({
     color: '#758DAC',
     position: 'absolute',
-    left: direction === 'rtl' ? 0 : 30,
-    right: direction === 'rtl' ? 30 : 0,
+    left: direction === 'rtl' ? undefined : 30,
+    right: direction === 'rtl' ? 30 : undefined,
     textAlign: direction === 'rtl' ? 'right' : 'left',
     fontFamily: 'Nunito-Regular',
   }),

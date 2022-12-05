@@ -79,6 +79,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     backgroundColor: 'transparent',
   },
+  
  inputTextContainer: {
     width: '100%',
     justifyContent: 'center',

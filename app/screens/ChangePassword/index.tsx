@@ -9,11 +9,12 @@ import RegularButton from 'app/components/buttons/RegularButton';
 import GradientText from 'app/components/texts/GradientText';
 import HorizontalLine from 'app/components/lines/HorizontalLine';
 import PlainButton from 'app/components/buttons/PlainButton';
+import { ScrollView } from 'react-native-gesture-handler';
 import CustomInput from 'app/components/inputs/CustomInput';
 import rules from 'app/rules';
 import { useForm } from 'react-hook-form';
-import Unorderedlist from 'react-native-unordered-list';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useTranslation } from 'react-i18next';
 
 const ChangePassword: React.FC = () => {
   const dispatch = useDispatch();
@@ -23,8 +24,10 @@ const ChangePassword: React.FC = () => {
   const { control, handleSubmit, setValue, watch, reset } = useForm();
   const inputRef = React.createRef();
   const inputSecRef = React.createRef();
+  const { t, i18n } = useTranslation();
+  const direction = i18n.dir() === 'rtl' ? 'row-reverse' : 'row';
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container} bounces={false}>
       <SafeAreaView style={styles.safeAreaView}>
         <View style={styles.container2}>
           <View style={styles.topContainer}>
@@ -42,47 +45,37 @@ const ChangePassword: React.FC = () => {
           <View style={styles.gradientTextContainer}>
             <GradientText
               colors={['#0EAFF4', '#0D93CD']}
-              text="Change Your Password "
+              text={t('Change Your Password')}
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
               textStyle={styles.gradientTextStyle}
             />
           </View>
           <View style={styles.subTextContainer}>
-            <Text style={styles.subText}>Password must Contain</Text>
+            <Text style={styles.subText}>{t('Password must Contain')}</Text>
           </View>
-          <View style={styles.UnorderedListContainer}>
-            <Unorderedlist color="#758DAC" style={{}}>
-              <Text style={styles.UnorderedText}>
-                {' '}
-                Uppercase characters (A-Z){' '}
-              </Text>
-            </Unorderedlist>
-            <Unorderedlist color="#758DAC">
-              <Text style={styles.UnorderedText}>
-                {' '}
-                Lowercase characters (a-z){' '}
-              </Text>
-            </Unorderedlist>
-            <Unorderedlist color="#758DAC">
-              <Text style={styles.UnorderedText}> Digits (0-9) </Text>
-            </Unorderedlist>
-            <Unorderedlist color="#758DAC">
-              <Text style={styles.UnorderedText}>
-                {' '}
-                Special characters (@,#){' '}
-              </Text>
-            </Unorderedlist>
+          <View style={styles.BulletpointContainer}>
+            <Text style={styles.BulletPoints}>
+              {'\u2022'} {t('Uppercase characters (A-Z)')}
+            </Text>
+            <Text style={styles.BulletPoints}>
+              {'\u2022'} {t('Lowercase characters (a-z)')}
+            </Text>
+            <Text style={styles.BulletPoints}>
+              {'\u2022'} {t('Digits (0-9)')}
+            </Text>
+            <Text style={styles.BulletPoints}>
+              {'\u2022'} {t('Special characters')}
+            </Text>
           </View>
-
           <View style={styles.inputTextContainer}>
             <CustomInput
               ref={inputRef}
               control={control}
               name="password"
               rules={rules.AuthRules.password}
-              placeholder="New Password"
-              label="New Password"
+              placeholder={t('New Password')}
+              label={t('New Password')}
               keyboardType="default"
               autoCapitalize="none"
               returnKeyType="next"
@@ -92,7 +85,7 @@ const ChangePassword: React.FC = () => {
               }}
               rightComponent={
                 <TouchableOpacity
-                  style={styles.rightComponent}
+                  style={styles.rightComponent(i18n.dir())}
                   onPress={() => {
                     setShowPassword(!showPassword);
                   }}>
@@ -111,15 +104,15 @@ const ChangePassword: React.FC = () => {
               control={control}
               name="confirm_password"
               rules={rules.AuthRules.password}
-              placeholder="Confirm New Password"
-              label="Confirm New Password"
+              placeholder={t('Confirm New Password')}
+              label={t('Confirm New Password')}
               keyboardType="default"
               autoCapitalize="none"
               returnKeyType="next"
               secureTextEntry={!showSecPassword}
               rightComponent={
                 <TouchableOpacity
-                  style={styles.rightComponent}
+                  style={styles.rightComponent(i18n.dir())}
                   onPress={() => {
                     setShowSecPassword(!showSecPassword);
                   }}>
@@ -135,7 +128,7 @@ const ChangePassword: React.FC = () => {
           <View style={styles.RegularButton}>
             <RegularButton
               onPress={() => {}}
-              text={'Send'}
+              text={t('Send')}
               radius={50}
               height={50}
               width={'100%'}
@@ -144,7 +137,7 @@ const ChangePassword: React.FC = () => {
           </View>
         </View>
       </SafeAreaView>
-    </View>
+    </ScrollView>
   );
 };
 export default ChangePassword;
