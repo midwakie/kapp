@@ -6,7 +6,7 @@ const width =
     : Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
- container : {
+  container: {
     width: '100%',
     height: '100%',
     backgroundColor: '#E5E5E5',
@@ -22,7 +22,8 @@ const styles = StyleSheet.create({
   gradientTextStyle: {
     fontSize: 24,
     fontFamily: 'Nunito-Regular',
-    fontWeight: '800',
+    fontWeight: '700',
+    lineHeight:35,
   },
   gradientTextContainer: {
     width: '100%',
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 33,
     marginBottom: 60,
-    marginTop: 25,
+    marginTop: 40,
   },
   inputTextContainer: {
     width: '100%',
@@ -38,32 +39,26 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 20,
   },
-  labelTextContainer: (direction: string) => ({
-    justifyContent: direction === 'rtl' ? 'flex-start' : 'flex-end',
-    alignItems: direction === 'rtl' ? 'flex-start' : 'flex-end',
-    alignSelf: direction === 'rtl' ? 'flex-start' : 'flex-end',
+  labelTextContainer: {
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+    alignSelf: 'flex-end',
     marginBottom: 20,
     width: width - 60,
-  }),
-  forgotPasswordContainer: (direction: string) => ({
-    justifyContent: direction === 'rtl' ? 'flex-start' : 'flex-end',
+  },
+  forgotPasswordContainer: {
+    justifyContent: 'flex-end',
     alignItems: 'center',
     marginBottom: 39,
-  }),
-  forgotPassword: (direction: string) => ({
+  },
+  forgotPassword: {
     color: '#FE4C3E',
-    textAlign: direction === 'rtl' ? 'left' : 'right',
+    textAlign: 'right',
     fontSize: 12,
     fontWeight: '600',
     backgroundColor: 'transparent',
-    fontFamily: 'Nunito-Regular',
-  }),
-  rightComponent: (direction: string) => ({
-    flexDirection: direction === 'rtl' ? 'row-reverse' : 'row',
-    left: direction === 'rtl' ? 20 : undefined,
-    right: direction === 'rtl' ? undefined : 20,
-    position: 'absolute',
-  }),
+  },
+  rightComponent: { right: 20, position: 'absolute' },
   imageStyle: {
     justifyContent: 'center',
     resizeMode: 'contain',
@@ -81,7 +76,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#DADEE0',
   },
   neomorphContainer: {
-    marginTop: 52,
+    marginTop: 22,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -125,19 +120,73 @@ const styles = StyleSheet.create({
     color: '#758DAC',
     fontWeight: '600',
     fontSize: 12,
-    fontFamily: 'Nunito-Regular',
+  },
+  agreeDisagreeText: {
+    color: '#758DAC',
+    fontWeight: '600',
+    fontSize: 12,
+  },
+  agreeDisagreeContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 22,
   },
   signUpButton: {
     color: '#03A0E3',
     fontSize: 12,
     fontWeight: '700',
     backgroundColor: 'transparent',
-    fontFamily: 'Nunito-Regular',
   },
   signUpButtonContainer: {
     justifyContent: 'center',
     alignItems: 'center',
     height: 20,
+  },
+  topContainer: {
+    flexDirection: 'row',
+    justifyContent:'space-between',
+    alignItems: 'center',
+    width: '100%',
+    // paddingRight: 30,
+    marginTop: 25,
+  },
+  skipButtonText: {
+    fontSize: 18,
+    // fontFamily: 'Gill Sans',
+    textAlign: 'center',
+    fontWeight: '400',
+    color: '#03A0E3',
+    backgroundColor: 'transparent',
+  },
+  skipButtonContainer: {
+    height: 50,
+    paddingHorizontal: 5,
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+  },
+  profilePicture:{
+    height:140,
+    width:140,
+    borderRadius:200/2,
+    //  backgroundColor:'white',
+  },
+  radioButtonContainer: {
+    // borderRadius: 50,
+    // height:50,
+    width: '100%',
+    marginBottom: 21,
+    // flexDirection:'row',
+  },
+  inputTextContainer: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  touchableOpacity: {
+    flexDirection:'row',
+    height:65,
+    width: '100%',
   },
 });
 

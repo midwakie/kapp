@@ -33,7 +33,7 @@ export default function RadioButton({
     marginLeft: i18n.dir() === 'rtl' ? 0 : 15,
     marginRight: i18n.dir() === 'rtl' ? 15 : 0,
   };
-  let marginV: any = { marginVertical: 25, color: '#323A3D', fontSize: 16 };
+  let marginV: any = { color: '#323A3D', fontSize: 16 };
   let specificStyle: any = { opacity: disabled ? 0.2 : 1, marginLeft: 42 };
 
   if (layout === 'column') {

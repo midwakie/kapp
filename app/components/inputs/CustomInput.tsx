@@ -2,6 +2,8 @@ import React, { useImperativeHandle, useRef } from 'react';
 import { View, Text, TextInput, StyleSheet, Dimensions } from 'react-native';
 import { Controller } from 'react-hook-form';
 import Neumorphism from 'react-native-neumorphism';
+import { useTranslation } from 'react-i18next';
+import i18n from 'app/locales/i18n';
 
 const CustomInput = React.forwardRef(
   (
@@ -27,6 +29,14 @@ const CustomInput = React.forwardRef(
     useImperativeHandle(ref, () => ({
       setFocus,
     }));
+
+    const rtlPlaceHolder = () => {
+      if (i18n.dir() === 'rtl' && secureTextEntry) {
+        return `${rules.required ? '*' : ''}${placeholder}`;
+      } else {
+        return `${placeholder}${rules.required ? '*' : ''}`;
+      }
+    };
     return (
       <Controller
         control={control}
@@ -62,14 +72,14 @@ const CustomInput = React.forwardRef(
                   onFocus={() => {
                     setIsFocused(true);
                   }}
-                  placeholder={`${placeholder}${rules.required ? '*' : ''}`}
+                  placeholder={`${rtlPlaceHolder()}`}
                   placeholderTextColor={'#758DAC'}
-                  style={styles.input}
+                  style={styles.input(i18n.dir())}
                   secureTextEntry={secureTextEntry}
                 />
                 {!isFocused && !value && (
                   <Text
-                    style={styles.placeHolderText}
+                    style={styles.placeHolderText(i18n.dir())}
                     onPress={() => {
                       refInput?.current.focus();
                     }}>
@@ -113,20 +123,24 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginVertical: 5,
   },
-  input: {
+  input: (direction: string) => ({
     height: 40,
     padding: 10,
-    marginLeft: 10,
+    marginLeft: direction === 'rtl' ? undefined : 10,
+    marginRight: direction === 'rtl' ? 10 : undefined,
+    textAlign: direction === 'rtl' ? 'right' : 'left',
     flex: 1,
     color: '#758DAC',
     fontFamily: 'Nunito-Regular',
-  },
-  placeHolderText: {
+  }),
+  placeHolderText: (direction: string) => ({
     color: '#758DAC',
     position: 'absolute',
-    left: 30,
+    left: direction === 'rtl' ? undefined : 30,
+    right: direction === 'rtl' ? 30 : undefined,
+    textAlign: direction === 'rtl' ? 'right' : 'left',
     fontFamily: 'Nunito-Regular',
-  },
+  }),
   placeHolderOtherText: {
     color: '#EB7376',
     fontFamily: 'Nunito-Regular',

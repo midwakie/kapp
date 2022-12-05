@@ -77,21 +77,28 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 20,
   },
-  UnorderedListContainer: { 
-    width: '100%',
+ 
+    rightComponent: (direction: string) => ({
+    flexDirection: direction === 'rtl' ? 'row-reverse' : 'row',
+    left: direction === 'rtl' ? 20 : undefined,
+    right: direction === 'rtl' ? undefined : 20,
+    position: 'absolute',
+   }),
+
+    BulletpointContainer: { width: '100%',
     paddingHorizontal:80,
     marginBottom:41,
-   },
 
-    UnorderedText:{
-      color:"#758DAC",
-      alignContent:"center",
-      justifyContent:"center",
-      fontSize:14,
-      fontFamily: 'Nunito-Regular',
-      fontWeight:"600",
-      lineHeight:19,
-      width:183,
+    },
+    BulletPoints:{color:"#758DAC",
+    alignContent:"center",
+    justifyContent:"center",
+    fontSize:14,
+    fontFamily: 'Nunito-Regular',
+    fontWeight:"600",
+    lineHeight:19,
+    width:187,
+
     },
     container2:{
       paddingHorizontal:30,
@@ -112,10 +119,6 @@ const styles = StyleSheet.create({
       marginTop: 40,
     },
 
-    
-   
-      
-    
-});
+    });
 
 export default styles;

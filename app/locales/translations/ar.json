@@ -24,10 +24,17 @@
   "Change Your Password": "غير كلمة المرور الخاصة بك",
   "Password must Contain":"يجب أن يحتوي على كلمة المرور",
   "Uppercase characters (A-Z)":"الأحرف الكبيرة (A-Z)",
-  "Lowercase characters (a-z)":"أحرف صغيرة (من الألف إلى الياء)",
+  "Lowercase characters (a-z)":"أحرف صغيرة (a-z)",
   "Digits (0-9)" : "أرقام (0-9)",
-  "Special characters":"الشخصيات الخاصة",
+  "Special characters":" الشخصيات الخاصة",
   "New Password":"كلمة السر الجديدة",
-  "Confirm New Password":"تأكيد كلمة المرور الجديدة"
-
+  "Confirm New Password":"تأكيد كلمة المرور الجديدة",
+  "Sign In to Continue": "تسجيل الدخول للمتابعة",
+  "Password": "كلمة المرور",
+  "Forgot Password?": "هل نسيت كلمة السر؟",
+  "Don’t have an account?": "ليس لديك حساب؟",
+  "I am Parent": "أنا والد",
+  "I am Student": "انا طالب",
+  "I am Teacher": "أنا مدرس",
+  "Select Your Role": "حدد دورك"
 }
