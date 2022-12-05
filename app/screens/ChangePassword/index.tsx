@@ -13,7 +13,6 @@ import { ScrollView } from 'react-native-gesture-handler';
 import CustomInput from 'app/components/inputs/CustomInput';
 import rules from 'app/rules';
 import { useForm } from 'react-hook-form';
-import Unorderedlist from 'react-native-unordered-list';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTranslation } from 'react-i18next';
 
