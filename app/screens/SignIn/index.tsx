@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import {
   Image,
   Platform,
@@ -7,9 +7,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { useDispatch } from 'react-redux';
-
-import * as loginActions from 'app/store/actions/loginActions';
 import styles from './styles';
 import NavigationService from 'app/navigation/NavigationService';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -25,43 +22,39 @@ import HorizontalLine from 'app/components/lines/HorizontalLine';
 import { useTranslation } from 'react-i18next';
 
 const SignIn: React.FC = () => {
-  const dispatch = useDispatch();
-  const onLogin = () => dispatch(loginActions.requestLogin('test', '1234'));
-  const onForgot = () => NavigationService.navigate('ForgotPassword');
-  const onSignUp = () => NavigationService.navigate('Sign Up');
-  const [text, setText] = React.useState('');
   const [showPassword, setShowPassword] = React.useState(false);
-  const { control, handleSubmit, setValue, watch, reset } = useForm();
-  const inputRef = React.createRef();
+  const { control } = useForm();
+  const inputRef: React.RefObject<any> = React.createRef();
   const { t, i18n } = useTranslation();
+  const direction: string = i18n.dir();
   return (
-    <ScrollView style={styles.container} bounces={false}>
-      <SafeAreaView style={styles.safeAreaView}>
-        <View style={styles.container2}>
-          <View style={styles.neomorphContainer}>
+    <ScrollView style={styles(direction).container} bounces={false}>
+      <SafeAreaView style={styles(direction).safeAreaView}>
+        <View style={styles(direction).container2}>
+          <View style={styles(direction).neomorphContainer}>
             <Neumorphism
               lightColor={'#ffffff'}
               darkColor={'#A8A8A8'}
               shapeType={'flat'}
               radius={118}>
-              <View style={styles.imageContainer}>
+              <View style={styles(direction).imageContainer}>
                 <Image
                   source={require('../../assets/logo.png')}
-                  style={styles.imageStyle}
+                  style={styles(direction).imageStyle}
                 />
               </View>
             </Neumorphism>
           </View>
-          <View style={styles.gradientTextContainer}>
+          <View style={styles(direction).gradientTextContainer}>
             <GradientText
               colors={['#0EAFF4', '#0D93CD']}
               text={t('Sign In to Continue')}
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
-              textStyle={styles.gradientTextStyle}
+              textStyle={styles(direction).gradientTextStyle}
             />
           </View>
-          <View style={styles.inputTextContainer}>
+          <View style={styles(direction).inputTextContainer}>
             <CustomInput
               control={control}
               name="email"
@@ -76,7 +69,7 @@ const SignIn: React.FC = () => {
               }}
             />
           </View>
-          <View style={styles.inputTextContainer}>
+          <View style={styles(direction).inputTextContainer}>
             <CustomInput
               ref={inputRef}
               control={control}
@@ -90,7 +83,7 @@ const SignIn: React.FC = () => {
               secureTextEntry={!showPassword}
               rightComponent={
                 <TouchableOpacity
-                  style={styles.rightComponent(i18n.dir())}
+                  style={styles(direction).rightComponent}
                   onPress={() => {
                     setShowPassword(!showPassword);
                   }}>
@@ -103,13 +96,13 @@ const SignIn: React.FC = () => {
               }
             />
           </View>
-          <View style={styles.labelTextContainer(i18n.dir())}>
+          <View style={styles(direction).labelTextContainer}>
             <PlainButton
               onPress={() => {
                 NavigationService.navigate('ForgotPassword');
               }}
-              style={styles.forgotPassword(i18n.dir())}
-              containerStyle={styles.forgotPasswordContainer(i18n.dir())}
+              style={styles(direction).forgotPassword}
+              containerStyle={styles(direction).forgotPasswordContainer}
               text={t('Forgot Password?')}
             />
           </View>
@@ -121,17 +114,17 @@ const SignIn: React.FC = () => {
             width={'100%'}
             colors={['#03BBE3', '#14A9FD']}
           />
-          <View style={styles.socialContainer}>
+          <View style={styles(direction).socialContainer}>
             <TouchableOpacity>
               <Neumorphism
                 lightColor={'#ffffff'}
                 darkColor={'#A8A8A8'}
                 shapeType={'flat'}
                 radius={50}>
-                <View style={styles.socialButtonContainer}>
+                <View style={styles(direction).socialButtonContainer}>
                   <Image
                     source={require('../../assets/facebook.png')}
-                    style={styles.socialButtonStyle}
+                    style={styles(direction).socialButtonStyle}
                   />
                 </View>
               </Neumorphism>
@@ -143,10 +136,10 @@ const SignIn: React.FC = () => {
                 darkColor={'#A8A8A8'}
                 shapeType={'flat'}
                 radius={50}>
-                <View style={styles.socialButtonContainer}>
+                <View style={styles(direction).socialButtonContainer}>
                   <Image
                     source={require('../../assets/google.png')}
-                    style={styles.socialButtonStyle}
+                    style={styles(direction).socialButtonStyle}
                   />
                 </View>
               </Neumorphism>
@@ -160,10 +153,10 @@ const SignIn: React.FC = () => {
                     darkColor={'#A8A8A8'}
                     shapeType={'flat'}
                     radius={50}>
-                    <View style={styles.socialButtonContainer}>
+                    <View style={styles(direction).socialButtonContainer}>
                       <Image
                         source={require('../../assets/apple.png')}
-                        style={styles.socialButtonStyle}
+                        style={styles(direction).socialButtonStyle}
                       />
                     </View>
                   </Neumorphism>
@@ -171,13 +164,15 @@ const SignIn: React.FC = () => {
               </>
             )}
           </View>
-          <View style={styles.bottomContainer}>
-            <Text style={styles.bottomText}>{t('Don’t have an account?')}</Text>
+          <View style={styles(direction).bottomContainer}>
+            <Text style={styles(direction).bottomText}>
+              {t('Don’t have an account?')}
+            </Text>
             <HorizontalLine width={8} />
             <PlainButton
               onPress={() => {}}
-              style={styles.signUpButton}
-              containerStyle={styles.signUpButtonContainer}
+              style={styles(direction).signUpButton}
+              containerStyle={styles(direction).signUpButtonContainer}
               text={t('Sign up')}
             />
           </View>

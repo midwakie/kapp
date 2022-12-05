@@ -1,50 +1,41 @@
-import React, { useRef, useState } from 'react';
-import {
-  Image,
-  Platform,
-  SafeAreaView,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import { useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { Image, SafeAreaView, View } from 'react-native';
 import RadioButton from 'app/components/buttons/RadioButton';
-import * as loginActions from 'app/store/actions/loginActions';
 import styles from './styles';
-import NavigationService from 'app/navigation/NavigationService';
 import { ScrollView } from 'react-native-gesture-handler';
 import Neumorphism from 'react-native-neumorphism';
 import GradientText from 'app/components/texts/GradientText';
 import { useForm } from 'react-hook-form';
-import rules from 'app/rules';
 import CustomInput from 'app/components/inputs/CustomInput';
-import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import PlainButton from 'app/components/buttons/PlainButton';
 import RegularButton from 'app/components/buttons/RegularButton';
-import HorizontalLine from 'app/components/lines/HorizontalLine';
-import { Checkbox } from 'react-native-paper';
+import { useTranslation } from 'react-i18next';
+import NavigationService from 'app/navigation/NavigationService';
 
 const AvatarCreation: React.FC = () => {
-  const { control, handleSubmit, setValue, watch, reset } = useForm();
+  const { control } = useForm();
   const [radioButtonMale, setRadioButtonMale] = useState(true);
   const [radioButtonFemale, setRadioButtonFemale] = useState(false);
-
-  const onPressRadioButtonMale = (radioButton: string) => {
+  const { t, i18n } = useTranslation();
+  const direction: string = i18n.dir();
+  const onPressRadioButtonMale = () => {
     setRadioButtonMale(!radioButtonMale);
     setRadioButtonFemale(!radioButtonFemale);
   };
 
-  const onPressRadioButtonFemale = (radioButton: string) => {
+  const onPressRadioButtonFemale = () => {
     setRadioButtonMale(!radioButtonMale);
     setRadioButtonFemale(!radioButtonFemale);
   };
   return (
-    <ScrollView style={styles.container} bounces={false}>
-      <SafeAreaView style={styles.safeAreaView}>
-        <View style={styles.container2}>
-          <View style={styles.topContainer}>
+    <ScrollView style={styles(direction).container} bounces={false}>
+      <SafeAreaView style={styles(direction).safeAreaView}>
+        <View style={styles(direction).container2}>
+          <View style={styles(direction).topContainer}>
             <RegularButton
-              onPress={() => {}}
+              onPress={() => {
+                NavigationService.goBack();
+              }}
               icon={'arrow-back'}
               radius={38}
               height={38}
@@ -52,42 +43,39 @@ const AvatarCreation: React.FC = () => {
               colors={['#EBECF0', '#EBECF0']}
             />
             <PlainButton
-              onPress={() => {
-                refSlider?.current.goToSlide(5);
-              }}
-              style={styles.skipButtonText}
-              containerStyle={styles.skipButtonContainer}
-              text={'Skip'}
+              onPress={() => {}}
+              style={styles(direction).skipButtonText}
+              containerStyle={styles(direction).skipButtonContainer}
+              text={t('Skip')}
             />
           </View>
-          <View style={styles.neomorphContainer}>
-            <Neumorphism
-              lightColor={'#ffffff'}
-              darkColor={'#A8A8A8'}
-              shapeType={'flat'}
-              radius={118}>
-              <View style={styles.profilePicture}></View>
-            </Neumorphism>
+          <View style={styles(direction).neomorphContainer}>
+            <View style={styles(direction).imageContainer}>
+              <Image
+                source={require('../../assets/cAvatar.png')}
+                style={styles(direction).imageStyle}
+              />
+            </View>
           </View>
-          <View style={styles.gradientTextContainer}>
+          <View style={styles(direction).gradientTextContainer}>
             <GradientText
               colors={['#0EAFF4', '#0D93CD']}
-              text="Create Avatar"
+              text={t('Create Avatar')}
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
-              textStyle={styles.gradientTextStyle}
+              textStyle={styles(direction).gradientTextStyle}
             />
           </View>
-          <View style={styles.radioButtonContainer}>
+          <View style={styles(direction).radioButtonContainer}>
             <Neumorphism
               lightColor={'#ffffff'}
               darkColor={'#A8A8A8'}
               shapeType={'pressed'}
               radius={60}>
-              <View style={styles.touchableOpacity}>
+              <View style={styles(direction).touchableOpacity}>
                 <RadioButton
                   id={'1'}
-                  label={'Male'}
+                  label={`${t('Male')}`}
                   onPress={onPressRadioButtonMale}
                   selected={radioButtonMale}
                   color={'#03A0E3'}
@@ -95,7 +83,7 @@ const AvatarCreation: React.FC = () => {
                 {/* <HorizontalLine width={'100%'} stroke={1} color={'#E2E2E2'} /> */}
                 <RadioButton
                   id={'2'}
-                  label={'Female'}
+                  label={`${t('Female')}`}
                   onPress={onPressRadioButtonFemale}
                   selected={radioButtonFemale}
                   color={'#03A0E3'}
@@ -103,19 +91,29 @@ const AvatarCreation: React.FC = () => {
               </View>
             </Neumorphism>
           </View>
-          <View style={styles.inputTextContainer}>
+          <View style={styles(direction).inputTextContainer}>
             <CustomInput
               control={control}
               name="first_name"
               //   rules={rules.CustomerRules.first_name}
-              placeholder="Nickname"
+              placeholder={t('Nickname')}
               //   label="First Name*"
               keyboardType="default"
               autoCapitalize="none"
               returnKeyType="next"
-              onSubmitEditing={() => {
-                inputRef?.current.setFocus();
+              onSubmitEditing={() => {}}
+            />
+          </View>
+          <View style={styles(direction).regularButton}>
+            <RegularButton
+              onPress={() => {
+                NavigationService.navigate('AvatarModifier');
               }}
+              text={t('Next')}
+              radius={50}
+              height={50}
+              width={'100%'}
+              colors={['#03BBE3', '#14A9FD']}
             />
           </View>
         </View>
