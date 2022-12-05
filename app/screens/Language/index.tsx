@@ -52,7 +52,7 @@ const Language: React.FC = () => {
               shapeType={'flat'}
               radius={14}>
               <View style={styles.touchableOpacity}>
-                <View style={{paddingVertical:25}}>
+                <View style={styles.rButtonContainer}>
                   <RadioButton
                     id={'1'}
                     label={`${t('English')}`}
@@ -63,7 +63,7 @@ const Language: React.FC = () => {
                   />
                 </View>
                 <HorizontalLine width={'100%'} stroke={1} color={'#E2E2E2'} />
-                <View style={{paddingVertical:25}}>
+                <View style={styles.rButtonContainer}>
                   <RadioButton
                     id={'2'}
                     label={`${t('Arabic')}`}

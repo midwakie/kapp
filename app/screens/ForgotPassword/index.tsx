@@ -1,6 +1,5 @@
 import React from 'react';
 import { SafeAreaView, Text, View } from 'react-native';
-import { useDispatch } from 'react-redux';
 import styles from './styles';
 import { ScrollView } from 'react-native-gesture-handler';
 import RegularButton from 'app/components/buttons/RegularButton';
@@ -12,9 +11,8 @@ import NavigationService from 'app/navigation/NavigationService';
 import { useTranslation } from 'react-i18next';
 
 const ForgotPassword: React.FC = () => {
-  const { control, handleSubmit, setValue, watch, reset } = useForm();
-  const { t, i18n } = useTranslation();
-  const direction = i18n.dir() === 'rtl' ? 'row-reverse' : 'row';
+  const { control } = useForm();
+  const { t } = useTranslation();
   return (
     <ScrollView style={styles.container} bounces={false}>
       <View style={styles.container}>
@@ -58,9 +56,7 @@ const ForgotPassword: React.FC = () => {
                 keyboardType="email-address"
                 autoCapitalize="none"
                 returnKeyType="next"
-                onSubmitEditing={() => {
-                  inputRef?.current.setFocus();
-                }}
+                onSubmitEditing={() => {}}
               />
             </View>
             <RegularButton

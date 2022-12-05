@@ -3,7 +3,6 @@ import { View, Text, TextInput, StyleSheet, Dimensions } from 'react-native';
 import { Controller } from 'react-hook-form';
 import Neumorphism from 'react-native-neumorphism';
 import { useTranslation } from 'react-i18next';
-import i18n from 'app/locales/i18n';
 
 const CustomInput = React.forwardRef(
   (
@@ -20,9 +19,11 @@ const CustomInput = React.forwardRef(
     }: any,
     ref,
   ) => {
-    const [placeHolderOtherText, setPlaceHolderOtherText] = React.useState('*');
+    const placeHolderOtherText: string = '*';
     const [isFocused, setIsFocused] = React.useState(false);
-    const refInput = useRef(null);
+    const refInput: React.MutableRefObject<any> = useRef(null);
+    const { i18n } = useTranslation();
+    const direction: string = i18n.dir();
     const setFocus = () => {
       refInput.current.focus();
     };
@@ -31,7 +32,7 @@ const CustomInput = React.forwardRef(
     }));
 
     const rtlPlaceHolder = () => {
-      if (i18n.dir() === 'rtl' && secureTextEntry) {
+      if (direction === 'rtl' && secureTextEntry) {
         return `${rules.required ? '*' : ''}${placeholder}`;
       } else {
         return `${placeholder}${rules.required ? '*' : ''}`;
@@ -54,7 +55,7 @@ const CustomInput = React.forwardRef(
               radius={50}>
               <View
                 style={[
-                  styles.container,
+                  styles(direction).container,
                   { borderColor: error ? 'red' : 'transparent' },
                 ]}>
                 <TextInput
@@ -74,18 +75,18 @@ const CustomInput = React.forwardRef(
                   }}
                   placeholder={`${rtlPlaceHolder()}`}
                   placeholderTextColor={'#758DAC'}
-                  style={styles.input(i18n.dir())}
+                  style={styles(direction).input}
                   secureTextEntry={secureTextEntry}
                 />
                 {!isFocused && !value && (
                   <Text
-                    style={styles.placeHolderText(i18n.dir())}
+                    style={styles(direction).placeHolderText}
                     onPress={() => {
                       refInput?.current.focus();
                     }}>
                     {placeholder}
                     {rules.required && (
-                      <Text style={styles.placeHolderOtherText}>
+                      <Text style={styles(direction).placeHolderOtherText}>
                         {placeHolderOtherText}
                       </Text>
                     )}
@@ -95,7 +96,9 @@ const CustomInput = React.forwardRef(
               </View>
             </Neumorphism>
             {error && (
-              <Text style={styles.errorText}>{error.message || 'Error'}</Text>
+              <Text style={styles(direction).errorText}>
+                {error.message || 'Error'}
+              </Text>
             )}
           </>
         )}
@@ -109,47 +112,47 @@ const width =
     ? Dimensions.get('window').height
     : Dimensions.get('window').width;
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'transparent',
-    width: width - 60,
-    height: 50,
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderColor: 'transparent',
-    borderWidth: 1,
-    borderRadius: 5,
-
-    paddingHorizontal: 10,
-    marginVertical: 5,
-  },
-  input: (direction: string) => ({
-    height: 40,
-    padding: 10,
-    marginLeft: direction === 'rtl' ? undefined : 10,
-    marginRight: direction === 'rtl' ? 10 : undefined,
-    textAlign: direction === 'rtl' ? 'right' : 'left',
-    flex: 1,
-    color: '#758DAC',
-    fontFamily: 'Nunito-Regular',
-  }),
-  placeHolderText: (direction: string) => ({
-    color: '#758DAC',
-    position: 'absolute',
-    left: direction === 'rtl' ? undefined : 30,
-    right: direction === 'rtl' ? 30 : undefined,
-    textAlign: direction === 'rtl' ? 'right' : 'left',
-    fontFamily: 'Nunito-Regular',
-  }),
-  placeHolderOtherText: {
-    color: '#EB7376',
-    fontFamily: 'Nunito-Regular',
-  },
-  errorText: {
-    color: '#EB7376',
-    alignSelf: 'stretch',
-    fontFamily: 'Nunito-Regular',
-  },
-});
+const styles = (direction: string) =>
+  StyleSheet.create({
+    container: {
+      backgroundColor: 'transparent',
+      width: width - 60,
+      height: 50,
+      flexDirection: 'row',
+      alignItems: 'center',
+      borderColor: 'transparent',
+      borderWidth: 1,
+      borderRadius: 5,
+      paddingHorizontal: 10,
+      marginVertical: 5,
+    },
+    input: {
+      height: 40,
+      padding: 10,
+      marginLeft: direction === 'rtl' ? undefined : 10,
+      marginRight: direction === 'rtl' ? 10 : undefined,
+      textAlign: direction === 'rtl' ? 'right' : 'left',
+      flex: 1,
+      color: '#758DAC',
+      fontFamily: 'Nunito-Regular',
+    },
+    placeHolderText: {
+      color: '#758DAC',
+      position: 'absolute',
+      left: direction === 'rtl' ? undefined : 30,
+      right: direction === 'rtl' ? 30 : undefined,
+      textAlign: direction === 'rtl' ? 'right' : 'left',
+      fontFamily: 'Nunito-Regular',
+    },
+    placeHolderOtherText: {
+      color: '#EB7376',
+      fontFamily: 'Nunito-Regular',
+    },
+    errorText: {
+      color: '#EB7376',
+      alignSelf: 'stretch',
+      fontFamily: 'Nunito-Regular',
+    },
+  });
 
 export default CustomInput;

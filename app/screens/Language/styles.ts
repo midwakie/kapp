@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
     width: '100%',
     marginBottom: 60,
   },
+  rButtonContainer: { paddingVertical: 25 },
   radioLabel: {
     fontFamily: 'Nunito-Regular',
     fontSize: 16,
