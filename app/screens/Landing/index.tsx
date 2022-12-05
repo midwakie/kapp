@@ -1,29 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react';
-import {
-  Dimensions,
-  Image,
-  Keyboard,
-  SafeAreaView,
-  ScrollView,
-  Text,
-  View,
-} from 'react-native';
+import React, { useRef } from 'react';
+import { Image, SafeAreaView, ScrollView, Text, View } from 'react-native';
 import styles from './styles';
-import { useDispatch } from 'react-redux';
-import * as loginActions from 'app/store/actions/loginActions';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import PlainButton from 'app/components/buttons/PlainButton';
 import RegularButton from 'app/components/buttons/RegularButton';
-import Neumorphism from 'react-native-neumorphism';
 import NavigationService from 'app/navigation/NavigationService';
-import RNRestart from 'react-native-restart';
 import { useTranslation } from 'react-i18next';
-import { persistSelectedLanguage } from 'app/utils/storageUtils';
 const Landing: React.FC = () => {
-  const dispatch = useDispatch();
-  const refSlider = useRef(null);
+  const refSlider: React.MutableRefObject<any> = useRef(null);
   const { t, i18n } = useTranslation();
-  const direction = i18n.dir() === 'rtl' ? 'row-reverse' : 'row';
+  const direction: string = i18n.dir();
   const slides = [
     {
       title: 'Browse various reading E-books',
@@ -56,13 +42,6 @@ const Landing: React.FC = () => {
       image: require('../../assets/slide6.png'),
     },
   ];
-  const onDashboard = () => dispatch(loginActions.onLoginResponse({ id: '' }));
-  const onLogin = async (data: any) => {
-    // NavigationService.navigate('Login');
-    Keyboard.dismiss();
-    const { email } = data;
-    dispatch(loginActions.requestLogin(email));
-  };
 
   const onSignUp = () => {
     NavigationService.navigate('Select Role');
@@ -70,13 +49,15 @@ const Landing: React.FC = () => {
   const onSignIn = () => {
     NavigationService.navigate('Sign In');
   };
-  const slideChanged = (index: any) => {};
+  const slideChanged = (index: number) => {
+    console.log(index);
+  };
 
   return (
-    <ScrollView style={styles.container} bounces={false}>
-      <SafeAreaView style={styles.safeView}>
-        <View style={styles.container2}>
-          <View style={styles.topContainer(direction)}>
+    <ScrollView style={styles(direction).container} bounces={false}>
+      <SafeAreaView style={styles(direction).safeView}>
+        <View style={styles(direction).container2}>
+          <View style={styles(direction).topContainer}>
             {/* <RegularButton
               onPress={() => {}}
               icon={'arrow-back'}
@@ -89,24 +70,24 @@ const Landing: React.FC = () => {
               onPress={() => {
                 refSlider?.current.goToSlide(5);
               }}
-              style={styles.skipButtonText}
-              containerStyle={styles.skipButtonContainer}
+              style={styles(direction).skipButtonText}
+              containerStyle={styles(direction).skipButtonContainer}
               text={t('Skip')}
             />
           </View>
-          <View style={styles.walkThroughContainer}>
+          <View style={styles(direction).walkThroughContainer}>
             <AppIntroSlider
               ref={refSlider}
               data={slides}
               renderPagination={(activeIndex: number) => (
-                <View style={styles.paginationContainer}>
+                <View style={styles(direction).paginationContainer}>
                   <SafeAreaView>
-                    <View style={styles.paginationDots}>
+                    <View style={styles(direction).paginationDots}>
                       {slides.length > 1 &&
                         slides.map((_, i) => (
                           <Image
                             key={i}
-                            style={styles.dot}
+                            style={styles(direction).dot}
                             source={
                               i === activeIndex
                                 ? require('../../assets/activeOval.png')
@@ -125,16 +106,18 @@ const Landing: React.FC = () => {
               showSkipButton={false}
               showNextButton={false}
               renderItem={({ item }) => (
-                <View style={styles.mainContent}>
-                  <Text style={styles.title}>{t(item.title)}</Text>
-                  <Text style={styles.subTitle}>{t(item.subTitle)}</Text>
-                  <Image style={styles.image} source={item.image} />
+                <View style={styles(direction).mainContent}>
+                  <Text style={styles(direction).title}>{t(item.title)}</Text>
+                  <Text style={styles(direction).subTitle}>
+                    {t(item.subTitle)}
+                  </Text>
+                  <Image style={styles(direction).image} source={item.image} />
                 </View>
               )}
             />
           </View>
-          <View style={styles.buttonContainer(direction)}>
-            <View style={{ width: '45%' }}>
+          <View style={styles(direction).buttonContainer}>
+            <View style={styles(direction).buttonInnerContainer}>
               <RegularButton
                 onPress={onSignUp}
                 text={t('Sign up')}
@@ -144,7 +127,7 @@ const Landing: React.FC = () => {
                 colors={['#FF6F81', '#F0374E']}
               />
             </View>
-            <View style={{ width: '45%' }}>
+            <View style={styles(direction).buttonInnerContainer}>
               <RegularButton
                 onPress={onSignIn}
                 text={t('Sign in')}
