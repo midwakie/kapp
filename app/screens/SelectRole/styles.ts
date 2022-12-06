@@ -10,7 +10,7 @@ const styles = (direction: string) =>
       height: '100%',
       // justifyContent: 'center',
       // alignItems: 'center',
-      backgroundColor: '#E5E5E5',
+      backgroundColor: '#EBEEF0',
     },
     container2: {
       marginTop: 2,

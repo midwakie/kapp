@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     height: '100%',
-    backgroundColor: '#E5E5E5',
+    backgroundColor: '#EBEEF0',
   },
   container2: {
     paddingHorizontal: 30,
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     borderColor: '#FFFFFF',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#DADEE0',
+    backgroundColor: '#EBEEF0',
   },
   neomorphContainer: {
     marginTop: 52,

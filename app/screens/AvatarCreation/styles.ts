@@ -10,7 +10,7 @@ const styles = (direction: string) =>
     container: {
       width: '100%',
       height: '100%',
-      backgroundColor: '#E5E5E5',
+      backgroundColor: '#EBEEF0',
     },
     container2: {
       paddingHorizontal: 30,
@@ -63,19 +63,19 @@ const styles = (direction: string) =>
     imageStyle: {
       justifyContent: 'center',
       resizeMode: 'cover',
-      width: 140,
-      height: 140,
+      width: (width - 60) / 2.5,
+      height: (width - 60) / 2.5,
     },
     imageContainer: {
-      width: 140,
-      height: 140,
-      borderRadius: 140,
+      width: (width - 60) / 2.5,
+      height: (width - 60) / 2.5,
+      borderRadius: (width - 60) / 2.5,
       justifyContent: 'center',
       alignItems: 'center',
-      // backgroundColor: '#DADEE0',
+      // backgroundColor: '#EBEEF0',
     },
     neomorphContainer: {
-      marginTop: 29,
+      marginTop: 19,
       justifyContent: 'center',
       alignItems: 'center',
     },
@@ -85,7 +85,7 @@ const styles = (direction: string) =>
       borderRadius: 50,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#DADEE0',
+      backgroundColor: '#EBEEF0',
     },
     socialContainer: {
       width: width - 60,
