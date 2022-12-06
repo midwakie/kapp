@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import {
   Image,
   Platform,
@@ -7,9 +7,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { useDispatch } from 'react-redux';
-
-import * as loginActions from 'app/store/actions/loginActions';
 import styles from './styles';
 import NavigationService from 'app/navigation/NavigationService';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -23,132 +20,139 @@ import PlainButton from 'app/components/buttons/PlainButton';
 import RegularButton from 'app/components/buttons/RegularButton';
 import HorizontalLine from 'app/components/lines/HorizontalLine';
 import { Checkbox } from 'react-native-paper';
+import { useTranslation } from 'react-i18next';
 
 const SignUp: React.FC = () => {
-  const dispatch = useDispatch();
-  const onLogin = () => dispatch(loginActions.requestLogin('test', '1234'));
-  const onForgot = () => NavigationService.navigate('ForgotPassword');
-  const onSignUp = () => NavigationService.navigate('Sign Up');
-  const [text, setText] = React.useState('');
   const [showPassword, setShowPassword] = React.useState(false);
   const [checked, setChecked] = React.useState(true);
-  const { control, handleSubmit, setValue, watch, reset } = useForm();
-  const inputRef = React.createRef();
+  const { control } = useForm();
+  const lastNameInputRef: React.RefObject<any> = React.createRef();
+  const emailInputRef: React.RefObject<any> = React.createRef();
+  const mobileNumberInputRef: React.RefObject<any> = React.createRef();
+  const invitationCodeInputRef: React.RefObject<any> = React.createRef();
+  const passwordInputRef: React.RefObject<any> = React.createRef();
+  const confirmPasswordInputRef: React.RefObject<any> = React.createRef();
+  const { t, i18n } = useTranslation();
+  const direction: string = i18n.dir();
   return (
-    <ScrollView style={styles.container} bounces={false}>
-      <SafeAreaView style={styles.safeAreaView}>
-        <View style={styles.container2}>
-          <View style={styles.neomorphContainer}>
+    <ScrollView style={styles(direction).container} bounces={false}>
+      <SafeAreaView style={styles(direction).safeAreaView}>
+        <View style={styles(direction).container2}>
+          <View style={styles(direction).neomorphContainer}>
             <Neumorphism
               lightColor={'#ffffff'}
               darkColor={'#A8A8A8'}
               shapeType={'flat'}
               radius={118}>
-              <View style={styles.imageContainer}>
+              <View style={styles(direction).imageContainer}>
                 <Image
                   source={require('../../assets/logo.png')}
-                  style={styles.imageStyle}
+                  style={styles(direction).imageStyle}
                 />
               </View>
             </Neumorphism>
           </View>
-          <View style={styles.gradientTextContainer}>
+          <View style={styles(direction).gradientTextContainer}>
             <GradientText
               colors={['#0EAFF4', '#0D93CD']}
-              text="Sign Up to Continue"
+              text={t('Sign Up to Continue')}
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
-              textStyle={styles.gradientTextStyle}
+              textStyle={styles(direction).gradientTextStyle}
             />
           </View>
-          <View style={styles.inputTextContainer}>
+          <View style={styles(direction).inputTextContainer}>
             <CustomInput
               control={control}
               name="first_name"
               rules={rules.CustomerRules.first_name}
-              placeholder="First Name"
-              label="First Name*"
+              placeholder={t('First Name')}
+              label={t('First Name')}
               keyboardType="default"
               autoCapitalize="none"
               returnKeyType="next"
               onSubmitEditing={() => {
-                inputRef?.current.setFocus();
+                lastNameInputRef?.current.setFocus();
               }}
             />
           </View>
-          <View style={styles.inputTextContainer}>
+          <View style={styles(direction).inputTextContainer}>
             <CustomInput
               control={control}
+              ref={lastNameInputRef}
               name="last_name"
               rules={rules.CustomerRules.last_name}
-              placeholder="Last Name"
-              label="Last Name"
+              placeholder={t('Last Name')}
+              label={t('Last Name')}
               keyboardType="default"
               autoCapitalize="none"
               returnKeyType="next"
               onSubmitEditing={() => {
-                inputRef?.current.setFocus();
+                emailInputRef?.current.setFocus();
               }}
             />
           </View>
-          <View style={styles.inputTextContainer}>
+          <View style={styles(direction).inputTextContainer}>
             <CustomInput
               control={control}
+              ref={emailInputRef}
               name="email"
               rules={rules.AuthRules.email}
-              placeholder="Email"
-              label="Email"
+              placeholder={t('Email')}
+              label={t('Email')}
               keyboardType="email-address"
               autoCapitalize="none"
               returnKeyType="next"
               onSubmitEditing={() => {
-                inputRef?.current.setFocus();
+                mobileNumberInputRef?.current.setFocus();
               }}
             />
           </View>
-          <View style={styles.inputTextContainer}>
+          <View style={styles(direction).inputTextContainer}>
             <CustomInput
               control={control}
+              ref={mobileNumberInputRef}
               name="mobile_number"
-              placeholder="Mobile Number"
-              label="Mobile Number"
+              placeholder={t('Mobile Number')}
+              label={t('Mobile Number')}
               keyboardType="default"
               autoCapitalize="none"
               returnKeyType="next"
               onSubmitEditing={() => {
-                inputRef?.current.setFocus();
+                invitationCodeInputRef?.current.setFocus();
               }}
             />
           </View>
-          <View style={styles.inputTextContainer}>
+          <View style={styles(direction).inputTextContainer}>
             <CustomInput
               control={control}
+              ref={invitationCodeInputRef}
               name="invitation_code"
-              placeholder="Invitation Code"
-              label="Invitation Code"
+              placeholder={t('Invitation Code')}
+              label={t('Invitation Code')}
               keyboardType="default"
               autoCapitalize="none"
               returnKeyType="next"
               onSubmitEditing={() => {
-                inputRef?.current.setFocus();
+                passwordInputRef?.current.setFocus();
               }}
             />
           </View>
-          <View style={styles.inputTextContainer}>
+          <View style={styles(direction).inputTextContainer}>
             <CustomInput
-              ref={inputRef}
+              ref={passwordInputRef}
               control={control}
               name="password"
               rules={rules.AuthRules.password}
-              placeholder="Password"
-              label="Password"
+              placeholder={t('Password')}
+              label={t('Password')}
               keyboardType="default"
               autoCapitalize="none"
               returnKeyType="next"
               secureTextEntry={!showPassword}
               rightComponent={
                 <TouchableOpacity
-                  style={styles.rightComponent}
+                  style={styles(direction).rightComponent}
                   onPress={() => {
                     setShowPassword(!showPassword);
                   }}>
@@ -159,23 +163,26 @@ const SignUp: React.FC = () => {
                   />
                 </TouchableOpacity>
               }
+              onSubmitEditing={() => {
+                confirmPasswordInputRef?.current.setFocus();
+              }}
             />
           </View>
-          <View style={styles.inputTextContainer}>
+          <View style={styles(direction).inputTextContainer}>
             <CustomInput
-              ref={inputRef}
+              ref={confirmPasswordInputRef}
               control={control}
               name="confirm_password"
               rules={rules.AuthRules.password}
-              placeholder="Confirm Password"
-              label="Confirm Password"
+              placeholder={t('Confirm Password')}
+              label={t('Confirm Password')}
               keyboardType="default"
               autoCapitalize="none"
               returnKeyType="next"
               secureTextEntry={!showPassword}
               rightComponent={
                 <TouchableOpacity
-                  style={styles.rightComponent}
+                  style={styles(direction).rightComponent}
                   onPress={() => {
                     setShowPassword(!showPassword);
                   }}>
@@ -188,7 +195,7 @@ const SignUp: React.FC = () => {
               }
             />
           </View>
-          <View style={styles.agreeDisagreeContainer}>
+          <View style={styles(direction).agreeDisagreeContainer}>
             <Checkbox
               status={checked ? 'checked' : 'unchecked'}
               uncheckedColor={'#03A0E3'}
@@ -198,34 +205,34 @@ const SignUp: React.FC = () => {
               }}
             />
             <Text
-              style={styles.agreeDisagreeText}
+              style={styles(direction).agreeDisagreeText}
               onPress={() => {
                 setChecked(!checked);
               }}>
-              {'I Agree to Terms & Conditions'}
+              {t('I Agree to Terms & Conditions')}
             </Text>
           </View>
           <RegularButton
             onPress={() => {
               NavigationService.navigate('Verify Email');
             }}
-            text={'Sign Up'}
+            text={t('Sign up')}
             radius={50}
             height={50}
             width={'100%'}
             colors={['#03BBE3', '#14A9FD']}
           />
-          <View style={styles.socialContainer}>
+          <View style={styles(direction).socialContainer}>
             <TouchableOpacity>
               <Neumorphism
                 lightColor={'#ffffff'}
                 darkColor={'#A8A8A8'}
                 shapeType={'flat'}
                 radius={50}>
-                <View style={styles.socialButtonContainer}>
+                <View style={styles(direction).socialButtonContainer}>
                   <Image
                     source={require('../../assets/facebook.png')}
-                    style={styles.socialButtonStyle}
+                    style={styles(direction).socialButtonStyle}
                   />
                 </View>
               </Neumorphism>
@@ -237,10 +244,10 @@ const SignUp: React.FC = () => {
                 darkColor={'#A8A8A8'}
                 shapeType={'flat'}
                 radius={50}>
-                <View style={styles.socialButtonContainer}>
+                <View style={styles(direction).socialButtonContainer}>
                   <Image
                     source={require('../../assets/google.png')}
-                    style={styles.socialButtonStyle}
+                    style={styles(direction).socialButtonStyle}
                   />
                 </View>
               </Neumorphism>
@@ -254,10 +261,10 @@ const SignUp: React.FC = () => {
                     darkColor={'#A8A8A8'}
                     shapeType={'flat'}
                     radius={50}>
-                    <View style={styles.socialButtonContainer}>
+                    <View style={styles(direction).socialButtonContainer}>
                       <Image
                         source={require('../../assets/apple.png')}
-                        style={styles.socialButtonStyle}
+                        style={styles(direction).socialButtonStyle}
                       />
                     </View>
                   </Neumorphism>
@@ -265,14 +272,16 @@ const SignUp: React.FC = () => {
               </>
             )}
           </View>
-          <View style={styles.bottomContainer}>
-            <Text style={styles.bottomText}>Already have an account?</Text>
+          <View style={styles(direction).bottomContainer}>
+            <Text style={styles(direction).bottomText}>
+              {t('Already have an account?')}
+            </Text>
             <HorizontalLine width={8} />
             <PlainButton
               onPress={() => {}}
-              style={styles.signUpButton}
-              containerStyle={styles.signUpButtonContainer}
-              text={'Sign in'}
+              style={styles(direction).signUpButton}
+              containerStyle={styles(direction).signUpButtonContainer}
+              text={t('Sign in')}
             />
           </View>
         </View>

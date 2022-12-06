@@ -25,13 +25,13 @@ export default function RadioButton({
   const sizeHalf = PixelRatio.roundToNearestPixel(size * 0.7);
   const sizeFull = PixelRatio.roundToNearestPixel(size);
   const { i18n } = useTranslation();
-
+  const direction: string = i18n.dir();
   let orientation: any = {
-    flexDirection: i18n.dir() === 'rtl' ? 'row-reverse' : 'row',
+    flexDirection: direction === 'rtl' ? 'row-reverse' : 'row',
   };
   let margin: any = {
-    marginLeft: i18n.dir() === 'rtl' ? 0 : 15,
-    marginRight: i18n.dir() === 'rtl' ? 15 : 0,
+    marginLeft: direction === 'rtl' ? undefined : 15,
+    marginRight: direction === 'rtl' ? 15 : undefined,
   };
   let marginV: any = { color: '#323A3D', fontSize: 16 };
   let specificStyle: any = { opacity: disabled ? 0.2 : 1, marginLeft: 42 };
