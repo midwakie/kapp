@@ -1,9 +1,4 @@
-import { Dimensions, StyleSheet } from 'react-native';
-
-const width =
-  Dimensions.get('window').width >= Dimensions.get('window').height
-    ? Dimensions.get('window').height
-    : Dimensions.get('window').width;
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -11,11 +6,10 @@ const styles = StyleSheet.create({
     height: '100%',
     backgroundColor: '#E5E5E5',
   },
-
   gradientTextStyle: {
     fontSize: 24,
     fontFamily: 'Nunito-Regular',
-    fontWeight: "800",
+    fontWeight: '800',
   },
   gradientTextContainer: {
     width: '100%',
@@ -24,7 +18,6 @@ const styles = StyleSheet.create({
     height: 33,
     marginBottom: 2,
     marginTop: 126,
-    
   },
   topContainer: {
     flexDirection: 'row',
@@ -40,9 +33,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 20,
-
-
-  
   },
   subText: {
     fontSize: 14,
@@ -67,7 +57,7 @@ const styles = StyleSheet.create({
     paddingBottom: 25,
   },
   safeAreaView: { alignSelf: 'stretch' },
-  
+
   bottomText: {
     color: '#758DAC',
     fontWeight: '600',
@@ -79,14 +69,15 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     backgroundColor: 'transparent',
   },
- inputTextContainer: {
+
+  inputTextContainer: {
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom:40,
+    marginBottom: 40,
     marginTop: 60,
     fontFamily: 'Nunito-Regular',
-},
+  },
 });
 
 export default styles;

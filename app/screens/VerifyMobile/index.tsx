@@ -1,23 +1,11 @@
-import React, { useRef } from 'react';
-import {
-  Image,
-  Platform,
-  SafeAreaView,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import { useDispatch } from 'react-redux';
-import * as loginActions from 'app/store/actions/loginActions';
+import React from 'react';
+import { SafeAreaView, Text, View } from 'react-native';
 import styles from './styles';
 import NavigationService from 'app/navigation/NavigationService';
 import { ScrollView } from 'react-native-gesture-handler';
-import Neumorphism from 'react-native-neumorphism';
 import GradientText from 'app/components/texts/GradientText';
 import { useForm } from 'react-hook-form';
 import rules from 'app/rules';
-import CustomInput from 'app/components/inputs/CustomInput';
-import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import PlainButton from 'app/components/buttons/PlainButton';
 import RegularButton from 'app/components/buttons/RegularButton';
 import HorizontalLine from 'app/components/lines/HorizontalLine';
@@ -25,15 +13,8 @@ import CustomOTPInput from 'app/components/inputs/CustomOTPInput';
 import { useTranslation } from 'react-i18next';
 
 const VerifyMobile: React.FC = () => {
-  const dispatch = useDispatch();
-  const onLogin = () => dispatch(loginActions.requestLogin('test', '1234'));
-  const onForgot = () => NavigationService.navigate('ForgotPassword');
-  const onSignUp = () => NavigationService.navigate('Sign Up');
-  const [text, setText] = React.useState('');
-  const [showPassword, setShowPassword] = React.useState(false);
-  const { control, handleSubmit, setValue, watch, reset } = useForm();
-  const inputRef = React.createRef();
-  const { t, i18n } = useTranslation();
+  const { control } = useForm();
+  const { t } = useTranslation();
   return (
     <ScrollView style={styles.container} bounces={false}>
       <SafeAreaView style={styles.safeAreaView}>
@@ -47,9 +28,11 @@ const VerifyMobile: React.FC = () => {
               textStyle={styles.gradientTextStyle}
             />
             <Text style={styles.subTextStyle}>
+              `$
               {t(
                 'We have sent you SMS with 6 digits long OTP code to verify mobile number',
               )}
+              `
             </Text>
             <Text style={styles.subText2Style}>{t('Enter OTP below')}</Text>
           </View>
