@@ -10,7 +10,7 @@ const styles = (direction: string) =>
     container: {
       width: '100%',
       height: '100%',
-      backgroundColor: '#E5E5E5',
+      backgroundColor: '#EBEEF0',
     },
     container2: {
       paddingHorizontal: 30,
@@ -79,7 +79,7 @@ const styles = (direction: string) =>
       borderColor: '#FFFFFF',
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#DADEE0',
+      backgroundColor: '#EBEEF0',
     },
     neomorphContainer: {
       marginTop: 52,
@@ -92,7 +92,7 @@ const styles = (direction: string) =>
       borderRadius: 50,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#DADEE0',
+      backgroundColor: '#EBEEF0',
     },
     socialContainer: {
       width: width - 60,

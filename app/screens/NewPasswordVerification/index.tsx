@@ -39,10 +39,12 @@ const NewPassword: React.FC = () => {
               end={{ x: 0, y: 1 }}
               textStyle={styles.gradientTextStyle}
             />
-            <Text style={styles.subTextStyle}>{`${t(
-              'We have sent you an Email with 6 digits long OTP code to set a new password',
-            )}`}</Text>
-            <Text style={styles.subText2Style}>`${t('Enter OTP below')}`</Text>
+            <Text style={styles.subTextStyle}>
+              {t(
+                'We have sent you an Email with 6 digits long OTP code to set a new password',
+              )}
+            </Text>
+            <Text style={styles.subText2Style}>{t('Enter OTP below')}</Text>
           </View>
           <View style={styles.inputTextContainer}>
             <CustomOTPInput
@@ -63,14 +65,14 @@ const NewPassword: React.FC = () => {
           />
           <View style={styles.bottomContainer}>
             <Text style={styles.bottomText}>
-              `${t('Didn’t receive the OTP?')}`
+              {t('Didn’t receive the OTP?')}
             </Text>
             <HorizontalLine width={8} />
             <PlainButton
               onPress={() => {}}
               style={styles.signUpButton}
               containerStyle={styles.signUpButtonContainer}
-              text={`${t('Resend Code')}`}
+              text={t('Resend Code')}
             />
           </View>
         </View>
