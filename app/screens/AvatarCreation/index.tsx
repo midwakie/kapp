@@ -1,28 +1,14 @@
-import React, { useRef, useState } from 'react';
-import {
-  Image,
-  Platform,
-  SafeAreaView,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import { useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { SafeAreaView, View } from 'react-native';
 import RadioButton from 'app/components/buttons/RadioButton';
-import * as loginActions from 'app/store/actions/loginActions';
 import styles from './styles';
-import NavigationService from 'app/navigation/NavigationService';
 import { ScrollView } from 'react-native-gesture-handler';
 import Neumorphism from 'react-native-neumorphism';
 import GradientText from 'app/components/texts/GradientText';
 import { useForm } from 'react-hook-form';
-import rules from 'app/rules';
 import CustomInput from 'app/components/inputs/CustomInput';
-import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import PlainButton from 'app/components/buttons/PlainButton';
 import RegularButton from 'app/components/buttons/RegularButton';
-import HorizontalLine from 'app/components/lines/HorizontalLine';
-import { Checkbox } from 'react-native-paper';
 
 const AvatarCreation: React.FC = () => {
   const { control, handleSubmit, setValue, watch, reset } = useForm();
