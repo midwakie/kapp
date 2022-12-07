@@ -58,18 +58,8 @@ const Landing: React.FC = () => {
       <SafeAreaView style={styles(direction).safeView}>
         <View style={styles(direction).container2}>
           <View style={styles(direction).topContainer}>
-            {/* <RegularButton
-              onPress={() => {}}
-              icon={'arrow-back'}
-              radius={38}
-              height={38}
-              width={38}
-              colors={['#EBECF0', '#EBECF0']}
-            /> */}
             <PlainButton
-              onPress={() => {
-                refSlider?.current.goToSlide(5);
-              }}
+              onPress={() => {}}
               style={styles(direction).skipButtonText}
               containerStyle={styles(direction).skipButtonContainer}
               text={t('Skip')}
@@ -107,10 +97,12 @@ const Landing: React.FC = () => {
               showNextButton={false}
               renderItem={({ item }) => (
                 <View style={styles(direction).mainContent}>
-                  <Text style={styles(direction).title}>{t(item.title)}</Text>
-                  <Text style={styles(direction).subTitle}>
-                    {t(item.subTitle)}
-                  </Text>
+                  <View style={styles(direction).textContainer}>
+                    <Text style={styles(direction).title}>{t(item.title)}</Text>
+                    <Text style={styles(direction).subTitle}>
+                      {t(item.subTitle)}
+                    </Text>
+                  </View>
                   <Image style={styles(direction).image} source={item.image} />
                 </View>
               )}
