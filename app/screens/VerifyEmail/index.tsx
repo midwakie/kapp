@@ -28,11 +28,9 @@ const VerifyEmail: React.FC = () => {
               textStyle={styles.gradientTextStyle}
             />
             <Text style={styles.subTextStyle}>
-              `$
               {t(
                 'We have sent you an Email with 6 digits long OTP code to verify Email',
               )}
-              `
             </Text>
             <Text style={styles.subText2Style}>{t('Enter OTP below')}</Text>
           </View>

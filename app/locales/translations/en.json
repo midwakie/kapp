@@ -61,5 +61,12 @@
   "We have sent you an Email with 6 digits long OTP code to verify Email": "We have sent you an Email with 6 digits \nlong OTP code to verify Email",
   "Verify Mobile Number": "Verify Mobile Number",
   "We have sent you SMS with 6 digits long OTP code to verify mobile number": "We have sent you SMS with 6 digits \nlong OTP code to verify mobile number",
-  "Done": "Done"
+  "Done": "Done",
+  "Face": "Face",
+  "Hijab": "Hijab",
+  "Hair": "Hair",
+  "Eye": "Eye",
+  "Glass": "Glass",
+  "Nose": "Nose",
+  "Lips": "Lips"
 }
