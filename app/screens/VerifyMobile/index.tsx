@@ -28,11 +28,9 @@ const VerifyMobile: React.FC = () => {
               textStyle={styles.gradientTextStyle}
             />
             <Text style={styles.subTextStyle}>
-              `$
               {t(
                 'We have sent you SMS with 6 digits long OTP code to verify mobile number',
               )}
-              `
             </Text>
             <Text style={styles.subText2Style}>{t('Enter OTP below')}</Text>
           </View>

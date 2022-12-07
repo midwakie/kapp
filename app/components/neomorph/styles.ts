@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     backgroundColor: fillColor || '#EBEEF0',
     alignItems: 'center',
     justifyContent: 'center',
-    borderColor: fillColor || '#E5E5E5',
+    borderColor: fillColor || '#EBEEF0',
     borderWidth: 1,
     width: width || 40,
     height: height || 40,
