@@ -1,5 +1,5 @@
 # <img src='app/assets/logo.png' height='100' alt='Kutubi' aria-label='Kutubi' />
-# 🚀 KUTUBI - October 2022
+# 🚀 KUTUBI - December 2022
 
 [![React Native](https://img.shields.io/badge/React%20Native-v0.67.3-green.svg)](https://facebook.github.io/react-native/)
 [![React Navigation V5](https://img.shields.io/badge/React%20Navigation-v5.9-blue.svg)](https://reactnavigation.org/)

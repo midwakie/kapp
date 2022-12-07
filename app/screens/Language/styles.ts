@@ -4,12 +4,12 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     height: '100%',
-    backgroundColor: '#E5E5E5',
+    backgroundColor: '#EBEEF0',
   },
   loaderContainer: {
     width: '100%',
     height: '100%',
-    backgroundColor: '#E5E5E5',
+    backgroundColor: '#EBEEF0',
     justifyContent: 'center',
     alignItems: 'center',
   },

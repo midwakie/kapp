@@ -10,7 +10,7 @@ const styles = (direction: string) =>
     container: {
       width: '100%',
       height: '100%',
-      backgroundColor: '#E5E5E5',
+      backgroundColor: '#EBEEF0',
     },
     gradientTextStyle: {
       fontSize: 24,

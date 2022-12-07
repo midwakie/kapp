@@ -61,5 +61,12 @@
   "We have sent you an Email with 6 digits long OTP code to verify Email": "لقد أرسلنا إليك بريدًا إلكترونيًا مكونًا من 6 أرقام \n رمز OTP طويل للتحقق من البريد الإلكتروني",
   "Verify Mobile Number": "تحقق من رقم الهاتف المحمول",
   "We have sent you SMS with 6 digits long OTP code to verify mobile number": "لقد أرسلنا إليك رسالة نصية قصيرة مكونة من 6 أرقام \n طويلة رمز OTP للتحقق من رقم الهاتف المحمول",
-  "Done": "فعله"
+  "Done": "فعله",
+  "Face": "وجه",
+  "Hijab": "الحجاب",
+  "Hair": "شعر",
+  "Eye": "عين",
+  "Glass": "زجاج",
+  "Nose": "الأنف",
+  "Lips": "شفه"
 }
