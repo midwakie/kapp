@@ -10,6 +10,7 @@ import rules from 'app/rules';
 import { useForm } from 'react-hook-form';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTranslation } from 'react-i18next';
+import { navigateToForgotPassword } from 'app/store/actions/navigationActions';
 
 const ChangePassword: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -122,7 +123,9 @@ const ChangePassword: React.FC = () => {
           </View>
           <View style={styles(direction).regularButton}>
             <RegularButton
-              onPress={() => {}}
+              onPress={() => {
+                NavigationService.navigate('AccountAction');
+              }}
               text={t('Send')}
               radius={50}
               height={50}

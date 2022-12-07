@@ -108,6 +108,7 @@ const styles = (direction: string) =>
       alignItems: 'center',
       width: '100%',
       marginTop: 40,
+      
     },
   });
 
