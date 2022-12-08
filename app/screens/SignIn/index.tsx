@@ -20,6 +20,7 @@ import PlainButton from 'app/components/buttons/PlainButton';
 import RegularButton from 'app/components/buttons/RegularButton';
 import HorizontalLine from 'app/components/lines/HorizontalLine';
 import { useTranslation } from 'react-i18next';
+import { scale } from 'react-native-size-matters';
 
 const SignIn: React.FC = () => {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -31,12 +32,20 @@ const SignIn: React.FC = () => {
     <ScrollView style={styles(direction).container} bounces={false}>
       <SafeAreaView style={styles(direction).safeAreaView}>
         <View style={styles(direction).container2}>
+          <View style={styles(direction).topContainer}>
+            <PlainButton
+              onPress={() => {}}
+              style={styles(direction).skipButtonText}
+              containerStyle={styles(direction).skipButtonContainer}
+              text={t('Skip')}
+            />
+          </View>
           <View style={styles(direction).neomorphContainer}>
             <Neumorphism
               lightColor={'#ffffff'}
               darkColor={'#A8A8A8'}
               shapeType={'flat'}
-              radius={118}>
+              radius={scale(118)}>
               <View style={styles(direction).imageContainer}>
                 <Image
                   source={require('../../assets/logo.png')}
@@ -89,7 +98,7 @@ const SignIn: React.FC = () => {
                   }}>
                   <MaterialIcon
                     name={showPassword ? 'eye' : 'eye-off'}
-                    size={20}
+                    size={scale(20)}
                     color={'#758DAC'}
                   />
                 </TouchableOpacity>
@@ -120,7 +129,7 @@ const SignIn: React.FC = () => {
                 lightColor={'#ffffff'}
                 darkColor={'#A8A8A8'}
                 shapeType={'flat'}
-                radius={50}>
+                radius={scale(50)}>
                 <View style={styles(direction).socialButtonContainer}>
                   <Image
                     source={require('../../assets/facebook.png')}
@@ -129,13 +138,13 @@ const SignIn: React.FC = () => {
                 </View>
               </Neumorphism>
             </TouchableOpacity>
-            <HorizontalLine width={43} />
+            <HorizontalLine width={scale(43)} />
             <TouchableOpacity>
               <Neumorphism
                 lightColor={'#ffffff'}
                 darkColor={'#A8A8A8'}
                 shapeType={'flat'}
-                radius={50}>
+                radius={scale(50)}>
                 <View style={styles(direction).socialButtonContainer}>
                   <Image
                     source={require('../../assets/google.png')}
@@ -146,13 +155,13 @@ const SignIn: React.FC = () => {
             </TouchableOpacity>
             {Platform.OS === 'ios' && (
               <>
-                <HorizontalLine width={43} />
+                <HorizontalLine width={scale(43)} />
                 <TouchableOpacity>
                   <Neumorphism
                     lightColor={'#ffffff'}
                     darkColor={'#A8A8A8'}
                     shapeType={'flat'}
-                    radius={50}>
+                    radius={scale(50)}>
                     <View style={styles(direction).socialButtonContainer}>
                       <Image
                         source={require('../../assets/apple.png')}
