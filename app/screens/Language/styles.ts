@@ -1,101 +1,61 @@
-import { StyleSheet } from 'react-native';
+import { ScaledSheet } from "react-native-size-matters";
 
-const styles = StyleSheet.create({
+const styles = ScaledSheet.create({
   container: {
     width: '100%',
     height: '100%',
     backgroundColor: '#EBEEF0',
   },
-  loaderContainer: {
-    width: '100%',
-    height: '100%',
-    backgroundColor: '#EBEEF0',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+  safeAreaView: { alignSelf: 'stretch' },
   container2: {
-    paddingHorizontal: 30,
+    paddingHorizontal: '30@s',
     marginTop: 2,
     width: '100%',
     height: '100%',
-    paddingBottom: 25,
-  },
-  safeAreaView: { alignSelf: 'stretch' },
-  topContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  topShadow: {
-    shadowOffset: {
-      width: -3,
-      height: -3,
-    },
-    shadowOpacity: 1,
-    shadowRadius: 8,
-    shadowColor: '#FDFDFD',
-  },
-  bottomShadow: {
-    shadowOffset: {
-      width: 4,
-      height: 4,
-    },
-    shadowOpacity: 1,
-    shadowRadius: 12,
-    shadowColor: '#A8A8A8',
-  },
-  inner: {
-    backgroundColor: '#EBEEF0',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderColor: '#EBEEF0',
-    borderWidth: 1,
-    width: '100%',
-    // height: 200,
-    borderRadius: 14,
-  },
-  touchableOpacity: {
-    borderRadius: 14,
-    // height: 200,
-    width: '100%',
-    backgroundColor: '#EBEEF0',
-  },
-  gradientTextStyle: {
-    fontSize: 18,
-    fontFamily: 'Nunito-Regular',
-    fontWeight: '700',
+    paddingBottom: '25@s',
   },
   gradientTextContainer: {
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 25,
+    height: '25@s',
     marginBottom: 10,
     marginTop: 145,
+  },
+  gradientTextStyle: {
+    fontSize: '18@s',
+    fontFamily: 'Nunito-Regular',
+    fontWeight: '700',
   },
   textContainer: {
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 18,
+    height: '18@s',
     marginBottom: 79,
   },
   textStyle: {
-    fontSize: 12,
+    fontSize: '12@s',
     fontFamily: 'Nunito-Regular',
     fontWeight: '500',
     color: '#758DAC',
   },
   radioButtonContainer: {
-    borderRadius: 14,
-    // height: 200,
+    borderRadius: '14@s',
+    height: '142@s',
     width: '100%',
     marginBottom: 60,
   },
-  rButtonContainer: { paddingVertical: 25 },
+  radioButtonViewContainer: {
+    borderRadius: '14@s',
+    height: '142@s',
+    width: '100%',
+    backgroundColor: '#EBEEF0',
+  },
+  rButtonContainer: { justifyContent: 'center', height: '70@s' },
   radioLabel: {
     fontFamily: 'Nunito-Regular',
-    fontSize: 16,
+    fontSize: '16@s',
     fontWeight: '600',
   },
 });

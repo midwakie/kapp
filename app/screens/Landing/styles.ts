@@ -1,24 +1,23 @@
-import { Dimensions, StyleSheet } from 'react-native';
+import { Dimensions } from 'react-native';
+import { ScaledSheet } from 'react-native-size-matters';
 const width =
   Dimensions.get('window').width >= Dimensions.get('window').height
     ? Dimensions.get('window').height
     : Dimensions.get('window').width;
 
 const styles = (direction: string) =>
-  StyleSheet.create({
+  ScaledSheet.create({
     container: {
       width: '100%',
       height: '100%',
-      // justifyContent: 'center',
-      // alignItems: 'center',
       backgroundColor: '#EBEEF0',
     },
+    safeView: { alignSelf: 'stretch' },
     container2: {
       marginTop: 2,
       width: '100%',
       height: '100%',
     },
-    safeView: { alignSelf: 'stretch' },
     topContainer: {
       flexDirection: direction === 'rtl' ? 'row-reverse' : 'row',
       justifyContent: 'flex-end',
@@ -27,92 +26,8 @@ const styles = (direction: string) =>
       paddingRight: 30,
       marginVertical: 25,
     },
-    walkThroughContainer: {
-      height: width + 71,
-      marginBottom: 63,
-    },
-    backgroundVideo: {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      bottom: 0,
-      right: 0,
-    },
-    textInputStyle: {
-      height: 55,
-    },
-    buttonContainer: {
-      marginTop: 50,
-      marginBottom: 20,
-      paddingHorizontal: 20,
-      flexDirection: direction === 'rtl' ? 'row-reverse' : 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      width: '100%',
-    },
-    buttonInnerContainer: { width: '45%' },
-    buttonStyle: {
-      marginTop: 20,
-      borderRadius: 25,
-    },
-    buttonContentStyle: {
-      height: 55,
-      borderRadius: 20,
-    },
-    imageStyle: {
-      marginTop: 150,
-      marginBottom: 30,
-    },
-    buttonTextStyle: {
-      color: '#FFFFFF',
-    },
-    mainContent: {
-      flex: 1,
-      alignItems: 'center',
-    },
-    image: {
-      marginVertical: 20,
-      resizeMode: 'contain',
-      height: width - 60,
-    },
-    title: {
-      fontSize: 24,
-      color: '#03A0E3',
-      fontWeight: '800',
-      fontFamily: 'Nunito-Regular',
-      lineHeight: 33,
-      textAlign: 'center',
-    },
-    subTitle: {
-      fontSize: 16,
-      color: '#758DAC',
-      fontWeight: '600',
-      fontFamily: 'Nunito-Regular',
-      lineHeight: 22,
-      textAlign: 'center',
-    },
-    paginationContainer: {
-      position: 'absolute',
-      // bottom: 16,
-      left: 16,
-      right: 16,
-      justifyContent: 'center',
-      top: width + 71,
-    },
-    paginationDots: {
-      height: 16,
-      margin: 16,
-      flexDirection: 'row',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    dot: {
-      width: 24,
-      height: 24,
-      marginHorizontal: 4,
-    },
     skipButtonText: {
-      fontSize: 18,
+      fontSize: '18@s',
       fontFamily: 'Nunito-Regular',
       textAlign: 'center',
       fontWeight: '400',
@@ -120,11 +35,63 @@ const styles = (direction: string) =>
       backgroundColor: 'transparent',
     },
     skipButtonContainer: {
-      height: 50,
-      paddingHorizontal: 5,
+      height: '50@s',
+      paddingHorizontal: '5@s',
       justifyContent: 'center',
       alignItems: 'flex-end',
     },
+    walkThroughContainer: {
+      marginBottom: 63,
+    },
+    paginationContainer: {
+      marginTop: 71,
+      justifyContent: 'center',
+    },
+    paginationDots: {
+      height: '16@s',
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    dot: {
+      width: '24@s',
+      height: '24@s',
+      marginHorizontal: 4,
+    },
+    mainContent: {
+      alignItems: 'center',
+    },
+    textContainer: { height: '66@s', marginBottom: 69 },
+    title: {
+      fontSize: '24@s',
+      color: '#03A0E3',
+      fontWeight: '800',
+      fontFamily: 'Nunito-Regular',
+      textAlign: 'center',
+      lineHeight: '32.74@s',
+    },
+    subTitle: {
+      fontSize: '16@s',
+      color: '#758DAC',
+      fontWeight: '600',
+      fontFamily: 'Nunito-Regular',
+      textAlign: 'center',
+      lineHeight: '21.82@s',
+    },
+    image: {
+      resizeMode: 'contain',
+      height: '290@s',
+      width: '315@s',
+    },
+    buttonContainer: {
+      marginBottom: '20@s',
+      paddingHorizontal: 20,
+      flexDirection: direction === 'rtl' ? 'row-reverse' : 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      width: '100%',
+    },
+    buttonInnerContainer: { width: '45%' },
   });
 
 export default styles;
