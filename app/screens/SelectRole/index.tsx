@@ -47,7 +47,9 @@ const SelectRole: React.FC = () => {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles(direction).rolesContainer}
-            onPress={onRoleSelected}>
+            onPress={() => {
+              NavigationService.navigate('Link Child');
+            }}>
             <Image
               style={styles(direction).image}
               source={require('../../assets/student.png')}
