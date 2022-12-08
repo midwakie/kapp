@@ -12,81 +12,55 @@ const AccountAction: React.FC = () => {
   const { t } = useTranslation();
   return (
     <ScrollView style={styles.container} bounces={false}>
-      <View style={styles.container}>
-        <SafeAreaView style={styles.safeAreaView}>
-          <View style={styles.topContainer}>
-            <RegularButton
-              onPress={() => {
-                NavigationService.goBack();
-              }}
-              icon={'arrow-back'}
-              radius={38}
-              height={38}
-              width={38}
-              colors={['#EBECF0', '#EBECF0']}
+      <SafeAreaView style={styles.safeAreaView}>
+        <View style={styles.topContainer}>
+          <RegularButton
+            onPress={() => {
+              NavigationService.goBack();
+            }}
+            icon={'arrow-back'}
+            radius={38}
+            height={38}
+            width={38}
+            colors={['#EBECF0', '#EBECF0']}
+          />
+        </View>
+        <View style={styles.container2}>
+          <TouchableOpacity
+            onPress={() => {}}
+            style={styles.itemTouchableOpacity}>
+            <Image
+              style={styles.itemImage}
+              source={require('../../assets/linkChildAccount.png')}
             />
-          </View>
-          <View style={styles.container2}>
-            <Neumorphism
-              lightColor={'#ffffff'}
-              darkColor={'#A8A8A8'}
-              shapeType={'flat'}
-              radius={50}>
-              <TouchableOpacity onPress={() => {}}>
-                <View style={styles.imageOneContainer}>
-                  <Image
-                    source={require('../../assets/linkchildaccount.png')}></Image>
-                </View>
-              </TouchableOpacity>
-            </Neumorphism>
-            <View style={styles.textOneContainer}>
-              <TouchableOpacity onPress={() => {}}>
-                <Text style={styles.textOne}>Link Your Child Account</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={styles.container3}>
-              <Neumorphism
-                lightColor={'#ffffff'}
-                darkColor={'#A8A8A8'}
-                shapeType={'flat'}
-                radius={50}>
-                <View style={styles.imageTwoContainer}>
-                  <TouchableOpacity onPress={() => {}}>
-                    <Image
-                      source={require('../../assets/createchildaccount.png')}></Image>
-                  </TouchableOpacity>
-                </View>
-              </Neumorphism>
-              <View style={styles.textTwoContainer}>
-                <TouchableOpacity onPress={() => {}}>
-                  <Text style={styles.textTwo}>Create Your Child Account</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-            <View style={styles.container4}>
-              <Neumorphism
-                lightColor={'#ffffff'}
-                darkColor={'#A8A8A8'}
-                shapeType={'flat'}
-                radius={50}>
-                <TouchableOpacity onPress={() => {}}>
-                  <View style={styles.imageThreeContainer}>
-                    <Image
-                      source={require('../../assets/createchildprofile2.png')}></Image>
-                  </View>
-                </TouchableOpacity>
-              </Neumorphism>
-              <View style={styles.textTwoContainer}>
-                <TouchableOpacity onPress={() => {}}>
-                  <Text style={styles.textThree}>
-                    Create Your Child Profile
-                  </Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
-        </SafeAreaView>
-      </View>
+            <Text style={styles.textOne}>{t('Link Your Child Account')}</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.container3}>
+          <TouchableOpacity
+            onPress={() => {}}
+            style={styles.itemTouchableOpacity}>
+            <Image
+              style={styles.itemImage}
+              source={require('../../assets/createChildAccount.png')}
+            />
+            <Text style={styles.textTwo}>{t('Create Your Child Account')}</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.container4}>
+          <TouchableOpacity
+            onPress={() => {}}
+            style={styles.itemTouchableOpacity}>
+            <Image
+              style={styles.itemImage}
+              source={require('../../assets/createChildProfile.png')}
+            />
+            <Text style={styles.textThree}>
+              {t('Create Your Child Profile')}
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
     </ScrollView>
   );
 };
