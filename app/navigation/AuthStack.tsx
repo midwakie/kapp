@@ -20,6 +20,7 @@ import { useTranslation } from 'react-i18next';
 import { retrieveSelectedLanguage } from 'app/utils/storageUtils';
 import AvatarModifier from 'app/screens/AvatarModifier';
 import AccountAction from 'app/screens/AccountAction';
+import EditChildProfile from 'app/screens/EditChildProfile';
 
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
@@ -158,6 +159,16 @@ const AuthStack = () => {
       <Stack.Screen
         name="AccountAction"
         component={AccountAction}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="EditChildProfile"
+        component={EditChildProfile}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation

@@ -32,7 +32,10 @@ const AccountAction: React.FC = () => {
               darkColor={'#A8A8A8'}
               shapeType={'flat'}
               radius={50}>
-              <TouchableOpacity onPress={() => {}}>
+              <TouchableOpacity
+                onPress={() => {
+                  NavigationService.navigate('EditChildProfile');
+                }}>
                 <View style={styles.imageOneContainer}>
                   <Image
                     source={require('../../assets/linkchildaccount.png')}></Image>
