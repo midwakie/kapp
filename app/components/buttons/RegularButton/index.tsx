@@ -4,6 +4,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import styles from './styles';
 import Neumorphism from 'react-native-neumorphism';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
+import { ms } from 'react-native-size-matters';
 const RegularButton = ({
   onPress,
   text,
@@ -20,15 +21,15 @@ const RegularButton = ({
       shapeType={'flat'}
       radius={radius}>
       <TouchableOpacity
-        style={styles.touchableOpacity(radius, height, width)}
+        style={styles(radius, height, width).touchableOpacity}
         onPress={onPress}>
         <LinearGradient
           colors={colors}
-          style={styles.touchableOpacity(radius, height, width)}>
+          style={styles(radius, height, width).touchableOpacity}>
           {icon ? (
-            <MaterialIcon name={icon} size={20} color={'#03A0E3'} />
+            <MaterialIcon name={icon} size={ms(20)} color={'#03A0E3'} />
           ) : (
-            <Text style={styles.buttonText}>{text}</Text>
+            <Text style={styles(radius, height, width).buttonText}>{text}</Text>
           )}
         </LinearGradient>
       </TouchableOpacity>

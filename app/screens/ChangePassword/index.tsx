@@ -10,6 +10,7 @@ import rules from 'app/rules';
 import { useForm } from 'react-hook-form';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTranslation } from 'react-i18next';
+import { scale } from 'react-native-size-matters';
 
 const ChangePassword: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -86,7 +87,7 @@ const ChangePassword: React.FC = () => {
                   }}>
                   <MaterialIcon
                     name={showPassword ? 'eye' : 'eye-off'}
-                    size={20}
+                    size={scale(20)}
                     color={'#758DAC'}
                   />
                 </TouchableOpacity>
@@ -113,7 +114,7 @@ const ChangePassword: React.FC = () => {
                   }}>
                   <MaterialIcon
                     name={showSecPassword ? 'eye' : 'eye-off'}
-                    size={20}
+                    size={scale(20)}
                     color={'#758DAC'}
                   />
                 </TouchableOpacity>

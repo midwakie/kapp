@@ -16,7 +16,10 @@ const VerifyEmail: React.FC = () => {
   const { control } = useForm();
   const { t } = useTranslation();
   return (
-    <ScrollView style={styles.container} bounces={false}>
+    <ScrollView
+      style={styles.container}
+      bounces={false}
+      showsVerticalScrollIndicator={false}>
       <SafeAreaView style={styles.safeAreaView}>
         <View style={styles.container2}>
           <View style={styles.gradientTextContainer}>

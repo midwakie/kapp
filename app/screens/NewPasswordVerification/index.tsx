@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, Text, View } from 'react-native';
+import { Image, SafeAreaView, Text, View } from 'react-native';
 import styles from './styles';
 import NavigationService from 'app/navigation/NavigationService';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -11,6 +11,8 @@ import RegularButton from 'app/components/buttons/RegularButton';
 import HorizontalLine from 'app/components/lines/HorizontalLine';
 import CustomOTPInput from 'app/components/inputs/CustomOTPInput';
 import { useTranslation } from 'react-i18next';
+import Neomorph from 'app/components/neomorph';
+import LinearGradient from 'react-native-linear-gradient';
 
 const NewPassword: React.FC = () => {
   const { control } = useForm();

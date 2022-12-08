@@ -45,8 +45,8 @@ const AuthStack = () => {
   return (
     <AuthenticationStack.Navigator>
       <Stack.Screen
-        name="Welcome"
-        component={Landing}
+        name="Select Role"
+        component={SelectRole}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
@@ -55,8 +55,8 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
-        name="Select Role"
-        component={SelectRole}
+        name="Welcome"
+        component={Landing}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
