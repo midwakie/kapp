@@ -6,14 +6,7 @@ import RegularButton from 'app/components/buttons/RegularButton';
 import { useTranslation } from 'react-i18next';
 import NavigationService from 'app/navigation/NavigationService';
 import { ScrollView } from 'react-native-gesture-handler';
-import {
-  SafeAreaView,
-  View,
-  Image,
-  TouchableWithoutFeedback,
-  Text,
-} from 'react-native';
-import { scale } from 'react-native-size-matters';
+import { SafeAreaView, View } from 'react-native';
 import BubbleButton from 'app/components/buttons/BubbleButton';
 
 const HobbiesAndInterest: React.FC = () => {
@@ -22,6 +15,9 @@ const HobbiesAndInterest: React.FC = () => {
   const [musicStatus, setMusicStatus] = useState(false);
   const [danceStatus, setDanceStatus] = useState(false);
   const [gameStatus, setGameStatus] = useState(false);
+  const [singStatus, setSingStatus] = useState(false);
+  const [writingStatus, setWritingStatus] = useState(false);
+  const [footballStatus, setFootballStatus] = useState(false);
   const onMusicPress = (currentState: boolean) => {
     setMusicStatus(currentState);
   };
@@ -30,6 +26,15 @@ const HobbiesAndInterest: React.FC = () => {
   };
   const onGamePress = (currentState: boolean) => {
     setGameStatus(currentState);
+  };
+  const onSingPress = (currentState: boolean) => {
+    setSingStatus(currentState);
+  };
+  const onWritingPress = (currentState: boolean) => {
+    setWritingStatus(currentState);
+  };
+  const onFootballPress = (currentState: boolean) => {
+    setFootballStatus(currentState);
   };
   return (
     <ScrollView style={styles(direction).container} bounces={false}>
@@ -61,84 +66,28 @@ const HobbiesAndInterest: React.FC = () => {
                 title="Game"
                 onPress={onGamePress}
               />
-              <TouchableWithoutFeedback>
-                <View style={styles(direction).neomorphContainer}>
-                  <Neumorphism
-                    lightColor={'#ffffff'}
-                    darkColor={'#A8A8A8'}
-                    shapeType={'flat'}
-                    radius={scale(70)}>
-                    <View style={styles(direction).ellipse}>
-                      <Image
-                        source={require('../../assets/sing.png')}
-                        style={styles(direction).image}
-                      />
-                      <Text style={styles(direction).bubbleText}>
-                        {t('Sing')}
-                      </Text>
-                    </View>
-                  </Neumorphism>
-                </View>
-              </TouchableWithoutFeedback>
+              <BubbleButton
+                image={require('../../assets/sing.png')}
+                title="Sing"
+                onPress={onSingPress}
+              />
             </View>
             <View style={styles(direction).bubbleContainerRight}>
-              <TouchableWithoutFeedback>
-                <View style={styles(direction).neomorphContainer}>
-                  <Neumorphism
-                    lightColor={'#ffffff'}
-                    darkColor={'#A8A8A8'}
-                    shapeType={'flat'}
-                    radius={scale(70)}>
-                    <View style={styles(direction).ellipse}>
-                      <Image
-                        source={require('../../assets/writing.png')}
-                        style={styles(direction).image}
-                      />
-                      <Text style={styles(direction).bubbleText}>
-                        {t('Writing')}
-                      </Text>
-                    </View>
-                  </Neumorphism>
-                </View>
-              </TouchableWithoutFeedback>
-              <TouchableWithoutFeedback>
-                <View style={styles(direction).neomorphContainer}>
-                  <Neumorphism
-                    lightColor={'#ffffff'}
-                    darkColor={'#A8A8A8'}
-                    shapeType={'flat'}
-                    radius={scale(70)}>
-                    <View style={styles(direction).ellipse}>
-                      <Image
-                        source={require('../../assets/football.png')}
-                        style={styles(direction).image}
-                      />
-                      <Text style={styles(direction).bubbleText}>
-                        {t('Football')}
-                      </Text>
-                    </View>
-                  </Neumorphism>
-                </View>
-              </TouchableWithoutFeedback>
-              <TouchableWithoutFeedback>
-                <View style={styles(direction).neomorphContainer}>
-                  <Neumorphism
-                    lightColor={'#ffffff'}
-                    darkColor={'#A8A8A8'}
-                    shapeType={'flat'}
-                    radius={scale(70)}>
-                    <View style={styles(direction).ellipse}>
-                      <Image
-                        source={require('../../assets/music.png')}
-                        style={styles(direction).image}
-                      />
-                      <Text style={styles(direction).bubbleText}>
-                        {t('Music')}
-                      </Text>
-                    </View>
-                  </Neumorphism>
-                </View>
-              </TouchableWithoutFeedback>
+              <BubbleButton
+                image={require('../../assets/writing.png')}
+                title="Writing"
+                onPress={onWritingPress}
+              />
+              <BubbleButton
+                image={require('../../assets/football.png')}
+                title="Football"
+                onPress={onFootballPress}
+              />
+              <BubbleButton
+                image={require('../../assets/music.png')}
+                title="Music"
+                onPress={onMusicPress}
+              />
             </View>
           </View>
           <RegularButton
