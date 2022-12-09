@@ -49,6 +49,16 @@ const AuthStack = () => {
   return (
     <AuthenticationStack.Navigator>
       <Stack.Screen
+        name="HobbiesAndInterest"
+        component={HobbiesAndInterest}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
         name="TestHardness"
         component={TestHardness}
         options={{
@@ -171,16 +181,6 @@ const AuthStack = () => {
       <Stack.Screen
         name="AvatarModifier"
         component={AvatarModifier}
-        options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
-          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="HobbiesAndInterest"
-        component={HobbiesAndInterest}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation

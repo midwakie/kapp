@@ -14,13 +14,22 @@ import {
   Text,
 } from 'react-native';
 import { scale } from 'react-native-size-matters';
+import BubbleButton from 'app/components/buttons/BubbleButton';
 
 const HobbiesAndInterest: React.FC = () => {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
-  const [active, setActive] = useState(true);
-  const Click = () => {
-    setActive(!active);
+  const [musicStatus, setMusicStatus] = useState(false);
+  const [danceStatus, setDanceStatus] = useState(false);
+  const [gameStatus, setGameStatus] = useState(false);
+  const onMusicPress = (currentState: boolean) => {
+    setMusicStatus(currentState);
+  };
+  const onDancePress = (currentState: boolean) => {
+    setDanceStatus(currentState);
+  };
+  const onGamePress = (currentState: boolean) => {
+    setGameStatus(currentState);
   };
   return (
     <ScrollView style={styles(direction).container} bounces={false}>
@@ -37,63 +46,21 @@ const HobbiesAndInterest: React.FC = () => {
           </View>
           <View style={styles(direction).bubbleContainer}>
             <View style={styles(direction).bubbleContainerLeft}>
-              <TouchableWithoutFeedback onPress={Click}>
-                <View style={styles(direction).neomorphContainer}>
-                  <Neumorphism
-                    lightColor={'#ffffff'}
-                    darkColor={'#A8A8A8'}
-                    shapeType={active ? 'flat' : 'pressed'}
-                    radius={scale(70)}>
-                    <View style={styles(direction).ellipse}>
-                      <Image
-                        source={require('../../assets/Music.png')}
-                        style={styles(direction).image}
-                      />
-                      <Text style={styles(direction).bubbleText}>
-                        {t('Music')}
-                      </Text>
-                    </View>
-                  </Neumorphism>
-                </View>
-              </TouchableWithoutFeedback>
-              <TouchableWithoutFeedback>
-                <View style={styles(direction).neomorphContainer}>
-                  <Neumorphism
-                    lightColor={'#ffffff'}
-                    darkColor={'#A8A8A8'}
-                    shapeType={'flat'}
-                    radius={scale(70)}>
-                    <View style={styles(direction).ellipse}>
-                      <Image
-                        source={require('../../assets/Dance.png')}
-                        style={styles(direction).image}
-                      />
-                      <Text style={styles(direction).bubbleText}>
-                        {t('Dance')}
-                      </Text>
-                    </View>
-                  </Neumorphism>
-                </View>
-              </TouchableWithoutFeedback>
-              <TouchableWithoutFeedback>
-                <View style={styles(direction).neomorphContainer}>
-                  <Neumorphism
-                    lightColor={'#ffffff'}
-                    darkColor={'#A8A8A8'}
-                    shapeType={'flat'}
-                    radius={scale(70)}>
-                    <View style={styles(direction).ellipse}>
-                      <Image
-                        source={require('../../assets/Game.png')}
-                        style={styles(direction).image}
-                      />
-                      <Text style={styles(direction).bubbleText}>
-                        {t('Game')}
-                      </Text>
-                    </View>
-                  </Neumorphism>
-                </View>
-              </TouchableWithoutFeedback>
+              <BubbleButton
+                image={require('../../assets/music.png')}
+                title="Music"
+                onPress={onMusicPress}
+              />
+              <BubbleButton
+                image={require('../../assets/dance.png')}
+                title="Dance"
+                onPress={onDancePress}
+              />
+              <BubbleButton
+                image={require('../../assets/game.png')}
+                title="Game"
+                onPress={onGamePress}
+              />
               <TouchableWithoutFeedback>
                 <View style={styles(direction).neomorphContainer}>
                   <Neumorphism
@@ -143,11 +110,11 @@ const HobbiesAndInterest: React.FC = () => {
                     radius={scale(70)}>
                     <View style={styles(direction).ellipse}>
                       <Image
-                        source={require('../../assets/Dance.png')}
+                        source={require('../../assets/football.png')}
                         style={styles(direction).image}
                       />
                       <Text style={styles(direction).bubbleText}>
-                        {t('Dance')}
+                        {t('Football')}
                       </Text>
                     </View>
                   </Neumorphism>
@@ -162,7 +129,7 @@ const HobbiesAndInterest: React.FC = () => {
                     radius={scale(70)}>
                     <View style={styles(direction).ellipse}>
                       <Image
-                        source={require('../../assets/Music.png')}
+                        source={require('../../assets/music.png')}
                         style={styles(direction).image}
                       />
                       <Text style={styles(direction).bubbleText}>
