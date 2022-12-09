@@ -68,10 +68,10 @@ const AvatarCreation: React.FC = () => {
             />
           </View>
           <View style={styles(direction).radioButtonContainer}>
-          <Image
-                source={require('../../assets/inputBg.png')}
-                style={styles(direction).bg}
-              />
+            <Image
+              source={require('../../assets/inputBg.png')}
+              style={styles(direction).bg}
+            />
             <View style={styles(direction).radioButtonViewContainer}>
               <RadioButton
                 id={'1'}

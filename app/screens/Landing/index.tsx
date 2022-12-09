@@ -81,7 +81,7 @@ const Landing: React.FC = () => {
                             source={
                               i === activeIndex
                                 ? require('../../assets/activeOval.png')
-                                : require('../../assets/Oval.png')
+                                : require('../../assets/oval.png')
                             }
                           />
                         ))}
