@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styles from './styles';
-import Neumorphism from 'react-native-neumorphism';
 import GradientText from 'app/components/texts/GradientText';
 import RegularButton from 'app/components/buttons/RegularButton';
 import { useTranslation } from 'react-i18next';

@@ -13,7 +13,7 @@ const styles = (direction: string) =>
       height: '100%',
       backgroundColor: '#EBEEF0',
     },
-    safeAreaView: { alignSelf: 'stretch',},
+    safeAreaView: { alignSelf: 'stretch' },
     container2: {
       // justifyContent: 'center',
       // alignItems: 'center',
@@ -36,22 +36,6 @@ const styles = (direction: string) =>
       fontFamily: 'Nunito-Regular',
       fontWeight: '700',
     },
-    neomorphContainer: {
-      marginBottom: 30,
-    },
-    ellipse: {
-      width: 137,
-      height: 137,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    bubbleText: {
-      fontSize: '18@s',
-      fontFamily: 'Nunito-Regular',
-      fontWeight: '600',
-      color: '#758DAC',
-      lineHeight: '25@s',
-    },
     bubbleContainer: {
       // justifyContent: 'center',
       // alignItems: 'center',
@@ -66,11 +50,6 @@ const styles = (direction: string) =>
     },
     bubbleContainerRight: {
       marginTop: 100,
-    },
-    image: {
-      resizeMode: 'contain',
-      width: 50,
-      height: 50,
     },
   });
 
