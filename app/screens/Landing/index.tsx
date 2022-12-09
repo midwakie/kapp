@@ -44,7 +44,7 @@ const Landing: React.FC = () => {
   ];
 
   const onSignUp = () => {
-    NavigationService.navigate('Select Role');
+    NavigationService.navigate('Sign Up');
   };
   const onSignIn = () => {
     NavigationService.navigate('Sign In');
