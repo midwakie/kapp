@@ -70,7 +70,7 @@ const HobbiesAndInterest: React.FC = () => {
                     radius={scale(70)}>
                     <View style={styles(direction).ellipse}>
                       <Image
-                        source={require('../../assets/Sing.png')}
+                        source={require('../../assets/sing.png')}
                         style={styles(direction).image}
                       />
                       <Text style={styles(direction).bubbleText}>
@@ -91,7 +91,7 @@ const HobbiesAndInterest: React.FC = () => {
                     radius={scale(70)}>
                     <View style={styles(direction).ellipse}>
                       <Image
-                        source={require('../../assets/Writing.png')}
+                        source={require('../../assets/writing.png')}
                         style={styles(direction).image}
                       />
                       <Text style={styles(direction).bubbleText}>
