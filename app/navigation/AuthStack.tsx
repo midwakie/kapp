@@ -19,6 +19,7 @@ import ChangePassword from 'app/screens/ChangePassword';
 import { useTranslation } from 'react-i18next';
 import { retrieveSelectedLanguage } from 'app/utils/storageUtils';
 import AvatarModifier from 'app/screens/AvatarModifier';
+import AccountAction from 'app/screens/AccountAction';
 import LinkChild from 'app/screens/LinkChild';
 import ChangeSchool from 'app/screens/ChangeSchool';
 
@@ -42,7 +43,7 @@ const AuthStack = () => {
 
   useEffect(() => {
     setLanguage();
-  },[]);
+  }, []);
 
   return (
     <AuthenticationStack.Navigator>
@@ -169,6 +170,16 @@ const AuthStack = () => {
       <Stack.Screen
         name="AvatarModifier"
         component={AvatarModifier}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="AccountAction"
+        component={AccountAction}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
