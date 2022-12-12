@@ -69,6 +69,13 @@
   "Glass": "زجاج",
   "Nose": "الأنف",
   "Lips": "شفه",
+  "Interests & Hobbies" : "الاهتمامات والهوايات",
+  "Music":"موسيقى",
+  "Dance":"الرقص",
+  "Football":"كرة القدم",
+  "Writing":"جاري الكتابة",
+  "Sing":"يغنى",
+  "Game":"لعبه",
   "Enter School Invitation Code Below To Link Your Child Account": "أدخل رمز دعوة المدرسة أدناه لربط حساب طفلك",
   "Link Account": "حساب الارتباط",
   "OR": "أو",
@@ -78,5 +85,8 @@
   "Create Your Child Profile": "قم بإنشاء ملف تعريف طفلك",
   "Change School": "مدرسة التغيير",
   "Al Jeel Al Saeed School": "مدرسة الجيل السعيد",
-  "Update": "تحديث"
+  "Update": "تحديث",
+  "Edit Child Profile": "تحرير ملف تعريف الطفل",
+ "Date of Birth":"تاريخ الولادة",
+ "change":"يتغيرون"
 }

@@ -44,7 +44,7 @@ const Landing: React.FC = () => {
   ];
 
   const onSignUp = () => {
-    NavigationService.navigate('Select Role');
+    NavigationService.navigate('Sign Up');
   };
   const onSignIn = () => {
     NavigationService.navigate('Sign In');
@@ -81,7 +81,7 @@ const Landing: React.FC = () => {
                             source={
                               i === activeIndex
                                 ? require('../../assets/activeOval.png')
-                                : require('../../assets/Oval.png')
+                                : require('../../assets/oval.png')
                             }
                           />
                         ))}

@@ -27,7 +27,9 @@ const AccountAction: React.FC = () => {
         </View>
         <View style={styles.container2}>
           <TouchableOpacity
-            onPress={() => {}}
+            onPress={() => {
+              NavigationService.navigate('EditChildProfile');
+            }}
             style={styles.itemTouchableOpacity}>
             <Image
               style={styles.itemImage}
