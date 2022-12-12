@@ -33,12 +33,10 @@ const styles = (direction: string) =>
       width: "100%",
       justifyContent:"center",
       height: 80,
-      marginBottom: 38,
-      marginLeft:64,
-      
-     
-     
-    },
+      alignItems:"center",
+      marginLeft:10,
+      marginTop:12,
+       },
     inputTextContainer: {
       width: '100%',
       justifyContent: 'center',
