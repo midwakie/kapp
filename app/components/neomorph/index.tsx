@@ -11,11 +11,9 @@ const Neomorph = ({
   style,
 }: any) => {
   return (
-    <View style={styles.bottomShadow}>
-      <View style={styles.topShadow}>
-        <View style={[styles.inner(width, height, radius, fillColor), style]}>
-          {children}
-        </View>
+    <View style={[styles.inner(width, height, radius, fillColor), style]}>
+      <View style={styles.bottomShadow}>
+        <View style={styles.topShadow}>{children}</View>
       </View>
     </View>
   );

@@ -1,4 +1,5 @@
 import { Dimensions, StyleSheet } from 'react-native';
+import { ScaledSheet } from 'react-native-size-matters';
 
 const width =
   Dimensions.get('window').width >= Dimensions.get('window').height
@@ -6,39 +7,95 @@ const width =
     : Dimensions.get('window').width;
 
 const styles = (direction: string) =>
-  StyleSheet.create({
+  ScaledSheet.create({
     container: {
       width: '100%',
       height: '100%',
       backgroundColor: '#EBEEF0',
     },
+    safeAreaView: { alignSelf: 'stretch' },
     container2: {
-      paddingHorizontal: 30,
+      paddingHorizontal: '30@s',
       marginTop: 2,
       width: '100%',
       height: '100%',
       paddingBottom: 25,
     },
-    safeAreaView: { alignSelf: 'stretch' },
-    gradientTextStyle: {
-      fontSize: 24,
+    topContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      width: '100%',
+      marginTop: 30,
+    },
+    skipButtonText: {
+      fontSize: '18@s',
       fontFamily: 'Nunito-Regular',
-      fontWeight: '700',
-      lineHeight: 35,
+      textAlign: 'center',
+      fontWeight: '400',
+      color: '#03A0E3',
+      backgroundColor: 'transparent',
+    },
+    skipButtonContainer: {
+      height: '50@s',
+      paddingHorizontal: '5@s',
+      justifyContent: 'center',
+      alignItems: 'flex-end',
+    },
+    neomorphContainer: {
+      marginTop: 22,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    imageContainer: {
+      width: '140@ms',
+      height: '140@ms',
+      borderRadius: '140@ms',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    imageStyle: {
+      justifyContent: 'center',
+      resizeMode: 'cover',
+      width: '140@ms',
+      height: '140@ms',
     },
     gradientTextContainer: {
       width: '100%',
       justifyContent: 'center',
       alignItems: 'center',
-      height: 33,
-      marginBottom: 60,
+      height: '33@s',
+      marginBottom: 40,
       marginTop: 40,
+    },
+    gradientTextStyle: {
+      fontSize: '24@s',
+      fontFamily: 'Nunito-Regular',
+      fontWeight: '700',
+    },
+    radioButtonContainer: {
+      width: '100%',
+      marginBottom: 21,
+    },
+    bg: {
+      width: '100%',
+      height: '65@ms0.75',
+      position: 'absolute',
+      resizeMode: 'contain',
+    },
+    radioButtonViewContainer: {
+      flexDirection: direction === 'rtl' ? 'row-reverse' : 'row',
+      height: '65@ms0.75',
+      width: '100%',
     },
     inputTextContainer: {
       width: '100%',
       justifyContent: 'center',
       alignItems: 'center',
-      marginBottom: 20,
+      marginBottom: 40,
+    },
+    regularButton: {
+      marginTop: 40,
     },
     labelTextContainer: {
       justifyContent: 'flex-end',
@@ -59,54 +116,8 @@ const styles = (direction: string) =>
       fontWeight: '600',
       backgroundColor: 'transparent',
     },
-    rightComponent: { right: 20, position: 'absolute' },
-    imageStyle: {
-      justifyContent: 'center',
-      resizeMode: 'cover',
-      width: (width - 60) / 2.5,
-      height: (width - 60) / 2.5,
-    },
-    imageContainer: {
-      width: (width - 60) / 2.5,
-      height: (width - 60) / 2.5,
-      borderRadius: (width - 60) / 2.5,
-      justifyContent: 'center',
-      alignItems: 'center',
-      // backgroundColor: '#EBEEF0',
-    },
-    neomorphContainer: {
-      marginTop: 19,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    inputContainer: {
-      width: width - 60,
-      height: 50,
-      borderRadius: 50,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#EBEEF0',
-    },
-    socialContainer: {
-      width: width - 60,
-      height: 50,
-      flexDirection: 'row',
-      marginTop: 40,
-      marginBottom: 30,
-      justifyContent: 'center',
-      alignSelf: 'center',
-    },
-    socialButtonContainer: {
-      width: 50,
-      height: 50,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    socialButtonStyle: {
-      width: 23,
-      height: 23,
-      resizeMode: 'contain',
-    },
+    rightComponent: { right: '20@s', position: 'absolute' },
+    
     bottomContainer: {
       height: 20,
       width: width - 60,
@@ -141,49 +152,16 @@ const styles = (direction: string) =>
       alignItems: 'center',
       height: 20,
     },
-    topContainer: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      width: '100%',
-      // paddingRight: 30,
-      marginTop: 25,
-    },
-    skipButtonText: {
-      fontSize: 18,
-      // fontFamily: 'Gill Sans',
-      textAlign: 'center',
-      fontWeight: '400',
-      color: '#03A0E3',
-      backgroundColor: 'transparent',
-    },
-    skipButtonContainer: {
-      height: 50,
-      paddingHorizontal: 5,
-      justifyContent: 'center',
-      alignItems: 'flex-end',
-    },
+    
+    
     profilePicture: {
       height: 140,
       width: 140,
-      borderRadius: 200 / 2,
+      borderRadius: 140,
       //  backgroundColor:'white',
     },
-    radioButtonContainer: {
-      // borderRadius: 50,
-      // height:50,
-      width: '100%',
-      marginBottom: 21,
-      // flexDirection:'row',
-    },
-    touchableOpacity: {
-      flexDirection: direction === 'rtl' ? 'row-reverse' : 'row',
-      height: 65,
-      width: '100%',
-    },
-    regularButton: {
-      marginTop: 40,
-    },
+    
+    
   });
 
 export default styles;

@@ -1,131 +1,84 @@
-import { Dimensions, StyleSheet } from 'react-native';
+import { Dimensions } from 'react-native';
+import { ScaledSheet } from 'react-native-size-matters';
 
 const width =
   Dimensions.get('window').width >= Dimensions.get('window').height
     ? Dimensions.get('window').height
     : Dimensions.get('window').width;
 
-    const styles = StyleSheet.create({
-        container: {
-          width: '100%',
-          height: '100%',
-          backgroundColor: '#E5E5E5',
-           },
-    
-        topContainer: {
-          flexDirection: 'row',
-          justifyContent: 'flex-start',
-          alignItems: 'center',
-          width:45,
-          marginHorizontal: 29,
-          marginTop: 40,
-       },
+const styles = ScaledSheet.create({
+  container: {
+    width: '100%',
+    height: '100%',
+    backgroundColor: '#EBEEF0',
+  },
+  safeAreaView: {
+    alignSelf: 'stretch',
+  },
+  topContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    width: width,
+    marginLeft: '20@s',
+    marginTop: '40@ms',
+    position: 'absolute',
+  },
+  container2: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: '30@s',
+    width: '100%',
+    marginTop: 70,
+  },
+  itemTouchableOpacity: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+  },
+  itemImage: {
+    height: '140@ms',
+    width: '140@ms',
+    justifyContent: 'center',
+    alignItems: 'center',
+    resizeMode: 'contain',
+  },
+  textOne: {
+    textAlign: 'center',
+    color: '#EC4D61',
+    fontSize: '18@s',
+    fontWeight: '700',
+    fontFamily: 'Nunito-Regular',
+  },
+  container3: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: '30@s',
+    width: '100%',
+    marginTop: 50,
+  },
+  textTwo: {
+    textAlign: 'center',
+    color: '#84BD47',
+    fontSize: '18@s',
+    fontWeight: '700',
+    fontFamily: 'Nunito-Regular',
+  },
+  container4: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: '30@s',
+    width: '100%',
+    marginTop: 50,
+    marginBottom: 50,
+  },
+  textThree: {
+    textAlign: 'center',
+    color: '#2AA7DD',
+    fontSize: '18@s',
+    fontWeight: '700',
+    fontFamily: 'Nunito-Regular',
+  },
+});
 
-        container3:{   
-         alignItems:"center",
-         marginTop:50,
-         paddingHorizontal: 30,
-         width: '100%',
-         backgroundColor:"Red",
-         },
-       
-     
-      
-    container2: {
-      alignItems:"center",
-     paddingHorizontal: 30,
-     width: '100%',
-      height: '100%',
-      },
-         
-       
-    container4:{ 
-      alignItems:"center",
-      marginTop:50,
-      paddingHorizontal: 30,
-       width: '100%',
-      },
-        
-   safeAreaView: {
-     alignSelf: 'stretch'
-     },
-      
-   bottomText: {
-    color: '#758DAC',
-    fontWeight: '600',
-    fontSize: 12,
-    },
-      
-       
-  imageOneContainer:{
-            alignItems:"center",
-           justifyContent:"center",
-           borderRadius:50,
-           backgroundColor:"#EC4D61",
-           width:140,
-           height:140,
-
-        },
-        textOneContainer:{
-            alignItems:"center",
-            marginTop:30,
-            width:203,
-            height:25,
-            
-        },
-        textOne:{
-            alignItems:"center",
-            color:"#EC4D61",
-            fontSize:18,
-            fontWeight:"700",
-            fontFamily: 'Nunito-Regular'
-
-        },
-        textTwoContainer:{
-            alignItems:"center",
-            marginTop:30,
-            width:215,
-            height:25,
-            fontSize:18,
-            fontWeight:"700",
-            
-
-        },
-        imageTwoContainer:{ alignItems:"center",
-        justifyContent:"center",
-        width:140,
-        height:140,
-        borderRadius:50,
-        
-       
-        },
-      
-        textTwo:{ 
-        alignItems:"center",
-        color:"#84BD47",
-        fontSize:18,
-        fontWeight:"700",
-        fontFamily: 'Nunito-Regular'
-
-        },
-        imageThreeContainer:{
-            alignItems:"center",
-           justifyContent:"center",
-            borderRadius:50,
-            backgroundColor:"#2AA7DD",
-            width:140,
-            height:140,
-            },
-
-        textThree:{
-          alignItems:"center",
-        color:"#2AA7DD",
-        fontSize:18,
-        fontWeight:"700",
-        fontFamily: 'Nunito-Regular',
-       },
-
-      });
-      
-      export default styles;
-      
+export default styles;

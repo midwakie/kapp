@@ -1,17 +1,17 @@
-import { Dimensions, StyleSheet } from 'react-native';
+import { Dimensions } from 'react-native';
+import { ScaledSheet } from 'react-native-size-matters';
 const width =
   Dimensions.get('window').width >= Dimensions.get('window').height
     ? Dimensions.get('window').height
     : Dimensions.get('window').width;
 const styles = (direction: string) =>
-  StyleSheet.create({
+  ScaledSheet.create({
     container: {
       width: '100%',
       height: '100%',
-      // justifyContent: 'center',
-      // alignItems: 'center',
       backgroundColor: '#EBEEF0',
     },
+    safeView: { alignSelf: 'stretch' },
     container2: {
       marginTop: 2,
       width: '100%',
@@ -19,56 +19,51 @@ const styles = (direction: string) =>
       justifyContent: 'center',
       alignItems: 'center',
     },
-    safeView: { alignSelf: 'stretch' },
-    gradientTextStyle: {
-      fontSize: 24,
-      fontFamily: 'Nunito-Regular',
-      fontWeight: '800',
-      lineHeight: 33,
-    },
     gradientTextContainer: {
       width: '100%',
       justifyContent: 'center',
       alignItems: 'center',
-      height: 33,
+      height: '33@s',
       marginBottom: 67,
       marginTop: 54,
     },
-    image: {
-      marginVertical: 20,
-      resizeMode: 'contain',
-      height: width / 3,
-      width: width / 3,
-    },
-    titleParent: {
-      fontSize: 24,
-      color: '#2AA7DD',
-      fontWeight: '700',
+    gradientTextStyle: {
+      fontSize: '24@s',
       fontFamily: 'Nunito-Regular',
-      lineHeight: 33,
-      textAlign: 'center',
-    },
-    titleStudent: {
-      fontSize: 24,
-      color: '#E14E58',
-      fontWeight: '700',
-      fontFamily: 'Nunito-Regular',
-      lineHeight: 33,
-      textAlign: 'center',
-    },
-    titleTeacher: {
-      fontSize: 24,
-      color: '#84BD47',
-      fontWeight: '700',
-      fontFamily: 'Nunito-Regular',
-      lineHeight: 33,
-      textAlign: 'center',
+      fontWeight: '800',
     },
     rolesContainer: {
       flexDirection: direction === 'rtl' ? 'row-reverse' : 'row',
       width: width,
+      height: '150@ms0.75',
       justifyContent: 'center',
       alignItems: 'center',
+    },
+    image: {
+      resizeMode: 'contain',
+      height: '142@ms0.75',
+      width: '142@ms0.75',
+    },
+    titleParent: {
+      fontSize: '24@s',
+      color: '#2AA7DD',
+      fontWeight: '700',
+      fontFamily: 'Nunito-Regular',
+      textAlign: 'center',
+    },
+    titleStudent: {
+      fontSize: '24@s',
+      color: '#E14E58',
+      fontWeight: '700',
+      fontFamily: 'Nunito-Regular',
+      textAlign: 'center',
+    },
+    titleTeacher: {
+      fontSize: '24@s',
+      color: '#84BD47',
+      fontWeight: '700',
+      fontFamily: 'Nunito-Regular',
+      textAlign: 'center',
     },
   });
 

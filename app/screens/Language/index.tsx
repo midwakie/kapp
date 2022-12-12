@@ -10,6 +10,7 @@ import { SafeAreaView, ScrollView, Text, View } from 'react-native';
 import Neumorphism from 'react-native-neumorphism';
 import styles from './styles';
 import RNRestart from 'react-native-restart';
+import { scale } from 'react-native-size-matters';
 const Language: React.FC = () => {
   const { t, i18n } = useTranslation();
   const [radioButtonEnglish, setRadioButtonEnglish] = useState(true);
@@ -50,8 +51,8 @@ const Language: React.FC = () => {
               lightColor={'#ffffff'}
               darkColor={'#A8A8A8'}
               shapeType={'flat'}
-              radius={14}>
-              <View style={styles.touchableOpacity}>
+              radius={scale(14)}>
+              <View style={styles.radioButtonViewContainer}>
                 <View style={styles.rButtonContainer}>
                   <RadioButton
                     id={'1'}
@@ -84,7 +85,7 @@ const Language: React.FC = () => {
               i18n.changeLanguage(radioButtonEnglish === false ? 'ar' : 'en');
               RNRestart.Restart();
             }}
-            text={`${t('Save')}`}
+            text={t('Save')}
             radius={50}
             height={50}
             width={'100%'}
