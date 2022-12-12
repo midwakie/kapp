@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
@@ -5,6 +6,7 @@ import styles from './styles';
 import Neumorphism from 'react-native-neumorphism';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import { ms } from 'react-native-size-matters';
+import { RegularButtonProps } from './types';
 const RegularButton = ({
   onPress,
   text,
@@ -13,7 +15,7 @@ const RegularButton = ({
   icon,
   height,
   width,
-}: any) => {
+}: RegularButtonProps) => {
   return (
     <Neumorphism
       lightColor={'#ffffff'}

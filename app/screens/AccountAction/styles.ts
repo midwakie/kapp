@@ -23,6 +23,7 @@ const styles = ScaledSheet.create({
     marginLeft: '20@s',
     marginTop: '40@ms',
     position: 'absolute',
+    zIndex: 20,
   },
   container2: {
     justifyContent: 'center',
