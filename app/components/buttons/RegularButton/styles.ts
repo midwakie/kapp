@@ -1,23 +1,24 @@
-import { StyleSheet } from 'react-native';
+import { ScaledSheet } from 'react-native-size-matters';
 
-const styles = StyleSheet.create({
-  touchableOpacity: (radius: any, height: any, width: any) => ({
-    borderRadius: radius,
-    height: height,
-    width: width,
-    backgroundColor: 'transparent',
-    justifyContent: 'center',
-    alignItems: 'center',
-  }),
-  buttonText: {
-    fontSize: 18,
-    fontFamily: 'Nunito-Regular',
-    fontWeight: '800',
-    textAlign: 'center',
-    margin: 10,
-    color: '#ffffff',
-    backgroundColor: 'transparent',
-  },
-});
+const styles = (radius: any, height: any, width: any) =>
+  ScaledSheet.create({
+    touchableOpacity: {
+      borderRadius: `${radius}@ms`,
+      height: `${height}@ms`,
+      width: typeof width === 'number' ? `${width}@ms` : width,
+      backgroundColor: 'transparent',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    buttonText: {
+      fontSize: '18@ms',
+      fontFamily: 'Nunito-Regular',
+      fontWeight: '800',
+      textAlign: 'center',
+      margin: '10@ms',
+      color: '#ffffff',
+      backgroundColor: 'transparent',
+    },
+  });
 
 export default styles;

@@ -1,75 +1,54 @@
-import { StyleSheet } from 'react-native';
+import { ScaledSheet } from 'react-native-size-matters';
 
-const styles = StyleSheet.create({
+const styles = ScaledSheet.create({
   container: {
     width: '100%',
     height: '100%',
     backgroundColor: '#EBEEF0',
   },
-  gradientTextStyle: {
-    fontSize: 24,
-    fontFamily: 'Nunito-Regular',
-    fontWeight: '800',
-  },
-  gradientTextContainer: {
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 33,
-    marginBottom: 2,
-    marginTop: 126,
-  },
+  safeAreaView: { alignSelf: 'stretch' },
   topContainer: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
     width: '100%',
-    marginHorizontal: 29,
-    marginTop: 49,
+    marginHorizontal: '29@s',
+    marginTop: 40,
   },
-  subTextContainer: {
-    height: 38,
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingHorizontal: 20,
-  },
-  subText: {
-    fontSize: 14,
-    fontWeight: '500',
-    fontStyle: 'normal',
-    lineHeight: 19,
-    color: '#758DAC',
-  },
-  enterOtp: {
-    width: '100%',
-    // paddingHorizontal:50,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 44,
-  },
-
   container2: {
-    paddingHorizontal: 30,
+    paddingHorizontal: '30@s',
     marginTop: 2,
     width: '100%',
     height: '100%',
     paddingBottom: 25,
   },
-  safeAreaView: { alignSelf: 'stretch' },
-
-  bottomText: {
+  gradientTextContainer: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '33@s',
+    marginBottom: 2,
+    marginTop: 117,
+  },
+  gradientTextStyle: {
+    fontSize: '24@s',
+    fontFamily: 'Nunito-Regular',
+    fontWeight: '800',
+  },
+  subTextContainer: {
+    height: '18@s',
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: '20@s',
+  },
+  subText: {
+    fontSize: '12@s',
+    fontWeight: '500',
+    fontFamily: 'Nunito-Regular',
+    // lineHeight: 19,
     color: '#758DAC',
-    fontWeight: '600',
-    fontSize: 12,
   },
-  signUpButton: {
-    color: '#03A0E3',
-    fontSize: 12,
-    fontWeight: '700',
-    backgroundColor: 'transparent',
-  },
-
   inputTextContainer: {
     width: '100%',
     justifyContent: 'center',

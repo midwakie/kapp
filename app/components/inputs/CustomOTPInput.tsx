@@ -1,9 +1,17 @@
 import React, { useImperativeHandle, useRef } from 'react';
-import { View, Text, TextInput, StyleSheet, Dimensions } from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  Dimensions,
+  Image,
+} from 'react-native';
 import { Controller } from 'react-hook-form';
 import Neumorphism from 'react-native-neumorphism';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
 import HorizontalLine from '../lines/HorizontalLine';
+import { scale, ScaledSheet } from 'react-native-size-matters';
 const CustomOTPInput = React.forwardRef(
   ({ control, name, rules = {} }: any, ref) => {
     const [placeHolderOtherText, setPlaceHolderOtherText] = React.useState('*');
@@ -25,50 +33,48 @@ const CustomOTPInput = React.forwardRef(
           fieldState: { error },
         }) => (
           <>
-            <Neumorphism
-              lightColor={'#ffffff'}
-              darkColor={'#A8A8A8'}
-              shapeType={'pressed'}
-              radius={50}>
-              <View style={styles.seperatorContainer}>
-                <View style={styles.boxItem}>
-                  <HorizontalLine width={5} color={'#ABBBC1'} stroke={1} />
-                </View>
-                <View style={styles.boxItem}>
-                  <HorizontalLine width={5} color={'#ABBBC1'} stroke={1} />
-                </View>
-                <View style={styles.boxItem}>
-                  <HorizontalLine width={5} color={'#ABBBC1'} stroke={1} />
-                </View>
-                <View style={styles.boxItem}>
-                  <HorizontalLine width={5} color={'#ABBBC1'} stroke={1} />
-                </View>
-                <View style={styles.boxItem}>
-                  <HorizontalLine width={5} color={'#ABBBC1'} stroke={1} />
-                </View>
+            <Image
+              source={require('../../assets/inputBg.png')}
+              style={styles.bg}
+            />
+            <View style={styles.seperatorContainer}>
+              <View style={styles.boxItem}>
+                <HorizontalLine width={scale(5)} color={'#ABBBC1'} stroke={1} />
               </View>
-              <View
-                style={[
-                  styles.container,
-                  { borderColor: error ? 'red' : 'transparent' },
-                ]}>
-                <OTPInputView
-                  style={{ width: '100%', height: 50 }}
-                  pinCount={6}
-                  code={value}
-                  onCodeChanged={code => {
-                    onChange(code);
-                  }}
-                  secureTextEntry={false}
-                  autoFocusOnLoad
-                  codeInputFieldStyle={styles.underlineStyleBase}
-                  onCodeFilled={code => {
-                    console.log(`Code is ${code}, you are good to go!`);
-                    onBlur();
-                  }}
-                />
+              <View style={styles.boxItem}>
+                <HorizontalLine width={scale(5)} color={'#ABBBC1'} stroke={1} />
               </View>
-            </Neumorphism>
+              <View style={styles.boxItem}>
+                <HorizontalLine width={scale(5)} color={'#ABBBC1'} stroke={1} />
+              </View>
+              <View style={styles.boxItem}>
+                <HorizontalLine width={scale(5)} color={'#ABBBC1'} stroke={1} />
+              </View>
+              <View style={styles.boxItem}>
+                <HorizontalLine width={scale(5)} color={'#ABBBC1'} stroke={1} />
+              </View>
+            </View>
+            <View
+              style={[
+                styles.container,
+                { borderColor: error ? 'red' : 'transparent' },
+              ]}>
+              <OTPInputView
+                style={styles.otpView}
+                pinCount={6}
+                code={value}
+                onCodeChanged={code => {
+                  onChange(code);
+                }}
+                secureTextEntry={false}
+                autoFocusOnLoad
+                codeInputFieldStyle={styles.underlineStyleBase}
+                onCodeFilled={code => {
+                  console.log(`Code is ${code}, you are good to go!`);
+                  onBlur();
+                }}
+              />
+            </View>
             {error && (
               <Text style={styles.errorText}>{error.message || 'Error'}</Text>
             )}
@@ -81,22 +87,25 @@ const CustomOTPInput = React.forwardRef(
 
 const width =
   Dimensions.get('window').width >= Dimensions.get('window').height
-    ? Dimensions.get('window').height
-    : Dimensions.get('window').width;
+    ? Dimensions.get('window').height - scale(60)
+    : Dimensions.get('window').width - scale(60);
 
-const styles = StyleSheet.create({
+const styles = ScaledSheet.create({
   container: {
     backgroundColor: 'transparent',
-    width: width - 60,
-    height: 50,
+    width: width,
+    height: '50@s',
     flexDirection: 'row',
     alignItems: 'center',
     borderColor: 'transparent',
     borderWidth: 1,
-    borderRadius: 5,
-
-    paddingHorizontal: 10,
-    marginVertical: 5,
+  },
+  otpView: { width: '100%', height: '50@s' },
+  bg: {
+    width: width,
+    height: '50@s',
+    position: 'absolute',
+    resizeMode: 'contain',
   },
   seperatorContainer: {
     position: 'absolute',
@@ -104,11 +113,11 @@ const styles = StyleSheet.create({
     height: '100%',
     alignItems: 'center',
     flexDirection: 'row',
-    marginLeft: 15,
+    marginLeft: '15@s',
   },
   boxItem: {
-    width: (width - 80) / 6,
-    height: 50,
+    width: width / 6,
+    height: '50@s',
     alignItems: 'flex-end',
     justifyContent: 'center',
     // backgroundColor: 'red'
@@ -116,16 +125,19 @@ const styles = StyleSheet.create({
   underlineStyleBase: {
     color: '#3B3B48',
     borderWidth: 0,
-    width: (width - 80) / 6,
+    width: width / 6,
+    fontFamily: 'Nunito-Regular',
+    fontWeight: '600',
+    fontSize: '16@s',
   },
   input: {
-    height: 40,
-    padding: 10,
-    marginLeft: 10,
+    height: '40@s',
+    padding: '10@s',
+    marginLeft: '10@s',
     flex: 1,
     color: '#758DAC',
   },
-  placeHolderText: { color: '#758DAC', position: 'absolute', left: 30 },
+  placeHolderText: { color: '#758DAC', position: 'absolute', left: '30@s' },
   placeHolderOtherText: {
     color: '#EB7376',
   },

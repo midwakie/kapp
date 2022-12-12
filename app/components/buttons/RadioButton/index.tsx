@@ -2,6 +2,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { PixelRatio, Pressable, Text, View } from 'react-native';
+import { scale } from 'react-native-size-matters';
 import styles from './styles';
 
 import { RadioButtonProps } from './types';
@@ -21,24 +22,27 @@ export default function RadioButton({
   selected = false,
   size = 24,
 }: RadioButtonProps) {
-  const borderWidth = PixelRatio.roundToNearestPixel(size * 0.08);
-  const sizeHalf = PixelRatio.roundToNearestPixel(size * 0.7);
-  const sizeFull = PixelRatio.roundToNearestPixel(size);
+  const borderWidth = scale(size * 0.08);
+  const sizeHalf = scale(size * 0.7);
+  const sizeFull = scale(size);
   const { i18n } = useTranslation();
   const direction: string = i18n.dir();
   let orientation: any = {
     flexDirection: direction === 'rtl' ? 'row-reverse' : 'row',
   };
   let margin: any = {
-    marginLeft: direction === 'rtl' ? undefined : 15,
-    marginRight: direction === 'rtl' ? 15 : undefined,
+    marginLeft: direction === 'rtl' ? undefined : scale(15),
+    marginRight: direction === 'rtl' ? scale(15) : undefined,
   };
-  let marginV: any = { color: '#323A3D', fontSize: 16 };
-  let specificStyle: any = { opacity: disabled ? 0.2 : 1, marginLeft: 42 };
+  let marginV: any = { color: '#323A3D', fontSize: scale(16) };
+  let specificStyle: any = {
+    opacity: disabled ? 0.2 : 1,
+    marginLeft: scale(42),
+  };
 
   if (layout === 'column') {
     orientation = { alignItems: 'center' };
-    margin = { marginTop: 10 };
+    margin = { marginTop: scale(10) };
   }
 
   function handlePress() {
