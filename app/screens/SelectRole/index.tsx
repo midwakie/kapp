@@ -35,7 +35,9 @@ const SelectRole: React.FC = () => {
           </View>
           <TouchableOpacity
             style={styles(direction).rolesContainer}
-            onPress={onRoleSelected}>
+            onPress={() => {
+              NavigationService.navigate('Link Child');
+            }}>
             <Text style={styles(direction).titleParent}>
               {t('I am Parent')}
             </Text>
@@ -48,7 +50,7 @@ const SelectRole: React.FC = () => {
           <TouchableOpacity
             style={styles(direction).rolesContainer}
             onPress={() => {
-              NavigationService.navigate('Link Child');
+              NavigationService.navigate('Change School');
             }}>
             <Image
               style={styles(direction).image}

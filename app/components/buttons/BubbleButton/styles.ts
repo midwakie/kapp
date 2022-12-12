@@ -6,13 +6,14 @@ const styles = (isPressed: boolean) =>
       marginBottom: 30,
     },
     ellipse: {
-      width: '137@ms',
-      height: '137@ms',
+      width: '137@s',
+      height: '137@s',
+      borderRadius: '137@s',
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: isPressed
-        ? `rgba(${Math.random() * 100},${Math.random() * 150}, ${
-            Math.random() * 100
+        ? `rgba(${Math.random() * 200},${Math.random() * 150}, ${
+            Math.random() * 200
           }, 0.7)`
         : '#EBEEF0',
     },

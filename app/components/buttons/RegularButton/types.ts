@@ -1,9 +1,9 @@
 export type RegularButtonProps = {
   onPress: any;
-  text: string;
+  text?: string | null;
   colors: Array<string>;
   radius: number;
-  icon: string;
+  icon?: string | null;
   height: number;
-  width: number;
+  width: number | string;
 };
