@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, SafeAreaView, Text, View } from 'react-native';
+import { Image, SafeAreaView, Text, TextStyle, View } from 'react-native';
 import styles from './styles';
 import NavigationService from 'app/navigation/NavigationService';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -10,6 +10,7 @@ import RegularButton from 'app/components/buttons/RegularButton';
 import { useTranslation } from 'react-i18next';
 import Neumorphism from 'react-native-neumorphism';
 import { scale } from 'react-native-size-matters';
+import TitleBar from 'app/components/buttons/TitleBar';
 
 const ChangeSchool: React.FC = () => {
   const { control } = useForm();
@@ -19,8 +20,8 @@ const ChangeSchool: React.FC = () => {
   const direction: string = i18n.dir();
   return (
     <ScrollView style={styles(direction).container} bounces={false}>
-      <SafeAreaView style={styles(direction).safeAreaView}>
-        <View style={styles(direction).container2}>
+      <TitleBar
+        leftComponent={
           <View style={styles(direction).topContainer}>
             <RegularButton
               onPress={() => {
@@ -33,16 +34,20 @@ const ChangeSchool: React.FC = () => {
               colors={['#EBECF0', '#EBECF0']}
             />
           </View>
+        }
+        middleComponent={
           <View style={styles(direction).gradientTextContainer}>
             <GradientText
               colors={['#2AA7DD', '#2AA7DD']}
               text={t('Change School')}
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
-              textStyle={styles(direction).gradientTextStyle}
+              textStyle={styles(direction).gradientTextStyle as TextStyle}
             />
           </View>
-        </View>
+        }
+      />
+      <SafeAreaView style={styles(direction).safeAreaView}>
         <View style={styles(direction).container1}>
           <View style={styles(direction).gradientTextContainer2}>
             <GradientText
@@ -70,7 +75,7 @@ const ChangeSchool: React.FC = () => {
           </View>
           <RegularButton
             onPress={() => {
-              NavigationService.navigate('DeliveryAddress');
+              NavigationService.navigate('Delivery Address');
             }}
             text={t('Update')}
             radius={50}

@@ -88,5 +88,12 @@
   "Update": "تحديث",
   "Edit Child Profile": "تحرير ملف تعريف الطفل",
  "Date of Birth":"تاريخ الولادة",
- "change":"يتغيرون"
+ "change":"يتغيرون",
+ "Delivery Address": "عنوان التسليم",
+ "Continue ": "يكمل",
+ "Amount" : "مقدار",
+ "Discount": "تخفيض",
+ "Shipping Charge": "رسوم الشحن",
+ "Total Amount": "المبلغ الإجمالي",
+ "Free": "حر"
 }

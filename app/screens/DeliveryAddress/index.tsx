@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, Text, View } from 'react-native';
+import { SafeAreaView, Text, TextStyle, View } from 'react-native';
 import styles from './styles';
 import NavigationService from 'app/navigation/NavigationService';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -11,6 +11,7 @@ import CustomInput from 'app/components/inputs/CustomInput';
 import RegularButton from 'app/components/buttons/RegularButton';
 import { useTranslation } from 'react-i18next';
 import { scale } from 'react-native-size-matters';
+import TitleBar from 'app/components/buttons/TitleBar';
 
 const DeliveryAddress: React.FC = () => {
   const { control } = useForm();
@@ -22,9 +23,8 @@ const DeliveryAddress: React.FC = () => {
   const direction: string = i18n.dir();
   return (
     <ScrollView style={styles(direction).container} bounces={false}>
-      <SafeAreaView style={styles(direction).safeAreaView}>
-        {/* <View style={styles(direction).container1}> */}
-        <View style={styles(direction).rectangle}>
+      <TitleBar
+        leftComponent={
           <View style={styles(direction).topContainer}>
             <RegularButton
               onPress={() => {
@@ -37,15 +37,20 @@ const DeliveryAddress: React.FC = () => {
               colors={['#EBECF0', '#EBECF0']}
             />
           </View>
-          <GradientText
-            colors={['#03A0E3', '#0D93CD']}
-            text={t('Delivery Address')}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 0, y: 1 }}
-            textStyle={styles(direction).text}
-          />
-          {/* </View> */}
-        </View>
+        }
+        middleComponent={
+          <View style={styles(direction).gradientTextContainer}>
+            <GradientText
+              colors={['#2AA7DD', '#2AA7DD']}
+              text={t('Delivery Address')}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 0, y: 1 }}
+              textStyle={styles(direction).gradientTextStyle as TextStyle}
+            />
+          </View>
+        }
+      />
+      <SafeAreaView style={styles(direction).safeAreaView}>
         <View style={styles(direction).container2}>
           <View style={styles(direction).inputTextContainer}>
             <CustomInput

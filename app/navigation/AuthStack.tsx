@@ -54,8 +54,8 @@ const AuthStack = () => {
   return (
     <AuthenticationStack.Navigator>
       <Stack.Screen
-        name="CreateChannel"
-        component={CreateChannel}
+        name="Select Role"
+        component={SelectRole}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
@@ -64,8 +64,8 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
-        name="Select Role"
-        component={SelectRole}
+        name="CreateChannel"
+        component={CreateChannel}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
@@ -106,6 +106,16 @@ const AuthStack = () => {
       <Stack.Screen
         name="Link Child"
         component={LinkChild}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Delivery Address"
+        component={DeliveryAddress}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
