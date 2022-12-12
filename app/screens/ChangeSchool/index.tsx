@@ -70,7 +70,7 @@ const ChangeSchool: React.FC = () => {
           </View>
           <RegularButton
             onPress={() => {
-              NavigationService.navigate('  ');
+              NavigationService.navigate('DeliveryAddress');
             }}
             text={t('Update')}
             radius={50}
