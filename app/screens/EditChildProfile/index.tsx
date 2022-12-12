@@ -192,7 +192,7 @@ const EditChildProfile: React.FC = () => {
                 Al Jeel Al Saeed School
               </Text>
               <TouchableOpacity>
-                <Text style={styles(direction).changeText1}>change</Text>
+                <Text style={styles(direction).changeText1}>{t('change')}</Text>
               </TouchableOpacity>
             </View>
           </Neumorphism>
@@ -204,10 +204,11 @@ const EditChildProfile: React.FC = () => {
             radius={12}>
             <View style={styles(direction).interestContainer}>
               <Text style={styles(direction).interestText}>
-                Interest & Hobbies
+                {t('Interests & Hobbies')}
               </Text>
+
               <TouchableOpacity>
-                <Text style={styles(direction).changeText2}>change</Text>
+                <Text style={styles(direction).changeText2}>{t('change')}</Text>
               </TouchableOpacity>
             </View>
           </Neumorphism>
