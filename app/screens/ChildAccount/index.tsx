@@ -120,31 +120,29 @@ const ChildAccount: React.FC = () => {
             />
           </View>
           <View style={styles(direction).radioButtonContainer}>
-            <Neumorphism
-              lightColor={'#ffffff'}
-              darkColor={'#A8A8A8'}
-              shapeType={'pressed'}
-              radius={30}>
-              <View style={styles(direction).touchableOpacity}>
-                <RadioButton
-                  size={16}
-                  id={'1'}
-                  label={'Male'}
-                  onPress={onPressRadioButtonMale}
-                  selected={radioButtonMale}
-                  color={'#03A0E3'}
-                />
-                {/* <HorizontalLine width={'100%'} stroke={1} color={'#E2E2E2'} /> */}
-                <RadioButton
-                  size={16}
-                  id={'2'}
-                  label={'Female'}
-                  onPress={onPressRadioButtonFemale}
-                  selected={radioButtonFemale}
-                  color={'#03A0E3'}
-                />
-              </View>
-            </Neumorphism>
+            <Image
+              source={require('../../assets/inputBg.png')}
+              style={styles(direction).bg}
+            />
+            <View style={styles(direction).touchableOpacity}>
+              <RadioButton
+                size={16}
+                id={'1'}
+                label={`${t('Male')}`}
+                onPress={onPressRadioButtonMale}
+                selected={radioButtonMale}
+                color={'#03A0E3'}
+              />
+              {/* <HorizontalLine width={'100%'} stroke={1} color={'#E2E2E2'} /> */}
+              <RadioButton
+                size={16}
+                id={'2'}
+                label={`${t('Female')}`}
+                onPress={onPressRadioButtonFemale}
+                selected={radioButtonFemale}
+                color={'#03A0E3'}
+              />
+            </View>
           </View>
           <View style={styles(direction).inputTextContainer}>
             <CustomInput

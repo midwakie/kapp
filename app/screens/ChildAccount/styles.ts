@@ -14,7 +14,7 @@ const styles = (direction: string) =>
       backgroundColor: '#EBEEF0',
     },
     container2: {
-      paddingHorizontal: 30,
+      paddingHorizontal: '30@s',
       marginTop: 2,
       width: '100%',
       height: '100%',
@@ -161,7 +161,8 @@ const styles = (direction: string) =>
       // borderRadius: 50,
       // height: 17,
       width: '100%',
-      marginBottom: '21@s',
+      marginBottom: 21,
+      alignItems: 'center',
       // flexDirection:'row',
     },
     topContainer: {
@@ -180,6 +181,12 @@ const styles = (direction: string) =>
       fontWeight: 600,
       color: '#758DAC',
       width: '100%',
+    },
+    bg: {
+      width: '100%',
+      height: '65@ms0.75',
+      position: 'absolute',
+      resizeMode: 'contain',
     },
   });
 
