@@ -1,27 +1,34 @@
-import { Dimensions } from 'react-native';
 import { ScaledSheet } from 'react-native-size-matters';
-const width = Dimensions.get('window').width;
+
 const styles = ScaledSheet.create({
   container: {
-    width: width,
-    height: '70@ms',
-    flexDirection: 'row',
     backgroundColor: '#EBEEF0',
-  },
-  bg: {
-    width: width,
-    height: '70@s',
-    position: 'absolute',
-    resizeMode: 'stretch',
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '100%',
+    height: '110@ms',
+    borderBottomRightRadius: 25,
+    borderBottomLeftRadius: 25,
+    shadowColor: 'rgba(94, 94, 94, 0.25)',
+    shadowOpacity: 1,
+    shadowOffset: { width: 0, height: 4 },
+    shadowRadius: 8,
+    elevation: 20,
   },
   leftContainer: {
     flex: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   middleContainer: {
     flex: 6,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   rightContainer: {
     flex: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
