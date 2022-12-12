@@ -82,5 +82,8 @@
   "Scan QR": "مسح QR",
   "Link Your Child Account": "اربط حساب طفلك",
   "Create Your Child Account": "قم بإنشاء حساب طفلك",
-  "Create Your Child Profile": "قم بإنشاء ملف تعريف طفلك"
+  "Create Your Child Profile": "قم بإنشاء ملف تعريف طفلك",
+  "Edit Child Profile": "تحرير ملف تعريف الطفل",
+ "Date of Birth":"تاريخ الولادة",
+ "change":"يتغيرون"
 }
