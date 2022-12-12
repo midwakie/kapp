@@ -9,6 +9,7 @@ import {
   View,
 } from 'react-native';
 import styles from './styles';
+import TitleBar from 'app/components/buttons/TitleBar';
 import NavigationService from 'app/navigation/NavigationService';
 import { ScrollView } from 'react-native-gesture-handler';
 import RadioButton from 'app/components/buttons/RadioButton';
@@ -50,12 +51,8 @@ const EditChildProfile: React.FC = () => {
   return (
     <ScrollView style={styles(direction).container} bounces={false}>
       <SafeAreaView style={styles(direction).safeAreaView}>
-        <Neumorphism
-          lightColor={'#ffffff'}
-          darkColor={'#A8A8A8'}
-          shapeType={'flat'}
-          radius={25}>
-          <View style={styles(direction).topContainer}>
+        <TitleBar
+          leftComponent={
             <View style={styles(direction).regularContainer}>
               <RegularButton
                 onPress={() => {
@@ -68,6 +65,8 @@ const EditChildProfile: React.FC = () => {
                 colors={['#EBECF0', '#EBECF0']}
               />
             </View>
+          }
+          middleComponent={
             <View style={styles(direction).gradientTextContainer}>
               <GradientText
                 colors={['#2AA7DD', '#2AA7DD']}
@@ -77,8 +76,10 @@ const EditChildProfile: React.FC = () => {
                 textStyle={styles(direction).gradientTextStyle}
               />
             </View>
-          </View>
-        </Neumorphism>
+          }
+          rightComponent={<View></View>}
+        />
+
         <View style={styles(direction).container2}>
           <View style={styles(direction).imageContainer}>
             <Image source={require('../../assets/editChild1.png')}></Image>
