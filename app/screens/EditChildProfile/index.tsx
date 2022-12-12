@@ -79,95 +79,90 @@ const EditChildProfile: React.FC = () => {
             </View>
           </View>
         </Neumorphism>
-        <View style={styles(direction).imageContainer}>
-          <Image source={require('../../assets/editchild1.png')}></Image>
-          <TouchableOpacity>
-            <View style={styles(direction).imageContainer2}>
-              <Image source={require('../../assets/editchild2.png')}></Image>
-            </View>
-          </TouchableOpacity>
-        </View>
-        <View style={styles(direction).coinContainer1}>
-          <Neumorphism
-            lightColor={'#ffffff'}
-            darkColor={'#A8A8A8'}
-            shapeType={'flat'}
-            radius={50}>
-            <View style={styles(direction).coinContainer2}>
-              <Image
-                style={styles(direction).coinImage}
-                source={require('../../assets/goldcoin.png')}></Image>
-            </View>
-          </Neumorphism>
-        </View>
-        {/* <View style={styles(direction).container2}></View> */}
+        <View style={styles(direction).container2}>
+          <View style={styles(direction).imageContainer}>
+            <Image source={require('../../assets/editChild1.png')}></Image>
+            <TouchableOpacity>
+              <View style={styles(direction).imageContainer2}>
+                <Image source={require('../../assets/editChild2.png')}></Image>
+              </View>
+            </TouchableOpacity>
+          </View>
+          <View style={styles(direction).coinContainer1}>
+            <Neumorphism
+              lightColor={'#ffffff'}
+              darkColor={'#A8A8A8'}
+              shapeType={'flat'}
+              radius={50}>
+              <View style={styles(direction).coinContainer2}>
+                <Image
+                  style={styles(direction).coinImage}
+                  source={require('../../assets/goldCoin1.png')}></Image>
+                <Text style={styles(direction).coinText}>450</Text>
+              </View>
+            </Neumorphism>
+          </View>
 
-        {/* <View style={styles(direction).gradientTextContainer}>
-            <GradientText
-              colors={['#2AA7DD', '#2AA7DD']}
-              text={t('Create Your \nChild Profile')}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 0, y: 1 }}
-              textStyle={styles(direction).gradientTextStyle}
+          <View style={styles(direction).inputTextContainer}>
+            <CustomInput
+              control={control}
+              name="first_name"
+              rules={rules.CustomerRules.first_name}
+              placeholder={t('First Name')}
+              label={t('First Name')}
+              keyboardType="default"
+              autoCapitalize="none"
+              returnKeyType="next"
+              onSubmitEditing={() => {
+                lastNameInputRef?.current.setFocus();
+              }}
             />
-          </View> */}
-        <View style={styles(direction).inputTextContainer}>
-          <CustomInput
-            control={control}
-            name="first_name"
-            rules={rules.CustomerRules.first_name}
-            placeholder={t('First Name')}
-            label={t('First Name')}
-            keyboardType="default"
-            autoCapitalize="none"
-            returnKeyType="next"
-            onSubmitEditing={() => {
-              lastNameInputRef?.current.setFocus();
-            }}
-          />
-        </View>
-        <View style={styles(direction).inputTextContainer1}>
-          <CustomInput
-            control={control}
-            ref={lastNameInputRef}
-            name="last_name"
-            rules={rules.CustomerRules.last_name}
-            placeholder={t('Last Name')}
-            label={t('Last Name')}
-            keyboardType="default"
-            autoCapitalize="none"
-            returnKeyType="next"
-            onSubmitEditing={() => {
-              emailInputRef?.current.setFocus();
-            }}
-          />
-        </View>
-        <View style={styles(direction).inputTextContainer1}>
+          </View>
+          <View style={styles(direction).inputTextContainer1}>
+            <CustomInput
+              control={control}
+              ref={lastNameInputRef}
+              name="last_name"
+              rules={rules.CustomerRules.last_name}
+              placeholder={t('Last Name')}
+              label={t('Last Name')}
+              keyboardType="default"
+              autoCapitalize="none"
+              returnKeyType="next"
+              onSubmitEditing={() => {
+                emailInputRef?.current.setFocus();
+              }}
+            />
+          </View>
           <Neumorphism
             lightColor={'#ffffff'}
             darkColor={'#A8A8A8'}
             shapeType={'pressed'}
             radius={60}>
-            <View style={styles(direction).touchableOpacity}>
-              <RadioButton
-                id={'1'}
-                label={`${t('Male')}`}
-                onPress={onPressRadioButtonMale}
-                selected={radioButtonMale}
-                color={'#03A0E3'}
-              />
-              {/* <HorizontalLine width={'100%'} stroke={1} color={'#E2E2E2'} /> */}
-              <RadioButton
-                id={'2'}
-                label={`${t('Female')}`}
-                onPress={onPressRadioButtonFemale}
-                selected={radioButtonFemale}
-                color={'#03A0E3'}
-              />
+            <View style={styles(direction).radioButtonContainer}>
+              <View style={styles(direction).touchableOpacity}>
+                <RadioButton
+                  id={'1'}
+                  size={'16'}
+                  label={`${t('Male')}`}
+                  onPress={onPressRadioButtonMale}
+                  selected={radioButtonMale}
+                  color={'#03A0E3'}
+                />
+
+                <RadioButton
+                  id={'2'}
+                  size={'16'}
+                  label={`${t('Female')}`}
+                  onPress={onPressRadioButtonFemale}
+                  selected={radioButtonFemale}
+                  color={'#03A0E3'}
+                />
+              </View>
             </View>
           </Neumorphism>
-        </View>
-        {/* <View style={styles(direction).inputTextContainer}>
+
+          <View style={styles(direction).inputTextContainer2}>
             <CustomInput
               control={control}
               ref={dateofbirthInputRef}
@@ -190,51 +185,36 @@ const EditChildProfile: React.FC = () => {
                 </TouchableOpacity>
               }
             />
-          </View> */}
-        {/* <View style={styles(direction).inputTextContainer}>
-            <CustomInput
-              control={control}
-              ref={dateofbirthInputRef}
-              name="first spoken language"
-              placeholder={t('First Spoken Language')}
-              label={t('First Spoken Language')}
-              keyboardType="default"
-              autoCapitalize="none"
-              returnKeyType="next"
-              onSubmitEditing={() => {
-                dateofbirthInputRef?.current.setFocus();
-              }}
-              rightComponent={
-                <TouchableOpacity style={styles(direction).rightComponent}>
-                  <MaterialIcon
-                    name={'chevron-down'}
-                    size={35}
-                    color={'#03A0E3'}
-                  />
-                </TouchableOpacity>
-              }
-            />
-          </View> */}
-        {/* <View style={styles(direction).inputTextContainer}>
-            <CustomInput
-              control={control}
-              ref={invitationCodeInputRef}
-              name="invitation_code"
-              placeholder={t('Invitation Code')}
-              label={t('Invitation Code')}
-              keyboardType="default"
-              autoCapitalize="none"
-              returnKeyType="next"
-              onSubmitEditing={() => {
-                passwordInputRef?.current.setFocus();
-              }}
-            />
-          </View> */}
-
-        {/* <View style={styles(direction).bottom}>
+          </View>
+          <Neumorphism lightColor={'#ffffff'} darkColor={'#A8A8A8'} radius={50}>
+            <View style={styles(direction).schoolInputTextContainer}>
+              <Text style={styles(direction).schoolText}>
+                Al Jeel Al Saeed School
+              </Text>
+              <TouchableOpacity>
+                <Text style={styles(direction).changeText1}>change</Text>
+              </TouchableOpacity>
+            </View>
+          </Neumorphism>
+          <View style={styles(direction).marginView}></View>
+          <Neumorphism
+            lightColor={'#ffffff'}
+            darkColor={'#A8A8A8'}
+            shapeType={'flat'}
+            radius={12}>
+            <View style={styles(direction).interestContainer}>
+              <Text style={styles(direction).interestText}>
+                Interest & Hobbies
+              </Text>
+              <TouchableOpacity>
+                <Text style={styles(direction).changeText2}>change</Text>
+              </TouchableOpacity>
+            </View>
+          </Neumorphism>
+          <View style={styles(direction).regularButtonContainer}>
             <RegularButton
               onPress={() => {
-                NavigationService.navigate('');
+                NavigationService.navigate('ChangePassword');
               }}
               text={t('Save')}
               radius={50}
@@ -242,8 +222,8 @@ const EditChildProfile: React.FC = () => {
               width={'100%'}
               colors={['#03BBE3', '#14A9FD']}
             />
-          </View> */}
-        {/* </View> */}
+          </View>
+        </View>
       </SafeAreaView>
     </ScrollView>
   );
