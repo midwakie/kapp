@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import styles from './styles';
 import GradientText from 'app/components/texts/GradientText';
 import RegularButton from 'app/components/buttons/RegularButton';
@@ -7,49 +7,50 @@ import NavigationService from 'app/navigation/NavigationService';
 import { ScrollView } from 'react-native-gesture-handler';
 import { SafeAreaView, View } from 'react-native';
 import BubbleButton from 'app/components/buttons/BubbleButton';
+import useDeviceOrientation from 'app/hooks/useDeviceOrientation';
 
 const HobbiesAndInterest: React.FC = () => {
-  const { t, i18n } = useTranslation();
-  const direction: string = i18n.dir();
+  const { t } = useTranslation();
+  const deviceOrientation = useDeviceOrientation();
   const [musicStatus, setMusicStatus] = useState(false);
   const [danceStatus, setDanceStatus] = useState(false);
   const [gameStatus, setGameStatus] = useState(false);
   const [singStatus, setSingStatus] = useState(false);
   const [writingStatus, setWritingStatus] = useState(false);
   const [footballStatus, setFootballStatus] = useState(false);
-  const onMusicPress = (currentState: boolean) => {
+  const onMusicPress = useCallback((currentState: boolean) => {
     setMusicStatus(currentState);
-  };
-  const onDancePress = (currentState: boolean) => {
+  }, []);
+  const onDancePress = useCallback((currentState: boolean) => {
     setDanceStatus(currentState);
-  };
-  const onGamePress = (currentState: boolean) => {
+  }, []);
+  const onGamePress = useCallback((currentState: boolean) => {
     setGameStatus(currentState);
-  };
-  const onSingPress = (currentState: boolean) => {
+  }, []);
+  const onSingPress = useCallback((currentState: boolean) => {
     setSingStatus(currentState);
-  };
-  const onWritingPress = (currentState: boolean) => {
+  }, []);
+  const onWritingPress = useCallback((currentState: boolean) => {
     setWritingStatus(currentState);
-  };
-  const onFootballPress = (currentState: boolean) => {
+  }, []);
+  const onFootballPress = useCallback((currentState: boolean) => {
     setFootballStatus(currentState);
-  };
+  }, []);
   return (
-    <ScrollView style={styles(direction).container} bounces={false}>
-      <SafeAreaView style={styles(direction).safeAreaView}>
-        <View style={styles(direction).container2}>
-          <View style={styles(direction).gradientTextContainer}>
+    <ScrollView style={styles(deviceOrientation).container} bounces={false}>
+      <SafeAreaView style={styles(deviceOrientation).safeAreaView}>
+        <View style={styles(deviceOrientation).container2}>
+          <View style={styles(deviceOrientation).gradientTextContainer}>
             <GradientText
               colors={['#0EAFF4', '#0D93CD']}
               text={t('Interests & Hobbies')}
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
-              textStyle={styles(direction).gradientTextStyle}
+              textStyle={styles(deviceOrientation).gradientTextStyle}
             />
           </View>
-          <View style={styles(direction).bubbleContainer}>
-            <View style={styles(direction).bubbleContainerLeft}>
+          <View style={styles(deviceOrientation).bubbleContainer}>
+            <View style={styles(deviceOrientation).bubbleContainerLeft}>
               <BubbleButton
                 image={require('../../assets/music.png')}
                 title="Music"
@@ -71,7 +72,7 @@ const HobbiesAndInterest: React.FC = () => {
                 onPress={onSingPress}
               />
             </View>
-            <View style={styles(direction).bubbleContainerRight}>
+            <View style={styles(deviceOrientation).bubbleContainerRight}>
               <BubbleButton
                 image={require('../../assets/writing.png')}
                 title="Writing"
@@ -89,16 +90,18 @@ const HobbiesAndInterest: React.FC = () => {
               />
             </View>
           </View>
-          <RegularButton
-            onPress={() => {
-              NavigationService.navigate('AvatarCreation');
-            }}
-            text={t('Next')}
-            radius={50}
-            height={50}
-            width={'100%'}
-            colors={['#03BBE3', '#14A9FD']}
-          />
+          <View style={styles(deviceOrientation).buttonContainer}>
+            <RegularButton
+              onPress={() => {
+                NavigationService.navigate('AvatarCreation');
+              }}
+              text={t('Next')}
+              radius={50}
+              height={50}
+              width={'100%'}
+              colors={['#03BBE3', '#14A9FD']}
+            />
+          </View>
         </View>
       </SafeAreaView>
     </ScrollView>

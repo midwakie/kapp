@@ -1,4 +1,4 @@
-import { Dimensions, StyleSheet } from 'react-native';
+import { Dimensions } from 'react-native';
 import { ScaledSheet } from 'react-native-size-matters';
 
 const width =
@@ -17,7 +17,7 @@ const styles = (direction: string) =>
     container2: {
       // justifyContent: 'center',
       // alignItems: 'center',
-      paddingHorizontal: '30@s',
+      // paddingHorizontal: '30@s',
       marginTop: 2,
       width: '100%',
       height: '100%',
@@ -30,6 +30,7 @@ const styles = (direction: string) =>
       height: '33@s',
       marginBottom: 40,
       marginTop: 30,
+      paddingHorizontal: '30@s',
     },
     gradientTextStyle: {
       fontSize: '18@s',
@@ -37,19 +38,27 @@ const styles = (direction: string) =>
       fontWeight: '700',
     },
     bubbleContainer: {
-      // justifyContent: 'center',
-      // alignItems: 'center',
-      width: width,
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: '100%',
       marginTop: 10,
-      flexDirection: 'row',
+      flexDirection: direction === 'landscape' ? 'column' : 'row',
       marginBottom: 20,
     },
     bubbleContainerLeft: {
-      marginRight: 24,
-      marginLeft: 13,
+      justifyContent: direction === 'landscape' ? 'space-around' : undefined,
+      width: direction === 'landscape' ? '100%' : undefined,
+      flexDirection: direction === 'landscape' ? 'row' : 'column',
+      marginRight: direction === 'landscape' ? undefined : 24,
     },
     bubbleContainerRight: {
-      marginTop: 100,
+      justifyContent: direction === 'landscape' ? 'space-around' : undefined,
+      width: direction === 'landscape' ? '100%' : undefined,
+      flexDirection: direction === 'landscape' ? 'row' : 'column',
+      marginTop: direction === 'landscape' ? undefined : 100,
+    },
+    buttonContainer: {
+      paddingHorizontal: '30@s',
     },
   });
 
