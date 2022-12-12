@@ -43,7 +43,7 @@ const CreateChannel: React.FC = () => {
           <View style={styles(direction).gradientTextContainer}>
             <GradientText
               colors={['#2AA7DD', '#2AA7DD']}
-              text={t('Change School')}
+              text={t('Create Channel')}
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
               textStyle={styles(direction).gradientTextStyle as TextStyle}
