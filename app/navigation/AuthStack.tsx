@@ -52,18 +52,8 @@ const AuthStack = () => {
   return (
     <AuthenticationStack.Navigator>
       <Stack.Screen
-        name="HobbiesAndInterest"
-        component={HobbiesAndInterest}
-        options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
-          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="TestHardness"
-        component={TestHardness}
+        name="CreateChannel"
+        component={CreateChannel}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
@@ -202,16 +192,6 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
-        name="CreateChannel"
-        component={CreateChannel}
-        options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
-          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
         name="ChildProfile"
         component={ChildProfile}
         options={{
@@ -234,6 +214,16 @@ const AuthStack = () => {
       <Stack.Screen
         name="EditChildProfile"
         component={EditChildProfile}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="HobbiesAndInterest"
+        component={HobbiesAndInterest}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation

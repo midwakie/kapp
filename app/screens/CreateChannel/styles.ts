@@ -1,4 +1,5 @@
-import { Dimensions, StyleSheet } from 'react-native';
+import { Dimensions } from 'react-native';
+import { ScaledSheet } from 'react-native-size-matters';
 
 const width =
   Dimensions.get('window').width >= Dimensions.get('window').height
@@ -6,42 +7,25 @@ const width =
     : Dimensions.get('window').width;
 
 const styles = (direction: string) =>
-  StyleSheet.create({
+  ScaledSheet.create({
     container: {
       width: '100%',
       height: '100%',
-      backgroundColor: '#E5E5E5',
+      backgroundColor: '#EBEEF0',
     },
     safeAreaView: { alignSelf: 'stretch' },
     gradientTextStyle: {
-      fontSize: 16,
+      fontSize: '16@s',
       fontFamily: 'Nunito-Regular',
       fontWeight: '700',
-      lineHeight: 25,
       textAlign: 'center',
-    },
-    gradientTextStyle2: {
-      fontSize: 24,
-      fontFamily: 'Nunito-Regular',
-      fontWeight: '600',
-      lineHeight: 33,
-      textAlign: 'center',
+      adjustsFontSizeToFit: true,
     },
     gradientTextContainer: {
-      width: 111,
-      justifyContent: 'center',
-      alignItems: 'center',
-      height: 22,
-      marginBottom: 38,
-      marginTop: 50,
-      marginLeft: 74,
-    },
-    gradientTextContainer2: {
       width: '100%',
       justifyContent: 'center',
       alignItems: 'center',
-      height: 33,
-      marginBottom: 85,
+      height: '22@s',
     },
     inputTextContainer: {
       width: '100%',
@@ -93,17 +77,17 @@ const styles = (direction: string) =>
       flexDirection: 'row',
       alignItems: 'center',
       width: '100%',
-      height: 110,
-      borderBottomEndRadius: 25,
-      borderBottomStartRadius: 25,
-      marginBottom: 137,
-      shadowColor: '#5E5E5E',
+      height: '110@ms',
+      borderBottomRightRadius: 25,
+      borderBottomLeftRadius: 25,
+      shadowColor: 'rgba(94, 94, 94, 0.25)',
       shadowOpacity: 1,
-      shadowOffset: { width: 6, height: 10 },
-      textShadowRadius: 6,
-      elevation: 3,
+      shadowOffset: { width: 0, height: 4 },
+      shadowRadius: 8,
+      elevation: 20,
     },
     container1: {
+      top: '170@s',
       paddingHorizontal: 30,
       marginTop: 2,
       width: '100%',
@@ -111,13 +95,11 @@ const styles = (direction: string) =>
       paddingBottom: 25,
     },
     topContainer: {
-      flexDirection: 'row',
-      justifyContent: 'flex-start',
+      justifyContent: 'center',
       alignItems: 'center',
+      position: 'absolute',
       width: 38,
-      marginTop: 40,
-      marginBottom: 32,
-      marginLeft: 20,
+      marginLeft: '20@s',
     },
     bottom: {
       marginTop: 100,
@@ -129,6 +111,7 @@ const styles = (direction: string) =>
       borderRadius: 100,
       borderWidth: 1,
       alignSelf: 'center',
+      borderColor: '#FECE32',
     },
     profileImg: {
       height: 100,

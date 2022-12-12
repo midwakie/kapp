@@ -2,7 +2,8 @@ import React from 'react';
 import {
   Image,
   SafeAreaView,
-  Text,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  TextStyle,
   TouchableHighlight,
   View,
 } from 'react-native';
@@ -14,19 +15,17 @@ import { useForm } from 'react-hook-form';
 import CustomInput from 'app/components/inputs/CustomInput';
 import RegularButton from 'app/components/buttons/RegularButton';
 import { useTranslation } from 'react-i18next';
-import Neumorphism from 'react-native-neumorphism';
-import { scale } from 'react-native-size-matters';
+import TitleBar from 'app/components/buttons/TitleBar';
 
 const CreateChannel: React.FC = () => {
   const { control } = useForm();
   const channelNameInputRef: React.RefObject<any> = React.createRef();
-  const passwordInputRef: React.RefObject<any> = React.createRef();
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
   return (
     <ScrollView style={styles(direction).container} bounces={false}>
-      <SafeAreaView style={styles(direction).safeAreaView}>
-        <View style={styles(direction).container2}>
+      <TitleBar
+        leftComponent={
           <View style={styles(direction).topContainer}>
             <RegularButton
               onPress={() => {
@@ -39,22 +38,22 @@ const CreateChannel: React.FC = () => {
               colors={['#EBECF0', '#EBECF0']}
             />
           </View>
+        }
+        middleComponent={
           <View style={styles(direction).gradientTextContainer}>
             <GradientText
               colors={['#2AA7DD', '#2AA7DD']}
               text={t('Change School')}
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
-              textStyle={styles(direction).gradientTextStyle}
+              textStyle={styles(direction).gradientTextStyle as TextStyle}
             />
           </View>
-        </View>
+        }
+      />
+      <SafeAreaView style={styles(direction).safeAreaView}>
         <View style={styles(direction).container1}>
-          <TouchableHighlight
-            style={[
-              styles(direction).profileImgContainer,
-              { borderColor: '#FECE32', borderWidth: 1 },
-            ]}>
+          <TouchableHighlight style={styles(direction).profileImgContainer}>
             <Image
               source={require('../../assets/channel.png')}
               style={styles(direction).profileImg}
