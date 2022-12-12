@@ -526,7 +526,7 @@ const AvatarModifier: React.FC = () => {
               colors={['#EBECF0', '#EBECF0']}
             />
             <PlainButton
-              onPress={() => {}}
+              onPress={() => {NavigationService.navigate('HobbiesAndInterest')}}
               style={styles(direction).skipButtonText}
               containerStyle={styles(direction).skipButtonContainer}
               text={t('Done')}

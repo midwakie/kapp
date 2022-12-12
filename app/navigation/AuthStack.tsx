@@ -19,6 +19,7 @@ import ChangePassword from 'app/screens/ChangePassword';
 import { useTranslation } from 'react-i18next';
 import { retrieveSelectedLanguage } from 'app/utils/storageUtils';
 import AvatarModifier from 'app/screens/AvatarModifier';
+import HobbiesAndInterest from 'app/screens/HobbiesAndInterests';
 import AccountAction from 'app/screens/AccountAction';
 import LinkChild from 'app/screens/LinkChild';
 import TestHardness from 'app/screens/TestHardness';
@@ -47,6 +48,16 @@ const AuthStack = () => {
 
   return (
     <AuthenticationStack.Navigator>
+      <Stack.Screen
+        name="HobbiesAndInterest"
+        component={HobbiesAndInterest}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
       <Stack.Screen
         name="TestHardness"
         component={TestHardness}
