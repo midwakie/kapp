@@ -1,4 +1,5 @@
 import { Dimensions, StyleSheet } from 'react-native';
+import { ScaledSheet } from 'react-native-size-matters';
 
 const width =
   Dimensions.get('window').width >= Dimensions.get('window').height
@@ -6,7 +7,7 @@ const width =
     : Dimensions.get('window').width;
 
 const styles = (direction: string) =>
-  StyleSheet.create({
+  ScaledSheet.create({
     container: {
       width: '100%',
       height: '100%',
@@ -21,20 +22,20 @@ const styles = (direction: string) =>
     },
     safeAreaView: { alignSelf: 'stretch' },
     gradientTextStyle: {
-      fontSize: 24,
+      fontSize: '24@s',
       fontFamily: 'Nunito',
       fontStyle: 'normal',
       fontWeight: '800',
-      lineHeight: 33,
+      lineHeight: '33@s',
       textAlign: 'center',
     },
     gradientTextContainer: {
       width: '100%',
       justifyContent: 'center',
       alignItems: 'center',
-      height: 70,
-      marginBottom: 40,
-      marginTop: 27,
+      height: '70@s',
+      marginBottom: '40@s',
+      marginTop: '27@s',
     },
     inputTextContainer: {
       width: '100%',
@@ -57,7 +58,7 @@ const styles = (direction: string) =>
     forgotPassword: {
       color: '#FE4C3E',
       textAlign: 'right',
-      fontSize: 12,
+      fontSize: '12@s',
       fontWeight: '600',
       backgroundColor: 'transparent',
     },
@@ -90,7 +91,7 @@ const styles = (direction: string) =>
     },
     inputContainer: {
       width: width - 60,
-      height: 50,
+      height: '50@s',
       borderRadius: 50,
       justifyContent: 'center',
       alignItems: 'center',
@@ -127,13 +128,13 @@ const styles = (direction: string) =>
     bottomText: {
       color: '#758DAC',
       fontWeight: '600',
-      fontSize: 12,
+      fontSize: '12@s',
       fontFamily: 'Nunito-Regular',
     },
     agreeDisagreeText: {
       color: '#758DAC',
       fontWeight: '600',
-      fontSize: 12,
+      fontSize: '12@s',
       fontFamily: 'Nunito-Regular',
       lineHeight: 16,
     },
@@ -146,7 +147,7 @@ const styles = (direction: string) =>
     },
     saveButton: {
       color: '#03A0E3',
-      fontSize: 12,
+      fontSize: '12@s',
       fontWeight: '700',
       backgroundColor: 'transparent',
       fontFamily: 'Nunito-Regular',
@@ -154,13 +155,13 @@ const styles = (direction: string) =>
     saveButtonContainer: {
       justifyContent: 'center',
       alignItems: 'center',
-      height: 20,
+      height: '20@s',
     },
     radioButtonContainer: {
       // borderRadius: 50,
       // height: 17,
       width: '100%',
-      marginBottom: 21,
+      marginBottom: '21@s',
       // flexDirection:'row',
     },
     topContainer: {
@@ -174,8 +175,8 @@ const styles = (direction: string) =>
     touchableOpacity: {
       flexDirection: 'row',
       fontFamily: 'Lato',
-      height: 60,
-      fontSize: 12,
+      height: '60@s',
+      fontSize: '12@s',
       fontWeight: 600,
       color: '#758DAC',
       width: '100%',

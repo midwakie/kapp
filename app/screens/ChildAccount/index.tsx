@@ -209,7 +209,7 @@ const ChildAccount: React.FC = () => {
           </View>
           <RegularButton
             onPress={() => {
-              NavigationService.navigate('Verify Email');
+              NavigationService.navigate('ActivitiesStats');
             }}
             text={t('Save')}
             radius={50}

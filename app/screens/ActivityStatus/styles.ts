@@ -1,4 +1,5 @@
 import { Dimensions, StyleSheet } from 'react-native';
+import { ScaledSheet } from 'react-native-size-matters';
 
 const width =
   Dimensions.get('window').width >= Dimensions.get('window').height
@@ -6,7 +7,7 @@ const width =
     : Dimensions.get('window').width;
 
 const styles = (direction: string) =>
-  StyleSheet.create({
+  ScaledSheet.create({
     container: {
       width: '100%',
       height: '100%',
@@ -76,11 +77,11 @@ const styles = (direction: string) =>
       fontFamily: 'Nunito-Regular',
     },
     topContainer: {
-      width: 38,
-      height: 10,
-      left: 20,
-      radius: 50,
-      bottom: 2,
+      width: '38@s',
+      height: '10@s',
+      marginLeft: '20@s',
+      // radius: 50,
+      marginBottom: '2@s',
       // flexDirection: 'row',
       // justifyContent: 'flex-start',
       // alignItems: 'center',
@@ -93,9 +94,9 @@ const styles = (direction: string) =>
       borderRightWidth: 1,
       borderColor: '#FDFDFD',
       width: '100%',
-      height: 110,
+      height: '110@s',
       backgroundColor: '#EBEEF0',
-      elevation: 20,
+      elevation: '20@s',
       // paddingRight: 10,
       // marginTop: -2,
       // marginStart: ,
@@ -104,7 +105,7 @@ const styles = (direction: string) =>
       justifyContent: 'center',
     },
     stats: {
-      width: '100%',
+      // width: '100%',
       height: 38,
       left: 150,
       right: 150,
