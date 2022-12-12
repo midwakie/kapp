@@ -11,10 +11,6 @@ const TitleBar = ({
 }: TitleBarProps) => {
   return (
     <View style={styles.container}>
-      <Image
-        source={require('../../../assets/titleBarBg.png')}
-        style={styles.bg}
-      />
       <View style={styles.leftContainer}>{leftComponent}</View>
       <View style={styles.middleContainer}>{middleComponent}</View>
       <View style={styles.rightContainer}>{rightComponent}</View>
