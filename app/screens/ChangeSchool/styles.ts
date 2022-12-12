@@ -1,10 +1,4 @@
-import { Dimensions, StyleSheet } from 'react-native';
 import { ScaledSheet } from 'react-native-size-matters';
-
-const width =
-  Dimensions.get('window').width >= Dimensions.get('window').height
-    ? Dimensions.get('window').height
-    : Dimensions.get('window').width;
 
 const styles = (direction: string) =>
   ScaledSheet.create({
