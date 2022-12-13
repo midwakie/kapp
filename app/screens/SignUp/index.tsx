@@ -279,7 +279,9 @@ const SignUp: React.FC = () => {
             </Text>
             <HorizontalLine width={8} />
             <PlainButton
-              onPress={() => {}}
+              onPress={() => {
+                NavigationService.replace('Sign In');
+              }}
               style={styles(direction).signUpButton}
               containerStyle={styles(direction).signUpButtonContainer}
               text={t('Sign in')}

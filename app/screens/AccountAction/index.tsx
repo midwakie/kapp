@@ -28,7 +28,7 @@ const AccountAction: React.FC = () => {
         <View style={styles.container2}>
           <TouchableOpacity
             onPress={() => {
-              NavigationService.navigate('EditChildProfile');
+              NavigationService.navigate('Link Child');
             }}
             style={styles.itemTouchableOpacity}>
             <Image
@@ -40,7 +40,9 @@ const AccountAction: React.FC = () => {
         </View>
         <View style={styles.container3}>
           <TouchableOpacity
-            onPress={() => {}}
+            onPress={() => {
+              NavigationService.navigate('Child Account');
+            }}
             style={styles.itemTouchableOpacity}>
             <Image
               style={styles.itemImage}
@@ -51,7 +53,9 @@ const AccountAction: React.FC = () => {
         </View>
         <View style={styles.container4}>
           <TouchableOpacity
-            onPress={() => {}}
+            onPress={() => {
+              NavigationService.navigate('ChildProfile');
+            }}
             style={styles.itemTouchableOpacity}>
             <Image
               style={styles.itemImage}

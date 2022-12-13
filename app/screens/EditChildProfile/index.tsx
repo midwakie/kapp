@@ -189,7 +189,10 @@ const EditChildProfile: React.FC = () => {
                 <Text style={styles(direction).schoolText}>
                   Al Jeel Al Saeed School
                 </Text>
-                <TouchableOpacity onPress={() => {}}>
+                <TouchableOpacity
+                  onPress={() => {
+                    NavigationService.navigate('Change School');
+                  }}>
                   <Text style={styles(direction).changeText1}>
                     {t('change')}
                   </Text>
@@ -275,7 +278,7 @@ const EditChildProfile: React.FC = () => {
           <View style={styles(direction).regularButtonContainer}>
             <RegularButton
               onPress={() => {
-                NavigationService.navigate('ChangePassword');
+                NavigationService.reset('Select Role');
               }}
               text={t('Save')}
               radius={50}

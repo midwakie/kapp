@@ -13,12 +13,17 @@ import HorizontalLine from 'app/components/lines/HorizontalLine';
 import NavigationService from 'app/navigation/NavigationService';
 import { useTranslation } from 'react-i18next';
 import { scale } from 'react-native-size-matters';
+import { useDispatch } from 'react-redux';
+import * as selectedRoleActions from 'app/store/actions/selectedRoleActions';
+import { ROLES } from 'app/config/role-config';
 const SelectRole: React.FC = () => {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
-  const onRoleSelected = () => {
+  const dispatch = useDispatch();
+  const onRoleSelected = (role: string) => {
     //TODO Need to implement update selected role in redux store
-    NavigationService.navigate('Sign Up');
+    dispatch(selectedRoleActions.setSelectedRole(role));
+    NavigationService.navigate('Welcome');
   };
   return (
     <ScrollView style={styles(direction).container} bounces={false}>
@@ -36,7 +41,7 @@ const SelectRole: React.FC = () => {
           <TouchableOpacity
             style={styles(direction).rolesContainer}
             onPress={() => {
-              NavigationService.navigate('EditChildProfile');
+              onRoleSelected(ROLES.PARENT);
             }}>
             <Text style={styles(direction).titleParent}>
               {t('I am Parent')}
@@ -50,7 +55,7 @@ const SelectRole: React.FC = () => {
           <TouchableOpacity
             style={styles(direction).rolesContainer}
             onPress={() => {
-              NavigationService.navigate('Welcome');
+              onRoleSelected(ROLES.STUDENT);
             }}>
             <Image
               style={styles(direction).image}
@@ -63,7 +68,9 @@ const SelectRole: React.FC = () => {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles(direction).rolesContainer}
-            onPress={onRoleSelected}>
+            onPress={() => {
+              onRoleSelected(ROLES.TEACHER);
+            }}>
             <Text style={styles(direction).titleTeacher}>
               {t('I am Teacher')}
             </Text>

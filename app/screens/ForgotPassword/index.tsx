@@ -58,7 +58,7 @@ const ForgotPassword: React.FC = () => {
           </View>
           <RegularButton
             onPress={() => {
-              NavigationService.navigate('ChangePassword');
+              NavigationService.navigate('NewPassword');
             }}
             text={t('Send')}
             radius={50}
