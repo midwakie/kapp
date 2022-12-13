@@ -255,7 +255,7 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
-        name="HobbiesAndInterest"
+        name="HobbiesAndInterests"
         component={HobbiesAndInterest}
         options={{
           // When logging out, a pop animation feels intuitive

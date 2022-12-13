@@ -74,21 +74,36 @@ const styles = (direction: string) =>
     row1: {
       flexDirection: 'row',
       justifyContent: 'space-between',
-      marginTop: 18,
-      height: '22@s',
+      marginTop: 20,
+      height: '50@s',
+      marginLeft: 40,
+      width: 200,
+      radius: 50,
     },
     row2: {
       flexDirection: 'row',
       justifyContent: 'space-between',
-      marginTop: 36,
+      marginTop: 35,
+      width: 200,
+      marginLeft: 40,
+
       height: '22@s',
+  
     },
     text1: {
       color: '#455157',
       fontSize: '16@s',
-      fontWeight: '600',
+      fontWeight: '200',
       fontFamily: 'Nunito-Regular',
       marginLeft: 25,
+    },
+    text12: {
+      color: '#758DAC,#2F4868',
+      fontSize: '16@s',
+      fontWeight: '800',
+      fontFamily: 'Nunito-Regular',
+      marginLeft: 25,
+      lineHeight: 22,
     },
     text2: {
       color: '#455157',
@@ -116,6 +131,20 @@ const styles = (direction: string) =>
       fontSize: '16@s',
       fontFamily: 'Nunito-Regular',
       fontWeight: '700',
+      width: '100%',
+    },
+    bottom: {
+      marginTop: 60,
+    },
+    buttonInnerContainer: { width: '45%' },
+    buttonInnerContainer2: { width: '45%', color: ' #758DAC' },
+  
+    buttonContainer: {
+      marginBottom: '20@s',
+      paddingHorizontal: 20,
+      flexDirection: direction === 'rtl' ? 'row-reverse' : 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
       width: '100%',
     },
   });

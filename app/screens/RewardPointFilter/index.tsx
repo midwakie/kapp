@@ -15,10 +15,7 @@ import TitleBar from 'app/components/buttons/TitleBar';
 
 const RewardPointFilter: React.FC = () => {
   const { control } = useForm();
-  const addressInputRef: React.RefObject<any> = React.createRef();
-  const emailInputRef: React.RefObject<any> = React.createRef();
-  const mobileNumberInputRef: React.RefObject<any> = React.createRef();
-  const invitationCodeInputRef: React.RefObject<any> = React.createRef();
+
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
   return (
@@ -42,7 +39,7 @@ const RewardPointFilter: React.FC = () => {
           <View style={styles(direction).gradientTextContainer}>
             <GradientText
               colors={['#2AA7DD', '#2AA7DD']}
-              text={t('Delivery Address')}
+              text={t('Filter')}
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
               textStyle={styles(direction).gradientTextStyle as TextStyle}
@@ -52,64 +49,6 @@ const RewardPointFilter: React.FC = () => {
       />
       <SafeAreaView style={styles(direction).safeAreaView}>
         <View style={styles(direction).container2}>
-          <View style={styles(direction).inputTextContainer}>
-            <CustomInput
-              control={control}
-              name="name"
-              placeholder={t('Name')}
-              label={t('Name')}
-              keyboardType="default"
-              autoCapitalize="none"
-              returnKeyType="next"
-              onSubmitEditing={() => {
-                addressInputRef?.current.setFocus();
-              }}
-            />
-          </View>
-          <View style={styles(direction).inputTextContainer}>
-            <CustomInput
-              control={control}
-              ref={addressInputRef}
-              name="address"
-              rules={rules.CustomerRules.address_number}
-              placeholder={t('Address')}
-              label={t('Address')}
-              keyboardType="default"
-              autoCapitalize="none"
-              returnKeyType="next"
-              onSubmitEditing={() => {
-                mobileNumberInputRef?.current.setFocus();
-              }}
-            />
-          </View>
-          <View style={styles(direction).inputTextContainer}>
-            <CustomInput
-              control={control}
-              ref={mobileNumberInputRef}
-              name="mobile_number"
-              placeholder={t('Mobile Number')}
-              label={t('Mobile Number')}
-              keyboardType="default"
-              autoCapitalize="none"
-              returnKeyType="next"
-              onSubmitEditing={() => {
-                invitationCodeInputRef?.current.setFocus();
-              }}
-            />
-          </View>
-          <View style={styles(direction).inputTextContainer1}>
-            <CustomInput
-              control={control}
-              ref={emailInputRef}
-              name="email"
-              rules={rules.AuthRules.email}
-              placeholder={t('Email')}
-              label={t('Email')}
-              keyboardType="email-address"
-              autoCapitalize="none"
-              returnKeyType="next"
-            />
-          </View>
           <Neumorphism
             lightColor={'#ffffff'}
             darkColor={'#A8A8A8'}
@@ -117,31 +56,63 @@ const RewardPointFilter: React.FC = () => {
             radius={scale(14)}>
             <View style={styles(direction).container3}>
               <View style={styles(direction).row}>
-                <Text style={styles(direction).text1}>{t('Amount')}</Text>
-                <Text style={styles(direction).text2}>{t('$15.50')}</Text>
+                <Text style={styles(direction).text1}>
+                  {t('Transactions Type')}
+                </Text>
               </View>
               <View style={styles(direction).row1}>
-                <Text style={styles(direction).text1}>{t('Discount')}</Text>
-                <Text style={styles(direction).text2}>{t('5%')}</Text>
+                <View style={styles(direction).buttonInnerContainer}>
+                  <RegularButton
+                    // onPress={onSignUp}
+                    text={t('All')}
+                    radius={50}
+                    height={50}
+                    width={'100%'}
+                    colors={['#03BBE3', '#14A9FD']}
+                  />
+                </View>
               </View>
-              <View style={styles(direction).row1}>
+
+              <View style={styles(direction).row2}>
+                <View style={styles(direction).buttonInnerContainer2}>
+                  <RegularButton
+                    // onPress={onSignIn}
+                    text={t('Spent')}
+                    radius={50}
+                    height={50}
+                    width={'100%'}
+                    colors={['#E2E2E2', '#FFFFFF']}
+                  />
+                </View>
+                <View style={styles(direction).buttonInnerContainer2}>
+                  <RegularButton
+                    // onPress={onSignIn}
+                    text={t('Earned')}
+                    radius={50}
+                    height={50}
+                    width={'100%'}
+                    colors={['#E2E2E2', '#FFFFFF']}
+                  />
+                </View>
+              </View>
+              {/* <View style={styles(direction).row1}>
                 <Text style={styles(direction).text1}>
                   {t('Shipping Charge')}
                 </Text>
                 <Text style={styles(direction).text2}>{t('Free')}</Text>
-              </View>
-              <View style={styles(direction).row2}>
+              </View> */}
+              {/* <View style={styles(direction).row2}>
                 <Text style={styles(direction).text3}>{t('Total Amount')}</Text>
                 <Text style={styles(direction).text4}>{t('$14.72')}</Text>
-              </View>
+              </View> */}
             </View>
           </Neumorphism>
-          <View style={{ marginTop: 40 }}>
+          <View style={{ marginTop: 200 }}>
             <RegularButton
               onPress={() => {
                 NavigationService.navigate(' ');
               }}
-              text={t('Continue ')}
+              text={t('Apply ')}
               radius={50}
               height={50}
               width={'100%'}
