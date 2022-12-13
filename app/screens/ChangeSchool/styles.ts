@@ -1,17 +1,11 @@
-import { Dimensions, StyleSheet } from 'react-native';
 import { ScaledSheet } from 'react-native-size-matters';
-
-const width =
-  Dimensions.get('window').width >= Dimensions.get('window').height
-    ? Dimensions.get('window').height
-    : Dimensions.get('window').width;
 
 const styles = (direction: string) =>
   ScaledSheet.create({
     container: {
       width: '100%',
       height: '100%',
-      backgroundColor: '#E5E5E5',
+      backgroundColor: '#EBEEF0',
     },
     safeAreaView: { alignSelf: 'stretch' },
     topContainer: {
@@ -22,18 +16,14 @@ const styles = (direction: string) =>
       marginLeft: '20@s',
     },
     gradientTextContainer: {
-      width: '111@s',
+      width: '100%',
       justifyContent: 'center',
       alignItems: 'center',
-      height: '22@s',
-      marginBottom: 38,
-      marginTop: 50,
     },
     gradientTextStyle: {
       fontSize: '16@s',
       fontFamily: 'Nunito-Regular',
       fontWeight: '700',
-      lineHeight: 25,
       textAlign: 'center',
     },
     container1: {
@@ -54,7 +44,6 @@ const styles = (direction: string) =>
       fontSize: '24@s',
       fontFamily: 'Nunito-Regular',
       fontWeight: '600',
-      lineHeight: 33,
       textAlign: 'center',
     },
     inputTextContainer: {
