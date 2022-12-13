@@ -177,7 +177,9 @@ const EditChildProfile: React.FC = () => {
                 dateofbirthInputRef?.current.setFocus();
               }}
               rightComponent={
-                <TouchableOpacity style={styles(direction).rightComponent}>
+                <TouchableOpacity
+                  onPress={() => {}}
+                  style={styles(direction).rightComponent}>
                   <MaterialIcon
                     name={'chevron-down'}
                     size={35}
@@ -192,7 +194,7 @@ const EditChildProfile: React.FC = () => {
               <Text style={styles(direction).schoolText}>
                 Al Jeel Al Saeed School
               </Text>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => {}}>
                 <Text style={styles(direction).changeText1}>{t('change')}</Text>
               </TouchableOpacity>
             </View>
@@ -208,9 +210,52 @@ const EditChildProfile: React.FC = () => {
                 {t('Interests & Hobbies')}
               </Text>
 
-              <TouchableOpacity>
-                <Text style={styles(direction).changeText2}>{t('change')}</Text>
-              </TouchableOpacity>
+              <View style={styles(direction).interestIconContainer}>
+                <TouchableOpacity onPress={() => {}}>
+                  <View style={styles(direction).interestIcon1}>
+                    <Image
+                      source={require('../../assets/interestIcon1.png')}></Image>
+                  </View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => {}}>
+                  <View style={styles(direction).interestIcons}>
+                    <Image
+                      source={require('../../assets/interestIcon2.png')}></Image>
+                  </View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => {}}>
+                  <View style={styles(direction).interestIcons}>
+                    <Image
+                      source={require('../../assets/interestIcon3.png')}></Image>
+                  </View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => {}}>
+                  <View style={styles(direction).interestIcons}>
+                    <Image
+                      source={require('../../assets/interestIcon4.png')}></Image>
+                  </View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => {}}>
+                  <View style={styles(direction).interestIcons}>
+                    <Image
+                      source={require('../../assets/interestIcon5.png')}></Image>
+                  </View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => {}}>
+                  <View style={styles(direction).interestIcons}>
+                    <Image
+                      source={require('../../assets/interestIcon6.png')}></Image>
+                    <Image
+                      style={styles(direction).plusFourImage}
+                      source={require('../../assets/+4.png')}></Image>
+                  </View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => {}}>
+                  <Text style={styles(direction).changeText2}>
+                    {t('change')}
+                  </Text>
+                </TouchableOpacity>
+              </View>
             </View>
           </Neumorphism>
           <View style={styles(direction).regularButtonContainer}>

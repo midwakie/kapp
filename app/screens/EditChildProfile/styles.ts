@@ -168,7 +168,6 @@ schoolInputTextContainer:{
   width: width - 60,
   height: 50,
 borderRadius: 50,
-justifyContent:"flex-start",
 alignItems: "center",
 backgroundColor:"#EBEEF0",
 flexDirection:"row",
@@ -183,7 +182,7 @@ interestContainer:{
   height: 86,
   borderRadius:12,
   backgroundColor:"#EBEEF0",
-  flexDirection:"row",
+ 
   },
   schoolText:{
     fontFamily:"Nunito-Regular",
@@ -198,24 +197,26 @@ changeText1:{
   width:47,
   lineHeight:16.2,
   fontWeight:"600",
+  marginLeft:6,
+ 
 },
 interestText:{
   color:"#455157",
   fontFamily:"Nunito-Regular",
   fontWeight:"600",
-  fontSize:14,
+  fontSize:12,
   paddingLeft:25,
   marginTop:10,
-  
+  lineHeight:16,
+ },
 
-},
 changeText2:{
   color:"#03A0E3",
   width:47,
   lineHeight:16.2,
   fontWeight:"600",
-  marginTop:47,
-  marginLeft:102,
+  marginTop:22,
+  marginLeft:113,
 
 },
 regularButtonContainer:{
@@ -223,6 +224,29 @@ width:"100%",
 width:width-60,
 marginTop:30,
 
+},
+interestIconContainer:{
+flexDirection:"row",
+lineHeight:14,
+
+},
+interestIcon1:{
+ height: 25,
+width: 25,
+ borderRadius: 25,
+marginTop: 12,
+marginLeft:25,
+},
+interestIcons:{
+height: 25,
+width: 25,
+borderRadius: 25,
+ marginTop: 12,
+marginLeft:-9,
+
+},
+plusFourImage:{
+  marginTop: -17,marginLeft: 4,
 },
  });
 
