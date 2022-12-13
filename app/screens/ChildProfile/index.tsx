@@ -195,7 +195,7 @@ const ChildProfile: React.FC = () => {
           <View style={styles(direction).bottom}>
             <RegularButton
               onPress={() => {
-                NavigationService.navigate('');
+                NavigationService.navigate('EditChildProfile');
               }}
               text={t('Save')}
               radius={50}

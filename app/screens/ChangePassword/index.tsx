@@ -125,7 +125,7 @@ const ChangePassword: React.FC = () => {
           <View style={styles(direction).regularButton}>
             <RegularButton
               onPress={() => {
-                NavigationService.navigate('AccountAction');
+                NavigationService.reset('Select Role');
               }}
               text={t('Send')}
               radius={50}
