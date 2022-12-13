@@ -28,6 +28,8 @@ import TestHardness from 'app/screens/TestHardness';
 import ChildProfile from 'app/screens/ChildProfile';
 import CreateChannel from 'app/screens/CreateChannel';
 import EditChildProfile from 'app/screens/EditChildProfile';
+import ChildAccount from 'app/screens/ChildAccount';
+import ActivitiesStats from 'app/screens/ActivityStatus';
 
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
@@ -56,6 +58,26 @@ const AuthStack = () => {
       <Stack.Screen
         name="Select Role"
         component={SelectRole}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Child Account"
+        component={ChildAccount}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ActivitiesStats"
+        component={ActivitiesStats}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation

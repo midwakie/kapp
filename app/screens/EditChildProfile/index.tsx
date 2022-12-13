@@ -82,10 +82,10 @@ const EditChildProfile: React.FC = () => {
 
         <View style={styles(direction).container2}>
           <View style={styles(direction).imageContainer}>
-            <Image source={require('../../assets/editChild1.png')}></Image>
+            {/* <Image source={require('../../assets/editChild1.png')}></Image> */}
             <TouchableOpacity>
               <View style={styles(direction).imageContainer2}>
-                <Image source={require('../../assets/editChild2.png')}></Image>
+                {/* <Image source={require('../../assets/editChild2.png')}></Image> */}
               </View>
             </TouchableOpacity>
           </View>
