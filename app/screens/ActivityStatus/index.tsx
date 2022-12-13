@@ -194,7 +194,9 @@ const ActivitiesStats: React.FC = () => {
                 <Text style={styles(direction).text}>
                   {t('Total time spent on video')}
                 </Text>
-                <Text style={styles(direction).insidetext}>{t('50 \nhrs')}</Text>
+                <Text style={styles(direction).insidetext}>
+                  {t('50 \nhrs')}
+                </Text>
               </View>
             </Neumorphism>
           </View>
@@ -231,7 +233,9 @@ const ActivitiesStats: React.FC = () => {
                 <Text style={styles(direction).text}>
                   {t('Total time spent on reading')}
                 </Text>
-                <Text style={styles(direction).insidetext}>{t('30 \nhrs')}</Text>
+                <Text style={styles(direction).insidetext}>
+                  {t('30 \nhrs')}
+                </Text>
               </View>
             </Neumorphism>
           </View>
@@ -268,7 +272,9 @@ const ActivitiesStats: React.FC = () => {
                 <Text style={styles(direction).text}>
                   {t('Total time spent on app')}
                 </Text>
-                <Text style={styles(direction).insidetext}>{t('80 \nhrs')}</Text>
+                <Text style={styles(direction).insidetext}>
+                  {t('80 \nhrs')}
+                </Text>
               </View>
             </Neumorphism>
           </View>

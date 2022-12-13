@@ -18,7 +18,7 @@ const SelectRole: React.FC = () => {
   const direction: string = i18n.dir();
   const onRoleSelected = () => {
     //TODO Need to implement update selected role in redux store
-    NavigationService.navigate('Sign Up');
+    NavigationService.navigate('FeedDetailReport');
   };
   return (
     <ScrollView style={styles(direction).container} bounces={false}>
