@@ -91,7 +91,7 @@ const HobbiesAndInterest: React.FC = () => {
           </View>
           <RegularButton
             onPress={() => {
-              NavigationService.navigate('AvatarCreation');
+              NavigationService.navigate('BookDetails');
             }}
             text={t('Next')}
             radius={50}

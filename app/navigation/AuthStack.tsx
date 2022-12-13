@@ -23,6 +23,7 @@ import HobbiesAndInterest from 'app/screens/HobbiesAndInterests';
 import AccountAction from 'app/screens/AccountAction';
 import LinkChild from 'app/screens/LinkChild';
 import TestHardness from 'app/screens/TestHardness';
+import BookDetails from 'app/screens/BookDetails';
 
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
@@ -191,6 +192,16 @@ const AuthStack = () => {
       <Stack.Screen
         name="AccountAction"
         component={AccountAction}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="BookDetails"
+        component={BookDetails}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
