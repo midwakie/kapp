@@ -34,7 +34,6 @@ const styles = (direction: string) =>
       fontFamily: 'Nunito-Regular',
       fontWeight: '700',
       textAlign: 'center',
-      adjustsFontSizeToFit: true,
     },
     gradientTextContainer: {
       width: '100%',
