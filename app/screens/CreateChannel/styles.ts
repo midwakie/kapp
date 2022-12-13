@@ -50,10 +50,12 @@ const styles = (direction: string) =>
       marginRight: 137,
     },
     imageContainer: {
-      marginBottom: 60,
-      justifyContent: 'center',
       alignItems: 'center',
+      justifyContent: 'center',
+      marginTop: 40,
+      width: '100%',
     },
+    imageContainer2: { marginTop: -38, height: 30, width: 30, marginLeft: 68 },
     bottomContainer: {
       height: 19,
       width: width - 21,

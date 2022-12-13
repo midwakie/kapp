@@ -26,6 +26,7 @@ import TestHardness from 'app/screens/TestHardness';
 import ChildProfile from 'app/screens/ChildProfile';
 import CreateChannel from 'app/screens/CreateChannel';
 import EditChildProfile from 'app/screens/EditChildProfile';
+import RewardPointFilter from 'app/screens/RewardPointFilter';
 
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
@@ -214,6 +215,16 @@ const AuthStack = () => {
       <Stack.Screen
         name="EditChildProfile"
         component={EditChildProfile}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="RewardPointFilter"
+        component={RewardPointFilter}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
