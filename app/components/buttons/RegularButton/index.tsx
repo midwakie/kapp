@@ -9,7 +9,7 @@ import { ms } from 'react-native-size-matters';
 import { RegularButtonProps } from './types';
 const RegularButton = ({
   onPress,
-  text,
+  text = '',
   colors,
   radius,
   icon,
