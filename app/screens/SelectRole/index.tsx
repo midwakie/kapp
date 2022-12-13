@@ -50,7 +50,7 @@ const SelectRole: React.FC = () => {
           <TouchableOpacity
             style={styles(direction).rolesContainer}
             onPress={() => {
-              NavigationService.navigate('Change School');
+              NavigationService.navigate('Welcome');
             }}>
             <Image
               style={styles(direction).image}

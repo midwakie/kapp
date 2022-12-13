@@ -117,7 +117,7 @@ const styles = (direction: string) =>
       backgroundColor: 'transparent',
     },
     rightComponent: { right: '20@s', position: 'absolute' },
-    
+
     bottomContainer: {
       height: 20,
       width: width - 60,
@@ -152,16 +152,13 @@ const styles = (direction: string) =>
       alignItems: 'center',
       height: 20,
     },
-    
-    
+
     profilePicture: {
       height: 140,
       width: 140,
       borderRadius: 140,
       //  backgroundColor:'white',
     },
-    
-    
   });
 
 export default styles;
