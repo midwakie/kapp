@@ -19,7 +19,7 @@ const styles = (direction: string) =>
       justifyContent:"center",
       paddingBottom:20,
     },
-    safeAreaView: { alignSelf: 'stretch' ,
+    safeAreaView: { alignSelf: 'stretch' , 
    },
 
     gradientTextStyle: {
@@ -33,12 +33,10 @@ const styles = (direction: string) =>
       width: "100%",
       justifyContent:"center",
       height: 80,
-      marginBottom: 38,
-      marginTop: 50,
-      marginLeft:80,
-     
-     
-    },
+      alignItems:"center",
+      marginLeft:10,
+      marginTop:12,
+       },
     inputTextContainer: {
       width: '100%',
       justifyContent: 'center',
@@ -107,8 +105,7 @@ const styles = (direction: string) =>
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor:"#EBEEF0",
-
-      },
+ },
 
       radioButtonViewContainer: {
         flexDirection: direction === 'rtl' ? 'row-reverse' : 'row',
@@ -122,23 +119,14 @@ const styles = (direction: string) =>
       width: '100%',
       
     },
-    topContainer: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      width: "100%",
-      height:110,
-      
-    },
     regularContainer :{
       flexDirection: 'row',
       justifyContent: 'flex-start',
       alignItems: 'center',
       width: 38,
       marginLeft: 20,
-      marginTop: 40,
-      marginBottom:30,
-    
-    },
+      marginTop: 16,
+       },
 
 coinContainer2:{
   
