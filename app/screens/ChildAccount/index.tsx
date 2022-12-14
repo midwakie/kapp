@@ -10,7 +10,6 @@ import {
 import styles from './styles';
 import NavigationService from 'app/navigation/NavigationService';
 import { ScrollView } from 'react-native-gesture-handler';
-import RadioButton from 'app/components/buttons/RadioButton';
 import Neumorphism from 'react-native-neumorphism';
 import GradientText from 'app/components/texts/GradientText';
 import { useForm } from 'react-hook-form';
@@ -22,27 +21,29 @@ import RegularButton from 'app/components/buttons/RegularButton';
 import HorizontalLine from 'app/components/lines/HorizontalLine';
 import { Checkbox } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
+import RadioButton from 'app/components/buttons/RadioButton';
 
-const ChildProfile: React.FC = () => {
+const ChildAccount: React.FC = () => {
   const [showPassword, setShowPassword] = React.useState(false);
   const [checked, setChecked] = React.useState(true);
   const { control } = useForm();
-  const [radioButtonMale, setRadioButtonMale] = useState(true);
-  const [radioButtonFemale, setRadioButtonFemale] = useState(false);
   const lastNameInputRef: React.RefObject<any> = React.createRef();
   const emailInputRef: React.RefObject<any> = React.createRef();
-  const dateofbirthInputRef: React.RefObject<any> = React.createRef();
+  const mobileNumberInputRef: React.RefObject<any> = React.createRef();
   const invitationCodeInputRef: React.RefObject<any> = React.createRef();
   const passwordInputRef: React.RefObject<any> = React.createRef();
   const confirmPasswordInputRef: React.RefObject<any> = React.createRef();
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
-  const onPressRadioButtonMale = () => {
+  const [radioButtonMale, setRadioButtonMale] = useState(true);
+  const [radioButtonFemale, setRadioButtonFemale] = useState(false);
+
+  const onPressRadioButtonMale = (radioButton: string) => {
     setRadioButtonMale(!radioButtonMale);
     setRadioButtonFemale(!radioButtonFemale);
   };
 
-  const onPressRadioButtonFemale = () => {
+  const onPressRadioButtonFemale = (radioButton: string) => {
     setRadioButtonMale(!radioButtonMale);
     setRadioButtonFemale(!radioButtonFemale);
   };
@@ -62,11 +63,10 @@ const ChildProfile: React.FC = () => {
               colors={['#EBECF0', '#EBECF0']}
             />
           </View>
-
           <View style={styles(direction).gradientTextContainer}>
             <GradientText
-              colors={['#2AA7DD', '#2AA7DD']}
-              text={t('Create Your \nChild Profile')}
+              colors={['#0EAFF4', '#0D93CD']}
+              text={t('Create Your\nChild Account')}
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
               textStyle={styles(direction).gradientTextStyle}
@@ -103,6 +103,22 @@ const ChildProfile: React.FC = () => {
               }}
             />
           </View>
+          <View style={styles(direction).inputTextContainer}>
+            <CustomInput
+              control={control}
+              ref={emailInputRef}
+              name="email"
+              rules={rules.AuthRules.email}
+              placeholder={t('Email')}
+              label={t('Email')}
+              keyboardType="email-address"
+              autoCapitalize="none"
+              returnKeyType="next"
+              onSubmitEditing={() => {
+                mobileNumberInputRef?.current.setFocus();
+              }}
+            />
+          </View>
           <View style={styles(direction).radioButtonContainer}>
             <Image
               source={require('../../assets/inputBg.png')}
@@ -131,21 +147,20 @@ const ChildProfile: React.FC = () => {
           <View style={styles(direction).inputTextContainer}>
             <CustomInput
               control={control}
-              ref={dateofbirthInputRef}
-              name="date of birth"
-              placeholder={t('Date of Birth')}
-              label={t('Date of Birth')}
+              name="date_of_birth"
+              placeholder={t('Date Of Birth')}
+              label={t('Date Of Birth')}
               keyboardType="default"
               autoCapitalize="none"
               returnKeyType="next"
               onSubmitEditing={() => {
-                dateofbirthInputRef?.current.setFocus();
+                inputRef?.current.setFocus();
               }}
               rightComponent={
                 <TouchableOpacity style={styles(direction).rightComponent}>
                   <MaterialIcon
                     name={'chevron-down'}
-                    size={35}
+                    size={20}
                     color={'#03A0E3'}
                   />
                 </TouchableOpacity>
@@ -155,21 +170,20 @@ const ChildProfile: React.FC = () => {
           <View style={styles(direction).inputTextContainer}>
             <CustomInput
               control={control}
-              ref={dateofbirthInputRef}
-              name="first spoken language"
+              name="first_spoken_language"
               placeholder={t('First Spoken Language')}
               label={t('First Spoken Language')}
               keyboardType="default"
               autoCapitalize="none"
               returnKeyType="next"
               onSubmitEditing={() => {
-                dateofbirthInputRef?.current.setFocus();
+                inputRef?.current.setFocus();
               }}
               rightComponent={
                 <TouchableOpacity style={styles(direction).rightComponent}>
                   <MaterialIcon
                     name={'chevron-down'}
-                    size={35}
+                    size={20}
                     color={'#03A0E3'}
                   />
                 </TouchableOpacity>
@@ -191,23 +205,20 @@ const ChildProfile: React.FC = () => {
               }}
             />
           </View>
-
-          <View style={styles(direction).bottom}>
-            <RegularButton
-              onPress={() => {
-                NavigationService.navigate('EditChildProfile');
-              }}
-              text={t('Save')}
-              radius={50}
-              height={50}
-              width={'100%'}
-              colors={['#03BBE3', '#14A9FD']}
-            />
-          </View>
+          <RegularButton
+            onPress={() => {
+              NavigationService.navigate('ActivitiesStats');
+            }}
+            text={t('Save')}
+            radius={50}
+            height={50}
+            width={'100%'}
+            colors={['#03BBE3', '#14A9FD']}
+          />
         </View>
       </SafeAreaView>
     </ScrollView>
   );
 };
 
-export default ChildProfile;
+export default ChildAccount;

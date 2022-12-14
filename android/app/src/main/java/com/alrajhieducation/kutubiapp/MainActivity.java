@@ -1,4 +1,4 @@
-package com.kutubi.app;
+package com.alrajhieducation.kutubiapp;
 
 import com.facebook.react.ReactActivity;
 
