@@ -29,6 +29,7 @@ import ChildProfile from 'app/screens/ChildProfile';
 import CreateChannel from 'app/screens/CreateChannel';
 import EditChildProfile from 'app/screens/EditChildProfile';
 import RewardPointFilter from 'app/screens/RewardPointFilter';
+import EditTeacherProfile from 'app/screens/EditTeacherProfile';
 
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
@@ -237,6 +238,16 @@ const AuthStack = () => {
       <Stack.Screen
         name="EditChildProfile"
         component={EditChildProfile}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="EditTeacherProfile"
+        component={EditTeacherProfile}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation

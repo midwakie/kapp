@@ -70,6 +70,8 @@ const styles = (direction: string) =>
       justifyContent: 'space-between',
       marginTop: 30,
       height: '22@s',
+      fontWeight: '800',
+
     },
     row1: {
       flexDirection: 'row',
@@ -93,7 +95,7 @@ const styles = (direction: string) =>
     text1: {
       color: '#455157',
       fontSize: '16@s',
-      fontWeight: '200',
+      fontWeight: '800',
       fontFamily: 'Nunito-Regular',
       marginLeft: 25,
     },
@@ -137,8 +139,7 @@ const styles = (direction: string) =>
       marginTop: 60,
     },
     buttonInnerContainer: { width: '45%' },
-    buttonInnerContainer2: { width: '45%', color: ' #758DAC' },
-  
+    buttonInnerContainer2: { width: '45%' },
     buttonContainer: {
       marginBottom: '20@s',
       paddingHorizontal: 20,
