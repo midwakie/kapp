@@ -1,5 +1,5 @@
 import { Dimensions } from 'react-native';
-import { ScaledSheet } from 'react-native-size-matters';
+import { scale, ScaledSheet } from 'react-native-size-matters';
 
 const width =
   Dimensions.get('window').width >= Dimensions.get('window').height
@@ -19,7 +19,6 @@ const styles = (direction: string) =>
       fontFamily: 'Nunito-Regular',
       fontWeight: '700',
       textAlign: 'center',
-      adjustsFontSizeToFit: true,
     },
     gradientTextContainer: {
       width: '100%',
@@ -31,8 +30,8 @@ const styles = (direction: string) =>
       width: '100%',
       justifyContent: 'center',
       alignItems: 'center',
-      marginBottom: 40,
-      marginTop: 60,
+      // marginBottom: 40,
+      marginTop: 30,
     },
     rightComponent: {
       flexDirection: direction === 'rtl' ? 'row-reverse' : 'row',
@@ -89,11 +88,9 @@ const styles = (direction: string) =>
       elevation: 20,
     },
     container1: {
-      // top: '170@s',
-      paddingHorizontal: 30,
-      marginTop: 60,
+      marginTop: 170,
+      paddingHorizontal: '30@s',
       width: '100%',
-      height: '100%',
       paddingBottom: 25,
       marginBottom: 30,
     },
@@ -105,24 +102,37 @@ const styles = (direction: string) =>
       marginLeft: '20@s',
     },
     bottom: {
-      marginTop: 60,
+      marginTop: 100,
+      width: width - scale(60),
+      alignSelf: 'center',
+      marginBottom: 40,
     },
     profileImgContainer: {
-      marginLeft: 137,
-      marginRight: 138,
-      height: 130,
-      width: 130,
-      borderRadius: 130,
-      borderWidth: 1,
+      height: '100@s',
+      width: '100@s',
+      borderRadius: '100@s',
+      borderWidth: 3,
+      alignItems: 'center',
+      justifyContent: 'center',
       alignSelf: 'center',
       justifyContent: 'center',
       borderColor: '#FECE32',
     },
     profileImg: {
-      height: 130,
-      width: 130,
-      borderRadius: 130,
-      alignSelf: 'center',
+      height: '100%',
+      width: '100%',
+      resizeMode: 'contain',
+    },
+    profileImgCamera: {
+      height: '30@s',
+      width: '30@s',
+      borderRadius: '30@s',
+      position: 'absolute',
+      bottom: 0,
+      right: 0,
+      backgroundColor: 'white',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
   });
 

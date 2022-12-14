@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Dimensions,
   Image,
   SafeAreaView,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -17,6 +18,8 @@ import CustomInput from 'app/components/inputs/CustomInput';
 import RegularButton from 'app/components/buttons/RegularButton';
 import { useTranslation } from 'react-i18next';
 import TitleBar from 'app/components/buttons/TitleBar';
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
+import { scale } from 'react-native-size-matters';
 
 const CreateChannel: React.FC = () => {
   const { control } = useForm();
@@ -54,12 +57,19 @@ const CreateChannel: React.FC = () => {
       />
       <SafeAreaView style={styles(direction).safeAreaView}>
         <View style={styles(direction).container1}>
-          <TouchableHighlight style={styles(direction).profileImgContainer}>
+          <View style={styles(direction).profileImgContainer}>
             <Image
               source={require('../../assets/channel.png')}
               style={styles(direction).profileImg}
             />
-          </TouchableHighlight>
+            <TouchableOpacity style={styles(direction).profileImgCamera}>
+              <MaterialIcon
+                name={'camera-alt'}
+                size={scale(18)}
+                color={'#03A0E3'}
+              />
+            </TouchableOpacity>
+          </View>
           <View style={styles(direction).inputTextContainer}>
             <CustomInput
               control={control}
@@ -75,18 +85,16 @@ const CreateChannel: React.FC = () => {
               }}
             />
           </View>
-          <View style={styles(direction).bottom}>
-            <RegularButton
-              onPress={() => {
-                NavigationService.navigate('');
-              }}
-              text={t('Save')}
-              radius={50}
-              height={50}
-              width={'100%'}
-              colors={['#03BBE3', '#14A9FD']}
-            />
-          </View>
+        </View>
+        <View style={styles(direction).bottom}>
+          <RegularButton
+            onPress={() => {}}
+            text={t('Save')}
+            radius={50}
+            height={50}
+            width={'100%'}
+            colors={['#03BBE3', '#14A9FD']}
+          />
         </View>
       </SafeAreaView>
     </ScrollView>

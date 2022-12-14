@@ -31,6 +31,9 @@ import EditChildProfile from 'app/screens/EditChildProfile';
 import RewardPointFilter from 'app/screens/RewardPointFilter';
 import EditTeacherProfile from 'app/screens/EditTeacherProfile';
 
+import ChildAccount from 'app/screens/ChildAccount';
+import ActivitiesStats from 'app/screens/ActivityStatus';
+import FeedDetailReport from 'app/screens/FeedDetailReport';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -66,8 +69,8 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
-        name="CreateChannel"
-        component={CreateChannel}
+        name="Welcome"
+        component={Landing}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
@@ -76,8 +79,38 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
-        name="Welcome"
-        component={Landing}
+        name="Child Account"
+        component={ChildAccount}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ActivitiesStats"
+        component={ActivitiesStats}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="FeedDetailReport"
+        component={FeedDetailReport}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="CreateChannel"
+        component={CreateChannel}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation

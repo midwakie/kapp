@@ -14,7 +14,7 @@ function replace(name: string, params?: any) {
 }
 
 function reset(name: string) {
-  navigationRef.current.resetRoot({
+  navigationRef.current.reset({
     index: 0,
     routes: [{ name }],
   });

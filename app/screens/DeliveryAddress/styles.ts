@@ -61,9 +61,9 @@ const styles = (direction: string) =>
     container3: {
       backgroundColor: '#EBEEF0',
       width: '100%',
-      height: '210@s',
+      height: '210@ms',
       borderRadius: 14,
-      marginRight: 30,
+      paddingHorizontal: '25@s',
     },
     row: {
       flexDirection: 'row',
@@ -88,28 +88,24 @@ const styles = (direction: string) =>
       fontSize: '16@s',
       fontWeight: '600',
       fontFamily: 'Nunito-Regular',
-      marginLeft: 25,
     },
     text2: {
       color: '#455157',
       fontSize: '16@s',
       fontWeight: '600',
       fontFamily: 'Nunito-Regular',
-      marginRight: 25,
     },
     text3: {
       color: '#03A0E3',
       fontSize: '16@s',
       fontWeight: '700',
       fontFamily: 'Nunito-Regular',
-      marginLeft: 25,
     },
     text4: {
       color: '#03A0E3',
       fontSize: '16@s',
       fontWeight: '700',
       fontFamily: 'Nunito-Regular',
-      marginRight: 25,
     },
     text: {
       textAlign: 'center',

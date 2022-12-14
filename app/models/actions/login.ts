@@ -1,5 +1,5 @@
 export interface ILoginRequestState {
-  type: String;
+  type: string;
   email: string;
 }
 
@@ -13,6 +13,6 @@ interface IResponse {
 }
 
 export interface ILoginResponseState {
-  type: String;
+  type: string;
   response: IResponse;
 }
