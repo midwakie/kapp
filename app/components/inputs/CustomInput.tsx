@@ -59,7 +59,7 @@ const CustomInput = React.forwardRef(
             <View
               style={[
                 styles(direction).container,
-                { borderColor: error ? 'red' : 'transparent' },
+                //{ borderColor: error ? 'red' : 'transparent' },
               ]}>
               <Image
                 source={require('../../assets/inputBg.png')}
@@ -127,8 +127,8 @@ const styles = (direction: string) =>
       height: '50@s',
       flexDirection: 'row',
       alignItems: 'center',
-      borderColor: 'transparent',
-      borderWidth: 1,
+      // borderColor: 'transparent',
+      // borderWidth: 1,
     },
     bg: {
       width: width,

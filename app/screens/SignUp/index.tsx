@@ -25,8 +25,10 @@ import { scale } from 'react-native-size-matters';
 
 const SignUp: React.FC = () => {
   const [showPassword, setShowPassword] = React.useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
   const [checked, setChecked] = React.useState(true);
-  const { control } = useForm();
+  const { control, handleSubmit, watch } = useForm();
+  const pwd = watch('password');
   const lastNameInputRef: React.RefObject<any> = React.createRef();
   const emailInputRef: React.RefObject<any> = React.createRef();
   const mobileNumberInputRef: React.RefObject<any> = React.createRef();
@@ -35,6 +37,12 @@ const SignUp: React.FC = () => {
   const confirmPasswordInputRef: React.RefObject<any> = React.createRef();
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
+
+  const signUpUser = () => {
+    alert('Sign Up');
+    NavigationService.navigate('Verify Email');
+  };
+
   return (
     <ScrollView style={styles(direction).container} bounces={false}>
       <SafeAreaView style={styles(direction).safeAreaView}>
@@ -174,21 +182,25 @@ const SignUp: React.FC = () => {
               ref={confirmPasswordInputRef}
               control={control}
               name="confirm_password"
-              rules={rules.AuthRules.password}
+              rules={{
+                required: 'Confirm password required',
+                validate: (value: any) =>
+                  value === pwd || 'Passwords not match',
+              }}
               placeholder={t('Confirm Password')}
               label={t('Confirm Password')}
               keyboardType="default"
               autoCapitalize="none"
               returnKeyType="next"
-              secureTextEntry={!showPassword}
+              secureTextEntry={!showConfirmPassword}
               rightComponent={
                 <TouchableOpacity
                   style={styles(direction).rightComponent}
                   onPress={() => {
-                    setShowPassword(!showPassword);
+                    setShowConfirmPassword(!showConfirmPassword);
                   }}>
                   <MaterialIcon
-                    name={showPassword ? 'eye' : 'eye-off'}
+                    name={showConfirmPassword ? 'eye' : 'eye-off'}
                     size={scale(20)}
                     color={'#758DAC'}
                   />
@@ -214,9 +226,7 @@ const SignUp: React.FC = () => {
             </Text>
           </View>
           <RegularButton
-            onPress={() => {
-              NavigationService.navigate('Verify Email');
-            }}
+            onPress={handleSubmit(signUpUser)}
             text={t('Sign up')}
             radius={50}
             height={50}

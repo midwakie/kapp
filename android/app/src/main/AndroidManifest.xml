@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.kutubi.app">
+  package="com.alrajhieducation.kutubiapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
 

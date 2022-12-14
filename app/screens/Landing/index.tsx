@@ -59,7 +59,9 @@ const Landing: React.FC = () => {
         <View style={styles(direction).container2}>
           <View style={styles(direction).topContainer}>
             <PlainButton
-              onPress={() => {}}
+              onPress={() => {
+                NavigationService.navigate('Sign In')
+              }}
               style={styles(direction).skipButtonText}
               containerStyle={styles(direction).skipButtonContainer}
               text={t('Skip')}
