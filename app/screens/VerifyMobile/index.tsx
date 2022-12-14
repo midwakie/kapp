@@ -11,10 +11,20 @@ import RegularButton from 'app/components/buttons/RegularButton';
 import HorizontalLine from 'app/components/lines/HorizontalLine';
 import CustomOTPInput from 'app/components/inputs/CustomOTPInput';
 import { useTranslation } from 'react-i18next';
+import { IRole } from 'app/models/reducers/role';
+import { useSelector } from 'react-redux';
+import { ROLES } from 'app/config/role-config';
+
+interface IState {
+  selectedRoleReducer: IRole;
+}
 
 const VerifyMobile: React.FC = () => {
   const { control } = useForm();
   const { t } = useTranslation();
+  const selectedRole = useSelector(
+    (state: IState) => state.selectedRoleReducer.role,
+  );
   return (
     <ScrollView style={styles.container} bounces={false}>
       <SafeAreaView style={styles.safeAreaView}>
@@ -43,7 +53,13 @@ const VerifyMobile: React.FC = () => {
           </View>
           <RegularButton
             onPress={() => {
-              NavigationService.navigate('NewPassword');
+              if (selectedRole === ROLES.STUDENT) {
+                NavigationService.navigate('AvatarCreation');
+              } else if (selectedRole === ROLES.PARENT) {
+                NavigationService.navigate('AccountAction');
+              } else {
+                NavigationService.navigate('AvatarCreation');
+              }
             }}
             text={t('Verify')}
             radius={50}

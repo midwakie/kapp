@@ -26,7 +26,7 @@ const AuthRules: any = {
     pattern: {
       value: regexPattern.PASSWORD,
       message:
-        'Password must have an uppercase letter, a lowercase letter, and a number.',
+        'Password must contain at least 3 character categories among \nUppercase characters (A-Z) \nLowercase characters (a-z) \nDigits (0-9) \nSpecial characters.',
     },
   },
 

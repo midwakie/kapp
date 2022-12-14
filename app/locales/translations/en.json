@@ -92,6 +92,18 @@
  "Publish": "Publish",
  "Video": "Video",
  "Document": "Document",
- "Image": "Image"
+ "Image": "Image",
+ "Activities Stats": "Activities Stats",
+ "Last Week": "Last Week",
+ "Total time spent on video": "Total time spent on video",
+ "Total time spent on reading": "Total time spent on reading",
+ "Total time spent on app": "Total time spent on app",
+ "Report": "Report",
+ "Nudity or sexual activity": "Nudity or sexual activity",
+ "Hate speech or symbols": "Hate speech or symbols",
+ "Bullying or harrasment": "Bullying or harrasment",
+ "Scam or fraud": "Scam or fraud",
+ "Other": "Other",
+ "Type here": "Type here"
 
 }

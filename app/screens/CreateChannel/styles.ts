@@ -1,5 +1,5 @@
 import { Dimensions } from 'react-native';
-import { ScaledSheet } from 'react-native-size-matters';
+import { scale, ScaledSheet } from 'react-native-size-matters';
 
 const width =
   Dimensions.get('window').width >= Dimensions.get('window').height
@@ -19,7 +19,6 @@ const styles = (direction: string) =>
       fontFamily: 'Nunito-Regular',
       fontWeight: '700',
       textAlign: 'center',
-      adjustsFontSizeToFit: true,
     },
     gradientTextContainer: {
       width: '100%',
@@ -31,7 +30,7 @@ const styles = (direction: string) =>
       width: '100%',
       justifyContent: 'center',
       alignItems: 'center',
-      marginBottom: 40,
+      // marginBottom: 40,
       marginTop: 30,
     },
     rightComponent: {
@@ -87,11 +86,9 @@ const styles = (direction: string) =>
       elevation: 20,
     },
     container1: {
-      top: '170@s',
-      paddingHorizontal: 30,
-      marginTop: 2,
+      marginTop: 170,
+      paddingHorizontal: '30@s',
       width: '100%',
-      height: '100%',
       paddingBottom: 25,
     },
     topContainer: {
@@ -103,21 +100,35 @@ const styles = (direction: string) =>
     },
     bottom: {
       marginTop: 100,
+      width: width - scale(60),
+      alignSelf: 'center',
+      marginBottom: 40,
     },
     profileImgContainer: {
-      marginLeft: 40,
-      height: 100,
-      width: 100,
-      borderRadius: 100,
-      borderWidth: 1,
+      height: '100@s',
+      width: '100@s',
+      borderRadius: '100@s',
+      borderWidth: 3,
+      alignItems: 'center',
+      justifyContent: 'center',
       alignSelf: 'center',
       borderColor: '#FECE32',
     },
     profileImg: {
-      height: 100,
-      width: 100,
-      borderRadius: 100,
-      alignSelf: 'center',
+      height: '100%',
+      width: '100%',
+      resizeMode: 'contain',
+    },
+    profileImgCamera: {
+      height: '30@s',
+      width: '30@s',
+      borderRadius: '30@s',
+      position: 'absolute',
+      bottom: 0,
+      right: 0,
+      backgroundColor: 'white',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
   });
 

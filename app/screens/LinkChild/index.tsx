@@ -65,7 +65,7 @@ const LinkChild: React.FC = () => {
           </View>
           <RegularButton
             onPress={() => {
-              NavigationService.navigate('  ');
+              NavigationService.navigate('AvatarCreation');
             }}
             text={t('Link Account')}
             radius={50}
@@ -79,7 +79,7 @@ const LinkChild: React.FC = () => {
           </View>
           <RegularButton
             onPress={() => {
-              NavigationService.navigate('  ');
+              NavigationService.navigate('CreateChannel');
             }}
             text={t('Scan QR')}
             radius={50}

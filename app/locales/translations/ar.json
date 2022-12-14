@@ -99,5 +99,17 @@
  "Publish": "ينشر",
  "Video": "فيديو",
  "Document": "وثيقة",
- "Image": "صورة"
+ "Image": "صورة",
+ "Activities Stats": "احصائيات الأنشطة",
+ "Last Week": "الأسبوع الماضي",
+ "Total time spent on video": "إجمالي الوقت المنقضي على الفيديو",
+ "Total time spent on reading": "إجمالي الوقت الذي يقضيه في القراءة",
+ "Total time spent on app": "إجمالي الوقت المنقضي في التطبيق",
+ "Report": "تقرير",
+ "Nudity or sexual activity": "العُري أو النشاط الجنسي",
+ "Hate speech or symbols": "الكلام الذي يحض على الكراهية أو الرموز",
+ "Bullying or harrasment": "التنمر أو التحرش",
+ "Scam or fraud": "احتيال أو احتيال",
+ "Other": "آخر",
+ "Type here..": "..أكتب هنا"
 }

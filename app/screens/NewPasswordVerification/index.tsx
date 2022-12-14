@@ -57,7 +57,7 @@ const NewPassword: React.FC = () => {
           </View>
           <RegularButton
             onPress={() => {
-              NavigationService.navigate('AvatarCreation');
+              NavigationService.navigate('ChangePassword');
             }}
             text={`${t('Verify')}`}
             radius={50}
