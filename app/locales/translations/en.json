@@ -88,6 +88,10 @@
  "Discount": "Discount",
  "Shipping Charge": "Shipping Charge",
  "Total Amount": "Total Amount",
- "Free": "Free"
+ "Free": "Free",
+ "Publish": "Publish",
+ "Video": "Video",
+ "Document": "Document",
+ "Image": "Image"
 
 }
