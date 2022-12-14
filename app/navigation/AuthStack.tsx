@@ -214,6 +214,26 @@ const AuthStack = () => {
           headerShown: false,
         }}
       />
+      <Stack.Screen
+        name="HobbiesAndInterest"
+        component={HobbiesAndInterest}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="BookDetails"
+        component={BookDetails}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
     </AuthenticationStack.Navigator>
   );
 };
