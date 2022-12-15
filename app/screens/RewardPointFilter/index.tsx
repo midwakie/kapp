@@ -74,25 +74,31 @@ const RewardPointFilter: React.FC = () => {
               </View>
 
               <View style={styles(direction).row2}>
-                <View style={styles(direction).buttonInnerContainer2}>
-                  <RegularButton
-                    // onPress={onSignIn}
-                    text={t('Spent')}
-                    radius={50}
-                    height={50}
-                    width={'100%'}
-                    colors={['#E2E2E2', '#FFFFFF']}
-                  />
+              <View style={styles(direction).lastWeekDropdown}>
+                  <Neumorphism
+                    lightColor={'#E2E2E2'}
+                    darkColor={'#A8A8A8'}
+                    shapeType={'basin'}
+                    radius={50}>
+                    <View style={styles(direction).box}>
+                      <Text style={styles(direction).text123}>
+                        {t('Spent')}
+                      </Text>
+                    </View>
+                  </Neumorphism>
                 </View>
-                <View style={styles(direction).buttonInnerContainer2}>
-                  <RegularButton
-                    // onPress={onSignIn}
-                    text={t('Earned')}
-                    radius={50}
-                    height={50}
-                    width={'100%'}
-                    colors={['#E2E2E2', '#FFFFFF']}
-                  />
+                <View style={styles(direction).lastWeekDropdown2}>
+                  <Neumorphism
+                     lightColor={'#E2E2E2'}
+                     darkColor={'#A8A8A8'}
+                    shapeType={'basin'}
+                    radius={50}>
+                    <View style={styles(direction).box}>
+                      <Text style={styles(direction).text123}>
+                        {t('Earned')}
+                      </Text>
+                    </View>
+                  </Neumorphism>
                 </View>
               </View>
             </View>

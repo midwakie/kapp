@@ -48,11 +48,14 @@ const styles = ScaledSheet.create({
     fontFamily: 'Nunito-Regular',
   },
   inputTextContainer: {
-    width: '100%',
+    // height: '20@s',
+    width: width - 51,
     justifyContent: 'center',
     alignItems: 'center',
+    // flexDirection: 'row',
+    alignSelf: 'center',
+    // marginTop: 44,
     marginBottom: 40,
-    marginTop: 44,
   },
   bottomContainer: {
     height: '20@s',

@@ -71,7 +71,6 @@ const styles = (direction: string) =>
       marginTop: 30,
       height: '22@s',
       fontWeight: '800',
-
     },
     row1: {
       flexDirection: 'row',
@@ -90,7 +89,6 @@ const styles = (direction: string) =>
       marginLeft: 40,
 
       height: '22@s',
-  
     },
     text1: {
       color: '#455157',
@@ -113,6 +111,17 @@ const styles = (direction: string) =>
       fontWeight: '600',
       fontFamily: 'Nunito-Regular',
       marginRight: 25,
+    },
+    text123: {
+      color: '#758DAC',
+      fontSize: '18@s',
+      fontWeight: '600',
+      fontFamily: 'Nunito-Regular',
+
+      // marginRight: 40,
+      // lineHeight: 25,
+      width: '100%',
+      marginLeft: 25,
     },
     text3: {
       color: '#03A0E3',
@@ -138,8 +147,23 @@ const styles = (direction: string) =>
     bottom: {
       marginTop: 60,
     },
-    buttonInnerContainer: { width: '45%' },
-    buttonInnerContainer2: { width: '45%' },
+    lastWeekDropdown: {
+      position: 'absolute',
+      justifyContent: 'space-between',
+      // right: 60,
+      marginLeft: 10,
+      width: 103,
+    },
+    lastWeekDropdown2: {
+      position: 'absolute',
+      justifyContent: 'space-between',
+      marginLeft: 150,
+      marginRight: 73,
+      width: 103,
+    },
+
+    buttonInnerContainer: { width: '45%', color: '#758DAC' },
+    buttonInnerContainer2: { width: '45%', color: '#758DAC' },
     buttonContainer: {
       marginBottom: '20@s',
       paddingHorizontal: 20,
@@ -147,6 +171,14 @@ const styles = (direction: string) =>
       justifyContent: 'space-between',
       alignItems: 'center',
       width: '100%',
+    },
+    box: {
+      // width: '103@s',
+      height: '50@s',
+      alignItems: 'center',
+      // justifyContent: 'center',
+      backgroundColor: '#EBEEF0',
+      flexDirection: 'row',
     },
   });
 
