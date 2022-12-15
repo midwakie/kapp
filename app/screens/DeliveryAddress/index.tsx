@@ -118,21 +118,21 @@ const DeliveryAddress: React.FC = () => {
             <View style={styles(direction).container3}>
               <View style={styles(direction).row}>
                 <Text style={styles(direction).text1}>{t('Amount')}</Text>
-                <Text style={styles(direction).text2}>{t('$15.50')}</Text>
+                <Text style={styles(direction).text1}>{t('$15.50')}</Text>
               </View>
-              <View style={styles(direction).row1}>
+              <View style={styles(direction).row}>
                 <Text style={styles(direction).text1}>{t('Discount')}</Text>
-                <Text style={styles(direction).text2}>{t('5%')}</Text>
+                <Text style={styles(direction).text1}>{t('5%')}</Text>
               </View>
               <View style={styles(direction).row1}>
                 <Text style={styles(direction).text1}>
                   {t('Shipping Charge')}
                 </Text>
-                <Text style={styles(direction).text2}>{t('Free')}</Text>
+                <Text style={styles(direction).text1}>{t('Free')}</Text>
               </View>
               <View style={styles(direction).row2}>
-                <Text style={styles(direction).text3}>{t('Total Amount')}</Text>
-                <Text style={styles(direction).text4}>{t('$14.72')}</Text>
+                <Text style={styles(direction).text2}>{t('Total Amount')}</Text>
+                <Text style={styles(direction).text2}>{t('$14.72')}</Text>
               </View>
             </View>
           </Neumorphism>

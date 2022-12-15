@@ -15,7 +15,7 @@ const styles = (direction: string) =>
     },
     safeAreaView: { alignSelf: 'stretch' },
     container2: {
-      paddingHorizontal: '30@s',
+      // paddingHorizontal: '30@s',
       marginTop: 2,
       width: '100%',
       height: '100%',
@@ -28,6 +28,7 @@ const styles = (direction: string) =>
       width: '100%',
       marginTop: 40,
       marginBottom: 42,
+      marginLeft: 20,
     },
     imageContainer: {
       marginBottom: 65,
@@ -41,6 +42,7 @@ const styles = (direction: string) =>
       height: '140@ms',
     },
     gradientTextContainer: {
+      paddingHorizontal: '30@s',
       width: '100%',
       justifyContent: 'center',
       alignItems: 'center',
@@ -59,6 +61,9 @@ const styles = (direction: string) =>
       alignItems: 'center',
       marginBottom: 40,
     },
+    buttonContainer: {
+      paddingHorizontal: '30@s',
+    },
     bottomContainer: {
       height: '19@s',
       width: width,
@@ -76,22 +81,12 @@ const styles = (direction: string) =>
       fontFamily: 'Nunito-Regular',
     },
 
-
-
-
-    
-    
-    
     rightComponent: {
       flexDirection: direction === 'rtl' ? 'row-reverse' : 'row',
       left: direction === 'rtl' ? 20 : undefined,
       right: direction === 'rtl' ? undefined : 20,
       position: 'absolute',
     },
-    
-    
-    
-    
   });
 
 export default styles;
