@@ -26,7 +26,7 @@ import { useTranslation } from 'react-i18next';
 const ChildProfile: React.FC = () => {
   const [showPassword, setShowPassword] = React.useState(false);
   const [checked, setChecked] = React.useState(true);
-  const { control } = useForm();
+  const { control, handleSubmit, watch } = useForm();
   const [radioButtonMale, setRadioButtonMale] = useState(true);
   const [radioButtonFemale, setRadioButtonFemale] = useState(false);
   const lastNameInputRef: React.RefObject<any> = React.createRef();
@@ -45,6 +45,9 @@ const ChildProfile: React.FC = () => {
   const onPressRadioButtonFemale = () => {
     setRadioButtonMale(!radioButtonMale);
     setRadioButtonFemale(!radioButtonFemale);
+  };
+  const saveUser = () => {
+    NavigationService.navigate('EditChildProfile');
   };
   return (
     <ScrollView style={styles(direction).container} bounces={false}>
@@ -66,7 +69,7 @@ const ChildProfile: React.FC = () => {
           <View style={styles(direction).gradientTextContainer}>
             <GradientText
               colors={['#2AA7DD', '#2AA7DD']}
-              text={t('Create Your \nChild Profile')}
+              text={t('Create Your \n Child Profile')}
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
               textStyle={styles(direction).gradientTextStyle}
@@ -108,7 +111,7 @@ const ChildProfile: React.FC = () => {
               source={require('../../assets/inputBg.png')}
               style={styles(direction).bg}
             />
-            <View style={styles(direction).touchableOpacity}>
+            <View style={styles(direction).radiobutton}>
               <RadioButton
                 size={16}
                 id={'1'}
@@ -192,11 +195,12 @@ const ChildProfile: React.FC = () => {
             />
           </View>
 
-          <View style={styles(direction).bottom}>
+          <View style={{ marginTop: 30 }}>
             <RegularButton
-              onPress={() => {
-                NavigationService.navigate('EditChildProfile');
-              }}
+              // onPress={() => {
+              //   NavigationService.navigate('EditChildProfile');
+              // }}
+              onPress={handleSubmit(saveUser)}
               text={t('Save')}
               radius={50}
               height={50}
