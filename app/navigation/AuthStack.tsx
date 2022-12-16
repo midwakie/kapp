@@ -28,9 +28,14 @@ import TestHardness from 'app/screens/TestHardness';
 import ChildProfile from 'app/screens/ChildProfile';
 import CreateChannel from 'app/screens/CreateChannel';
 import EditChildProfile from 'app/screens/EditChildProfile';
+import Publish from 'app/screens/Publish';
+import RewardPointFilter from 'app/screens/RewardPointFilter';
+import EditTeacherProfile from 'app/screens/EditTeacherProfile';
+
 import ChildAccount from 'app/screens/ChildAccount';
 import ActivitiesStats from 'app/screens/ActivityStatus';
 import FeedDetailReport from 'app/screens/FeedDetailReport';
+import ChildHome from 'app/screens/ChildHome';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -276,8 +281,48 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
-        name="HobbiesAndInterest"
+        name="EditTeacherProfile"
+        component={EditTeacherProfile}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="RewardPointFilter"
+        component={RewardPointFilter}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="HobbiesAndInterests"
         component={HobbiesAndInterest}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ChildHome"
+        component={ChildHome}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Publish"
+        component={Publish}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation

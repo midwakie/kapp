@@ -41,7 +41,7 @@ const SelectRole: React.FC = () => {
           <TouchableOpacity
             style={styles(direction).rolesContainer}
             onPress={() => {
-              onRoleSelected(ROLES.PARENT);
+              NavigationService.navigate('ChildHome');
             }}>
             <Text style={styles(direction).titleParent}>
               {t('I am Parent')}

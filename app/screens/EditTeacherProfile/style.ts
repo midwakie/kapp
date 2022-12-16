@@ -1,4 +1,4 @@
-import { Dimensions } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 import { ScaledSheet } from 'react-native-size-matters';
 
 const width =
@@ -7,7 +7,7 @@ const width =
     : Dimensions.get('window').width;
 
 const styles = (direction: string) =>
-  ScaledSheet.create({
+  StyleSheet.create({
     container: {
       width: '100%',
       height: '100%',
@@ -18,15 +18,15 @@ const styles = (direction: string) =>
       alignItems: 'center',
       justifyContent: 'center',
       paddingBottom: 20,
-      paddingHorizontal: '30@s',
-    
     },
     safeAreaView: { alignSelf: 'stretch' },
 
     gradientTextStyle: {
-      fontSize: '16@s',
+      fontSize: 16,
       fontFamily: 'Nunito-Regular',
+      fontStyle: 'normal',
       fontWeight: '700',
+      lineHeight: 22,
     },
     gradientTextContainer: {
       width: '100%',
@@ -41,24 +41,44 @@ const styles = (direction: string) =>
       justifyContent: 'center',
       alignItems: 'center',
       marginTop: 50,
+      marginBottom: 20,
     },
     inputTextContainer1: {
       width: '100%',
       justifyContent: 'center',
       alignItems: 'center',
-      marginTop: 20,
+      marginBottom: 20,
     },
     inputTextContainer2: {
       width: '100%',
       justifyContent: 'center',
       alignItems: 'center',
       marginTop: 20,
+      marginBottom: 20,
+    },
+    profileImgContainer: {
+      marginLeft: 137,
+      marginRight: 138,
+      marginTop: 60,
+      height: 130,
+      width: 130,
+      borderRadius: 130,
+      borderWidth: 1,
+      alignSelf: 'center',
+      justifyContent: 'center',
+      borderColor: '#FECE32',
     },
     rightComponent: {
       flexDirection: direction === 'rtl' ? 'row-reverse' : 'row',
       left: direction === 'rtl' ? 20.33 : undefined,
       right: direction === 'rtl' ? undefined : 20.33,
       position: 'absolute',
+    },
+     profileImg: {
+      height: 130,
+      width: 130,
+      borderRadius: 130,
+      alignSelf: 'center',
     },
     imageStyle: {
       justifyContent: 'center',
@@ -69,17 +89,10 @@ const styles = (direction: string) =>
     imageContainer: {
       alignItems: 'center',
       justifyContent: 'center',
-      marginTop: 40,
-      width: '100@s',
-      height: '100@s',
+      marginTop: 60,
+      width: 50,
     },
-    imageContainer2: {
-      height: '30@s',
-      width: '30@s',
-      position: 'absolute',
-      bottom: '5@s',
-      right: '5@s',
-    },
+    imageContainer2: { marginTop: -38, height: 30, width: 30, marginLeft: 68 },
     neomorphContainer: {
       marginTop: 52,
       justifyContent: 'center',
@@ -96,18 +109,17 @@ const styles = (direction: string) =>
     radioButtonContainer: {
       width: '100%',
       width: width - 60,
-      marginTop: 20,
-      alignItems:'center',
-     
-      
+      height: 50,
+      borderRadius: 50,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#EBEEF0',
     },
 
     radioButtonViewContainer: {
       flexDirection: direction === 'rtl' ? 'row-reverse' : 'row',
       height: '65@ms0.75',
       width: '100%',
-      justifyContent:'center',
-      alignItems:'center',
     },
 
     touchableOpacity: {
@@ -116,142 +128,102 @@ const styles = (direction: string) =>
       width: '100%',
     },
     regularContainer: {
-      justifyContent: 'center',
+      flexDirection: 'row',
+      justifyContent: 'flex-start',
       alignItems: 'center',
-      position: 'absolute',
       width: 38,
-      marginLeft: '20@s',
-   
+      marginLeft: 20,
+      marginTop: 16,
     },
 
     coinContainer2: {
-      width: '102@ms',
-      height: '40@ms',
+      width: 102,
+      height: 40,
       borderRadius: 50,
-      justifyContent: 'space-around',
-      alignItems: 'center',
-      paddingHorizontal: '12@ms',
       flexDirection: 'row',
-      backgroundColor: '#EBEEF0',
     },
     coinImage: {
+      marginTop: 7,
       alignItems: 'center',
       justifyContent: 'center',
-      height: '26@ms',
-      width: '26@ms',
+      marginLeft: 12,
+      height: 26,
+      width: 26,
     },
     coinText: {
       fontFamily: 'Nunito-Regular',
-      fontSize: '16@s',
+      fontSize: 16,
       fontWeight: '600',
+      width: 30,
       color: '#455157',
+      marginTop: 9,
+      marginLeft: 12,
     },
     coinContainer1: {
       alignContent: 'center',
       justifyContent: 'center',
+
       flexDirection: 'row',
-      height: '40@s',
-      marginTop: '25@s',
+      height: 45,
+      marginTop: 22,
+      paddingBottom: 5,
     },
     schoolInputTextContainer: {
       width: '100%',
-      height: '50@s',
-      paddingVertical: '16@s',
+      width: width - 60,
+      height: 50,
       borderRadius: 50,
+      justifyContent: 'flex-start',
       alignItems: 'center',
-      justifyContent: 'space-between',
       backgroundColor: '#EBEEF0',
       flexDirection: 'row',
-      paddingHorizontal: '25@s',
+      paddingLeft: 25,
     },
-    schoolInputContainer: {
-      width: '100%',
-      width: width - 60,
-      marginTop: 20,
-      marginHorizontal: 20,
-    },
-    marginView: {
-      marginTop: 20,
-      marginHorizontal: '30@s',
-      width: '100%',
-    },
-    bg: {
-      width: '100%',
-      height: '65@ms0.75',
-      position: 'absolute',
-      resizeMode: 'contain',
-     
-    
-    },
+    marginView: { marginTop: 20 },
+
     interestContainer: {
       width: '100%',
-      height: '86@s',
+      width: width - 60,
+      height: 86,
       borderRadius: 12,
       backgroundColor: '#EBEEF0',
-      paddingHorizontal: '25@s',
-      width: width - 60,
-     
-      
+      flexDirection: 'row',
     },
     schoolText: {
       fontFamily: 'Nunito-Regular',
       fontWeight: '600',
-      fontSize: '14@s',
+      fontSize: 14,
+      lineHeight: 19,
       color: '#455157',
+      marginRight: 62,
     },
     changeText1: {
       color: '#03A0E3',
-      fontFamily: 'Nunito-Regular',
+      width: 47,
+      lineHeight: 16.2,
       fontWeight: '600',
-      fontSize: '14@s',
     },
     interestText: {
       color: '#455157',
       fontFamily: 'Nunito-Regular',
       fontWeight: '600',
-      fontSize: '12@s',
-      marginTop: '10@ms',
-     
+      fontSize: 14,
+      paddingLeft: 25,
+      marginTop: 10,
     },
-
     changeText2: {
       color: '#03A0E3',
-      fontSize: '14@s',
+      width: 47,
+      lineHeight: 16.2,
       fontWeight: '600',
-      fontFamily: 'Nunito-Regular',
+      marginTop: 47,
+      marginLeft: 102,
     },
     regularButtonContainer: {
-      marginVertical: 40,
       width: '100%',
+      width: width - 60,
+      marginTop: 50,
     },
-    interestIconContainer: {
-      justifyContent: 'space-between',
-      backgroundColor: '#EBEEF0',
-      flexDirection: 'row',
-      marginVertical: '17@s',
-    },
-    interestIconMainContainer: {
-      flexDirection: 'row',
-      height: '30@s',
-    },
-    interestIcon1: {
-      height: '25@s',
-      width: '25@s',
-      borderRadius: '25@s',
-    },
-    interestIcons: {
-      height: '25@s',
-      width: '25@s',
-      borderRadius: '25@s',
-      marginLeft: '-9@s',
-      justifyContent: 'center',
-      overflow: 'hidden',
-    },
-    plusFourImage: {
-      position: 'absolute',
-      alignSelf: 'center',
-    },
-    imageRound: { width: '100%', height: '100%', resizeMode: 'cover' },
   });
 
 export default styles;
