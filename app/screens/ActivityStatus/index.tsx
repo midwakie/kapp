@@ -6,6 +6,7 @@ import {
   SafeAreaView,
   Text,
   TextStyle,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import styles from './styles';
@@ -110,11 +111,13 @@ const ActivitiesStats: React.FC = () => {
                     <Text style={styles(direction).text2}>
                       {t('Last Week')}
                     </Text>
-                    <MaterialIcon
-                      name={'expand-more'}
-                      size={scale(12)}
-                      color={'#03A0E3'}
-                    />
+                    <TouchableOpacity onPress={() => {}}>
+                      <MaterialIcon
+                        name={'expand-more'}
+                        size={scale(12)}
+                        color={'#03A0E3'}
+                      />
+                    </TouchableOpacity>
                   </View>
                 </Neumorphism>
               </View>

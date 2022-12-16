@@ -14,14 +14,14 @@ const styles = (direction: string) =>
       backgroundColor: '#EBEEF0',
     },
     container2: {
-      // paddingHorizontal: '20@s',
+      paddingHorizontal: '20@s',
       width: '100%',
       paddingBottom: 49,
       justifyContent: 'center',
       alignItems: 'center',
       marginTop: '40@s',
     },
-    safeAreaView: { alignSelf: 'stretch' },
+    safeAreaView: { alignSelf: 'stretch', },
     topContainer: {
       justifyContent: 'center',
       alignItems: 'center',

@@ -187,7 +187,7 @@ const EditChildProfile: React.FC = () => {
               radius={50}>
               <View style={styles(direction).schoolInputTextContainer}>
                 <Text style={styles(direction).schoolText}>
-                  Al Jeel Al Saeed School
+                  {t('Al Jeel Al Saeed School')}
                 </Text>
                 <TouchableOpacity
                   onPress={() => {
