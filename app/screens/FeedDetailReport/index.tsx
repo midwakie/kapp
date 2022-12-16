@@ -25,7 +25,6 @@ import rules from 'app/rules';
 const FeedDetailReport: React.FC = () => {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
-  const { control } = useForm();
   return (
     <ScrollView style={styles(direction).container} bounces={false}>
       <TitleBar
