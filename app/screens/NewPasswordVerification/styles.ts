@@ -60,9 +60,13 @@ const styles = ScaledSheet.create({
     marginBottom: 44,
   },
   inputTextContainer: {
-    width: '100%',
+    // height: '20@s',
+    width: width - 51,
     justifyContent: 'center',
     alignItems: 'center',
+    // flexDirection: 'row',
+    alignSelf: 'center',
+    // marginTop: 44,
     marginBottom: 40,
   },
   labelTextContainer: {
