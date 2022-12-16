@@ -64,23 +64,23 @@ const styles = (direction: string) =>
       height: '210@ms',
       borderRadius: 14,
       paddingHorizontal: '25@s',
+      paddingVertical: '25@s',
     },
     row: {
       flexDirection: 'row',
       justifyContent: 'space-between',
-      marginTop: 30,
       height: '22@s',
+      marginBottom: 18,
     },
     row1: {
       flexDirection: 'row',
       justifyContent: 'space-between',
-      marginTop: 18,
+      marginBottom: 36,
       height: '22@s',
     },
     row2: {
       flexDirection: 'row',
       justifyContent: 'space-between',
-      marginTop: 36,
       height: '22@s',
     },
     text1: {
@@ -90,29 +90,10 @@ const styles = (direction: string) =>
       fontFamily: 'Nunito-Regular',
     },
     text2: {
-      color: '#455157',
-      fontSize: '16@s',
-      fontWeight: '600',
-      fontFamily: 'Nunito-Regular',
-    },
-    text3: {
       color: '#03A0E3',
       fontSize: '16@s',
       fontWeight: '700',
       fontFamily: 'Nunito-Regular',
-    },
-    text4: {
-      color: '#03A0E3',
-      fontSize: '16@s',
-      fontWeight: '700',
-      fontFamily: 'Nunito-Regular',
-    },
-    text: {
-      textAlign: 'center',
-      fontSize: '16@s',
-      fontFamily: 'Nunito-Regular',
-      fontWeight: '700',
-      width: '100%',
     },
   });
 

@@ -63,30 +63,34 @@ const LinkChild: React.FC = () => {
               }}
             />
           </View>
-          <RegularButton
-            onPress={() => {
-              NavigationService.navigate('AvatarCreation');
-            }}
-            text={t('Link Account')}
-            radius={50}
-            height={50}
-            width={'100%'}
-            colors={['#03BBE3', '#14A9FD']}
-          />
+          <View style={styles(direction).buttonContainer}>
+            <RegularButton
+              onPress={() => {
+                NavigationService.navigate('AvatarCreation');
+              }}
+              text={t('Link Account')}
+              radius={50}
+              height={50}
+              width={'100%'}
+              colors={['#03BBE3', '#14A9FD']}
+            />
+          </View>
 
           <View style={styles(direction).bottomContainer}>
             <Text style={styles(direction).bottomText}>{t('OR')}</Text>
           </View>
-          <RegularButton
-            onPress={() => {
-              NavigationService.navigate('CreateChannel');
-            }}
-            text={t('Scan QR')}
-            radius={50}
-            height={50}
-            width={'100%'}
-            colors={['#FF6F81', '#F0374E']}
-          />
+          <View style={styles(direction).buttonContainer}>
+            <RegularButton
+              onPress={() => {
+                NavigationService.navigate('CreateChannel');
+              }}
+              text={t('Scan QR')}
+              radius={50}
+              height={50}
+              width={'100%'}
+              colors={['#FF6F81', '#F0374E']}
+            />
+          </View>
         </View>
       </SafeAreaView>
     </ScrollView>
