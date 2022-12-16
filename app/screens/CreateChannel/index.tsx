@@ -5,6 +5,7 @@ import {
   SafeAreaView,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   TextStyle,
+  TouchableHighlight,
   TouchableOpacity,
   View,
 } from 'react-native';
