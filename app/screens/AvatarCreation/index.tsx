@@ -108,7 +108,7 @@ const AvatarCreation: React.FC = () => {
           <View style={styles(direction).regularButton}>
             <RegularButton
               onPress={() => {
-                NavigationService.navigate('Child Account');
+                NavigationService.navigate('AvatarModifier');
               }}
               text={t('Next')}
               radius={50}

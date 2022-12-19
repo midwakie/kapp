@@ -32,7 +32,7 @@ const SelectRole: React.FC = () => {
           <View style={styles(direction).gradientTextContainer}>
             <GradientText
               colors={['#0EAFF4', '#0D93CD']}
-              text={t('Select Your Role')}
+              text={t('SeIect Your Role')}
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
               textStyle={styles(direction).gradientTextStyle}
@@ -41,7 +41,7 @@ const SelectRole: React.FC = () => {
           <TouchableOpacity
             style={styles(direction).rolesContainer}
             onPress={() => {
-              NavigationService.navigate('ChildHome');
+              onRoleSelected(ROLES.PARENT);
             }}>
             <Text style={styles(direction).titleParent}>
               {t('I am Parent')}

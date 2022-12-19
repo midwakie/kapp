@@ -28,7 +28,7 @@ export default function* loginAsync(data: any) {
     yield put(loginActions.loginFailed());
     yield put(loadingActions.disableLoader());
     setTimeout(() => {
-      Alert.alert('Air Chateau', 'Error');
+      Alert.alert('Kutubi', 'Error');
     }, 200);
   }
 }
