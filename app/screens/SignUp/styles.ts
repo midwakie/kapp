@@ -59,7 +59,7 @@ const styles = (direction: string) =>
       width: '100%',
       justifyContent: 'center',
       alignItems: 'center',
-      marginBottom: 20,
+      marginBottom: '20@s',
     },
     rightComponent: {
       flexDirection: direction === 'rtl' ? 'row-reverse' : 'row',
@@ -129,6 +129,40 @@ const styles = (direction: string) =>
       justifyContent: 'center',
       alignItems: 'center',
       height: '16@s',
+    },
+    bg: {
+      width: '100%',
+      height: '65@ms0.75',
+      position: 'absolute',
+      resizeMode: 'contain',
+    },
+    mobileCodeTextStyle: {
+      color: '#758DAC',
+      fontFamily: 'Nunito-Regular',
+      fontSize: '14@s',
+    },
+    countryPickerButtonStyle: {
+      backgroundColor: 'transparent',
+    },
+    flagButtonStyle: { backgroundColor: 'transparent' },
+    textContainerStyle: {
+      backgroundColor: 'transparent',
+      marginLeft: 7,
+    },
+    mobileInputContainerStyle: {
+      borderRadius: 4,
+      overflow: 'hidden',
+      width: '90%',
+      height: 60,
+      backgroundColor: 'transparent',
+    },
+    mobileTextInputStyle: {
+      width: '90%',
+      height: 60,
+      color: '#758DAC',
+      fontFamily: 'Nunito-Regular',
+      fontSize: '14@s',
+      backgroundColor: 'transparent',
     },
   });
 

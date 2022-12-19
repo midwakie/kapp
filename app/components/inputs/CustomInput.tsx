@@ -24,6 +24,7 @@ const CustomInput = React.forwardRef(
       autoCapitalize,
       rightComponent,
       onSubmitEditing,
+      onFocus = () => {},
     }: any,
     ref,
   ) => {
@@ -78,6 +79,7 @@ const CustomInput = React.forwardRef(
                   onBlur();
                 }}
                 onFocus={() => {
+                  onFocus();
                   setIsFocused(true);
                 }}
                 placeholder={`${rtlPlaceHolder()}`}
