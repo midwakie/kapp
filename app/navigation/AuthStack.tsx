@@ -32,6 +32,7 @@ import BookDetails from 'app/screens/BookDetails';
 import ChildAccount from 'app/screens/ChildAccount';
 import ActivitiesStats from 'app/screens/ActivityStatus';
 import FeedDetailReport from 'app/screens/FeedDetailReport';
+import EBooks from 'app/screens/EBooks';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -56,6 +57,16 @@ const AuthStack = () => {
 
   return (
     <AuthenticationStack.Navigator>
+      <Stack.Screen
+        name="EBooks"
+        component={EBooks}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
       <Stack.Screen
         name="Select Role"
         component={SelectRole}
