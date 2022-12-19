@@ -1,18 +1,11 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import styles from './styles';
 import GradientText from 'app/components/texts/GradientText';
 import RegularButton from 'app/components/buttons/RegularButton';
 import { useTranslation } from 'react-i18next';
 import NavigationService from 'app/navigation/NavigationService';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
-import {
-  Image,
-  SafeAreaView,
-  Text,
-  View,
-  FlatList,
-  ImageBackground,
-} from 'react-native';
+import { Image, SafeAreaView, Text, View, FlatList } from 'react-native';
 import TitleBar from 'app/components/buttons/TitleBar';
 import Neumorphism from 'react-native-neumorphism';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -91,8 +84,6 @@ const EBooks: React.FC = () => {
           </View>
           <View style={styles(direction).cardContainer}>
             <FlatList
-              // columnWrapperStyle={{ justifyContent: 'space-between' }}
-              // contentContainerStyle={{ marginTop: 20 }}
               numColumns={2}
               data={books}
               renderItem={({ item }) => {
