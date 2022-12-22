@@ -12,6 +12,7 @@ const styles = (direction: string) =>
       width: '100%',
       height: '100%',
       backgroundColor: '#E5E5E5',
+      zIndex: -10,
     },
     safeAreaView: { alignSelf: 'stretch' },
     topContainer: {

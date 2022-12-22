@@ -69,7 +69,7 @@ const ChildProfile: React.FC = () => {
           <View style={styles(direction).gradientTextContainer}>
             <GradientText
               colors={['#2AA7DD', '#2AA7DD']}
-              text={t('Create Your \n Child Profile')}
+              text={t('Create Your Child Profile')}
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
               textStyle={styles(direction).gradientTextStyle}

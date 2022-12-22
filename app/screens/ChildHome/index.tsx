@@ -19,6 +19,7 @@ import { useTranslation } from 'react-i18next';
 import Neumorphism from 'react-native-neumorphism';
 import { scale } from 'react-native-size-matters';
 import TitleBar from 'app/components/buttons/TitleBar';
+import VerticalLine from 'app/components/lines/VerticalLine';
 
 const ChildHome: React.FC = () => {
   const { control } = useForm();
@@ -33,7 +34,8 @@ const ChildHome: React.FC = () => {
           <View style={styles(direction).topContainer}>
             <Image
               style={styles(direction).logoImageStyle}
-              source={require('../../assets/logo.png')}></Image>
+              source={require('../../assets/logo.png')}
+            />
           </View>
         }
         middleComponent={
@@ -42,57 +44,47 @@ const ChildHome: React.FC = () => {
           </View>
         }
         rightComponent={
-          // <Neumorphism
-          //   lightColor={'#ffffff'}
-          //   darkColor={'#A8A8A8'}
-          //   shapeType={'flat'}
-          //   radius={52}>
-          <View style={styles(direction).iconContainer}>
-            <TouchableOpacity onPress={() => {}}>
-              <View style={styles(direction).menuContainer}>
-                <Image
-                  source={require('../../assets/childHomeMenu.png')}></Image>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => {}}>
-              <View style={styles(direction).searchContainer}>
-                <Image source={require('../../assets/searchIcon.png')}></Image>
-              </View>
-            </TouchableOpacity>
-          </View>
-          // </Neumorphism>
+          <Neumorphism
+            lightColor={'#ffffff'}
+            darkColor={'#A8A8A8'}
+            shapeType={'flat'}
+            radius={52}>
+            <View style={styles(direction).iconContainer}>
+              <TouchableOpacity onPress={() => {}}>
+                <View style={styles(direction).menuContainer}>
+                  <Image source={require('../../assets/childHomeMenu.png')} />
+                </View>
+              </TouchableOpacity>
+              <VerticalLine
+                stroke={1}
+                opacity={0.3}
+                height={'100%'}
+                color={'#A8A8A8'}
+              />
+              <TouchableOpacity onPress={() => {}}>
+                <View style={styles(direction).searchContainer}>
+                  <Image source={require('../../assets/searchIcon.png')} />
+                </View>
+              </TouchableOpacity>
+            </View>
+          </Neumorphism>
         }
       />
-      <SafeAreaView style={styles(direction).safeAreaView}>
-        <ScrollView style={styles(direction).container} bounces={false}>
-          <ImageBackground
-            style={styles(direction).imageBackground}
-            source={require('../../assets/childHomeImage.png')}>
+      <ImageBackground
+        style={styles(direction).imageBackground}
+        source={require('../../assets/childHomeImage.png')}>
+        <SafeAreaView style={styles(direction).safeAreaView}>
+          <ScrollView style={styles(direction).container} bounces={false}>
             <View style={styles(direction).container1}>
               <View style={styles(direction).gradientTextContainer2}>
-                <GradientText
-                  colors={['#455157', '#455157']}
-                  text={t('Al Jeel Al Saeed School')}
-                  start={{ x: 0, y: 0 }}
-                  end={{ x: 0, y: 1 }}
-                  textStyle={styles(direction).gradientTextStyle2}
-                />
+                <Text style={styles(direction).gradientTextStyle2}>
+                  {t('Tangled')}
+                </Text>
               </View>
-
-              <RegularButton
-                onPress={() => {
-                  NavigationService.navigate('Delivery Address');
-                }}
-                text={t('Update')}
-                radius={50}
-                height={50}
-                width={'100%'}
-                colors={['#03BBE3', '#14A9FD']}
-              />
             </View>
-          </ImageBackground>
-        </ScrollView>
-      </SafeAreaView>
+          </ScrollView>
+        </SafeAreaView>
+      </ImageBackground>
     </>
   );
 };

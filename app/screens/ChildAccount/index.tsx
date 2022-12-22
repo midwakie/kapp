@@ -47,7 +47,7 @@ const ChildAccount: React.FC = () => {
     setRadioButtonFemale(!radioButtonFemale);
   };
   const saveUser = () => {
-    NavigationService.navigate('ChildProfile');
+    // NavigationService.navigate('ChildProfile');
   };
   return (
     <ScrollView style={styles(direction).container} bounces={false}>
@@ -67,8 +67,8 @@ const ChildAccount: React.FC = () => {
           </View>
           <View style={styles(direction).gradientTextContainer}>
             <GradientText
-              colors={['#0EAFF4', '#0D93CD']}
-              text={t('Create Your \n Child Account')}
+              colors={['#2AA7DD', '#2AA7DD']}
+              text={t('Create Your Child Account')}
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
               textStyle={styles(direction).gradientTextStyle}

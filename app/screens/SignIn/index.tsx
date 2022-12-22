@@ -116,7 +116,9 @@ const SignIn: React.FC = () => {
             />
           </View>
           <RegularButton
-            onPress={() => {}}
+            onPress={() => {
+              NavigationService.navigate('ChildHome');
+            }}
             text={t('Sign in')}
             radius={50}
             height={50}
