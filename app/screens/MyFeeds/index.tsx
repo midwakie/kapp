@@ -100,10 +100,16 @@ const MyFeeds: React.FC = () => {
                     </Text>
                   </View>
                   <Text style={styles(direction).status}>{t('5 min ago')}</Text>
-                  <Image
-                    source={require('../../assets/esl.png')}
-                    style={styles(direction).imageStyle}
-                  />
+                  <View style={styles(direction).imagecontainer1}>
+                    <Image
+                      source={require('../../assets/esl.png')}
+                      style={styles(direction).imageStyle}
+                    />
+                    <Image
+                      source={require('../../assets/play.png')}
+                      style={styles(direction).button}
+                    />
+                  </View>
                   <GradientText
                     colors={['#758DAC', '#2F4868']}
                     text={t('Very Productive Activities')}
@@ -196,10 +202,16 @@ const MyFeeds: React.FC = () => {
                     <Text style={styles(direction).status}>
                       {t('5 min ago')}
                     </Text>
-                    <Image
-                      source={require('../../assets/feedpic2.png')}
-                      style={styles(direction).imageStyle}
-                    />
+                    <View style={styles(direction).imagecontainer1}>
+                      <Image
+                        source={require('../../assets/feedpic2.png')}
+                        style={styles(direction).imageStyle}
+                      />
+                      <Image
+                        source={require('../../assets/docs.png')}
+                        style={styles(direction).button}
+                      />
+                    </View>
                     <GradientText
                       colors={['#758DAC', '#2F4868']}
                       text={t('Very Productive Activities')}
@@ -293,10 +305,16 @@ const MyFeeds: React.FC = () => {
                     <Text style={styles(direction).status}>
                       {t('5 min ago')}
                     </Text>
-                    <Image
-                      source={require('../../assets/feedpic2.png')}
-                      style={styles(direction).imageStyle}
-                    />
+                    <View style={styles(direction).imagecontainer1}>
+                      <Image
+                        source={require('../../assets/feedpic2.png')}
+                        style={styles(direction).imageStyle}
+                      />
+                      <Image
+                        source={require('../../assets/docs.png')}
+                        style={styles(direction).button}
+                      />
+                    </View>
                     <GradientText
                       colors={['#758DAC', '#2F4868']}
                       text={t('Very Productive Activities')}
