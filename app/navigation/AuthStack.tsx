@@ -63,26 +63,6 @@ const AuthStack = () => {
   return (
     <AuthenticationStack.Navigator>
       <Stack.Screen
-        name="MyFeeds"
-        component={MyFeeds}
-        options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
-          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerShown: false,
-        }}
-      />
-      {/* <Stack.Screen
-        name="FeedDetail"
-        component={FeedDetail}
-        options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
-          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerShown: false,
-        }}
-      /> */}
-      <Stack.Screen
         name="Select Role"
         component={SelectRole}
         options={{
@@ -125,6 +105,16 @@ const AuthStack = () => {
       <Stack.Screen
         name="FeedDetailReport"
         component={FeedDetailReport}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="MyFeeds"
+        component={MyFeeds}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
