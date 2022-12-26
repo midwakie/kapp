@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './styles';
 import GradientText from 'app/components/texts/GradientText';
 import RegularButton from 'app/components/buttons/RegularButton';
 import { useTranslation } from 'react-i18next';
 import NavigationService from 'app/navigation/NavigationService';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
-import { Image, SafeAreaView, Text, View, FlatList } from 'react-native';
+import {
+  Image,
+  SafeAreaView,
+  Text,
+  View,
+  FlatList,
+  Dimensions,
+  TextStyle,
+  TouchableWithoutFeedback,
+  Alert,
+} from 'react-native';
 import TitleBar from 'app/components/buttons/TitleBar';
 import Neumorphism from 'react-native-neumorphism';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -15,10 +25,13 @@ import { scale } from 'react-native-size-matters';
 const EBooks: React.FC = () => {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
+  const dropDown = () => {
+    Alert;
+  };
   const Card = ({ book }) => {
     return (
       <View style={styles(direction).neomorphContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={null}>
           <Neumorphism
             style={{ margin: 10 }}
             lightColor={'#ffffff'}
@@ -70,18 +83,24 @@ const EBooks: React.FC = () => {
       />
       <SafeAreaView style={styles(direction).safeAreaView}>
         <View style={styles(direction).container2}>
-          <View style={styles(direction).gridViewContainer}>
-            <Neumorphism
-              lightColor={'#FEFEFF'}
-              darkColor={'#C6CEDA'}
-              shapeType={'flat'}
-              radius={8}>
-              <View style={styles(direction).gridView}>
-                <Text style={styles(direction).gridText}>Grid View</Text>
-                <MaterialIcon name={'view-grid'} size={20} color={'#000000'} />
-              </View>
-            </Neumorphism>
-          </View>
+          <TouchableWithoutFeedback onPress={dropDown}>
+            <View style={styles(direction).gridViewContainer}>
+              <Neumorphism
+                lightColor={'#FEFEFF'}
+                darkColor={'#C6CEDA'}
+                shapeType={'flat'}
+                radius={8}>
+                <View style={styles(direction).gridView}>
+                  <Text style={styles(direction).gridText}>Grid View</Text>
+                  <MaterialIcon
+                    name={'view-grid'}
+                    size={20}
+                    color={'#000000'}
+                  />
+                </View>
+              </Neumorphism>
+            </View>
+          </TouchableWithoutFeedback>
           <View style={styles(direction).cardContainer}>
             <FlatList
               numColumns={2}
