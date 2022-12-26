@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
-import { SafeAreaView, Text, View } from 'react-native';
+import { SafeAreaView, Text, TextStyle, View } from 'react-native';
 import styles from './styles';
 import NavigationService from 'app/navigation/NavigationService';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -11,19 +12,19 @@ import RegularButton from 'app/components/buttons/RegularButton';
 import HorizontalLine from 'app/components/lines/HorizontalLine';
 import CustomOTPInput from 'app/components/inputs/CustomOTPInput';
 import { useTranslation } from 'react-i18next';
-import { IRole } from 'app/models/reducers/role';
+import { ICurrentCustomer } from 'app/models/reducers/currentCustomer';
 import { useSelector } from 'react-redux';
 import { ROLES } from 'app/config/role-config';
 
 interface IState {
-  selectedRoleReducer: IRole;
+  currentCustomerReducer: ICurrentCustomer;
 }
 
 const VerifyMobile: React.FC = () => {
   const { control } = useForm();
   const { t } = useTranslation();
   const selectedRole = useSelector(
-    (state: IState) => state.selectedRoleReducer.role,
+    (state: IState) => state.currentCustomerReducer.role,
   );
   return (
     <ScrollView style={styles.container} bounces={false}>
@@ -35,7 +36,7 @@ const VerifyMobile: React.FC = () => {
               text={t('Verify Mobile Number')}
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
-              textStyle={styles.gradientTextStyle}
+              textStyle={styles.gradientTextStyle as TextStyle}
             />
             <Text style={styles.subTextStyle}>
               {t(

@@ -3,28 +3,20 @@ import {
   Image,
   SafeAreaView,
   Text,
-  TextStyle,
   ImageBackground,
   TouchableOpacity,
   View,
 } from 'react-native';
 import styles from './styles';
-import NavigationService from 'app/navigation/NavigationService';
 import { ScrollView } from 'react-native-gesture-handler';
-import GradientText from 'app/components/texts/GradientText';
 import { useForm } from 'react-hook-form';
-import CustomInput from 'app/components/inputs/CustomInput';
-import RegularButton from 'app/components/buttons/RegularButton';
 import { useTranslation } from 'react-i18next';
 import Neumorphism from 'react-native-neumorphism';
-import { scale } from 'react-native-size-matters';
 import TitleBar from 'app/components/buttons/TitleBar';
 import VerticalLine from 'app/components/lines/VerticalLine';
 
 const ChildHome: React.FC = () => {
   const { control } = useForm();
-  const invitationCodeInputRef: React.RefObject<any> = React.createRef();
-  const passwordInputRef: React.RefObject<any> = React.createRef();
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
   return (

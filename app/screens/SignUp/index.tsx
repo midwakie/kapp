@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useRef } from 'react';
 import {
   Image,
@@ -6,6 +7,7 @@ import {
   SafeAreaView,
   Text,
   TextInput,
+  TextStyle,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -26,12 +28,17 @@ import PhoneInput from 'react-native-phone-number-input';
 import NationalityPicker from 'react-native-nationality-country-calling-code-picker';
 import { useTranslation } from 'react-i18next';
 import { scale } from 'react-native-size-matters';
-
+import { useDispatch, useSelector } from 'react-redux';
+import * as registerActions from 'app/store/actions/registerActions';
+import { ICurrentCustomer } from 'app/models/reducers/currentCustomer';
+interface IState {
+  currentCustomerReducer: ICurrentCustomer;
+}
 const SignUp: React.FC = () => {
   const [showPassword, setShowPassword] = React.useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
   const [checked, setChecked] = React.useState(true);
-  const [mobileNumber, setMobileNumber] = React.useState('');
+  const [mobileNo, setMobileNo] = React.useState('');
   const [country, setCountry] = React.useState('');
   const { control, handleSubmit, watch, setValue } = useForm();
   const pwd = watch('password');
@@ -47,10 +54,17 @@ const SignUp: React.FC = () => {
   const confirmPasswordInputRef: React.RefObject<any> = React.createRef();
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
+  const dispatch = useDispatch();
 
-  const signUpUser = (data) => {
-    // alert('Sign Up' + JSON.stringify(data));
-    NavigationService.navigate('Verify Email');
+  const selectedRole = useSelector(
+    (state: IState) => state.currentCustomerReducer.role,
+  );
+
+  const signUpUser = (data: any) => {
+    data.mobileNo = mobileNo;
+    data.roleType = selectedRole;
+    dispatch(registerActions.requestRegister(data));
+    // NavigationService.navigate('Verify Email');
   };
 
   return (
@@ -77,7 +91,7 @@ const SignUp: React.FC = () => {
               text={t('Sign Up to Continue')}
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
-              textStyle={styles(direction).gradientTextStyle}
+              textStyle={styles(direction).gradientTextStyle as TextStyle}
             />
           </View>
           <View style={styles(direction).inputTextContainer}>
@@ -137,7 +151,7 @@ const SignUp: React.FC = () => {
               defaultCode="AE"
               layout="second"
               onChangeFormattedText={text => {
-                setMobileNumber(text);
+                setMobileNo(text);
               }}
               disabled={false}
               placeholder={`${t('Mobile Number')}*`}

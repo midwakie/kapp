@@ -12,18 +12,15 @@ import {
 } from 'app/models/actions/login';
 const initialState: ILoginState = {
   isLoggedIn: false,
-  id: '',
-  issuer: '',
-  token: '',
-  email: '',
-  identity_id: '',
+  payload: {},
+  status: 0,
 };
 
 export const loginReducer = createReducer(initialState, {
   [types.LOGIN_REQUEST](state: ILoginState, action: ILoginRequestState) {
     return {
       ...state,
-      email: action.email,
+      payload: action.payload,
     };
   },
   [types.LOGIN_LOADING_ENDED](state: ILoginState) {
@@ -32,16 +29,16 @@ export const loginReducer = createReducer(initialState, {
   [types.LOGIN_RESPONSE](state: ILoginState, action: ILoginResponseState) {
     return {
       ...state,
-      id: action.response.id,
-      issuer: action.response.issuer,
-      token: action.response.token,
-      identity_id: action.response.identity_id,
       isLoggedIn: true,
+      payload: action.payload.data,
+      status: action.payload.status,
     };
   },
-  [types.LOGIN_FAILED](state: ILoginState) {
+  [types.LOGIN_FAILED](state: ILoginState, action: ILoginResponseState) {
     return {
       ...state,
+      payload: action.payload.data,
+      status: action.payload.status,
       isLoggedIn: false,
     };
   },

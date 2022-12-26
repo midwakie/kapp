@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect } from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import { useSelector } from 'react-redux';
 
 import ThemeController from '../components/ThemeController';
@@ -61,7 +61,10 @@ const AuthStack = () => {
   }, []);
 
   return (
-    <AuthenticationStack.Navigator>
+    <AuthenticationStack.Navigator
+      screenOptions={{
+        ...TransitionPresets.SlideFromRightIOS,
+      }}>
       <Stack.Screen
         name="Select Role"
         component={SelectRole}

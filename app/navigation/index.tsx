@@ -14,6 +14,7 @@ import MiddlewareStack from './MiddlewareStack';
 import useGetOnboardingStatus from 'app/hooks/useGetOnboardingStatus';
 import { useTranslation } from 'react-i18next';
 import InitialCheckStack from './InitialCheckStack';
+import { ICurrentCustomer } from 'app/models/reducers/currentCustomer';
 
 const Stack = createStackNavigator();
 
@@ -28,6 +29,7 @@ const homeOptions: any = {
 interface IState {
   loginReducer: ILoginState;
   loadingReducer: ILoading;
+  currentCustomerReducer: ICurrentCustomer;
 }
 
 interface IProps {
@@ -39,6 +41,9 @@ const App: React.FC<IProps> = (props: IProps) => {
   const { t, i18n } = useTranslation();
   const isLoggedIn = useSelector(
     (state: IState) => state.loginReducer.isLoggedIn,
+  );
+  const currentCustomerEmailVerificationStatus = useSelector(
+    (state: IState) => state.currentCustomerReducer.email_verified,
   );
   const isLoading = useSelector(
     (state: IState) => state.loadingReducer.isLoading,
@@ -54,11 +59,19 @@ const App: React.FC<IProps> = (props: IProps) => {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {!isLoading ? (
           isLoggedIn ? (
-            <Stack.Screen
-              name="Home"
-              component={AppStack}
-              options={homeOptions}
-            />
+            currentCustomerEmailVerificationStatus === false ? (
+              <Stack.Screen
+                name="MiddleWare"
+                component={MiddlewareStack}
+                options={homeOptions}
+              />
+            ) : (
+              <Stack.Screen
+                name="Home"
+                component={AppStack}
+                options={homeOptions}
+              />
+            )
           ) : onboardingIsLoading ? (
             <Stack.Screen
               name="MiddleWare"
