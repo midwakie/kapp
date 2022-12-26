@@ -4,6 +4,8 @@ const ApiConfig = {
   // AUTHORIZATION //
   REGISTER: 'auth/register',
   LOGIN: 'auth/login',
+  OTP_REQUEST: 'auth/otpRequest',
+  OTP_VERIFY: 'auth/otpVerify',
 
   // USER //
   FETCH_USER_DETAILS: '/user/fetchUserDetails',

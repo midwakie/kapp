@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import {
   Image,
@@ -21,13 +22,30 @@ import RegularButton from 'app/components/buttons/RegularButton';
 import HorizontalLine from 'app/components/lines/HorizontalLine';
 import { useTranslation } from 'react-i18next';
 import { scale } from 'react-native-size-matters';
+import { useDispatch, useSelector } from 'react-redux';
+import * as loginActions from 'app/store/actions/loginActions';
+import { ICurrentCustomer } from 'app/models/reducers/currentCustomer';
+interface IState {
+  currentCustomerReducer: ICurrentCustomer;
+}
 
 const SignIn: React.FC = () => {
   const [showPassword, setShowPassword] = React.useState(false);
-  const { control } = useForm();
+  const { control, handleSubmit } = useForm();
   const inputRef: React.RefObject<any> = React.createRef();
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
+  const dispatch = useDispatch();
+
+  const selectedRole = useSelector(
+    (state: IState) => state.currentCustomerReducer.role,
+  );
+
+  const onSignIn = (data: any) => {
+    data.roleType = selectedRole;
+    dispatch(loginActions.requestLogin(data));
+  };
+
   return (
     <ScrollView style={styles(direction).container} bounces={false}>
       <SafeAreaView style={styles(direction).safeAreaView}>
@@ -116,9 +134,7 @@ const SignIn: React.FC = () => {
             />
           </View>
           <RegularButton
-            onPress={() => {
-              NavigationService.navigate('ChildHome');
-            }}
+            onPress={handleSubmit(onSignIn)}
             text={t('Sign in')}
             radius={50}
             height={50}

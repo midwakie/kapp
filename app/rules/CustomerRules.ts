@@ -4,23 +4,33 @@ const CustomerRules = {
   /// user details rules
   first_name: {
     required: 'First Name required',
+    minLength: {
+      value: 3,
+      message: 'First Name should be minimum length of 3 characters',
+    },
     pattern: {
       value: regexPattern.LettersAndSpaces,
-      message: 'First name should contains only letters',
+      message:
+        'First name should contains only letters and minimum length of 3',
     },
   },
   middle_name: {
     required: false,
     pattern: {
       value: regexPattern.LettersAndSpaces,
-      message: 'Middle name should contains only letters',
+      message:
+        'Middle name should contains only letters and minimum length of 3',
     },
   },
   last_name: {
     required: 'Last Name required',
+    minLength: {
+      value: 3,
+      message: 'Last name should be minimum length of 3 characters',
+    },
     pattern: {
       value: regexPattern.LettersAndSpaces,
-      message: 'Last name should contains only letters',
+      message: 'Last name should contains only letters minimum length of 3',
     },
   },
   birthday: {

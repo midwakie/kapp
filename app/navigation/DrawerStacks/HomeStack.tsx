@@ -15,14 +15,16 @@ const homeOptions: any = {
   headerShown: false,
 };
 
-const HomeStack = () => (
-  <LoggedInStack.Navigator>
-    <Stack.Screen
-      name="LoggedInNavigator"
-      component={Home}
-      options={homeOptions}
-    />
-  </LoggedInStack.Navigator>
-);
+const HomeStack = () => {
+  return (
+    <LoggedInStack.Navigator>
+      <Stack.Screen
+        name="LoggedInNavigator"
+        component={Home}
+        options={homeOptions}
+      />
+    </LoggedInStack.Navigator>
+  );
+};
 
 export default HomeStack;

@@ -14,19 +14,21 @@ import {
   View,
   StyleSheet,
 } from 'react-native';
-import FaIcon from 'react-native-vector-icons/FontAwesome';
-
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
+import Neumorphism from 'react-native-neumorphism';
 import HomeStack from './DrawerStacks/HomeStack';
 import { useTranslation } from 'react-i18next';
 import { retrieveSelectedLanguage } from 'app/utils/storageUtils';
+import RegularButton from 'app/components/buttons/RegularButton';
+import { ScaledSheet } from 'react-native-size-matters';
+import LinearGradient from 'react-native-linear-gradient';
 
 const Drawer = createDrawerNavigator();
 
-const AppStack = props => {
+const AppStack = () => {
   let lastGroupName = '';
   let newGroup = false;
   const { i18n } = useTranslation();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const setLanguage = async () => {
     let lang: string = (await retrieveSelectedLanguage()) as string;
     i18n.changeLanguage(lang);
@@ -34,70 +36,74 @@ const AppStack = props => {
 
   useEffect(() => {
     setLanguage();
-  },[]);
+  }, []);
   return (
     <Drawer.Navigator
       initialRouteName="Home"
-      screenOptions={{ headerTintColor: '#FFFFFF' }}
+      screenOptions={{ headerTintColor: '#EDF2F4', headerShown: false }}
       drawerContent={props => (
-        <SafeAreaView style={{ flex: 1, backgroundColor: '#976a4a' }}>
-          <View
-            style={{
-              width: '100%',
-              alignItems: 'center',
-              marginTop: 20,
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-            }}>
-            <TouchableHighlight
-              style={styles.side_menu_btn}
-              activeOpacity={0.5}
-              underlayColor={'#976a4a'}
-              onPress={() => {
-                props.navigation.dispatch(DrawerActions.toggleDrawer());
-              }}>
-              <FaIcon size={24} name={'navicon'} color="#FFFFFF" />
-            </TouchableHighlight>
+        <SafeAreaView style={styles.safeAreaView}>
+          <View style={styles.side_menu_container}>
             <Image
               source={require('../assets/logo.png')}
-              style={{ width: 75, height: 75 }}
+              style={styles.logoStyle}
             />
-            <View style={{ width: '20%' }} />
+            <RegularButton
+              onPress={() => {
+                props.navigation.dispatch(DrawerActions.toggleDrawer());
+              }}
+              icon={'close'}
+              radius={42}
+              height={42}
+              width={42}
+              colors={['#EBECF0', '#EBECF0']}
+            />
           </View>
           <DrawerContentScrollView {...props}>
             {props.state.routes.map((route, index) => {
               const { drawerLabel, activeTintColor, groupName } =
                 props.descriptors[route.key].options;
-              if (lastGroupName !== groupName) {
-                newGroup = true;
-                lastGroupName = groupName;
-              } else newGroup = false;
+              // if (lastGroupName !== groupName) {
+              //   newGroup = true;
+              //   lastGroupName = groupName;
+              // } else newGroup = false;
 
               return (
                 <View key={index}>
-                  {newGroup ? (
+                  {/* {newGroup ? (
                     <View style={styles.sectionView}>
                       <Text
                         key={groupName}
-                        style={{ marginLeft: 10, color: '#FFFFFF' }}>
+                        style={{ marginLeft: 10, color: '#3B3B48' }}>
                         {groupName}
                       </Text>
                       <View style={styles.separatorLine} />
                     </View>
-                  ) : null}
-                  <DrawerItem
+                  ) : null} */}
+                  {/* <DrawerItem
                     key={route.key}
                     label={({ color }) => (
-                      <Text style={{ color: '#FFFFFF' }}>{drawerLabel}</Text>
+                      <Text style={{ color: '#3B3B48' }}>{drawerLabel}</Text>
                     )}
                     focused={
                       props.state.routes.findIndex(
                         e => e.name === route.name,
                       ) === props.state.index
                     }
-                    activeTintColor={activeTintColor}
+                    activeTintColor={'transparent'}
                     onPress={() => props.navigation.navigate(route.name)}
-                  />
+                  /> */}
+                  <LinearGradient
+                    colors={['#EBEEF0', '#E1E8ED']}
+                    start={{ x: 0, y: 1 }}
+                    end={{ x: 1, y: 1 }}>
+                    <View style={styles.side_menu_item}>
+                      <MaterialIcon name="home" size={24} color={'#84BD47'} />
+                      <Text style={styles.side_menu_item_label}>
+                        {drawerLabel}
+                      </Text>
+                    </View>
+                  </LinearGradient>
                 </View>
               );
             })}
@@ -120,14 +126,38 @@ const AppStack = props => {
   );
 };
 
-const styles = StyleSheet.create({
+const styles = ScaledSheet.create({
   MainContainer: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     padding: 10,
   },
-
+  side_menu_item: {
+    width: '100%',
+    height: '60@ms',
+    alignItems: 'center',
+    paddingHorizontal: '59@ms',
+    flexDirection: 'row',
+    borderTopWidth: 1,
+    borderTopColor: '#FFFFFF',
+  },
+  side_menu_item_label: {
+    color: '#3B3B48',
+    marginLeft: '34@ms',
+    fontFamily: 'Nunito-Regular',
+    fontSize: '16@s',
+    fontWeight: '600',
+  },
+  safeAreaView: { flex: 1, backgroundColor: '#E5E5E5' },
+  side_menu_container: {
+    alignItems: 'center',
+    marginVertical: 20,
+    marginHorizontal: 25,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  logoStyle: { width: 60, height: 60 },
   sectionView: {
     flex: 1,
     flexDirection: 'row',
@@ -136,7 +166,7 @@ const styles = StyleSheet.create({
   },
   separatorLine: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#3B3B48',
     height: 1.2,
     marginLeft: 12,
     marginRight: 24,
@@ -149,12 +179,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   side_menu_btn: {
-    paddingHorizontal: 12,
     paddingVertical: 6,
-    marginLeft: 5,
-    height: '100%',
-    // justifyContent: "center",
-    // alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
