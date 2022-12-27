@@ -12,9 +12,9 @@ const styles = (isPressed: boolean) =>
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: isPressed
-        ? `rgba(${Math.random() * 200},${Math.random() * 150}, ${
-            Math.random() * 200
-          }, 0.7)`
+        ? `#${Math.floor(Math.random() * 16777215)
+            .toString(16)
+            .padStart(6, '0')}`
         : '#EBEEF0',
     },
     bubbleText: {

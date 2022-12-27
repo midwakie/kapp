@@ -14,8 +14,10 @@ import { useTranslation } from 'react-i18next';
 import Neumorphism from 'react-native-neumorphism';
 import TitleBar from 'app/components/buttons/TitleBar';
 import VerticalLine from 'app/components/lines/VerticalLine';
+import { useDispatch } from 'react-redux';
+import { DrawerActions } from '@react-navigation/native';
 
-const Home: React.FC = () => {
+const Home: React.FC = (props: any) => {
   const { control } = useForm();
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
@@ -42,9 +44,15 @@ const Home: React.FC = () => {
             shapeType={'flat'}
             radius={52}>
             <View style={styles(direction).iconContainer}>
-              <TouchableOpacity onPress={() => {}}>
+              <TouchableOpacity
+                onPress={() => {
+                  props?.navigation.dispatch(DrawerActions.toggleDrawer());
+                }}>
                 <View style={styles(direction).menuContainer}>
-                  <Image source={require('../../assets/childHomeMenu.png')} />
+                  <Image
+                    source={require('../../assets/childHomeMenu.png')}
+                    style={styles(direction).iconImageStyle}
+                  />
                 </View>
               </TouchableOpacity>
               <VerticalLine
@@ -55,7 +63,10 @@ const Home: React.FC = () => {
               />
               <TouchableOpacity onPress={() => {}}>
                 <View style={styles(direction).searchContainer}>
-                  <Image source={require('../../assets/searchIcon.png')} />
+                  <Image
+                    source={require('../../assets/searchIcon.png')}
+                    style={styles(direction).iconImageStyle}
+                  />
                 </View>
               </TouchableOpacity>
             </View>

@@ -140,6 +140,8 @@ const styles = (direction: string) =>
       fontFamily: 'Nunito-Regular',
       fontSize: '10@s',
       textAlign: direction === 'rtl' ? 'left' : 'right',
+      paddingTop: '10@s',
+      width: width,
     },
   });
 

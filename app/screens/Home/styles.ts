@@ -41,25 +41,31 @@ const styles = (direction: string) =>
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
+      height: '44@s',
+      width: '88@s',
     },
 
     searchContainer: {
-      height: '46@s',
-      width: '47@s',
       backgroundColor: '#EBEEF0',
-      borderTopRightRadius: 52,
-      borderBottomRightRadius: 52,
+      height: '44@s',
+      width: '44@s',
+      borderTopRightRadius: '50@s',
+      borderBottomRightRadius: '50@s',
       alignItems: 'center',
       justifyContent: 'center',
     },
     menuContainer: {
-      height: '46@s',
-      width: '47@s',
+      height: '44@s',
+      width: '44@s',
       backgroundColor: '#EBEEF0',
-      borderTopLeftRadius: 52,
-      borderBottomLeftRadius: 52,
+      borderTopLeftRadius: '50@s',
+      borderBottomLeftRadius: '50@s',
       alignItems: 'center',
       justifyContent: 'center',
+    },
+    iconImageStyle: {
+      width: '20@s',
+      height: '20@s',
     },
     imageBackground: {
       resizeMode: 'contain',
@@ -68,7 +74,6 @@ const styles = (direction: string) =>
       top: -20,
       zIndex: -10,
     },
-
     container1: {
       paddingHorizontal: '30@s',
       width: '100%',
