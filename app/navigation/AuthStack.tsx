@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect } from 'react';
-import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
+import {
+  createStackNavigator,
+  TransitionPresets,
+} from '@react-navigation/stack';
 import { useSelector } from 'react-redux';
 
 import ThemeController from '../components/ThemeController';
@@ -66,16 +69,6 @@ const AuthStack = () => {
       screenOptions={{
         ...TransitionPresets.SlideFromRightIOS,
       }}>
-      <Stack.Screen
-        name="EBooks"
-        component={EBooks}
-        options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
-          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerShown: false,
-        }}
-      />
       <Stack.Screen
         name="Select Role"
         component={SelectRole}
@@ -340,6 +333,16 @@ const AuthStack = () => {
       <Stack.Screen
         name="Book Review"
         component={BookReview}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="EBooks"
+        component={EBooks}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
