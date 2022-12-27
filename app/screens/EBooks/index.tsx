@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import styles from './styles';
 import GradientText from 'app/components/texts/GradientText';
@@ -14,25 +15,91 @@ import {
   TextStyle,
   TouchableWithoutFeedback,
   Alert,
+  Dimensions,
 } from 'react-native';
 import TitleBar from 'app/components/buttons/TitleBar';
 import Neumorphism from 'react-native-neumorphism';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import books from 'app/components/books';
-import { scale } from 'react-native-size-matters';
+import { ms, scale } from 'react-native-size-matters';
+import useDeviceOrientation from 'app/hooks/useDeviceOrientation';
 
 const EBooks: React.FC = () => {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
+  const currentOrientation = useDeviceOrientation();
+  const [selectedFilter, setSelectedFilter] = useState('grid');
+  const books = [
+    {
+      id: 1,
+      title: 'Kung Fu Panda',
+      author: 'By Martin Luther',
+      price: '$15.30',
+      img: require('../../assets/book.png'),
+    },
+    {
+      id: 2,
+      title: 'Happy Lemon',
+      author: 'By Abhishek',
+      price: '$20.30',
+      img: require('../../assets/book2.png'),
+    },
+    {
+      id: 3,
+      title: 'Billy & Shmilli',
+      author: 'By Harish S',
+      price: '$25.30',
+      img: require('../../assets/book3.png'),
+    },
+    {
+      id: 4,
+      title: 'Story Book',
+      author: 'By Anil Bose',
+      price: '$10.30',
+      img: require('../../assets/book4.png'),
+    },
+    {
+      id: 5,
+      title: 'Journey of the Star',
+      author: 'By Sijin',
+      price: '$15.30',
+      img: require('../../assets/book.png'),
+    },
+    {
+      id: 6,
+      title: 'Nasa Boy',
+      author: 'By Rashid ',
+      price: '$35.30',
+      img: require('../../assets/book2.png'),
+    },
+    {
+      id: 7,
+      title: 'Sample Text',
+      author: 'By Shiva',
+      price: '$30.30',
+      img: require('../../assets/book3.png'),
+    },
+    {
+      id: 8,
+      title: 'Cool Kids 5',
+      author: 'By Tibu PS',
+      price: '$45.30',
+      img: require('../../assets/book4.png'),
+    },
+  ];
   const dropDown = () => {
-    Alert;
+    if (selectedFilter === 'grid') {
+      setSelectedFilter('list');
+    } else {
+      setSelectedFilter('grid');
+    }
   };
-  const Card = ({ book }) => {
+
+  const CardItem = ({ book }: any) => {
     return (
       <View style={styles(direction).neomorphContainer}>
-        <TouchableOpacity onPress={null}>
+        <TouchableOpacity onPress={() => {}}>
           <Neumorphism
-            style={{ margin: 10 }}
+            style={styles(direction).neomorphMargin}
             lightColor={'#ffffff'}
             darkColor={'#C6CEDA'}
             shapeType={'flat'}
@@ -40,10 +107,43 @@ const EBooks: React.FC = () => {
             <View style={styles(direction).card}>
               <Image source={book.img} style={styles(direction).cardImage} />
               <View style={styles(direction).cardContent}>
-                <Text style={styles(direction).title}>{book.title}</Text>
+                <Text style={styles(direction).title} numberOfLines={1}>
+                  {book.title}
+                </Text>
                 <Text style={styles(direction).author}>{book.author}</Text>
                 <Text style={styles(direction).price}>{book.price}</Text>
               </View>
+            </View>
+          </Neumorphism>
+        </TouchableOpacity>
+      </View>
+    );
+  };
+
+  const CardListItem = ({ book }: any) => {
+    return (
+      <View style={styles(direction).neomorphContainer}>
+        <TouchableOpacity onPress={() => {}}>
+          <Neumorphism
+            style={styles(direction).neomorphMargin}
+            lightColor={'#ffffff'}
+            darkColor={'#C6CEDA'}
+            shapeType={'flat'}
+            radius={scale(14)}>
+            <View style={styles(direction).cardListStyle}>
+              <View style={styles(direction).innerDirection}>
+                <Image
+                  source={book.img}
+                  style={styles(direction).cardListImage}
+                />
+                <View style={styles(direction).cardListContent}>
+                  <Text style={styles(direction).title} numberOfLines={1}>
+                    {book.title}
+                  </Text>
+                  <Text style={styles(direction).author}>{book.author}</Text>
+                </View>
+              </View>
+              <Text style={styles(direction).priceListStyle}>{book.price}</Text>
             </View>
           </Neumorphism>
         </TouchableOpacity>
@@ -82,32 +182,72 @@ const EBooks: React.FC = () => {
       />
       <SafeAreaView style={styles(direction).safeAreaView}>
         <View style={styles(direction).container2}>
-          <TouchableWithoutFeedback onPress={dropDown}>
-            <View style={styles(direction).gridViewContainer}>
-              <Neumorphism
-                lightColor={'#FEFEFF'}
-                darkColor={'#C6CEDA'}
-                shapeType={'flat'}
-                radius={8}>
-                <View style={styles(direction).gridView}>
-                  <Text style={styles(direction).gridText}>Grid View</Text>
+          <View style={styles(direction).gridViewContainer}>
+            <Neumorphism
+              lightColor={'#FEFEFF'}
+              darkColor={'#C6CEDA'}
+              shapeType={'flat'}
+              radius={scale(8)}>
+              <TouchableOpacity
+                onPress={dropDown}
+                style={styles(direction).gridView}>
+                <Text style={styles(direction).gridText}>
+                  {selectedFilter === 'grid' ? 'List View' : 'Grid View'}
+                </Text>
+                {selectedFilter === 'grid' ? (
                   <MaterialIcon
-                    name={'view-grid'}
-                    size={20}
+                    name={'view-list'}
+                    size={scale(20)}
                     color={'#000000'}
                   />
-                </View>
-              </Neumorphism>
-            </View>
-          </TouchableWithoutFeedback>
+                ) : (
+                  <MaterialIcon
+                    name={'view-grid'}
+                    size={scale(20)}
+                    color={'#000000'}
+                  />
+                )}
+              </TouchableOpacity>
+            </Neumorphism>
+          </View>
           <View style={styles(direction).cardContainer}>
-            <FlatList
-              numColumns={2}
-              data={books}
-              renderItem={({ item }) => {
-                return <Card book={item} />;
-              }}
-            />
+            {selectedFilter === 'grid' ? (
+              currentOrientation === 'portrait' ? (
+                <FlatList
+                  numColumns={Math.floor(
+                    Dimensions.get('window').width / ms(158),
+                  )}
+                  key={'_'}
+                  keyExtractor={item => '_' + item.id}
+                  data={books}
+                  renderItem={({ item }) => {
+                    return <CardItem book={item} />;
+                  }}
+                />
+              ) : (
+                <FlatList
+                  key={'#'}
+                  keyExtractor={item => '#' + item.id}
+                  numColumns={Math.floor(
+                    Dimensions.get('window').width / ms(158),
+                  )}
+                  data={books}
+                  renderItem={({ item }) => {
+                    return <CardItem book={item} />;
+                  }}
+                />
+              )
+            ) : (
+              <FlatList
+                numColumns={1}
+                key={'-'}
+                keyExtractor={item => '-' + item.id}
+                data={books}
+                renderItem={({ item }) => {
+                  return <CardListItem book={item} />;
+                }}
+              />
+            )}
           </View>
         </View>
       </SafeAreaView>

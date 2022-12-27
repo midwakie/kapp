@@ -1,5 +1,5 @@
 import { Dimensions } from 'react-native';
-import { ScaledSheet } from 'react-native-size-matters';
+import { ms, scale, ScaledSheet } from 'react-native-size-matters';
 
 const width =
   Dimensions.get('window').width >= Dimensions.get('window').height
@@ -15,7 +15,7 @@ const styles = (direction: string) =>
     },
     safeAreaView: { alignSelf: 'stretch' },
     container2: {
-      paddingHorizontal: '20@s',
+      paddingHorizontal: '10@ms',
       marginTop: 10,
       width: '100%',
       height: '100%',
@@ -33,8 +33,6 @@ const styles = (direction: string) =>
       justifyContent: 'center',
       alignItems: 'center',
       height: '33@s',
-      marginBottom: 40,
-      marginTop: 30,
       paddingHorizontal: '30@s',
     },
     gradientTextStyle: {
@@ -44,17 +42,18 @@ const styles = (direction: string) =>
     },
     gridViewContainer: {
       marginTop: 20,
-      width: '100%',
+      padding: 10,
       justifyContent: 'flex-end',
       alignItems: 'flex-end',
+      alignSelf: 'flex-end',
     },
     gridView: {
-      paddingHorizontal: 10,
+      paddingHorizontal: '10@ms',
       alignItems: 'center',
       justifyContent: 'space-between',
       flexDirection: 'row',
-      width: 138,
-      height: 40,
+      width: '138@s',
+      height: '40@s',
       backgroundColor: '#EBEEF0',
     },
     gridText: {
@@ -65,9 +64,19 @@ const styles = (direction: string) =>
       fontWeight: '600',
     },
     card: {
-      height: 199,
-      width: 158,
+      height: '199@ms',
+      width: '148@ms',
+      backgroundColor: '#EBEEF0',
     },
+    cardListStyle: {
+      height: '92@ms',
+      width: Dimensions.get('window').width - scale(40),
+      backgroundColor: '#EBEEF0',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
+    innerDirection: { flexDirection: 'row' },
     cardContainer: {
       marginTop: 20,
       justifyContent: 'center',
@@ -79,35 +88,64 @@ const styles = (direction: string) =>
       justifyContent: 'center',
       alignItems: 'center',
     },
+    neomorphListContainer: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      margin: 20,
+    },
+    neomorphMargin: { margin: '10@ms' },
     cardImage: {
-      height: 118,
+      height: '118@ms',
       width: '100%',
+    },
+    cardListImage: {
+      height: '82@ms',
+      width: '82@ms',
+      borderRadius: '13@ms',
+      margin: '5@ms',
     },
     cardContent: {
       width: '100%',
       flexDirection: 'column',
-      paddingHorizontal: 11,
+      paddingHorizontal: '11@s',
       marginTop: 8,
+    },
+    cardListContent: {
+      flexDirection: 'column',
+      height: '100%',
+      paddingTop: '20@ms',
+      marginLeft: '13@ms',
     },
     title: {
       fontFamily: 'Nunito-Regular',
-      fontSize: '14@s',
+      fontSize: '14@ms',
       fontWeight: '600',
       color: '#2F4868',
       marginBottom: 4,
     },
     author: {
       fontFamily: 'Nunito-Regular',
-      fontSize: '12@s',
+      fontSize: '12@ms',
       fontWeight: '600',
       color: '#758DAC',
       marginBottom: 4,
     },
     price: {
       fontFamily: 'Nunito-Regular',
-      fontSize: '12@s',
+      fontSize: '12@ms',
       fontWeight: '700',
       color: '#03A0E3',
+    },
+    priceListStyle: {
+      fontFamily: 'Nunito-Regular',
+      fontSize: '16@ms',
+      fontWeight: '700',
+      color: '#03A0E3',
+      marginRight: ms(25),
+      marginBottom: ms(22),
+      alignSelf: 'flex-end',
+      width: '53@s',
+      textAlign: 'right',
     },
   });
 
