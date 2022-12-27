@@ -15,6 +15,8 @@ import useGetOnboardingStatus from 'app/hooks/useGetOnboardingStatus';
 import { useTranslation } from 'react-i18next';
 import InitialCheckStack from './InitialCheckStack';
 import { ICurrentCustomer } from 'app/models/reducers/currentCustomer';
+import { useNetInfo } from '@react-native-community/netinfo';
+import NoConnection from 'app/screens/NoConnection';
 
 const Stack = createStackNavigator();
 
@@ -39,6 +41,7 @@ interface IProps {
 const App: React.FC<IProps> = (props: IProps) => {
   const { theme } = props;
   const { t, i18n } = useTranslation();
+  const netInfo = useNetInfo();
   const isLoggedIn = useSelector(
     (state: IState) => state.loginReducer.isLoggedIn,
   );
@@ -55,24 +58,62 @@ const App: React.FC<IProps> = (props: IProps) => {
   return (
     <NavigationContainer ref={navigationRef}>
       <StatusBar barStyle={'dark-content'} />
-
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {!isLoading ? (
-          isLoggedIn ? (
-            currentCustomerEmailVerificationStatus === false ? (
+      {!netInfo.isConnected ? (
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="NoConnection" component={NoConnection} />
+        </Stack.Navigator>
+      ) : (
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          {!isLoading ? (
+            isLoggedIn ? (
+              currentCustomerEmailVerificationStatus === false ? (
+                <Stack.Screen
+                  name="MiddleWare"
+                  component={MiddlewareStack}
+                  options={homeOptions}
+                />
+              ) : (
+                <Stack.Screen
+                  name="Home"
+                  component={AppStack}
+                  options={homeOptions}
+                />
+              )
+            ) : onboardingIsLoading ? (
               <Stack.Screen
                 name="MiddleWare"
                 component={MiddlewareStack}
-                options={homeOptions}
+                options={{
+                  // When logging out, a pop animation feels intuitive
+                  // You can remove this if you want the default 'push' animation
+                  animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+                  // headerRight: () => <ThemeController />,
+                }}
+              />
+            ) : !isFirstLaunch ? (
+              <Stack.Screen
+                name="Auth"
+                component={AuthStack}
+                options={{
+                  // When logging out, a pop animation feels intuitive
+                  // You can remove this if you want the default 'push' animation
+                  animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+                  // headerRight: () => <ThemeController />,
+                }}
               />
             ) : (
               <Stack.Screen
-                name="Home"
-                component={AppStack}
-                options={homeOptions}
+                name="InitialCheck"
+                component={InitialCheckStack}
+                options={{
+                  // When logging out, a pop animation feels intuitive
+                  // You can remove this if you want the default 'push' animation
+                  animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+                  // headerRight: () => <ThemeController />,
+                }}
               />
             )
-          ) : onboardingIsLoading ? (
+          ) : (
             <Stack.Screen
               name="MiddleWare"
               component={MiddlewareStack}
@@ -80,45 +121,12 @@ const App: React.FC<IProps> = (props: IProps) => {
                 // When logging out, a pop animation feels intuitive
                 // You can remove this if you want the default 'push' animation
                 animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-                headerRight: () => <ThemeController />,
-              }}
-            />
-          ) : !isFirstLaunch ? (
-            <Stack.Screen
-              name="Auth"
-              component={AuthStack}
-              options={{
-                // When logging out, a pop animation feels intuitive
-                // You can remove this if you want the default 'push' animation
-                animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
                 // headerRight: () => <ThemeController />,
               }}
             />
-          ) : (
-            <Stack.Screen
-              name="InitialCheck"
-              component={InitialCheckStack}
-              options={{
-                // When logging out, a pop animation feels intuitive
-                // You can remove this if you want the default 'push' animation
-                animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-                // headerRight: () => <ThemeController />,
-              }}
-            />
-          )
-        ) : (
-          <Stack.Screen
-            name="MiddleWare"
-            component={MiddlewareStack}
-            options={{
-              // When logging out, a pop animation feels intuitive
-              // You can remove this if you want the default 'push' animation
-              animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-              headerRight: () => <ThemeController />,
-            }}
-          />
-        )}
-      </Stack.Navigator>
+          )}
+        </Stack.Navigator>
+      )}
     </NavigationContainer>
   );
 };

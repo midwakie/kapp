@@ -1,20 +1,16 @@
-import React, { useEffect } from 'react';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React from 'react';
 import {
-  Dimensions,
   Image,
   SafeAreaView,
   Text,
   TextStyle,
   View,
-  TextInput,
   TouchableOpacity,
 } from 'react-native';
 import styles from './styles';
-import NavigationService from 'app/navigation/NavigationService';
 import { ScrollView } from 'react-native-gesture-handler';
 import GradientText from 'app/components/texts/GradientText';
-import RegularButton from 'app/components/buttons/RegularButton';
 import { useTranslation } from 'react-i18next';
 import TitleBar from 'app/components/buttons/TitleBar';
 import Neumorphism from 'react-native-neumorphism';
@@ -22,8 +18,10 @@ import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { scale } from 'react-native-size-matters';
 import HorizontalLine from 'app/components/lines/HorizontalLine';
+import VerticalLine from 'app/components/lines/VerticalLine';
+import { DrawerActions } from '@react-navigation/native';
 
-const MyFeeds: React.FC = () => {
+const MyFeeds: React.FC = (props: any) => {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
   return (
@@ -53,29 +51,33 @@ const MyFeeds: React.FC = () => {
             lightColor={'#ffffff'}
             darkColor={'#A8A8A8'}
             shapeType={'flat'}
-            radius={50}>
-            <View style={styles(direction).right}>
-              <View style={{ marginRight: 12 }}>
-                <TouchableOpacity>
-                  <MaterialIcon
-                    name={'filter-list'}
-                    size={scale(18)}
-                    color={'#03A0E3'}
-                    style={styles(direction).topicon}
+            radius={52}>
+            <View style={styles(direction).iconContainer}>
+              <TouchableOpacity
+                onPress={() => {
+                  props?.navigation.dispatch(DrawerActions.toggleDrawer());
+                }}>
+                <View style={styles(direction).menuContainer}>
+                  <Image
+                    source={require('../../assets/childHomeMenu.png')}
+                    style={styles(direction).iconImageStyle}
                   />
-                </TouchableOpacity>
-              </View>
-              <HorizontalLine width={1} color={'#C1D1DB'} />
-              <View style={{ marginLeft: 13 }}>
-                <TouchableOpacity>
-                  <MaterialIcon
-                    name={'search'}
-                    size={scale(18)}
-                    color={'#03A0E3'}
-                    style={styles(direction).topicon}
+                </View>
+              </TouchableOpacity>
+              <VerticalLine
+                stroke={1}
+                opacity={0.3}
+                height={'100%'}
+                color={'#A8A8A8'}
+              />
+              <TouchableOpacity onPress={() => {}}>
+                <View style={styles(direction).searchContainer}>
+                  <Image
+                    source={require('../../assets/searchIcon.png')}
+                    style={styles(direction).iconImageStyle}
                   />
-                </TouchableOpacity>
-              </View>
+                </View>
+              </TouchableOpacity>
             </View>
           </Neumorphism>
         }

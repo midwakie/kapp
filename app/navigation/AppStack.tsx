@@ -3,32 +3,30 @@ import { DrawerActions } from '@react-navigation/routers';
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
-  DrawerItem,
 } from '@react-navigation/drawer';
 
 import {
   Image,
   SafeAreaView,
   Text,
-  TouchableHighlight,
   View,
-  StyleSheet,
+  TouchableOpacity,
 } from 'react-native';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
-import Neumorphism from 'react-native-neumorphism';
 import HomeStack from './DrawerStacks/HomeStack';
 import { useTranslation } from 'react-i18next';
 import { retrieveSelectedLanguage } from 'app/utils/storageUtils';
 import RegularButton from 'app/components/buttons/RegularButton';
 import { ScaledSheet } from 'react-native-size-matters';
-import LinearGradient from 'react-native-linear-gradient';
+import { useDispatch } from 'react-redux';
+import * as loginActions from 'app/store/actions/loginActions';
+import MyFeeds from 'app/screens/MyFeeds';
 
 const Drawer = createDrawerNavigator();
 
 const AppStack = () => {
-  let lastGroupName = '';
-  let newGroup = false;
   const { i18n } = useTranslation();
+  const dispatch = useDispatch();
   const setLanguage = async () => {
     let lang: string = (await retrieveSelectedLanguage()) as string;
     i18n.changeLanguage(lang);
@@ -37,10 +35,18 @@ const AppStack = () => {
   useEffect(() => {
     setLanguage();
   }, []);
+
+  const signOut = () => {
+    dispatch(loginActions.logOut());
+  };
   return (
     <Drawer.Navigator
       initialRouteName="Home"
-      screenOptions={{ headerTintColor: '#EDF2F4', headerShown: false }}
+      screenOptions={{
+        headerTintColor: '#E1E8ED',
+        headerShown: false,
+        drawerStyle: { width: '100%' },
+      }}
       drawerContent={props => (
         <SafeAreaView style={styles.safeAreaView}>
           <View style={styles.side_menu_container}>
@@ -61,52 +67,41 @@ const AppStack = () => {
           </View>
           <DrawerContentScrollView {...props}>
             {props.state.routes.map((route, index) => {
-              const { drawerLabel, activeTintColor, groupName } =
+              const { drawerLabel, activeTintColor, iconImage } =
                 props.descriptors[route.key].options;
-              // if (lastGroupName !== groupName) {
-              //   newGroup = true;
-              //   lastGroupName = groupName;
-              // } else newGroup = false;
-
               return (
-                <View key={index}>
-                  {/* {newGroup ? (
-                    <View style={styles.sectionView}>
-                      <Text
-                        key={groupName}
-                        style={{ marginLeft: 10, color: '#3B3B48' }}>
-                        {groupName}
-                      </Text>
-                      <View style={styles.separatorLine} />
-                    </View>
-                  ) : null} */}
-                  {/* <DrawerItem
-                    key={route.key}
-                    label={({ color }) => (
-                      <Text style={{ color: '#3B3B48' }}>{drawerLabel}</Text>
-                    )}
-                    focused={
-                      props.state.routes.findIndex(
-                        e => e.name === route.name,
-                      ) === props.state.index
-                    }
-                    activeTintColor={'transparent'}
-                    onPress={() => props.navigation.navigate(route.name)}
-                  /> */}
-                  <LinearGradient
-                    colors={['#EBEEF0', '#E1E8ED']}
-                    start={{ x: 0, y: 1 }}
-                    end={{ x: 1, y: 1 }}>
-                    <View style={styles.side_menu_item}>
-                      <MaterialIcon name="home" size={24} color={'#84BD47'} />
-                      <Text style={styles.side_menu_item_label}>
-                        {drawerLabel}
-                      </Text>
-                    </View>
-                  </LinearGradient>
-                </View>
+                <TouchableOpacity
+                  key={index}
+                  style={styles.itemContainer}
+                  onPress={() => props.navigation.navigate(route.name)}>
+                  <Image
+                    source={require('../assets/sideMenuItem.png')}
+                    style={[styles.bg, { tintColor: activeTintColor }]}
+                  />
+                  <View style={styles.side_menu_item}>
+                    <Image source={iconImage} style={styles.itemImage} />
+                    <Text style={styles.side_menu_item_label}>
+                      {drawerLabel}
+                    </Text>
+                  </View>
+                </TouchableOpacity>
               );
             })}
+            <TouchableOpacity onPress={signOut} style={styles.itemContainer}>
+              <Image
+                source={require('../assets/sideMenuItem.png')}
+                style={styles.bg}
+              />
+              <View style={styles.side_menu_item}>
+                <Image
+                  source={require('../assets/side_menu/signout.png')}
+                  style={styles.itemImage}
+                />
+                <Text style={styles.side_menu_item_sign_out_label}>
+                  Signout
+                </Text>
+              </View>
+            </TouchableOpacity>
           </DrawerContentScrollView>
         </SafeAreaView>
       )}>
@@ -115,7 +110,19 @@ const AppStack = () => {
         component={HomeStack}
         options={{
           drawerLabel: 'Home',
-          groupName: 'Home',
+          iconImage: require('../assets/side_menu/home.png'),
+          headerStyle: {
+            backgroundColor: '#976a4a',
+          },
+          gestureEnabled: false,
+        }}
+      />
+      <Drawer.Screen
+        name="FeedScreen"
+        component={MyFeeds}
+        options={{
+          drawerLabel: 'Feeds',
+          iconImage: require('../assets/side_menu/feeds.png'),
           headerStyle: {
             backgroundColor: '#976a4a',
           },
@@ -139,6 +146,20 @@ const styles = ScaledSheet.create({
     alignItems: 'center',
     paddingHorizontal: '59@ms',
     flexDirection: 'row',
+    // borderTopWidth: 1,
+    // borderTopColor: '#FFFFFF',
+  },
+  bg: {
+    width: '100%',
+    height: '65@s',
+    position: 'absolute',
+    resizeMode: 'stretch',
+  },
+  itemImage: {
+    width: '24@ms',
+    height: '24@ms',
+  },
+  itemContainer: {
     borderTopWidth: 1,
     borderTopColor: '#FFFFFF',
   },
@@ -149,7 +170,14 @@ const styles = ScaledSheet.create({
     fontSize: '16@s',
     fontWeight: '600',
   },
-  safeAreaView: { flex: 1, backgroundColor: '#E5E5E5' },
+  side_menu_item_sign_out_label: {
+    color: '#EC4D61',
+    marginLeft: '34@ms',
+    fontFamily: 'Nunito-Regular',
+    fontSize: '16@s',
+    fontWeight: '600',
+  },
+  safeAreaView: { flex: 1, backgroundColor: '#E1E8ED' },
   side_menu_container: {
     alignItems: 'center',
     marginVertical: 20,
