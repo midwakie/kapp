@@ -11,7 +11,6 @@ import {
   Text,
   View,
   FlatList,
-  Dimensions,
   TextStyle,
   TouchableWithoutFeedback,
   Alert,
