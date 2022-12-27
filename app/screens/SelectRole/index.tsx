@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import {
   Image,
   SafeAreaView,
   ScrollView,
   Text,
+  TextStyle,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -14,15 +16,14 @@ import NavigationService from 'app/navigation/NavigationService';
 import { useTranslation } from 'react-i18next';
 import { scale } from 'react-native-size-matters';
 import { useDispatch } from 'react-redux';
-import * as selectedRoleActions from 'app/store/actions/selectedRoleActions';
+import * as currentCustomerActions from 'app/store/actions/currentCustomerActions';
 import { ROLES } from 'app/config/role-config';
 const SelectRole: React.FC = () => {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
   const dispatch = useDispatch();
   const onRoleSelected = (role: string) => {
-    //TODO Need to implement update selected role in redux store
-    dispatch(selectedRoleActions.setSelectedRole(role));
+    dispatch(currentCustomerActions.setCurrentCustomerRole(role));
     NavigationService.navigate('Welcome');
   };
   return (
@@ -32,10 +33,10 @@ const SelectRole: React.FC = () => {
           <View style={styles(direction).gradientTextContainer}>
             <GradientText
               colors={['#0EAFF4', '#0D93CD']}
-              text={t('Select Your Role')}
+              text={t('SeIect Your Role')}
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
-              textStyle={styles(direction).gradientTextStyle}
+              textStyle={styles(direction).gradientTextStyle as TextStyle}
             />
           </View>
           <TouchableOpacity

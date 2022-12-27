@@ -1,9 +1,13 @@
-import React from 'react';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React, { useRef } from 'react';
 import {
   Image,
+  Keyboard,
   Platform,
   SafeAreaView,
   Text,
+  TextInput,
+  TextStyle,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -20,27 +24,47 @@ import PlainButton from 'app/components/buttons/PlainButton';
 import RegularButton from 'app/components/buttons/RegularButton';
 import HorizontalLine from 'app/components/lines/HorizontalLine';
 import { Checkbox } from 'react-native-paper';
+import PhoneInput from 'react-native-phone-number-input';
+import NationalityPicker from 'react-native-nationality-country-calling-code-picker';
 import { useTranslation } from 'react-i18next';
 import { scale } from 'react-native-size-matters';
-
+import { useDispatch, useSelector } from 'react-redux';
+import * as registerActions from 'app/store/actions/registerActions';
+import { ICurrentCustomer } from 'app/models/reducers/currentCustomer';
+interface IState {
+  currentCustomerReducer: ICurrentCustomer;
+}
 const SignUp: React.FC = () => {
   const [showPassword, setShowPassword] = React.useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
   const [checked, setChecked] = React.useState(true);
-  const { control, handleSubmit, watch } = useForm();
+  const [mobileNo, setMobileNo] = React.useState('');
+  const [country, setCountry] = React.useState('');
+  const { control, handleSubmit, watch, setValue } = useForm();
   const pwd = watch('password');
   const lastNameInputRef: React.RefObject<any> = React.createRef();
   const emailInputRef: React.RefObject<any> = React.createRef();
-  const mobileNumberInputRef: React.RefObject<any> = React.createRef();
-  const invitationCodeInputRef: React.RefObject<any> = React.createRef();
+  const mobileNumberInputRef = useRef<TextInput>(null);
+  let countryInputRef = useRef(null);
+  const schoolLocationInputRef: React.RefObject<any> = React.createRef();
+  const schoolNameInputRef: React.RefObject<any> = React.createRef();
+  const countryDummyInputRef: React.RefObject<any> = React.createRef();
+  const cityInputRef: React.RefObject<any> = React.createRef();
   const passwordInputRef: React.RefObject<any> = React.createRef();
   const confirmPasswordInputRef: React.RefObject<any> = React.createRef();
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
+  const dispatch = useDispatch();
 
-  const signUpUser = () => {
-    alert('Sign Up');
-    NavigationService.navigate('Verify Email');
+  const selectedRole = useSelector(
+    (state: IState) => state.currentCustomerReducer.role,
+  );
+
+  const signUpUser = (data: any) => {
+    data.mobileNo = mobileNo;
+    data.roleType = selectedRole;
+    dispatch(registerActions.requestRegister(data));
+    // NavigationService.navigate('Verify Email');
   };
 
   return (
@@ -67,13 +91,13 @@ const SignUp: React.FC = () => {
               text={t('Sign Up to Continue')}
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
-              textStyle={styles(direction).gradientTextStyle}
+              textStyle={styles(direction).gradientTextStyle as TextStyle}
             />
           </View>
           <View style={styles(direction).inputTextContainer}>
             <CustomInput
               control={control}
-              name="first_name"
+              name="firstName"
               rules={rules.CustomerRules.first_name}
               placeholder={t('First Name')}
               label={t('First Name')}
@@ -89,7 +113,7 @@ const SignUp: React.FC = () => {
             <CustomInput
               control={control}
               ref={lastNameInputRef}
-              name="last_name"
+              name="lastName"
               rules={rules.CustomerRules.last_name}
               placeholder={t('Last Name')}
               label={t('Last Name')}
@@ -113,32 +137,177 @@ const SignUp: React.FC = () => {
               autoCapitalize="none"
               returnKeyType="next"
               onSubmitEditing={() => {
-                mobileNumberInputRef?.current.setFocus();
+                //@ts-ignore
+                mobileNumberInputRef?.current.focus();
+              }}
+            />
+          </View>
+          <View style={styles(direction).inputTextContainer}>
+            <Image
+              source={require('../../assets/inputBg.png')}
+              style={styles(direction).bg}
+            />
+            <PhoneInput
+              defaultCode="AE"
+              layout="second"
+              onChangeFormattedText={text => {
+                setMobileNo(text);
+              }}
+              disabled={false}
+              placeholder={`${t('Mobile Number')}*`}
+              flagButtonStyle={styles(direction).flagButtonStyle}
+              codeTextStyle={styles(direction).mobileCodeTextStyle}
+              countryPickerButtonStyle={
+                styles(direction).countryPickerButtonStyle
+              }
+              textContainerStyle={styles(direction).textContainerStyle}
+              containerStyle={styles(direction).mobileInputContainerStyle}
+              textInputStyle={styles(direction).mobileTextInputStyle}
+              textInputProps={{
+                placeholderTextColor: '#758DAC',
+                blurOnSubmit: false,
+                returnKeyType: 'next',
+                onSubmitEditing: () => {
+                  schoolLocationInputRef?.current.setFocus();
+                },
+                // @ts-ignore
+                ref: mobileNumberInputRef,
+                keyboardType: 'phone-pad',
               }}
             />
           </View>
           <View style={styles(direction).inputTextContainer}>
             <CustomInput
               control={control}
-              ref={mobileNumberInputRef}
-              name="mobile_number"
-              placeholder={t('Mobile Number')}
-              label={t('Mobile Number')}
+              ref={schoolLocationInputRef}
+              name="schoolLocation"
+              rules={rules.CustomerRules.school_location}
+              placeholder={t('School Location')}
+              label={t('School Location')}
               keyboardType="default"
               autoCapitalize="none"
               returnKeyType="next"
               onSubmitEditing={() => {
-                invitationCodeInputRef?.current.setFocus();
+                schoolNameInputRef?.current.setFocus();
               }}
             />
           </View>
           <View style={styles(direction).inputTextContainer}>
             <CustomInput
               control={control}
-              ref={invitationCodeInputRef}
-              name="invitation_code"
-              placeholder={t('Invitation Code')}
-              label={t('Invitation Code')}
+              ref={schoolNameInputRef}
+              name="schoolName"
+              rules={rules.CustomerRules.school_name}
+              placeholder={t('School Name')}
+              label={t('School Name')}
+              keyboardType="default"
+              autoCapitalize="none"
+              returnKeyType="next"
+              onSubmitEditing={() => {
+                countryDummyInputRef?.current.setFocus();
+              }}
+            />
+          </View>
+          <View style={styles(direction).inputTextContainer}>
+            <CustomInput
+              control={control}
+              ref={countryDummyInputRef}
+              name="country"
+              rules={rules.CustomerRules.country}
+              placeholder={t('Country')}
+              label={t('Country')}
+              keyboardType="default"
+              autoCapitalize="none"
+              returnKeyType="next"
+              onFocus={() => {
+                Keyboard.dismiss();
+                countryInputRef.open();
+              }}
+            />
+            <NationalityPicker
+              nationalityPickerRef={(ref: any) => {
+                countryInputRef = ref;
+              }}
+              enable={false}
+              darkMode={false}
+              containerConfig={{
+                showFlag: true,
+                showCallingCode: false,
+                showCountryName: true,
+                showNationalityName: false,
+                showCountryCode: false,
+                showCountryCode3: false,
+              }}
+              modalConfig={{
+                showFlag: true,
+                showCallingCode: false,
+                showCountryName: true,
+                showNationalityName: false,
+                showCountryCode: false,
+                showCountryCode3: false,
+              }}
+              onSelectCountry={(data: any) => {
+                setValue('country', data.name);
+                setCountry(data.name);
+              }}
+              onInit={data => {
+                // console.log("DATA on init", data);
+              }}
+              onOpen={() => {}}
+              onClose={() => {
+                cityInputRef?.current.setFocus();
+              }}
+              containerStyle={{
+                container: {
+                  backgroundColor: '#EBEEF0',
+                },
+                flagStyle: {},
+                callingCodeStyle: {},
+                countryCodeStyle: {},
+                countryNameStyle: {},
+                nationalityNameStyle: {},
+              }}
+              modalStyle={{
+                container: {
+                  backgroundColor: '#EBEEF0',
+                },
+                searchStyle: {
+                  backgroundColor: '#EBEEF0',
+                },
+                tileStyle: {
+                  color: '#758DAC',
+                  fontFamily: 'Nunito-Regular',
+                  fontSize: scale(14),
+                },
+                itemStyle: {
+                  itemContainer: {
+                    backgroundColor: '#EBEEF0',
+                  },
+                  flagStyle: {},
+                  countryCodeStyle: {},
+                  countryNameStyle: {
+                    color: '#758DAC',
+                    fontFamily: 'Nunito-Regular',
+                    fontSize: scale(14),
+                  },
+                  nationalityNameStyle: {},
+                  callingNameStyle: {},
+                },
+              }}
+              title={'Country'}
+              searchPlaceholder={'Search'}
+              showCloseButton={true}
+              showModalTitle={true}
+            />
+          </View>
+          <View style={styles(direction).inputTextContainer}>
+            <CustomInput
+              control={control}
+              ref={cityInputRef}
+              name="city"
+              rules={rules.CustomerRules.city}
+              placeholder={t('City')}
+              label={t('City')}
               keyboardType="default"
               autoCapitalize="none"
               returnKeyType="next"

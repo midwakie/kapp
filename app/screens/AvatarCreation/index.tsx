@@ -74,6 +74,7 @@ const AvatarCreation: React.FC = () => {
             />
             <View style={styles(direction).radioButtonViewContainer}>
               <RadioButton
+                size={16}
                 id={'1'}
                 label={`${t('Male')}`}
                 onPress={onPressRadioButtonMale}
@@ -82,6 +83,7 @@ const AvatarCreation: React.FC = () => {
               />
               {/* <HorizontalLine width={'100%'} stroke={1} color={'#E2E2E2'} /> */}
               <RadioButton
+                size={16}
                 id={'2'}
                 label={`${t('Female')}`}
                 onPress={onPressRadioButtonFemale}
@@ -96,7 +98,7 @@ const AvatarCreation: React.FC = () => {
               name="first_name"
               //   rules={rules.CustomerRules.first_name}
               placeholder={t('Nickname')}
-              //   label="First Name*"
+              label={t('Nickname')}
               keyboardType="default"
               autoCapitalize="none"
               returnKeyType="next"

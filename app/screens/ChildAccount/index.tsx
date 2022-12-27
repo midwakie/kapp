@@ -24,28 +24,30 @@ import { useTranslation } from 'react-i18next';
 import RadioButton from 'app/components/buttons/RadioButton';
 
 const ChildAccount: React.FC = () => {
-  const [showPassword, setShowPassword] = React.useState(false);
   const [checked, setChecked] = React.useState(true);
-  const { control } = useForm();
+  const { control, handleSubmit, watch } = useForm();
   const lastNameInputRef: React.RefObject<any> = React.createRef();
   const emailInputRef: React.RefObject<any> = React.createRef();
-  const mobileNumberInputRef: React.RefObject<any> = React.createRef();
+  const firstSpokenLanguageInputRef: React.RefObject<any> = React.createRef();
   const invitationCodeInputRef: React.RefObject<any> = React.createRef();
   const passwordInputRef: React.RefObject<any> = React.createRef();
-  const confirmPasswordInputRef: React.RefObject<any> = React.createRef();
+  const dateOfBirthInputRef: React.RefObject<any> = React.createRef();
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
   const [radioButtonMale, setRadioButtonMale] = useState(true);
   const [radioButtonFemale, setRadioButtonFemale] = useState(false);
 
-  const onPressRadioButtonMale = (radioButton: string) => {
+  const onPressRadioButtonMale = () => {
     setRadioButtonMale(!radioButtonMale);
     setRadioButtonFemale(!radioButtonFemale);
   };
 
-  const onPressRadioButtonFemale = (radioButton: string) => {
+  const onPressRadioButtonFemale = () => {
     setRadioButtonMale(!radioButtonMale);
     setRadioButtonFemale(!radioButtonFemale);
+  };
+  const saveUser = () => {
+    // NavigationService.navigate('ChildProfile');
   };
   return (
     <ScrollView style={styles(direction).container} bounces={false}>
@@ -65,8 +67,8 @@ const ChildAccount: React.FC = () => {
           </View>
           <View style={styles(direction).gradientTextContainer}>
             <GradientText
-              colors={['#0EAFF4', '#0D93CD']}
-              text={t('Create Your\nChild Account')}
+              colors={['#2AA7DD', '#2AA7DD']}
+              text={t('Create Your Child Account')}
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
               textStyle={styles(direction).gradientTextStyle}
@@ -115,7 +117,7 @@ const ChildAccount: React.FC = () => {
               autoCapitalize="none"
               returnKeyType="next"
               onSubmitEditing={() => {
-                mobileNumberInputRef?.current.setFocus();
+                dateOfBirthInputRef?.current.setFocus();
               }}
             />
           </View>
@@ -124,7 +126,7 @@ const ChildAccount: React.FC = () => {
               source={require('../../assets/inputBg.png')}
               style={styles(direction).bg}
             />
-            <View style={styles(direction).touchableOpacity}>
+            <View style={styles(direction).radiobutton}>
               <RadioButton
                 size={16}
                 id={'1'}
@@ -147,14 +149,15 @@ const ChildAccount: React.FC = () => {
           <View style={styles(direction).inputTextContainer}>
             <CustomInput
               control={control}
-              name="date_of_birth"
-              placeholder={t('Date Of Birth')}
-              label={t('Date Of Birth')}
+              ref={dateOfBirthInputRef}
+              name="date of birth"
+              placeholder={t('Date of Birth')}
+              label={t('Date of Birth')}
               keyboardType="default"
               autoCapitalize="none"
               returnKeyType="next"
               onSubmitEditing={() => {
-                inputRef?.current.setFocus();
+                firstSpokenLanguageInputRef?.current.setFocus();
               }}
               rightComponent={
                 <TouchableOpacity style={styles(direction).rightComponent}>
@@ -170,6 +173,7 @@ const ChildAccount: React.FC = () => {
           <View style={styles(direction).inputTextContainer}>
             <CustomInput
               control={control}
+              ref={firstSpokenLanguageInputRef}
               name="first_spoken_language"
               placeholder={t('First Spoken Language')}
               label={t('First Spoken Language')}
@@ -177,7 +181,7 @@ const ChildAccount: React.FC = () => {
               autoCapitalize="none"
               returnKeyType="next"
               onSubmitEditing={() => {
-                inputRef?.current.setFocus();
+                invitationCodeInputRef?.current.setFocus();
               }}
               rightComponent={
                 <TouchableOpacity style={styles(direction).rightComponent}>
@@ -205,16 +209,19 @@ const ChildAccount: React.FC = () => {
               }}
             />
           </View>
-          <RegularButton
-            onPress={() => {
-              NavigationService.navigate('ActivitiesStats');
-            }}
-            text={t('Save')}
-            radius={50}
-            height={50}
-            width={'100%'}
-            colors={['#03BBE3', '#14A9FD']}
-          />
+          <View style={{ marginTop: 30 }}>
+            <RegularButton
+              // onPress={() => {
+              //   NavigationService.navigate('ChildProfile');
+              // }}
+              onPress={handleSubmit(saveUser)}
+              text={t('Save')}
+              radius={50}
+              height={50}
+              width={'100%'}
+              colors={['#03BBE3', '#14A9FD']}
+            />
+          </View>
         </View>
       </SafeAreaView>
     </ScrollView>

@@ -6,6 +6,7 @@ import {
   SafeAreaView,
   Text,
   TextStyle,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import styles from './styles';
@@ -64,7 +65,7 @@ const ActivitiesStats: React.FC = () => {
   };
 
   return (
-    <ScrollView style={styles(direction).container} bounces={false}>
+    <>
       <TitleBar
         leftComponent={
           <View style={styles(direction).topContainer}>
@@ -92,195 +93,202 @@ const ActivitiesStats: React.FC = () => {
           </View>
         }
       />
-      <SafeAreaView style={styles(direction).safeAreaView}>
-        <View style={styles(direction).container2}>
-          <Neumorphism
-            lightColor={'#ffffff'}
-            darkColor={'#A8A8A8'}
-            shapeType={'flat'}
-            radius={14}>
-            <View style={styles(direction).rectangle2}>
-              <View style={styles(direction).lastWeekDropdown}>
-                <Neumorphism
-                  lightColor={'#ffffff'}
-                  darkColor={'#A8A8A8'}
-                  shapeType={'basin'}
-                  radius={50}>
-                  <View style={styles(direction).box}>
-                    <Text style={styles(direction).text2}>
-                      {t('Last Week')}
-                    </Text>
-                    <MaterialIcon
-                      name={'expand-more'}
-                      size={scale(12)}
-                      color={'#03A0E3'}
-                    />
-                  </View>
-                </Neumorphism>
+      <ScrollView style={styles(direction).container} bounces={false}>
+        <SafeAreaView style={styles(direction).safeAreaView}>
+          <View style={styles(direction).container2}>
+            <Neumorphism
+              lightColor={'#ffffff'}
+              darkColor={'#A8A8A8'}
+              shapeType={'flat'}
+              radius={14}>
+              <View style={styles(direction).rectangle2}>
+                <View style={styles(direction).lastWeekDropdown}>
+                  <Neumorphism
+                    lightColor={'#ffffff'}
+                    darkColor={'#A8A8A8'}
+                    shapeType={'basin'}
+                    radius={50}>
+                    <View style={styles(direction).box}>
+                      <TouchableOpacity
+                        onPress={() => {
+                          NavigationService.navigate('FeedDetailReport');
+                        }}>
+                        <Text style={styles(direction).text2}>
+                          {t('Last Week')}
+                        </Text>
+                        <MaterialIcon
+                          name={'expand-more'}
+                          size={scale(12)}
+                          color={'#03A0E3'}
+                        />
+                      </TouchableOpacity>
+                    </View>
+                  </Neumorphism>
+                </View>
+                <View style={styles(direction).lineChartContainer}>
+                  <LineChart
+                    data={data}
+                    width={Dimensions.get('window').width - s(60)}
+                    height={s(160)}
+                    withHorizontalLines={false}
+                    withVerticalLines={false}
+                    withOuterLines={true}
+                    withInnerLines={true}
+                    withShadow={true}
+                    segments={5}
+                    fromZero={true}
+                    chartConfig={{
+                      backgroundColor: '#EBEEF0',
+                      backgroundGradientFrom: '#EBEEF0',
+                      backgroundGradientTo: '#EBEEF0',
+                      useShadowColorFromDataset: true,
+                      decimalPlaces: 0,
+                      strokeWidth: 0.5,
+                      color: (opacity = 1) => `rgba(117, 141, 172, ${opacity})`,
+                      propsForLabels: {
+                        fontSize: ms(10),
+                        fill: 'rgba(117, 141, 172, 1)',
+                        fontWeight: '600',
+                        fontFamily: 'Nunito-Regular',
+                      },
+                      propsForVerticalLabels: {
+                        fontSize: ms(10),
+                        fill: 'rgba(117, 141, 172, 1)',
+                        fontWeight: '600',
+                        fontFamily: 'Nunito-Regular',
+                      },
+                      propsForHorizontalLabels: {
+                        fontSize: ms(10),
+                        fill: 'rgba(117, 141, 172, 1)',
+                        fontWeight: '600',
+                        fontFamily: 'Nunito-Regular',
+                      },
+                    }}
+                  />
+                </View>
               </View>
-              <View style={styles(direction).lineChartContainer}>
-                <LineChart
-                  data={data}
-                  width={Dimensions.get('window').width - s(60)}
-                  height={s(160)}
-                  withHorizontalLines={false}
-                  withVerticalLines={false}
-                  withOuterLines={true}
-                  withInnerLines={true}
-                  withShadow={true}
-                  segments={5}
-                  fromZero={true}
-                  chartConfig={{
-                    backgroundColor: '#EBEEF0',
-                    backgroundGradientFrom: '#EBEEF0',
-                    backgroundGradientTo: '#EBEEF0',
-                    useShadowColorFromDataset: true,
-                    decimalPlaces: 0,
-                    strokeWidth: 0.5,
-                    color: (opacity = 1) => `rgba(117, 141, 172, ${opacity})`,
-                    propsForLabels: {
-                      fontSize: ms(10),
-                      fill: 'rgba(117, 141, 172, 1)',
-                      fontWeight: '600',
-                      fontFamily: 'Nunito-Regular',
-                    },
-                    propsForVerticalLabels: {
-                      fontSize: ms(10),
-                      fill: 'rgba(117, 141, 172, 1)',
-                      fontWeight: '600',
-                      fontFamily: 'Nunito-Regular',
-                    },
-                    propsForHorizontalLabels: {
-                      fontSize: ms(10),
-                      fill: 'rgba(117, 141, 172, 1)',
-                      fontWeight: '600',
-                      fontFamily: 'Nunito-Regular',
-                    },
-                  }}
-                />
-              </View>
+            </Neumorphism>
+            <View style={{ marginTop: 31 }}>
+              <Neumorphism
+                lightColor={'#ffffff'}
+                darkColor={'#A8A8A8'}
+                shapeType={'flat'}
+                radius={14}>
+                <View style={styles(direction).rectangle3}>
+                  <ProgressChart
+                    data={progressVideoChartData}
+                    width={ms(105)}
+                    height={ms(105)}
+                    strokeWidth={8}
+                    radius={s(30)}
+                    withCustomBarColorFromData={true}
+                    chartConfig={{
+                      backgroundColor: '#EBEEF0',
+                      backgroundGradientFrom: '#EBEEF0',
+                      backgroundGradientTo: '#EBEEF0',
+                      color: (opacity = 1) =>
+                        `rgba(${74}, ${74}, ${74}, ${opacity})`,
+                      propsForLabels: {
+                        fontSize: ms(10),
+                        fill: 'rgba(117, 141, 172, 1)',
+                        fontWeight: '600',
+                        fontFamily: 'Nunito-Regular',
+                      },
+                    }}
+                    style={{ marginLeft: ms(15) }}
+                    hideLegend={true}
+                  />
+                  <Text style={styles(direction).text}>
+                    {t('Total time spent on video')}
+                  </Text>
+                  <Text style={styles(direction).insidetext}>
+                    {t('50 \nhrs')}
+                  </Text>
+                </View>
+              </Neumorphism>
             </View>
-          </Neumorphism>
-          <View style={{ marginTop: 31 }}>
-            <Neumorphism
-              lightColor={'#ffffff'}
-              darkColor={'#A8A8A8'}
-              shapeType={'flat'}
-              radius={14}>
-              <View style={styles(direction).rectangle3}>
-                <ProgressChart
-                  data={progressVideoChartData}
-                  width={ms(105)}
-                  height={ms(105)}
-                  strokeWidth={8}
-                  radius={s(30)}
-                  withCustomBarColorFromData={true}
-                  chartConfig={{
-                    backgroundColor: '#EBEEF0',
-                    backgroundGradientFrom: '#EBEEF0',
-                    backgroundGradientTo: '#EBEEF0',
-                    color: (opacity = 1) =>
-                      `rgba(${74}, ${74}, ${74}, ${opacity})`,
-                    propsForLabels: {
-                      fontSize: ms(10),
-                      fill: 'rgba(117, 141, 172, 1)',
-                      fontWeight: '600',
-                      fontFamily: 'Nunito-Regular',
-                    },
-                  }}
-                  style={{ marginLeft: ms(15) }}
-                  hideLegend={true}
-                />
-                <Text style={styles(direction).text}>
-                  {t('Total time spent on video')}
-                </Text>
-                <Text style={styles(direction).insidetext}>
-                  {t('50 \nhrs')}
-                </Text>
-              </View>
-            </Neumorphism>
+            <View style={{ marginTop: 31 }}>
+              <Neumorphism
+                lightColor={'#ffffff'}
+                darkColor={'#A8A8A8'}
+                shapeType={'flat'}
+                radius={14}>
+                <View style={styles(direction).rectangle3}>
+                  <ProgressChart
+                    data={progressReadingChartData}
+                    width={ms(105)}
+                    height={ms(105)}
+                    strokeWidth={8}
+                    radius={s(30)}
+                    withCustomBarColorFromData={true}
+                    chartConfig={{
+                      backgroundColor: '#EBEEF0',
+                      backgroundGradientFrom: '#EBEEF0',
+                      backgroundGradientTo: '#EBEEF0',
+                      color: (opacity = 1) =>
+                        `rgba(${74}, ${74}, ${74}, ${opacity})`,
+                      propsForLabels: {
+                        fontSize: ms(10),
+                        fill: 'rgba(117, 141, 172, 1)',
+                        fontWeight: '600',
+                        fontFamily: 'Nunito-Regular',
+                      },
+                    }}
+                    style={{ marginLeft: ms(15) }}
+                    hideLegend={true}
+                  />
+                  <Text style={styles(direction).text}>
+                    {t('Total time spent on reading')}
+                  </Text>
+                  <Text style={styles(direction).insidetext}>
+                    {t('30 \nhrs')}
+                  </Text>
+                </View>
+              </Neumorphism>
+            </View>
+            <View style={{ marginTop: 31 }}>
+              <Neumorphism
+                lightColor={'#ffffff'}
+                darkColor={'#A8A8A8'}
+                shapeType={'flat'}
+                radius={14}>
+                <View style={styles(direction).rectangle3}>
+                  <ProgressChart
+                    data={progressAppChartData}
+                    width={ms(105)}
+                    height={ms(105)}
+                    strokeWidth={8}
+                    radius={s(30)}
+                    withCustomBarColorFromData={true}
+                    chartConfig={{
+                      backgroundColor: '#EBEEF0',
+                      backgroundGradientFrom: '#EBEEF0',
+                      backgroundGradientTo: '#EBEEF0',
+                      color: (opacity = 1) =>
+                        `rgba(${74}, ${74}, ${74}, ${opacity})`,
+                      propsForLabels: {
+                        fontSize: ms(10),
+                        fill: 'rgba(117, 141, 172, 1)',
+                        fontWeight: '600',
+                        fontFamily: 'Nunito-Regular',
+                      },
+                    }}
+                    style={{ marginLeft: ms(15) }}
+                    hideLegend={true}
+                  />
+                  <Text style={styles(direction).text}>
+                    {t('Total time spent on app')}
+                  </Text>
+                  <Text style={styles(direction).insidetext}>
+                    {t('80 \nhrs')}
+                  </Text>
+                </View>
+              </Neumorphism>
+            </View>
           </View>
-          <View style={{ marginTop: 31 }}>
-            <Neumorphism
-              lightColor={'#ffffff'}
-              darkColor={'#A8A8A8'}
-              shapeType={'flat'}
-              radius={14}>
-              <View style={styles(direction).rectangle3}>
-                <ProgressChart
-                  data={progressReadingChartData}
-                  width={ms(105)}
-                  height={ms(105)}
-                  strokeWidth={8}
-                  radius={s(30)}
-                  withCustomBarColorFromData={true}
-                  chartConfig={{
-                    backgroundColor: '#EBEEF0',
-                    backgroundGradientFrom: '#EBEEF0',
-                    backgroundGradientTo: '#EBEEF0',
-                    color: (opacity = 1) =>
-                      `rgba(${74}, ${74}, ${74}, ${opacity})`,
-                    propsForLabels: {
-                      fontSize: ms(10),
-                      fill: 'rgba(117, 141, 172, 1)',
-                      fontWeight: '600',
-                      fontFamily: 'Nunito-Regular',
-                    },
-                  }}
-                  style={{ marginLeft: ms(15) }}
-                  hideLegend={true}
-                />
-                <Text style={styles(direction).text}>
-                  {t('Total time spent on reading')}
-                </Text>
-                <Text style={styles(direction).insidetext}>
-                  {t('30 \nhrs')}
-                </Text>
-              </View>
-            </Neumorphism>
-          </View>
-          <View style={{ marginTop: 31 }}>
-            <Neumorphism
-              lightColor={'#ffffff'}
-              darkColor={'#A8A8A8'}
-              shapeType={'flat'}
-              radius={14}>
-              <View style={styles(direction).rectangle3}>
-                <ProgressChart
-                  data={progressAppChartData}
-                  width={ms(105)}
-                  height={ms(105)}
-                  strokeWidth={8}
-                  radius={s(30)}
-                  withCustomBarColorFromData={true}
-                  chartConfig={{
-                    backgroundColor: '#EBEEF0',
-                    backgroundGradientFrom: '#EBEEF0',
-                    backgroundGradientTo: '#EBEEF0',
-                    color: (opacity = 1) =>
-                      `rgba(${74}, ${74}, ${74}, ${opacity})`,
-                    propsForLabels: {
-                      fontSize: ms(10),
-                      fill: 'rgba(117, 141, 172, 1)',
-                      fontWeight: '600',
-                      fontFamily: 'Nunito-Regular',
-                    },
-                  }}
-                  style={{ marginLeft: ms(15) }}
-                  hideLegend={true}
-                />
-                <Text style={styles(direction).text}>
-                  {t('Total time spent on app')}
-                </Text>
-                <Text style={styles(direction).insidetext}>
-                  {t('80 \nhrs')}
-                </Text>
-              </View>
-            </Neumorphism>
-          </View>
-        </View>
-      </SafeAreaView>
-    </ScrollView>
+        </SafeAreaView>
+      </ScrollView>
+    </>
   );
 };
 

@@ -4,23 +4,33 @@ const CustomerRules = {
   /// user details rules
   first_name: {
     required: 'First Name required',
+    minLength: {
+      value: 3,
+      message: 'First Name should be minimum length of 3 characters',
+    },
     pattern: {
       value: regexPattern.LettersAndSpaces,
-      message: 'First name should contains only letters',
+      message:
+        'First name should contains only letters and minimum length of 3',
     },
   },
   middle_name: {
     required: false,
     pattern: {
       value: regexPattern.LettersAndSpaces,
-      message: 'Middle name should contains only letters',
+      message:
+        'Middle name should contains only letters and minimum length of 3',
     },
   },
   last_name: {
     required: 'Last Name required',
+    minLength: {
+      value: 3,
+      message: 'Last name should be minimum length of 3 characters',
+    },
     pattern: {
       value: regexPattern.LettersAndSpaces,
-      message: 'Last name should contains only letters',
+      message: 'Last name should contains only letters minimum length of 3',
     },
   },
   birthday: {
@@ -37,14 +47,6 @@ const CustomerRules = {
       message: 'Invalid Phone Number',
     },
   },
-  address_number: {
-    required: false,
-    pattern: {
-      value: regexPattern.LettersAndSpacesAndDashesAndNumbers,
-      message:
-        'Address should contains only letters, numbers, spaces and dashes',
-    },
-  },
   address_street: {
     required: 'Address street required',
     minLength: {
@@ -57,60 +59,52 @@ const CustomerRules = {
         'Address should contains only letters, numbers, spaces and dashes',
     },
   },
-  address_refinement: {
-    required: false,
+  school_location: {
+    required: 'School location required',
+    minLength: {
+      value: 3,
+      message: 'School location should be at least 3 characters',
+    },
     pattern: {
       value: regexPattern.LettersAndSpacesAndDashesAndNumbers,
       message:
-        'Address 2 should contains only letters, numbers, spaces and dashes',
+        'School location should contains only letters, numbers, spaces and dashes',
     },
   },
-
-  address_city: {
+  school_name: {
+    required: 'School name required',
+    minLength: {
+      value: 3,
+      message: 'School name should be at least 3 characters',
+    },
+    pattern: {
+      value: regexPattern.LettersAndSpacesAndDashesAndNumbers,
+      message:
+        'School name should contains only letters, numbers, spaces and dashes',
+    },
+  },
+  country: {
+    required: 'Country required',
+    minLength: {
+      value: 3,
+      message: 'Country should be at least 3 characters',
+    },
+    pattern: {
+      value: regexPattern.LettersAndSpacesAndDashesAndNumbers,
+      message:
+        'Country should contains only letters, numbers, spaces and dashes',
+    },
+  },
+  city: {
     required: 'City required',
+    minLength: {
+      value: 3,
+      message: 'City should be at least 3 characters',
+    },
     pattern: {
       value: regexPattern.LettersAndSpacesAndDashesAndNumbers,
       message: 'City should contains only letters, numbers, spaces and dashes',
     },
-  },
-  address_region: {
-    required: 'Region required',
-    pattern: {
-      value: regexPattern.LettersAndSpacesAndDashesAndNumbers,
-      message:
-        'Region should contains only letters, numbers, spaces and dashes',
-    },
-  },
-  address_postal_code: {
-    required: 'Postal code required',
-    pattern: {
-      value: regexPattern.LettersAndSpacesAndDashesAndNumbers,
-      message:
-        'Postal Code should contains only letters, numbers, spaces and dashes',
-    },
-  },
-  address_iso_country_name: {
-    required: 'Country required',
-    pattern: {
-      value: regexPattern.LettersAndSpaces,
-      message: 'Country should contains only letters',
-    },
-  },
-  nationality: {
-    required: 'Nationality required',
-    pattern: {
-      value: regexPattern.LettersAndSpaces,
-      message: 'Country should contains only letters',
-    },
-  },
-  selfie: {
-    required: 'Selfie required',
-  },
-  passport: {
-    required: 'Passport required',
-  },
-  addressDocument: {
-    required: 'Address Document required',
   },
 };
 

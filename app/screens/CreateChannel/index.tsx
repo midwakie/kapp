@@ -5,6 +5,7 @@ import {
   SafeAreaView,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   TextStyle,
+  TouchableHighlight,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -26,7 +27,7 @@ const CreateChannel: React.FC = () => {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
   return (
-    <ScrollView style={styles(direction).container} bounces={false}>
+    <>
       <TitleBar
         leftComponent={
           <View style={styles(direction).topContainer}>
@@ -54,49 +55,51 @@ const CreateChannel: React.FC = () => {
           </View>
         }
       />
-      <SafeAreaView style={styles(direction).safeAreaView}>
-        <View style={styles(direction).container1}>
-          <View style={styles(direction).profileImgContainer}>
-            <Image
-              source={require('../../assets/channel.png')}
-              style={styles(direction).profileImg}
-            />
-            <TouchableOpacity style={styles(direction).profileImgCamera}>
-              <MaterialIcon
-                name={'camera-alt'}
-                size={scale(18)}
-                color={'#03A0E3'}
+      <ScrollView style={styles(direction).container} bounces={false}>
+        <SafeAreaView style={styles(direction).safeAreaView}>
+          <View style={styles(direction).container1}>
+            <View style={styles(direction).profileImgContainer}>
+              <Image
+                source={require('../../assets/channel.png')}
+                style={styles(direction).profileImg}
               />
-            </TouchableOpacity>
+              <TouchableOpacity style={styles(direction).profileImgCamera}>
+                <MaterialIcon
+                  name={'camera-alt'}
+                  size={scale(18)}
+                  color={'#03A0E3'}
+                />
+              </TouchableOpacity>
+            </View>
+            <View style={styles(direction).inputTextContainer}>
+              <CustomInput
+                control={control}
+                ref={channelNameInputRef}
+                name="Channel_Name "
+                placeholder={t('Channel Name ')}
+                label={t('Channel Name ')}
+                keyboardType="default"
+                autoCapitalize="none"
+                returnKeyType="next"
+                onSubmitEditing={() => {
+                  channelNameInputRef?.current.setFocus();
+                }}
+              />
+            </View>
           </View>
-          <View style={styles(direction).inputTextContainer}>
-            <CustomInput
-              control={control}
-              ref={channelNameInputRef}
-              name="Channel_Name "
-              placeholder={t('Channel Name ')}
-              label={t('Channel Name ')}
-              keyboardType="default"
-              autoCapitalize="none"
-              returnKeyType="next"
-              onSubmitEditing={() => {
-                channelNameInputRef?.current.setFocus();
-              }}
+          <View style={styles(direction).bottom}>
+            <RegularButton
+              onPress={() => {}}
+              text={t('Save')}
+              radius={50}
+              height={50}
+              width={'100%'}
+              colors={['#03BBE3', '#14A9FD']}
             />
           </View>
-        </View>
-        <View style={styles(direction).bottom}>
-          <RegularButton
-            onPress={() => {}}
-            text={t('Save')}
-            radius={50}
-            height={50}
-            width={'100%'}
-            colors={['#03BBE3', '#14A9FD']}
-          />
-        </View>
-      </SafeAreaView>
-    </ScrollView>
+        </SafeAreaView>
+      </ScrollView>
+    </>
   );
 };
 

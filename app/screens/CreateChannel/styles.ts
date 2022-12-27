@@ -12,6 +12,7 @@ const styles = (direction: string) =>
       width: '100%',
       height: '100%',
       backgroundColor: '#EBEEF0',
+      zIndex: -10,
     },
     safeAreaView: { alignSelf: 'stretch' },
     gradientTextStyle: {
@@ -49,10 +50,12 @@ const styles = (direction: string) =>
       marginRight: 137,
     },
     imageContainer: {
-      marginBottom: 60,
-      justifyContent: 'center',
       alignItems: 'center',
+      justifyContent: 'center',
+      marginTop: 40,
+      width: '100%',
     },
+    imageContainer2: { marginTop: -38, height: 30, width: 30, marginLeft: 68 },
     bottomContainer: {
       height: 19,
       width: width - 21,
@@ -90,6 +93,7 @@ const styles = (direction: string) =>
       paddingHorizontal: '30@s',
       width: '100%',
       paddingBottom: 25,
+      marginBottom: 30,
     },
     topContainer: {
       justifyContent: 'center',
@@ -112,6 +116,7 @@ const styles = (direction: string) =>
       alignItems: 'center',
       justifyContent: 'center',
       alignSelf: 'center',
+      justifyContent: 'center',
       borderColor: '#FECE32',
     },
     profileImg: {

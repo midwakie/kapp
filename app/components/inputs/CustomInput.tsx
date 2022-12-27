@@ -1,16 +1,8 @@
 import React, { useImperativeHandle, useRef } from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  StyleSheet,
-  Dimensions,
-  Image,
-} from 'react-native';
+import { View, Text, TextInput, Dimensions, Image } from 'react-native';
 import { Controller } from 'react-hook-form';
-import Neumorphism from 'react-native-neumorphism';
 import { useTranslation } from 'react-i18next';
-import { ms, scale, ScaledSheet } from 'react-native-size-matters';
+import { scale, ScaledSheet } from 'react-native-size-matters';
 
 const CustomInput = React.forwardRef(
   (
@@ -24,6 +16,7 @@ const CustomInput = React.forwardRef(
       autoCapitalize,
       rightComponent,
       onSubmitEditing,
+      onFocus = () => {},
     }: any,
     ref,
   ) => {
@@ -78,6 +71,7 @@ const CustomInput = React.forwardRef(
                   onBlur();
                 }}
                 onFocus={() => {
+                  onFocus();
                   setIsFocused(true);
                 }}
                 placeholder={`${rtlPlaceHolder()}`}
