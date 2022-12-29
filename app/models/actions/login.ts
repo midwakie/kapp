@@ -1,18 +1,19 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { ILoginResponse } from '../api/login';
+
 export interface ILoginRequestState {
   type: string;
-  email: string;
+  payload: ILoginRequestData;
 }
 
-interface IResponse {
-  didToken: string;
-  id: string;
-  token: string;
+export interface ILoginRequestData {
   email: string;
-  issuer: string;
-  identity_id: string;
+  mobileNo: string;
+  password: string;
+  roleType: string;
 }
 
 export interface ILoginResponseState {
   type: string;
-  response: IResponse;
+  payload: ILoginResponse;
 }

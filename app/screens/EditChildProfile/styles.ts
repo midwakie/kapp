@@ -12,6 +12,7 @@ const styles = (direction: string) =>
       width: '100%',
       height: '100%',
       backgroundColor: '#EBEEF0',
+      zIndex: -10,
     },
     container2: {
       alignSelf: 'stretch',
@@ -19,7 +20,6 @@ const styles = (direction: string) =>
       justifyContent: 'center',
       paddingBottom: 20,
       paddingHorizontal: '30@s',
-    
     },
     safeAreaView: { alignSelf: 'stretch' },
 
@@ -31,10 +31,8 @@ const styles = (direction: string) =>
     gradientTextContainer: {
       width: '100%',
       justifyContent: 'center',
-      height: 80,
       alignItems: 'center',
       marginLeft: 10,
-      marginTop: 12,
     },
     inputTextContainer: {
       width: '100%',
@@ -95,19 +93,18 @@ const styles = (direction: string) =>
     },
     radioButtonContainer: {
       width: '100%',
-      width: width - 60,
-      marginTop: 20,
-      alignItems:'center',
-     
-      
+      marginBottom: 21,
+      backgroundColor: 'transparent',
+      height: '50@s',
+      alignItems: 'center',
     },
 
     radioButtonViewContainer: {
       flexDirection: direction === 'rtl' ? 'row-reverse' : 'row',
-      height: '65@ms0.75',
-      width: '100%',
-      justifyContent:'center',
-      alignItems:'center',
+      position: 'absolute',
+      alignItems: 'center',
+      height: '65@s',
+      width: width - 20,
     },
 
     touchableOpacity: {
@@ -121,7 +118,6 @@ const styles = (direction: string) =>
       position: 'absolute',
       width: 38,
       marginLeft: '20@s',
-   
     },
 
     coinContainer2: {

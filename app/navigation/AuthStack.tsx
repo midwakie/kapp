@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect } from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import {
+  createStackNavigator,
+  TransitionPresets,
+} from '@react-navigation/stack';
 import { useSelector } from 'react-redux';
 
 import ThemeController from '../components/ThemeController';
@@ -28,13 +31,20 @@ import TestHardness from 'app/screens/TestHardness';
 import ChildProfile from 'app/screens/ChildProfile';
 import CreateChannel from 'app/screens/CreateChannel';
 import EditChildProfile from 'app/screens/EditChildProfile';
-import Publish from 'app/screens/Publish';
-import RewardPointFilter from 'app/screens/RewardPointFilter';
-import EditTeacherProfile from 'app/screens/EditTeacherProfile';
-
+import BookDetails from 'app/screens/BookDetails';
 import ChildAccount from 'app/screens/ChildAccount';
 import ActivitiesStats from 'app/screens/ActivityStatus';
 import FeedDetailReport from 'app/screens/FeedDetailReport';
+<<<<<<< HEAD
+=======
+import EBooks from 'app/screens/EBooks';
+import Publish from 'app/screens/Publish';
+import RewardPointFilter from 'app/screens/RewardPointFilter';
+import EditTeacherProfile from 'app/screens/EditTeacherProfile';
+import ChildHome from 'app/screens/ChildHome';
+import MyFeeds from 'app/screens/MyFeeds';
+import BookReview from 'app/screens/BookReview';
+>>>>>>> develop
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -58,7 +68,10 @@ const AuthStack = () => {
   }, []);
 
   return (
-    <AuthenticationStack.Navigator>
+    <AuthenticationStack.Navigator
+      screenOptions={{
+        ...TransitionPresets.SlideFromRightIOS,
+      }}>
       <Stack.Screen
         name="Select Role"
         component={SelectRole}
@@ -109,6 +122,17 @@ const AuthStack = () => {
           headerShown: false,
         }}
       />
+      <Stack.Screen
+        name="MyFeeds"
+        component={MyFeeds}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+
       <Stack.Screen
         name="CreateChannel"
         component={CreateChannel}
@@ -250,38 +274,18 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
-        name="ChildProfile"
-        component={ChildProfile}
-        options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
-          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="TestHardness"
-        component={TestHardness}
-        options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
-          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="EditChildProfile"
-        component={EditChildProfile}
-        options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
-          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
         name="EditTeacherProfile"
         component={EditTeacherProfile}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="BookDetails"
+        component={BookDetails}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
@@ -300,7 +304,7 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
-        name="HobbiesAndInterests"
+        name="HobbiesAndInterest"
         component={HobbiesAndInterest}
         options={{
           // When logging out, a pop animation feels intuitive
@@ -312,6 +316,26 @@ const AuthStack = () => {
       <Stack.Screen
         name="Publish"
         component={Publish}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Book Review"
+        component={BookReview}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="EBooks"
+        component={EBooks}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation

@@ -19,7 +19,7 @@ const ChangeSchool: React.FC = () => {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
   return (
-    <ScrollView style={styles(direction).container} bounces={false}>
+    <>
       <TitleBar
         leftComponent={
           <View style={styles(direction).topContainer}>
@@ -47,45 +47,47 @@ const ChangeSchool: React.FC = () => {
           </View>
         }
       />
-      <SafeAreaView style={styles(direction).safeAreaView}>
-        <View style={styles(direction).container1}>
-          <View style={styles(direction).gradientTextContainer2}>
-            <GradientText
-              colors={['#455157', '#455157']}
-              text={t('Al Jeel Al Saeed School')}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 0, y: 1 }}
-              textStyle={styles(direction).gradientTextStyle2}
-            />
-          </View>
-          <View style={styles(direction).inputTextContainer}>
-            <CustomInput
-              control={control}
-              ref={invitationCodeInputRef}
-              name="invitation_code"
-              placeholder={t('Invitation Code')}
-              label={t('Invitation Code')}
-              keyboardType="default"
-              autoCapitalize="none"
-              returnKeyType="next"
-              onSubmitEditing={() => {
-                passwordInputRef?.current.setFocus();
+      <ScrollView style={styles(direction).container} bounces={false}>
+        <SafeAreaView style={styles(direction).safeAreaView}>
+          <View style={styles(direction).container1}>
+            <View style={styles(direction).gradientTextContainer2}>
+              <GradientText
+                colors={['#455157', '#455157']}
+                text={t('Al Jeel Al Saeed School')}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 0, y: 1 }}
+                textStyle={styles(direction).gradientTextStyle2}
+              />
+            </View>
+            <View style={styles(direction).inputTextContainer}>
+              <CustomInput
+                control={control}
+                ref={invitationCodeInputRef}
+                name="invitation_code"
+                placeholder={t('Invitation Code')}
+                label={t('Invitation Code')}
+                keyboardType="default"
+                autoCapitalize="none"
+                returnKeyType="next"
+                onSubmitEditing={() => {
+                  passwordInputRef?.current.setFocus();
+                }}
+              />
+            </View>
+            <RegularButton
+              onPress={() => {
+                NavigationService.navigate('Delivery Address');
               }}
+              text={t('Update')}
+              radius={50}
+              height={50}
+              width={'100%'}
+              colors={['#03BBE3', '#14A9FD']}
             />
           </View>
-          <RegularButton
-            onPress={() => {
-              NavigationService.navigate('Delivery Address');
-            }}
-            text={t('Update')}
-            radius={50}
-            height={50}
-            width={'100%'}
-            colors={['#03BBE3', '#14A9FD']}
-          />
-        </View>
-      </SafeAreaView>
-    </ScrollView>
+        </SafeAreaView>
+      </ScrollView>
+    </>
   );
 };
 
