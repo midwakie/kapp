@@ -168,7 +168,8 @@ const styles = (direction: string) =>
       height: '100%',
       width: '100%',
     },
-    neomorphMargin: { margin: '10@ms' },
+    neomorphMargin: { marginRight: '10@ms' },
+    neomorphContainer: { marginTop: '20@ms' },
   });
 
 export default styles;

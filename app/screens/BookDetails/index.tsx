@@ -31,10 +31,13 @@ const BookDetails: React.FC = () => {
       img: require('../../assets/book3.png'),
     },
     {
-      img: require('../../assets/book4.png'),
+      img: require('../../assets/book.png'),
     },
     {
-      img: require('../../assets/book.png'),
+      img: require('../../assets/book2.png'),
+    },
+    {
+      img: require('../../assets/book3.png'),
     },
   ];
   const slides = [
@@ -47,18 +50,20 @@ const BookDetails: React.FC = () => {
   ];
   const CardItem = ({ book }: any) => {
     return (
-      <TouchableOpacity onPress={() => {}}>
-        <Neumorphism
-          style={styles(direction).neomorphMargin}
-          lightColor={'#ffffff'}
-          darkColor={'#C6CEDA'}
-          shapeType={'flat'}
-          radius={scale(14)}>
-          <View style={styles(direction).card}>
-            <Image source={book.img} style={styles(direction).cardImage} />
-          </View>
-        </Neumorphism>
-      </TouchableOpacity>
+      <View style={styles(direction).neomorphContainer}>
+        <TouchableOpacity onPress={() => {}}>
+          <Neumorphism
+            style={styles(direction).neomorphMargin}
+            lightColor={'#ffffff'}
+            darkColor={'#C6CEDA'}
+            shapeType={'flat'}
+            radius={scale(14)}>
+            <View style={styles(direction).card}>
+              <Image source={book.img} style={styles(direction).cardImage} />
+            </View>
+          </Neumorphism>
+        </TouchableOpacity>
+      </View>
     );
   };
   const { t, i18n } = useTranslation();
