@@ -153,12 +153,22 @@ const styles = (direction: string) =>
     descriptionContainer: {
       height: 125,
       width: '100%',
-      marginTop: 5, 
+      marginTop: 5,
     },
     bookContainerInner: {
       flexDirection: 'column',
       alignItems: 'flex-start',
     },
+    card: {
+      height: '157@ms',
+      width: '125@ms',
+      backgroundColor: '#EBEEF0',
+    },
+    cardImage: {
+      height: '100%',
+      width: '100%',
+    },
+    neomorphMargin: { margin: '10@ms' },
   });
 
 export default styles;

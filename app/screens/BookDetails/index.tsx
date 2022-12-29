@@ -5,14 +5,38 @@ import GradientText from 'app/components/texts/GradientText';
 import RegularButton from 'app/components/buttons/RegularButton';
 import { useTranslation } from 'react-i18next';
 import NavigationService from 'app/navigation/NavigationService';
-import { ScrollView } from 'react-native-gesture-handler';
-import { Image, SafeAreaView, Text, View } from 'react-native';
+import { FlatList, ScrollView } from 'react-native-gesture-handler';
+import {
+  Image,
+  SafeAreaView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import TitleBar from 'app/components/buttons/TitleBar';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import Neumorphism from 'react-native-neumorphism';
+import { ms, scale } from 'react-native-size-matters';
 
 const BookDetails: React.FC = () => {
   const refSlider: React.MutableRefObject<any> = useRef(null);
+  const books = [
+    {
+      img: require('../../assets/book.png'),
+    },
+    {
+      img: require('../../assets/book2.png'),
+    },
+    {
+      img: require('../../assets/book3.png'),
+    },
+    {
+      img: require('../../assets/book4.png'),
+    },
+    {
+      img: require('../../assets/book .png'),
+    },
+  ];
   const slides = [
     {
       image: require('../../assets/book.png'),
@@ -21,6 +45,22 @@ const BookDetails: React.FC = () => {
       image: require('../../assets/book.png'),
     },
   ];
+  const CardItem = ({ book }: any) => {
+    return (
+      <TouchableOpacity onPress={() => {}}>
+        <Neumorphism
+          style={styles(direction).neomorphMargin}
+          lightColor={'#ffffff'}
+          darkColor={'#C6CEDA'}
+          shapeType={'flat'}
+          radius={scale(14)}>
+          <View style={styles(direction).card}>
+            <Image source={book.img} style={styles(direction).cardImage} />
+          </View>
+        </Neumorphism>
+      </TouchableOpacity>
+    );
+  };
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
   const slideChanged = (index: number) => {
@@ -179,6 +219,14 @@ const BookDetails: React.FC = () => {
                 start={{ x: 0, y: 0 }}
                 end={{ x: 0, y: 1 }}
                 textStyle={styles(direction).gradientTextStyle as TextStyle}
+              />
+              <FlatList
+                numColumns={1}
+                horizontal={true}
+                renderItem={({ item }) => {
+                  return <CardItem book={item} />;
+                }}
+                data={books}
               />
             </View>
           </Neumorphism>
