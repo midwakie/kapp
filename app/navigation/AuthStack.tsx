@@ -37,6 +37,7 @@ import ActivitiesStats from 'app/screens/ActivityStatus';
 import FeedDetailReport from 'app/screens/FeedDetailReport';
 import ChildHome from 'app/screens/ChildHome';
 import BookReview from 'app/screens/BookReview';
+import ManageActivities from 'app/screens/ManageActivities';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -334,6 +335,16 @@ const AuthStack = () => {
       <Stack.Screen
         name="Book Review"
         component={BookReview}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Manage Activities "
+        component={ManageActivities}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation

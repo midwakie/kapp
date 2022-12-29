@@ -189,6 +189,7 @@ const styles = (direction: string) =>
     },
     starRatingContainer: {
       marginBottom: 20.26,
+      flexDirection: 'row',
     },
   });
 
