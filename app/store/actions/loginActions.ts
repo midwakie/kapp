@@ -4,24 +4,26 @@
  */
 import * as types from './types';
 import { ILoginResponse } from 'app/models/api/login';
+import { ILoginRequestData } from 'app/models/actions/login';
 
-export function requestLogin(email: string) {
+export function requestLogin(payload: ILoginRequestData) {
   return {
     type: types.LOGIN_REQUEST,
-    email,
+    payload,
   };
 }
 
-export function loginFailed() {
+export function loginFailed(payload: ILoginResponse) {
   return {
     type: types.LOGIN_FAILED,
+    payload,
   };
 }
 
-export function onLoginResponse(response: ILoginResponse) {
+export function onLoginResponse(payload: ILoginResponse) {
   return {
     type: types.LOGIN_RESPONSE,
-    response,
+    payload,
   };
 }
 

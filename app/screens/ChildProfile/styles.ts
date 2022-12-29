@@ -161,7 +161,7 @@ const styles = (direction: string) =>
       height: '50@s',
       alignItems: 'center',
     },
-    radiobutton: {
+    radioButton: {
       flexDirection: direction === 'rtl' ? 'row-reverse' : 'row',
       position: 'absolute',
       alignItems: 'center',
