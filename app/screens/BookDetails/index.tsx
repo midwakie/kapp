@@ -34,7 +34,7 @@ const BookDetails: React.FC = () => {
       img: require('../../assets/book4.png'),
     },
     {
-      img: require('../../assets/book .png'),
+      img: require('../../assets/book.png'),
     },
   ];
   const slides = [
