@@ -126,10 +126,7 @@ const FeedDetail: React.FC = () => {
                           darkColor={'#A8A8A8'}
                           shapeType={'flat'}
                           radius={50}>
-                          <TouchableOpacity
-                            onPress={() => {
-                              NavigationService.navigate('FeedDetailReport');
-                            }}>
+                          <TouchableOpacity>
                             <View style={styles(direction).box}>
                               <GradientText
                                 colors={['#FFFFFF', '#DCDCDC']}

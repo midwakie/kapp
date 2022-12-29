@@ -51,7 +51,7 @@ const styles = (direction: string) =>
       right: direction === 'rtl' ? undefined : 20,
       position: 'absolute',
     },
-    iconContainer: {
+    topIconContainer: {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',

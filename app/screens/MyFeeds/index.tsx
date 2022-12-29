@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Image,
   SafeAreaView,
@@ -20,6 +20,7 @@ import { scale } from 'react-native-size-matters';
 import HorizontalLine from 'app/components/lines/HorizontalLine';
 import VerticalLine from 'app/components/lines/VerticalLine';
 import { DrawerActions } from '@react-navigation/native';
+import NavigationService from 'app/navigation/NavigationService';
 
 const MyFeeds: React.FC = (props: any) => {
   const { t, i18n } = useTranslation();
@@ -58,6 +59,17 @@ const MyFeeds: React.FC = (props: any) => {
       description:
         'There are many variations of passages Lorem Ipsum available, but the majority',
     },
+    {
+      headerImage: require('../../assets/toppic.png'),
+      profileImage: require('../../assets/dp.png'),
+      profileName: 'Dream Star ',
+      endDate: '7 min ago',
+      content: require('../../assets/feedpic2.png'),
+      icon: require('../../assets/docs.png'),
+      Title: 'Very Productive Activities',
+      description:
+        'There are many variations of passages Lorem Ipsum available, but the majority',
+    },
   ]);
   return (
     <>
@@ -87,7 +99,7 @@ const MyFeeds: React.FC = (props: any) => {
             darkColor={'#A8A8A8'}
             shapeType={'flat'}
             radius={52}>
-            <View style={styles(direction).iconContainer}>
+            <View style={styles(direction).topIconContainer}>
               <TouchableOpacity
                 onPress={() => {
                   props?.navigation.dispatch(DrawerActions.toggleDrawer());
