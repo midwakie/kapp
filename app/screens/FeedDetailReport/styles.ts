@@ -18,8 +18,6 @@ const styles = (direction: string) =>
       paddingHorizontal: '20@s',
       width: '100%',
       paddingBottom: 49,
-      justifyContent: 'center',
-      alignItems: 'center',
       marginTop: '40@s',
     },
     safeAreaView: { alignSelf: 'stretch', },
@@ -55,7 +53,7 @@ const styles = (direction: string) =>
     },
 
     rectangle2: {
-      width: width - s(40),
+      width: '100%',
       height: '74@s',
       borderRadius: 14,
       justifyContent: 'flex-start',
@@ -64,12 +62,10 @@ const styles = (direction: string) =>
       flexDirection: 'row',
     },
     rectangle3: {
-      width: width - s(40),
+      width: '100%',
       height: '160@s',
       borderRadius: '14@s',
-      // marginTop: '31@ms',
       justifyContent: 'flex-start',
-      // alignItems: 'center',
       paddingHorizontal: '17@s',
       backgroundColor: '#EBEEF0',
     },
@@ -82,7 +78,7 @@ const styles = (direction: string) =>
       textAlign: 'center',
       flexDirection: 'row',
     },
-    bottomtext: {
+    bottomText: {
       marginLeft: '10@s',
       fontSize: '16@s',
       color: '#2F4868',

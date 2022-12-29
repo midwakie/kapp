@@ -38,6 +38,7 @@ import FeedDetailReport from 'app/screens/FeedDetailReport';
 import ChildHome from 'app/screens/ChildHome';
 import MyFeeds from 'app/screens/MyFeeds';
 import BookReview from 'app/screens/BookReview';
+import FeedDetail from 'app/screens/FeedDetail';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -103,6 +104,16 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
+        name="MyFeeds"
+        component={MyFeeds}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
         name="FeedDetailReport"
         component={FeedDetailReport}
         options={{
@@ -113,8 +124,8 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
-        name="MyFeeds"
-        component={MyFeeds}
+        name="FeedDetail"
+        component={FeedDetail}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation

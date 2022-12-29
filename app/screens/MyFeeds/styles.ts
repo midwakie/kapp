@@ -19,27 +19,23 @@ const styles = (direction: string) =>
       paddingHorizontal: '20@s',
       width: '100%',
       paddingBottom: 49,
-      justifyContent: 'center',
-      alignItems: 'center',
       marginTop: '40@s',
     },
     safeAreaView: { alignSelf: 'stretch' },
     leftContainer: {
       justifyContent: 'center',
       alignItems: 'center',
-      position: 'absolute',
+      // position: 'absolute',
       // width: 38,
-      marginTop: '80@s',
-      marginLeft: '20@s',
     },
-    middlecomponent: {
+    middleComponent: {
       justifyContent: 'center',
       alignItems: 'center',
-      height: '22@s',
+      // height: '22@s',
     },
     right: {
-      width: '80@s',
-      height: '40@s',
+      width: '88@s',
+      height: '44@s',
       flexDirection: 'row',
       justifyContent: 'center',
     },
@@ -62,63 +58,59 @@ const styles = (direction: string) =>
     },
 
     rectangle2: {
-      width: width - s(40),
+      width: '100%',
       height: '381@s',
-      borderRadius: 14,
-      justifyContent: 'flex-start',
       backgroundColor: '#EBEEF0',
     },
     text: {
       marginLeft: '20@s',
-      fontSize: '16@s',
+      fontSize: '16@ms',
       marginTop: '5@s',
       color: '#758DAC',
       fontWeight: '600',
       fontFamily: 'Nunito',
       lineHeight: '23@s',
-    },
-
-    inputText: {
-      height: '74@s',
-      fontFamily: 'Nunito-Regular',
-      fontWeight: '600',
-      fontSize: '14@s',
-      marginLeft: '25@s',
-      paddingBottom: '41@s',
-    },
-    imagecontainer: {
-      paddingTop: '20@s',
-      // justifyContent: 'center',
       flexDirection: 'row',
+    },
+    imageContainer: {
+      paddingTop: '20@s',
+      flexDirection: 'row',
+    },
+    topImage: {
+      width: '50@s',
+      height: '50@s',
     },
     image1Style: {
       width: '50@s',
       height: '50@s',
       marginLeft: '20@s',
     },
-    imagecontainer1: {
-      justifyContent: 'center',
-      marginTop: '15@s',
+    imageContainer1: {
+      paddingHorizontal: '20@s',
+      width: '100%',
       alignItems: 'center',
     },
     imageStyle: {
-      width: width - s(80),
-      justifyContent: 'center',
-      resizeMode: 'contain',
+      width: '100%',
+      marginTop: 15,
+      resizeMode: 'stretch',
       height: '130@s',
-      alignItems: 'center',
+      position: 'absolute',
     },
     button: {
       width: '46@s',
       height: '46@s',
+      marginTop: 64,
       alignSelf: 'center',
-      position: 'absolute',
+      alignItems: 'center',
+      justifyContent: 'center',
+      // position: 'absolute',
     },
     image: {
       width: '49@s',
       height: '49@s',
     },
-    profilename: {
+    profileName: {
       color: '#2F4868',
       fontFamily: 'Nunito',
       fontWeight: '600',
@@ -134,22 +126,26 @@ const styles = (direction: string) =>
       fontSize: '12@s',
       marginLeft: '85@s',
       marginTop: '-17@s',
+      marginRight: '155@s',
+      flexDirection: 'row',
     },
-    headingtext: {
+    headingText: {
       fontFamily: 'Nunito-Regular',
       fontWeight: '800',
       fontSize: '18@s',
       flexDirection: 'row',
       lineHeight: '25@s',
-      marginTop: '20@s',
+      marginTop: '62@s',
       marginLeft: '20@s',
     },
-    iconcontainer: {
+    iconContainer: {
+      width: '100%',
       marginTop: '16@s',
       flexDirection: 'row',
       marginLeft: '20@s',
+      alignSelf: 'stretch',
     },
-    topicon: {
+    topIcon: {
       width: '20@s',
       height: '16@s',
       marginTop: '13@s',
@@ -160,7 +156,7 @@ const styles = (direction: string) =>
       marginTop: '8@s',
       marginLeft: '10@s',
     },
-    icontext: {
+    iconText: {
       fontFamily: 'Nunito-Regular',
       fontWeight: '600',
       fontSize: '14@s',
@@ -170,7 +166,7 @@ const styles = (direction: string) =>
       width: '26@s',
       height: '19@s',
     },
-    iconbox: {
+    iconBox: {
       flexDirection: 'row',
       width: '70@s',
       height: '32@s',
