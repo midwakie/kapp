@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './styles';
 import GradientText from 'app/components/texts/GradientText';
 import RegularButton from 'app/components/buttons/RegularButton';
@@ -13,8 +13,6 @@ import {
   View,
   FlatList,
   TextStyle,
-  TouchableWithoutFeedback,
-  Alert,
   Dimensions,
 } from 'react-native';
 import TitleBar from 'app/components/buttons/TitleBar';

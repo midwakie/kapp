@@ -42,6 +42,7 @@ import EditTeacherProfile from 'app/screens/EditTeacherProfile';
 import ChildHome from 'app/screens/ChildHome';
 import MyFeeds from 'app/screens/MyFeeds';
 import BookReview from 'app/screens/BookReview';
+import RecommendedVideos from 'app/screens/RecommendedVideos';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -343,6 +344,16 @@ const AuthStack = () => {
       <Stack.Screen
         name="EBooks"
         component={EBooks}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="RecommendedVideos"
+        component={RecommendedVideos}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
