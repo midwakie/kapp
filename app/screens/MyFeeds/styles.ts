@@ -51,6 +51,36 @@ const styles = (direction: string) =>
       right: direction === 'rtl' ? undefined : 20,
       position: 'absolute',
     },
+    iconContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: '44@s',
+      width: '88@s',
+    },
+
+    searchContainer: {
+      backgroundColor: '#EBEEF0',
+      height: '44@s',
+      width: '44@s',
+      borderTopRightRadius: '50@s',
+      borderBottomRightRadius: '50@s',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    menuContainer: {
+      height: '44@s',
+      width: '44@s',
+      backgroundColor: '#EBEEF0',
+      borderTopLeftRadius: '50@s',
+      borderBottomLeftRadius: '50@s',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    iconImageStyle: {
+      width: '20@s',
+      height: '20@s',
+    },
     neomorphContainer: {
       marginTop: 52,
       justifyContent: 'center',

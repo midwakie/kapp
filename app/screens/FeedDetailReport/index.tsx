@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import {
-  Dimensions,
-  Image,
   SafeAreaView,
   Text,
   TextStyle,
@@ -17,10 +15,6 @@ import RegularButton from 'app/components/buttons/RegularButton';
 import { useTranslation } from 'react-i18next';
 import TitleBar from 'app/components/buttons/TitleBar';
 import Neumorphism from 'react-native-neumorphism';
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
-import CustomInput from 'app/components/inputs/CustomInput';
-import { useForm } from 'react-hook-form';
-import rules from 'app/rules';
 
 const FeedDetailReport: React.FC = () => {
   const { t, i18n } = useTranslation();

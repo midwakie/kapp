@@ -9,10 +9,25 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.response.use(
   response => response,
-  error =>
-    Promise.reject(
-      (error.response && error.response.data) || 'Something went wrong',
-    ),
+  error => {
+    console.log('Status ===> ' + JSON.stringify(error));
+    if (error.response) {
+      if (
+        error.response.status === 302 ||
+        error.response.status === 400 ||
+        error.response.status === 422 ||
+        error.response.status === 404
+      ) {
+        return Promise.resolve(error.response);
+      } else {
+        return Promise.reject(
+          (error.response && error.response.data) || 'Something went wrong',
+        );
+      }
+    } else {
+      return Promise.reject('Something went wrong');
+    }
+  },
 );
 
 export const callGetApi = async (path: string, headers: any) => {
@@ -25,7 +40,7 @@ export const callGetApi = async (path: string, headers: any) => {
       ...headers,
     },
   });
-  return response.data;
+  return response;
 };
 
 export const callPostApi = async (path: string, headers: any, data: any) => {
@@ -39,8 +54,8 @@ export const callPostApi = async (path: string, headers: any, data: any) => {
       ...headers,
     },
   });
-
-  return response.data;
+  console.log('This is response : ' + JSON.stringify(response));
+  return response;
 };
 
 export async function callPutApi(path: string, headers: any, data: any) {
@@ -55,5 +70,5 @@ export async function callPutApi(path: string, headers: any, data: any) {
       ...headers,
     },
   });
-  return response.data;
+  return response;
 }

@@ -93,19 +93,18 @@ const styles = (direction: string) =>
     },
     radioButtonContainer: {
       width: '100%',
-      width: width - 60,
-      marginTop: 20,
-      alignItems:'center',
-     
-      
+      marginBottom: 21,
+      backgroundColor: 'transparent',
+      height: '50@s',
+      alignItems: 'center',
     },
 
     radioButtonViewContainer: {
       flexDirection: direction === 'rtl' ? 'row-reverse' : 'row',
-      height: '65@ms0.75',
-      width: '100%',
-      justifyContent:'center',
-      alignItems:'center',
+      position: 'absolute',
+      alignItems: 'center',
+      height: '65@s',
+      width: width - 20,
     },
 
     touchableOpacity: {
@@ -247,6 +246,9 @@ const styles = (direction: string) =>
     plusFourImage: {
       position: 'absolute',
       alignSelf: 'center',
+      resizeMode: 'contain',
+      width: '14@s',
+      height: '14@s',
     },
     imageRound: { width: '100%', height: '100%', resizeMode: 'cover' },
   });

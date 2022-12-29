@@ -38,7 +38,7 @@ const AuthRules: any = {
     },
   },
   verification: {
-    required: 'verification Code required',
+    required: 'otp required',
     pattern: {
       value: regexPattern.Numbers,
       message: 'Invalid Number',
