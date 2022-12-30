@@ -34,7 +34,6 @@ const ChildProfile: React.FC = () => {
   const dateofbirthInputRef: React.RefObject<any> = React.createRef();
   const invitationCodeInputRef: React.RefObject<any> = React.createRef();
   const passwordInputRef: React.RefObject<any> = React.createRef();
-  const confirmPasswordInputRef: React.RefObject<any> = React.createRef();
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
   const onPressRadioButtonMale = () => {
@@ -46,9 +45,17 @@ const ChildProfile: React.FC = () => {
     setRadioButtonMale(!radioButtonMale);
     setRadioButtonFemale(!radioButtonFemale);
   };
-  const saveUser = () => {
+
+  const saveUser = (data: any) => {
+    const selectedGender = radioButtonMale ? 'Male' : 'Female';
+    const updatedData = {
+      ...data,
+      gender: selectedGender,
+    };
+    console.log(updatedData);
     NavigationService.navigate('EditChildProfile');
   };
+
   return (
     <ScrollView style={styles(direction).container} bounces={false}>
       <SafeAreaView style={styles(direction).safeAreaView}>
