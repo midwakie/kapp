@@ -6,11 +6,9 @@ import {
 } from '@react-navigation/stack';
 import { useSelector } from 'react-redux';
 
-import ThemeController from '../components/ThemeController';
 import { ILoginState } from 'app/models/reducers/login';
 import Landing from 'app/screens/Landing';
 import SignUp from 'app/screens/SignUp';
-import Language from 'app/screens/Language';
 import SignIn from 'app/screens/SignIn';
 import SelectRole from 'app/screens/SelectRole';
 import VerifyEmail from 'app/screens/VerifyEmail';
@@ -27,15 +25,11 @@ import AccountAction from 'app/screens/AccountAction';
 import LinkChild from 'app/screens/LinkChild';
 import ChangeSchool from 'app/screens/ChangeSchool';
 import DeliveryAddress from 'app/screens/DeliveryAddress';
-import TestHardness from 'app/screens/TestHardness';
-import ChildProfile from 'app/screens/ChildProfile';
 import CreateChannel from 'app/screens/CreateChannel';
-import EditChildProfile from 'app/screens/EditChildProfile';
 import BookDetails from 'app/screens/BookDetails';
 import ChildAccount from 'app/screens/ChildAccount';
 import ActivitiesStats from 'app/screens/ActivityStatus';
 import FeedDetailReport from 'app/screens/FeedDetailReport';
-import EBooks from 'app/screens/EBooks';
 import Publish from 'app/screens/Publish';
 import RewardPointFilter from 'app/screens/RewardPointFilter';
 import EditTeacherProfile from 'app/screens/EditTeacherProfile';
@@ -43,17 +37,23 @@ import ChildHome from 'app/screens/ChildHome';
 import MyFeeds from 'app/screens/MyFeeds';
 import BookReview from 'app/screens/BookReview';
 import ManageActivities from 'app/screens/ManageActivities';
+import { ILoading } from 'app/models/reducers/loading';
+import History from 'app/screens/EBooks/History';
+import ChildProfile from 'app/screens/ChildProfile';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
   loginReducer: ILoginState;
+  loadingReducer: ILoading;
 }
 
 const AuthStack = () => {
   const isLoggedIn = useSelector(
     (state: IState) => state.loginReducer.isLoggedIn,
   );
-
+  const initialRouteName = useSelector(
+    (state: IState) => state.loadingReducer.initialRouteName,
+  );
   const { i18n } = useTranslation();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const setLanguage = async () => {
@@ -67,6 +67,7 @@ const AuthStack = () => {
 
   return (
     <AuthenticationStack.Navigator
+      initialRouteName={initialRouteName}
       screenOptions={{
         ...TransitionPresets.SlideFromRightIOS,
       }}>
@@ -93,6 +94,16 @@ const AuthStack = () => {
       <Stack.Screen
         name="Child Account"
         component={ChildAccount}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Child Profile"
+        component={ChildProfile}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
@@ -342,8 +353,8 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
-        name="EBooks"
-        component={EBooks}
+        name="History"
+        component={History}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation

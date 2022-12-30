@@ -1,6 +1,7 @@
 // loaders
 export const ENABLE_LOADER = 'ENABLE_LOADER';
 export const DISABLE_LOADER = 'DISABLE_LOADER';
+export const CHANGE_ROUTE_NAME = 'CHANGE_ROUTE_NAME';
 
 // theming
 export const TOGGLE_THEME = 'TOGGLE_THEME';
@@ -32,5 +33,7 @@ export const OTP_VERIFY_FAILED = 'OTP_VERIFY_FAILED';
 
 // current customer
 export const SET_SELECTED_ROLE = 'SET_SELECTED_ROLE';
+export const SET_EMAIL = 'SET_EMAIL';
+export const SET_MOBILE_NO = 'SET_MOBILE_NO';
 export const SET_EMAIL_VERIFIED = 'SET_EMAIL_VERIFIED';
 export const SET_MOBILE_VERIFIED = 'SET_MOBILE_VERIFIED';

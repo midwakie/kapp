@@ -93,7 +93,7 @@ const HobbiesAndInterest: React.FC = () => {
           <View style={styles(deviceOrientation).buttonContainer}>
             <RegularButton
               onPress={() => {
-                NavigationService.navigate('BookDetails');
+                NavigationService.reset('Select Role');
               }}
               text={t('Next')}
               radius={50}

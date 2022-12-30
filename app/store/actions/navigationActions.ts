@@ -7,8 +7,8 @@ export function navigateToHome(params: any) {
   NavigationService.navigate('Home', params);
 }
 
-export function navigateToEmailVerify(params: any) {
-  NavigationService.navigate('Verify Email', params);
+export function navigateToEmailVerify() {
+  NavigationService.reset('Verify Email');
 }
 
 export function navigateToForgotPassword(params?: any) {

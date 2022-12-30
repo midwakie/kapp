@@ -11,6 +11,18 @@ export function setCurrentCustomerRole(payload: string) {
     payload,
   };
 }
+export function setCurrentCustomerEmail(payload: string) {
+  return {
+    type: types.SET_EMAIL,
+    payload,
+  };
+}
+export function setCurrentCustomerMobileNo(payload: string) {
+  return {
+    type: types.SET_MOBILE_NO,
+    payload,
+  };
+}
 export function setCurrentCustomerEmailVerificationStatus(payload: boolean) {
   return {
     type: types.SET_EMAIL_VERIFIED,
