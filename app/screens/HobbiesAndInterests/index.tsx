@@ -8,6 +8,8 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { SafeAreaView, View } from 'react-native';
 import BubbleButton from 'app/components/buttons/BubbleButton';
 import useDeviceOrientation from 'app/hooks/useDeviceOrientation';
+import { useDispatch } from 'react-redux';
+import * as loadingActions from 'app/store/actions/loadingActions';
 
 const HobbiesAndInterest: React.FC = () => {
   const { t } = useTranslation();
@@ -18,6 +20,7 @@ const HobbiesAndInterest: React.FC = () => {
   const [singStatus, setSingStatus] = useState(false);
   const [writingStatus, setWritingStatus] = useState(false);
   const [footballStatus, setFootballStatus] = useState(false);
+  const dispatch = useDispatch();
   const onMusicPress = useCallback((currentState: boolean) => {
     setMusicStatus(currentState);
   }, []);
@@ -93,6 +96,7 @@ const HobbiesAndInterest: React.FC = () => {
           <View style={styles(deviceOrientation).buttonContainer}>
             <RegularButton
               onPress={() => {
+                dispatch(loadingActions.changeRouteName('Select Role'));
                 NavigationService.reset('Select Role');
               }}
               text={t('Next')}

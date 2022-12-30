@@ -5,6 +5,12 @@ import Home from 'app/screens/Home';
 import History from 'app/screens/EBooks/History';
 import Biology from 'app/screens/EBooks/Biology';
 import WhatsNew from 'app/screens/EBooks/WhatsNew';
+import Painting from 'app/screens/EBooks/Painting';
+import Sports from 'app/screens/EBooks/Sports';
+import Trending from 'app/screens/EBooks/Trending';
+import ContinueReading from 'app/screens/EBooks/ContinueReading';
+import Favorites from 'app/screens/EBooks/Favorites';
+import BookDetails from 'app/screens/BookDetails';
 
 const Stack = createStackNavigator();
 const LoggedInStack = createStackNavigator();
@@ -41,8 +47,50 @@ const HomeStack = () => {
         }}
       />
       <Stack.Screen
+        name="Painting"
+        component={Painting}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Sports"
+        component={Sports}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
         name="WhatsNew"
         component={WhatsNew}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Trending"
+        component={Trending}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Continue Reading"
+        component={ContinueReading}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Favorites"
+        component={Favorites}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="BookDetails"
+        component={BookDetails}
         options={{
           headerShown: false,
         }}
