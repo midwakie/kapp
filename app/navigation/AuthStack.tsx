@@ -80,7 +80,7 @@ const AuthStack = () => {
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
-      />
+      />  
       <Stack.Screen
         name="Welcome"
         component={Landing}
