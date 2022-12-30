@@ -23,7 +23,7 @@ import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { ms, scale } from 'react-native-size-matters';
 import useDeviceOrientation from 'app/hooks/useDeviceOrientation';
 
-const WhatsNew: React.FC = () => {
+const Favorites: React.FC = () => {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
   const currentOrientation = useDeviceOrientation();
@@ -252,7 +252,7 @@ const WhatsNew: React.FC = () => {
             <View style={styles(direction).gradientTextContainer}>
               <GradientText
                 colors={['#2AA7DD', '#2AA7DD']}
-                text={t('Whats New')}
+                text={t('Favorites')}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 0, y: 1 }}
                 textStyle={styles(direction).gradientTextStyle as TextStyle}
@@ -264,4 +264,4 @@ const WhatsNew: React.FC = () => {
     </>
   );
 };
-export default WhatsNew;
+export default Favorites;

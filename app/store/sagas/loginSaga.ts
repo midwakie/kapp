@@ -31,7 +31,6 @@ export default function* loginAsync(data: ILoginRequestState) {
         response.data.user.isVerified.mobileNo,
       ),
     );
-    yield put(loadingActions.disableLoader());
     if (response.data.user.isVerified.email === false) {
       yield put(
         otpRequestActions.requestOtp({
@@ -42,6 +41,8 @@ export default function* loginAsync(data: ILoginRequestState) {
       );
     }
     yield put(loginActions.onLoginResponse(response));
+    yield put(loadingActions.changeRouteName('Select Role'));
+    yield put(loadingActions.disableLoader());
   } else {
     yield put(loginActions.loginFailed(response));
     yield put(loadingActions.disableLoader());

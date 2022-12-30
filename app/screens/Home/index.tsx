@@ -222,7 +222,10 @@ const Home: React.FC = (props: any) => {
   const CardListItem = ({ book }: any) => {
     return (
       <View style={styles(false).neomorphContainer}>
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity
+          onPress={() => {
+            NavigationService.navigate('BookDetails');
+          }}>
           <Neumorphism
             style={styles(false).neomorphMargin}
             lightColor={'#ffffff'}
@@ -288,6 +291,12 @@ const Home: React.FC = (props: any) => {
         break;
       case 'Biology':
         NavigationService.navigate('Biology');
+        break;
+      case 'Painting':
+        NavigationService.navigate('Painting');
+        break;
+      case 'Sports':
+        NavigationService.navigate('Sports');
         break;
       default:
         break;
@@ -402,7 +411,7 @@ const Home: React.FC = (props: any) => {
               />
               <RegularButton
                 onPress={() => {
-                  // NavigationService.goBack();
+                  NavigationService.navigate('Trending');
                 }}
                 icon={'arrow-forward'}
                 radius={38}
@@ -432,7 +441,7 @@ const Home: React.FC = (props: any) => {
               />
               <RegularButton
                 onPress={() => {
-                  // NavigationService.goBack();
+                  NavigationService.navigate('Continue Reading');
                 }}
                 icon={'arrow-forward'}
                 radius={38}
@@ -456,7 +465,9 @@ const Home: React.FC = (props: any) => {
                         shapeType={'flat'}
                         radius={scale(15.21)}>
                         <TouchableOpacity
-                          onPress={() => {}}
+                          onPress={() => {
+                            NavigationService.navigate('BookDetails');
+                          }}
                           style={styles(false).continueReading}>
                           <Image
                             source={item.image}
@@ -510,7 +521,9 @@ const Home: React.FC = (props: any) => {
                         shapeType={'flat'}
                         radius={scale(15.21)}>
                         <TouchableOpacity
-                          onPress={() => {}}
+                          onPress={() => {
+                            NavigationService.navigate('BookDetails');
+                          }}
                           style={styles(false).whatsNew}>
                           <Image
                             source={item.image}
@@ -533,7 +546,7 @@ const Home: React.FC = (props: any) => {
               />
               <RegularButton
                 onPress={() => {
-                  // NavigationService.goBack();
+                  NavigationService.navigate('Favorites');
                 }}
                 icon={'arrow-forward'}
                 radius={38}
@@ -557,7 +570,9 @@ const Home: React.FC = (props: any) => {
                         shapeType={'flat'}
                         radius={scale(15.21)}>
                         <TouchableOpacity
-                          onPress={() => {}}
+                          onPress={() => {
+                            NavigationService.navigate('BookDetails');
+                          }}
                           style={styles(false).favorites}>
                           <Image
                             style={styles(false).starImage}
@@ -629,7 +644,9 @@ const Home: React.FC = (props: any) => {
                         shapeType={'flat'}
                         radius={scale(15.21)}>
                         <TouchableOpacity
-                          onPress={() => {}}
+                          onPress={() => {
+                            NavigationService.navigate('BookDetails');
+                          }}
                           style={styles(false).videoToChild}>
                           <Image
                             source={item.image}
@@ -672,7 +689,7 @@ const Home: React.FC = (props: any) => {
                 start={{ x: 0, y: 0 }}
                 end={{ x: 0, y: 1 }}
                 textStyle={styles(false).homeTextStyle as TextStyle}
-            />
+              />
             </View>
           }
           rightComponent={

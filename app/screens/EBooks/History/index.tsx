@@ -97,7 +97,10 @@ const History: React.FC = () => {
   const CardItem = ({ book }: any) => {
     return (
       <View style={styles(direction).neomorphContainer}>
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity
+          onPress={() => {
+            NavigationService.navigate('BookDetails');
+          }}>
           <Neumorphism
             style={styles(direction).neomorphMargin}
             lightColor={'#ffffff'}
@@ -123,7 +126,10 @@ const History: React.FC = () => {
   const CardListItem = ({ book }: any) => {
     return (
       <View style={styles(direction).neomorphContainer}>
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity
+          onPress={() => {
+            NavigationService.navigate('BookDetails');
+          }}>
           <Neumorphism
             style={styles(direction).neomorphMargin}
             lightColor={'#ffffff'}
@@ -152,34 +158,7 @@ const History: React.FC = () => {
   };
 
   return (
-    <ScrollView style={styles(direction).container} bounces={false}>
-      <TitleBar
-        leftComponent={
-          <View style={styles(direction).topContainer}>
-            <RegularButton
-              onPress={() => {
-                NavigationService.goBack();
-              }}
-              icon={'arrow-back'}
-              radius={38}
-              height={38}
-              width={38}
-              colors={['#EBECF0', '#EBECF0']}
-            />
-          </View>
-        }
-        middleComponent={
-          <View style={styles(direction).gradientTextContainer}>
-            <GradientText
-              colors={['#2AA7DD', '#2AA7DD']}
-              text={t('History')}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 0, y: 1 }}
-              textStyle={styles(direction).gradientTextStyle as TextStyle}
-            />
-          </View>
-        }
-      />
+    <>
       <SafeAreaView style={styles(direction).safeAreaView}>
         <View style={styles(direction).container2}>
           <View style={styles(direction).gridViewContainer}>
@@ -210,48 +189,79 @@ const History: React.FC = () => {
               </TouchableOpacity>
             </Neumorphism>
           </View>
-          <View style={styles(direction).cardContainer}>
-            {selectedFilter === 'grid' ? (
-              currentOrientation === 'portrait' ? (
-                <FlatList
-                  numColumns={Math.floor(
-                    Dimensions.get('window').width / ms(158),
-                  )}
-                  key={'_'}
-                  keyExtractor={item => '_' + item.id}
-                  data={books}
-                  renderItem={({ item }) => {
-                    return <CardItem book={item} />;
-                  }}
-                />
+          <ScrollView style={styles(direction).container} bounces={false}>
+            <View style={styles(direction).cardContainer}>
+              {selectedFilter === 'grid' ? (
+                currentOrientation === 'portrait' ? (
+                  <FlatList
+                    numColumns={Math.floor(
+                      Dimensions.get('window').width / ms(158),
+                    )}
+                    key={'_'}
+                    keyExtractor={item => '_' + item.id}
+                    data={books}
+                    renderItem={({ item }) => {
+                      return <CardItem book={item} />;
+                    }}
+                  />
+                ) : (
+                  <FlatList
+                    key={'#'}
+                    keyExtractor={item => '#' + item.id}
+                    numColumns={Math.floor(
+                      Dimensions.get('window').width / ms(158),
+                    )}
+                    data={books}
+                    renderItem={({ item }) => {
+                      return <CardItem book={item} />;
+                    }}
+                  />
+                )
               ) : (
                 <FlatList
-                  key={'#'}
-                  keyExtractor={item => '#' + item.id}
-                  numColumns={Math.floor(
-                    Dimensions.get('window').width / ms(158),
-                  )}
+                  numColumns={1}
+                  key={'-'}
+                  keyExtractor={item => '-' + item.id}
                   data={books}
                   renderItem={({ item }) => {
-                    return <CardItem book={item} />;
+                    return <CardListItem book={item} />;
                   }}
                 />
-              )
-            ) : (
-              <FlatList
-                numColumns={1}
-                key={'-'}
-                keyExtractor={item => '-' + item.id}
-                data={books}
-                renderItem={({ item }) => {
-                  return <CardListItem book={item} />;
-                }}
-              />
-            )}
-          </View>
+              )}
+            </View>
+          </ScrollView>
         </View>
       </SafeAreaView>
-    </ScrollView>
+      <View style={styles(direction).titleBarContainer}>
+        <TitleBar
+          leftComponent={
+            <View style={styles(direction).topContainer}>
+              <RegularButton
+                onPress={() => {
+                  NavigationService.goBack();
+                }}
+                icon={'arrow-back'}
+                radius={38}
+                height={38}
+                width={38}
+                colors={['#EBECF0', '#EBECF0']}
+              />
+            </View>
+          }
+          middleComponent={
+            <View style={styles(direction).gradientTextContainer}>
+              <GradientText
+                colors={['#2AA7DD', '#2AA7DD']}
+                text={t('History')}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 0, y: 1 }}
+                textStyle={styles(direction).gradientTextStyle as TextStyle}
+              />
+            </View>
+          }
+        />
+      </View>
+    </>
   );
 };
 export default History;

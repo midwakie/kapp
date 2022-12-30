@@ -20,6 +20,7 @@ const styles = (direction: string) =>
       width: '100%',
       height: '100%',
       paddingBottom: 25,
+      backgroundColor: '#EBEEF0',
     },
     topContainer: {
       justifyContent: 'center',
@@ -41,11 +42,12 @@ const styles = (direction: string) =>
       fontWeight: '700',
     },
     gridViewContainer: {
-      marginTop: 20,
+      marginTop: '85@s',
       padding: 10,
       justifyContent: 'flex-end',
       alignItems: 'flex-end',
       alignSelf: 'flex-end',
+      backgroundColor: '#EBEEF0',
     },
     gridView: {
       paddingHorizontal: '10@ms',
@@ -147,6 +149,7 @@ const styles = (direction: string) =>
       width: '53@s',
       textAlign: 'right',
     },
+    titleBarContainer: { position: 'absolute', width: '100%' },
   });
 
 export default styles;
