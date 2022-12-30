@@ -39,7 +39,7 @@ const EditChildProfile: React.FC = () => {
     setRadioButtonFemale(!radioButtonFemale);
   };
   return (
-    <ScrollView style={styles(direction).container} bounces={false}>
+    <>
       <TitleBar
         leftComponent={
           <View style={styles(direction).regularContainer}>
@@ -67,229 +67,231 @@ const EditChildProfile: React.FC = () => {
           </View>
         }
       />
-      <SafeAreaView style={styles(direction).safeAreaView}>
-        <View style={styles(direction).container2}>
-          <View style={styles(direction).imageContainer}>
-            <Image
-              style={styles(direction).imageRound}
-              source={require('../../assets/editChild1.png')}
-            />
-            <TouchableOpacity style={styles(direction).imageContainer2}>
+      <ScrollView style={styles(direction).container} bounces={false}>
+        <SafeAreaView style={styles(direction).safeAreaView}>
+          <View style={styles(direction).container2}>
+            <View style={styles(direction).imageContainer}>
               <Image
                 style={styles(direction).imageRound}
-                source={require('../../assets/editChild2.png')}
+                source={require('../../assets/editChild1.png')}
               />
-            </TouchableOpacity>
-          </View>
-          <View style={styles(direction).coinContainer1}>
-            <Neumorphism
-              lightColor={'#ffffff'}
-              darkColor={'#A8A8A8'}
-              shapeType={'flat'}
-              radius={50}>
-              <View style={styles(direction).coinContainer2}>
+              <TouchableOpacity style={styles(direction).imageContainer2}>
                 <Image
-                  style={styles(direction).coinImage}
-                  source={require('../../assets/goldCoin1.png')}
+                  style={styles(direction).imageRound}
+                  source={require('../../assets/editChild2.png')}
                 />
-                <Text style={styles(direction).coinText}>450</Text>
-              </View>
-            </Neumorphism>
-          </View>
+              </TouchableOpacity>
+            </View>
+            <View style={styles(direction).coinContainer1}>
+              <Neumorphism
+                lightColor={'#ffffff'}
+                darkColor={'#A8A8A8'}
+                shapeType={'flat'}
+                radius={50}>
+                <View style={styles(direction).coinContainer2}>
+                  <Image
+                    style={styles(direction).coinImage}
+                    source={require('../../assets/goldCoin1.png')}
+                  />
+                  <Text style={styles(direction).coinText}>450</Text>
+                </View>
+              </Neumorphism>
+            </View>
 
-          <View style={styles(direction).inputTextContainer}>
-            <CustomInput
-              control={control}
-              name="first_name"
-              rules={rules.CustomerRules.first_name}
-              placeholder={t('First Name')}
-              label={t('First Name')}
-              keyboardType="default"
-              autoCapitalize="none"
-              returnKeyType="next"
-              onSubmitEditing={() => {
-                lastNameInputRef?.current.setFocus();
-              }}
-            />
-          </View>
-          <View style={styles(direction).inputTextContainer1}>
-            <CustomInput
-              control={control}
-              ref={lastNameInputRef}
-              name="last_name"
-              rules={rules.CustomerRules.last_name}
-              placeholder={t('Last Name')}
-              label={t('Last Name')}
-              keyboardType="default"
-              autoCapitalize="none"
-              returnKeyType="next"
-              onSubmitEditing={() => {
-                emailInputRef?.current.setFocus();
-              }}
-            />
-          </View>
-          <View style={styles(direction).radioButtonContainer}>
-            <Image
-              source={require('../../assets/inputBg.png')}
-              style={styles(direction).bg}
-            />
-            <View style={styles(direction).radioButtonViewContainer}>
-              <RadioButton
-                id={'1'}
-                size={'16'}
-                label={`${t('Male')}`}
-                onPress={onPressRadioButtonMale}
-                selected={radioButtonMale}
-                color={'#03A0E3'}
-              />
-
-              <RadioButton
-                id={'2'}
-                size={'16'}
-                label={`${t('Female')}`}
-                onPress={onPressRadioButtonFemale}
-                selected={radioButtonFemale}
-                color={'#03A0E3'}
+            <View style={styles(direction).inputTextContainer}>
+              <CustomInput
+                control={control}
+                name="first_name"
+                rules={rules.CustomerRules.first_name}
+                placeholder={t('First Name')}
+                label={t('First Name')}
+                keyboardType="default"
+                autoCapitalize="none"
+                returnKeyType="next"
+                onSubmitEditing={() => {
+                  lastNameInputRef?.current.setFocus();
+                }}
               />
             </View>
-          </View>
+            <View style={styles(direction).inputTextContainer1}>
+              <CustomInput
+                control={control}
+                ref={lastNameInputRef}
+                name="last_name"
+                rules={rules.CustomerRules.last_name}
+                placeholder={t('Last Name')}
+                label={t('Last Name')}
+                keyboardType="default"
+                autoCapitalize="none"
+                returnKeyType="next"
+                onSubmitEditing={() => {
+                  emailInputRef?.current.setFocus();
+                }}
+              />
+            </View>
+            <View style={styles(direction).radioButtonContainer}>
+              <Image
+                source={require('../../assets/inputBg.png')}
+                style={styles(direction).bg}
+              />
+              <View style={styles(direction).radioButtonViewContainer}>
+                <RadioButton
+                  id={'1'}
+                  size={'16'}
+                  label={`${t('Male')}`}
+                  onPress={onPressRadioButtonMale}
+                  selected={radioButtonMale}
+                  color={'#03A0E3'}
+                />
 
-          <View style={styles(direction).inputTextContainer2}>
-            <CustomInput
-              control={control}
-              ref={dateofbirthInputRef}
-              name="date of birth"
-              placeholder={t('Date of Birth')}
-              label={t('Date of Birth')}
-              keyboardType="default"
-              autoCapitalize="none"
-              returnKeyType="next"
-              onSubmitEditing={() => {
-                dateofbirthInputRef?.current.setFocus();
-              }}
-              rightComponent={
-                <TouchableOpacity
-                  onPress={() => {}}
-                  style={styles(direction).rightComponent}>
-                  <MaterialIcon
-                    name={'chevron-down'}
-                    size={35}
-                    color={'#03A0E3'}
-                  />
-                </TouchableOpacity>
-              }
-            />
-          </View>
-          <View style={styles(direction).schoolInputContainer}>
-            <Neumorphism
-              lightColor={'#ffffff'}
-              darkColor={'#A8A8A8'}
-              radius={50}>
-              <View style={styles(direction).schoolInputTextContainer}>
-                <Text style={styles(direction).schoolText}>
-                  Al Jeel Al Saeed School
-                </Text>
-                <TouchableOpacity
-                  onPress={() => {
-                    NavigationService.navigate('Change School');
-                  }}>
-                  <Text style={styles(direction).changeText1}>
-                    {t('change')}
-                  </Text>
-                </TouchableOpacity>
+                <RadioButton
+                  id={'2'}
+                  size={'16'}
+                  label={`${t('Female')}`}
+                  onPress={onPressRadioButtonFemale}
+                  selected={radioButtonFemale}
+                  color={'#03A0E3'}
+                />
               </View>
-            </Neumorphism>
-          </View>
-          <View style={styles(direction).marginView}>
-            <Neumorphism
-              lightColor={'#ffffff'}
-              darkColor={'#A8A8A8'}
-              shapeType={'flat'}
-              radius={12}>
-              <View style={styles(direction).interestContainer}>
-                <Text style={styles(direction).interestText}>
-                  {t('Interests & Hobbies')}
-                </Text>
+            </View>
 
-                <View style={styles(direction).interestIconContainer}>
-                  <View style={styles(direction).interestIconMainContainer}>
-                    <TouchableOpacity
-                      onPress={() => {}}
-                      style={styles(direction).interestIcon1}>
-                      <Image
-                        style={styles(direction).imageRound}
-                        source={require('../../assets/interestIcon1.png')}
-                      />
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                      onPress={() => {}}
-                      style={styles(direction).interestIcons}>
-                      <Image
-                        style={styles(direction).imageRound}
-                        source={require('../../assets/interestIcon2.png')}
-                      />
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                      onPress={() => {}}
-                      style={styles(direction).interestIcons}>
-                      <Image
-                        style={styles(direction).imageRound}
-                        source={require('../../assets/interestIcon3.png')}
-                      />
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                      onPress={() => {}}
-                      style={styles(direction).interestIcons}>
-                      <Image
-                        style={styles(direction).imageRound}
-                        source={require('../../assets/interestIcon4.png')}
-                      />
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                      onPress={() => {}}
-                      style={styles(direction).interestIcons}>
-                      <Image
-                        style={styles(direction).imageRound}
-                        source={require('../../assets/interestIcon5.png')}
-                      />
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                      onPress={() => {}}
-                      style={styles(direction).interestIcons}>
-                      <Image
-                        style={styles(direction).imageRound}
-                        source={require('../../assets/interestIcon6.png')}
-                      />
-                      <Image
-                        style={styles(direction).plusFourImage}
-                        source={require('../../assets/+4.png')}
-                      />
-                    </TouchableOpacity>
-                  </View>
-                  <TouchableOpacity onPress={() => {}}>
-                    <Text style={styles(direction).changeText2}>
+            <View style={styles(direction).inputTextContainer2}>
+              <CustomInput
+                control={control}
+                ref={dateofbirthInputRef}
+                name="date of birth"
+                placeholder={t('Date of Birth')}
+                label={t('Date of Birth')}
+                keyboardType="default"
+                autoCapitalize="none"
+                returnKeyType="next"
+                onSubmitEditing={() => {
+                  dateofbirthInputRef?.current.setFocus();
+                }}
+                rightComponent={
+                  <TouchableOpacity
+                    onPress={() => {}}
+                    style={styles(direction).rightComponent}>
+                    <MaterialIcon
+                      name={'chevron-down'}
+                      size={35}
+                      color={'#03A0E3'}
+                    />
+                  </TouchableOpacity>
+                }
+              />
+            </View>
+            <View style={styles(direction).schoolInputContainer}>
+              <Neumorphism
+                lightColor={'#ffffff'}
+                darkColor={'#A8A8A8'}
+                radius={50}>
+                <View style={styles(direction).schoolInputTextContainer}>
+                  <Text style={styles(direction).schoolText}>
+                    {t('Al Jeel Al Saeed School')}
+                  </Text>
+                  <TouchableOpacity
+                    onPress={() => {
+                      NavigationService.navigate('Change School');
+                    }}>
+                    <Text style={styles(direction).changeText1}>
                       {t('change')}
                     </Text>
                   </TouchableOpacity>
                 </View>
-              </View>
-            </Neumorphism>
+              </Neumorphism>
+            </View>
+            <View style={styles(direction).marginView}>
+              <Neumorphism
+                lightColor={'#ffffff'}
+                darkColor={'#A8A8A8'}
+                shapeType={'flat'}
+                radius={12}>
+                <View style={styles(direction).interestContainer}>
+                  <Text style={styles(direction).interestText}>
+                    {t('Interests & Hobbies')}
+                  </Text>
+
+                  <View style={styles(direction).interestIconContainer}>
+                    <View style={styles(direction).interestIconMainContainer}>
+                      <TouchableOpacity
+                        onPress={() => {}}
+                        style={styles(direction).interestIcon1}>
+                        <Image
+                          style={styles(direction).imageRound}
+                          source={require('../../assets/interestIcon1.png')}
+                        />
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        onPress={() => {}}
+                        style={styles(direction).interestIcons}>
+                        <Image
+                          style={styles(direction).imageRound}
+                          source={require('../../assets/interestIcon2.png')}
+                        />
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        onPress={() => {}}
+                        style={styles(direction).interestIcons}>
+                        <Image
+                          style={styles(direction).imageRound}
+                          source={require('../../assets/interestIcon3.png')}
+                        />
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        onPress={() => {}}
+                        style={styles(direction).interestIcons}>
+                        <Image
+                          style={styles(direction).imageRound}
+                          source={require('../../assets/interestIcon4.png')}
+                        />
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        onPress={() => {}}
+                        style={styles(direction).interestIcons}>
+                        <Image
+                          style={styles(direction).imageRound}
+                          source={require('../../assets/interestIcon5.png')}
+                        />
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        onPress={() => {}}
+                        style={styles(direction).interestIcons}>
+                        <Image
+                          style={styles(direction).imageRound}
+                          source={require('../../assets/interestIcon6.png')}
+                        />
+                        <Image
+                          style={styles(direction).plusFourImage}
+                          source={require('../../assets/+4.png')}
+                        />
+                      </TouchableOpacity>
+                    </View>
+                    <TouchableOpacity onPress={() => {}}>
+                      <Text style={styles(direction).changeText2}>
+                        {t('change')}
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              </Neumorphism>
+            </View>
+            <View style={styles(direction).regularButtonContainer}>
+              <RegularButton
+                onPress={() => {
+                  NavigationService.reset('Select Role');
+                }}
+                text={t('Save')}
+                radius={50}
+                height={50}
+                width={'100%'}
+                colors={['#03BBE3', '#14A9FD']}
+              />
+            </View>
           </View>
-          <View style={styles(direction).regularButtonContainer}>
-            <RegularButton
-              onPress={() => {
-                NavigationService.reset('Select Role');
-              }}
-              text={t('Save')}
-              radius={50}
-              height={50}
-              width={'100%'}
-              colors={['#03BBE3', '#14A9FD']}
-            />
-          </View>
-        </View>
-      </SafeAreaView>
-    </ScrollView>
+        </SafeAreaView>
+      </ScrollView>
+    </>
   );
 };
 

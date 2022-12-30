@@ -19,7 +19,7 @@ const RewardPointFilter: React.FC = () => {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
   return (
-    <ScrollView style={styles(direction).container} bounces={false}>
+    <>
       <TitleBar
         leftComponent={
           <View style={styles(direction).topContainer}>
@@ -47,77 +47,79 @@ const RewardPointFilter: React.FC = () => {
           </View>
         }
       />
-      <SafeAreaView style={styles(direction).safeAreaView}>
-        <View style={styles(direction).container2}>
-          <Neumorphism
-            lightColor={'#ffffff'}
-            darkColor={'#A8A8A8'}
-            shapeType={'flat'}
-            radius={scale(14)}>
-            <View style={styles(direction).container3}>
-              <View style={styles(direction).row}>
-                <Text style={styles(direction).text1}>
-                  {t('Transactions Type')}
-                </Text>
-              </View>
-              <View style={styles(direction).row1}>
-                <View style={styles(direction).buttonInnerContainer}>
-                  <RegularButton
-                    // onPress={onSignUp}
-                    text={t('All')}
-                    radius={50}
-                    height={50}
-                    width={'100%'}
-                    colors={['#03BBE3', '#14A9FD']}
-                  />
+      <ScrollView style={styles(direction).container} bounces={false}>
+        <SafeAreaView style={styles(direction).safeAreaView}>
+          <View style={styles(direction).container2}>
+            <Neumorphism
+              lightColor={'#ffffff'}
+              darkColor={'#A8A8A8'}
+              shapeType={'flat'}
+              radius={scale(14)}>
+              <View style={styles(direction).container3}>
+                <View style={styles(direction).row}>
+                  <Text style={styles(direction).text1}>
+                    {t('Transactions Type')}
+                  </Text>
                 </View>
-              </View>
+                <View style={styles(direction).row1}>
+                  <View style={styles(direction).buttonInnerContainer}>
+                    <RegularButton
+                      // onPress={onSignUp}
+                      text={t('All')}
+                      radius={50}
+                      height={50}
+                      width={'100%'}
+                      colors={['#03BBE3', '#14A9FD']}
+                    />
+                  </View>
+                </View>
 
-              <View style={styles(direction).row2}>
-              <View style={styles(direction).lastWeekDropdown}>
-                  <Neumorphism
-                    lightColor={'#E2E2E2'}
-                    darkColor={'#A8A8A8'}
-                    shapeType={'basin'}
-                    radius={50}>
-                    <View style={styles(direction).box}>
-                      <Text style={styles(direction).text123}>
-                        {t('Spent')}
-                      </Text>
-                    </View>
-                  </Neumorphism>
-                </View>
-                <View style={styles(direction).lastWeekDropdown2}>
-                  <Neumorphism
-                     lightColor={'#E2E2E2'}
-                     darkColor={'#A8A8A8'}
-                    shapeType={'basin'}
-                    radius={50}>
-                    <View style={styles(direction).box}>
-                      <Text style={styles(direction).text123}>
-                        {t('Earned')}
-                      </Text>
-                    </View>
-                  </Neumorphism>
+                <View style={styles(direction).row2}>
+                  <View style={styles(direction).lastWeekDropdown}>
+                    <Neumorphism
+                      lightColor={'#E2E2E2'}
+                      darkColor={'#A8A8A8'}
+                      shapeType={'basin'}
+                      radius={50}>
+                      <View style={styles(direction).box}>
+                        <Text style={styles(direction).text123}>
+                          {t('Spent')}
+                        </Text>
+                      </View>
+                    </Neumorphism>
+                  </View>
+                  <View style={styles(direction).lastWeekDropdown2}>
+                    <Neumorphism
+                      lightColor={'#E2E2E2'}
+                      darkColor={'#A8A8A8'}
+                      shapeType={'basin'}
+                      radius={50}>
+                      <View style={styles(direction).box}>
+                        <Text style={styles(direction).text123}>
+                          {t('Earned')}
+                        </Text>
+                      </View>
+                    </Neumorphism>
+                  </View>
                 </View>
               </View>
+            </Neumorphism>
+            <View style={{ marginTop: 200 }}>
+              <RegularButton
+                onPress={() => {
+                  NavigationService.navigate(' ');
+                }}
+                text={t('Apply ')}
+                radius={50}
+                height={50}
+                width={'100%'}
+                colors={['#03BBE3', '#14A9FD']}
+              />
             </View>
-          </Neumorphism>
-          <View style={{ marginTop: 200 }}>
-            <RegularButton
-              onPress={() => {
-                NavigationService.navigate(' ');
-              }}
-              text={t('Apply ')}
-              radius={50}
-              height={50}
-              width={'100%'}
-              colors={['#03BBE3', '#14A9FD']}
-            />
           </View>
-        </View>
-      </SafeAreaView>
-    </ScrollView>
+        </SafeAreaView>
+      </ScrollView>
+    </>
   );
 };
 

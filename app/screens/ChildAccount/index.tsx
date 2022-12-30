@@ -28,10 +28,10 @@ const ChildAccount: React.FC = () => {
   const { control, handleSubmit, watch } = useForm();
   const lastNameInputRef: React.RefObject<any> = React.createRef();
   const emailInputRef: React.RefObject<any> = React.createRef();
-  const mobileNumberInputRef: React.RefObject<any> = React.createRef();
+  const firstSpokenLanguageInputRef: React.RefObject<any> = React.createRef();
   const invitationCodeInputRef: React.RefObject<any> = React.createRef();
   const passwordInputRef: React.RefObject<any> = React.createRef();
-  const dateofbirthInputRef: React.RefObject<any> = React.createRef();
+  const dateOfBirthInputRef: React.RefObject<any> = React.createRef();
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
   const [radioButtonMale, setRadioButtonMale] = useState(true);
@@ -47,7 +47,7 @@ const ChildAccount: React.FC = () => {
     setRadioButtonFemale(!radioButtonFemale);
   };
   const saveUser = () => {
-    NavigationService.navigate('ChildProfile');
+    // NavigationService.navigate('ChildProfile');
   };
   return (
     <ScrollView style={styles(direction).container} bounces={false}>
@@ -67,8 +67,8 @@ const ChildAccount: React.FC = () => {
           </View>
           <View style={styles(direction).gradientTextContainer}>
             <GradientText
-              colors={['#0EAFF4', '#0D93CD']}
-              text={t('Create Your \n Child Account')}
+              colors={['#2AA7DD', '#2AA7DD']}
+              text={t('Create Your Child Account')}
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
               textStyle={styles(direction).gradientTextStyle}
@@ -117,7 +117,7 @@ const ChildAccount: React.FC = () => {
               autoCapitalize="none"
               returnKeyType="next"
               onSubmitEditing={() => {
-                mobileNumberInputRef?.current.setFocus();
+                dateOfBirthInputRef?.current.setFocus();
               }}
             />
           </View>
@@ -149,7 +149,7 @@ const ChildAccount: React.FC = () => {
           <View style={styles(direction).inputTextContainer}>
             <CustomInput
               control={control}
-              ref={dateofbirthInputRef}
+              ref={dateOfBirthInputRef}
               name="date of birth"
               placeholder={t('Date of Birth')}
               label={t('Date of Birth')}
@@ -157,7 +157,7 @@ const ChildAccount: React.FC = () => {
               autoCapitalize="none"
               returnKeyType="next"
               onSubmitEditing={() => {
-                dateofbirthInputRef?.current.setFocus();
+                firstSpokenLanguageInputRef?.current.setFocus();
               }}
               rightComponent={
                 <TouchableOpacity style={styles(direction).rightComponent}>
@@ -173,6 +173,7 @@ const ChildAccount: React.FC = () => {
           <View style={styles(direction).inputTextContainer}>
             <CustomInput
               control={control}
+              ref={firstSpokenLanguageInputRef}
               name="first_spoken_language"
               placeholder={t('First Spoken Language')}
               label={t('First Spoken Language')}
@@ -180,7 +181,7 @@ const ChildAccount: React.FC = () => {
               autoCapitalize="none"
               returnKeyType="next"
               onSubmitEditing={() => {
-                inputRef?.current.setFocus();
+                invitationCodeInputRef?.current.setFocus();
               }}
               rightComponent={
                 <TouchableOpacity style={styles(direction).rightComponent}>

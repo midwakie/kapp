@@ -12,6 +12,7 @@ const styles = (direction: string) =>
       width: '100%',
       height: '100%',
       backgroundColor: '#EBEEF0',
+      zIndex: -10,
     },
     container2: {
       alignSelf: 'stretch',

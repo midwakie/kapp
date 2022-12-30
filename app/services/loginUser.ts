@@ -1,14 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { ILoginResponse } from 'app/models/api/login';
+import ApiConfig from 'app/config/api-config';
+import { ILoginRequestData } from 'app/models/actions/login';
+import { callPostApi } from './client';
 
-export default async function loginUser(email: string) {
-  console.log(`Request Email : ${email}`);
-  const response: ILoginResponse = {
-    id: 'didToken',
-    issuer: '',
-    email,
-    token: 'json.Token',
-    identity_id: 'json.IdentityId',
-  };
-  return response;
+export default async function loginUser(payload: ILoginRequestData) {
+  return callPostApi(ApiConfig.LOGIN, {}, payload);
 }

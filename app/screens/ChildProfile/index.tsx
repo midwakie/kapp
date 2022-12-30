@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {
   Image,
+  Keyboard,
   Platform,
   SafeAreaView,
   Text,
@@ -26,14 +27,13 @@ import { useTranslation } from 'react-i18next';
 const ChildProfile: React.FC = () => {
   const [showPassword, setShowPassword] = React.useState(false);
   const [checked, setChecked] = React.useState(true);
-  const { control, handleSubmit, watch } = useForm();
+  const { control, handleSubmit } = useForm();
   const [radioButtonMale, setRadioButtonMale] = useState(true);
   const [radioButtonFemale, setRadioButtonFemale] = useState(false);
   const lastNameInputRef: React.RefObject<any> = React.createRef();
-  const emailInputRef: React.RefObject<any> = React.createRef();
-  const dateofbirthInputRef: React.RefObject<any> = React.createRef();
+  const dateOfBirthInputRef: React.RefObject<any> = React.createRef();
   const invitationCodeInputRef: React.RefObject<any> = React.createRef();
-  const passwordInputRef: React.RefObject<any> = React.createRef();
+  const firstSpokenLanguageInputRef: React.RefObject<any> = React.createRef();
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
   const onPressRadioButtonMale = () => {
@@ -76,7 +76,7 @@ const ChildProfile: React.FC = () => {
           <View style={styles(direction).gradientTextContainer}>
             <GradientText
               colors={['#2AA7DD', '#2AA7DD']}
-              text={t('Create Your \n Child Profile')}
+              text={t('Create Your Child Profile')}
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
               textStyle={styles(direction).gradientTextStyle}
@@ -109,7 +109,7 @@ const ChildProfile: React.FC = () => {
               autoCapitalize="none"
               returnKeyType="next"
               onSubmitEditing={() => {
-                emailInputRef?.current.setFocus();
+                dateOfBirthInputRef?.current.setFocus();
               }}
             />
           </View>
@@ -118,7 +118,7 @@ const ChildProfile: React.FC = () => {
               source={require('../../assets/inputBg.png')}
               style={styles(direction).bg}
             />
-            <View style={styles(direction).radiobutton}>
+            <View style={styles(direction).radioButton}>
               <RadioButton
                 size={16}
                 id={'1'}
@@ -141,7 +141,7 @@ const ChildProfile: React.FC = () => {
           <View style={styles(direction).inputTextContainer}>
             <CustomInput
               control={control}
-              ref={dateofbirthInputRef}
+              ref={dateOfBirthInputRef}
               name="date of birth"
               placeholder={t('Date of Birth')}
               label={t('Date of Birth')}
@@ -149,7 +149,7 @@ const ChildProfile: React.FC = () => {
               autoCapitalize="none"
               returnKeyType="next"
               onSubmitEditing={() => {
-                dateofbirthInputRef?.current.setFocus();
+                firstSpokenLanguageInputRef?.current.setFocus();
               }}
               rightComponent={
                 <TouchableOpacity style={styles(direction).rightComponent}>
@@ -165,7 +165,7 @@ const ChildProfile: React.FC = () => {
           <View style={styles(direction).inputTextContainer}>
             <CustomInput
               control={control}
-              ref={dateofbirthInputRef}
+              ref={firstSpokenLanguageInputRef}
               name="first spoken language"
               placeholder={t('First Spoken Language')}
               label={t('First Spoken Language')}
@@ -173,7 +173,7 @@ const ChildProfile: React.FC = () => {
               autoCapitalize="none"
               returnKeyType="next"
               onSubmitEditing={() => {
-                dateofbirthInputRef?.current.setFocus();
+                invitationCodeInputRef?.current.setFocus();
               }}
               rightComponent={
                 <TouchableOpacity style={styles(direction).rightComponent}>
@@ -197,7 +197,7 @@ const ChildProfile: React.FC = () => {
               autoCapitalize="none"
               returnKeyType="next"
               onSubmitEditing={() => {
-                passwordInputRef?.current.setFocus();
+                Keyboard.dismiss();
               }}
             />
           </View>

@@ -27,7 +27,7 @@ const Publish: React.FC = () => {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
   return (
-    <ScrollView style={styles(direction).container} bounces={false}>
+    <>
       <TitleBar
         leftComponent={
           <View style={styles(direction).topContainer}>
@@ -55,60 +55,62 @@ const Publish: React.FC = () => {
           </View>
         }
       />
-      <SafeAreaView style={styles(direction).safeAreaView}>
-        <View style={styles(direction).container1}>
-          <TouchableOpacity onPress={() => alert('The box was clicked!')}>
-            <Neumorphism
-              lightColor={'#ffffff'}
-              darkColor={'#A8A8A8'}
-              shapeType={'flat'}
-              radius={scale(14)}>
-              <View style={styles(direction).squareBox}>
-                <Image
-                  source={require('../../assets/videoCamera.png')}
-                  style={styles(direction).imageStyle}
-                />
-                <Text style={styles(direction).text}>{t('Video')}</Text>
-              </View>
-            </Neumorphism>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => alert('The box was clicked!')}
-            style={styles(direction).squareBox1}>
-            <Neumorphism
-              lightColor={'#ffffff'}
-              darkColor={'#A8A8A8'}
-              shapeType={'flat'}
-              radius={scale(14)}>
-              <View style={styles(direction).squareBox}>
-                <Image
-                  source={require('../../assets/documents.png')}
-                  style={styles(direction).imageStyle1}
-                />
-                <Text style={styles(direction).text}>{t('Document')}</Text>
-              </View>
-            </Neumorphism>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => alert('The box was clicked!')}
-            style={styles(direction).squareBox1}>
-            <Neumorphism
-              lightColor={'#ffffff'}
-              darkColor={'#A8A8A8'}
-              shapeType={'flat'}
-              radius={scale(14)}>
-              <View style={styles(direction).squareBox}>
-                <Image
-                  source={require('../../assets/image1.png')}
-                  style={styles(direction).imageStyle2}
-                />
-                <Text style={styles(direction).text}>{t('Image')}</Text>
-              </View>
-            </Neumorphism>
-          </TouchableOpacity>
-        </View>
-      </SafeAreaView>
-    </ScrollView>
+      <ScrollView style={styles(direction).container} bounces={false}>
+        <SafeAreaView style={styles(direction).safeAreaView}>
+          <View style={styles(direction).container1}>
+            <TouchableOpacity onPress={() => alert('The box was clicked!')}>
+              <Neumorphism
+                lightColor={'#ffffff'}
+                darkColor={'#A8A8A8'}
+                shapeType={'flat'}
+                radius={scale(14)}>
+                <View style={styles(direction).squareBox}>
+                  <Image
+                    source={require('../../assets/videoCamera.png')}
+                    style={styles(direction).imageStyle}
+                  />
+                  <Text style={styles(direction).text}>{t('Video')}</Text>
+                </View>
+              </Neumorphism>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => alert('The box was clicked!')}
+              style={styles(direction).squareBox1}>
+              <Neumorphism
+                lightColor={'#ffffff'}
+                darkColor={'#A8A8A8'}
+                shapeType={'flat'}
+                radius={scale(14)}>
+                <View style={styles(direction).squareBox}>
+                  <Image
+                    source={require('../../assets/documents.png')}
+                    style={styles(direction).imageStyle1}
+                  />
+                  <Text style={styles(direction).text}>{t('Document')}</Text>
+                </View>
+              </Neumorphism>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => alert('The box was clicked!')}
+              style={styles(direction).squareBox1}>
+              <Neumorphism
+                lightColor={'#ffffff'}
+                darkColor={'#A8A8A8'}
+                shapeType={'flat'}
+                radius={scale(14)}>
+                <View style={styles(direction).squareBox}>
+                  <Image
+                    source={require('../../assets/image1.png')}
+                    style={styles(direction).imageStyle2}
+                  />
+                  <Text style={styles(direction).text}>{t('Image')}</Text>
+                </View>
+              </Neumorphism>
+            </TouchableOpacity>
+          </View>
+        </SafeAreaView>
+      </ScrollView>
+    </>
   );
 };
 

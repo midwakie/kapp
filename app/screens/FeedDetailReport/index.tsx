@@ -1,14 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import {
-  Dimensions,
-  Image,
-  SafeAreaView,
-  Text,
-  TextStyle,
-  View,
-  TextInput,
-} from 'react-native';
+import { SafeAreaView, Text, TextStyle, View, TextInput } from 'react-native';
 import styles from './styles';
 import NavigationService from 'app/navigation/NavigationService';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -17,16 +9,12 @@ import RegularButton from 'app/components/buttons/RegularButton';
 import { useTranslation } from 'react-i18next';
 import TitleBar from 'app/components/buttons/TitleBar';
 import Neumorphism from 'react-native-neumorphism';
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
-import CustomInput from 'app/components/inputs/CustomInput';
-import { useForm } from 'react-hook-form';
-import rules from 'app/rules';
 
 const FeedDetailReport: React.FC = () => {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
   return (
-    <ScrollView style={styles(direction).container} bounces={false}>
+    <>
       <TitleBar
         leftComponent={
           <View style={styles(direction).topContainer}>
@@ -54,20 +42,9 @@ const FeedDetailReport: React.FC = () => {
           </View>
         }
       />
-      <SafeAreaView style={styles(direction).safeAreaView}>
-        <View style={styles(direction).container2}>
-          <Neumorphism
-            lightColor={'#ffffff'}
-            darkColor={'#A8A8A8'}
-            shapeType={'flat'}
-            radius={14}>
-            <View style={styles(direction).rectangle2}>
-              <Text style={styles(direction).text}>
-                {t('Nudity or sexual activity')}
-              </Text>
-            </View>
-          </Neumorphism>
-          <View style={{ marginTop: 20 }}>
+      <ScrollView style={styles(direction).container} bounces={false}>
+        <SafeAreaView style={styles(direction).safeAreaView}>
+          <View style={styles(direction).container2}>
             <Neumorphism
               lightColor={'#ffffff'}
               darkColor={'#A8A8A8'}
@@ -75,74 +52,89 @@ const FeedDetailReport: React.FC = () => {
               radius={14}>
               <View style={styles(direction).rectangle2}>
                 <Text style={styles(direction).text}>
-                  {t('Hate speech or symbols')}
+                  {t('Nudity or sexual activity')}
                 </Text>
               </View>
             </Neumorphism>
-          </View>
-          <View style={{ marginTop: 20 }}>
-            <Neumorphism
-              lightColor={'#ffffff'}
-              darkColor={'#A8A8A8'}
-              shapeType={'flat'}
-              radius={14}>
-              <View style={styles(direction).rectangle2}>
-                <Text style={styles(direction).text}>
-                  {t('Bullying or harrasment')}
-                </Text>
-              </View>
-            </Neumorphism>
-          </View>
-          <View style={{ marginTop: 20 }}>
-            <Neumorphism
-              lightColor={'#ffffff'}
-              darkColor={'#A8A8A8'}
-              shapeType={'flat'}
-              radius={14}>
-              <View style={styles(direction).rectangle2}>
-                <Text style={styles(direction).text}>{t('Scam or fraud')}</Text>
-              </View>
-            </Neumorphism>
-          </View>
-          <View style={{ marginTop: 20 }}>
-            <Neumorphism
-              lightColor={'#ffffff'}
-              darkColor={'#A8A8A8'}
-              shapeType={'flat'}
-              radius={14}>
-              <View style={styles(direction).rectangle3}>
-                <Text style={styles(direction).bottomtext}>{t('Other')}</Text>
-                <View style={{ marginTop: 20 }}>
-                  <Neumorphism
-                    lightColor={'#FFFFFF'}
-                    darkColor={'#A8A8A8'}
-                    shapeType={'pressed'}
-                    radius={14}>
-                    <TextInput
-                      style={styles(direction).inputText}
-                      placeholder={t('Type here..')}
-                      // onChangeText={text => text.setFocus({ text })}
-                    />
-                  </Neumorphism>
+            <View style={{ marginTop: 20 }}>
+              <Neumorphism
+                lightColor={'#ffffff'}
+                darkColor={'#A8A8A8'}
+                shapeType={'flat'}
+                radius={14}>
+                <View style={styles(direction).rectangle2}>
+                  <Text style={styles(direction).text}>
+                    {t('Hate speech or symbols')}
+                  </Text>
                 </View>
-              </View>
-            </Neumorphism>
+              </Neumorphism>
+            </View>
+            <View style={{ marginTop: 20 }}>
+              <Neumorphism
+                lightColor={'#ffffff'}
+                darkColor={'#A8A8A8'}
+                shapeType={'flat'}
+                radius={14}>
+                <View style={styles(direction).rectangle2}>
+                  <Text style={styles(direction).text}>
+                    {t('Bullying or harrasment')}
+                  </Text>
+                </View>
+              </Neumorphism>
+            </View>
+            <View style={{ marginTop: 20 }}>
+              <Neumorphism
+                lightColor={'#ffffff'}
+                darkColor={'#A8A8A8'}
+                shapeType={'flat'}
+                radius={14}>
+                <View style={styles(direction).rectangle2}>
+                  <Text style={styles(direction).text}>
+                    {t('Scam or fraud')}
+                  </Text>
+                </View>
+              </Neumorphism>
+            </View>
+            <View style={{ marginTop: 20 }}>
+              <Neumorphism
+                lightColor={'#ffffff'}
+                darkColor={'#A8A8A8'}
+                shapeType={'flat'}
+                radius={14}>
+                <View style={styles(direction).rectangle3}>
+                  <Text style={styles(direction).bottomtext}>{t('Other')}</Text>
+                  <View style={{ marginTop: 20 }}>
+                    <Neumorphism
+                      lightColor={'#FFFFFF'}
+                      darkColor={'#A8A8A8'}
+                      shapeType={'pressed'}
+                      radius={14}>
+                      <TextInput
+                        style={styles(direction).inputText}
+                        placeholder={t('Type here..')}
+                        // onChangeText={text => text.setFocus({ text })}
+                      />
+                    </Neumorphism>
+                  </View>
+                </View>
+              </Neumorphism>
+            </View>
+            <View style={{ marginTop: 41 }}>
+              <RegularButton
+                onPress={() => {
+                  NavigationService.navigate('ActivitiesStats');
+                }}
+                text={t('Report')}
+                radius={50}
+                height={50}
+                width={'315@s'}
+                colors={['#03BBE3', '#14A9FD']}
+              />
+            </View>
           </View>
-          <View style={{ marginTop: 41 }}>
-            <RegularButton
-              onPress={() => {
-                NavigationService.navigate('ActivitiesStats');
-              }}
-              text={t('Report')}
-              radius={50}
-              height={50}
-              width={'315@s'}
-              colors={['#03BBE3', '#14A9FD']}
-            />
-          </View>
-        </View>
-      </SafeAreaView>
-    </ScrollView>
+        </SafeAreaView>
+      </ScrollView>
+    </>
   );
 };
 
