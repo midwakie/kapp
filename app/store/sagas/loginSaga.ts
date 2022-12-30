@@ -21,7 +21,6 @@ export default function* loginAsync(data: ILoginRequestState) {
   //how to call api
   const response: ILoginResponse = yield call(loginUser, data.payload);
   if (response.status && response.status === 200) {
-    yield put(loginActions.onLoginResponse(response));
     yield put(
       currentCustomerActions.setCurrentCustomerEmailVerificationStatus(
         response.data.user.isVerified.email,
@@ -42,6 +41,7 @@ export default function* loginAsync(data: ILoginRequestState) {
         }),
       );
     }
+    yield put(loginActions.onLoginResponse(response));
   } else {
     yield put(loginActions.loginFailed(response));
     yield put(loadingActions.disableLoader());

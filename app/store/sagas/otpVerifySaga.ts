@@ -23,6 +23,7 @@ export default function* otpVerifyAsync(data: IOtpVerifyRequestState) {
     yield put(
       currentCustomerActions.setCurrentCustomerEmailVerificationStatus(true),
     );
+    yield put(loadingActions.changeRouteName('Verify Mobile'));
     yield put(loadingActions.disableLoader());
     setTimeout(() => {
       Alert.alert('Kutubi', response.data.message);

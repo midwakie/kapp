@@ -6,6 +6,7 @@
     "persistor",
     "Pressable",
     "rnhooks",
+    "swiper",
     "Unorderedlist"
   ],
   "java.configuration.updateBuildConfiguration": "disabled"

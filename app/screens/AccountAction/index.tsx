@@ -5,7 +5,6 @@ import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import NavigationService from 'app/navigation/NavigationService';
 import { useTranslation } from 'react-i18next';
 import RegularButton from 'app/components/buttons/RegularButton';
-import Neumorphism from 'react-native-neumorphism';
 
 const AccountAction: React.FC = () => {
   //   const { control } = useForm();
@@ -54,7 +53,7 @@ const AccountAction: React.FC = () => {
         <View style={styles.container4}>
           <TouchableOpacity
             onPress={() => {
-              NavigationService.navigate('ChildProfile');
+              NavigationService.navigate('Child Profile');
             }}
             style={styles.itemTouchableOpacity}>
             <Image

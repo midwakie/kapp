@@ -1,12 +1,6 @@
 import React from 'react';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import {
-  SafeAreaView,
-  Text,
-  TextStyle,
-  View,
-  TextInput,
-} from 'react-native';
+import { SafeAreaView, Text, TextStyle, View, TextInput } from 'react-native';
 import styles from './styles';
 import NavigationService from 'app/navigation/NavigationService';
 import { ScrollView } from 'react-native-gesture-handler';

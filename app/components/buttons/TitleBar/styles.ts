@@ -6,7 +6,6 @@ const styles = ScaledSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     width: '100%',
-    height: '110@ms',
     borderBottomLeftRadius: 25,
     borderBottomRightRadius: 25,
   },
