@@ -246,6 +246,9 @@ const styles = (direction: string) =>
     plusFourImage: {
       position: 'absolute',
       alignSelf: 'center',
+      resizeMode: 'contain',
+      width: '14@s',
+      height: '14@s',
     },
     imageRound: { width: '100%', height: '100%', resizeMode: 'cover' },
   });
