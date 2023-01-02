@@ -201,7 +201,7 @@ const ActivitiesStats: React.FC = () => {
                   <Text style={styles(direction).text}>
                     {t('Total time spent on video')}
                   </Text>
-                  <Text style={styles(direction).insidetext}>
+                  <Text style={styles(direction).insideText}>
                     {t('50 \nhrs')}
                   </Text>
                 </View>
@@ -240,7 +240,7 @@ const ActivitiesStats: React.FC = () => {
                   <Text style={styles(direction).text}>
                     {t('Total time spent on reading')}
                   </Text>
-                  <Text style={styles(direction).insidetext}>
+                  <Text style={styles(direction).insideText}>
                     {t('30 \nhrs')}
                   </Text>
                 </View>
@@ -279,7 +279,7 @@ const ActivitiesStats: React.FC = () => {
                   <Text style={styles(direction).text}>
                     {t('Total time spent on app')}
                   </Text>
-                  <Text style={styles(direction).insidetext}>
+                  <Text style={styles(direction).insideText}>
                     {t('80 \nhrs')}
                   </Text>
                 </View>
