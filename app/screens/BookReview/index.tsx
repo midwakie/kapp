@@ -16,12 +16,12 @@ import RegularButton from 'app/components/buttons/RegularButton';
 import { useTranslation } from 'react-i18next';
 import { scale } from 'react-native-size-matters';
 import TitleBar from 'app/components/buttons/TitleBar';
+import { AirbnbRating } from 'react-native-ratings';
 
 const BookReview: React.FC = () => {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
   const [rating, setRating] = useState(3);
-  const [isVisible, setIsVisible] = useState(false);
   const [expanded, setExpanded] = useState({});
   const toggleExpand = (id: number) => {
     setExpanded({ ...expanded, [id]: !expanded[id] });
@@ -78,33 +78,6 @@ const BookReview: React.FC = () => {
       ],
     },
   ]);
-  const Star = ({ filled, onPress }) => (
-    <TouchableOpacity onPress={onPress}>
-      <Image
-        style={styles(direction).starimg}
-        source={
-          filled
-            ? require('../../assets/filledStar.png')
-            : require('../../assets/emptyStar.png')
-        }
-      />
-    </TouchableOpacity>
-  );
-  const StarRating = ({ rate, onRateChange }) => {
-    const stars = [];
-    for (let i = 0; i < 5; i++) {
-      stars.push(
-        <Star key={i} filled={i < rate} onPress={() => onRateChange(i + 1)} />,
-      );
-    }
-
-    return (
-      <View style={{ flexDirection: 'row' }}>
-        {stars}
-        {/* <Text style={{ marginLeft: 8 }}>{rating}/5</Text> */}
-      </View>
-    );
-  };
   return (
     <ScrollView style={styles(direction).container} bounces={false}>
       <TitleBar
@@ -162,7 +135,13 @@ const BookReview: React.FC = () => {
                 />
                 <Text style={styles(direction).text1}>{item.authorName}</Text>
                 <View style={styles(direction).starRatingContainer}>
-                  <StarRating rate={rating} onRateChange={setRating} />
+                  <AirbnbRating
+                    isDisabled={false}
+                    showRating={false}
+                    defaultRating={3}
+                    size={scale(14)}
+                    onFinishRating={value => setRating(value)}
+                  />
                 </View>
 
                 <Text style={styles(direction).text2}>{item.amount}</Text>
@@ -199,10 +178,16 @@ const BookReview: React.FC = () => {
                         />
                       </View>
                       <View style={{ flexDirection: 'row' }}>
-                        <StarRating
+                        <AirbnbRating
+                          isDisabled={true}
+                          showRating={false}
+                          defaultRating={review.rating}
+                          size={scale(14)}
+                        />
+                        {/* <StarRating
                           rate={review.rating}
                           onRateChange={setRating}
-                        />
+                        /> */}
                       </View>
                       <View style={{ flexDirection: 'row' }}>
                         <Text style={styles(direction).text7}>

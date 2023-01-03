@@ -40,6 +40,7 @@ import ManageActivities from 'app/screens/ManageActivities';
 import { ILoading } from 'app/models/reducers/loading';
 import History from 'app/screens/EBooks/History';
 import ChildProfile from 'app/screens/ChildProfile';
+import AddReview from 'app/screens/AddReview';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -122,16 +123,6 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
-        name="FeedDetailReport"
-        component={FeedDetailReport}
-        options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
-          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
         name="MyFeeds"
         component={MyFeeds}
         options={{
@@ -141,7 +132,16 @@ const AuthStack = () => {
           headerShown: false,
         }}
       />
-
+      <Stack.Screen
+        name="FeedDetailReport"
+        component={FeedDetailReport}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
       <Stack.Screen
         name="CreateChannel"
         component={CreateChannel}
@@ -365,6 +365,16 @@ const AuthStack = () => {
       <Stack.Screen
         name="Manage Activities"
         component={ManageActivities}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Add Review"
+        component={AddReview}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
