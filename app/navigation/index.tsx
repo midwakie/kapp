@@ -17,6 +17,7 @@ import InitialCheckStack from './InitialCheckStack';
 import { ICurrentCustomer } from 'app/models/reducers/currentCustomer';
 import { useNetInfo } from '@react-native-community/netinfo';
 import NoConnection from 'app/screens/NoConnection';
+import Loading from 'app/screens/Loading';
 
 const Stack = createStackNavigator();
 
@@ -58,11 +59,7 @@ const App: React.FC<IProps> = (props: IProps) => {
   return (
     <NavigationContainer ref={navigationRef}>
       <StatusBar barStyle={'dark-content'} />
-      {!netInfo.isConnected ? (
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="NoConnection" component={NoConnection} />
-        </Stack.Navigator>
-      ) : (
+      {netInfo.isConnected ? (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           {!isLoading ? (
             isLoggedIn ? (
@@ -124,6 +121,23 @@ const App: React.FC<IProps> = (props: IProps) => {
                 // headerRight: () => <ThemeController />,
               }}
             />
+          )}
+        </Stack.Navigator>
+      ) : (
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          {!netInfo.isConnected ? (
+            <Stack.Screen
+              name="NoConnectionLoading"
+              component={Loading}
+              options={{
+                // When logging out, a pop animation feels intuitive
+                // You can remove this if you want the default 'push' animation
+                animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+                // headerRight: () => <ThemeController />,
+              }}
+            />
+          ) : (
+            <Stack.Screen name="NoConnection" component={NoConnection} />
           )}
         </Stack.Navigator>
       )}

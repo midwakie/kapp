@@ -27,164 +27,168 @@ const BookDetails: React.FC = () => {
     console.log(index);
   };
   return (
-    <ScrollView style={styles(direction).container} bounces={false}>
-      <TitleBar
-        leftComponent={
-          <View style={styles(direction).topContainer}>
-            <RegularButton
-              onPress={() => {
-                NavigationService.goBack();
-              }}
-              icon={'arrow-back'}
-              radius={38}
-              height={38}
-              width={38}
-              colors={['#EBECF0', '#EBECF0']}
-            />
-          </View>
-        }
-        middleComponent={
-          <View style={styles(direction).gradientTextContainer}>
-            <GradientText
-              colors={['#2AA7DD', '#2AA7DD']}
-              text={t('Book Details')}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 0, y: 1 }}
-              textStyle={styles(direction).gradientTextStyle as TextStyle}
-            />
-          </View>
-        }
-      />
-      <SafeAreaView style={styles(direction).safeAreaView}>
-        <View style={styles(direction).container2}>
-          <View style={styles(direction).walkThroughContainer}>
-            <AppIntroSlider
-              ref={refSlider}
-              data={slides}
-              renderPagination={(activeIndex: number) => (
-                <View style={styles(direction).paginationContainer}>
-                  <View style={styles(direction).paginationDots}>
-                    {slides.length > 1 &&
-                      slides.map((_, i) => (
-                        <Image
-                          key={i}
-                          style={styles(direction).dot}
-                          source={
-                            i === activeIndex
-                              ? require('../../assets/activeOval.png')
-                              : require('../../assets/oval.png')
-                          }
-                        />
-                      ))}
+    <>
+      <ScrollView style={styles(direction).container} bounces={false}>
+        <SafeAreaView style={styles(direction).safeAreaView}>
+          <View style={styles(direction).container2}>
+            <View style={styles(direction).walkThroughContainer}>
+              <AppIntroSlider
+                ref={refSlider}
+                data={slides}
+                renderPagination={(activeIndex: number) => (
+                  <View style={styles(direction).paginationContainer}>
+                    <View style={styles(direction).paginationDots}>
+                      {slides.length > 1 &&
+                        slides.map((_, i) => (
+                          <Image
+                            key={i}
+                            style={styles(direction).dot}
+                            source={
+                              i === activeIndex
+                                ? require('../../assets/activeOval.png')
+                                : require('../../assets/oval.png')
+                            }
+                          />
+                        ))}
+                    </View>
                   </View>
-                </View>
-              )}
-              onSlideChange={index => {
-                slideChanged(index);
-              }}
-              showDoneButton={false}
-              showSkipButton={false}
-              showNextButton={false}
-              renderItem={({ item }) => (
-                <View style={styles(direction).mainContent}>
-                  <Image style={styles(direction).image} source={item.image} />
-                </View>
-              )}
-            />
-          </View>
-          <Neumorphism
-            lightColor={'#ffffff'}
-            darkColor={'#A8A8A8'}
-            shapeType={'flat'}>
-            <View style={styles(direction).bookContent}>
-              <View style={styles(direction).bookContainerOne}>
-                <View style={styles(direction).bookContainerInner}>
-                  <GradientText
-                    colors={['#758DAC', '#2F4868']}
-                    text={t('Journey To The Star')}
-                    start={{ x: 0, y: 0 }}
-                    end={{ x: 0, y: 1 }}
-                    textStyle={styles(direction).gradientTextStyle as TextStyle}
-                  />
-                  <Text style={styles(direction).pagesAndAuthorText}>
-                    {t('Caroline Eliot')}
-                  </Text>
-                </View>
-                <Text style={styles(direction).pagesAndAuthorText}>
-                  {t('290 pages')}
-                </Text>
-              </View>
-              <View style={styles(direction).bookContainerTwo}>
-                <View style={styles(direction).bookContainerInner}>
-                  <View style={styles(direction).starContainer}>
-                    <Image
-                      source={require('../../assets/starOne.png')}
-                      style={styles(direction).starImage}
-                    />
-                    <Image
-                      source={require('../../assets/starOne.png')}
-                      style={styles(direction).starImage}
-                    />
-                    <Image
-                      source={require('../../assets/starOne.png')}
-                      style={styles(direction).starImage}
-                    />
-                    <Image
-                      source={require('../../assets/starTwo.png')}
-                      style={styles(direction).starImage}
-                    />
-                    <Image
-                      source={require('../../assets/starTwo.png')}
-                      style={styles(direction).starImage}
-                    />
+                )}
+                onSlideChange={index => {
+                  slideChanged(index);
+                }}
+                showDoneButton={false}
+                showSkipButton={false}
+                showNextButton={false}
+                renderItem={({ item }) => (
+                  <View style={styles(direction).mainContent}>
+                    <Image style={styles(direction).image} source={item.image} />
                   </View>
-                  <Text style={styles(direction).reviewText}>
-                    {t('(35 reviews)')}
-                  </Text>
-                </View>
-                <Text style={styles(direction).priceText}>{t('$24.12')}</Text>
-              </View>
-              <GradientText
-                colors={['#758DAC', '#2F4868']}
-                text={t('Description')}
-                start={{ x: 0, y: 0 }}
-                end={{ x: 0, y: 1 }}
-                textStyle={styles(direction).gradientTextStyle as TextStyle}
+                )}
               />
-              <View style={styles(direction).descriptionContainer}>
-                <Text style={styles(direction).descriptionText}>
-                  {t(
-                    'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don  t look even..',
-                  )}
-                </Text>
-              </View>
-              <View style={styles(direction).regularButton}>
-                <RegularButton
-                  onPress={() => {
-                    NavigationService.navigate('AvatarModifier');
-                  }}
-                  text={t('Buy Now!')}
-                  radius={50}
-                  height={50}
-                  width={'100%'}
-                  colors={['#03BBE3', '#14A9FD']}
+            </View>
+            <Neumorphism
+              lightColor={'#ffffff'}
+              darkColor={'#A8A8A8'}
+              shapeType={'flat'}>
+              <View style={styles(direction).bookContent}>
+                <View style={styles(direction).bookContainerOne}>
+                  <View style={styles(direction).bookContainerInner}>
+                    <GradientText
+                      colors={['#758DAC', '#2F4868']}
+                      text={t('Journey To The Star')}
+                      start={{ x: 0, y: 0 }}
+                      end={{ x: 0, y: 1 }}
+                      textStyle={styles(direction).gradientTextStyle as TextStyle}
+                    />
+                    <Text style={styles(direction).pagesAndAuthorText}>
+                      {t('Caroline Eliot')}
+                    </Text>
+                  </View>
+                  <Text style={styles(direction).pagesAndAuthorText}>
+                    {t('290 pages')}
+                  </Text>
+                </View>
+                <View style={styles(direction).bookContainerTwo}>
+                  <View style={styles(direction).bookContainerInner}>
+                    <View style={styles(direction).starContainer}>
+                      <Image
+                        source={require('../../assets/starOne.png')}
+                        style={styles(direction).starImage}
+                      />
+                      <Image
+                        source={require('../../assets/starOne.png')}
+                        style={styles(direction).starImage}
+                      />
+                      <Image
+                        source={require('../../assets/starOne.png')}
+                        style={styles(direction).starImage}
+                      />
+                      <Image
+                        source={require('../../assets/starTwo.png')}
+                        style={styles(direction).starImage}
+                      />
+                      <Image
+                        source={require('../../assets/starTwo.png')}
+                        style={styles(direction).starImage}
+                      />
+                    </View>
+                    <Text style={styles(direction).reviewText}>
+                      {t('(35 reviews)')}
+                    </Text>
+                  </View>
+                  <Text style={styles(direction).priceText}>{t('$24.12')}</Text>
+                </View>
+                <GradientText
+                  colors={['#758DAC', '#2F4868']}
+                  text={t('Description')}
+                  start={{ x: 0, y: 0 }}
+                  end={{ x: 0, y: 1 }}
+                  textStyle={styles(direction).gradientTextStyle as TextStyle}
                 />
-                <Text style={styles(direction).askParent}>
-                  {t('Ask Your Parent to Buy')}
-                </Text>
+                <View style={styles(direction).descriptionContainer}>
+                  <Text style={styles(direction).descriptionText}>
+                    {t(
+                      'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don  t look even..',
+                    )}
+                  </Text>
+                </View>
+                <View style={styles(direction).regularButton}>
+                  <RegularButton
+                    onPress={() => {
+                      NavigationService.navigate('AvatarModifier');
+                    }}
+                    text={t('Buy Now!')}
+                    radius={50}
+                    height={50}
+                    width={'100%'}
+                    colors={['#03BBE3', '#14A9FD']}
+                  />
+                  <Text style={styles(direction).askParent}>
+                    {t('Ask Your Parent to Buy')}
+                  </Text>
+                </View>
+                <GradientText
+                  colors={['#758DAC', '#2F4868']}
+                  text={t('Related Books')}
+                  start={{ x: 0, y: 0 }}
+                  end={{ x: 0, y: 1 }}
+                  textStyle={styles(direction).gradientTextStyle as TextStyle}
+                />
               </View>
+            </Neumorphism>
+          </View>
+        </SafeAreaView>
+      </ScrollView>
+      <View style={styles(direction).titleBarContainer}>
+        <TitleBar
+          leftComponent={
+            <View style={styles(direction).topContainer}>
+              <RegularButton
+                onPress={() => {
+                  NavigationService.goBack();
+                }}
+                icon={'arrow-back'}
+                radius={38}
+                height={38}
+                width={38}
+                colors={['#EBECF0', '#EBECF0']}
+              />
+            </View>
+          }
+          middleComponent={
+            <View style={styles(direction).gradientTextContainer}>
               <GradientText
-                colors={['#758DAC', '#2F4868']}
-                text={t('Related Books')}
+                colors={['#2AA7DD', '#2AA7DD']}
+                text={t('Book Details')}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 0, y: 1 }}
                 textStyle={styles(direction).gradientTextStyle as TextStyle}
               />
             </View>
-          </Neumorphism>
-        </View>
-      </SafeAreaView>
-    </ScrollView>
+          }
+        />
+      </View>
+    </>
   );
 };
 export default BookDetails;
