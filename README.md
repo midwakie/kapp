@@ -38,7 +38,7 @@ and redux persist. Uses latest version of react-navigation (v6.0)
 
 ## Getting Started
 
-1. Clone this repo, `git clone https://tibupadmakumar@bitbucket.org/wiiztrv/kutubi.git <your project name>`
+1. Clone this repo, `git clone https://gitlab.com/kutubiapp/mobileapp/kutubi.git <your project name>`
 2. Go to project's root directory, `cd <your project name>`
 3. Remove `.git` folder, `rm -rf .git`
 4. Use [React Native Rename](https://github.com/junedomingo/react-native-rename) to update project name `$ npx react-native-rename <newName>`
