@@ -51,6 +51,7 @@ const styles = (direction: string) =>
 
     walkThroughContainer: {
       marginBottom: 28,
+      marginTop: '85@s',
     },
     paginationContainer: {
       marginTop: 22,
@@ -84,6 +85,7 @@ const styles = (direction: string) =>
       height: '100%',
       justifyContent: 'flex-start',
       alignItems: 'flex-start',
+      backgroundColor: '#EBEEF0',
     },
     pagesAndAuthorText: {
       color: '#758DAC',
@@ -170,6 +172,7 @@ const styles = (direction: string) =>
     },
     neomorphMargin: { marginRight: '10@ms' },
     neomorphContainer: { marginTop: '20@ms' },
+    titleBarContainer: { position: 'absolute', width: '100%' },
   });
 
 export default styles;
