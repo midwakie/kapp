@@ -33,6 +33,7 @@ const styles = (direction: string) =>
       fontSize: '18@s',
       fontFamily: 'Nunito-Regular',
       fontWeight: '800',
+      letterSpacing: 0.01,
       marginBottom: 5,
     },
     starimg: {
