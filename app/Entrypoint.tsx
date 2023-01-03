@@ -14,6 +14,7 @@ import {
 } from 'app/config/theme-config';
 import Navigator from 'app/navigation';
 import configureStore from 'app/store';
+import { MenuProvider } from 'react-native-popup-menu';
 
 LogBox.ignoreAllLogs(true);
 
@@ -28,11 +29,13 @@ const RootNavigation: React.FC = () => {
 
 const EntryPoint: React.FC = () => {
   return (
-    <Provider store={store}>
-      <PersistGate loading={<ActivityIndicator />} persistor={persistor}>
-        <RootNavigation />
-      </PersistGate>
-    </Provider>
+    <MenuProvider>
+      <Provider store={store}>
+        <PersistGate loading={<ActivityIndicator />} persistor={persistor}>
+          <RootNavigation />
+        </PersistGate>
+      </Provider>
+    </MenuProvider>
   );
 };
 

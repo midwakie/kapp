@@ -26,6 +26,7 @@ import LinkChild from 'app/screens/LinkChild';
 import ChangeSchool from 'app/screens/ChangeSchool';
 import DeliveryAddress from 'app/screens/DeliveryAddress';
 import CreateChannel from 'app/screens/CreateChannel';
+import MyChannel from 'app/screens/MyChannel';
 import BookDetails from 'app/screens/BookDetails';
 import ChildAccount from 'app/screens/ChildAccount';
 import ActivitiesStats from 'app/screens/ActivityStatus';
@@ -105,6 +106,16 @@ const AuthStack = () => {
       <Stack.Screen
         name="Child Profile"
         component={ChildProfile}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="MyChannel"
+        component={MyChannel}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
