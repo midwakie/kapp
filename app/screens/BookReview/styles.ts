@@ -33,6 +33,7 @@ const styles = (direction: string) =>
       fontSize: '18@s',
       fontFamily: 'Nunito-Regular',
       fontWeight: '800',
+      letterSpacing: 0.01,
       marginBottom: 5,
     },
     starimg: {
@@ -175,7 +176,7 @@ const styles = (direction: string) =>
       fontWeight: '600',
       fontFamily: 'Nunito-Regular',
       height: '16@s',
-      width: '74@s',
+      width: '76@s',
     },
     text7: {
       flex: 1,

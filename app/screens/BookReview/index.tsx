@@ -22,6 +22,62 @@ const BookReview: React.FC = () => {
   const direction: string = i18n.dir();
   const [rating, setRating] = useState(3);
   const [isVisible, setIsVisible] = useState(false);
+  const [expanded, setExpanded] = useState({});
+  const toggleExpand = (id: number) => {
+    setExpanded({ ...expanded, [id]: !expanded[id] });
+  };
+  const [data, setData] = useState([
+    {
+      bookImage: require('../../assets/bookReview.png'),
+      bookName: 'Journey To The Star',
+      authorName: 'Caroline Eliot',
+      bookRating: 3,
+      amount: '$24.12',
+      reviews: [
+        {
+          id: 1,
+          name: 'Amira Malik',
+          date: '19 Oct, 2020',
+          flag: 'Inactive',
+          rating: 2,
+          description:
+            'There are many variations of passages of Lorem Ipsum available, but the majority',
+          Image: require('../../assets/user.png'),
+        },
+        {
+          id: 2,
+          name: 'Amira Malik',
+          date: '19 Oct, 2020',
+          flag: 'Inactive',
+          rating: 2,
+          description:
+            'There are many variations of passages of Lorem Ipsum available, but the majority',
+          Image: require('../../assets/user.png'),
+        },
+        {
+          id: 3,
+          name: 'Amira Malik',
+          date: '19 Oct, 2020',
+          flag: 'Active',
+          rating: 2,
+          description:
+            'There are many variations of passages of Lorem Ipsum available, but the majority',
+          Image: require('../../assets/user.png'),
+        },
+        {
+          id: 4,
+          name: 'Fatima Zahra',
+          date: '10 Sep, 2020',
+          flag: 'Inactive',
+          rating: 2,
+          description:
+            'There are many variations of passages of Lorem Ipsum available, but the majority.This is some additional text that will be displayed when the "read more" button is clicked.',
+          Image: require('../../assets/user2.png'),
+          expanded: false,
+        },
+      ],
+    },
+  ]);
   const Star = ({ filled, onPress }) => (
     <TouchableOpacity onPress={onPress}>
       <Image
@@ -79,265 +135,116 @@ const BookReview: React.FC = () => {
         }
       />
       <SafeAreaView style={styles(direction).safeAreaView}>
-        <View style={styles(direction).container2}>
-          <View style={styles(direction).container3}>
-            <View style={styles(direction).neomorphContainer}>
-              <Neumorphism
-                lightColor={'#ffffff'}
-                darkColor={'#A8A8A8'}
-                shapeType={'flat'}
-                radius={scale(12)}>
-                <View style={styles(direction).imageContainer}>
-                  <Image
-                    source={require('../../assets/bookReview.png')}
-                    style={styles(direction).imageStyle}
-                  />
+        {data.map((item, index) => (
+          <View style={styles(direction).container2}>
+            <View key={index} style={styles(direction).container3}>
+              <View style={styles(direction).neomorphContainer}>
+                <Neumorphism
+                  lightColor={'#ffffff'}
+                  darkColor={'#A8A8A8'}
+                  shapeType={'flat'}
+                  radius={scale(12)}>
+                  <View style={styles(direction).imageContainer}>
+                    <Image
+                      source={item.bookImage}
+                      style={styles(direction).imageStyle}
+                    />
+                  </View>
+                </Neumorphism>
+              </View>
+              <View style={styles(direction).container4}>
+                <GradientText
+                  colors={['#758DAC', '#2F4868']}
+                  text={item.bookName}
+                  start={{ x: 0, y: 0 }}
+                  end={{ x: 0, y: 1 }}
+                  textStyle={styles(direction).gradientTextStyle3}
+                />
+                <Text style={styles(direction).text1}>{item.authorName}</Text>
+                <View style={styles(direction).starRatingContainer}>
+                  <StarRating rate={rating} onRateChange={setRating} />
                 </View>
-              </Neumorphism>
+
+                <Text style={styles(direction).text2}>{item.amount}</Text>
+                <TouchableOpacity>
+                  <Text style={styles(direction).text3}>{t('Add Review')}</Text>
+                </TouchableOpacity>
+              </View>
             </View>
-            <View style={styles(direction).container4}>
-              <GradientText
-                colors={['#758DAC', '#2F4868']}
-                text={t('Journey To The Star')}
-                start={{ x: 0, y: 0 }}
-                end={{ x: 0, y: 1 }}
-                textStyle={styles(direction).gradientTextStyle3}
-              />
-              <Text style={styles(direction).text1}>{t('Caroline Eliot')}</Text>
-              <View style={styles(direction).starRatingContainer}>
-                <StarRating rate={rating} onRateChange={setRating} />
-              </View>
 
-              <Text style={styles(direction).text2}>{t('$24.12')}</Text>
-              <Text style={styles(direction).text3}>{t('Add Review')}</Text>
-            </View>
-          </View>
-          <Text style={styles(direction).text4}>{t('(35 Review)')}</Text>
-          <View style={styles(direction).neomorphContainer2}>
-            <Neumorphism
-              lightColor={'#ffffff'}
-              darkColor={'#A8A8A8'}
-              shapeType={'flat'}
-              radius={scale(14)}>
-              <View style={styles(direction).container5}>
-                <View style={styles(direction).container6}>
-                  <View style={styles(direction).container7}>
-                    <Text style={styles(direction).text5}>
-                      {t('Amira Malik')}
-                    </Text>
-                    <Text style={styles(direction).text6}>
-                      {t('19 Oct, 2020')}
-                    </Text>
-                    <Image
-                      source={require('../../assets/emptyFlag.png')}
-                      style={styles(direction).imageStyle1}
-                    />
-                  </View>
-                  <View style={{ flexDirection: 'row' }}>
-                    <Star filled onPress={undefined} />
-
-                    <Star filled onPress={undefined} />
-
-                    <Star filled={undefined} onPress={undefined} />
-
-                    <Star filled={undefined} onPress={undefined} />
-
-                    <Star filled={undefined} onPress={undefined} />
-                  </View>
-                  <View style={{ flexDirection: 'row' }}>
-                    <Text style={styles(direction).text7}>
-                      {t(
-                        'There are many variations of passages of Lorem Ipsum available, but the majority',
-                      )}
-                    </Text>
-                    <View style={styles(direction).imageContainer4}>
-                      <Image
-                        style={styles(direction).imageStyle2}
-                        source={require('../../assets/user.png')}
-                      />
-                      <TouchableOpacity>
-                        <Image
-                          style={styles(direction).imageStyle3}
-                          source={require('../../assets/play.png')}
-                        />
-                      </TouchableOpacity>
-                    </View>
-                  </View>
-                </View>
-              </View>
-            </Neumorphism>
-          </View>
-          <View style={styles(direction).neomorphContainer2}>
-            <Neumorphism
-              lightColor={'#ffffff'}
-              darkColor={'#A8A8A8'}
-              shapeType={'flat'}
-              radius={scale(14)}>
-              <View style={styles(direction).container5}>
-                <View style={styles(direction).container6}>
-                  <View style={styles(direction).container7}>
-                    <Text style={styles(direction).text5}>
-                      {t('Amira Malik')}
-                    </Text>
-                    <Text style={styles(direction).text6}>
-                      {t('19 Oct, 2020')}
-                    </Text>
-                    <Image
-                      source={require('../../assets/emptyFlag.png')}
-                      style={styles(direction).imageStyle1}
-                    />
-                  </View>
-                  <View style={{ flexDirection: 'row' }}>
-                    <Star filled onPress={undefined} />
-
-                    <Star filled onPress={undefined} />
-
-                    <Star filled={undefined} onPress={undefined} />
-
-                    <Star filled={undefined} onPress={undefined} />
-
-                    <Star filled={undefined} onPress={undefined} />
-                  </View>
-                  <View style={{ flexDirection: 'row' }}>
-                    <Text style={styles(direction).text7}>
-                      {t(
-                        'There are many variations of passages of Lorem Ipsum available, but the majority',
-                      )}
-                    </Text>
-                    <View style={styles(direction).imageContainer4}>
-                      <Image
-                        style={styles(direction).imageStyle2}
-                        source={require('../../assets/user.png')}
-                      />
-                      <TouchableOpacity>
-                        <Image
-                          style={styles(direction).imageStyle3}
-                          source={require('../../assets/play.png')}
-                        />
-                      </TouchableOpacity>
-                    </View>
-                  </View>
-                </View>
-              </View>
-            </Neumorphism>
-          </View>
-          <View style={styles(direction).neomorphContainer2}>
-            <Neumorphism
-              lightColor={'#ffffff'}
-              darkColor={'#A8A8A8'}
-              shapeType={'flat'}
-              radius={scale(14)}>
-              <View style={styles(direction).container5}>
-                <View style={styles(direction).container6}>
-                  <View style={styles(direction).container7}>
-                    <Text style={styles(direction).text5}>
-                      {t('Amira Malik')}
-                    </Text>
-                    <Text style={styles(direction).text6}>
-                      {t('19 Oct, 2020')}
-                    </Text>
-                    <Image
-                      source={require('../../assets/emptyFlag.png')}
-                      style={styles(direction).imageStyle4}
-                    />
-                  </View>
-                  <View style={{ flexDirection: 'row' }}>
-                    <Star filled onPress={undefined} />
-
-                    <Star filled onPress={undefined} />
-
-                    <Star filled={undefined} onPress={undefined} />
-
-                    <Star filled={undefined} onPress={undefined} />
-
-                    <Star filled={undefined} onPress={undefined} />
-                  </View>
-                  <View style={{ flexDirection: 'row' }}>
-                    <Text style={styles(direction).text7}>
-                      {t(
-                        'There are many variations of passages of Lorem Ipsum available, but the majority',
-                      )}
-                    </Text>
-                    <View style={styles(direction).imageContainer4}>
-                      <Image
-                        style={styles(direction).imageStyle2}
-                        source={require('../../assets/user.png')}
-                      />
-                      <TouchableOpacity>
-                        <Image
-                          style={styles(direction).imageStyle3}
-                          source={require('../../assets/play.png')}
-                        />
-                      </TouchableOpacity>
-                    </View>
-                  </View>
-                </View>
-              </View>
-            </Neumorphism>
-          </View>
-          <View style={styles(direction).neomorphContainer2}>
-            <Neumorphism
-              lightColor={'#ffffff'}
-              darkColor={'#A8A8A8'}
-              shapeType={'flat'}
-              radius={scale(14)}>
-              <View style={styles(direction).container5}>
-                <View style={styles(direction).container6}>
-                  <View style={styles(direction).container7}>
-                    <Text style={styles(direction).text5}>
-                      {t('Fatima Zahra')}
-                    </Text>
-                    <Text style={styles(direction).text6}>
-                      {t('10 Sep,2020')}
-                    </Text>
-                    <Image
-                      source={require('../../assets/emptyFlag.png')}
-                      style={styles(direction).imageStyle1}
-                    />
-                  </View>
-                  <View style={{ flexDirection: 'row' }}>
-                    <Star filled onPress={undefined} />
-
-                    <Star filled onPress={undefined} />
-
-                    <Star filled={undefined} onPress={undefined} />
-
-                    <Star filled={undefined} onPress={undefined} />
-
-                    <Star filled={undefined} onPress={undefined} />
-                  </View>
-                  <View style={{ flexDirection: 'row' }}>
-                    <Text style={styles(direction).text7}>
-                      {t(
-                        'There are many variations of passages of Lorem Ipsum available, but the ',
-                      )}
-                      {!isVisible && (
-                        <Text
-                          style={{ color: '#03A0E3' }}
-                          onPress={() => setIsVisible(!isVisible)}>
-                          {t('read more')}
+            <Text style={styles(direction).text4}>{t('(35 Review)')}</Text>
+            {item.reviews.map((review, index) => (
+              <View style={styles(direction).neomorphContainer2}>
+                <Neumorphism
+                  lightColor={'#ffffff'}
+                  darkColor={'#A8A8A8'}
+                  shapeType={'flat'}
+                  radius={scale(14)}>
+                  <View style={styles(direction).container5}>
+                    <View style={styles(direction).container6}>
+                      <View style={styles(direction).container7}>
+                        <Text style={styles(direction).text5}>
+                          {review.name}
                         </Text>
-                      )}
-                      {isVisible && <Text> {t('majority')}</Text>}
-                    </Text>
-                    <View style={styles(direction).imageContainer4}>
-                      <Image
-                        style={styles(direction).imageStyle2}
-                        source={require('../../assets/user2.png')}
-                      />
-                      <TouchableOpacity>
+                        <Text style={styles(direction).text6}>
+                          {review.date}
+                        </Text>
                         <Image
-                          style={styles(direction).imageStyle3}
-                          source={require('../../assets/play.png')}
+                          source={require('../../assets/emptyFlag.png')}
+                          style={
+                            review.flag === 'Active'
+                              ? styles(direction).imageStyle4
+                              : styles(direction).imageStyle1
+                          }
                         />
-                      </TouchableOpacity>
+                      </View>
+                      <View style={{ flexDirection: 'row' }}>
+                        <StarRating
+                          rate={review.rating}
+                          onRateChange={setRating}
+                        />
+                      </View>
+                      <View style={{ flexDirection: 'row' }}>
+                        <Text style={styles(direction).text7}>
+                          {review.description.length > 80 ? (
+                            <>
+                              {expanded[review.id] ? (
+                                <Text>{review.description}</Text>
+                              ) : (
+                                <Text>{review.description.slice(0, 72)}</Text>
+                              )}
+                              <Text
+                                onPress={() => toggleExpand(review.id)}
+                                style={{ color: '#03A0E3' }}>
+                                {expanded[review.id]
+                                  ? 'read less'
+                                  : '.read more'}
+                              </Text>
+                            </>
+                          ) : (
+                            <Text>{review.description}</Text>
+                          )}
+                        </Text>
+                        <View style={styles(direction).imageContainer4}>
+                          <Image
+                            style={styles(direction).imageStyle2}
+                            source={review.Image}
+                          />
+                          <TouchableOpacity>
+                            <Image
+                              style={styles(direction).imageStyle3}
+                              source={require('../../assets/play.png')}
+                            />
+                          </TouchableOpacity>
+                        </View>
+                      </View>
                     </View>
                   </View>
-                </View>
+                </Neumorphism>
               </View>
-            </Neumorphism>
+            ))}
           </View>
-        </View>
+        ))}
       </SafeAreaView>
     </ScrollView>
   );
