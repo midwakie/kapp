@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import styles from './styles';
+import styles from '../styles';
 import GradientText from 'app/components/texts/GradientText';
 import RegularButton from 'app/components/buttons/RegularButton';
 import { useTranslation } from 'react-i18next';
@@ -23,7 +23,7 @@ import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { ms, scale } from 'react-native-size-matters';
 import useDeviceOrientation from 'app/hooks/useDeviceOrientation';
 
-const EBooks: React.FC = () => {
+const Sports: React.FC = () => {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
   const currentOrientation = useDeviceOrientation();
@@ -34,56 +34,56 @@ const EBooks: React.FC = () => {
       title: 'Kung Fu Panda',
       author: 'By Martin Luther',
       price: '$15.30',
-      img: require('../../assets/book.png'),
+      img: require('../../../assets/book.png'),
     },
     {
       id: 2,
       title: 'Happy Lemon',
       author: 'By Abhishek',
       price: '$20.30',
-      img: require('../../assets/book2.png'),
+      img: require('../../../assets/book2.png'),
     },
     {
       id: 3,
       title: 'Billy & Shmilli',
       author: 'By Harish S',
       price: '$25.30',
-      img: require('../../assets/book3.png'),
+      img: require('../../../assets/book3.png'),
     },
     {
       id: 4,
       title: 'Story Book',
       author: 'By Anil Bose',
       price: '$10.30',
-      img: require('../../assets/book4.png'),
+      img: require('../../../assets/book4.png'),
     },
     {
       id: 5,
       title: 'Journey of the Star',
       author: 'By Sijin',
       price: '$15.30',
-      img: require('../../assets/book.png'),
+      img: require('../../../assets/book.png'),
     },
     {
       id: 6,
       title: 'Nasa Boy',
       author: 'By Rashid ',
       price: '$35.30',
-      img: require('../../assets/book2.png'),
+      img: require('../../../assets/book2.png'),
     },
     {
       id: 7,
       title: 'Sample Text',
       author: 'By Shiva',
       price: '$30.30',
-      img: require('../../assets/book3.png'),
+      img: require('../../../assets/book3.png'),
     },
     {
       id: 8,
       title: 'Cool Kids 5',
       author: 'By Tibu PS',
       price: '$45.30',
-      img: require('../../assets/book4.png'),
+      img: require('../../../assets/book4.png'),
     },
   ];
   const dropDown = () => {
@@ -97,7 +97,10 @@ const EBooks: React.FC = () => {
   const CardItem = ({ book }: any) => {
     return (
       <View style={styles(direction).neomorphContainer}>
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity
+          onPress={() => {
+            NavigationService.navigate('BookDetails');
+          }}>
           <Neumorphism
             style={styles(direction).neomorphMargin}
             lightColor={'#ffffff'}
@@ -123,7 +126,10 @@ const EBooks: React.FC = () => {
   const CardListItem = ({ book }: any) => {
     return (
       <View style={styles(direction).neomorphContainer}>
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity
+          onPress={() => {
+            NavigationService.navigate('BookDetails');
+          }}>
           <Neumorphism
             style={styles(direction).neomorphMargin}
             lightColor={'#ffffff'}
@@ -152,34 +158,7 @@ const EBooks: React.FC = () => {
   };
 
   return (
-    <ScrollView style={styles(direction).container} bounces={false}>
-      <TitleBar
-        leftComponent={
-          <View style={styles(direction).topContainer}>
-            <RegularButton
-              onPress={() => {
-                NavigationService.goBack();
-              }}
-              icon={'arrow-back'}
-              radius={38}
-              height={38}
-              width={38}
-              colors={['#EBECF0', '#EBECF0']}
-            />
-          </View>
-        }
-        middleComponent={
-          <View style={styles(direction).gradientTextContainer}>
-            <GradientText
-              colors={['#2AA7DD', '#2AA7DD']}
-              text={t('History')}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 0, y: 1 }}
-              textStyle={styles(direction).gradientTextStyle as TextStyle}
-            />
-          </View>
-        }
-      />
+    <>
       <SafeAreaView style={styles(direction).safeAreaView}>
         <View style={styles(direction).container2}>
           <View style={styles(direction).gridViewContainer}>
@@ -210,48 +189,79 @@ const EBooks: React.FC = () => {
               </TouchableOpacity>
             </Neumorphism>
           </View>
-          <View style={styles(direction).cardContainer}>
-            {selectedFilter === 'grid' ? (
-              currentOrientation === 'portrait' ? (
-                <FlatList
-                  numColumns={Math.floor(
-                    Dimensions.get('window').width / ms(158),
-                  )}
-                  key={'_'}
-                  keyExtractor={item => '_' + item.id}
-                  data={books}
-                  renderItem={({ item }) => {
-                    return <CardItem book={item} />;
-                  }}
-                />
+          <ScrollView style={styles(direction).container} bounces={false}>
+            <View style={styles(direction).cardContainer}>
+              {selectedFilter === 'grid' ? (
+                currentOrientation === 'portrait' ? (
+                  <FlatList
+                    numColumns={Math.floor(
+                      Dimensions.get('window').width / ms(158),
+                    )}
+                    key={'_'}
+                    keyExtractor={item => '_' + item.id}
+                    data={books}
+                    renderItem={({ item }) => {
+                      return <CardItem book={item} />;
+                    }}
+                  />
+                ) : (
+                  <FlatList
+                    key={'#'}
+                    keyExtractor={item => '#' + item.id}
+                    numColumns={Math.floor(
+                      Dimensions.get('window').width / ms(158),
+                    )}
+                    data={books}
+                    renderItem={({ item }) => {
+                      return <CardItem book={item} />;
+                    }}
+                  />
+                )
               ) : (
                 <FlatList
-                  key={'#'}
-                  keyExtractor={item => '#' + item.id}
-                  numColumns={Math.floor(
-                    Dimensions.get('window').width / ms(158),
-                  )}
+                  numColumns={1}
+                  key={'-'}
+                  keyExtractor={item => '-' + item.id}
                   data={books}
                   renderItem={({ item }) => {
-                    return <CardItem book={item} />;
+                    return <CardListItem book={item} />;
                   }}
                 />
-              )
-            ) : (
-              <FlatList
-                numColumns={1}
-                key={'-'}
-                keyExtractor={item => '-' + item.id}
-                data={books}
-                renderItem={({ item }) => {
-                  return <CardListItem book={item} />;
-                }}
-              />
-            )}
-          </View>
+              )}
+            </View>
+          </ScrollView>
         </View>
       </SafeAreaView>
-    </ScrollView>
+      <View style={styles(direction).titleBarContainer}>
+        <TitleBar
+          leftComponent={
+            <View style={styles(direction).topContainer}>
+              <RegularButton
+                onPress={() => {
+                  NavigationService.goBack();
+                }}
+                icon={'arrow-back'}
+                radius={38}
+                height={38}
+                width={38}
+                colors={['#EBECF0', '#EBECF0']}
+              />
+            </View>
+          }
+          middleComponent={
+            <View style={styles(direction).gradientTextContainer}>
+              <GradientText
+                colors={['#2AA7DD', '#2AA7DD']}
+                text={t('Sports')}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 0, y: 1 }}
+                textStyle={styles(direction).gradientTextStyle as TextStyle}
+              />
+            </View>
+          }
+        />
+      </View>
+    </>
   );
 };
-export default EBooks;
+export default Sports;

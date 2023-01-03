@@ -27,14 +27,12 @@ import { useTranslation } from 'react-i18next';
 const ChildProfile: React.FC = () => {
   const [showPassword, setShowPassword] = React.useState(false);
   const [checked, setChecked] = React.useState(true);
-  const { control, handleSubmit, watch } = useForm();
+  const { control, handleSubmit } = useForm();
   const [radioButtonMale, setRadioButtonMale] = useState(true);
   const [radioButtonFemale, setRadioButtonFemale] = useState(false);
   const lastNameInputRef: React.RefObject<any> = React.createRef();
-  const emailInputRef: React.RefObject<any> = React.createRef();
   const dateOfBirthInputRef: React.RefObject<any> = React.createRef();
   const invitationCodeInputRef: React.RefObject<any> = React.createRef();
-  const passwordInputRef: React.RefObject<any> = React.createRef();
   const firstSpokenLanguageInputRef: React.RefObject<any> = React.createRef();
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
