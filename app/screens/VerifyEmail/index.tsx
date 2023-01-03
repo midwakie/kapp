@@ -16,9 +16,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as otpRequestActions from 'app/store/actions/otpRequestActions';
 import * as otpVerifyActions from 'app/store/actions/otpVerifyActions';
 import { ILoginState } from 'app/models/reducers/login';
+import { ILoading } from 'app/models/reducers/loading';
+import { ICurrentCustomer } from 'app/models/reducers/currentCustomer';
 
 interface IState {
   loginReducer: ILoginState;
+  currentCustomerReducer: ICurrentCustomer;
 }
 
 const VerifyEmail: React.FC = () => {
@@ -28,24 +31,53 @@ const VerifyEmail: React.FC = () => {
   const currentUser = useSelector(
     (state: IState) => state.loginReducer.payload.user,
   );
+  const currentCustomer = useSelector(
+    (state: IState) => state.currentCustomerReducer,
+  );
+  const isLoggedIn = useSelector(
+    (state: IState) => state.loginReducer.isLoggedIn,
+  );
   const resentOtp = () => {
-    dispatch(
-      otpRequestActions.requestOtp({
-        email: currentUser.email,
-        mobileNo: currentUser.mobileNo.toString(),
-        roleType: currentUser.roleType,
-      }),
-    );
+    if (isLoggedIn) {
+      dispatch(
+        otpRequestActions.requestOtp({
+          email: currentUser.email,
+          mobileNo: currentUser.mobileNo.toString(),
+          roleType: currentUser.roleType,
+          isResend: true,
+        }),
+      );
+    } else {
+      dispatch(
+        otpRequestActions.requestOtp({
+          email: currentCustomer.email,
+          mobileNo: currentCustomer.mobileNo,
+          roleType: currentCustomer.role,
+          isResend: true,
+        }),
+      );
+    }
   };
   const onVerifyOtp = (data: any) => {
-    dispatch(
-      otpVerifyActions.verifyOtp({
-        email: currentUser.email,
-        mobileNo: currentUser.mobileNo.toString(),
-        roleType: currentUser.roleType,
-        otp: data.otp,
-      }),
-    );
+    if (isLoggedIn) {
+      dispatch(
+        otpVerifyActions.verifyOtp({
+          email: currentUser.email,
+          mobileNo: currentUser.mobileNo.toString(),
+          roleType: currentUser.roleType,
+          otp: data.otp,
+        }),
+      );
+    } else {
+      dispatch(
+        otpVerifyActions.verifyOtp({
+          email: currentCustomer.email,
+          mobileNo: currentCustomer.mobileNo.toString(),
+          roleType: currentCustomer.role,
+          otp: data.otp,
+        }),
+      );
+    }
   };
   return (
     <ScrollView

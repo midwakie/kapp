@@ -10,6 +10,7 @@ export interface IOtpRequestData {
   email: string;
   mobileNo?: string;
   roleType: string;
+  isResend?: boolean;
 }
 
 export interface IOtpResponseState {

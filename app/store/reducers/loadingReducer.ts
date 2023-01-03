@@ -9,6 +9,7 @@ import { ILoading } from 'app/models/reducers/loading';
 
 const initialState: ILoading = {
   isLoading: false,
+  initialRouteName: 'Select Role',
 };
 
 export const loadingReducer = createReducer(initialState, {
@@ -17,5 +18,8 @@ export const loadingReducer = createReducer(initialState, {
   },
   [types.DISABLE_LOADER](state: ILoading) {
     return { ...state, isLoading: false };
+  },
+  [types.CHANGE_ROUTE_NAME](state: ILoading, action: any) {
+    return { ...state, initialRouteName: action.payload };
   },
 });

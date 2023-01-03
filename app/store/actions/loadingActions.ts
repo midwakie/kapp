@@ -15,3 +15,10 @@ export function disableLoader() {
     type: types.DISABLE_LOADER,
   };
 }
+
+export function changeRouteName(payload: string) {
+  return {
+    type: types.CHANGE_ROUTE_NAME,
+    payload,
+  };
+}

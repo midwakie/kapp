@@ -21,9 +21,11 @@ export default function* otpRequestAsync(data: IOtpRequestState) {
   if (response.status && response.status === 200) {
     yield put(otpRequestActions.onOtpRequestResponse(response));
     yield put(loadingActions.disableLoader());
-    setTimeout(() => {
-      Alert.alert('Kutubi', response.data.message);
-    }, 200);
+    if (data?.payload?.isResend) {
+      setTimeout(() => {
+        Alert.alert('Kutubi', response.data.message);
+      }, 200);
+    }
   } else {
     yield put(otpRequestActions.otpRequestFailed(response));
     yield put(loadingActions.disableLoader());
