@@ -36,11 +36,6 @@ const styles = (direction: string) =>
       letterSpacing: 0.01,
       marginBottom: 5,
     },
-    starimg: {
-      width: '14.29@s',
-      height: '13.48@s',
-      marginRight: 7.14,
-    },
     topContainer: {
       justifyContent: 'center',
       alignItems: 'center',
