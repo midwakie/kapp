@@ -78,7 +78,7 @@ const styles = (direction: string) =>
       width: '151@s',
     },
     bookContent: {
-      paddingHorizontal: 20,
+      paddingHorizontal: '20@s',
       paddingVertical: 30,
       borderTopLeftRadius: 25,
       borderTopRightRadius: 25,
@@ -104,7 +104,7 @@ const styles = (direction: string) =>
     },
     descriptionText: {
       color: '#758DAC',
-      textAlign: 'center',
+      textAlign: 'justify',
       fontSize: '16@s',
       fontFamily: 'Nunito-Regular',
       fontWeight: '600',
@@ -153,14 +153,25 @@ const styles = (direction: string) =>
       marginBottom: 8,
     },
     descriptionContainer: {
-      height: 125,
+      height: '125@s',
       width: '100%',
-      marginTop: 5, 
+      marginTop: 5,
     },
     bookContainerInner: {
       flexDirection: 'column',
       alignItems: 'flex-start',
     },
+    card: {
+      height: '157@ms',
+      width: '125@ms',
+      backgroundColor: '#EBEEF0',
+    },
+    cardImage: {
+      height: '100%',
+      width: '100%',
+    },
+    neomorphMargin: { marginRight: '20@ms' },
+    neomorphContainer: { marginTop: '20@ms' },
     titleBarContainer: { position: 'absolute', width: '100%' },
   });
 
