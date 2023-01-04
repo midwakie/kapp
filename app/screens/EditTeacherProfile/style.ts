@@ -7,7 +7,7 @@ const width =
     : Dimensions.get('window').width;
 
 const styles = (direction: string) =>
-  StyleSheet.create({
+  ScaledSheet.create({
     container: {
       width: '100%',
       height: '100%',
@@ -32,10 +32,7 @@ const styles = (direction: string) =>
     gradientTextContainer: {
       width: '100%',
       justifyContent: 'center',
-      height: 80,
       alignItems: 'center',
-      marginLeft: 10,
-      marginTop: 12,
     },
     inputTextContainer: {
       width: '100%',
@@ -58,16 +55,24 @@ const styles = (direction: string) =>
       marginBottom: 20,
     },
     profileImgContainer: {
-      marginLeft: 137,
-      marginRight: 138,
       marginTop: 60,
-      height: 130,
-      width: 130,
-      borderRadius: 130,
-      borderWidth: 1,
       alignSelf: 'center',
       justifyContent: 'center',
-      borderColor: '#FECE32',
+    },
+    imageContainer2: {
+      height: '30@s',
+      width: '30@s',
+      position: 'absolute',
+      alignSelf: 'center',
+      // // bottom: '7@s',
+      // marginRight: '40@s',
+    },
+    imageRound: {
+      width: '100%',
+      height: '100%',
+      marginTop: 40,
+      marginLeft: 40,
+      resizeMode: 'cover',
     },
     rightComponent: {
       flexDirection: direction === 'rtl' ? 'row-reverse' : 'row',
@@ -93,7 +98,7 @@ const styles = (direction: string) =>
       marginTop: 60,
       width: 50,
     },
-    imageContainer2: { marginTop: -38, height: 30, width: 30, marginLeft: 68 },
+    // imageContainer2: { marginTop: -38, height: 30, width: 30, marginLeft: 68 },
     neomorphContainer: {
       marginTop: 52,
       justifyContent: 'center',
@@ -132,9 +137,6 @@ const styles = (direction: string) =>
       flexDirection: 'row',
       justifyContent: 'flex-start',
       alignItems: 'center',
-      width: 38,
-      marginLeft: 20,
-      marginTop: 16,
     },
 
     coinContainer2: {
@@ -200,8 +202,8 @@ const styles = (direction: string) =>
     },
     changeText1: {
       color: '#03A0E3',
-      width: 47,
-      lineHeight: 16.2,
+      width: '47@s',
+      height: '17@s',
       fontWeight: '600',
     },
     interestText: {

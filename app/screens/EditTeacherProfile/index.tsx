@@ -70,7 +70,7 @@ const EditTeacherProfile: React.FC = () => {
           <View style={styles(direction).gradientTextContainer}>
             <GradientText
               colors={['#2AA7DD', '#2AA7DD']}
-              text={t('Edit Teacher Profile')}
+              text={t('Edit Profile')}
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
               textStyle={styles(direction).gradientTextStyle}
@@ -81,12 +81,18 @@ const EditTeacherProfile: React.FC = () => {
       <ScrollView style={styles(direction).container} bounces={false}>
         <SafeAreaView style={styles(direction).safeAreaView}>
           <View style={styles(direction).container2}>
-            <TouchableHighlight style={styles(direction).profileImgContainer}>
+            <View style={styles(direction).profileImgContainer}>
               <Image
-                source={require('../../assets/channel.png')}
+                source={require('../../assets/editTeacher.png')}
                 style={styles(direction).profileImg}
               />
-            </TouchableHighlight>
+           <TouchableOpacity style={styles(direction).imageContainer2}>
+                <Image
+                  style={styles(direction).imageRound}
+                  source={require('../../assets/editChild2.png')}
+                />
+              </TouchableOpacity>
+            </View>
 
             <View style={styles(direction).inputTextContainer}>
               <CustomInput
@@ -129,7 +135,7 @@ const EditTeacherProfile: React.FC = () => {
                 </Text>
                 <TouchableOpacity>
                   <Text style={styles(direction).changeText1}>
-                    {t('change')}
+                    {t('Change')}
                   </Text>
                 </TouchableOpacity>
               </View>
