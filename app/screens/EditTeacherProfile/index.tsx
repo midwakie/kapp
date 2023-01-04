@@ -1,30 +1,23 @@
 import React, { useState } from 'react';
 import {
   Image,
-  Platform,
   SafeAreaView,
   Text,
-  StyleSheet,
   TouchableOpacity,
   View,
-  TouchableHighlight,
 } from 'react-native';
 import styles from './style';
 import TitleBar from 'app/components/buttons/TitleBar';
 import NavigationService from 'app/navigation/NavigationService';
 import { ScrollView } from 'react-native-gesture-handler';
-import RadioButton from 'app/components/buttons/RadioButton';
 import Neumorphism from 'react-native-neumorphism';
 import GradientText from 'app/components/texts/GradientText';
 import { useForm } from 'react-hook-form';
 import rules from 'app/rules';
 import CustomInput from 'app/components/inputs/CustomInput';
-import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import PlainButton from 'app/components/buttons/PlainButton';
 import RegularButton from 'app/components/buttons/RegularButton';
-import HorizontalLine from 'app/components/lines/HorizontalLine';
-import { Checkbox } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
+import { scale } from 'react-native-size-matters';
 
 const EditTeacherProfile: React.FC = () => {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -51,42 +44,21 @@ const EditTeacherProfile: React.FC = () => {
   };
   return (
     <>
-      <TitleBar
-        leftComponent={
-          <View style={styles(direction).regularContainer}>
-            <RegularButton
-              onPress={() => {
-                NavigationService.goBack();
-              }}
-              icon={'arrow-back'}
-              radius={38}
-              height={38}
-              width={38}
-              colors={['#EBECF0', '#EBECF0']}
-            />
-          </View>
-        }
-        middleComponent={
-          <View style={styles(direction).gradientTextContainer}>
-            <GradientText
-              colors={['#2AA7DD', '#2AA7DD']}
-              text={t('Edit Teacher Profile')}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 0, y: 1 }}
-              textStyle={styles(direction).gradientTextStyle}
-            />
-          </View>
-        }
-      />
       <ScrollView style={styles(direction).container} bounces={false}>
         <SafeAreaView style={styles(direction).safeAreaView}>
           <View style={styles(direction).container2}>
-            <TouchableHighlight style={styles(direction).profileImgContainer}>
+            <View style={styles(direction).profileImgContainer}>
               <Image
-                source={require('../../assets/channel.png')}
+                source={require('../../assets/editTeacher.png')}
                 style={styles(direction).profileImg}
               />
-            </TouchableHighlight>
+              <TouchableOpacity style={styles(direction).imageContainer2}>
+                <Image
+                  style={styles(direction).imageRound}
+                  source={require('../../assets/editChild2.png')}
+                />
+              </TouchableOpacity>
+            </View>
 
             <View style={styles(direction).inputTextContainer}>
               <CustomInput
@@ -122,14 +94,14 @@ const EditTeacherProfile: React.FC = () => {
             <Neumorphism
               lightColor={'#ffffff'}
               darkColor={'#A8A8A8'}
-              radius={50}>
+              radius={scale(50)}>
               <View style={styles(direction).schoolInputTextContainer}>
                 <Text style={styles(direction).schoolText}>
                   Al Jeel Al Saeed School
                 </Text>
                 <TouchableOpacity>
                   <Text style={styles(direction).changeText1}>
-                    {t('change')}
+                    {t('Change')}
                   </Text>
                 </TouchableOpacity>
               </View>
@@ -149,6 +121,35 @@ const EditTeacherProfile: React.FC = () => {
           </View>
         </SafeAreaView>
       </ScrollView>
+      <View style={styles(direction).titleBarContainer}>
+        <TitleBar
+          leftComponent={
+            <View style={styles(direction).regularContainer}>
+              <RegularButton
+                onPress={() => {
+                  NavigationService.goBack();
+                }}
+                icon={'arrow-back'}
+                radius={38}
+                height={38}
+                width={38}
+                colors={['#EBECF0', '#EBECF0']}
+              />
+            </View>
+          }
+          middleComponent={
+            <View style={styles(direction).gradientTextContainer}>
+              <GradientText
+                colors={['#2AA7DD', '#2AA7DD']}
+                text={t('Edit Profile')}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 0, y: 1 }}
+                textStyle={styles(direction).gradientTextStyle}
+              />
+            </View>
+          }
+        />
+      </View>
     </>
   );
 };

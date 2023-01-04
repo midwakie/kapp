@@ -37,12 +37,14 @@ import EditTeacherProfile from 'app/screens/EditTeacherProfile';
 import ChildHome from 'app/screens/ChildHome';
 import MyFeeds from 'app/screens/MyFeeds';
 import BookReview from 'app/screens/BookReview';
+import FeedDetail from 'app/screens/FeedDetail';
 import RecommendedVideos from 'app/screens/RecommendedVideos';
 import ManageActivities from 'app/screens/ManageActivities';
 import { ILoading } from 'app/models/reducers/loading';
 import History from 'app/screens/EBooks/History';
 import ChildProfile from 'app/screens/ChildProfile';
 import ParentProfileDetail from 'app/screens/ParentProfileDetail';
+import TeachersProfile from 'app/screens/TeachersProfile';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -135,8 +137,8 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
-        name="FeedDetailReport"
-        component={FeedDetailReport}
+        name="TeachersProfile"
+        component={TeachersProfile}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
@@ -147,6 +149,26 @@ const AuthStack = () => {
       <Stack.Screen
         name="MyFeeds"
         component={MyFeeds}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="FeedDetailReport"
+        component={FeedDetailReport}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="FeedDetail"
+        component={FeedDetail}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
