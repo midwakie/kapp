@@ -47,19 +47,19 @@ const styles = (direction: string) =>
     neomorphContainer: {
       marginTop: 25,
       marginBottom: 45,
-      paddingHorizontal: 123,
+      paddingHorizontal: '123@s',
       // justifyContent: 'center',
       // alignItems: 'center',
     },
     neomorphContainer2: {
       marginBottom: 47,
-      paddingHorizontal: 67,
+      paddingHorizontal: '67@s',
       // justifyContent: 'center',
       // alignItems: 'center',
     },
     neomorphContainer3: {
       marginBottom: 40,
-      paddingHorizontal: 30,
+      paddingHorizontal: '30@s',
       // justifyContent: 'center',
       // alignItems: 'center',
     },
@@ -79,15 +79,17 @@ const styles = (direction: string) =>
     },
     container5: {
       width: '100%',
-      height: '48@ms',
+      height: '48@s',
       justifyContent: 'center',
       alignItems: 'center',
+      backgroundColor: '#EBEEF0',
     },
     container6: {
       width: '100%',
       height: '144@s',
-      paddingHorizontal: 20,
-      paddingVertical: 20,
+      marginHorizontal: '20@s',
+      marginVertical: '20@s',
+      fontSize: '14@s',
     },
     text1: {
       color: '#03A0E3',
@@ -107,13 +109,14 @@ const styles = (direction: string) =>
       marginBottom: 55,
       // justifyContent: 'center',
       // alignItems: 'center',
-      paddingHorizontal: 30,
+      paddingHorizontal: '30@s',
     },
     buttonText: {
       fontWeight: '800',
       fontFamily: 'Nunito-Regular',
       fontSize: '14@s',
       textAlign: 'center',
+      height: '40@s',
     },
   });
 

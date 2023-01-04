@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import {
-  Button,
   Image,
   SafeAreaView,
   Text,
   TextInput,
   TextStyle,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import styles from './styles';
@@ -16,7 +14,7 @@ import Neumorphism from 'react-native-neumorphism';
 import GradientText from 'app/components/texts/GradientText';
 import RegularButton from 'app/components/buttons/RegularButton';
 import { useTranslation } from 'react-i18next';
-import { scale } from 'react-native-size-matters';
+import { ms, scale } from 'react-native-size-matters';
 import TitleBar from 'app/components/buttons/TitleBar';
 import { AirbnbRating } from 'react-native-ratings';
 
@@ -103,7 +101,7 @@ const AddReview: React.FC = () => {
                   </Text>
                 }
                 radius={50}
-                height={40}
+                height={'40@s'}
                 width={'100%'}
                 colors={['#9EDC5D', '#84BD47']}
               />
@@ -120,6 +118,7 @@ const AddReview: React.FC = () => {
                     showRating={false}
                     defaultRating={4}
                     size={scale(29)}
+                    starStyle={{ margin: ms(6) }}
                     onFinishRating={value => setRating(value)}
                   />
                 </View>

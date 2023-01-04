@@ -12,7 +12,6 @@ const styles = (direction: string) =>
       width: '100%',
       height: '100%',
       backgroundColor: '#EBEEF0',
-      zIndex: -10,
     },
     safeAreaView: { alignSelf: 'stretch' },
     gradientTextContainer: {
@@ -35,46 +34,43 @@ const styles = (direction: string) =>
       marginLeft: '20@s',
     },
     neomorphContainer: {
-      marginTop: 40,
-      paddingHorizontal: 20,
+      marginTop: '40@s',
+      paddingHorizontal: '20@s',
     },
     neomorphContainer2: {
       marginTop: 300,
-      paddingHorizontal: 30,
+      paddingHorizontal: '30@s',
     },
     container2: {
       width: '100%',
       height: '100%',
-      paddingBottom: 25,
+      paddingBottom: '25@s',
+      marginTop: '85@s',
     },
     container3: {
       backgroundColor: '#EBEEF0',
       width: '100%',
       height: '212@s',
     },
-    container4: {
-      marginLeft: 20,
-    },
     row: {
-      marginTop: 20,
-      height: '22@s',
+      margin: '20@s',
+      // height: '22@s',
     },
     row1: {
-      marginTop: 20,
-      height: '50@s',
-      marginLeft: 20,
-      width: '80@s',
+      marginHorizontal: '20@s',
+      // height: '50@s',
+      width: '80@ms',
     },
     row2: {
       flexDirection: 'row',
-      marginTop: 20,
+      margin: '20@s',
+      marginBottom: '10@s',
     },
     text1: {
       color: '#455157',
       fontSize: '16@s',
       fontWeight: '800',
       fontFamily: 'Nunito-Regular',
-      marginLeft: 20,
     },
     buttonText: {
       fontSize: '18@s',
@@ -82,6 +78,7 @@ const styles = (direction: string) =>
       fontFamily: 'Nunito-Regular',
       color: '#758DAC',
     },
+    titleBarContainer: { position: 'absolute', width: '100%' },
   });
 
 export default styles;
