@@ -1,5 +1,5 @@
 import { Dimensions, StyleSheet } from 'react-native';
-import { ScaledSheet } from 'react-native-size-matters';
+import { scale, ScaledSheet } from 'react-native-size-matters';
 
 const width =
   Dimensions.get('window').width >= Dimensions.get('window').height
@@ -7,35 +7,31 @@ const width =
     : Dimensions.get('window').width;
 
 const styles = (direction: string) =>
-  StyleSheet.create({
+  ScaledSheet.create({
     container: {
       width: '100%',
       height: '100%',
       backgroundColor: '#EBEEF0',
-      zIndex: -10,
     },
     container2: {
       alignSelf: 'stretch',
       alignItems: 'center',
       justifyContent: 'center',
       paddingBottom: 20,
+      marginTop: '85@s',
     },
     safeAreaView: { alignSelf: 'stretch' },
 
     gradientTextStyle: {
-      fontSize: 16,
+      fontSize: '16@s',
       fontFamily: 'Nunito-Regular',
       fontStyle: 'normal',
       fontWeight: '700',
-      lineHeight: 22,
     },
     gradientTextContainer: {
       width: '100%',
       justifyContent: 'center',
-      height: 80,
       alignItems: 'center',
-      marginLeft: 10,
-      marginTop: 12,
     },
     inputTextContainer: {
       width: '100%',
@@ -58,16 +54,21 @@ const styles = (direction: string) =>
       marginBottom: 20,
     },
     profileImgContainer: {
-      marginLeft: 137,
-      marginRight: 138,
       marginTop: 60,
-      height: 130,
-      width: 130,
-      borderRadius: 130,
-      borderWidth: 1,
       alignSelf: 'center',
       justifyContent: 'center',
-      borderColor: '#FECE32',
+    },
+    imageContainer2: {
+      height: '30@s',
+      width: '30@s',
+      position: 'absolute',
+      bottom: '12@s',
+      right: '12@s',
+    },
+    imageRound: {
+      width: '100%',
+      height: '100%',
+      resizeMode: 'cover',
     },
     rightComponent: {
       flexDirection: direction === 'rtl' ? 'row-reverse' : 'row',
@@ -75,10 +76,10 @@ const styles = (direction: string) =>
       right: direction === 'rtl' ? undefined : 20.33,
       position: 'absolute',
     },
-     profileImg: {
-      height: 130,
-      width: 130,
-      borderRadius: 130,
+    profileImg: {
+      height: '130@s',
+      width: '130@s',
+      borderRadius: '130@s',
       alignSelf: 'center',
     },
     imageStyle: {
@@ -93,7 +94,7 @@ const styles = (direction: string) =>
       marginTop: 60,
       width: 50,
     },
-    imageContainer2: { marginTop: -38, height: 30, width: 30, marginLeft: 68 },
+    // imageContainer2: { marginTop: -38, height: 30, width: 30, marginLeft: 68 },
     neomorphContainer: {
       marginTop: 52,
       justifyContent: 'center',
@@ -109,7 +110,6 @@ const styles = (direction: string) =>
     },
     radioButtonContainer: {
       width: '100%',
-      width: width - 60,
       height: 50,
       borderRadius: 50,
       justifyContent: 'center',
@@ -132,9 +132,6 @@ const styles = (direction: string) =>
       flexDirection: 'row',
       justifyContent: 'flex-start',
       alignItems: 'center',
-      width: 38,
-      marginLeft: 20,
-      marginTop: 16,
     },
 
     coinContainer2: {
@@ -163,28 +160,25 @@ const styles = (direction: string) =>
     coinContainer1: {
       alignContent: 'center',
       justifyContent: 'center',
-
       flexDirection: 'row',
       height: 45,
       marginTop: 22,
       paddingBottom: 5,
     },
     schoolInputTextContainer: {
-      width: '100%',
-      width: width - 60,
-      height: 50,
-      borderRadius: 50,
-      justifyContent: 'flex-start',
+      width: width - scale(60),
+      height: '50@s',
+      borderRadius: '50@s',
+      justifyContent: 'space-between',
       alignItems: 'center',
       backgroundColor: '#EBEEF0',
       flexDirection: 'row',
-      paddingLeft: 25,
+      paddingHorizontal: '25@s',
     },
     marginView: { marginTop: 20 },
 
     interestContainer: {
       width: '100%',
-      width: width - 60,
       height: 86,
       borderRadius: 12,
       backgroundColor: '#EBEEF0',
@@ -193,15 +187,13 @@ const styles = (direction: string) =>
     schoolText: {
       fontFamily: 'Nunito-Regular',
       fontWeight: '600',
-      fontSize: 14,
-      lineHeight: 19,
+      fontSize: '14@s',
       color: '#455157',
-      marginRight: 62,
     },
     changeText1: {
       color: '#03A0E3',
-      width: 47,
-      lineHeight: 16.2,
+      fontFamily:'Nunito-Regular',
+      fontSize: '14@s',
       fontWeight: '600',
     },
     interestText: {
@@ -221,10 +213,10 @@ const styles = (direction: string) =>
       marginLeft: 102,
     },
     regularButtonContainer: {
-      width: '100%',
-      width: width - 60,
+      width: width - scale(60),
       marginTop: 50,
     },
+    titleBarContainer: { position: 'absolute', width: '100%' },
   });
 
 export default styles;
