@@ -44,10 +44,10 @@ const styles = (direction: string) =>
       width: '100%',
       justifyContent: 'center',
       alignItems: 'center',
-      marginBottom: 20,
+      marginBottom: '20@s',
     },
     searchIcon: {
-      right: 20,
+      right: '20@s',
     },
     skipButtonText: {
       fontSize: '14@s',
@@ -64,8 +64,8 @@ const styles = (direction: string) =>
       alignItems: 'flex-end',
     },
     cardListStyle: {
-      paddingHorizontal: 20,
-      paddingVertical: 15,
+      paddingHorizontal: '20@s',
+      paddingVertical: '15@s',
       height: '125@ms',
       width: Dimensions.get('window').width - scale(40),
       backgroundColor: '#EBEEF0',
@@ -97,7 +97,7 @@ const styles = (direction: string) =>
       alignItems: 'center',
     },
     cardRowContainerTwo: {
-      paddingLeft: 85,
+      paddingLeft: '85@s',
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
@@ -117,7 +117,7 @@ const styles = (direction: string) =>
     },
     childDetailContainer: {
       justifyContent: 'center',
-      marginLeft: 10,
+      marginLeft: '10@s',
     },
     innerContainer: {
       flexDirection: 'row',
