@@ -1,11 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import {
   SafeAreaView,
   Text,
   TextStyle,
   View,
-  TextInput,
   Image,
   TouchableOpacity,
 } from 'react-native';
@@ -17,7 +16,6 @@ import RegularButton from 'app/components/buttons/RegularButton';
 import { useTranslation } from 'react-i18next';
 import TitleBar from 'app/components/buttons/TitleBar';
 import Neumorphism from 'react-native-neumorphism';
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import { scale } from 'react-native-size-matters';
 import PlainButton from 'app/components/buttons/PlainButton';
 
@@ -97,7 +95,7 @@ const TeachersProfile: React.FC = () => {
                     source={require('../../assets/editTeacher.png')}
                     style={styles(direction).profileImageStyle}
                   />
-                  <View style={{ marginTop: 14 }}>
+                  <View style={{ marginTop: scale(14) }}>
                     <Neumorphism
                       lightColor={'#ffffff'}
                       darkColor={'#A8A8A8'}

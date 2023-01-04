@@ -1,18 +1,6 @@
-/* eslint-disable prettier/prettier */
-import React, { useEffect, useState } from 'react';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import {
-  Dimensions,
-  Image,
-  SafeAreaView,
-  Text,
-  TextStyle,
-  View,
-  TextInput,
-} from 'react-native';
-interface IState {
-  currentCustomerReducer: ICurrentCustomer;
-}
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React, { useState } from 'react';
+import { Image, SafeAreaView, Text, View, TextInput } from 'react-native';
 import styles from './styles';
 import NavigationService from 'app/navigation/NavigationService';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
@@ -27,6 +15,10 @@ import { MenuTrigger } from 'react-native-popup-menu';
 import { useSelector } from 'react-redux';
 import { ICurrentCustomer } from 'app/models/reducers/currentCustomer';
 
+interface IState {
+  currentCustomerReducer: ICurrentCustomer;
+}
+
 const FeedDetail: React.FC = () => {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
@@ -34,7 +26,7 @@ const FeedDetail: React.FC = () => {
   const selectedRole = useSelector(
     (state: IState) => state.currentCustomerReducer.role,
   );
-  
+
   const [data, setdata] = useState([
     {
       headerImage: require('../../assets/topbg.png'),
@@ -115,19 +107,22 @@ const FeedDetail: React.FC = () => {
                         end={{ x: 0, y: 1 }}
                         textStyle={styles(direction).text1}
                       />
-                      {selectedRole === 'Parent' && <MenuTrigger>
-                        <Image
-                          source={require('../../assets/menu.png')}
-                          style={styles(direction).menu}
-                        />
-                      </MenuTrigger>}
-                      {selectedRole === 'Teacher' && <MenuTrigger>
-                        <Image
-                          source={require('../../assets/menu.png')}
-                          style={styles(direction).menu}
-                        />
-                      </MenuTrigger>
-                      }
+                      {selectedRole === 'Parent' && (
+                        <MenuTrigger>
+                          <Image
+                            source={require('../../assets/menu.png')}
+                            style={styles(direction).menu}
+                          />
+                        </MenuTrigger>
+                      )}
+                      {selectedRole === 'Teacher' && (
+                        <MenuTrigger>
+                          <Image
+                            source={require('../../assets/menu.png')}
+                            style={styles(direction).menu}
+                          />
+                        </MenuTrigger>
+                      )}
                     </View>
                     <Text style={styles(direction).text2}>
                       {t(item.description)}
@@ -146,17 +141,21 @@ const FeedDetail: React.FC = () => {
                         </Text>
                       </View>
                       <View style={{ marginBottom: 5 }}>
-                      <RegularButton
-                        onPress={() => {
-                        NavigationService.navigate('');
-                        }}
-                      text={<Text style={styles(direction).boxText}>{t('Subscribe!')}</Text>}
-                      radius={50}
-                      height={35}
-                      width={'100%'}
-                      colors={['#FF6F81', '#F0374E']}
-                      />
-                    </View>
+                        <RegularButton
+                          onPress={() => {
+                            NavigationService.navigate('');
+                          }}
+                          text={
+                            <Text style={styles(direction).boxText}>
+                              {t('Subscribe!')}
+                            </Text>
+                          }
+                          radius={50}
+                          height={35}
+                          width={'100%'}
+                          colors={['#FF6F81', '#F0374E']}
+                        />
+                      </View>
                     </View>
                     <View style={styles(direction).iconContainer}>
                       <Neumorphism
@@ -203,7 +202,7 @@ const FeedDetail: React.FC = () => {
               <View style={{ flexDirection: 'row' }}>
                 <TextInput
                   style={styles(direction).inputText}
-                  placeholder={t('Type your comment here')}
+                  placeholder={`${t('Type your comment here')}`}
                   // onChangeText={text => text.setFocus({ text })}
                 />
                 <View style={styles(direction).arrow}>
@@ -224,24 +223,26 @@ const FeedDetail: React.FC = () => {
                 return (
                   <View style={styles(direction).commentContainer}>
                     <View style={styles(direction).container3}>
-                    <View style={{ flexDirection: 'row'}}> 
-                      <Image
-                        source={item.image}
-                        style={styles(direction).image3Style}
-                      />
-                      <Text style={styles(direction).profileName}>
-                        {t(item.name)}
-                      </Text>
-                      <Text style={styles(direction).status}>
-                        {t(item.endDate)}
-                      </Text>
-                      </View>
-                      {selectedRole === 'Parent' && <MenuTrigger>
+                      <View style={{ flexDirection: 'row' }}>
                         <Image
-                          source={require('../../assets/menu.png')}
-                          style={styles(direction).menu}
+                          source={item.image}
+                          style={styles(direction).image3Style}
                         />
-                      </MenuTrigger>}
+                        <Text style={styles(direction).profileName}>
+                          {t(item.name)}
+                        </Text>
+                        <Text style={styles(direction).status}>
+                          {t(item.endDate)}
+                        </Text>
+                      </View>
+                      {selectedRole === 'Parent' && (
+                        <MenuTrigger>
+                          <Image
+                            source={require('../../assets/menu.png')}
+                            style={styles(direction).menu}
+                          />
+                        </MenuTrigger>
+                      )}
                     </View>
                     <Text style={styles(direction).text2}>
                       {t(item.description)}

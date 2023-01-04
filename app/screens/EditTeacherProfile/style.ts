@@ -1,5 +1,5 @@
 import { Dimensions, StyleSheet } from 'react-native';
-import { ScaledSheet } from 'react-native-size-matters';
+import { scale, ScaledSheet } from 'react-native-size-matters';
 
 const width =
   Dimensions.get('window').width >= Dimensions.get('window').height
@@ -12,22 +12,21 @@ const styles = (direction: string) =>
       width: '100%',
       height: '100%',
       backgroundColor: '#EBEEF0',
-      zIndex: -10,
     },
     container2: {
       alignSelf: 'stretch',
       alignItems: 'center',
       justifyContent: 'center',
       paddingBottom: 20,
+      marginTop: '85@s',
     },
     safeAreaView: { alignSelf: 'stretch' },
 
     gradientTextStyle: {
-      fontSize: 16,
+      fontSize: '16@s',
       fontFamily: 'Nunito-Regular',
       fontStyle: 'normal',
       fontWeight: '700',
-      lineHeight: 22,
     },
     gradientTextContainer: {
       width: '100%',
@@ -63,15 +62,12 @@ const styles = (direction: string) =>
       height: '30@s',
       width: '30@s',
       position: 'absolute',
-      alignSelf: 'center',
-      // // bottom: '7@s',
-      // marginRight: '40@s',
+      bottom: '12@s',
+      right: '12@s',
     },
     imageRound: {
       width: '100%',
       height: '100%',
-      marginTop: 40,
-      marginLeft: 40,
       resizeMode: 'cover',
     },
     rightComponent: {
@@ -80,10 +76,10 @@ const styles = (direction: string) =>
       right: direction === 'rtl' ? undefined : 20.33,
       position: 'absolute',
     },
-     profileImg: {
-      height: 130,
-      width: 130,
-      borderRadius: 130,
+    profileImg: {
+      height: '130@s',
+      width: '130@s',
+      borderRadius: '130@s',
       alignSelf: 'center',
     },
     imageStyle: {
@@ -114,7 +110,6 @@ const styles = (direction: string) =>
     },
     radioButtonContainer: {
       width: '100%',
-      width: width - 60,
       height: 50,
       borderRadius: 50,
       justifyContent: 'center',
@@ -165,28 +160,25 @@ const styles = (direction: string) =>
     coinContainer1: {
       alignContent: 'center',
       justifyContent: 'center',
-
       flexDirection: 'row',
       height: 45,
       marginTop: 22,
       paddingBottom: 5,
     },
     schoolInputTextContainer: {
-      width: '100%',
-      width: width - 60,
-      height: 50,
-      borderRadius: 50,
-      justifyContent: 'flex-start',
+      width: width - scale(60),
+      height: '50@s',
+      borderRadius: '50@s',
+      justifyContent: 'space-between',
       alignItems: 'center',
       backgroundColor: '#EBEEF0',
       flexDirection: 'row',
-      paddingLeft: 25,
+      paddingHorizontal: '25@s',
     },
     marginView: { marginTop: 20 },
 
     interestContainer: {
       width: '100%',
-      width: width - 60,
       height: 86,
       borderRadius: 12,
       backgroundColor: '#EBEEF0',
@@ -195,15 +187,13 @@ const styles = (direction: string) =>
     schoolText: {
       fontFamily: 'Nunito-Regular',
       fontWeight: '600',
-      fontSize: 14,
-      lineHeight: 19,
+      fontSize: '14@s',
       color: '#455157',
-      marginRight: 62,
     },
     changeText1: {
       color: '#03A0E3',
-      width: '47@s',
-      height: '17@s',
+      fontFamily:'Nunito-Regular',
+      fontSize: '14@s',
       fontWeight: '600',
     },
     interestText: {
@@ -223,10 +213,10 @@ const styles = (direction: string) =>
       marginLeft: 102,
     },
     regularButtonContainer: {
-      width: '100%',
-      width: width - 60,
+      width: width - scale(60),
       marginTop: 50,
     },
+    titleBarContainer: { position: 'absolute', width: '100%' },
   });
 
 export default styles;

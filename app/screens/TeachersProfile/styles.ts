@@ -106,8 +106,9 @@ const styles = (direction: string) =>
       fontWeight: '600',
       fontSize: '14@s',
       color: '#FD4449',
-      marginTop: '15@s',
-      marginRight: '15@s',
+      position: 'absolute',
+      top: '15@s',
+      right: '20@s',
     },
     editContainer: {
       justifyContent: direction === 'rtl' ? 'flex-start' : 'flex-end',
@@ -134,7 +135,7 @@ const styles = (direction: string) =>
     inputText: {
       fontFamily: 'Nunito-Regular',
       fontWeight: '600',
-      fontSize: '14@ms',
+      fontSize: '14@s',
       color: '#758DAC',
     },
     profileImageStyle: {
@@ -189,6 +190,7 @@ const styles = (direction: string) =>
       width: '40@s',
       height: '40@s',
       alignItems: 'center',
+      backgroundColor: '#EBEEF0',
     },
     rightContainer: {
       flex: 4,

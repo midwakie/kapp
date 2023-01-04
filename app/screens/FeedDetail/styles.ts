@@ -1,5 +1,5 @@
-import { Dimensions } from 'react-native';
-import { s, ScaledSheet } from 'react-native-size-matters';
+import { Dimensions, Platform } from 'react-native';
+import { s, scale, ScaledSheet } from 'react-native-size-matters';
 
 const width =
   Dimensions.get('window').width >= Dimensions.get('window').height
@@ -84,11 +84,10 @@ const styles = (direction: string) =>
       flexDirection: 'row',
     },
     text2: {
-      fontSize: '12@ms',
+      fontSize: '12@s',
       fontWeight: '600',
       fontFamily: 'Nunito-Regular',
-      alignSelf: 'flex-start',
-      flexDirection: 'row',
+      textAlign: 'justify',
       marginTop: '25@s',
       color: '#758DAC',
       marginLeft: '5@s',
@@ -97,11 +96,11 @@ const styles = (direction: string) =>
     inputText: {
       fontFamily: 'Nunito-Regular',
       fontWeight: '600',
-      fontSize: '12@ms',
-      // marginTop: '66@s',
+      fontSize: '12@s',
       marginLeft: '10@s',
       flexDirection: 'row',
       flex: 1,
+      height: '42@s',
       // paddingHorizontal: '20@s',
     },
     imageContainer: {
@@ -154,8 +153,8 @@ const styles = (direction: string) =>
       marginTop: '37@s',
     },
     icon: {
-      width: 24,
-      height: 21,
+      width: '24@s',
+      height: '21@s',
       marginLeft: '25@s',
     },
     iconText: {
@@ -171,7 +170,7 @@ const styles = (direction: string) =>
       flexDirection: 'row',
       width: '100%',
       height: '60@s',
-      color: '#03A0E3',
+      backgroundColor: '#EBEEF0',
       alignItems: 'center',
     },
     arrow: {
@@ -179,9 +178,8 @@ const styles = (direction: string) =>
       alignItems: 'center',
       width: '30@s',
       height: '30@s',
-      marginRight: '25@s',
-      // marginTop: '-45@s',
-      // alignSelf: 'flex-end',
+      right: '25@s',
+      position: 'absolute',
     },
     horizontalLine: {
       height: '1@s',
@@ -192,7 +190,6 @@ const styles = (direction: string) =>
       height: '16@s',
       width: '4@s',
       resizeMode: 'contain',
-      marginLeft: '30@s',
     },
   });
 
