@@ -12,6 +12,7 @@ const styles = (direction: string) =>
       width: '100%',
       height: '100%',
       backgroundColor: '#EBEEF0',
+      zIndex: -10,
     },
     safeAreaView: { alignSelf: 'stretch' },
     gradientTextContainer: {
@@ -64,7 +65,7 @@ const styles = (direction: string) =>
     imageContainer: {
       width: '100%',
       height: '140@ms',
-      borderRadius: 12,
+      borderRadius: '12@s',
     },
     imageContainer4: {
       alignItems: 'center',
@@ -93,13 +94,13 @@ const styles = (direction: string) =>
       marginLeft: 10,
     },
     imageStyle1: {
-      width: 16.5,
-      height: 22,
+      width: '16.5@s',
+      height: '22@s',
       marginLeft: 22,
     },
     imageStyle4: {
-      width: 16.5,
-      height: 22,
+      width: '16.5@s',
+      height: '22@s',
       marginLeft: 22,
       tintColor: 'red',
     },

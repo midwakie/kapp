@@ -49,7 +49,7 @@ const AddReview: React.FC = () => {
   // };
 
   return (
-    <ScrollView style={styles(direction).container} bounces={false}>
+    <>
       <TitleBar
         leftComponent={
           <View style={styles(direction).topContainer}>
@@ -77,85 +77,87 @@ const AddReview: React.FC = () => {
           </View>
         }
       />
-      <SafeAreaView style={styles(direction).safeAreaView}>
-        <View style={styles(direction).container2}>
-          <View style={styles(direction).imageContainer}>
-            <Image
-              source={require('../../assets/addReview.png')}
-              style={styles(direction).imageStyle}
-            />
-          </View>
-          <View style={styles(direction).container4}>
-            <Text style={styles(direction).text1}>
-              {t('How’s the Experiance!')}
-            </Text>
-            <Text style={styles(direction).text2}>
-              {t('Share Your Valuable Feedback')}
-            </Text>
-          </View>
-          <View style={styles(direction).neomorphContainer}>
-            <RegularButton
-              onPress={''}
-              text={
-                <Text style={styles(direction).buttonText}>
-                  {t('Make Video')}
-                </Text>
-              }
-              radius={50}
-              height={40}
-              width={'100%'}
-              colors={['#9EDC5D', '#84BD47']}
-            />
-          </View>
-          <View style={styles(direction).neomorphContainer2}>
-            <Neumorphism
-              lightColor={'#ffffff'}
-              darkColor={'#A8A8A8'}
-              shapeType={'flat'}
-              radius={scale(50)}>
-              <View style={styles(direction).container5}>
-                <AirbnbRating
-                  isDisabled={false}
-                  showRating={false}
-                  defaultRating={4}
-                  size={scale(29)}
-                  onFinishRating={value => setRating(value)}
-                />
-              </View>
-            </Neumorphism>
-          </View>
-          <View style={styles(direction).neomorphContainer3}>
-            <Neumorphism
-              lightColor={'#ffffff'}
-              darkColor={'#A8A8A8'}
-              shapeType={'pressed'}
-              radius={scale(8)}>
-              <TextInput
-                style={styles(direction).container6}
-                onChangeText={text => setDescription(text)}
-                value={description}
-                multiline={true}
-                placeholder={t('Type here..')}
-                placeholderTextColor="#9FA4A7"
-                textAlignVertical="top"
+      <ScrollView style={styles(direction).container} bounces={false}>
+        <SafeAreaView style={styles(direction).safeAreaView}>
+          <View style={styles(direction).container2}>
+            <View style={styles(direction).imageContainer}>
+              <Image
+                source={require('../../assets/addReview.png')}
+                style={styles(direction).imageStyle}
               />
-            </Neumorphism>
+            </View>
+            <View style={styles(direction).container4}>
+              <Text style={styles(direction).text1}>
+                {t('How’s the Experiance!')}
+              </Text>
+              <Text style={styles(direction).text2}>
+                {t('Share Your Valuable Feedback')}
+              </Text>
+            </View>
+            <View style={styles(direction).neomorphContainer}>
+              <RegularButton
+                onPress={''}
+                text={
+                  <Text style={styles(direction).buttonText}>
+                    {t('Make Video')}
+                  </Text>
+                }
+                radius={50}
+                height={40}
+                width={'100%'}
+                colors={['#9EDC5D', '#84BD47']}
+              />
+            </View>
+            <View style={styles(direction).neomorphContainer2}>
+              <Neumorphism
+                lightColor={'#ffffff'}
+                darkColor={'#A8A8A8'}
+                shapeType={'flat'}
+                radius={scale(50)}>
+                <View style={styles(direction).container5}>
+                  <AirbnbRating
+                    isDisabled={false}
+                    showRating={false}
+                    defaultRating={4}
+                    size={scale(29)}
+                    onFinishRating={value => setRating(value)}
+                  />
+                </View>
+              </Neumorphism>
+            </View>
+            <View style={styles(direction).neomorphContainer3}>
+              <Neumorphism
+                lightColor={'#ffffff'}
+                darkColor={'#A8A8A8'}
+                shapeType={'pressed'}
+                radius={scale(8)}>
+                <TextInput
+                  style={styles(direction).container6}
+                  onChangeText={text => setDescription(text)}
+                  value={description}
+                  multiline={true}
+                  placeholder={t('Type here..')}
+                  placeholderTextColor="#9FA4A7"
+                  textAlignVertical="top"
+                />
+              </Neumorphism>
+            </View>
+            <View style={styles(direction).button}>
+              <RegularButton
+                onPress={() => {
+                  console.log('Rating:', rating, 'Description:', description);
+                }}
+                text={t('Submit')}
+                radius={50}
+                height={50}
+                width={'100%'}
+                colors={['#03BBE3', '#14A9FD']}
+              />
+            </View>
           </View>
-          <View style={styles(direction).button}>
-            <RegularButton
-              onPress={() => {
-                console.log('Rating:', rating, 'Description:', description);
-              }}
-              text={t('Submit')}
-              radius={50}
-              height={50}
-              width={'100%'}
-              colors={['#03BBE3', '#14A9FD']}
-            />
-          </View>
-        </View>
-      </SafeAreaView>
-    </ScrollView>
+        </SafeAreaView>
+      </ScrollView>
+    </>
   );
 };
 

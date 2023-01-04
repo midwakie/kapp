@@ -12,6 +12,7 @@ const styles = (direction: string) =>
       width: '100%',
       height: '100%',
       backgroundColor: '#EBEEF0',
+      zIndex: -10,
     },
     safeAreaView: { alignSelf: 'stretch' },
     gradientTextContainer: {
@@ -67,6 +68,7 @@ const styles = (direction: string) =>
       width: '40@s',
       height: '40@s',
       borderRadius: 150,
+      backgroundColor: '#EBEEF0',
     },
     neomorphContainer: {
       marginBottom: 20,

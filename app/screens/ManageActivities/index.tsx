@@ -104,7 +104,7 @@ const ManageActivities: React.FC = () => {
     );
   };
   return (
-    <ScrollView style={styles(direction).container} bounces={false}>
+    <>
       <TitleBar
         leftComponent={
           <View style={styles(direction).topContainer}>
@@ -132,120 +132,122 @@ const ManageActivities: React.FC = () => {
           </View>
         }
       />
-      <SafeAreaView style={styles(direction).safeAreaView}>
-        <View style={styles(direction).container2}>
-          {data.map(item => {
-            return (
-              <View key={item.id} style={styles(direction).neomorphContainer}>
-                <Neumorphism
-                  lightColor={'#ffffff'}
-                  darkColor={'#A8A8A8'}
-                  shapeType={'flat'}
-                  radius={scale(14)}>
-                  <View style={styles(direction).container3}>
-                    <View style={styles(direction).container4}>
-                      <Text
-                        style={
-                          item.id === 2
-                            ? styles(direction).text4
-                            : item.id === 3
-                            ? styles(direction).text6
-                            : styles(direction).text1
-                        }>
-                        {item.activityTitle}
-                      </Text>
-                      <Text style={styles(direction).text2}>
-                        {item.endDate}
-                      </Text>
-                    </View>
-                    <View style={styles(direction).container5}>
-                      <Text style={styles(direction).text3}>
-                        {!item.expanded && item.description.slice(0, 79)}
-                        {!item.expanded && (
-                          <Text
-                            style={{ color: '#03A0E3' }}
-                            onPress={() => handleExpand(item.id)}>
-                            more
-                          </Text>
-                        )}
-                        {item.expanded && item.description}
-                        {item.expanded && (
-                          <Text
-                            style={{ color: '#03A0E3' }}
-                            onPress={() => handleExpand(item.id)}>
-                            less
-                          </Text>
-                        )}
-                      </Text>
-                    </View>
-                    <View style={styles(direction).container6}>
-                      <View style={styles(direction).imageContainer}>
-                        {item.students.map(student => {
-                          const studentKey = Object.keys(student)[0];
-                          return (
-                            <TouchableOpacity
-                              key={studentKey}
-                              onPress={() => {}}
-                              style={
-                                studentKey === 'avatarImage1'
-                                  ? styles(direction).interestIcon1
-                                  : styles(direction).interestIcons
-                              }>
-                              <Image
-                                style={styles(direction).imageRound}
-                                source={student[studentKey]}
-                              />
-                              {studentKey === 'avatarImage6' && (
-                                <Text style={styles(direction).plusFour}>
-                                  +4
-                                </Text>
-                              )}
-                            </TouchableOpacity>
-                          );
-                        })}
+      <ScrollView style={styles(direction).container} bounces={false}>
+        <SafeAreaView style={styles(direction).safeAreaView}>
+          <View style={styles(direction).container2}>
+            {data.map(item => {
+              return (
+                <View key={item.id} style={styles(direction).neomorphContainer}>
+                  <Neumorphism
+                    lightColor={'#ffffff'}
+                    darkColor={'#A8A8A8'}
+                    shapeType={'flat'}
+                    radius={scale(14)}>
+                    <View style={styles(direction).container3}>
+                      <View style={styles(direction).container4}>
+                        <Text
+                          style={
+                            item.id === 2
+                              ? styles(direction).text4
+                              : item.id === 3
+                              ? styles(direction).text6
+                              : styles(direction).text1
+                          }>
+                          {item.activityTitle}
+                        </Text>
+                        <Text style={styles(direction).text2}>
+                          {item.endDate}
+                        </Text>
+                      </View>
+                      <View style={styles(direction).container5}>
+                        <Text style={styles(direction).text3}>
+                          {!item.expanded && item.description.slice(0, 79)}
+                          {!item.expanded && (
+                            <Text
+                              style={{ color: '#03A0E3' }}
+                              onPress={() => handleExpand(item.id)}>
+                              more
+                            </Text>
+                          )}
+                          {item.expanded && item.description}
+                          {item.expanded && (
+                            <Text
+                              style={{ color: '#03A0E3' }}
+                              onPress={() => handleExpand(item.id)}>
+                              less
+                            </Text>
+                          )}
+                        </Text>
+                      </View>
+                      <View style={styles(direction).container6}>
+                        <View style={styles(direction).imageContainer}>
+                          {item.students.map(student => {
+                            const studentKey = Object.keys(student)[0];
+                            return (
+                              <TouchableOpacity
+                                key={studentKey}
+                                onPress={() => {}}
+                                style={
+                                  studentKey === 'avatarImage1'
+                                    ? styles(direction).interestIcon1
+                                    : styles(direction).interestIcons
+                                }>
+                                <Image
+                                  style={styles(direction).imageRound}
+                                  source={student[studentKey]}
+                                />
+                                {studentKey === 'avatarImage6' && (
+                                  <Text style={styles(direction).plusFour}>
+                                    +4
+                                  </Text>
+                                )}
+                              </TouchableOpacity>
+                            );
+                          })}
+                        </View>
                       </View>
                     </View>
+                  </Neumorphism>
+                </View>
+              );
+            })}
+            <View style={styles(direction).neomorphContainer1}>
+              <Neumorphism
+                lightColor={'#ffffff'}
+                darkColor={'#A8A8A8'}
+                shapeType={'flat'}
+                radius={scale(14)}>
+                <View style={styles(direction).container7}>
+                  <View style={styles(direction).leftContainer}>
+                    <View style={styles(direction).neomorphContainer2}>
+                      <Neumorphism
+                        lightColor={'#ffffff'}
+                        darkColor={'#A8A8A8'}
+                        shapeType={'flat'}
+                        radius={scale(150)}>
+                        <View style={styles(direction).container8}>
+                          <TouchableOpacity onPress={() => {}}>
+                            <Image
+                              style={styles(direction).imageStyle}
+                              source={require('../../assets/plus.png')}
+                            />
+                          </TouchableOpacity>
+                        </View>
+                      </Neumorphism>
+                    </View>
                   </View>
-                </Neumorphism>
-              </View>
-            );
-          })}
-          <View style={styles(direction).neomorphContainer1}>
-            <Neumorphism
-              lightColor={'#ffffff'}
-              darkColor={'#A8A8A8'}
-              shapeType={'flat'}
-              radius={scale(14)}>
-              <View style={styles(direction).container7}>
-                <View style={styles(direction).leftContainer}>
-                  <View style={styles(direction).neomorphContainer2}>
-                    <Neumorphism
-                      lightColor={'#ffffff'}
-                      darkColor={'#A8A8A8'}
-                      shapeType={'flat'}
-                      radius={scale(150)}>
-                      <View style={styles(direction).container8}>
-                        <TouchableOpacity onPress={() => {}}>
-                          <Image
-                            style={styles(direction).imageStyle}
-                            source={require('../../assets/plus.png')}
-                          />
-                        </TouchableOpacity>
-                      </View>
-                    </Neumorphism>
+                  <View style={styles(direction).rightContainer}>
+                    <Text style={styles(direction).text8}>
+                      {t('Create New Activity Work')}
+                    </Text>
                   </View>
                 </View>
-                <View style={styles(direction).rightContainer}>
-                  <Text style={styles(direction).text8}>
-                    {t('Create New Activity Work')}
-                  </Text>
-                </View>
-              </View>
-            </Neumorphism>
+              </Neumorphism>
+            </View>
           </View>
-        </View>
-      </SafeAreaView>
-    </ScrollView>
+        </SafeAreaView>
+      </ScrollView>
+    </>
   );
 };
 

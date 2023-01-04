@@ -126,6 +126,12 @@
  "How's the Experiance!" : "How's the Experiance!",
  "Share Your Valuable Feedback": "Share Your Valuable Feedback",
  "Make Video": "Make Video",
- "Submit": "Submit"
+ "Submit": "Submit",
+ "Filter": "Filter",
+ "Activity Status": "Activity Status",
+ "All": "All",
+ "Completed": "Completed",
+ "Uncompleted":  "Uncompleted",
+ "Apply": "Apply"
 
 }

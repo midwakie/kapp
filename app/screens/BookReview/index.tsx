@@ -79,7 +79,7 @@ const BookReview: React.FC = () => {
     },
   ]);
   return (
-    <ScrollView style={styles(direction).container} bounces={false}>
+    <>
       <TitleBar
         leftComponent={
           <View style={styles(direction).topContainer}>
@@ -107,131 +107,131 @@ const BookReview: React.FC = () => {
           </View>
         }
       />
-      <SafeAreaView style={styles(direction).safeAreaView}>
-        {data.map((item, index) => (
-          <View style={styles(direction).container2}>
-            <View key={index} style={styles(direction).container3}>
-              <View style={styles(direction).neomorphContainer}>
-                <Neumorphism
-                  lightColor={'#ffffff'}
-                  darkColor={'#A8A8A8'}
-                  shapeType={'flat'}
-                  radius={scale(12)}>
-                  <View style={styles(direction).imageContainer}>
-                    <Image
-                      source={item.bookImage}
-                      style={styles(direction).imageStyle}
+      <ScrollView style={styles(direction).container} bounces={false}>
+        <SafeAreaView style={styles(direction).safeAreaView}>
+          {data.map((item, index) => (
+            <View style={styles(direction).container2}>
+              <View key={index} style={styles(direction).container3}>
+                <View style={styles(direction).neomorphContainer}>
+                  <Neumorphism
+                    lightColor={'#ffffff'}
+                    darkColor={'#A8A8A8'}
+                    shapeType={'flat'}
+                    radius={scale(12)}>
+                    <View style={styles(direction).imageContainer}>
+                      <Image
+                        source={item.bookImage}
+                        style={styles(direction).imageStyle}
+                      />
+                    </View>
+                  </Neumorphism>
+                </View>
+                <View style={styles(direction).container4}>
+                  <GradientText
+                    colors={['#758DAC', '#2F4868']}
+                    text={item.bookName}
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 0, y: 1 }}
+                    textStyle={styles(direction).gradientTextStyle3}
+                  />
+                  <Text style={styles(direction).text1}>{item.authorName}</Text>
+                  <View style={styles(direction).starRatingContainer}>
+                    <AirbnbRating
+                      isDisabled={false}
+                      showRating={false}
+                      defaultRating={3}
+                      size={scale(14)}
+                      onFinishRating={value => setRating(value)}
                     />
                   </View>
-                </Neumorphism>
-              </View>
-              <View style={styles(direction).container4}>
-                <GradientText
-                  colors={['#758DAC', '#2F4868']}
-                  text={item.bookName}
-                  start={{ x: 0, y: 0 }}
-                  end={{ x: 0, y: 1 }}
-                  textStyle={styles(direction).gradientTextStyle3}
-                />
-                <Text style={styles(direction).text1}>{item.authorName}</Text>
-                <View style={styles(direction).starRatingContainer}>
-                  <AirbnbRating
-                    isDisabled={false}
-                    showRating={false}
-                    defaultRating={3}
-                    size={scale(14)}
-                    onFinishRating={value => setRating(value)}
-                  />
+
+                  <Text style={styles(direction).text2}>{item.amount}</Text>
+                  <TouchableOpacity>
+                    <Text style={styles(direction).text3}>
+                      {t('Add Review')}
+                    </Text>
+                  </TouchableOpacity>
                 </View>
-
-                <Text style={styles(direction).text2}>{item.amount}</Text>
-                <TouchableOpacity>
-                  <Text style={styles(direction).text3}>{t('Add Review')}</Text>
-                </TouchableOpacity>
               </View>
-            </View>
 
-            <Text style={styles(direction).text4}>{t('(35 Review)')}</Text>
-            {item.reviews.map((review, index) => (
-              <View style={styles(direction).neomorphContainer2}>
-                <Neumorphism
-                  lightColor={'#ffffff'}
-                  darkColor={'#A8A8A8'}
-                  shapeType={'flat'}
-                  radius={scale(14)}>
-                  <View style={styles(direction).container5}>
-                    <View style={styles(direction).container6}>
-                      <View style={styles(direction).container7}>
-                        <Text style={styles(direction).text5}>
-                          {review.name}
-                        </Text>
-                        <Text style={styles(direction).text6}>
-                          {review.date}
-                        </Text>
-                        <Image
-                          source={require('../../assets/emptyFlag.png')}
-                          style={
-                            review.flag === 'Active'
-                              ? styles(direction).imageStyle4
-                              : styles(direction).imageStyle1
-                          }
-                        />
-                      </View>
-                      <View style={{ flexDirection: 'row' }}>
-                        <AirbnbRating
-                          isDisabled={true}
-                          showRating={false}
-                          defaultRating={review.rating}
-                          size={scale(14)}
-                        />
-                        {/* <StarRating
-                          rate={review.rating}
-                          onRateChange={setRating}
-                        /> */}
-                      </View>
-                      <View style={{ flexDirection: 'row' }}>
-                        <Text style={styles(direction).text7}>
-                          {review.description.length > 80 ? (
-                            <>
-                              {expanded[review.id] ? (
-                                <Text>{review.description}</Text>
-                              ) : (
-                                <Text>{review.description.slice(0, 72)}</Text>
-                              )}
-                              <Text
-                                onPress={() => toggleExpand(review.id)}
-                                style={{ color: '#03A0E3' }}>
-                                {expanded[review.id]
-                                  ? 'read less'
-                                  : '.read more'}
-                              </Text>
-                            </>
-                          ) : (
-                            <Text>{review.description}</Text>
-                          )}
-                        </Text>
-                        <View style={styles(direction).imageContainer4}>
+              <Text style={styles(direction).text4}>{t('(35 Review)')}</Text>
+              {item.reviews.map((review, index) => (
+                <View style={styles(direction).neomorphContainer2}>
+                  <Neumorphism
+                    lightColor={'#ffffff'}
+                    darkColor={'#A8A8A8'}
+                    shapeType={'flat'}
+                    radius={scale(14)}>
+                    <View style={styles(direction).container5}>
+                      <View style={styles(direction).container6}>
+                        <View style={styles(direction).container7}>
+                          <Text style={styles(direction).text5}>
+                            {review.name}
+                          </Text>
+                          <Text style={styles(direction).text6}>
+                            {review.date}
+                          </Text>
                           <Image
-                            style={styles(direction).imageStyle2}
-                            source={review.Image}
+                            source={require('../../assets/emptyFlag.png')}
+                            style={
+                              review.flag === 'Active'
+                                ? styles(direction).imageStyle4
+                                : styles(direction).imageStyle1
+                            }
                           />
-                          <TouchableOpacity>
+                        </View>
+                        <View style={{ flexDirection: 'row' }}>
+                          <AirbnbRating
+                            isDisabled={true}
+                            showRating={false}
+                            defaultRating={review.rating}
+                            size={scale(14)}
+                          />
+                        </View>
+                        <View style={{ flexDirection: 'row' }}>
+                          <Text style={styles(direction).text7}>
+                            {review.description.length > 80 ? (
+                              <>
+                                {expanded[review.id] ? (
+                                  <Text>{review.description}</Text>
+                                ) : (
+                                  <Text>{review.description.slice(0, 72)}</Text>
+                                )}
+                                <Text
+                                  onPress={() => toggleExpand(review.id)}
+                                  style={{ color: '#03A0E3' }}>
+                                  {expanded[review.id]
+                                    ? 'read less'
+                                    : '.read more'}
+                                </Text>
+                              </>
+                            ) : (
+                              <Text>{review.description}</Text>
+                            )}
+                          </Text>
+                          <View style={styles(direction).imageContainer4}>
                             <Image
-                              style={styles(direction).imageStyle3}
-                              source={require('../../assets/play.png')}
+                              style={styles(direction).imageStyle2}
+                              source={review.Image}
                             />
-                          </TouchableOpacity>
+                            <TouchableOpacity>
+                              <Image
+                                style={styles(direction).imageStyle3}
+                                source={require('../../assets/play.png')}
+                              />
+                            </TouchableOpacity>
+                          </View>
                         </View>
                       </View>
                     </View>
-                  </View>
-                </Neumorphism>
-              </View>
-            ))}
-          </View>
-        ))}
-      </SafeAreaView>
-    </ScrollView>
+                  </Neumorphism>
+                </View>
+              ))}
+            </View>
+          ))}
+        </SafeAreaView>
+      </ScrollView>
+    </>
   );
 };
 

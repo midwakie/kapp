@@ -42,6 +42,7 @@ import { ILoading } from 'app/models/reducers/loading';
 import History from 'app/screens/EBooks/History';
 import ChildProfile from 'app/screens/ChildProfile';
 import AddReview from 'app/screens/AddReview';
+import ActivityFilter from 'app/screens/ActivityFilter';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -386,6 +387,16 @@ const AuthStack = () => {
       <Stack.Screen
         name="Add Review"
         component={AddReview}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Activity Filter"
+        component={ActivityFilter}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
