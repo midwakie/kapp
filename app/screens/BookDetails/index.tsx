@@ -106,7 +106,10 @@ const BookDetails: React.FC = () => {
                 showNextButton={false}
                 renderItem={({ item }) => (
                   <View style={styles(direction).mainContent}>
-                    <Image style={styles(direction).image} source={item.image} />
+                    <Image
+                      style={styles(direction).image}
+                      source={item.image}
+                    />
                   </View>
                 )}
               />
@@ -123,7 +126,9 @@ const BookDetails: React.FC = () => {
                       text={t('Journey To The Star')}
                       start={{ x: 0, y: 0 }}
                       end={{ x: 0, y: 1 }}
-                      textStyle={styles(direction).gradientTextStyle as TextStyle}
+                      textStyle={
+                        styles(direction).gradientTextStyle as TextStyle
+                      }
                     />
                     <Text style={styles(direction).pagesAndAuthorText}>
                       {t('Caroline Eliot')}
@@ -199,6 +204,14 @@ const BookDetails: React.FC = () => {
                   end={{ x: 0, y: 1 }}
                   textStyle={styles(direction).gradientTextStyle as TextStyle}
                 />
+                <FlatList
+                  numColumns={1}
+                  horizontal={true}
+                  renderItem={({ item }) => {
+                    return <CardItem book={item} />;
+                  }}
+                  data={books}
+                />
               </View>
             </Neumorphism>
           </View>
@@ -228,14 +241,6 @@ const BookDetails: React.FC = () => {
                 start={{ x: 0, y: 0 }}
                 end={{ x: 0, y: 1 }}
                 textStyle={styles(direction).gradientTextStyle as TextStyle}
-              />
-              <FlatList
-                numColumns={1}
-                horizontal={true}
-                renderItem={({ item }) => {
-                  return <CardItem book={item} />;
-                }}
-                data={books}
               />
             </View>
           }

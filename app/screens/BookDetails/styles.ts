@@ -78,7 +78,7 @@ const styles = (direction: string) =>
       width: '151@s',
     },
     bookContent: {
-      paddingHorizontal: 20,
+      paddingHorizontal: '20@s',
       paddingVertical: 30,
       borderTopLeftRadius: 25,
       borderTopRightRadius: 25,
@@ -104,7 +104,7 @@ const styles = (direction: string) =>
     },
     descriptionText: {
       color: '#758DAC',
-      textAlign: 'center',
+      textAlign: 'justify',
       fontSize: '16@s',
       fontFamily: 'Nunito-Regular',
       fontWeight: '600',
@@ -153,7 +153,7 @@ const styles = (direction: string) =>
       marginBottom: 8,
     },
     descriptionContainer: {
-      height: 125,
+      height: '125@s',
       width: '100%',
       marginTop: 5,
     },
@@ -170,7 +170,7 @@ const styles = (direction: string) =>
       height: '100%',
       width: '100%',
     },
-    neomorphMargin: { marginRight: '10@ms' },
+    neomorphMargin: { marginRight: '20@ms' },
     neomorphContainer: { marginTop: '20@ms' },
     titleBarContainer: { position: 'absolute', width: '100%' },
   });

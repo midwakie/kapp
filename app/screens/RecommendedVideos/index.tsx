@@ -143,7 +143,7 @@ const RecommendedVideos: React.FC = () => {
             {currentOrientation === 'portrait' ? (
               <FlatList
                 numColumns={Math.floor(
-                  Dimensions.get('window').width / ms(158),
+                  Dimensions.get('window').width / scale(158),
                 )}
                 key={'_'}
                 keyExtractor={item => '_' + item.id}
@@ -155,9 +155,10 @@ const RecommendedVideos: React.FC = () => {
             ) : (
               <FlatList
                 key={'#'}
+                showsHorizontalScrollIndicator={false}
                 keyExtractor={item => '#' + item.id}
                 numColumns={Math.floor(
-                  Dimensions.get('window').width / ms(158),
+                  Dimensions.get('window').width / scale(158),
                 )}
                 data={books}
                 renderItem={({ item }) => {
