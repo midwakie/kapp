@@ -198,7 +198,7 @@ const FeedDetail: React.FC = () => {
                               optionsContainer: {
                                 borderRadius: scale(14),
                                 width: scale(198),
-                                paddingVertical: scale(20),
+                                paddingVertical: scale(10),
                                 marginLeft: -6,
                                 backgroundColor: '#EBEEF0',
                               },
@@ -212,7 +212,7 @@ const FeedDetail: React.FC = () => {
                                     alignItems: 'center',
                                     justifyContent: 'space-between',
                                     paddingHorizontal: scale(15),
-                                    paddingVertical: scale(7),
+                                    paddingVertical: scale(10),
                                   },
                                 }}>
                                 <Text
