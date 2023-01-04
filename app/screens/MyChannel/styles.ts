@@ -371,7 +371,7 @@ const styles = (direction: string) =>
     text3: {
       color: '#FB595D',
       fontSize: '12@s',
-      fontWeight: ' 700',
+      fontWeight: '700',
       fontFamily: 'Nunito-Regular',
       height: '16@s',
       width: '100%',
@@ -384,7 +384,7 @@ const styles = (direction: string) =>
     text33: {
       color: '#FB595D',
       fontSize: '12@s',
-      fontWeight: ' 700',
+      fontWeight: '700',
       fontFamily: 'Nunito-Regular',
       height: '16@s',
       width: '100%',
