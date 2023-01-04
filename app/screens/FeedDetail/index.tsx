@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, { useEffect, useState } from 'react';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import {
@@ -9,26 +10,31 @@ import {
   View,
   TextInput,
 } from 'react-native';
+interface IState {
+  currentCustomerReducer: ICurrentCustomer;
+}
 import styles from './styles';
 import NavigationService from 'app/navigation/NavigationService';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import GradientText from 'app/components/texts/GradientText';
 import RegularButton from 'app/components/buttons/RegularButton';
 import { useTranslation } from 'react-i18next';
-import TitleBar from 'app/components/buttons/TitleBar';
 import Neumorphism from 'react-native-neumorphism';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
-import CustomInput from 'app/components/inputs/CustomInput';
-import { useForm } from 'react-hook-form';
-import rules from 'app/rules';
 import { scale } from 'react-native-size-matters';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import VerticalLine from 'app/components/lines/VerticalLine';
-import HorizontalLine from 'app/components/lines/HorizontalLine';
+import { MenuTrigger } from 'react-native-popup-menu';
+import { useSelector } from 'react-redux';
+import { ICurrentCustomer } from 'app/models/reducers/currentCustomer';
 
 const FeedDetail: React.FC = () => {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
+
+  const selectedRole = useSelector(
+    (state: IState) => state.currentCustomerReducer.role,
+  );
+  
   const [data, setdata] = useState([
     {
       headerImage: require('../../assets/topbg.png'),
@@ -97,18 +103,37 @@ const FeedDetail: React.FC = () => {
                   </View>
 
                   <View style={styles(direction).midContainer}>
-                    <GradientText
-                      colors={['#758DAC', '#2F4868']}
-                      text={t(item.title)}
-                      start={{ x: 0, y: 0 }}
-                      end={{ x: 0, y: 1 }}
-                      textStyle={styles(direction).text1}
-                    />
+                    <View
+                      style={{
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                      }}>
+                      <GradientText
+                        colors={['#758DAC', '#2F4868']}
+                        text={t(item.title)}
+                        start={{ x: 0, y: 0 }}
+                        end={{ x: 0, y: 1 }}
+                        textStyle={styles(direction).text1}
+                      />
+                      {selectedRole === 'Parent' && <MenuTrigger>
+                        <Image
+                          source={require('../../assets/menu.png')}
+                          style={styles(direction).menu}
+                        />
+                      </MenuTrigger>}
+                      {selectedRole === 'Teacher' && <MenuTrigger>
+                        <Image
+                          source={require('../../assets/menu.png')}
+                          style={styles(direction).menu}
+                        />
+                      </MenuTrigger>
+                      }
+                    </View>
                     <Text style={styles(direction).text2}>
                       {t(item.description)}
                     </Text>
                     <View style={styles(direction).container3}>
-                      <View style={{ flex: 1, flexDirection: 'row' }}>
+                      <View style={{ flexDirection: 'row' }}>
                         <Image
                           source={require('../../assets/dp.png')}
                           style={styles(direction).image3Style}
@@ -120,25 +145,18 @@ const FeedDetail: React.FC = () => {
                           {t(item.endDate)}
                         </Text>
                       </View>
-                      <View style={{ marginLeft: 65 }}>
-                        <Neumorphism
-                          lightColor={'#ffffff'}
-                          darkColor={'#A8A8A8'}
-                          shapeType={'flat'}
-                          radius={50}>
-                          <TouchableOpacity>
-                            <View style={styles(direction).box}>
-                              <GradientText
-                                colors={['#FFFFFF', '#DCDCDC']}
-                                text={t('Subscribe!')}
-                                start={{ x: 0, y: 0 }}
-                                end={{ x: 0, y: 1 }}
-                                textStyle={styles(direction).boxText}
-                              />
-                            </View>
-                          </TouchableOpacity>
-                        </Neumorphism>
-                      </View>
+                      <View style={{ marginBottom: 5 }}>
+                      <RegularButton
+                        onPress={() => {
+                        NavigationService.navigate('');
+                        }}
+                      text={<Text style={styles(direction).boxText}>{t('Subscribe!')}</Text>}
+                      radius={50}
+                      height={35}
+                      width={'100%'}
+                      colors={['#FF6F81', '#F0374E']}
+                      />
+                    </View>
                     </View>
                     <View style={styles(direction).iconContainer}>
                       <Neumorphism
@@ -206,6 +224,7 @@ const FeedDetail: React.FC = () => {
                 return (
                   <View style={styles(direction).commentContainer}>
                     <View style={styles(direction).container3}>
+                    <View style={{ flexDirection: 'row'}}> 
                       <Image
                         source={item.image}
                         style={styles(direction).image3Style}
@@ -216,6 +235,13 @@ const FeedDetail: React.FC = () => {
                       <Text style={styles(direction).status}>
                         {t(item.endDate)}
                       </Text>
+                      </View>
+                      {selectedRole === 'Parent' && <MenuTrigger>
+                        <Image
+                          source={require('../../assets/menu.png')}
+                          style={styles(direction).menu}
+                        />
+                      </MenuTrigger>}
                     </View>
                     <Text style={styles(direction).text2}>
                       {t(item.description)}

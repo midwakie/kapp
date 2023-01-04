@@ -42,6 +42,7 @@ const styles = (direction: string) =>
     container3: {
       width: '100%',
       flexDirection: 'row',
+      justifyContent: 'space-between',
       marginTop: '33@s',
     },
     safeAreaView: { alignSelf: 'stretch' },
@@ -75,7 +76,7 @@ const styles = (direction: string) =>
       marginLeft: '5@s',
     },
     boxText: {
-      fontSize: '12@s',
+      fontSize: '12@ms',
       fontWeight: '800',
       marginTop: '9@s',
       fontFamily: 'Nunito-Regular',
@@ -186,6 +187,12 @@ const styles = (direction: string) =>
       height: '1@s',
       width: '100%',
       backgroundColor: '#758DAC',
+    },
+    menu: {
+      height: '16@s',
+      width: '4@s',
+      resizeMode: 'contain',
+      marginLeft: '30@s',
     },
   });
 
