@@ -11,7 +11,12 @@ import Neumorphism from 'react-native-neumorphism';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import { scale } from 'react-native-size-matters';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { MenuTrigger } from 'react-native-popup-menu';
+import {
+  Menu,
+  MenuOption,
+  MenuOptions,
+  MenuTrigger,
+} from 'react-native-popup-menu';
 import { useSelector } from 'react-redux';
 import { ICurrentCustomer } from 'app/models/reducers/currentCustomer';
 
@@ -43,6 +48,7 @@ const FeedDetail: React.FC = () => {
       image: require('../../assets/yusuf.png'),
       name: 'Yusuf Shaikh',
       endDate: '2 Days Ago',
+      user_id: true,
       description:
         'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour',
     },
@@ -50,6 +56,7 @@ const FeedDetail: React.FC = () => {
       image: require('../../assets/yashi.png'),
       name: 'Yashi Queshi',
       endDate: '1 Month Ago',
+      user_id: false,
       description:
         'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour',
     },
@@ -57,10 +64,38 @@ const FeedDetail: React.FC = () => {
       image: require('../../assets/bilal.png'),
       name: 'Bilal Ahmad',
       endDate: '1 Month Ago',
+      user_id: false,
       description:
         'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour',
     },
   ]);
+  const [topOptions, settopOptions] = useState([
+    {
+      title: 'Recommend to Child',
+      image: require('../../assets/checkMark.png'),
+    },
+    {
+      title: 'Report Feed',
+      image: require('../../assets/reportFlag.png'),
+    },
+  ]);
+  const [options, setOptions] = useState([
+    {
+      title: 'Edit',
+      image: require('../../assets/pen.png'),
+    },
+    {
+      title: 'Delete',
+      image: require('../../assets/trash.png'),
+    },
+  ]);
+  const [reportOptions, setReportOptions] = useState([
+    {
+      title: 'Report',
+      image: require('../../assets/reportFlag.png'),
+    },
+  ]);
+
   return (
     <>
       <ScrollView style={styles(direction).container} bounces={false}>
@@ -108,20 +143,90 @@ const FeedDetail: React.FC = () => {
                         textStyle={styles(direction).text1}
                       />
                       {selectedRole === 'Parent' && (
-                        <MenuTrigger>
-                          <Image
-                            source={require('../../assets/menu.png')}
-                            style={styles(direction).menu}
-                          />
-                        </MenuTrigger>
+                        <Menu>
+                          <MenuTrigger>
+                            <Image
+                              source={require('../../assets/menu.png')}
+                              style={styles(direction).menu}
+                            />
+                          </MenuTrigger>
+                          <MenuOptions
+                            customStyles={{
+                              optionsContainer: {
+                                borderRadius: scale(14),
+                                width: scale(198),
+                                paddingVertical: scale(10),
+                                marginLeft: -6,
+                                backgroundColor: '#EBEEF0',
+                              },
+                            }}>
+                            {topOptions.map((op, i) => (
+                              <MenuOption
+                                onSelect={() => {}}
+                                customStyles={{
+                                  optionWrapper: {
+                                    flexDirection: 'row',
+                                    alignItems: 'center',
+                                    justifyContent: 'space-between',
+                                    paddingHorizontal: scale(15),
+                                    paddingVertical: scale(10),
+                                  },
+                                }}>
+                                <Text
+                                  style={styles(direction).optionTitleStyle}>
+                                  {op.title}{' '}
+                                </Text>
+                                <Image
+                                  source={op.image}
+                                  style={styles(direction).menuImage}
+                                />
+                              </MenuOption>
+                            ))}
+                          </MenuOptions>
+                        </Menu>
                       )}
                       {selectedRole === 'Teacher' && (
-                        <MenuTrigger>
-                          <Image
-                            source={require('../../assets/menu.png')}
-                            style={styles(direction).menu}
-                          />
-                        </MenuTrigger>
+                        <Menu>
+                          <MenuTrigger>
+                            <Image
+                              source={require('../../assets/menu.png')}
+                              style={styles(direction).menu}
+                            />
+                          </MenuTrigger>
+                          <MenuOptions
+                            customStyles={{
+                              optionsContainer: {
+                                borderRadius: scale(14),
+                                width: scale(198),
+                                paddingVertical: scale(20),
+                                marginLeft: -6,
+                                backgroundColor: '#EBEEF0',
+                              },
+                            }}>
+                            {topOptions.map((op, i) => (
+                              <MenuOption
+                                onSelect={() => {}}
+                                customStyles={{
+                                  optionWrapper: {
+                                    flexDirection: 'row',
+                                    alignItems: 'center',
+                                    justifyContent: 'space-between',
+                                    paddingHorizontal: scale(15),
+                                    paddingVertical: scale(7),
+                                  },
+                                }}>
+                                <Text
+                                  style={styles(direction).optionTitleStyle}>
+                                  {op.title}{' '}
+                                </Text>
+                                <Image
+                                  source={op.image}
+                                  style={styles(direction).menuImage}
+                                />
+                              </MenuOption>
+                            ))}
+                          </MenuOptions>
+                        </Menu>
                       )}
                     </View>
                     <Text style={styles(direction).text2}>
@@ -236,12 +341,74 @@ const FeedDetail: React.FC = () => {
                         </Text>
                       </View>
                       {selectedRole === 'Parent' && (
-                        <MenuTrigger>
-                          <Image
-                            source={require('../../assets/menu.png')}
-                            style={styles(direction).menu}
-                          />
-                        </MenuTrigger>
+                        <Menu>
+                          <MenuTrigger>
+                            <Image
+                              source={require('../../assets/menu.png')}
+                              style={styles(direction).menu}
+                            />
+                          </MenuTrigger>
+                          <MenuOptions
+                            customStyles={{
+                              optionsContainer: {
+                                borderRadius: scale(14),
+                                width: scale(198),
+                                paddingVertical: scale(10),
+                                marginLeft: -6,
+                                backgroundColor: '#EBEEF0',
+                              },
+                            }}>
+                            {item.user_id === false
+                              ? reportOptions.map((op, i) => (
+                                  <MenuOption
+                                    onSelect={() => {}}
+                                    customStyles={{
+                                      optionWrapper: {
+                                        flexDirection: 'row',
+                                        alignItems: 'center',
+                                        justifyContent: 'space-between',
+                                        paddingHorizontal: scale(15),
+                                        paddingVertical: scale(10),
+                                      },
+                                    }}>
+                                    <Text
+                                      style={
+                                        styles(direction).optionTitleStyle
+                                      }>
+                                      {op.title}{' '}
+                                    </Text>
+                                    <Image
+                                      source={op.image}
+                                      style={styles(direction).menuImage}
+                                    />
+                                  </MenuOption>
+                                ))
+                              : options.map((op, i) => (
+                                  <MenuOption
+                                    onSelect={() => {}}
+                                    customStyles={{
+                                      optionWrapper: {
+                                        flexDirection: 'row',
+                                        alignItems: 'center',
+                                        justifyContent: 'space-between',
+                                        paddingHorizontal: scale(15),
+                                        paddingVertical: scale(10),
+                                      },
+                                    }}>
+                                    <Text
+                                      style={
+                                        styles(direction).optionTitleStyle
+                                      }>
+                                      {op.title}{' '}
+                                    </Text>
+                                    <Image
+                                      source={op.image}
+                                      style={styles(direction).menuImage}
+                                    />
+                                  </MenuOption>
+                                ))}
+                          </MenuOptions>
+                        </Menu>
                       )}
                     </View>
                     <Text style={styles(direction).text2}>
