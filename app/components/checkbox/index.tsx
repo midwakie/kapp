@@ -3,7 +3,7 @@ import React, { memo, useState } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { TouchableOpacity } from 'react-native';
 import styles from './styles';
-import { scale } from 'react-native-size-matters';
+import { ms, s, scale } from 'react-native-size-matters';
 import { CheckBoxProps } from './types';
 const Checkbox = ({
   borderWidth,
@@ -23,9 +23,7 @@ const Checkbox = ({
         onChange && onChange(!isChecked);
         setIsChecked(!isChecked);
       }}>
-      {isChecked && (
-        <Icon name={icon} size={scale(iconSize)} color={iconColor} />
-      )}
+      {isChecked && <Icon name={icon} size={iconSize} color={iconColor} />}
     </TouchableOpacity>
   );
 };
