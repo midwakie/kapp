@@ -4,6 +4,6 @@ export type RegularButtonProps = {
   colors: Array<string>;
   radius: number;
   icon?: string | null;
-  height: number;
+  height: number | string;
   width: number | string;
 };

@@ -4,7 +4,7 @@ const styles = (radius: any, height: any, width: any) =>
   ScaledSheet.create({
     touchableOpacity: {
       borderRadius: `${radius}@ms`,
-      height: `${height}@ms`,
+      height: typeof height === 'number' ? `${height}@ms` : height,
       width: typeof width === 'number' ? `${width}@ms` : width,
       backgroundColor: 'transparent',
       justifyContent: 'center',
