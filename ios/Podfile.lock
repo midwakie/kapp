@@ -403,6 +403,8 @@ PODS:
     - React
   - RNVectorIcons (9.1.0):
     - React-Core
+  - vahesaroyan-react-native-bubble-select (0.1.8):
+    - React-Core
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -477,6 +479,7 @@ DEPENDENCIES:
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
+  - "vahesaroyan-react-native-bubble-select (from `../node_modules/@vahesaroyan/react-native-bubble-select`)"
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -587,6 +590,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-svg"
   RNVectorIcons:
     :path: "../node_modules/react-native-vector-icons"
+  vahesaroyan-react-native-bubble-select:
+    :path: "../node_modules/@vahesaroyan/react-native-bubble-select"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -649,6 +654,7 @@ SPEC CHECKSUMS:
   RNScreens: 40a2cb40a02a609938137a1e0acfbf8fc9eebf19
   RNSVG: 67f1f12dae2cef6ed59a42cae74a6b8f5a9e7b46
   RNVectorIcons: 7923e585eaeb139b9f4531d25a125a1500162a0b
+  vahesaroyan-react-native-bubble-select: 39e2c7422e09c696a3c1a522e712b0897a552cc9
   Yoga: 90dcd029e45d8a7c1ff059e8b3c6612ff409061a
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 

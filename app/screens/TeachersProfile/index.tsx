@@ -18,6 +18,12 @@ import TitleBar from 'app/components/buttons/TitleBar';
 import Neumorphism from 'react-native-neumorphism';
 import { scale } from 'react-native-size-matters';
 import PlainButton from 'app/components/buttons/PlainButton';
+import {
+  Menu,
+  MenuOption,
+  MenuOptions,
+  MenuTrigger,
+} from 'react-native-popup-menu';
 
 const TeachersProfile: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -50,6 +56,20 @@ const TeachersProfile: React.FC = () => {
       subscribers: '256k Subscribers',
       count: '132 Videos',
       standard: 'Standard 2',
+    },
+  ]);
+  const [options, setOptions] = useState([
+    {
+      title: 'Channel Privacy',
+      image: require('../../assets/privacy.png'),
+    },
+    {
+      title: 'Edit Channel',
+      image: require('../../assets/pen.png'),
+    },
+    {
+      title: 'Delete Channel',
+      image: require('../../assets/trash.png'),
     },
   ]);
   return (
@@ -143,11 +163,7 @@ const TeachersProfile: React.FC = () => {
                         <Text style={styles(direction).text}>
                           {t(item.titleName)}
                         </Text>
-                        <View
-                          style={{
-                            justifyContent: 'space-between',
-                            flexDirection: 'row',
-                          }}>
+                        <View style={{ flexDirection: 'row' }}>
                           <Text style={styles(direction).status}>
                             {t(item.subscribers)}
                           </Text>
@@ -159,10 +175,52 @@ const TeachersProfile: React.FC = () => {
                           {t(item.standard)}
                         </Text>
                       </View>
-                      <Image
-                        source={require('../../assets/threeDot.png')}
-                        style={styles(direction).icon}
-                      />
+                      <Menu>
+                        <MenuTrigger>
+                          <Image
+                            source={require('../../assets/menu.png')}
+                            style={styles(direction).menu}
+                          />
+                        </MenuTrigger>
+                        <MenuOptions
+                          customStyles={{
+                            optionsContainer: {
+                              borderRadius: scale(14),
+                              width: scale(214),
+                              paddingVertical: scale(20),
+                              marginTop: 40,
+                              marginLeft: -35,
+                              backgroundColor: '#EBEEF0',
+                            },
+                          }}>
+                          {options.map((op, i) => (
+                            <MenuOption
+                              onSelect={() => {}}
+                              customStyles={{
+                                optionWrapper: {
+                                  flexDirection: 'row',
+                                  alignItems: 'center',
+                                  justifyContent: 'space-between',
+                                  paddingHorizontal: scale(20),
+                                  paddingVertical: scale(9),
+                                },
+                              }}>
+                              <Text
+                                style={
+                                  op.title === 'Delete Channel'
+                                    ? styles(direction).optionTitleStyle2
+                                    : styles(direction).optionTitleStyle
+                                }>
+                                {op.title}{' '}
+                              </Text>
+                              <Image
+                                source={op.image}
+                                style={styles(direction).menuImage}
+                              />
+                            </MenuOption>
+                          ))}
+                        </MenuOptions>
+                      </Menu>
                     </View>
                   </Neumorphism>
                 </View>
