@@ -36,14 +36,13 @@ import EditTeacherProfile from 'app/screens/EditTeacherProfile';
 import ChildHome from 'app/screens/ChildHome';
 import MyFeeds from 'app/screens/MyFeeds';
 import BookReview from 'app/screens/BookReview';
-<<<<<<< HEAD
 import ChildFullProfile from 'app/screens/ChildFullProfile';
-=======
 import ManageActivities from 'app/screens/ManageActivities';
 import { ILoading } from 'app/models/reducers/loading';
 import History from 'app/screens/EBooks/History';
 import ChildProfile from 'app/screens/ChildProfile';
->>>>>>> develop
+import Home from 'app/screens/Home';
+import ChildFullProfileNoChannel from 'app/screens/ChildFullProfile-NoChannel';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -377,8 +376,18 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
-        name="ChildHome"
-        component={ChildHome}
+        name="Home"
+        component={Home}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ChildFullProfileNoChannel"
+        component={ChildFullProfileNoChannel}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation

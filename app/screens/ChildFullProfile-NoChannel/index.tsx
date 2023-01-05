@@ -23,7 +23,7 @@ import { ms, s, scale } from 'react-native-size-matters';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import { LineChart, ProgressChart } from 'react-native-chart-kit';
 
-const ChildFullProfile: React.FC = () => {
+const ChildFullProfileNoChannel: React.FC = () => {
   const refSlider: React.MutableRefObject<any> = useRef(null);
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
@@ -68,23 +68,6 @@ const ChildFullProfile: React.FC = () => {
       bookTitle: 'Angry Bird 2',
       author: 'Martin Luthe',
 
-      expanded: false,
-    },
-    {
-      id: 4,
-      activityTitle: 'Easy Math Book Reading',
-      description:
-        'Lorem Ipsum available, but the majority. There are many variations of passages.This is some additional text that will be displayed when the "More" button is clicked.',
-      endDate: '1 Day to go',
-      bookName: 'Math starter kit',
-      students: [
-        { avatarImage1: require('../../assets/person1.png') },
-        { avatarImage2: require('../../assets/person2.png') },
-        { avatarImage3: require('../../assets/person3.png') },
-        { avatarImage4: require('../../assets/person4.png') },
-        { avatarImage5: require('../../assets/person5.png') },
-        { avatarImage6: require('../../assets/interestIcon6.png') },
-      ],
       expanded: false,
     },
   ]);
@@ -449,79 +432,22 @@ const ChildFullProfile: React.FC = () => {
             darkColor={'#A8A8A8'}
             shapeType={'flat'}
             radius={14}>
-            <View style={styles(direction).rectangle5}>
-              <View style={styles(direction).subContainer}>
-                <View style={styles(direction).channelImageContainer}>
-                  <TouchableOpacity>
-                    <Image
-                      style={styles(direction).channelImage}
-                      source={require('../../assets/channelImage1.png')}></Image>
-                  </TouchableOpacity>
-                </View>
-                <View style={styles(direction).channelTextContainer}>
-                  <TouchableOpacity>
-                    <Text style={styles(direction).channelNameText}>
-                      {t('Sky Dream Colors')}
-                    </Text>
-                  </TouchableOpacity>
-                  <Text style={styles(direction).channelSubscribersText}>
-                    256k{t('Subscribers')}
-                  </Text>
-                  <Text style={styles(direction).channelVideosText}>
-                    132{t('Videos')}
-                  </Text>
-                </View>
-                <TouchableOpacity onPress={() => {}}>
-                  <MaterialIcon
-                    name={'more-vert'}
-                    size={ms(20)}
-                    color={'#758DAC'}
-                    style={styles(direction).moreVertIcon}
-                  />
-                </TouchableOpacity>
-              </View>
-              <View style={styles(direction).rectangle5SubContainer}>
-                <View style={styles(direction).pdfImageContainer}>
-                  <Image
-                    style={styles(direction).pdfImage}
-                    source={require('../../assets/pdfImage1.png')}></Image>
-                  <View style={styles(direction).pdfLogoContainer}>
-                    <TouchableOpacity onPress={() => {}}>
-                      <Image
-                        style={styles(direction).pdfLogoImage}
-                        source={require('../../assets/pdfLogo.png')}></Image>
-                    </TouchableOpacity>
-                  </View>
-                </View>
-                <View style={styles(direction).subContainerText}>
-                  <Text style={styles(direction).pdfNameText}>
-                    {t('Easy Maths Tricks')}
-                  </Text>
-                  <Text style={styles(direction).timeText}>
-                    {t('1 Hours Ago')}
-                  </Text>
-                </View>
-                <View style={styles(direction).vectorContainer}>
-                  <TouchableOpacity>
-                    <Image
-                      style={styles(direction).vectorImage}
-                      source={require('../../assets/likeLogo.png')}></Image>
-                  </TouchableOpacity>
-
-                  <Text style={styles(direction).numberText}>{t('2563')}</Text>
-                  <TouchableOpacity>
-                    <Image
-                      style={styles(direction).vectorImage}
-                      source={require('../../assets/commentLogo.png')}></Image>
-                  </TouchableOpacity>
-                  <Text style={styles(direction).numberText}>{t('235')}</Text>
-                  <TouchableOpacity>
-                    <Image
-                      style={styles(direction).vectorImage1}
-                      source={require('../../assets/viewLogo.png')}></Image>
-                  </TouchableOpacity>
-                  <Text style={styles(direction).numberText}>{t('126')}</Text>
-                </View>
+            <View style={styles(direction).rectangleNoChannel}>
+              <Image
+                style={styles(direction).noChannelImage}
+                source={require('../../assets/noChannelImage.png')}></Image>
+              <Text style={styles(direction).noChannelText}>
+                {t('You have not created any channel')}
+              </Text>
+              <View style={styles(direction).buttonContainer}>
+                <RegularButton
+                  onPress={() => {}}
+                  text={t('Create Channel')}
+                  radius={50}
+                  height={50}
+                  width={'100%'}
+                  colors={['#03BBE3', '#14A9FD']}
+                />
               </View>
             </View>
           </Neumorphism>
@@ -759,4 +685,4 @@ const ChildFullProfile: React.FC = () => {
   );
 };
 
-export default ChildFullProfile;
+export default ChildFullProfileNoChannel;

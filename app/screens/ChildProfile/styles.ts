@@ -183,6 +183,15 @@ const styles = (direction: string) =>
       position: 'absolute',
       resizeMode: 'contain',
     },
+    channelImageContainer:{
+      alignItems:'flex-start',
+    },
+    channelImage:{
+      height:'60@s',
+      width:'60@s',
+      marginLeft:'43@s',
+      radius:'150@s',
+    },
   });
 
 export default styles;

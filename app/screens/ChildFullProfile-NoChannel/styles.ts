@@ -486,6 +486,31 @@ right:'10@s',
     backgroundColor: '#EBEEF0',
    
    },
+   rectangleNoChannel:{
+    width: width - s(40),
+   
+    height: '263@s',
+    borderRadius: 15,
+    backgroundColor: '#EBEEF0',
+    alignItems:'center',
+   
+   },
+   noChannelText:{
+    fontSize:'16@s',
+    fontFamily:'Nunito-Regular',
+    fontWeight:'600',
+    color:'#455157',
+    top:'60@s',
+   },
+   buttonContainer:{
+    top:'80@s',
+   },
+   noChannelImage:{
+    height:'90@s',
+    width:'100@ms',
+    resizeMode:'contain',
+    top:'50@s',
+   },
    subContainer:{
     flexDirection:'row',
    },
@@ -682,7 +707,7 @@ activityWorkText2Container:{
   paddingHorizontal:'20@ms',
   marginTop:'40@s',
   alignItems:'flex-start',
-  
+ 
 },
 activityWorkText2:{
   color:'#758DAC',
@@ -700,7 +725,7 @@ activityWorkText3:{
   fontSize:'14@s',
   fontWeight:'600',
   top:'3@s',
-  
+ 
   
 },
 activityImage:{
