@@ -164,5 +164,9 @@
  "Interest & Hobbie!": "الفائدة والهوبي!",
  "You didn't select any interest & hobbies yet": "لم تحدد أي اهتمامات وهوايات حتى الآن",
  "Teacher": "مدرس",
- "Create New Channel": "إنشاء قناة جديدة"
+ "Create New Channel": "إنشاء قناة جديدة",
+ "Publish New Video": "انشر فيديو جديد",
+ "Title": "لقب",
+ "Description": "وصف",
+ "Category": "فئة"
 }
