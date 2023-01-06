@@ -191,6 +191,15 @@ const styles = (direction: string) =>
       width: '4@s',
       resizeMode: 'contain',
     },
+    optionTitleStyle: {
+      color: '#758DAC',
+      fontSize: '14@s',
+    },
+    menuImage: {
+      height: '20@s',
+      width: '20@s',
+      resizeMode: 'contain',
+    },
   });
 
 export default styles;

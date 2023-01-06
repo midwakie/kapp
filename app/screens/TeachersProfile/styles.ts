@@ -82,14 +82,14 @@ const styles = (direction: string) =>
       color: '#2F4868',
       fontWeight: '700',
       fontFamily: 'Nunito-Regular',
-      marginTop: '26@s',
+      top: '20@s',
     },
     text2: {
       fontFamily: 'Nunito-Regular',
       fontWeight: '600',
       fontSize: '12@s',
       color: '#455157',
-      marginTop: '6@s',
+      top: '29@s',
     },
     status: {
       width: '97@s',
@@ -97,7 +97,7 @@ const styles = (direction: string) =>
       fontWeight: '600',
       fontSize: '12@ms',
       color: '#03A0E3',
-      marginTop: '3@s',
+      top: '22@s',
     },
     text3: {
       width: '26@s',
@@ -120,7 +120,7 @@ const styles = (direction: string) =>
       fontWeight: '600',
       fontSize: '12@ms',
       color: '#455157',
-      marginTop: '3@s',
+      top: '22@s',
     },
     bottomText: {
       marginLeft: '10@s',
@@ -168,16 +168,27 @@ const styles = (direction: string) =>
       fontFamily: 'Nunito-Regular',
       marginTop: '6@s',
     },
-    icon: {
-      width: '4@ms',
-      height: '16@ms',
-      marginRight: '20@s',
-      marginTop: '39@s',
-      marginBottom: '38@s',
+    menu: {
+      height: '16@s',
+      width: '4@s',
+      top: '39@s',
+      right: '20@s',
+      resizeMode: 'contain',
+    },
+    menuImage: {
+      height: '20@s',
+      width: '20@s',
+      resizeMode: 'contain',
+    },
+    optionTitleStyle: {
+      color: '#758DAC',
+      fontSize: '14@s',
+    },
+    optionTitleStyle2: {
+      color: '#FD4449',
+      fontSize: '14@s',
     },
     leftContainer: {
-      //   width: '40@s',
-      //   height: '40@s',
       marginLeft: '10@s',
       marginTop: '15@s',
       flex: 1,
