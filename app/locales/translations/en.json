@@ -160,6 +160,9 @@
  "Publish New Video": "Publish New Video",
  "Title": "Title",
  "Description": "Description",
- "Category": "Category"
+ "Category": "Category",
+ "Search here..": "Search here..",
+ "Assign Activity": "Assign Activity",
+ "Assign All": "Assign All"
 
 }
