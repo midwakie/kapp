@@ -48,6 +48,7 @@ import ActivityFilter from 'app/screens/ActivityFilter';
 import ParentProfileDetail from 'app/screens/ParentProfileDetail';
 import TeachersProfile from 'app/screens/TeachersProfile';
 import ClubChannel from 'app/screens/ClubChannel';
+import TestHardness from 'app/screens/TestHardness';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -75,7 +76,7 @@ const AuthStack = () => {
 
   return (
     <AuthenticationStack.Navigator
-      initialRouteName={initialRouteName}
+      initialRouteName={'Manage Activities'}
       screenOptions={{
         ...TransitionPresets.SlideFromRightIOS,
       }}>
@@ -443,6 +444,16 @@ const AuthStack = () => {
       <Stack.Screen
         name="ParentProfileDetail"
         component={ParentProfileDetail}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="TestHardness"
+        component={TestHardness}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation

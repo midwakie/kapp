@@ -161,7 +161,7 @@ const ManageActivities: React.FC = () => {
                       </View>
                       <View style={styles(direction).container5}>
                         <Text style={styles(direction).text3}>
-                          {!item.expanded && item.description.slice(0, 79)}
+                          {!item.expanded && item.description.slice(0, 70)}
                           {!item.expanded && (
                             <Text
                               style={{ color: '#03A0E3' }}
