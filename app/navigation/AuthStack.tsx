@@ -26,6 +26,7 @@ import LinkChild from 'app/screens/LinkChild';
 import ChangeSchool from 'app/screens/ChangeSchool';
 import DeliveryAddress from 'app/screens/DeliveryAddress';
 import CreateChannel from 'app/screens/CreateChannel';
+import MyChannel from 'app/screens/MyChannel';
 import BookDetails from 'app/screens/BookDetails';
 import ChildAccount from 'app/screens/ChildAccount';
 import ActivitiesStats from 'app/screens/ActivityStatus';
@@ -37,12 +38,20 @@ import ChildHome from 'app/screens/ChildHome';
 import MyFeeds from 'app/screens/MyFeeds';
 import BookReview from 'app/screens/BookReview';
 import ChildFullProfile from 'app/screens/ChildFullProfile';
+import FeedDetail from 'app/screens/FeedDetail';
+import RecommendedVideos from 'app/screens/RecommendedVideos';
 import ManageActivities from 'app/screens/ManageActivities';
 import { ILoading } from 'app/models/reducers/loading';
 import History from 'app/screens/EBooks/History';
 import ChildProfile from 'app/screens/ChildProfile';
 import Home from 'app/screens/Home';
 import ChildFullProfileNoChannel from 'app/screens/ChildFullProfile-NoChannel';
+import ManagePeople from 'app/screens/ManagePeople';
+import AddReview from 'app/screens/AddReview';
+import ActivityFilter from 'app/screens/ActivityFilter';
+import ParentProfileDetail from 'app/screens/ParentProfileDetail';
+import TeachersProfile from 'app/screens/TeachersProfile';
+import TestHardness from 'app/screens/TestHardness';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -115,8 +124,38 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
+        name="MyChannel"
+        component={MyChannel}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
         name="ActivitiesStats"
         component={ActivitiesStats}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="MyFeeds"
+        component={MyFeeds}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="TeachersProfile"
+        component={TeachersProfile}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
@@ -135,8 +174,8 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
-        name="MyFeeds"
-        component={MyFeeds}
+        name="FeedDetail"
+        component={FeedDetail}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
@@ -356,6 +395,16 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
+        name="RecommendedVideos"
+        component={RecommendedVideos}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
         name="Manage Activities"
         component={ManageActivities}
         options={{
@@ -376,6 +425,26 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
+        name="ManagePeople"
+        component={ManagePeople}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Add Review"
+        component={AddReview}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
         name="Home"
         component={Home}
         options={{
@@ -388,6 +457,36 @@ const AuthStack = () => {
       <Stack.Screen
         name="ChildFullProfileNoChannel"
         component={ChildFullProfileNoChannel}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Activity Filter"
+        component={ActivityFilter}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ParentProfileDetail"
+        component={ParentProfileDetail}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="TestHardness"
+        component={TestHardness}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
