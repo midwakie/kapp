@@ -136,7 +136,7 @@ const Child: React.FC = (props: any) => {
                     </View>
                   </TouchableOpacity>
                   <Text style={styles(direction).profileName}>
-                    {item.profileName}
+                    {t(item.profileName)}
                   </Text>
                 </View>
               )}
