@@ -33,7 +33,7 @@ const SelectRole: React.FC = () => {
           <View style={styles(direction).gradientTextContainer}>
             <GradientText
               colors={['#0EAFF4', '#0D93CD']}
-              text={t('SeIect Your Role')}
+              text={t('Select Your Role')}
               start={{ x: 0, y: 0 }}
               end={{ x: 0, y: 1 }}
               textStyle={styles(direction).gradientTextStyle as TextStyle}
