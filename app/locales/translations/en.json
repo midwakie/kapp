@@ -184,6 +184,14 @@
  "You didn't select any interest & hobbies yet": "You didn't select any interest & hobbies yet",
  "Club": "Club",
  "Teacher": "Teacher",
- "Create New Channel": "Create New Channel"
+ "Create New Channel": "Create New Channel",
+ "Publish New Video": "Publish New Video",
+ "Title": "Title",
+ "Description": "Description",
+ "Category": "Category",
+ "Search here..": "Search here..",
+ "Assign Activity": "Assign Activity",
+ "Assign All": "Assign All",
+ "Child": "Child"
 
 }

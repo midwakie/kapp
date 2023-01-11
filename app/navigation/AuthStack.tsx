@@ -54,6 +54,9 @@ import TeachersProfile from 'app/screens/TeachersProfile';
 import ClubChannel from 'app/screens/ClubChannel';
 import PublishNewDocument from 'app/screens/PublishNewDocument';
 import TestHardness from 'app/screens/TestHardness';
+import PublishNewVideo from 'app/screens/PublishNewVideo';
+import AssignActivity from 'app/screens/AssignActivity';
+import Child from 'app/screens/Child';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -98,6 +101,16 @@ const AuthStack = () => {
       <Stack.Screen
         name="Welcome"
         component={Landing}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Child"
+        component={Child}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
@@ -158,6 +171,26 @@ const AuthStack = () => {
       <Stack.Screen
         name="TeachersProfile"
         component={TeachersProfile}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="PublishNewVideo"
+        component={PublishNewVideo}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="AssignActivity"
+        component={AssignActivity}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
