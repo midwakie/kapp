@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import styles from './styles';
 import { ScrollView } from 'react-native-gesture-handler';
+import NavigationService from 'app/navigation/NavigationService';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import Neumorphism from 'react-native-neumorphism';

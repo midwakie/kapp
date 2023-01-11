@@ -37,12 +37,15 @@ import EditTeacherProfile from 'app/screens/EditTeacherProfile';
 import ChildHome from 'app/screens/ChildHome';
 import MyFeeds from 'app/screens/MyFeeds';
 import BookReview from 'app/screens/BookReview';
+import ChildFullProfile from 'app/screens/ChildFullProfile';
 import FeedDetail from 'app/screens/FeedDetail';
 import RecommendedVideos from 'app/screens/RecommendedVideos';
 import ManageActivities from 'app/screens/ManageActivities';
 import { ILoading } from 'app/models/reducers/loading';
 import History from 'app/screens/EBooks/History';
 import ChildProfile from 'app/screens/ChildProfile';
+import Home from 'app/screens/Home';
+import ChildFullProfileNoChannel from 'app/screens/ChildFullProfile-NoChannel';
 import ManagePeople from 'app/screens/ManagePeople';
 import AddReview from 'app/screens/AddReview';
 import ActivityFilter from 'app/screens/ActivityFilter';
@@ -363,16 +366,6 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
-        name="ChildHome"
-        component={ChildHome}
-        options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
-          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
         name="Publish"
         component={Publish}
         options={{
@@ -423,6 +416,16 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
+        name="ChildFullProfile"
+        component={ChildFullProfile}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
         name="ManagePeople"
         component={ManagePeople}
         options={{
@@ -435,6 +438,26 @@ const AuthStack = () => {
       <Stack.Screen
         name="Add Review"
         component={AddReview}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Home"
+        component={Home}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ChildFullProfileNoChannel"
+        component={ChildFullProfileNoChannel}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
