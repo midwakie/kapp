@@ -37,8 +37,9 @@ const styles = (direction: string) =>
 
     container1: {
       paddingHorizontal: '30@s',
-      marginTop: 135,
+      marginTop: '105@s',
       width: '100%',
+      paddingBottom: '30@s',
     },
     profileImgContainer1: {
       width: '100%',

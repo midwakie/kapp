@@ -100,7 +100,7 @@ const PublishNewDocument: React.FC = () => {
                 <TouchableOpacity style={styles(direction).rightComponent}>
                   <MaterialIcon
                     name={'chevron-down'}
-                    size={35}
+                    size={scale(35)}
                     color={'#03A0E3'}
                   />
                 </TouchableOpacity>
@@ -128,7 +128,7 @@ const PublishNewDocument: React.FC = () => {
               lightColor={'#ffffff'}
               darkColor={'#A8A8A8'}
               shapeType={'flat'}
-              radius={50}>
+              radius={scale(50)}>
               <View style={styles(direction).topIconContainer}>
                 <Image
                   style={styles(direction).coinImage}
