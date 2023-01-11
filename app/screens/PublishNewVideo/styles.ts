@@ -59,6 +59,7 @@ const styles = (direction: string) =>
       height: '42@s',
       alignItems: 'center',
       justifyContent: 'center',
+      backgroundColor: '#EBEEF0',
     },
     videoContainer: {
       marginBottom: '41@s',
