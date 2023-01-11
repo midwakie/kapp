@@ -119,7 +119,7 @@ const styles = (direction: string) =>
     },
     rectangle2: {
       width: '100%',
-      height: '386@s',
+      // height: '386@s',
       backgroundColor: '#EBEEF0',
       padding: '20@s',
     },
@@ -174,6 +174,7 @@ const styles = (direction: string) =>
       flexDirection: 'row',
       width: '70@s',
       height: '32@s',
+      backgroundColor: '#EBEEF0',
     },
     iconBox1: {
       alignSelf: 'center',
