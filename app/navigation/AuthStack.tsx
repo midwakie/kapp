@@ -51,6 +51,7 @@ import AddReview from 'app/screens/AddReview';
 import ActivityFilter from 'app/screens/ActivityFilter';
 import ParentProfileDetail from 'app/screens/ParentProfileDetail';
 import TeachersProfile from 'app/screens/TeachersProfile';
+import PublishNewDocument from 'app/screens/PublishNewDocument';
 import TestHardness from 'app/screens/TestHardness';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
@@ -477,6 +478,16 @@ const AuthStack = () => {
       <Stack.Screen
         name="ParentProfileDetail"
         component={ParentProfileDetail}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="PublishNewDocument"
+        component={PublishNewDocument}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
