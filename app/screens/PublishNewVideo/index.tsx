@@ -57,7 +57,7 @@ const PublishNewVideo: React.FC = () => {
               lightColor={'#ffffff'}
               darkColor={'#A8A8A8'}
               shapeType={'flat'}
-              radius={50}>
+              radius={scale(50)}>
               <View style={styles(direction).rightContainer}>
                 <TouchableOpacity
                   onPress={() => {
@@ -136,7 +136,7 @@ const PublishNewVideo: React.FC = () => {
                 <TouchableOpacity style={styles(direction).rightComponent}>
                   <MaterialIcon
                     name={'chevron-down'}
-                    size={30}
+                    size={scale(30)}
                     color={'#03A0E3'}
                   />
                 </TouchableOpacity>

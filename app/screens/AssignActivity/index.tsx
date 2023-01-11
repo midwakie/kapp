@@ -158,7 +158,7 @@ const AssignActivity: React.FC = () => {
                     lightColor={'#ffffff'}
                     darkColor={'#A8A8A8'}
                     shapeType={'flat'}
-                    radius={14}>
+                    radius={scale(14)}>
                     <View style={styles(direction).rectangle3}>
                       <View style={styles(direction).rowContainer}>
                         <Image

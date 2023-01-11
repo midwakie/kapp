@@ -73,9 +73,9 @@ const styles = (direction: string) =>
       width: '107@s',
       height: '40@s',
       alignSelf: 'flex-end',
-      right: '25@s',
-      alignItems: 'center',
+      alignItems: 'flex-end',
       justifyContent: 'center',
+      right: '20@s',
     },
     assignText: {
       fontFamily: 'Nunito-Regular',
@@ -129,7 +129,7 @@ const styles = (direction: string) =>
     neomorphContainer: {
       // margin: 20,
       width: '100%',
-      paddingHorizontal: 20,
+      paddingHorizontal: '20@s',
       marginTop: '20@s',
       // paddingVertical: '20',
     },
