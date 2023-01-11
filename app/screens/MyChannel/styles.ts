@@ -6,7 +6,7 @@ const width =
     ? Dimensions.get('window').height
     : Dimensions.get('window').width;
 
-const styles = (direction: string) =>
+const styles = (direction: string, active?: boolean) =>
   ScaledSheet.create({
     container: {
       width: '100%',
@@ -26,12 +26,25 @@ const styles = (direction: string) =>
       fontWeight: '700',
       textAlign: 'center',
     },
+    gradientTextStyleName: {
+      fontSize: '14@s',
+      fontFamily: 'Nunito-Regular',
+      fontWeight: '600',
+      textAlign: 'center',
+    },
     topContainer: {
       justifyContent: 'center',
       alignItems: 'center',
       position: 'absolute',
       width: 38,
       marginLeft: '20@s',
+    },
+    boxText: {
+      fontSize: '16@ms',
+      fontWeight: active ? '700' : '800',
+      fontFamily: 'Nunito-Regular',
+      alignSelf: 'center',
+      color: active ? '#758DAC' : '#FFFFFF',
     },
     container1: {
       // marginTop: 20,
@@ -129,6 +142,12 @@ const styles = (direction: string) =>
       height: '16@s',
       width: '4@s',
       resizeMode: 'contain',
+    },
+    topImage: {
+      height: '40@s',
+      width: '40@s',
+      marginRight: '15@s',
+      // resizeMode: 'contain',
     },
     profileImg3: {
       height: '100%',
@@ -420,20 +439,24 @@ const styles = (direction: string) =>
     icon: {
       width: '16@s',
       height: '13.71@s',
+      marginTop: '2@s',
       marginLeft: '16@s',
+      tintColor: '#FF5E62',
       // marginTop: '6@s',
     },
     icon2: {
       width: '16@s',
       height: '13.71@s',
+      marginTop: '2@s',
       marginLeft: '20@s',
+      tintColor: '#03A0E3',
       // marginTop: '6@s',
     },
     icon3: {
       width: '16@s',
-      height: '13.71@s',
+      height: '9.54@s',
       marginLeft: '20@s',
-      // marginTop: '6@s',
+      marginTop: '2@s',
     },
     icon4: {
       width: '4@s',
@@ -595,6 +618,10 @@ const styles = (direction: string) =>
     },
     optionTitleStyle: {
       color: '#758DAC',
+      fontSize: '14@s',
+    },
+    optionTitleStyleColor: {
+      color: '#EC4D61',
       fontSize: '14@s',
     },
     option2: {

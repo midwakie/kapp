@@ -152,9 +152,26 @@ const styles = (direction: string) =>
       width: '100%',
       marginTop: '37@s',
     },
-    icon: {
+    iconLove: {
       width: '24@s',
       height: '21@s',
+      marginLeft: '25@s',
+    },
+    iconChat: {
+      width: '24@s',
+      height: '21@s',
+      tintColor: '#03A0E3',
+      marginLeft: '25@s',
+    },
+    iconLiked: {
+      width: '24@s',
+      height: '21@s',
+      tintColor: '#FF5E62',
+      marginLeft: '25@s',
+    },
+    iconEye: {
+      width: '23@s',
+      height: '14@s',
       marginLeft: '25@s',
     },
     iconText: {
