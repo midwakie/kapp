@@ -43,6 +43,9 @@ import History from 'app/screens/EBooks/History';
 import ChildProfile from 'app/screens/ChildProfile';
 import Home from 'app/screens/Home';
 import ChildFullProfileNoChannel from 'app/screens/ChildFullProfile-NoChannel';
+import SuggestionsForYou from 'app/screens/SuggestionsForYou';
+import ClassFilter from 'app/screens/ClassFilter';
+import MyStudentList from 'app/screens/MyStudentList';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -388,6 +391,36 @@ const AuthStack = () => {
       <Stack.Screen
         name="ChildFullProfileNoChannel"
         component={ChildFullProfileNoChannel}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="SuggestionsForYou"
+        component={SuggestionsForYou}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ClassFilter"
+        component={ClassFilter}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="MyStudentList"
+        component={MyStudentList}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
