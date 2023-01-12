@@ -1,5 +1,5 @@
 import { Dimensions } from 'react-native';
-import { ScaledSheet, s } from 'react-native-size-matters';
+import { ms, scale, ScaledSheet, s } from 'react-native-size-matters';
 
 const width =
   Dimensions.get('window').width >= Dimensions.get('window').height
@@ -14,113 +14,167 @@ const styles = (direction: string) =>
       backgroundColor: '#EBEEF0',
     },
     safeAreaView: { alignSelf: 'stretch' },
-    gradientTextContainer: {
-      width: '126@s',
-      justifyContent: 'center',
-      alignItems: 'center',
-      height: '22@s',
-    },
-    gradientTextStyle: {
-      fontSize: '16@s',
-      fontFamily: 'Nunito-Regular',
-      fontWeight: '700',
-      textAlign: 'center',
+    container2: {
+      paddingHorizontal: '10@ms',
+      marginTop: '30@s',
+      width: '100%',
+      height: '100%',
+      paddingBottom: '25@s',
+      backgroundColor: '#EBEEF0',
     },
     topContainer: {
       justifyContent: 'center',
       alignItems: 'center',
       position: 'absolute',
-      width: 38,
+      width: '38@s',
       marginLeft: '20@s',
     },
-    containerRectangle: {
-      height: '65@s',
+    gradientTextContainer: {
       width: '100%',
-      paddingHorizontal: '20@s',
-      borderRadius: '14@s',
-
-      flexDirection: 'row',
+      justifyContent: 'center',
       alignItems: 'center',
+      height: '33@s',
+      paddingHorizontal: '30@s',
     },
-    containerRectangle1: {
-      height: '68@s',
-      width: '100%',
-      paddingHorizontal: '20@s',
-      borderRadius: '14@s',
-      flexDirection: 'row',
-
+    gradientTextStyle: {
+      fontSize: '18@s',
+      fontFamily: 'Nunito-Regular',
+      fontWeight: '700',
+    },
+    gridViewContainer: {
+      marginTop: '85@s',
+      padding: '10@s',
+      backgroundColor: '#EBEEF0',
+    },
+    gridView: {
+      paddingHorizontal: '10@ms',
       alignItems: 'center',
       justifyContent: 'space-between',
+      flexDirection: 'row',
+      width: '138@s',
+      height: '40@s',
+      backgroundColor: '#EBEEF0',
     },
-    neomorphContainer1: {
-      marginTop: '40@s',
-      marginBottom: '30@s',
-    },
-    text1: {
+    gridText: {
       color: '#3B3B48',
+      textAlign: 'center',
       fontSize: '16@s',
-      fontWeight: '600',
       fontFamily: 'Nunito-Regular',
+      fontWeight: '600',
     },
-    filterView: {
+    card: {
+      height: '199@ms',
+      width: '148@ms',
+      backgroundColor: '#EBEEF0',
+    },
+    cardListStyle: {
+      height: '65@ms',
+      width: Dimensions.get('window').width - scale(40),
+      backgroundColor: '#EBEEF0',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      borderRadius: '14@s',
+    },
+    cardListStyleTwo: {
+      paddingHorizontal: '20@s',
+      height: '65@ms',
+      width: Dimensions.get('window').width - scale(40),
+      backgroundColor: '#EBEEF0',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      borderRadius: '14@s',
+    },
+    filterViewContainer: {
       height: '38@s',
       width: '38@s',
       borderRadius: '38@s',
-      alignItems: 'center',
       justifyContent: 'center',
+      alignItems: 'center',
     },
-    detailsContainer: {
-      marginLeft: '15@s',
-    },
-
-    neomorphContainer2: {
-      height: '65@s',
-
-      margin: '10@s',
-    },
-
-    imageContainer: {
-      height: '40@s',
-      width: '40@s',
-      borderRadius: '40@s',
-    },
-    imageStyle: {
-      height: '40@s',
-      width: '40@s',
+    filterImage: {
+      height: '17@s',
+      width: '17@s',
       resizeMode: 'contain',
     },
-    nameText: {
-      color: '#323A3D',
-      fontFamily: 'Nunito-Regular',
-      fontWeight: '600',
-      fontSize: '14@s',
-    },
-    subjectText: {
-      color: '#758DAC',
-      fontFamily: 'Nunito-Regular',
-      fontWeight: '600',
-      fontSize: '12@s',
-    },
 
-    neomorphContainer3: {
-      marginTop: '10@s',
-
-      margin: '1@s',
-    },
-
-    container2: {
-      width: '100%',
-      height: '100%',
-      paddingBottom: '25@s',
-      marginTop: '85@s',
+    innerDirection: {
+      paddingHorizontal: '15@s',
+      flexDirection: 'row',
       justifyContent: 'center',
-      paddingHorizontal: '20@s',
+      alignItems: 'center',
     },
-
-    titleBarContainer: {
-      position: 'absolute',
+    cardContainer: {
+      marginTop: '20@s',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '100%',
       width: '100%',
     },
+    neomorphContainer: {
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    neomorphListContainer: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      margin: '20@s',
+    },
+    neomorphMargin: { margin: '10@ms' },
+    cardImage: {
+      height: '118@ms',
+      width: '100%',
+    },
+    cardListImage: {
+      height: '40@ms',
+      width: '40@ms',
+      borderRadius: '13@ms',
+      margin: '5@ms',
+    },
+    cardContent: {
+      width: '100%',
+      flexDirection: 'column',
+      paddingHorizontal: '11@s',
+      marginTop: '8@s',
+    },
+    cardListContent: {
+      paddingLeft: '10@s',
+      justifyContent: 'center',
+      alignItems: 'flex-start',
+      flexDirection: 'column',
+    },
+    title: {
+      fontFamily: 'Nunito-Regular',
+      fontSize: '14@ms',
+      fontWeight: '600',
+      color: '#323A3D',
+    },
+    author: {
+      fontFamily: 'Nunito-Regular',
+      fontSize: '12@ms',
+      fontWeight: '600',
+      color: '#758DAC',
+      marginBottom: '4@s',
+    },
+    price: {
+      fontFamily: 'Nunito-Regular',
+      fontSize: '12@ms',
+      fontWeight: '700',
+      color: '#03A0E3',
+    },
+    priceListStyle: {
+      fontFamily: 'Nunito-Regular',
+      fontSize: '16@ms',
+      fontWeight: '700',
+      color: '#03A0E3',
+      marginRight: ms(25),
+      marginBottom: ms(22),
+      alignSelf: 'flex-end',
+      width: '53@s',
+      textAlign: 'right',
+    },
+    titleBarContainer: { position: 'absolute', width: '100%' },
   });
 
 export default styles;

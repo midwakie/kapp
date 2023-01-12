@@ -1,147 +1,158 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from 'react';
-import {
-  SafeAreaView,
-  Text,
-  TextStyle,
-  View,
-  Image,
-  FlatList,
-} from 'react-native';
+import React, { useEffect, useState } from 'react';
 import styles from './styles';
-import NavigationService from 'app/navigation/NavigationService';
-import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
-import Neumorphism from 'react-native-neumorphism';
 import GradientText from 'app/components/texts/GradientText';
-import { useForm } from 'react-hook-form';
 import RegularButton from 'app/components/buttons/RegularButton';
 import { useTranslation } from 'react-i18next';
-import { scale } from 'react-native-size-matters';
+import NavigationService from 'app/navigation/NavigationService';
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
+import {
+  Image,
+  SafeAreaView,
+  Text,
+  View,
+  FlatList,
+  TextStyle,
+  TouchableWithoutFeedback,
+  Alert,
+  Dimensions,
+} from 'react-native';
 import TitleBar from 'app/components/buttons/TitleBar';
-import HorizontalLine from 'app/components/lines/HorizontalLine';
+import Neumorphism from 'react-native-neumorphism';
+import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { ms, scale } from 'react-native-size-matters';
+import useDeviceOrientation from 'app/hooks/useDeviceOrientation';
 
 const MyStudentList: React.FC = () => {
-  const { control } = useForm();
-
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
+  const currentOrientation = useDeviceOrientation();
+
   const details = [
     {
       id: 1,
-      Name: 'Abeer Shaikh',
-      Subject: 'English',
+      name: 'Abeer Shaikh',
+      subject: 'English',
       img: require('../../assets/studentList1.png'),
     },
     {
       id: 2,
-      Name: 'Ahmad Ali',
-      Subject: 'Urdu',
-
+      name: 'Ahmad Ali',
+      subject: 'Malayalam',
       img: require('../../assets/studentList2.png'),
     },
     {
       id: 3,
-      Name: 'Amira Qureshi',
-      Subject: 'Sport And Health',
+      name: 'Amira Qureshi',
+      subject: 'Tamil',
       img: require('../../assets/studentList3.png'),
     },
     {
       id: 4,
-      Name: 'Farida Qtaishat',
-      Subject: 'Maths',
-
+      name: 'Farida Qtaishat',
+      subject: 'Urdu',
       img: require('../../assets/studentList1.png'),
     },
     {
       id: 5,
-      Name: 'Mohammed Rasool',
-      Subject: 'Science',
-
+      name: 'Mohammed Rasool',
+      subject: 'Maths',
       img: require('../../assets/studentList2.png'),
     },
     {
       id: 6,
-      Name: 'Saba Qamar',
-      Subject: 'English',
-
+      name: 'Amira Qureshi',
+      subject: 'Sports and Health',
       img: require('../../assets/studentList3.png'),
     },
+    {
+      id: 7,
+      name: 'Saba Qamar',
+      subject: 'Science',
+      img: require('../../assets/studentList1.png'),
+    },
   ];
+
   const CardListItem = ({ details }: any) => {
     return (
-      <TouchableOpacity onPress={() => {}}>
-        <Neumorphism
-          lightColor={'#ffffff'}
-          darkColor={'#A8A8A8'}
-          shapeType={'flat'}
-          style={styles(direction).neomorphContainer2}
-          radius={scale(14)}>
-          <TouchableOpacity>
-            <View style={styles(direction).containerRectangle}>
-              <View style={styles(direction).imageContainer}>
+      <View style={styles(direction).neomorphContainer}>
+        <TouchableOpacity
+          onPress={() => {
+            NavigationService.navigate('BookDetails');
+          }}>
+          <Neumorphism
+            style={styles(direction).neomorphMargin}
+            lightColor={'#ffffff'}
+            darkColor={'#C6CEDA'}
+            shapeType={'flat'}
+            radius={scale(14)}>
+            <View style={styles(direction).cardListStyle}>
+              <View style={styles(direction).innerDirection}>
                 <Image
-                  style={styles(direction).imageStyle}
                   source={details.img}
+                  style={styles(direction).cardListImage}
                 />
-              </View>
-              <View style={styles(direction).detailsContainer}>
-                <Text style={styles(direction).nameText}>{details.Name}</Text>
-                <Text style={styles(direction).subjectText}>
-                  {details.Subject}
-                </Text>
+                <View style={styles(direction).cardListContent}>
+                  <Text style={styles(direction).title} numberOfLines={1}>
+                    {details.title}
+                  </Text>
+                  <Text style={styles(direction).author}>{details.author}</Text>
+                </View>
               </View>
             </View>
-          </TouchableOpacity>
-        </Neumorphism>
-      </TouchableOpacity>
+          </Neumorphism>
+        </TouchableOpacity>
+      </View>
     );
   };
 
   return (
     <>
-      <ScrollView style={styles(direction).container} bounces={false}>
-        <SafeAreaView style={styles(direction).safeAreaView}>
-          <View style={styles(direction).container2}>
+      <SafeAreaView style={styles(direction).safeAreaView}>
+        <View style={styles(direction).container2}>
+          <View style={styles(direction).gridViewContainer}>
             <Neumorphism
-              lightColor={'#ffffff'}
-              darkColor={'#A8A8A8'}
+              lightColor={'#FEFEFF'}
+              darkColor={'#C6CEDA'}
               shapeType={'flat'}
-              style={styles(direction).neomorphContainer1}
-              radius={scale(14)}>
-              <View style={styles(direction).containerRectangle1}>
-                <Text style={styles(direction).text1}>
+              radius={scale(8)}>
+              <View style={styles(direction).cardListStyleTwo}>
+                <Text style={styles(direction).gridText}>
                   {t('All Class Room Channels')}
                 </Text>
                 <Neumorphism
-                  lightColor={'#ffffff'}
-                  darkColor={'#A8A8A8'}
+                  lightColor={'#FEFEFF'}
+                  darkColor={'#C6CEDA'}
                   shapeType={'flat'}
                   radius={scale(38)}>
                   <TouchableOpacity
-                    onPress={() => {
-                      NavigationService.navigate('ClassFilter');
-                    }}>
-                    <View style={styles(direction).filterView}>
+                    onPress={() => NavigationService.navigate('ClassFilter')}>
+                    <View style={styles(direction).filterViewContainer}>
                       <Image
-                        source={require('../../assets/filterImage.png')}></Image>
+                        source={require('../../assets/filter.png')}
+                        style={styles(direction).filterImage}
+                      />
                     </View>
                   </TouchableOpacity>
                 </Neumorphism>
               </View>
             </Neumorphism>
-
-            <FlatList
-              numColumns={1}
-              key={'-'}
-              keyExtractor={item => '-' + item.id}
-              data={details}
-              renderItem={({ item }) => {
-                return <CardListItem details={item} />;
-              }}
-            />
           </View>
-        </SafeAreaView>
-      </ScrollView>
+          <ScrollView style={styles(direction).container} bounces={false}>
+            <View style={styles(direction).cardContainer}>
+              <FlatList
+                numColumns={1}
+                key={'-'}
+                keyExtractor={item => '-' + item.id}
+                data={details}
+                renderItem={({ item }) => {
+                  return <CardListItem book={item} />;
+                }}
+              />
+            </View>
+          </ScrollView>
+        </View>
+      </SafeAreaView>
       <View style={styles(direction).titleBarContainer}>
         <TitleBar
           leftComponent={
@@ -174,5 +185,4 @@ const MyStudentList: React.FC = () => {
     </>
   );
 };
-
 export default MyStudentList;
