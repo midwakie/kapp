@@ -22,6 +22,7 @@
     "@react-navigation/native": "6.0.8",
     "@react-navigation/stack": "6.1.1",
     "@twotalltotems/react-native-otp-input": "^1.3.11",
+    "@vahesaroyan/react-native-bubble-select": "^0.1.8",
     "axios": "0.26.0",
     "date-fns": "^2.29.3",
     "i18next": "^22.0.6",

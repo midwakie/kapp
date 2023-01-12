@@ -224,6 +224,15 @@ const styles = (direction: string) =>
       width: width - 80,
       backgroundColor: '#EBEEF0',
     },
+    optionTitleStyle: {
+      color: '#758DAC',
+      fontSize: '14@s',
+    },
+    menuImage: {
+      height: '20@s',
+      width: '20@s',
+      resizeMode: 'contain',
+    },
   });
 
 export default styles;

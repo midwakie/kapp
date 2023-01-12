@@ -66,33 +66,6 @@ const ActivitiesStats: React.FC = () => {
 
   return (
     <>
-      <TitleBar
-        leftComponent={
-          <View style={styles(direction).topContainer}>
-            <RegularButton
-              onPress={() => {
-                NavigationService.goBack();
-              }}
-              icon={'arrow-back'}
-              radius={38}
-              height={38}
-              width={38}
-              colors={['#EBECF0', '#EBECF0']}
-            />
-          </View>
-        }
-        middleComponent={
-          <View style={styles(direction).gradientTextContainer}>
-            <GradientText
-              colors={['#2AA7DD', '#2AA7DD']}
-              text={t('Activities Stats')}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 0, y: 1 }}
-              textStyle={styles(direction).gradientTextStyle as TextStyle}
-            />
-          </View>
-        }
-      />
       <ScrollView style={styles(direction).container} bounces={false}>
         <SafeAreaView style={styles(direction).safeAreaView}>
           <View style={styles(direction).container2}>
@@ -201,7 +174,7 @@ const ActivitiesStats: React.FC = () => {
                   <Text style={styles(direction).text}>
                     {t('Total time spent on video')}
                   </Text>
-                  <Text style={styles(direction).insidetext}>
+                  <Text style={styles(direction).insideText}>
                     {t('50 \nhrs')}
                   </Text>
                 </View>
@@ -240,7 +213,7 @@ const ActivitiesStats: React.FC = () => {
                   <Text style={styles(direction).text}>
                     {t('Total time spent on reading')}
                   </Text>
-                  <Text style={styles(direction).insidetext}>
+                  <Text style={styles(direction).insideText}>
                     {t('30 \nhrs')}
                   </Text>
                 </View>
@@ -279,7 +252,7 @@ const ActivitiesStats: React.FC = () => {
                   <Text style={styles(direction).text}>
                     {t('Total time spent on app')}
                   </Text>
-                  <Text style={styles(direction).insidetext}>
+                  <Text style={styles(direction).insideText}>
                     {t('80 \nhrs')}
                   </Text>
                 </View>
@@ -288,6 +261,35 @@ const ActivitiesStats: React.FC = () => {
           </View>
         </SafeAreaView>
       </ScrollView>
+      <View style={styles(direction).titleBarContainer}>
+        <TitleBar
+          leftComponent={
+            <View style={styles(direction).topContainer}>
+              <RegularButton
+                onPress={() => {
+                  NavigationService.goBack();
+                }}
+                icon={'arrow-back'}
+                radius={38}
+                height={38}
+                width={38}
+                colors={['#EBECF0', '#EBECF0']}
+              />
+            </View>
+          }
+          middleComponent={
+            <View style={styles(direction).gradientTextContainer}>
+              <GradientText
+                colors={['#2AA7DD', '#2AA7DD']}
+                text={t('Activities Stats')}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 0, y: 1 }}
+                textStyle={styles(direction).gradientTextStyle as TextStyle}
+              />
+            </View>
+          }
+        />
+      </View>
     </>
   );
 };

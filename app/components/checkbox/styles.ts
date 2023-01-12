@@ -1,4 +1,4 @@
-import { ScaledSheet } from 'react-native-size-matters';
+import { s, ScaledSheet } from 'react-native-size-matters';
 
 const styles = (
   borderWidth: any,
@@ -12,9 +12,11 @@ const styles = (
       backgroundColor: isChecked ? color : 'transparent',
       borderColor: color,
       borderWidth: borderWidth,
-      borderRadius: 6,
-      height: height,
-      width: width,
+      borderRadius: '6@s',
+      height: s(height),
+      width: s(width),
+      justifyContent: 'center',
+      alignItems: 'center',
     },
   });
 
