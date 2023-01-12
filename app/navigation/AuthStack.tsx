@@ -46,6 +46,7 @@ import ChildProfile from 'app/screens/ChildProfile';
 import ManagePeople from 'app/screens/ManagePeople';
 import ParentProfileDetail from 'app/screens/ParentProfileDetail';
 import TeachersProfile from 'app/screens/TeachersProfile';
+import CreateActivity from 'app/screens/CreateActivity';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -431,6 +432,26 @@ const AuthStack = () => {
       <Stack.Screen
         name="ParentProfileDetail"
         component={ParentProfileDetail}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ParentProfileDet"
+        component={ParentProfileDetail}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="CreateActivity"
+        component={CreateActivity}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
