@@ -1785,6 +1785,11 @@
     "@typescript-eslint/types" "5.40.0"
     eslint-visitor-keys "^3.3.0"
 
+"@vahesaroyan/react-native-bubble-select@^0.1.8":
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/@vahesaroyan/react-native-bubble-select/-/react-native-bubble-select-0.1.8.tgz#613c5a4f9e35da5f18967581a2879791fc9434b9"
+  integrity sha512-mipf9eWwkcduyRvpbjCd1KewpDcP+b9bXhwnWPCK2UuRNCo+UZCREbc0ePIWp6Tm413mbVxlArIxMC7KcVag9w==
+
 abab@^2.0.3, abab@^2.0.5:
   version "2.0.6"
   resolved "https://registry.npmjs.org/abab/-/abab-2.0.6.tgz"
@@ -6185,6 +6190,11 @@ react-native-phone-number-input@^2.1.0:
   dependencies:
     google-libphonenumber "^3.2.10"
     react-native-country-picker-modal "^2.0.0"
+
+react-native-popup-menu@^0.16.1:
+  version "0.16.1"
+  resolved "https://registry.yarnpkg.com/react-native-popup-menu/-/react-native-popup-menu-0.16.1.tgz#b1bb56be5c0838bbc2f532af7b1f554b7ceef566"
+  integrity sha512-xRS7mRh0exwu7Iw8PPVHdM11d13A/KzYjy0/fZx3zVtxISxPkNaDGayau6oa7HqO3Nj0oS9ulFCYjcQfG6vahA==
 
 react-native-profile-picture@^1.0.0:
   version "1.0.0"

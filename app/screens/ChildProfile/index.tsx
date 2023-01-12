@@ -45,9 +45,17 @@ const ChildProfile: React.FC = () => {
     setRadioButtonMale(!radioButtonMale);
     setRadioButtonFemale(!radioButtonFemale);
   };
-  const saveUser = () => {
+
+  const saveUser = (data: any) => {
+    const selectedGender = radioButtonMale ? 'Male' : 'Female';
+    const updatedData = {
+      ...data,
+      gender: selectedGender,
+    };
+    console.log(updatedData);
     NavigationService.navigate('EditChildProfile');
   };
+
   return (
     <ScrollView style={styles(direction).container} bounces={false}>
       <SafeAreaView style={styles(direction).safeAreaView}>

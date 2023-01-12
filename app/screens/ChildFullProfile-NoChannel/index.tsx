@@ -1,9 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React, { useRef, useState } from 'react';
 import {
-  Dimensions,
   Image,
-  ImageBackground,
   SafeAreaView,
   Text,
   TextStyle,
@@ -20,8 +18,7 @@ import TitleBar from 'app/components/buttons/TitleBar';
 import Neumorphism from 'react-native-neumorphism';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import { ms, s, scale } from 'react-native-size-matters';
-import AppIntroSlider from 'react-native-app-intro-slider';
-import { LineChart, ProgressChart } from 'react-native-chart-kit';
+import { ProgressChart } from 'react-native-chart-kit';
 
 const ChildFullProfileNoChannel: React.FC = () => {
   const refSlider: React.MutableRefObject<any> = useRef(null);
@@ -107,7 +104,7 @@ const ChildFullProfileNoChannel: React.FC = () => {
             lightColor={'#ffffff'}
             darkColor={'#A8A8A8'}
             shapeType={'flat'}
-            radius={14}>
+            radius={scale(14)}>
             <View style={styles(direction).rectangle}>
               <View style={styles(direction).editButton}>
                 <TouchableOpacity onPress={() => {}}>
@@ -143,7 +140,7 @@ const ChildFullProfileNoChannel: React.FC = () => {
                   lightColor={'#ffffff'}
                   darkColor={'#A8A8A8'}
                   shapeType={'flat'}
-                  radius={50}>
+                  radius={scale(50)}>
                   <View style={styles(direction).coinContainer2}>
                     <Image
                       style={styles(direction).coinImage}
@@ -151,7 +148,6 @@ const ChildFullProfileNoChannel: React.FC = () => {
                     />
                     <Text style={styles(direction).coinText}>{t('450')}</Text>
                   </View>
-                  <View style={styles(direction).editButton}></View>
                 </Neumorphism>
                 <View style={styles(direction).iconContainer}>
                   <View style={styles(direction).iconMainContainer}>
@@ -217,7 +213,7 @@ const ChildFullProfileNoChannel: React.FC = () => {
             lightColor={'#ffffff'}
             darkColor={'#A8A8A8'}
             shapeType={'flat'}
-            radius={14}>
+            radius={scale(14)}>
             <View style={styles(direction).rectangle2}>
               <View style={styles(direction).scanTextContainer}>
                 <GradientText
@@ -228,12 +224,10 @@ const ChildFullProfileNoChannel: React.FC = () => {
                   textStyle={styles(direction).scanText}
                 />
               </View>
-              <View style={styles(direction).qrImageContainer}>
-                <Image
-                  style={styles(direction).qrImage}
-                  source={require('../../assets/qr.png')}
-                />
-              </View>
+              <Image
+                style={styles(direction).qrImage}
+                source={require('../../assets/qr.png')}
+              />
             </View>
           </Neumorphism>
           <View style={styles(direction).marginView}></View>
@@ -241,7 +235,7 @@ const ChildFullProfileNoChannel: React.FC = () => {
             lightColor={'#ffffff'}
             darkColor={'#A8A8A8'}
             shapeType={'flat'}
-            radius={14}>
+            radius={scale(14)}>
             <View style={styles(direction).rectangle3}>
               <View style={styles(direction).activityTextContainer}>
                 <GradientText
@@ -262,92 +256,104 @@ const ChildFullProfileNoChannel: React.FC = () => {
 
               <View style={styles(direction).progressChartContainer}>
                 <View style={styles(direction).progressChartContainer1}>
-                  <ProgressChart
-                    data={progressAppChartData}
-                    width={ms(74)}
-                    height={ms(74)}
-                    strokeWidth={8}
-                    radius={s(30)}
-                    withCustomBarColorFromData={true}
-                    chartConfig={{
-                      backgroundColor: '#EBEEF0',
-                      backgroundGradientFrom: '#EBEEF0',
-                      backgroundGradientTo: '#EBEEF0',
-                      color: (opacity = 1) =>
-                        `rgba(${74}, ${74}, ${74}, ${opacity})`,
-                      propsForLabels: {
-                        fontSize: ms(10),
-                        fill: 'rgba(117, 141, 172, 1)',
-                        fontWeight: '600',
-                        fontFamily: 'Nunito-Regular',
-                      },
-                    }}
-                    style={{ marginLeft: ms(15) }}
-                    hideLegend={true}
-                  />
-                  <Text style={styles(direction).insideText1}>
-                    {t('12\nhrs')}
+                  <View style={styles(direction).progressChartContainer2}>
+                    <ProgressChart
+                      data={progressAppChartData}
+                      width={s(74)}
+                      height={s(74)}
+                      strokeWidth={s(8)}
+                      radius={s(30)}
+                      withCustomBarColorFromData={true}
+                      chartConfig={{
+                        backgroundColor: '#EBEEF0',
+                        backgroundGradientFrom: '#EBEEF0',
+                        backgroundGradientTo: '#EBEEF0',
+                        color: (opacity = 1) =>
+                          `rgba(${74}, ${74}, ${74}, ${opacity})`,
+                        propsForLabels: {
+                          fontSize: s(10),
+                          fill: 'rgba(117, 141, 172, 1)',
+                          fontWeight: '600',
+                          fontFamily: 'Nunito-Regular',
+                        },
+                      }}
+                      hideLegend={true}
+                    />
+                    <Text style={styles(direction).insideText1}>
+                      {t('12\nhrs')}
+                    </Text>
+                  </View>
+                  <Text style={styles(direction).activityText1}>
+                    {t('OnApp')}
                   </Text>
                 </View>
-                <View style={styles(direction).progressChartContainer2}>
-                  <ProgressChart
-                    data={progressReadingChartData}
-                    width={ms(72)}
-                    height={ms(72)}
-                    strokeWidth={8}
-                    radius={s(30)}
-                    withCustomBarColorFromData={true}
-                    chartConfig={{
-                      backgroundColor: '#EBEEF0',
-                      backgroundGradientFrom: '#EBEEF0',
-                      backgroundGradientTo: '#EBEEF0',
-                      color: (opacity = 1) =>
-                        `rgba(${74}, ${74}, ${74}, ${opacity})`,
-                      propsForLabels: {
-                        fontSize: ms(10),
-                        fill: 'rgba(117, 141, 172, 1)',
-                        fontWeight: '600',
-                        fontFamily: 'Nunito-Regular',
-                      },
-                    }}
-                    style={{ marginLeft: ms(15) }}
-                    hideLegend={true}
-                  />
-                  <Text style={styles(direction).insideText2}>
-                    {t('7\nhrs')}
+                <View style={styles(direction).progressChartContainer1}>
+                  <View style={styles(direction).progressChartContainer2}>
+                    <ProgressChart
+                      data={progressReadingChartData}
+                      width={s(72)}
+                      height={s(72)}
+                      strokeWidth={s(8)}
+                      radius={s(30)}
+                      withCustomBarColorFromData={true}
+                      chartConfig={{
+                        backgroundColor: '#EBEEF0',
+                        backgroundGradientFrom: '#EBEEF0',
+                        backgroundGradientTo: '#EBEEF0',
+                        color: (opacity = 1) =>
+                          `rgba(${74}, ${74}, ${74}, ${opacity})`,
+                        propsForLabels: {
+                          fontSize: s(10),
+                          fill: 'rgba(117, 141, 172, 1)',
+                          fontWeight: '600',
+                          fontFamily: 'Nunito-Regular',
+                        },
+                      }}
+                      hideLegend={true}
+                    />
+                    <Text style={styles(direction).insideText2}>
+                      {t('7\nhrs')}
+                    </Text>
+                  </View>
+                  <Text style={styles(direction).activityText1}>
+                    {t('Reading')}
                   </Text>
                 </View>
-                <View style={styles(direction).progressChartContainer3}>
-                  <ProgressChart
-                    data={progressVideoChartData}
-                    width={ms(72)}
-                    height={ms(72)}
-                    strokeWidth={8}
-                    radius={s(30)}
-                    withCustomBarColorFromData={true}
-                    chartConfig={{
-                      backgroundColor: '#EBEEF0',
-                      backgroundGradientFrom: '#EBEEF0',
-                      backgroundGradientTo: '#EBEEF0',
-                      color: (opacity = 1) =>
-                        `rgba(${74}, ${74}, ${74}, ${opacity})`,
-                      propsForLabels: {
-                        fontSize: ms(10),
-                        fill: 'rgba(117, 141, 172, 1)',
-                        fontWeight: '600',
-                        fontFamily: 'Nunito-Regular',
-                      },
-                    }}
-                    style={{ marginLeft: ms(15) }}
-                    hideLegend={true}
-                  />
-                  <Text style={styles(direction).insideText3}>
-                    {t('6\nhrs')}
+                <View style={styles(direction).progressChartContainer1}>
+                  <View style={styles(direction).progressChartContainer2}>
+                    <ProgressChart
+                      data={progressVideoChartData}
+                      width={s(72)}
+                      height={s(72)}
+                      strokeWidth={s(8)}
+                      radius={s(30)}
+                      withCustomBarColorFromData={true}
+                      chartConfig={{
+                        backgroundColor: '#EBEEF0',
+                        backgroundGradientFrom: '#EBEEF0',
+                        backgroundGradientTo: '#EBEEF0',
+                        color: (opacity = 1) =>
+                          `rgba(${74}, ${74}, ${74}, ${opacity})`,
+                        propsForLabels: {
+                          fontSize: s(10),
+                          fill: 'rgba(117, 141, 172, 1)',
+                          fontWeight: '600',
+                          fontFamily: 'Nunito-Regular',
+                        },
+                      }}
+                      hideLegend={true}
+                    />
+                    <Text style={styles(direction).insideText3}>
+                      {t('6\nhrs')}
+                    </Text>
+                  </View>
+                  <Text style={styles(direction).activityText1}>
+                    {t('Video')}
                   </Text>
                 </View>
               </View>
 
-              <View style={styles(direction).textContainer}>
+              {/* <View style={styles(direction).textContainer}>
                 <Text style={styles(direction).activityText1}>
                   {t('OnApp')}
                 </Text>
@@ -357,15 +363,15 @@ const ChildFullProfileNoChannel: React.FC = () => {
                 <Text style={styles(direction).activityText3}>
                   {t('Video')}
                 </Text>
-              </View>
+              </View> */}
             </View>
           </Neumorphism>
-          <View style={styles(direction).marginView}></View>
+          <View style={styles(direction).marginView} />
           <Neumorphism
             lightColor={'#ffffff'}
             darkColor={'#A8A8A8'}
             shapeType={'flat'}
-            radius={14}>
+            radius={scale(14)}>
             <View style={styles(direction).rectangle4}>
               <View style={styles(direction).bookShelfTextContainer}>
                 <GradientText
@@ -388,7 +394,7 @@ const ChildFullProfileNoChannel: React.FC = () => {
                   lightColor={'#ffffff'}
                   darkColor={'#A8A8A8'}
                   shapeType={'flat'}
-                  radius={14}>
+                  radius={scale(14)}>
                   <View style={styles(direction).bookShelfContainer}>
                     <TouchableOpacity>
                       <Image
@@ -431,7 +437,7 @@ const ChildFullProfileNoChannel: React.FC = () => {
             lightColor={'#ffffff'}
             darkColor={'#A8A8A8'}
             shapeType={'flat'}
-            radius={14}>
+            radius={scale(14)}>
             <View style={styles(direction).rectangleNoChannel}>
               <Image
                 style={styles(direction).noChannelImage}
@@ -456,7 +462,7 @@ const ChildFullProfileNoChannel: React.FC = () => {
             lightColor={'#ffffff'}
             darkColor={'#A8A8A8'}
             shapeType={'flat'}
-            radius={14}>
+            radius={scale(14)}>
             <View style={styles(direction).rectangle5}>
               <View style={styles(direction).subContainer}>
                 <View style={styles(direction).channelImageContainer}>
@@ -485,13 +491,13 @@ const ChildFullProfileNoChannel: React.FC = () => {
                   <Image
                     style={styles(direction).videoImage}
                     source={require('../../assets/videoImage1.png')}></Image>
-                  <View style={styles(direction).videoLogoContainer}>
-                    <TouchableOpacity onPress={() => {}}>
-                      <Image
-                        style={styles(direction).videoLogoImage}
-                        source={require('../../assets/playLogo.png')}></Image>
-                    </TouchableOpacity>
-                  </View>
+                  <TouchableOpacity
+                    onPress={() => {}}
+                    style={styles(direction).videoLogoContainer}>
+                    <Image
+                      style={styles(direction).videoLogoImage}
+                      source={require('../../assets/playLogo.png')}></Image>
+                  </TouchableOpacity>
                 </View>
                 <View style={styles(direction).subContainerText}>
                   <Text style={styles(direction).videoNameText}>
@@ -558,13 +564,13 @@ const ChildFullProfileNoChannel: React.FC = () => {
                   <Image
                     style={styles(direction).pdfImage}
                     source={require('../../assets/pdfImage2.png')}></Image>
-                  <View style={styles(direction).pdfLogoContainer}>
-                    <TouchableOpacity onPress={() => {}}>
-                      <Image
-                        style={styles(direction).pdfLogoImage}
-                        source={require('../../assets/pdfLogo.png')}></Image>
-                    </TouchableOpacity>
-                  </View>
+                  <TouchableOpacity
+                    onPress={() => {}}
+                    style={styles(direction).pdfLogoContainer}>
+                    <Image
+                      style={styles(direction).pdfLogoImage}
+                      source={require('../../assets/pdfLogo.png')}></Image>
+                  </TouchableOpacity>
                 </View>
                 <View style={styles(direction).subContainerText}>
                   <Text style={styles(direction).pdfNameText}>
@@ -650,32 +656,34 @@ const ChildFullProfileNoChannel: React.FC = () => {
                 </View>
               </View>
               <View style={styles(direction).activityWorkBottomProgressBar}>
-                <ProgressChart
-                  data={progressActivityChartData}
-                  width={ms(50)}
-                  height={ms(50)}
-                  strokeWidth={4}
-                  radius={s(15)}
-                  withCustomBarColorFromData={true}
-                  chartConfig={{
-                    backgroundColor: '#EBEEF0',
-                    backgroundGradientFrom: '#EBEEF0',
-                    backgroundGradientTo: '#EBEEF0',
-                    color: (opacity = 1) =>
-                      `rgba(${74}, ${74}, ${74}, ${opacity})`,
-                    propsForLabels: {
-                      fontSize: ms(10),
-                      fill: 'rgba(117, 141, 172, 1)',
-                      fontWeight: '600',
-                      fontFamily: 'Nunito-Regular',
-                    },
-                  }}
-                  style={{ marginLeft: ms(15) }}
-                  hideLegend={true}
-                />
-                <Text style={styles(direction).insideTextActivityWork}>
-                  {t('80%')}
-                </Text>
+                <View
+                  style={styles(direction).activityWorkBottomProgressBarView}>
+                  <ProgressChart
+                    data={progressActivityChartData}
+                    width={s(50)}
+                    height={s(50)}
+                    strokeWidth={s(4)}
+                    radius={s(15)}
+                    withCustomBarColorFromData={true}
+                    chartConfig={{
+                      backgroundColor: '#EBEEF0',
+                      backgroundGradientFrom: '#EBEEF0',
+                      backgroundGradientTo: '#EBEEF0',
+                      color: (opacity = 1) =>
+                        `rgba(${74}, ${74}, ${74}, ${opacity})`,
+                      propsForLabels: {
+                        fontSize: s(10),
+                        fill: 'rgba(117, 141, 172, 1)',
+                        fontWeight: '600',
+                        fontFamily: 'Nunito-Regular',
+                      },
+                    }}
+                    hideLegend={true}
+                  />
+                  <Text style={styles(direction).insideTextActivityWork}>
+                    {t('80%')}
+                  </Text>
+                </View>
               </View>
             </View>
           </Neumorphism>

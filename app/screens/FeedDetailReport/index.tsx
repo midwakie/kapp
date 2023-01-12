@@ -102,7 +102,7 @@ const FeedDetailReport: React.FC = () => {
                 shapeType={'flat'}
                 radius={14}>
                 <View style={styles(direction).rectangle3}>
-                  <Text style={styles(direction).bottomtext}>{t('Other')}</Text>
+                  <Text style={styles(direction).bottomText}>{t('Other')}</Text>
                   <View style={{ marginTop: 20 }}>
                     <Neumorphism
                       lightColor={'#FFFFFF'}
@@ -127,7 +127,7 @@ const FeedDetailReport: React.FC = () => {
                 text={t('Report')}
                 radius={50}
                 height={50}
-                width={'315@s'}
+                width={'100%'}
                 colors={['#03BBE3', '#14A9FD']}
               />
             </View>
