@@ -60,6 +60,8 @@ import TestHardness from 'app/screens/TestHardness';
 import PublishNewVideo from 'app/screens/PublishNewVideo';
 import AssignActivity from 'app/screens/AssignActivity';
 import Child from 'app/screens/Child';
+import PopularFeed from 'app/screens/Popular Channel';
+import FeedPostDetail from 'app/screens/FeedPostDetail';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -87,7 +89,7 @@ const AuthStack = () => {
 
   return (
     <AuthenticationStack.Navigator
-      initialRouteName={'MyStudentList'}
+      initialRouteName={initialRouteName}
       screenOptions={{
         ...TransitionPresets.SlideFromRightIOS,
       }}>
@@ -545,6 +547,26 @@ const AuthStack = () => {
       <Stack.Screen
         name="Club Channel"
         component={ClubChannel}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="PopularFeed"
+        component={PopularFeed}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="FeedPostDetail"
+        component={FeedPostDetail}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation

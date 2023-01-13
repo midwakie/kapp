@@ -211,6 +211,8 @@
  "Search here..": "Search here..",
  "Assign Activity": "Assign Activity",
  "Assign All": "Assign All",
- "Child": "Child"
-
+ "Child": "Child",
+ "Popular":"Popular",
+ "cancel":"cancel",
+ "Are you sure want to delete this item!":"Are you sure want to delete this item!"
 }
