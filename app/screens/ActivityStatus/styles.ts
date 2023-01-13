@@ -11,7 +11,7 @@ const styles = (direction: string) =>
     container: {
       width: '100%',
       height: '100%',
-      backgroundColor: '#EBEEF0',
+      marginTop: '85@s',
     },
     container2: {
       paddingHorizontal: '20@s',
@@ -247,6 +247,7 @@ const styles = (direction: string) =>
       flexDirection: 'row',
     },
     lastWeekDropdown: { position: 'absolute', top: 15, right: 20 },
+    titleBarContainer: { position: 'absolute', width: '100%' },
   });
 
 export default styles;
