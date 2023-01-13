@@ -1,0 +1,323 @@
+import { Dimensions } from 'react-native';
+import { ScaledSheet } from 'react-native-size-matters';
+
+const width =
+  Dimensions.get('window').width >= Dimensions.get('window').height
+    ? Dimensions.get('window').height
+    : Dimensions.get('window').width;
+
+const styles = (direction: string) =>
+  ScaledSheet.create({
+    container: {
+      width: '100%',
+      height: '100%',
+      backgroundColor: '#EBEEF0',
+      zIndex: -10,
+    },
+    safeAreaView: { alignSelf: 'stretch' },
+    gradientTextContainer: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '22@s',
+    },
+    gradientTextStyle: {
+      width: '100%',
+      height: '22@s',
+      fontSize: '16@s',
+      fontFamily: 'Nunito-Regular',
+      fontWeight: '700',
+    },
+    topContainer: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      position: 'absolute',
+      width: 38,
+      marginLeft: '20@s',
+    },
+    filterContainer: {
+      justifyContent: 'center',
+      //   alignItems: 'center',
+      //   position: 'absolute',
+      //   width: 38,
+      marginRight: '25@s',
+    },
+    container2: {
+      marginTop: 30,
+      width: '100%',
+      height: '100%',
+      paddingHorizontal: '20@s',
+    },
+    container3: {
+      width: '100%',
+      backgroundColor: '#EBEEF0',
+    },
+    container4: {
+      flexDirection: 'row',
+      marginTop: '20@s',
+      justifyContent: 'space-between',
+    },
+    container5: {
+      flexDirection: 'row',
+      marginBottom: '15@s',
+      paddingLeft: '25@s',
+      paddingRight: '19@s',
+    },
+    container6: {
+      flexDirection: 'row',
+      marginLeft: '25@s',
+      marginBottom: '10@s',
+    },
+    container66: {
+      width: '263@s',
+      height: '50@s',
+      paddingHorizontal: '25@s',
+      paddingVertical: '16@s',
+      fontSize: '14@s',
+    },
+    topIconContainer: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: '#EBEEF0',
+      height: '38@s',
+      width: '38@s',
+    },
+    topIconContainer1: {
+      height: '38@s',
+      width: '38@s',
+      marginLeft: '18@s',
+    },
+    coinImage: {
+      height: '18@ms',
+      width: '17@ms',
+      //   alignItems: 'center',
+    },
+    container7: {
+      flexDirection: 'row',
+      paddingVertical: '15@s',
+      width: '100%',
+      backgroundColor: '#EBEEF0',
+    },
+    container8: {
+      width: '40@s',
+      height: '40@s',
+      borderRadius: '150@s',
+      backgroundColor: '#EBEEF0',
+      alignItems: 'center',
+      justifyContent: 'center',
+      alignSelf: 'center',
+    },
+    neomorphContainer: {
+      marginBottom: 20,
+    },
+    neomorphContainer1: {
+      marginTop: 30,
+      marginBottom: 30,
+    },
+    neomorphContainer2: {
+      width: '40@s',
+      height: '40@s',
+    },
+    imageContainer: {
+      width: '100%',
+      height: '25@s',
+      flexDirection: 'row',
+    },
+    imageStyle: {
+      resizeMode: 'contain',
+      width: '18@s',
+      height: '18@s',
+    },
+    text1: {
+      color: '#03A0E3',
+      fontSize: '14@s',
+      fontWeight: '600',
+      fontFamily: 'Nunito-Regular',
+      width: '159@s',
+      height: '19@s',
+    },
+    name: {
+      color: '#03A0E3',
+      fontSize: '14@s',
+      fontWeight: '600',
+      fontFamily: 'Nunito-Regular',
+      width: '87@s',
+      height: '100%',
+    },
+    textContainer: {
+      width: '87@s',
+      height: '100%',
+      paddingVertical: '23@s',
+      marginLeft: '15@s',
+      // alignItems: 'center',
+    },
+    down: {
+      // width: '25@s',
+      height: '100%',
+      marginLeft: '80@s',
+      marginTop: '24@s',
+      // marginLeft: '137@s',
+    },
+    bookType: {
+      color: '#2F4868',
+      fontSize: '14@s',
+      fontWeight: '600',
+      fontFamily: 'Nunito-Regular',
+      width: '72@s',
+      height: '19@s',
+      marginLeft: '26@s',
+    },
+    bookTitle: {
+      marginTop: '10@s',
+      marginLeft: '25@s',
+      justifyContent: 'space-between',
+    },
+    text2: {
+      color: '#455157',
+      fontSize: '14@s',
+      fontWeight: '600',
+      fontFamily: 'Nunito-Regular',
+      height: '19@s',
+      width: '74@s',
+      marginRight: '25@s',
+    },
+    text3: {
+      color: '#758DAC',
+      fontSize: '14@s',
+      fontWeight: '600',
+      fontFamily: 'Nunito-Regular',
+      letterSpacing: 0.005,
+      width: '100%',
+      marginTop: 10,
+    },
+    text4: {
+      color: '#EC4D61',
+      fontSize: '14@s',
+      fontWeight: '600',
+      fontFamily: 'Nunito-Regular',
+      width: '175@s',
+      height: '19@s',
+      flex: 1,
+    },
+    text6: {
+      color: '#84BD47',
+      fontSize: '14@s',
+      fontWeight: '600',
+      fontFamily: 'Nunito-Regular',
+      width: '103@s',
+      height: '19@s',
+    },
+    text8: {
+      color: '#758DAC',
+      fontSize: '14@s',
+      fontWeight: '600',
+      fontFamily: 'Nunito-Regular',
+      height: '19@s',
+      width: '170@s',
+      // alignSelf: 'center',
+      // marginLeft: 20,
+    },
+    interestIcon1: {
+      flexDirection: 'row',
+      height: '25@s',
+      width: '25@s',
+    },
+    interestIcons: {
+      height: '25@s',
+      width: '25@s',
+      marginLeft: '-9@s',
+      alignItems: 'center',
+      overflow: 'hidden',
+    },
+    imageRound: { width: '100%', height: '100%', resizeMode: 'cover' },
+    plusFour: {
+      position: 'absolute',
+      alignSelf: 'center',
+      marginTop: 4,
+      color: 'white',
+    },
+    leftContainer: {
+      flex: 1,
+      marginLeft: 20,
+    },
+    rightContainer: {
+      flex: 4,
+      alignSelf: 'center',
+    },
+    profileImgContainer1: {
+      width: '100%',
+      marginTop: '25@s',
+      paddingHorizontal: '25@s',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    studentProfile: {
+      // paddingHorizontal: '25@s',
+      justifyContent: 'center',
+    },
+    profileImg1: {
+      height: '126@s',
+      width: '100%',
+      resizeMode: 'stretch',
+    },
+    studentProfile1: {
+      height: '40@s',
+      width: '40@s',
+      resizeMode: 'stretch',
+    },
+    inputTextContainer: {
+      width: '200@s',
+      //   justifyContent: 'center',
+      //   alignItems: 'center',
+    },
+    searchIcon: {
+      //   right: '100@s',
+      backgroundColor: 'red',
+    },
+    searchContainer: {
+      flexDirection: 'row',
+      //   width: '100%',
+    },
+    neomorphContainer3: {
+      marginTop: '20@s',
+      //   width: '269@s',
+      flexDirection: 'row',
+    },
+    neomorphContainer4: {
+      paddingVertical: '20@s',
+      // marginBottom: '20@s',
+    },
+    childContainer: {
+      width: '335@s',
+      backgroundColor: '#EBEEF0',
+      height: '65@s',
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginLeft: '20@s',
+      // justifyContent: 'space-between',
+    },
+    imageContainer4: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: '65@s',
+      height: '73@s',
+      marginLeft: '20@s',
+      marginBottom: '26@s',
+      // justifyContent: 'space-between',
+    },
+    imageStyle2: {
+      justifyContent: 'center',
+      resizeMode: 'contain',
+      width: '90@s',
+      height: '90@s',
+      position: 'absolute',
+    },
+    imageStyle3: {
+      resizeMode: 'contain',
+      width: '30@s',
+      height: '30@s',
+      marginTop: 10,
+      marginLeft: 10,
+    },
+  });
+
+export default styles;
