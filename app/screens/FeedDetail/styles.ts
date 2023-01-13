@@ -152,9 +152,26 @@ const styles = (direction: string) =>
       width: '100%',
       marginTop: '37@s',
     },
-    icon: {
+    iconLove: {
       width: '24@s',
       height: '21@s',
+      marginLeft: '25@s',
+    },
+    iconChat: {
+      width: '24@s',
+      height: '21@s',
+      tintColor: '#03A0E3',
+      marginLeft: '25@s',
+    },
+    iconLiked: {
+      width: '24@s',
+      height: '21@s',
+      tintColor: '#FF5E62',
+      marginLeft: '25@s',
+    },
+    iconEye: {
+      width: '23@s',
+      height: '14@s',
       marginLeft: '25@s',
     },
     iconText: {
@@ -190,6 +207,39 @@ const styles = (direction: string) =>
       height: '16@s',
       width: '4@s',
       resizeMode: 'contain',
+    },
+    modalContainer: {
+      // flex: 1,
+      borderWidth: 2,
+      height: '100%',
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: 'rgba(98,98,98,0.5)',
+    },
+    modalView: {
+      borderWidth: 1,
+      borderColor: 'white',
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderRadius: '15@s',
+      backgroundColor: '#EBEEF0',
+      height: '320@s',
+      width: width - 20,
+    },
+    radioLabel: {
+      fontFamily: 'Nunito-Regular',
+      fontWeight: '700',
+      fontSize: '16@s',
+      color: '#758DAC',
+    },
+    radioButtonViewContainer: {
+      borderWidth: 1,
+      borderColor: 'rgb(255, 255, 255)',
+      paddingTop: '10@s',
+      borderRadius: '14@s',
+      height: '55@s',
+      width: width - 80,
+      backgroundColor: '#EBEEF0',
     },
     optionTitleStyle: {
       color: '#758DAC',

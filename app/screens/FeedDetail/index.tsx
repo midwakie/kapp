@@ -1,6 +1,16 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
-import { Image, SafeAreaView, Text, View, TextInput } from 'react-native';
+import {
+  Image,
+  SafeAreaView,
+  Text,
+  View,
+  TextInput,
+  Modal,
+  Alert,
+  TouchableWithoutFeedback,
+  Pressable,
+} from 'react-native';
 import styles from './styles';
 import NavigationService from 'app/navigation/NavigationService';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
@@ -19,12 +29,36 @@ import {
 } from 'react-native-popup-menu';
 import { useSelector } from 'react-redux';
 import { ICurrentCustomer } from 'app/models/reducers/currentCustomer';
+import RadioButton from 'app/components/buttons/RadioButton';
 
 interface IState {
   currentCustomerReducer: ICurrentCustomer;
 }
 
 const FeedDetail: React.FC = () => {
+  const onPressRadioButtonPrivate = () => {
+    setRadioButtonPrivate(true);
+    setRadioButtonPublic(false);
+    setRadioButtonGroup(false);
+  };
+
+  const onPressRadioButtonPublic = () => {
+    setRadioButtonPrivate(false);
+    setRadioButtonPublic(true);
+    setRadioButtonGroup(false);
+  };
+  const onPressRadioButtonGroup = () => {
+    setRadioButtonPrivate(false);
+    setRadioButtonPublic(false);
+    setRadioButtonGroup(true);
+  };
+  const [modalVisible, setModalVisible] = useState(true);
+  const [radioButtonPrivate, setRadioButtonPrivate] = useState(false);
+  const [radioButtonPublic, setRadioButtonPublic] = useState(false);
+  const [radioButtonGroup, setRadioButtonGroup] = useState(false);
+  const toggle = () => {
+    setModalVisible(!modalVisible);
+  };
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
 
@@ -34,6 +68,7 @@ const FeedDetail: React.FC = () => {
 
   const [data, setdata] = useState([
     {
+      channnelId: 1,
       headerImage: require('../../assets/topbg.png'),
       title: 'Easy Mathes Tricks',
       description:
@@ -41,6 +76,8 @@ const FeedDetail: React.FC = () => {
       profileImage: require('../../assets/dp.png'),
       profileName: 'Dream Star Kid',
       endDate: '5k Subscriber',
+      likeCount: 2536,
+      likes: false,
     },
   ]);
   const [comment, setcomment] = useState([
@@ -95,6 +132,19 @@ const FeedDetail: React.FC = () => {
       image: require('../../assets/reportFlag.png'),
     },
   ]);
+  const handlePress = channnelId => {
+    const updatedData = data.map(item => {
+      if (item.channnelId === channnelId) {
+        return {
+          ...item,
+          likes: !item.likes,
+          likeCount: item.likeCount + (item.likes ? -1 : 1),
+        };
+      }
+      return item;
+    });
+    setdata(updatedData);
+  };
 
   return (
     <>
@@ -233,18 +283,27 @@ const FeedDetail: React.FC = () => {
                       {t(item.description)}
                     </Text>
                     <View style={styles(direction).container3}>
-                      <View style={{ flexDirection: 'row' }}>
-                        <Image
-                          source={require('../../assets/dp.png')}
-                          style={styles(direction).image3Style}
-                        />
-                        <Text style={styles(direction).profileName}>
-                          {t(item.profileName)}
-                        </Text>
-                        <Text style={styles(direction).status}>
-                          {t(item.endDate)}
-                        </Text>
-                      </View>
+                      <TouchableOpacity
+                        onPress={() => {
+                          NavigationService.navigate('MyChannel', {
+                            profileName: item.profileName,
+                            profileImage: item.profileImage,
+                            isCondition: true,
+                          });
+                        }}>
+                        <View style={{ flexDirection: 'row' }}>
+                          <Image
+                            source={require('../../assets/dp.png')}
+                            style={styles(direction).image3Style}
+                          />
+                          <Text style={styles(direction).profileName}>
+                            {t(item.profileName)}
+                          </Text>
+                          <Text style={styles(direction).status}>
+                            {t(item.endDate)}
+                          </Text>
+                        </View>
+                      </TouchableOpacity>
                       <View style={{ marginBottom: 5 }}>
                         <RegularButton
                           onPress={() => {
@@ -269,29 +328,30 @@ const FeedDetail: React.FC = () => {
                         shapeType={'flat'}
                         radius={12}>
                         <View style={styles(direction).iconBox}>
-                          <MaterialIcon
-                            name={'favorite'}
-                            size={scale(21)}
-                            color={'#FF5E62'}
-                            style={styles(direction).icon}
-                          />
+                          <TouchableOpacity
+                            onPress={() => handlePress(item.channnelId)}>
+                            <Image
+                              source={require('../../assets/love.png')}
+                              style={
+                                item.likes
+                                  ? styles(direction).iconLiked
+                                  : styles(direction).iconLove
+                              }
+                            />
+                          </TouchableOpacity>
                           <Text style={styles(direction).iconText}>
-                            {t('2563')}
+                            {item.likeCount}
                           </Text>
-                          <Icon
-                            name={'chat'}
-                            size={scale(21)}
-                            color={'#03A0E3'}
-                            style={styles(direction).icon}
+                          <Image
+                            source={require('../../assets/chat.png')}
+                            style={styles(direction).iconChat}
                           />
                           <Text style={styles(direction).iconText}>
                             {t('235')}
                           </Text>
-                          <MaterialIcon
-                            name={'visibility'}
-                            size={scale(21)}
-                            color={'#84BD47'}
-                            style={styles(direction).icon}
+                          <Image
+                            source={require('../../assets/eye.png')}
+                            style={styles(direction).iconEye}
                           />
                           <Text style={styles(direction).iconText}>
                             {t('235')}
@@ -308,7 +368,7 @@ const FeedDetail: React.FC = () => {
                 <TextInput
                   style={styles(direction).inputText}
                   placeholder={`${t('Type your comment here')}`}
-                  // onChangeText={text => text.setFocus({ text })}
+                  // onChangeText={text => handleComment(text)}
                 />
                 <View style={styles(direction).arrow}>
                   <RegularButton
@@ -324,6 +384,7 @@ const FeedDetail: React.FC = () => {
                 </View>
               </View>
               <View style={styles(direction).horizontalLine}></View>
+
               {comment.map((item, index) => {
                 return (
                   <View style={styles(direction).commentContainer}>
@@ -420,6 +481,80 @@ const FeedDetail: React.FC = () => {
             </View>
           </View>
         </SafeAreaView>
+        <View>
+          <Modal animationType="fade" transparent={true} visible={modalVisible}>
+            <TouchableWithoutFeedback
+              onPress={() => {
+                setModalVisible(false);
+              }}>
+              <View style={styles(direction).modalContainer}>
+                <View style={styles(direction).modalView}>
+                  <Neumorphism
+                    style={{ marginBottom: 25 }}
+                    lightColor={'#ffffff'}
+                    darkColor={'#d9d9d9'}
+                    shapeType={'flat'}
+                    radius={scale(14)}>
+                    <View style={styles(direction).radioButtonViewContainer}>
+                      <RadioButton
+                        id={'1'}
+                        label={`${t('Private')}`}
+                        onPress={onPressRadioButtonPrivate}
+                        selected={radioButtonPrivate}
+                        color={'#03A0E3'}
+                        labelStyle={styles(direction).radioLabel}
+                      />
+                    </View>
+                  </Neumorphism>
+                  <Neumorphism
+                    style={{ marginBottom: 25 }}
+                    lightColor={'#ffffff'}
+                    darkColor={'#d9d9d9'}
+                    shapeType={'flat'}
+                    radius={scale(14)}>
+                    <View style={styles(direction).radioButtonViewContainer}>
+                      <RadioButton
+                        id={'1'}
+                        label={`${t('Public')}`}
+                        onPress={onPressRadioButtonPublic}
+                        selected={radioButtonPublic}
+                        color={'#03A0E3'}
+                        labelStyle={styles(direction).radioLabel}
+                      />
+                    </View>
+                  </Neumorphism>
+                  <Neumorphism
+                    style={{ marginBottom: 25 }}
+                    lightColor={'#ffffff'}
+                    darkColor={'#d9d9d9'}
+                    shapeType={'flat'}
+                    radius={scale(14)}>
+                    <View style={styles(direction).radioButtonViewContainer}>
+                      <RadioButton
+                        id={'1'}
+                        label={`${t('Group')}`}
+                        onPress={onPressRadioButtonGroup}
+                        selected={radioButtonGroup}
+                        color={'#03A0E3'}
+                        labelStyle={styles(direction).radioLabel}
+                      />
+                    </View>
+                  </Neumorphism>
+                  <View style={{ width: '70%' }}>
+                    <RegularButton
+                      onPress={() => NavigationService.navigate('Select Role')}
+                      text={t('Save')}
+                      radius={50}
+                      height={50}
+                      width={'100%'}
+                      colors={['#03BBE3', '#14A9FD']}
+                    />
+                  </View>
+                </View>
+              </View>
+            </TouchableWithoutFeedback>
+          </Modal>
+        </View>
       </ScrollView>
     </>
   );
