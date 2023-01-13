@@ -441,7 +441,11 @@ const FeedPostDetail: React.FC = () => {
               <View style={styles(direction).modalContainer}>
                 <View style={styles(direction).modalView2}>
                   <View style={styles(direction).iconViewContainer}>
-                    <MaterialIcon name="warning" size={80} color="#F0374E" />
+                    <MaterialIcon
+                      name="warning"
+                      size={scale(80)}
+                      color="#F0374E"
+                    />
                   </View>
 
                   <View style={styles(direction).textDeleteConfirmationView}>

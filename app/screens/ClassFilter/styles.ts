@@ -73,7 +73,7 @@ const styles = (direction: string, isPressed: boolean) =>
       fontFamily: 'Nunito-Regular',
     },
     buttonText: {
-      fontSize: '18@s',
+      fontSize: '18@ms',
       fontWeight: '600',
       fontFamily: 'Nunito-Regular',
       color: isPressed ? '#ffff' : '#758DAC',

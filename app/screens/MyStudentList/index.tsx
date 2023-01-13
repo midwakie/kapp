@@ -73,7 +73,7 @@ const MyStudentList: React.FC = () => {
     },
   ];
 
-  const CardListItem = ({ details }: any) => {
+  const CardListItem = ({ book }: any) => {
     return (
       <View style={styles(direction).neomorphContainer}>
         <TouchableOpacity
@@ -89,14 +89,14 @@ const MyStudentList: React.FC = () => {
             <View style={styles(direction).cardListStyle}>
               <View style={styles(direction).innerDirection}>
                 <Image
-                  source={details.img}
+                  source={book.img}
                   style={styles(direction).cardListImage}
                 />
                 <View style={styles(direction).cardListContent}>
                   <Text style={styles(direction).title} numberOfLines={1}>
-                    {details.title}
+                    {book.subject}
                   </Text>
-                  <Text style={styles(direction).author}>{details.author}</Text>
+                  <Text style={styles(direction).author}>{book.name}</Text>
                 </View>
               </View>
             </View>
@@ -129,7 +129,7 @@ const MyStudentList: React.FC = () => {
                     onPress={() => NavigationService.navigate('ClassFilter')}>
                     <View style={styles(direction).filterViewContainer}>
                       <Image
-                        source={require('../../assets/filter.png')}
+                        source={require('../../assets/filterImage.png')}
                         style={styles(direction).filterImage}
                       />
                     </View>

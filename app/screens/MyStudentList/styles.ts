@@ -68,7 +68,7 @@ const styles = (direction: string) =>
       backgroundColor: '#EBEEF0',
     },
     cardListStyle: {
-      height: '65@ms',
+      height: '65@s',
       width: Dimensions.get('window').width - scale(40),
       backgroundColor: '#EBEEF0',
       flexDirection: 'row',
@@ -78,7 +78,7 @@ const styles = (direction: string) =>
     },
     cardListStyleTwo: {
       paddingHorizontal: '20@s',
-      height: '65@ms',
+      height: '65@s',
       width: Dimensions.get('window').width - scale(40),
       backgroundColor: '#EBEEF0',
       flexDirection: 'row',
@@ -111,6 +111,7 @@ const styles = (direction: string) =>
       alignItems: 'center',
       height: '100%',
       width: '100%',
+      paddingBottom: '60@s',
     },
     neomorphContainer: {
       justifyContent: 'center',
@@ -146,13 +147,13 @@ const styles = (direction: string) =>
     },
     title: {
       fontFamily: 'Nunito-Regular',
-      fontSize: '14@ms',
+      fontSize: '14@s',
       fontWeight: '600',
       color: '#323A3D',
     },
     author: {
       fontFamily: 'Nunito-Regular',
-      fontSize: '12@ms',
+      fontSize: '12@s',
       fontWeight: '600',
       color: '#758DAC',
       marginBottom: '4@s',

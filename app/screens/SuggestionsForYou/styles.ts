@@ -40,10 +40,8 @@ const styles = (direction: string) =>
       fontSize: '16@s',
       fontFamily: 'Nunito-Regular',
       fontWeight: '700',
-      width:'100%',
-      alignItems:'center',
-      top:'10@ms',
-      
+      width: '100%',
+      alignItems: 'center',
     },
     gridViewContainer: {
       marginTop: '85@s',

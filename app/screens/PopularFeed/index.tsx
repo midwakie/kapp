@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import {
   Image,
   SafeAreaView,
@@ -9,7 +9,6 @@ import {
   View,
 } from 'react-native';
 import styles from './styles';
-import NavigationService from 'app/navigation/NavigationService';
 import { ScrollView } from 'react-native-gesture-handler';
 import Neumorphism from 'react-native-neumorphism';
 import GradientText from 'app/components/texts/GradientText';
@@ -28,9 +27,6 @@ const PopularFeed: React.FC = (props: any) => {
   const [touchedItemId, setTouchedItemId] = useState<number | null>(null);
   const [selected, setSelected] = useState(null);
 
-  const onPress = id => {
-    setSelected(id);
-  };
   const [data, setdata] = useState([
     {
       id: 1,
@@ -75,7 +71,7 @@ const PopularFeed: React.FC = (props: any) => {
         'There are many variations of passages Lorem Ipsum available, but the majority',
     },
   ]);
-  const handleLikePress = id => {
+  const handleLikePress = (id: number) => {
     const updatedData = data.map(item => {
       if (item.id === id) {
         return {
@@ -150,11 +146,11 @@ const PopularFeed: React.FC = (props: any) => {
                               onPress={() => handleLikePress(item.id)}>
                               <Image
                                 source={require('../../assets/love.png')}
-                                style={[
+                                style={
                                   item.isLiked
                                     ? styles(direction).likeImage
-                                    : styles(direction).icon,
-                                ]}
+                                    : styles(direction).icon
+                                }
                               />
                             </TouchableOpacity>
                             <Text style={styles(direction).iconText}>
@@ -172,18 +168,18 @@ const PopularFeed: React.FC = (props: any) => {
                               <TouchableOpacity
                                 key={item.id}
                                 style={styles(direction).iconBox1}
-                                onPress={() =>
+                                onPress={() => {
                                   setTouchedItemId(
                                     touchedItemId === item.id ? null : item.id,
-                                  )
-                                }>
+                                  );
+                                }}>
                                 <Image
                                   source={require('../../assets/chat.png')}
-                                  style={[
+                                  style={
                                     item.id === touchedItemId
                                       ? styles(direction).chatImage
-                                      : styles(direction).icon,
-                                  ]}
+                                      : styles(direction).icon
+                                  }
                                 />
                               </TouchableOpacity>
                               <Text style={styles(direction).iconText}>
