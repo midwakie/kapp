@@ -195,7 +195,16 @@ const TeachersProfile: React.FC = () => {
                           }}>
                           {options.map((op, i) => (
                             <MenuOption
-                              onSelect={() => {}}
+                              onSelect={() => {
+                                [
+                                  op.title === 'Edit Channel'
+                                    ? NavigationService.navigate('MyChannel', {
+                                        titleName: item.titleName,
+                                        isCondition: false,
+                                      })
+                                    : NavigationService.navigate(''),
+                                ];
+                              }}
                               customStyles={{
                                 optionWrapper: {
                                   flexDirection: 'row',
