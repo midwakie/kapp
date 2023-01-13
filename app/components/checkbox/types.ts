@@ -7,4 +7,5 @@ export type CheckBoxProps = {
   iconSize: number;
   iconColor: string;
   onChange?: Function;
+  status: boolean;
 };
