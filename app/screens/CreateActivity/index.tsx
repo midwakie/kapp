@@ -20,9 +20,9 @@ import { useForm } from 'react-hook-form';
 import CustomInputDescription from 'app/components/inputs/CustomInputDescription';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import ActivityButton from 'app/components/buttons/ActivityButton';
-import { Checkbox } from 'react-native-paper';
 import MaterialIcon from 'react-native-vector-icons/SimpleLineIcons';
 import moment from 'moment';
+import Checkbox from 'app/components/checkbox';
 
 const CreateActivity: React.FC = () => {
   const [datePickerVisible, setDatePickerVisible] = useState(false);
@@ -117,12 +117,17 @@ const CreateActivity: React.FC = () => {
             <View style={{ justifyContent: 'center', alignItems: 'center' }}>
               <View style={styles(direction).agreeDisagreeContainer}>
                 <Checkbox
-                  status={checked ? 'checked' : 'unchecked'}
-                  uncheckedColor={'#03A0E3'}
+                  borderWidth={1}
                   color={'#03A0E3'}
-                  onPress={() => {
-                    setChecked(!checked);
+                  iconColor={'#FFFFFF'}
+                  iconSize={scale(18)}
+                  icon={'check'}
+                  height={25}
+                  width={25}
+                  onChange={(status: boolean) => {
+                    setChecked(status);
                   }}
+                  status={checked}
                 />
                 <Text
                   style={styles(direction).agreeDisagreeText}

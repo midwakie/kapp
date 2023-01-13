@@ -23,7 +23,6 @@ import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import PlainButton from 'app/components/buttons/PlainButton';
 import RegularButton from 'app/components/buttons/RegularButton';
 import HorizontalLine from 'app/components/lines/HorizontalLine';
-import { Checkbox } from 'react-native-paper';
 import PhoneInput from 'react-native-phone-number-input';
 import NationalityPicker from 'react-native-nationality-country-calling-code-picker';
 import { useTranslation } from 'react-i18next';
@@ -31,6 +30,7 @@ import { scale } from 'react-native-size-matters';
 import { useDispatch, useSelector } from 'react-redux';
 import * as registerActions from 'app/store/actions/registerActions';
 import { ICurrentCustomer } from 'app/models/reducers/currentCustomer';
+import Checkbox from 'app/components/checkbox';
 interface IState {
   currentCustomerReducer: ICurrentCustomer;
 }
@@ -379,12 +379,17 @@ const SignUp: React.FC = () => {
           </View>
           <View style={styles(direction).agreeDisagreeContainer}>
             <Checkbox
-              status={checked ? 'checked' : 'unchecked'}
-              uncheckedColor={'#03A0E3'}
+              borderWidth={1}
               color={'#03A0E3'}
-              onPress={() => {
-                setChecked(!checked);
+              iconColor={'#FFFFFF'}
+              iconSize={scale(18)}
+              icon={'check'}
+              height={25}
+              width={25}
+              onChange={(status: boolean) => {
+                setChecked(status);
               }}
+              status={checked}
             />
             <Text
               style={styles(direction).agreeDisagreeText}

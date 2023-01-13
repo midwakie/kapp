@@ -1,5 +1,5 @@
 import { Dimensions } from 'react-native';
-import { ScaledSheet } from 'react-native-size-matters';
+import { s, ScaledSheet } from 'react-native-size-matters';
 
 const width =
   Dimensions.get('window').width >= Dimensions.get('window').height
@@ -12,7 +12,6 @@ const styles = (direction: string) =>
       width: '100%',
       height: '100%',
       backgroundColor: '#EBEEF0',
-      marginTop: '80@s',
     },
     safeAreaView: {
       alignSelf: 'stretch',
@@ -38,7 +37,7 @@ const styles = (direction: string) =>
       marginLeft: '20@s',
     },
     container2: {
-      marginTop: 40,
+      marginTop: '85@s',
       width: '100%',
       height: '100%',
       paddingBottom: 25,
@@ -64,7 +63,6 @@ const styles = (direction: string) =>
     inputTextContainerThree: {
       // marginTop: '20@s',
       flexDirection: 'row',
-      width: '100%',
       justifyContent: 'center',
       alignItems: 'center',
       marginBottom: '30@s',
@@ -86,6 +84,7 @@ const styles = (direction: string) =>
       fontWeight: '600',
       fontSize: '14@s',
       fontFamily: 'Nunito-Regular',
+      marginLeft: '15@s',
     },
     datePickerText: {
       color: '#758DAC',
@@ -94,7 +93,7 @@ const styles = (direction: string) =>
       fontFamily: 'Nunito-Regular',
     },
     datePickerContainer: {
-      width: width - 60,
+      width: width - s(60),
       flexDirection: 'row',
       justifyContent: 'space-between',
     },
