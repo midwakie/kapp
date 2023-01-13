@@ -1,6 +1,16 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
-import { Image, SafeAreaView, Text, View, TextInput } from 'react-native';
+import {
+  Image,
+  SafeAreaView,
+  Text,
+  View,
+  TextInput,
+  Modal,
+  Alert,
+  TouchableWithoutFeedback,
+  Pressable,
+} from 'react-native';
 import styles from './styles';
 import NavigationService from 'app/navigation/NavigationService';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
@@ -19,12 +29,36 @@ import {
 } from 'react-native-popup-menu';
 import { useSelector } from 'react-redux';
 import { ICurrentCustomer } from 'app/models/reducers/currentCustomer';
+import RadioButton from 'app/components/buttons/RadioButton';
 
 interface IState {
   currentCustomerReducer: ICurrentCustomer;
 }
 
 const FeedDetail: React.FC = () => {
+  const onPressRadioButtonPrivate = () => {
+    setRadioButtonPrivate(true);
+    setRadioButtonPublic(false);
+    setRadioButtonGroup(false);
+  };
+
+  const onPressRadioButtonPublic = () => {
+    setRadioButtonPrivate(false);
+    setRadioButtonPublic(true);
+    setRadioButtonGroup(false);
+  };
+  const onPressRadioButtonGroup = () => {
+    setRadioButtonPrivate(false);
+    setRadioButtonPublic(false);
+    setRadioButtonGroup(true);
+  };
+  const [modalVisible, setModalVisible] = useState(true);
+  const [radioButtonPrivate, setRadioButtonPrivate] = useState(false);
+  const [radioButtonPublic, setRadioButtonPublic] = useState(false);
+  const [radioButtonGroup, setRadioButtonGroup] = useState(false);
+  const toggle = () => {
+    setModalVisible(!modalVisible);
+  };
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
 
@@ -447,6 +481,80 @@ const FeedDetail: React.FC = () => {
             </View>
           </View>
         </SafeAreaView>
+        <View>
+          <Modal animationType="fade" transparent={true} visible={modalVisible}>
+            <TouchableWithoutFeedback
+              onPress={() => {
+                setModalVisible(false);
+              }}>
+              <View style={styles(direction).modalContainer}>
+                <View style={styles(direction).modalView}>
+                  <Neumorphism
+                    style={{ marginBottom: 25 }}
+                    lightColor={'#ffffff'}
+                    darkColor={'#d9d9d9'}
+                    shapeType={'flat'}
+                    radius={scale(14)}>
+                    <View style={styles(direction).radioButtonViewContainer}>
+                      <RadioButton
+                        id={'1'}
+                        label={`${t('Private')}`}
+                        onPress={onPressRadioButtonPrivate}
+                        selected={radioButtonPrivate}
+                        color={'#03A0E3'}
+                        labelStyle={styles(direction).radioLabel}
+                      />
+                    </View>
+                  </Neumorphism>
+                  <Neumorphism
+                    style={{ marginBottom: 25 }}
+                    lightColor={'#ffffff'}
+                    darkColor={'#d9d9d9'}
+                    shapeType={'flat'}
+                    radius={scale(14)}>
+                    <View style={styles(direction).radioButtonViewContainer}>
+                      <RadioButton
+                        id={'1'}
+                        label={`${t('Public')}`}
+                        onPress={onPressRadioButtonPublic}
+                        selected={radioButtonPublic}
+                        color={'#03A0E3'}
+                        labelStyle={styles(direction).radioLabel}
+                      />
+                    </View>
+                  </Neumorphism>
+                  <Neumorphism
+                    style={{ marginBottom: 25 }}
+                    lightColor={'#ffffff'}
+                    darkColor={'#d9d9d9'}
+                    shapeType={'flat'}
+                    radius={scale(14)}>
+                    <View style={styles(direction).radioButtonViewContainer}>
+                      <RadioButton
+                        id={'1'}
+                        label={`${t('Group')}`}
+                        onPress={onPressRadioButtonGroup}
+                        selected={radioButtonGroup}
+                        color={'#03A0E3'}
+                        labelStyle={styles(direction).radioLabel}
+                      />
+                    </View>
+                  </Neumorphism>
+                  <View style={{ width: '70%' }}>
+                    <RegularButton
+                      onPress={() => NavigationService.navigate('Select Role')}
+                      text={t('Save')}
+                      radius={50}
+                      height={50}
+                      width={'100%'}
+                      colors={['#03BBE3', '#14A9FD']}
+                    />
+                  </View>
+                </View>
+              </View>
+            </TouchableWithoutFeedback>
+          </Modal>
+        </View>
       </ScrollView>
     </>
   );
