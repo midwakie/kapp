@@ -60,7 +60,7 @@ import TestHardness from 'app/screens/TestHardness';
 import PublishNewVideo from 'app/screens/PublishNewVideo';
 import AssignActivity from 'app/screens/AssignActivity';
 import Child from 'app/screens/Child';
-import PopularFeed from 'app/screens/Popular Channel';
+import PopularFeed from 'app/screens/PopularFeed';
 import FeedPostDetail from 'app/screens/FeedPostDetail';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
