@@ -57,6 +57,7 @@ import TestHardness from 'app/screens/TestHardness';
 import PublishNewVideo from 'app/screens/PublishNewVideo';
 import AssignActivity from 'app/screens/AssignActivity';
 import Child from 'app/screens/Child';
+import EbookDetail from 'app/screens/EbookDetail';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -211,6 +212,16 @@ const AuthStack = () => {
       <Stack.Screen
         name="FeedDetail"
         component={FeedDetail}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="EbookDetail"
+        component={EbookDetail}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
