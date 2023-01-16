@@ -88,13 +88,30 @@ const EditChildProfile: React.FC = () => {
                 darkColor={'#A8A8A8'}
                 shapeType={'flat'}
                 radius={50}>
-                <View style={styles(direction).coinContainer2}>
-                  <Image
-                    style={styles(direction).coinImage}
-                    source={require('../../assets/goldCoin1.png')}
-                  />
-                  <Text style={styles(direction).coinText}>450</Text>
-                </View>
+                <TouchableOpacity>
+                  <View style={styles(direction).coinContainer2}>
+                    <Image
+                      style={styles(direction).coinImage}
+                      source={require('../../assets/goldCoin1.png')}
+                    />
+                    <Text style={styles(direction).coinText}>450</Text>
+                  </View>
+                </TouchableOpacity>
+              </Neumorphism>
+              <Neumorphism
+                lightColor={'#ffffff'}
+                darkColor={'#A8A8A8'}
+                shapeType={'flat'}
+                radius={50}>
+                <TouchableOpacity>
+                  <View style={styles(direction).coinContainer2}>
+                    <Image
+                      style={styles(direction).coinImage}
+                      source={require('../../assets/greyCoin.png')}
+                    />
+                    <Text style={styles(direction).coinText}>450</Text>
+                  </View>
+                </TouchableOpacity>
               </Neumorphism>
             </View>
 
@@ -285,7 +302,7 @@ const EditChildProfile: React.FC = () => {
                 radius={50}
                 height={50}
                 width={'100%'}
-                colors={['#03BBE3', '#14A9FD']}
+                colors={['#03A0E3', '#1976D2']}
               />
             </View>
           </View>

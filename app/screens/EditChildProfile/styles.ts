@@ -144,9 +144,11 @@ const styles = (direction: string) =>
     },
     coinContainer1: {
       alignContent: 'center',
-      justifyContent: 'center',
+      justifyContent: 'space-evenly',
       flexDirection: 'row',
+      width: '100%',
       height: '40@s',
+
       marginTop: '25@s',
     },
     schoolInputTextContainer: {
@@ -176,8 +178,6 @@ const styles = (direction: string) =>
       height: '65@ms0.75',
       position: 'absolute',
       resizeMode: 'contain',
-     
-    
     },
     interestContainer: {
       width: '100%',
@@ -186,8 +186,6 @@ const styles = (direction: string) =>
       backgroundColor: '#EBEEF0',
       paddingHorizontal: '25@s',
       width: width - 60,
-     
-      
     },
     schoolText: {
       fontFamily: 'Nunito-Regular',
@@ -207,7 +205,6 @@ const styles = (direction: string) =>
       fontWeight: '600',
       fontSize: '12@s',
       marginTop: '10@ms',
-     
     },
 
     changeText2: {
