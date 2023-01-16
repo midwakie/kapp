@@ -437,35 +437,6 @@ const GlobalSearch: React.FC = () => {
   return (
     <>
       <ScrollView style={styles(direction).container} bounces={false}>
-        <View style={styles(direction).titleBarContainer}>
-          <TitleBar
-            leftComponent={
-              <View style={styles(direction).topContainer}>
-                <RegularButton
-                  onPress={() => {
-                    NavigationService.goBack();
-                  }}
-                  icon={'arrow-back'}
-                  radius={38}
-                  height={38}
-                  width={38}
-                  colors={['#EBECF0', '#EBECF0']}
-                />
-              </View>
-            }
-            middleComponent={
-              <View style={styles(direction).gradientTextContainer}>
-                <GradientText
-                  colors={['#2AA7DD', '#2AA7DD']}
-                  text={t('Search')}
-                  start={{ x: 0, y: 0 }}
-                  end={{ x: 0, y: 1 }}
-                  textStyle={styles(direction).gradientTextStyle as TextStyle}
-                />
-              </View>
-            }
-          />
-        </View>
         <SafeAreaView style={styles(direction).safeAreaView}>
           <View style={styles(direction).container2}>
             <View style={styles(direction).inputTextContainer}>
@@ -487,7 +458,7 @@ const GlobalSearch: React.FC = () => {
                 }
               />
             </View>
-            <View style={{ height: 105 }}>
+            <View style={styles(direction, active).categoryListContainer}>
               <ScrollView
                 // style={{ flexDirection: 'row', height: 50 }}
                 style={{ flex: 1 }}
@@ -656,6 +627,35 @@ const GlobalSearch: React.FC = () => {
           </View>
         </SafeAreaView>
       </ScrollView>
+      <View style={styles(direction).titleBarContainer}>
+        <TitleBar
+          leftComponent={
+            <View style={styles(direction).topContainer}>
+              <RegularButton
+                onPress={() => {
+                  NavigationService.goBack();
+                }}
+                icon={'arrow-back'}
+                radius={38}
+                height={38}
+                width={38}
+                colors={['#EBECF0', '#EBECF0']}
+              />
+            </View>
+          }
+          middleComponent={
+            <View style={styles(direction).gradientTextContainer}>
+              <GradientText
+                colors={['#2AA7DD', '#2AA7DD']}
+                text={t('Search')}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 0, y: 1 }}
+                textStyle={styles(direction).gradientTextStyle as TextStyle}
+              />
+            </View>
+          }
+        />
+      </View>
     </>
   );
 };
