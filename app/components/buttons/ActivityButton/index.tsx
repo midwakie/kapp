@@ -17,22 +17,23 @@ const ActivityButton = ({
   const { t } = useTranslation();
   const direction: string = i18n.dir();
   return (
-    <View style={styles(direction).mainContainer}>
-      <View style={styles(direction).neomorphContainer}>
-        <Neumorphism
-          style={{ height: 50 }}
-          lightColor={'#ffffff'}
-          darkColor={'#cccccc'}
-          shapeType={'flat'}
-          radius={scale(50)}>
-          <View style={styles(direction).textContainer}>
-            <Text style={styles(direction).mainText}>{t(title)}</Text>
-            <TouchableOpacity onPress={onPress}>
-              <Text style={styles(direction).buttonText}>{t(buttonTitle)}</Text>
-            </TouchableOpacity>
-          </View>
-        </Neumorphism>
-      </View>
+    <View style={styles.neomorphContainer}>
+      <Neumorphism
+        // style={{ height: 50 }}
+        lightColor={'#ffffff'}
+        darkColor={'#cccccc'}
+        shapeType={'flat'}
+        radius={scale(50)}>
+        <View style={styles.textContainer}>
+          <Text style={styles.mainText}>{t(title)}</Text>
+          <TouchableOpacity
+            onPress={() => {
+              onPress;
+            }}>
+            <Text style={styles.buttonText}>{t(buttonTitle)}</Text>
+          </TouchableOpacity>
+        </View>
+      </Neumorphism>
     </View>
   );
 };

@@ -1,5 +1,5 @@
 export type ActivityButtonProps = {
-  onPress: Function;
+  onPress?: Function;
   title: string;
   buttonTitle: string;
 };
