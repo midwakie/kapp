@@ -262,52 +262,54 @@ const ManageActivities: React.FC = () => {
                     darkColor={'#A8A8A8'}
                     shapeType={'flat'}
                     radius={scale(14)}>
-                    <View style={styles(direction).childContainer}>
-                      <View style={styles(direction).studentProfile}>
-                        <Image
-                          source={item.studentImage}
-                          style={styles(direction).studentProfile1}
-                        />
-                      </View>
-                      <View style={styles(direction).textContainer}>
-                        <Text style={styles(direction).name}>
-                          {t(item.studentName)}
-                        </Text>
-                      </View>
+                    <View style={styles(direction).childExpansionContainer}>
+                      <View style={styles(direction).childContainer}>
+                        <View style={styles(direction).studentProfile}>
+                          <Image
+                            source={item.studentImage}
+                            style={styles(direction).studentProfile1}
+                          />
+                        </View>
+                        <View style={styles(direction).textContainer}>
+                          <Text style={styles(direction).name}>
+                            {t(item.studentName)}
+                          </Text>
+                        </View>
 
-                      <TouchableOpacity
-                        style={styles(direction).down}
-                        onPress={() => {
-                          if (activeId !== item.id) {
-                            setActiveId(item.id);
-                            setIsVideoVisible(true);
-                            setIsFlatListVisible(true);
-                          } else {
-                            setActiveId(null);
-                            setIsVideoVisible(false);
-                            setIsFlatListVisible(false);
-                          }
-                        }}>
-                        <MaterialIcon
-                          name={`chevron-${
-                            activeId === item.id ? 'up' : 'down'
-                          }`}
-                          size={35}
-                          color={'#03A0E3'}
+                        <TouchableOpacity
+                          style={styles(direction).down}
+                          onPress={() => {
+                            if (activeId !== item.id) {
+                              setActiveId(item.id);
+                              setIsVideoVisible(true);
+                              setIsFlatListVisible(true);
+                            } else {
+                              setActiveId(null);
+                              setIsVideoVisible(false);
+                              setIsFlatListVisible(false);
+                            }
+                          }}>
+                          <MaterialIcon
+                            name={`chevron-${
+                              activeId === item.id ? 'up' : 'down'
+                            }`}
+                            size={35}
+                            color={'#03A0E3'}
+                          />
+                        </TouchableOpacity>
+                      </View>
+                      {isVideoVisible && activeId === item.id && (
+                        <FlatList
+                          key={'#'}
+                          keyExtractor={item => '#' + item.id}
+                          numColumns={numColumns}
+                          data={item.videoImage}
+                          renderItem={({ item }) => {
+                            return <CardItem videoImage={item} />;
+                          }}
                         />
-                      </TouchableOpacity>
+                      )}
                     </View>
-                    {isVideoVisible && activeId === item.id && (
-                      <FlatList
-                        key={'#'}
-                        keyExtractor={item => '#' + item.id}
-                        numColumns={numColumns}
-                        data={item.videoImage}
-                        renderItem={({ item }) => {
-                          return <CardItem videoImage={item} />;
-                        }}
-                      />
-                    )}
                   </Neumorphism>
                 </View>
               );

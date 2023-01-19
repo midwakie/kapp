@@ -187,6 +187,9 @@ const styles = (direction: string) =>
     neomorphContainer4: {
       paddingVertical: '20@s',
     },
+    childExpansionContainer: {
+      backgroundColor: '#EBEEF0',
+    },
     childContainer: {
       backgroundColor: '#EBEEF0',
       height: '65@s',
@@ -201,6 +204,7 @@ const styles = (direction: string) =>
       height: '73@s',
       marginLeft: '20@s',
       marginBottom: '26@s',
+      backgroundColor: '#EBEEF0',
     },
     imageStyle2: {
       justifyContent: 'center',
