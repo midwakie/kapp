@@ -448,7 +448,7 @@ const styles = (direction: string) =>
       marginTop: '3@s',
     },
     subContainerText: {
-      width: '100%'
+      width: '100%',
     },
     moreVertIcon: {
       marginTop: '20@s',
