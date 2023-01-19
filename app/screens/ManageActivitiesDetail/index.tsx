@@ -21,6 +21,7 @@ import { ms, scale } from 'react-native-size-matters';
 import TitleBar from 'app/components/buttons/TitleBar';
 import { useForm } from 'react-hook-form';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import CustomInput from 'app/components/inputs/CustomInput';
 
 const ManageActivities: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -117,33 +118,6 @@ const ManageActivities: React.FC = () => {
 
   return (
     <>
-      <TitleBar
-        leftComponent={
-          <View style={styles(direction).topContainer}>
-            <RegularButton
-              onPress={() => {
-                NavigationService.goBack();
-              }}
-              icon={'arrow-back'}
-              radius={38}
-              height={38}
-              width={38}
-              colors={['#EBECF0', '#EBECF0']}
-            />
-          </View>
-        }
-        middleComponent={
-          <View style={styles(direction).gradientTextContainer}>
-            <GradientText
-              colors={['#03A0E3', '#0D93CD']}
-              text={t('Activities Work')}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 0, y: 1 }}
-              textStyle={styles(direction).gradientTextStyle as TextStyle}
-            />
-          </View>
-        }
-      />
       <ScrollView style={styles(direction).container} bounces={false}>
         <SafeAreaView style={styles(direction).safeAreaView}>
           <View style={styles(direction).container2}>
@@ -207,7 +181,7 @@ const ManageActivities: React.FC = () => {
                 </View>
               );
             })}
-            <View style={styles(direction).neomorphContainer3}>
+            {/* <View style={styles(direction).neomorphContainer3}>
               <Neumorphism
                 lightColor={'#ffffff'}
                 darkColor={'#A8A8A8'}
@@ -234,6 +208,37 @@ const ManageActivities: React.FC = () => {
                   }
                 />
               </Neumorphism>
+              <View style={styles(direction).topIconContainer1}>
+                <Neumorphism
+                  lightColor={'#ffffff'}
+                  darkColor={'#A8A8A8'}
+                  shapeType={'flat'}
+                  radius={50}>
+                  <TouchableOpacity style={styles(direction).topIconContainer}>
+                    <Image
+                      style={styles(direction).coinImage}
+                      source={require('../../assets/filter.png')}
+                    />
+                  </TouchableOpacity>
+                </Neumorphism>
+              </View>
+            </View> */}
+            <View style={[styles(direction).rowContainer]}>
+              <View style={[styles(direction).inputContainer]}>
+                <Image
+                  source={require('../../assets/inputBg.png')}
+                  style={styles(direction).bg}
+                />
+                <TextInput
+                  keyboardType="default"
+                  autoCapitalize="none"
+                  value={description}
+                  onChangeText={text => setDescription(text)}
+                  placeholder={t('Search here..')}
+                  placeholderTextColor="#9FA4A7"
+                  style={styles(direction).input}
+                />
+              </View>
               <View style={styles(direction).topIconContainer1}>
                 <Neumorphism
                   lightColor={'#ffffff'}
@@ -310,6 +315,35 @@ const ManageActivities: React.FC = () => {
           </View>
         </SafeAreaView>
       </ScrollView>
+      <View style={styles(direction).titleBarContainer}>
+        <TitleBar
+          leftComponent={
+            <View style={styles(direction).topContainer}>
+              <RegularButton
+                onPress={() => {
+                  NavigationService.goBack();
+                }}
+                icon={'arrow-back'}
+                radius={38}
+                height={38}
+                width={38}
+                colors={['#EBECF0', '#EBECF0']}
+              />
+            </View>
+          }
+          middleComponent={
+            <View style={styles(direction).gradientTextContainer}>
+              <GradientText
+                colors={['#2AA7DD', '#2AA7DD']}
+                text={t('Activities Work')}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 0, y: 1 }}
+                textStyle={styles(direction).gradientTextStyle as TextStyle}
+              />
+            </View>
+          }
+        />
+      </View>
     </>
   );
 };

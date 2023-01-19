@@ -12,7 +12,7 @@ const styles = (direction: string) =>
       width: '100%',
       height: '100%',
       backgroundColor: '#EBEEF0',
-      zIndex: -10,
+      // zIndex: -10,
     },
     safeAreaView: { alignSelf: 'stretch' },
     gradientTextContainer: {
@@ -34,15 +34,9 @@ const styles = (direction: string) =>
       width: 38,
       marginLeft: '20@s',
     },
-    filterContainer: {
-      justifyContent: 'center',
-      //   alignItems: 'center',
-      //   position: 'absolute',
-      //   width: 38,
-      marginRight: '25@s',
-    },
+
     container2: {
-      marginTop: 30,
+      marginTop: '78@s',
       width: '100%',
       height: '100%',
       paddingHorizontal: '20@s',
@@ -62,18 +56,7 @@ const styles = (direction: string) =>
       paddingLeft: '25@s',
       paddingRight: '19@s',
     },
-    container6: {
-      flexDirection: 'row',
-      marginLeft: '25@s',
-      marginBottom: '10@s',
-    },
-    container66: {
-      width: '263@s',
-      height: '50@s',
-      paddingHorizontal: '25@s',
-      paddingVertical: '16@s',
-      fontSize: '14@s',
-    },
+
     topIconContainer: {
       alignItems: 'center',
       justifyContent: 'center',
@@ -84,49 +67,20 @@ const styles = (direction: string) =>
     topIconContainer1: {
       height: '38@s',
       width: '38@s',
-      marginLeft: '18@s',
+      right: 0,
+      top: '30@s',
+      position: 'absolute',
     },
     coinImage: {
       height: '18@ms',
       width: '17@ms',
       //   alignItems: 'center',
     },
-    container7: {
-      flexDirection: 'row',
-      paddingVertical: '15@s',
-      width: '100%',
-      backgroundColor: '#EBEEF0',
-    },
-    container8: {
-      width: '40@s',
-      height: '40@s',
-      borderRadius: '150@s',
-      backgroundColor: '#EBEEF0',
-      alignItems: 'center',
-      justifyContent: 'center',
-      alignSelf: 'center',
-    },
+
     neomorphContainer: {
-      marginBottom: 20,
+      marginTop: '40@s',
     },
-    neomorphContainer1: {
-      marginTop: 30,
-      marginBottom: 30,
-    },
-    neomorphContainer2: {
-      width: '40@s',
-      height: '40@s',
-    },
-    imageContainer: {
-      width: '100%',
-      height: '25@s',
-      flexDirection: 'row',
-    },
-    imageStyle: {
-      resizeMode: 'contain',
-      width: '18@s',
-      height: '18@s',
-    },
+
     text1: {
       color: '#03A0E3',
       fontSize: '14@s',
@@ -140,22 +94,18 @@ const styles = (direction: string) =>
       fontSize: '14@s',
       fontWeight: '600',
       fontFamily: 'Nunito-Regular',
-      width: '87@s',
-      height: '100%',
     },
     textContainer: {
       width: '87@s',
       height: '100%',
-      paddingVertical: '23@s',
+      justifyContent: 'center',
       marginLeft: '15@s',
-      // alignItems: 'center',
     },
     down: {
-      // width: '25@s',
       height: '100%',
-      marginLeft: '80@s',
-      marginTop: '24@s',
-      // marginLeft: '137@s',
+      justifyContent: 'center',
+      position: 'absolute',
+      right: '20@s',
     },
     bookType: {
       color: '#2F4868',
@@ -206,43 +156,8 @@ const styles = (direction: string) =>
       width: '103@s',
       height: '19@s',
     },
-    text8: {
-      color: '#758DAC',
-      fontSize: '14@s',
-      fontWeight: '600',
-      fontFamily: 'Nunito-Regular',
-      height: '19@s',
-      width: '170@s',
-      // alignSelf: 'center',
-      // marginLeft: 20,
-    },
-    interestIcon1: {
-      flexDirection: 'row',
-      height: '25@s',
-      width: '25@s',
-    },
-    interestIcons: {
-      height: '25@s',
-      width: '25@s',
-      marginLeft: '-9@s',
-      alignItems: 'center',
-      overflow: 'hidden',
-    },
-    imageRound: { width: '100%', height: '100%', resizeMode: 'cover' },
-    plusFour: {
-      position: 'absolute',
-      alignSelf: 'center',
-      marginTop: 4,
-      color: 'white',
-    },
-    leftContainer: {
-      flex: 1,
-      marginLeft: 20,
-    },
-    rightContainer: {
-      flex: 4,
-      alignSelf: 'center',
-    },
+    titleBarContainer: { position: 'absolute', width: '100%' },
+
     profileImgContainer1: {
       width: '100%',
       marginTop: '25@s',
@@ -251,7 +166,6 @@ const styles = (direction: string) =>
       justifyContent: 'center',
     },
     studentProfile: {
-      // paddingHorizontal: '25@s',
       justifyContent: 'center',
     },
     profileImg1: {
@@ -264,36 +178,21 @@ const styles = (direction: string) =>
       width: '40@s',
       resizeMode: 'stretch',
     },
-    inputTextContainer: {
-      width: '200@s',
-      //   justifyContent: 'center',
-      //   alignItems: 'center',
-    },
-    searchIcon: {
-      //   right: '100@s',
-      backgroundColor: 'red',
-    },
+
+    searchIcon: {},
     searchContainer: {
       flexDirection: 'row',
-      //   width: '100%',
     },
-    neomorphContainer3: {
-      marginTop: '20@s',
-      //   width: '269@s',
-      flexDirection: 'row',
-    },
+
     neomorphContainer4: {
       paddingVertical: '20@s',
-      // marginBottom: '20@s',
     },
     childContainer: {
-      width: '335@s',
       backgroundColor: '#EBEEF0',
       height: '65@s',
       flexDirection: 'row',
-      alignItems: 'center',
-      marginLeft: '20@s',
-      // justifyContent: 'space-between',
+
+      paddingHorizontal: '20@s',
     },
     imageContainer4: {
       alignItems: 'center',
@@ -302,7 +201,6 @@ const styles = (direction: string) =>
       height: '73@s',
       marginLeft: '20@s',
       marginBottom: '26@s',
-      // justifyContent: 'space-between',
     },
     imageStyle2: {
       justifyContent: 'center',
@@ -317,6 +215,35 @@ const styles = (direction: string) =>
       height: '30@s',
       marginTop: 10,
       marginLeft: 10,
+    },
+    inputContainer: {
+      width: '250@s',
+      height: '50@s',
+      alignItems: 'center',
+      marginTop: '25@s',
+      flexDirection: 'row',
+    },
+    rowContainer: {
+      flexDirection: 'row',
+    },
+    bg: {
+      width: '250@s',
+      height: '50@s',
+      position: 'absolute',
+      resizeMode: 'contain',
+    },
+    input: {
+      height: '40@ms',
+      paddingVertical: '10@ms',
+      paddingHorizontal: '10@s',
+      marginLeft: direction === 'rtl' ? undefined : '15@s',
+      marginRight: direction === 'rtl' ? '15@s' : undefined,
+      textAlign: direction === 'rtl' ? 'right' : 'left',
+      flex: 1,
+      color: '#758DAC',
+      fontFamily: 'Nunito-Regular',
+      fontSize: '14@s',
+      backfaceVisibility: 'visible',
     },
   });
 

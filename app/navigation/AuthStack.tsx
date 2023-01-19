@@ -60,6 +60,7 @@ import ManageActivitiesDetail from 'app/screens/ManageActivitiesDetail';
 import PublishNewVideo from 'app/screens/PublishNewVideo';
 import AssignActivity from 'app/screens/AssignActivity';
 import Child from 'app/screens/Child';
+import FinishBook from 'app/screens/FinishBook';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -563,9 +564,10 @@ const AuthStack = () => {
           headerShown: false,
         }}
       />
+
       <Stack.Screen
-        name="ManageActivitiesDetail"
-        component={ManageActivitiesDetail}
+        name="Club Channel"
+        component={ClubChannel}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
@@ -574,8 +576,18 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
-        name="Club Channel"
-        component={ClubChannel}
+        name="FinishBook"
+        component={FinishBook}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ManageActivitiesDetail"
+        component={ManageActivitiesDetail}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
