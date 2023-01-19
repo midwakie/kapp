@@ -15,6 +15,8 @@ const RegularButton = ({
   icon,
   height,
   width,
+  start,
+  end,
 }: RegularButtonProps) => {
   return (
     <Neumorphism
@@ -27,6 +29,8 @@ const RegularButton = ({
         onPress={onPress}>
         <LinearGradient
           colors={colors}
+          start={start || { x: 0, y: 0 }}
+          end={end || { x: 0, y: 1 }}
           style={styles(radius, height, width).touchableOpacity}>
           {icon ? (
             <MaterialIcon name={icon} size={ms(20)} color={'#03A0E3'} />

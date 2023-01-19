@@ -6,4 +6,6 @@ export type RegularButtonProps = {
   icon?: string | null;
   height: number | string;
   width: number | string;
+  start?: any | null;
+  end?: any | null;
 };
