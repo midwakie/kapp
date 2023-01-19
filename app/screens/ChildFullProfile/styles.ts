@@ -19,13 +19,13 @@ const styles = (direction: string) =>
       paddingBottom: 25,
       justifyContent: 'center',
       alignItems: 'center',
-      marginTop: '25@s',
+      marginTop: '105@s',
     },
     iconContainer1: {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
-      height: '44@s',
+      // height: '44@s',
       width: '88@s',
     },
     menuContainer: {
@@ -68,7 +68,7 @@ const styles = (direction: string) =>
       width: '100%',
       justifyContent: 'center',
       alignItems: 'center',
-      height: '22@s',
+      // height: '22@s',
     },
     imageContainer: {
       alignItems: 'flex-start',
@@ -130,6 +130,7 @@ const styles = (direction: string) =>
       paddingHorizontal: '20@s',
       justifyContent: 'space-between',
       flexDirection: 'row',
+      backgroundColor: '#EBEEF0',
     },
 
     coinContainer2: {
@@ -928,6 +929,7 @@ const styles = (direction: string) =>
         .toString(16)
         .padStart(6, '0')}`,
     },
+    titleBarContainer: { position: 'absolute', width: '100%' },
   });
 
 export default styles;

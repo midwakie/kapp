@@ -299,10 +299,12 @@ const EditChildProfile: React.FC = () => {
                   NavigationService.reset('Select Role');
                 }}
                 text={t('Save')}
-                radius={50}
+                radius={2.63}
                 height={50}
                 width={'100%'}
-                colors={['#03A0E3', '#1976D2']}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+                colors={['rgba(3, 187, 227, 1)', 'rgba(25, 118, 210, 1)']}
               />
             </View>
           </View>
