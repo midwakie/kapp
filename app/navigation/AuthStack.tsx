@@ -46,11 +46,15 @@ import History from 'app/screens/EBooks/History';
 import ChildProfile from 'app/screens/ChildProfile';
 import Home from 'app/screens/Home';
 import ChildFullProfileNoChannel from 'app/screens/ChildFullProfile-NoChannel';
+import SuggestionsForYou from 'app/screens/SuggestionsForYou';
+import ClassFilter from 'app/screens/ClassFilter';
+import MyStudentList from 'app/screens/MyStudentList';
 import ManagePeople from 'app/screens/ManagePeople';
 import AddReview from 'app/screens/AddReview';
 import ActivityFilter from 'app/screens/ActivityFilter';
 import ParentProfileDetail from 'app/screens/ParentProfileDetail';
 import TeachersProfile from 'app/screens/TeachersProfile';
+import CreateActivity from 'app/screens/CreateActivity';
 import ClubChannel from 'app/screens/ClubChannel';
 import PublishNewDocument from 'app/screens/PublishNewDocument';
 import TestHardness from 'app/screens/TestHardness';
@@ -60,7 +64,9 @@ import ManageActivitiesDetail from 'app/screens/ManageActivitiesDetail';
 import PublishNewVideo from 'app/screens/PublishNewVideo';
 import AssignActivity from 'app/screens/AssignActivity';
 import Child from 'app/screens/Child';
-import FinishBook from 'app/screens/FinishBook';
+import PopularFeed from 'app/screens/PopularFeed';
+import FeedPostDetail from 'app/screens/FeedPostDetail';
+import FeaturedChannel from 'app/screens/FeaturedChannel';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -525,6 +531,26 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
+        name="ParentProfileDet"
+        component={ParentProfileDetail}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="CreateActivity"
+        component={CreateActivity}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
         name="PublishNewDocument"
         component={PublishNewDocument}
         options={{
@@ -588,6 +614,36 @@ const AuthStack = () => {
       <Stack.Screen
         name="ManageActivitiesDetail"
         component={ManageActivitiesDetail}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="PopularFeed"
+        component={PopularFeed}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="FeedPostDetail"
+        component={FeedPostDetail}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="FeaturedChannel"
+        component={FeaturedChannel}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation

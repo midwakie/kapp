@@ -14,8 +14,9 @@ const Checkbox = ({
   iconSize,
   iconColor,
   onChange,
+  status,
 }: CheckBoxProps) => {
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(status);
   return (
     <TouchableOpacity
       style={styles(borderWidth, height, width, color, isChecked).checkbox}

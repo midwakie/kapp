@@ -100,11 +100,12 @@ const styles = (direction: string, active?: boolean) =>
       alignItems: 'center',
     },
     container2: {
-      marginTop: 115,
+      marginTop: '85@s',
       width: '100%',
       height: '100%',
       marginBottom: 35,
     },
+    categoryListContainer: { height: '105@s' },
     container6: {
       width: '100%',
       height: '123@s',

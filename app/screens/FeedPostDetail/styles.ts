@@ -152,26 +152,9 @@ const styles = (direction: string) =>
       width: '100%',
       marginTop: '37@s',
     },
-    iconLove: {
+    icon: {
       width: '24@s',
       height: '21@s',
-      marginLeft: '25@s',
-    },
-    iconChat: {
-      width: '24@s',
-      height: '21@s',
-      tintColor: '#03A0E3',
-      marginLeft: '25@s',
-    },
-    iconLiked: {
-      width: '24@s',
-      height: '21@s',
-      tintColor: '#FF5E62',
-      marginLeft: '25@s',
-    },
-    iconEye: {
-      width: '23@s',
-      height: '14@s',
       marginLeft: '25@s',
     },
     iconText: {
@@ -249,6 +232,35 @@ const styles = (direction: string) =>
       height: '20@s',
       width: '20@s',
       resizeMode: 'contain',
+    },
+    modalView2: {
+      borderWidth: 1,
+      borderColor: 'white',
+      justifyContent: 'center',
+      paddingHorizontal: '20@s',
+      alignItems: 'center',
+      borderRadius: '15@s',
+      backgroundColor: '#EBEEF0',
+      height: '260@s',
+      width: width - 40,
+    },
+    iconViewContainer: { bottom: '30@s' },
+    textDeleteConfirmationView: {
+      paddingHorizontal: '40@s',
+      textAlign: 'center',
+    },
+    textDeleteConfirmation: {
+      fontFamily: 'Nunito-Regular',
+      fontSize: '18@s',
+
+      bottom: '10@s',
+      color: '#2F4868',
+    },
+    buttonConfirmationView: {
+      flexDirection: 'row',
+      justifyContent: 'space-evenly',
+      width: '100%',
+      marginTop: '20@s',
     },
   });
 
