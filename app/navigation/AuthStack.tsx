@@ -97,7 +97,7 @@ const AuthStack = () => {
 
   return (
     <AuthenticationStack.Navigator
-      initialRouteName={'ChildFullProfile'}
+      initialRouteName={initialRouteName}
       screenOptions={{
         ...TransitionPresets.SlideFromRightIOS,
       }}>

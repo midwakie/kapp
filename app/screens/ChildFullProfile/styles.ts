@@ -109,7 +109,6 @@ const styles = (direction: string) =>
     },
     rectangle: {
       width: width - s(40),
-      height: '480@s',
       borderRadius: 15,
       backgroundColor: '#EBEEF0',
       paddingHorizontal: s(10),
@@ -170,8 +169,9 @@ const styles = (direction: string) =>
       flexDirection: 'row',
       height: '29@s',
       marginTop: '5@s',
-      width: '100%',
-      marginBottom: 10,
+      marginBottom: '10@s',
+      marginHorizontal: '10@s',
+      justifyContent: 'space-between',
     },
     editButton: {
       flexDirection: 'row',
@@ -233,8 +233,7 @@ const styles = (direction: string) =>
     iconMainContainer: {
       flexDirection: 'row',
       height: '30@s',
-      justifyContent: 'flex-end',
-      marginLeft: '28@s',
+      justifyContent: 'center',
     },
     icon1: {
       height: '25@s',
@@ -449,18 +448,16 @@ const styles = (direction: string) =>
     },
     walkThroughContainer: {
       // marginBottom: 28,
-      height: 260,
+      height: '260@s',
     },
     walkThroughContainer2: {
       // marginBottom: 28,
-      height: 350,
+      height: '350@s',
     },
     paginationContainer: {
-      marginTop: 10,
       justifyContent: 'center',
     },
     paginationContainerPdf: {
-      marginTop: 10,
       justifyContent: 'center',
       bottom: '10@s',
     },
