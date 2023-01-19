@@ -601,7 +601,7 @@ const AuthStack = () => {
           headerShown: false,
         }}
       />
-      <Stack.Screen
+      {/* <Stack.Screen
         name="FinishBook"
         component={FinishBook}
         options={{
@@ -610,7 +610,7 @@ const AuthStack = () => {
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
-      />
+      /> */}
       <Stack.Screen
         name="ManageActivitiesDetail"
         component={ManageActivitiesDetail}
