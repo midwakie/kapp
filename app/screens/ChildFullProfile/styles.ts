@@ -1,5 +1,5 @@
 import { Dimensions } from 'react-native';
-import { s, ScaledSheet } from 'react-native-size-matters';
+import { s, scale, ScaledSheet } from 'react-native-size-matters';
 
 const width =
   Dimensions.get('window').width >= Dimensions.get('window').height
@@ -19,7 +19,36 @@ const styles = (direction: string) =>
       paddingBottom: 25,
       justifyContent: 'center',
       alignItems: 'center',
-      marginTop: '25@s',
+      marginTop: '105@s',
+    },
+    iconContainer1: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      // height: '44@s',
+      width: '88@s',
+    },
+    menuContainer: {
+      height: '44@s',
+      width: '44@s',
+      backgroundColor: '#EBEEF0',
+      borderTopLeftRadius: '50@s',
+      borderBottomLeftRadius: '50@s',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    searchContainer: {
+      backgroundColor: '#EBEEF0',
+      height: '44@s',
+      width: '44@s',
+      borderTopRightRadius: '50@s',
+      borderBottomRightRadius: '50@s',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    iconImageStyle: {
+      width: '20@s',
+      height: '20@s',
     },
     safeAreaView: { alignSelf: 'stretch' },
     labelTextContainer: {
@@ -39,12 +68,12 @@ const styles = (direction: string) =>
       width: '100%',
       justifyContent: 'center',
       alignItems: 'center',
-      height: '22@s',
+      // height: '22@s',
     },
     imageContainer: {
       alignItems: 'flex-start',
       justifyContent: 'flex-start',
-      bottom: '80@s',
+      // bottom: '80@s',
       width: '100@s',
       height: '100@s',
     },
@@ -80,21 +109,46 @@ const styles = (direction: string) =>
     },
     rectangle: {
       width: width - s(40),
-      height: '163@s',
+      height: '480@s',
       borderRadius: 15,
       backgroundColor: '#EBEEF0',
       paddingHorizontal: s(10),
+      paddingVertical: '10@s',
     },
     marginView: { marginBottom: '20@s' },
     marginViewRow: {
       marginLeft: '20@s',
+    },
+    marginViewRow1: {
+      marginLeft: '10@s',
+    },
+    statContainer: {
+      width: '275@s',
+      height: '41@s',
+      borderRadius: '9@s',
+      alignItems: 'center',
+      paddingHorizontal: '20@s',
+      justifyContent: 'space-between',
+      flexDirection: 'row',
+      backgroundColor: '#EBEEF0',
     },
 
     coinContainer2: {
       width: '75@ms',
       height: '29@ms',
       borderRadius: 50,
-      justifyContent: 'space-around',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      paddingHorizontal: '12@ms',
+      flexDirection: 'row',
+      backgroundColor: '#EBEEF0',
+    },
+    coinContainer3: {
+      width: '75@ms',
+      height: '29@ms',
+      borderRadius: 50,
+
+      justifyContent: 'space-between',
       alignItems: 'center',
       paddingHorizontal: '12@ms',
       flexDirection: 'row',
@@ -113,11 +167,11 @@ const styles = (direction: string) =>
       color: '#455157',
     },
     coinContainer1: {
-      bottom: '80@s',
       flexDirection: 'row',
       height: '29@s',
       marginTop: '5@s',
-      marginLeft: '5@s',
+      width: '100%',
+      marginBottom: 10,
     },
     editButton: {
       flexDirection: 'row',
@@ -138,10 +192,14 @@ const styles = (direction: string) =>
       fontWeight: '600',
       fontSize: '14@s',
     },
+    innerContainerOne: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
     mainTextContainer: {
       lineHeight: '19@s',
-      marginLeft: '100@s',
-      alignItems: 'flex-start',
+      bottom: '10@s',
+      // marginLeft: '100@s',
     },
     nameText: {
       color: '#455157',
@@ -176,7 +234,7 @@ const styles = (direction: string) =>
       flexDirection: 'row',
       height: '30@s',
       justifyContent: 'flex-end',
-      marginLeft: '105@s',
+      marginLeft: '28@s',
     },
     icon1: {
       height: '25@s',
@@ -204,39 +262,31 @@ const styles = (direction: string) =>
       width: width - s(40),
       flexDirection: 'row',
       height: '163@s',
-      borderRadius: 15,
+      borderRadius: '15@s',
       backgroundColor: '#EBEEF0',
-      paddingLeft: s(10),
+      paddingHorizontal: '30@s',
       alignItems: 'center',
     },
     scanTextContainer: {
       alignItems: 'center',
       justifyContent: 'center',
+      width: '110@s',
     },
 
     scanText: {
-      width: '110@s',
       height: '22@s',
       fontFamily: 'Nunito-Regular',
       fontSize: '16@s',
       fontWeight: '800',
-      marginLeft: '15@s',
-    },
-
-    qrImageContainer: {
-      justifyContent: 'center',
-      marginTop: '18@s',
     },
     qrImage: {
-      //width: '100%',
-      ////height: '100%',
+      width: '100@s',
+      height: '100@s',
       resizeMode: 'contain',
-      marginEnd: '34@s',
-      marginLeft: '60@s',
-      marginBottom: '20@s',
+      marginLeft: '40@s',
     },
     rectangle3: {
-      width: width - s(40),
+      width: width - scale(40),
       height: '167@s',
       borderRadius: 15,
       backgroundColor: '#EBEEF0',
@@ -271,30 +321,23 @@ const styles = (direction: string) =>
       textAlign: 'center',
       fontSize: '15@s',
       fontFamily: 'Nunito-Regular',
-      top: '12@s',
-      right: '15@ms',
       position: 'absolute',
-      alignSelf: 'auto',
+      alignSelf: 'center',
     },
     insideText2: {
       color: '#EC4D61',
       fontWeight: '600',
       fontSize: '15@s',
       textAlign: 'center',
-      top: '12@s',
-      right: '15@ms',
       fontFamily: 'Nunito-Regular',
       position: 'absolute',
-      alignSelf: 'auto',
+      alignSelf: 'center',
     },
     insideText3: {
       color: '#03A0E3',
       fontWeight: '600',
-      top: '12@s',
-      right: '15@ms',
       fontSize: '15@s',
       textAlign: 'center',
-
       fontFamily: 'Nunito-Regular',
       position: 'absolute',
       alignSelf: 'auto',
@@ -304,98 +347,72 @@ const styles = (direction: string) =>
       width: '100%',
       right: '7@ms',
       alignItems: 'center',
-
       justifyContent: 'space-between',
     },
     progressChartContainer1: {
       alignItems: 'center',
-      height: '72@s',
-      width: '72@s',
-      textAlign: 'center',
-
-      //backgroundColor:'red',
+      height: '68@s',
+      width: '68@s',
+      justifyContent: 'center',
     },
     progressChartContainer2: {
       alignItems: 'center',
-      height: '72@s',
-      width: '72@s',
-      textAlign: 'center',
-
-      //backgroundColor:'red',
-    },
-    progressChartContainer3: {
-      alignItems: 'center',
-      height: '72@s',
-      width: '72@s',
-      textAlign: 'center',
+      height: '91@s',
+      width: '103@s',
+      justifyContent: 'center',
     },
     textContainer: {
       flexDirection: 'row',
       width: '100%',
-
       right: '7@ms',
       alignItems: 'center',
-
       justifyContent: 'space-between',
-      //height:'100%',
-      // marginRight:'15@s',
-      // marginStart:'10@s',
-      //  alignItems:'center',
-      //  justifyContent:'space-between',
     },
     activityText1: {
       color: '#455157',
-
-      marginStart: '22@s',
-      alignItems: 'center',
-      marginTop: '7@s',
-      fontFamily: 'Nunito-Regular',
-      fontWeight: '600',
-      justifyContent: 'center',
-    },
-    activityText2: {
-      color: '#455157',
-
-      right: '10@s',
-      alignItems: 'center',
-      marginTop: '7@s',
-      fontFamily: 'Nunito-Regular',
-      fontWeight: '600',
-      justifyContent: 'center',
-    },
-    activityText3: {
-      color: '#455157',
-      marginTop: '7@s',
-      right: '10@ms',
       alignItems: 'center',
       fontFamily: 'Nunito-Regular',
       fontWeight: '600',
-      alignSelf: 'auto',
-
       justifyContent: 'center',
+      fontSize: '12@s',
     },
     rectangle4: {
       width: width - s(40),
       height: '313@s',
       borderRadius: 15,
       backgroundColor: '#EBEEF0',
-
       justifyContent: 'center',
       paddingLeft: '5@s',
       paddingEnd: '5@s',
     },
+    myBadgesContainer: {
+      height: '214@s',
+      width: width - s(40),
+      borderRadius: 15,
+      backgroundColor: '#EBEEF0',
+      justifyContent: 'center',
+      paddingLeft: '5@s',
+      paddingEnd: '5@s',
+    },
+    myBadgesSubContainer: {
+      justifyContent: 'center',
+      alignItems: 'flex-start',
+      top: '40@s',
+    },
     bookShelfContainer: {
       height: '199@s',
       width: '123@s',
-      borderRadius: 14,
+      borderRadius: '14@s',
+      backgroundColor: '#EBEEF0',
     },
     bookShelfMainContainer: {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
+      backgroundColor: '#EBEEF0',
     },
     bookShelfTextContainer: {
-      marginBottom: '25@s',
+      marginBottom: '10@s',
       marginRight: '18@s',
       flexDirection: 'row',
     },
@@ -408,19 +425,117 @@ const styles = (direction: string) =>
       marginLeft: '20@s',
       marginRight: '165@s',
     },
-    bookShelfImage1: {
-      resizeMode: 'contain',
-      width: '123@s',
-      height: '112@s',
+    badgeText: {
+      fontFamily: 'Nunito-Regular',
+      fontWeight: '800',
+      fontSize: '16@s',
+      height: '22@s',
+      width: '84@s',
+      marginLeft: '20@s',
     },
+    teacherText: {
+      fontFamily: 'Nunito-Regular',
+      fontWeight: '600',
+      fontSize: '12@s',
+      height: '22@s',
+      width: '172@s',
+      color: '#758DAC',
+      marginLeft: '20@s',
+    },
+    bookShelfImage1: {
+      resizeMode: 'cover',
+      height: '199@s',
+      width: '123@s',
+    },
+    walkThroughContainer: {
+      // marginBottom: 28,
+      height: 260,
+    },
+    walkThroughContainer2: {
+      // marginBottom: 28,
+      height: 350,
+    },
+    paginationContainer: {
+      marginTop: 10,
+      justifyContent: 'center',
+    },
+    paginationContainerPdf: {
+      marginTop: 10,
+      justifyContent: 'center',
+      bottom: '10@s',
+    },
+    paginationDots: {
+      height: '16@s',
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+
+    paginationDotsBadge: {
+      height: '16@s',
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      bottom: '40@s',
+    },
+    dot: {
+      width: '24@s',
+      height: '24@s',
+      marginHorizontal: 4,
+    },
+    mainContent: {
+      justifyContent: 'center',
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    mainContent2: {
+      justifyContent: 'center',
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+
+    image: {
+      resizeMode: 'contain',
+      height: '199@s',
+      width: '133@s',
+    },
+    badge: {
+      resizeMode: 'contain',
+      height: '199@s',
+      width: '100@s',
+    },
+    bookNameContainer: {
+      position: 'absolute',
+      alignItems: 'flex-start',
+      justifyContent: 'center',
+      left: '35@s',
+      bottom: '30@s',
+    },
+    bookNameContainer2: {
+      position: 'absolute',
+      bottom: '30@s',
+      justifyContent: 'flex-start',
+      alignItems: 'flex-start',
+      right: '12@s',
+      width: '120@s',
+      marginStart: '55@s',
+      textAlign: 'center',
+    },
+
     bookTitle: {
-      color: '#2F4868',
+      color: '#EBEEF0',
       fontWeight: '600',
       fontSize: '14@s',
+      textAlign: 'auto',
       fontFamily: 'Nunito-regular',
-      marginStart: '11@s',
-      marginEnd: '11@s',
-      marginTop: '10@s',
+    },
+
+    bookPrice: {
+      color: '#03A0E3',
+      fontWeight: '600',
+      fontSize: '14@s',
+      top: '5@s',
+      fontFamily: 'Nunito-regular',
     },
     bookAuthor: {
       color: '#758DAC',
@@ -433,11 +548,40 @@ const styles = (direction: string) =>
     },
     rectangle5: {
       width: width - s(40),
-      height: '350@s',
-      borderRadius: 15,
+      height: '356@s',
+      borderRadius: '15@s',
       backgroundColor: '#EBEEF0',
     },
+    rectangleNoChannel: {
+      width: width - s(40),
+
+      height: '263@s',
+      borderRadius: '15@s',
+      backgroundColor: '#EBEEF0',
+      alignItems: 'center',
+    },
+    noChannelText: {
+      fontSize: '16@s',
+      fontFamily: 'Nunito-Regular',
+      fontWeight: '600',
+      color: '#455157',
+      top: '60@s',
+    },
+    buttonContainer: {
+      top: '80@s',
+    },
+    noChannelImage: {
+      height: '90@s',
+      width: '100@ms',
+      resizeMode: 'contain',
+      top: '50@s',
+    },
     subContainer: {
+      width: '100%',
+      top: '20@s',
+    },
+    subContainer2: {
+      width: '100%',
       flexDirection: 'row',
     },
     channelImageContainer: {
@@ -479,7 +623,7 @@ const styles = (direction: string) =>
       marginTop: '3@s',
     },
     subContainerText: {
-      paddingHorizontal: '20@ms',
+      width: '100%',
     },
     moreVertIcon: {
       marginTop: '20@s',
@@ -487,52 +631,69 @@ const styles = (direction: string) =>
       marginLeft: '55@s',
     },
     rectangle5SubContainer: {
-      width: width - s(100),
-      height: '222@s',
-      borderRadius: 14,
+      width: '285@s',
+      height: '229@s',
+      borderRadius: '14@s',
       backgroundColor: '#EBEEF0',
       borderColor: '#758DAC',
-      marginLeft: '30@s',
       borderWidth: '0.5@s',
-      marginTop: '28@s',
+      marginTop: '20@s',
+      justifyContent: 'center',
+
+      alignItems: 'center',
+      alignSelf: 'center',
+    },
+    pdfSubContainer: {
+      width: '285@s',
+      height: '229@s',
+      borderRadius: '14@s',
+      backgroundColor: '#EBEEF0',
+      borderColor: '#758DAC',
+      borderWidth: '0.5@s',
+      marginTop: '35@s',
+      justifyContent: 'center',
+
+      alignItems: 'center',
+      alignSelf: 'center',
     },
     pdfImageContainer: {
-      alignItems: 'flex-start',
-      justifyContent: 'flex-start',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
     videoContainer: {
-      alignItems: 'flex-start',
-      justifyContent: 'flex-start',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
     pdfImage: {
       resizeMode: 'contain',
-      width: '100%',
+      width: '247@s',
+      height: '114@s',
       marginTop: '14@s',
     },
     videoImage: {
       resizeMode: 'contain',
-      width: '100%',
-      marginTop: '14@s',
+      width: '247@s',
+      height: '114@s',
     },
     pdfLogoImage: {
-      position: 'absolute',
+      width: '46@s',
+      height: '46@s',
     },
     videoLogoImage: {
-      position: 'absolute',
+      width: '46@s',
+      height: '46@s',
+      alignSelf: 'center',
     },
     pdfLogoContainer: {
       position: 'absolute',
       alignItems: 'center',
       justifyContent: 'center',
-      marginTop: '50@s',
-      marginLeft: '110@s',
+      alignSelf: 'center',
     },
     videoLogoContainer: {
-      position: 'absolute',
       alignItems: 'center',
       justifyContent: 'center',
-      marginTop: '50@s',
-      marginLeft: '110@s',
+      position: 'absolute',
     },
     pdfNameText: {
       color: '#2F4868',
@@ -562,8 +723,7 @@ const styles = (direction: string) =>
       flexDirection: 'row',
       justifyContent: 'space-evenly',
       marginTop: '20@s',
-
-      paddingHorizontal: '20@s',
+      width: '100%',
     },
     vectorImage: {
       width: '16@s',
@@ -583,7 +743,7 @@ const styles = (direction: string) =>
     },
     rectangle6: {
       width: width - s(40),
-      height: '376@s',
+      height: '340@s',
       borderRadius: 15,
       backgroundColor: '#EBEEF0',
     },
@@ -632,12 +792,18 @@ const styles = (direction: string) =>
       resizeMode: 'contain',
       height: '40@s',
       width: '40@s',
+
       left: '25@s',
-      top: '20@s',
+
       borderRadius: '150@s',
+    },
+    activityWorkImageContainer: {
+      width: '40@s',
+      height: '40@s',
     },
     activityWorkBottomContainer: {
       flexDirection: 'row',
+      top: '20@s',
       alignItems: 'flex-start',
     },
     activityWorkText2MainContainer: {
@@ -647,14 +813,19 @@ const styles = (direction: string) =>
     },
     activityWorkBottomTextContainer: {
       marginLeft: '20@s',
+
+      width: '50%',
     },
-    teacherText: {
+    activityWorkBottomTextContainer2: {
+      marginLeft: '2@s',
+    },
+    teacherRecommendedText: {
       color: '#758DAC',
       fontFamily: 'Nunito-Regular',
-      fontSize: '12@s',
-      fontWeight: '600',
+      fontSize: '16@s',
+      fontWeight: '800',
+
       marginLeft: '20@s',
-      top: '20@s',
     },
     teacherNameText: {
       color: '#455157',
@@ -662,36 +833,103 @@ const styles = (direction: string) =>
       fontSize: '14@s',
       fontWeight: '600',
       marginLeft: '20@s',
-      top: '20@s',
     },
     dateText: {
       color: '#758DAC',
       fontFamily: 'Nunito-Regular',
       fontSize: '12@s',
       fontWeight: '600',
-
-      top: '20@s',
     },
     dateText2: {
       color: '#455157',
       fontFamily: 'Nunito-Regular',
       fontSize: '14@s',
+      top: '5@s',
       fontWeight: '600',
-
-      top: '20@s',
     },
     activityWorkBottomProgressBar: {
       flexDirection: 'row-reverse',
       right: '15@s',
       bottom: '85@s',
     },
+    activityWorkBottomProgressBarView: {
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
     insideTextActivityWork: {
       fontWeight: '600',
       fontSize: '10@s',
       color: '#84BD47',
       alignSelf: 'center',
-      right: '47@s',
+      position: 'absolute',
+      marginRight: 15,
     },
+    neomorphContainerCard: {
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    neomorphListContainer: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      margin: '20@s',
+    },
+    neomorphMargin: { margin: '10@ms' },
+    cardImage: {
+      height: '118@ms',
+      width: '100%',
+    },
+    cardListImage: {
+      height: '40@ms',
+      width: '40@ms',
+      borderRadius: '13@ms',
+      margin: '5@ms',
+    },
+    cardContent: {
+      width: '100%',
+      flexDirection: 'column',
+      paddingHorizontal: '11@s',
+      marginTop: '8@s',
+    },
+    cardListContent: {
+      paddingLeft: '10@s',
+      justifyContent: 'center',
+      alignItems: 'flex-start',
+      flexDirection: 'column',
+    },
+    title: {
+      fontFamily: 'Nunito-Regular',
+      fontSize: '14@s',
+      fontWeight: '600',
+      color: '#323A3D',
+    },
+    author: {
+      fontFamily: 'Nunito-Regular',
+      fontSize: '12@s',
+      fontWeight: '600',
+      color: '#758DAC',
+      marginBottom: '4@s',
+    },
+    price: {
+      fontFamily: 'Nunito-Regular',
+      fontSize: '12@ms',
+      fontWeight: '700',
+      color: '#03A0E3',
+    },
+    statContainerTitle: {
+      fontFamily: 'Nunito-Regular',
+      fontSize: '18@ms',
+      fontWeight: '800',
+      color: '#3B4568',
+    },
+    statContainerStat: {
+      fontFamily: 'Nunito-Regular',
+      fontSize: '24@ms',
+      fontWeight: '600',
+      color: `#${Math.floor(Math.random() * 16777215)
+        .toString(16)
+        .padStart(6, '0')}`,
+    },
+    titleBarContainer: { position: 'absolute', width: '100%' },
   });
 
 export default styles;

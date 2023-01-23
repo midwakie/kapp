@@ -88,13 +88,30 @@ const EditChildProfile: React.FC = () => {
                 darkColor={'#A8A8A8'}
                 shapeType={'flat'}
                 radius={50}>
-                <View style={styles(direction).coinContainer2}>
-                  <Image
-                    style={styles(direction).coinImage}
-                    source={require('../../assets/goldCoin1.png')}
-                  />
-                  <Text style={styles(direction).coinText}>450</Text>
-                </View>
+                <TouchableOpacity>
+                  <View style={styles(direction).coinContainer2}>
+                    <Image
+                      style={styles(direction).coinImage}
+                      source={require('../../assets/goldCoin1.png')}
+                    />
+                    <Text style={styles(direction).coinText}>450</Text>
+                  </View>
+                </TouchableOpacity>
+              </Neumorphism>
+              <Neumorphism
+                lightColor={'#ffffff'}
+                darkColor={'#A8A8A8'}
+                shapeType={'flat'}
+                radius={50}>
+                <TouchableOpacity>
+                  <View style={styles(direction).coinContainer2}>
+                    <Image
+                      style={styles(direction).coinImage}
+                      source={require('../../assets/greyCoin.png')}
+                    />
+                    <Text style={styles(direction).coinText}>450</Text>
+                  </View>
+                </TouchableOpacity>
               </Neumorphism>
             </View>
 
@@ -282,10 +299,12 @@ const EditChildProfile: React.FC = () => {
                   NavigationService.reset('Select Role');
                 }}
                 text={t('Save')}
-                radius={50}
+                radius={2.63}
                 height={50}
                 width={'100%'}
-                colors={['#03BBE3', '#14A9FD']}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+                colors={['rgba(3, 187, 227, 1)', 'rgba(25, 118, 210, 1)']}
               />
             </View>
           </View>
