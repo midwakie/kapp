@@ -181,6 +181,7 @@ const AssignActivity: React.FC = () => {
                           icon={'check'}
                           height={25}
                           width={25}
+                          status={false}
                         />
                       </View>
                     </View>
