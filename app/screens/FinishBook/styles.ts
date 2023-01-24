@@ -76,7 +76,7 @@ const styles = (direction: string) =>
     },
     review: {
       marginTop: '14.32@s',
-      paddingHorizontal: '27@s',
+      marginHorizontal: '20@s',
       backgroundColor: '#EBEEF0',
     },
 
@@ -162,7 +162,8 @@ const styles = (direction: string) =>
     },
     reviewContainer2: {
       height: '106@s',
-      marginLeft: '15.87@s',
+      paddingHorizontal: '15.87@s',
+      backgroundColor: '#EBEEF0',
     },
     avrgRatings: {
       position: 'absolute',
@@ -173,11 +174,13 @@ const styles = (direction: string) =>
     button2: {
       height: '40@s',
       width: '136@s',
+      backgroundColor: '#EBEEF0',
     },
 
     button: {
       height: '40@s',
       width: '136@s',
+      backgroundColor: '#EBEEF0',
     },
 
     paginationContainer: {
