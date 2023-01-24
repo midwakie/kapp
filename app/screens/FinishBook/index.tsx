@@ -598,25 +598,26 @@ const FinishBook: React.FC = () => {
                   defaultRating={0}
                   size={scale(29)}
                   starStyle={{ margin: ms(6) }}
-                  emptyStarColor="#E5E5E5"
+                  emptyStarColor="#FFFFFF"
                   onFinishRating={value => setRating(value)}
                 />
               </View>
             </View>
-            <View style={styles(direction).neomorphContainer3}>
-              <Neumorphism
-                lightColor={'#EBEEF0'}
-                darkColor={'#A8A8A8'}
-                shapeType={'pressed'}
-                radius={scale(8)}>
-                <TextInput
-                  style={styles(direction).typeContainer}
-                  onChangeText={text => setDescription(text)}
-                  value={description}
-                  multiline={true}
-                  textAlignVertical="top"
+            <View style={[styles(direction).inputContainer1]}>
+              <View style={[styles(direction).inputContainer]}>
+                <Image
+                  source={require('../../assets/boxInput.png')}
+                  style={styles(direction).bg}
                 />
-              </Neumorphism>
+                <TextInput
+                  keyboardType="default"
+                  autoCapitalize="none"
+                  value={description}
+                  onChangeText={text => setDescription(text)}
+                  placeholderTextColor="#9FA4A7"
+                  style={styles(direction).input}
+                />
+              </View>
             </View>
 
             <View style={styles(direction).buttonRow2}>

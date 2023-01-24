@@ -11,7 +11,7 @@ const styles = (direction: string) =>
     container: {
       width: '100%',
       height: '100%',
-      backgroundColor: '#EBEEF0',
+      backgroundColor: '#FFFFFF',
       zIndex: -10,
     },
     safeAreaView: { alignSelf: 'stretch' },
@@ -509,7 +509,6 @@ const styles = (direction: string) =>
       height: '48@s',
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#EBEEF0',
       marginTop: '12.18@s',
     },
     container6: {
@@ -588,6 +587,37 @@ const styles = (direction: string) =>
     neomorphContainer3: {
       marginBottom: '7@s',
       paddingHorizontal: '34@s',
+    },
+    inputContainer: {
+      width: '100%',
+      height: '51@s',
+      alignItems: 'center',
+      marginTop: '8.86@s',
+      flexDirection: 'row',
+      marginBottom: '7@s',
+    },
+    inputContainer1: {
+      paddingHorizontal: '30@s',
+    },
+    bg: {
+      width: '100%',
+      height: '50@s',
+      position: 'absolute',
+      resizeMode: 'stretch',
+    },
+
+    input: {
+      height: '40@ms',
+      paddingVertical: '10@ms',
+      paddingHorizontal: '10@s',
+      marginLeft: direction === 'rtl' ? undefined : '15@s',
+      marginRight: direction === 'rtl' ? '15@s' : undefined,
+      textAlign: direction === 'rtl' ? 'right' : 'left',
+      flex: 1,
+      color: '#758DAC',
+      fontFamily: 'Nunito-Regular',
+      fontSize: '14@s',
+      backfaceVisibility: 'visible',
     },
 
     slidingContainer: {

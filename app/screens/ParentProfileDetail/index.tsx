@@ -131,14 +131,14 @@ const ParentProfileDetail: React.FC = props => {
                           </Text>
                         </View>
                         <View style={styles(direction).Container43}>
-                          {/* <PlainButton
+                          <PlainButton
                             onPress={() => {
                               NavigationService.navigate('');
                             }}
                             style={styles(direction).text3}
                             text={t('Edit')}
-                          /> */}
-                          <Menu>
+                          />
+                          {/* <Menu>
                             <MenuTrigger>
                               <Image
                                 source={require('../../assets/menu.png')}
@@ -182,7 +182,7 @@ const ParentProfileDetail: React.FC = props => {
                                 </MenuOption>
                               ))}
                             </MenuOptions>
-                          </Menu>
+                          </Menu> */}
                         </View>
                       </View>
                     </View>
@@ -214,14 +214,14 @@ const ParentProfileDetail: React.FC = props => {
                               </Text>
                             </View>
                             <View style={styles(direction).Container43}>
-                              {/* <PlainButton
-                            onPress={() => {
-                              NavigationService.navigate('');
-                            }}
-                            style={styles(direction).text3}
-                            text={t('Edit')}
-                          /> */}
-                              <Menu>
+                              <PlainButton
+                                onPress={() => {
+                                  NavigationService.navigate('');
+                                }}
+                                style={styles(direction).text3}
+                                text={t('Edit')}
+                              />
+                              {/* <Menu>
                                 <MenuTrigger>
                                   <Image
                                     source={require('../../assets/menu.png')}
@@ -265,7 +265,7 @@ const ParentProfileDetail: React.FC = props => {
                                     </MenuOption>
                                   ))}
                                 </MenuOptions>
-                              </Menu>
+                              </Menu> */}
                             </View>
                           </View>
 
