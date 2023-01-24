@@ -449,11 +449,11 @@ const styles = (direction: string) =>
     },
     walkThroughContainer: {
       // marginBottom: 28,
-      height: 260,
+      height: '260@s',
     },
     walkThroughContainer2: {
       // marginBottom: 28,
-      height: 350,
+      height: '350@s',
     },
     paginationContainer: {
       marginTop: 10,

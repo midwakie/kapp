@@ -42,7 +42,7 @@ const styles = (direction: string) =>
       marginLeft: '20@s',
     },
     container2: {
-      marginTop: 40,
+      marginTop: '85@s',
       // paddingHorizontal: '30@s',
       width: '100%',
       height: '100%',
@@ -51,7 +51,6 @@ const styles = (direction: string) =>
 
     walkThroughContainer: {
       marginBottom: 28,
-      marginTop: '20@s',
     },
     paginationContainer: {
       justifyContent: 'center',
@@ -164,10 +163,9 @@ const styles = (direction: string) =>
       flexDirection: 'row',
       width: '100%',
       justifyContent: 'space-between',
-      marginBottom: 30,
+      marginBottom: '30@s',
     },
     starContainer: {
-      width: 100,
       flexDirection: 'row',
       marginBottom: 8,
     },
