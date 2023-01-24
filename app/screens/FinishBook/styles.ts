@@ -239,7 +239,6 @@ const styles = (direction: string) =>
       fontFamily: 'Nunito-Regular',
       textAlign: 'center',
       width: '100%',
-      height: '100%',
     },
     ButtonText1: {
       color: '#EC4D61',
@@ -267,7 +266,6 @@ const styles = (direction: string) =>
       fontWeight: '800',
       fontFamily: 'Nunito-Regular',
       height: '26@s',
-      width: '123@s',
       alignItems: 'center',
       justifyContent: 'center',
     },
@@ -503,7 +501,7 @@ const styles = (direction: string) =>
     container5: {
       backgroundColor: '#EBEEF0',
       width: '100%',
-      height: '156@ms',
+      height: '156@s',
       borderRadius: 14,
     },
     rating: {
@@ -564,7 +562,7 @@ const styles = (direction: string) =>
       fontFamily: 'Nunito-Regular',
       height: '72@s',
       width: '207@s',
-      marginTop: '12.26@s',
+      marginVertical: '12.26@s',
     },
 
     imageStyle2: {
