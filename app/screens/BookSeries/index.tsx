@@ -196,7 +196,7 @@ const BookSeries: React.FC = () => {
                       />
                     )}
                     sliderWidth={sliderWidth}
-                    itemWidth={160}
+                    itemWidth={scale(160)}
                     inactiveSlideScale={1}
                     inactiveSlideOpacity={0.9}
                     activeSlideAlignment={'start'}

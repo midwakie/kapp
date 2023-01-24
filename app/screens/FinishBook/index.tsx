@@ -403,7 +403,7 @@ const FinishBook: React.FC = () => {
             </View>
             <View style={styles(direction).continueContainer}>
               <Text style={styles(direction).continueText}>
-                {t('Continue With  ')}
+                {t('Continue With')}
               </Text>
             </View>
 
@@ -642,7 +642,7 @@ const FinishBook: React.FC = () => {
                   <Text style={styles(direction).ButtonText5}>{t('Post')}</Text>
                 }
                 radius={34}
-                height={30}
+                height={'30@s'}
                 width={'48@s'}
                 colors={['#EBEEF0', '#EBEEF0']}
               />
@@ -660,7 +660,7 @@ const FinishBook: React.FC = () => {
                   />
                 )}
                 sliderWidth={sliderWidth}
-                itemWidth={160}
+                itemWidth={scale(160)}
                 inactiveSlideScale={1}
                 inactiveSlideOpacity={0.9}
                 activeSlideAlignment={'start'}
@@ -705,7 +705,7 @@ const FinishBook: React.FC = () => {
                   />
                 )}
                 sliderWidth={sliderWidth}
-                itemWidth={160}
+                itemWidth={scale(160)}
                 inactiveSlideScale={1}
                 inactiveSlideOpacity={0.9}
                 activeSlideAlignment={'start'}
@@ -764,7 +764,7 @@ const FinishBook: React.FC = () => {
                   </View>
                 )}
                 sliderWidth={sliderWidth}
-                itemWidth={160}
+                itemWidth={scale(160)}
                 inactiveSlideScale={1}
                 inactiveSlideOpacity={0.9}
                 activeSlideAlignment={'start'}
