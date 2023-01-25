@@ -50,7 +50,6 @@ const styles = (direction: string) =>
       width: '100%',
       justifyContent: 'center',
       alignItems: 'center',
-      marginTop: 20,
     },
     rightComponent: {
       flexDirection: direction === 'rtl' ? 'row-reverse' : 'row',
@@ -93,17 +92,17 @@ const styles = (direction: string) =>
     },
     radioButtonContainer: {
       width: '100%',
-      marginBottom: 21,
+      marginVertical: '10@s',
       backgroundColor: 'transparent',
       height: '50@s',
       alignItems: 'center',
+      justifyContent: 'center'
     },
 
     radioButtonViewContainer: {
       flexDirection: direction === 'rtl' ? 'row-reverse' : 'row',
       position: 'absolute',
       alignItems: 'center',
-      height: '65@s',
       width: width - 20,
     },
 
@@ -155,7 +154,7 @@ const styles = (direction: string) =>
       width: '100%',
       height: '50@s',
       paddingVertical: '16@s',
-      borderRadius: 50,
+      borderRadius: '50@s',
       alignItems: 'center',
       justifyContent: 'space-between',
       backgroundColor: '#EBEEF0',
@@ -164,12 +163,11 @@ const styles = (direction: string) =>
     },
     schoolInputContainer: {
       width: '100%',
-      width: width - 60,
-      marginTop: 20,
-      marginHorizontal: 20,
+      marginTop: '20@s',
+      marginHorizontal: '20@s',
     },
     marginView: {
-      marginTop: 20,
+      marginTop: '20@s',
       marginHorizontal: '30@s',
       width: '100%',
     },
@@ -182,10 +180,9 @@ const styles = (direction: string) =>
     interestContainer: {
       width: '100%',
       height: '86@s',
-      borderRadius: 12,
+      borderRadius: '12@s',
       backgroundColor: '#EBEEF0',
       paddingHorizontal: '25@s',
-      width: width - 60,
     },
     schoolText: {
       fontFamily: 'Nunito-Regular',

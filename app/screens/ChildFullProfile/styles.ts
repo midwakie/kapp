@@ -88,7 +88,7 @@ const styles = (direction: string) =>
       resizeMode: 'cover',
       marginLeft: '-15@s',
     },
-    editAvatarImage: { width: '22@s', height: '22@s', resizeMode: 'cover', },
+    editAvatarImage: { width: '22@s', height: '22@s', resizeMode: 'cover' },
     rightComponent: {
       flexDirection: direction === 'rtl' ? 'row-reverse' : 'row',
       left: direction === 'rtl' ? 20 : undefined,
@@ -456,7 +456,6 @@ const styles = (direction: string) =>
       justifyContent: 'center',
     },
     paginationContainerPdf: {
-      marginTop: 10,
       justifyContent: 'center',
       bottom: '10@s',
     },

@@ -250,6 +250,44 @@ const styles = (direction: string) =>
       width: '20@s',
       resizeMode: 'contain',
     },
+    modalContainer2: {
+      // flex: 1,
+      borderWidth: 2,
+      height: '100%',
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: 'rgba(98,98,98,0.5)',
+    },
+    modalView2: {
+      borderWidth: 1,
+      borderColor: 'white',
+      justifyContent: 'center',
+      paddingHorizontal: '20@s',
+      alignItems: 'center',
+      borderRadius: '15@s',
+      backgroundColor: '#EBEEF0',
+      height: '260@s',
+      width: width - 40,
+    },
+    iconViewContainer2: { bottom: '30@s' },
+    textDeleteConfirmationView: {
+      paddingHorizontal: '40@s',
+      textAlign: 'center',
+    },
+
+    textDeleteConfirmation: {
+      fontFamily: 'Nunito-Regular',
+      fontSize: '18@s',
+
+      bottom: '10@s',
+      color: '#2F4868',
+    },
+    buttonConfirmationView: {
+      flexDirection: 'row',
+      justifyContent: 'space-evenly',
+      width: '100%',
+      marginTop: '20@s',
+    },
   });
 
 export default styles;

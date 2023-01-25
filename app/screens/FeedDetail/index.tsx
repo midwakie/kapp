@@ -17,6 +17,7 @@ import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import GradientText from 'app/components/texts/GradientText';
 import RegularButton from 'app/components/buttons/RegularButton';
 import { useTranslation } from 'react-i18next';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import Neumorphism from 'react-native-neumorphism';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import { scale } from 'react-native-size-matters';
@@ -36,6 +37,7 @@ interface IState {
 }
 
 const FeedDetail: React.FC = () => {
+  const [modalVisible2, setModalVisible2] = useState(false);
   const onPressRadioButtonPrivate = () => {
     setRadioButtonPrivate(true);
     setRadioButtonPublic(false);
@@ -114,6 +116,10 @@ const FeedDetail: React.FC = () => {
     {
       title: 'Report Feed',
       image: require('../../assets/reportFlag.png'),
+    },
+    {
+      title: 'Delete',
+      image: require('../../assets/trash.png'),
     },
   ]);
   const [options, setOptions] = useState([
@@ -255,7 +261,13 @@ const FeedDetail: React.FC = () => {
                             }}>
                             {topOptions.map((op, i) => (
                               <MenuOption
-                                onSelect={() => {}}
+                                onSelect={() => {
+                                  [
+                                    op.title === 'Delete'
+                                      ? setModalVisible2(true)
+                                      : '',
+                                  ];
+                                }}
                                 customStyles={{
                                   optionWrapper: {
                                     flexDirection: 'row',
@@ -548,6 +560,50 @@ const FeedDetail: React.FC = () => {
                       height={50}
                       width={'100%'}
                       colors={['#03BBE3', '#14A9FD']}
+                    />
+                  </View>
+                </View>
+              </View>
+            </TouchableWithoutFeedback>
+          </Modal>
+        </View>
+        <View>
+          <Modal
+            animationType="fade"
+            transparent={true}
+            visible={modalVisible2}>
+            <TouchableWithoutFeedback
+              onPress={() => {
+                setModalVisible2(false);
+              }}>
+              <View style={styles(direction).modalContainer2}>
+                <View style={styles(direction).modalView2}>
+                  <View style={styles(direction).iconViewContainer2}>
+                    <Ionicons name="warning" size={scale(80)} color="#F0374E" />
+                  </View>
+
+                  <View style={styles(direction).textDeleteConfirmationView}>
+                    <Text style={styles(direction).textDeleteConfirmation}>
+                      {t('Are you sure want to delete this item!')}
+                    </Text>
+                  </View>
+
+                  <View style={styles(direction).buttonConfirmationView}>
+                    <RegularButton
+                      onPress={() => NavigationService.navigate('Select Role')}
+                      text={t('Yes')}
+                      radius={50}
+                      height={50}
+                      width={130}
+                      colors={['#03BBE3', '#14A9FD']}
+                    />
+                    <RegularButton
+                      onPress={setModalVisible2}
+                      text={t('Cancel')}
+                      radius={50}
+                      height={50}
+                      width={130}
+                      colors={['#F0374E', '#F0374E']}
                     />
                   </View>
                 </View>
