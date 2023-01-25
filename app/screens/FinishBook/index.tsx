@@ -745,7 +745,7 @@ const FinishBook: React.FC = () => {
               <Carousal
                 data={books}
                 renderItem={({ item, index }) => (
-                  <View>
+                  <View style={styles(direction).videoMainContainer}>
                     <View style={styles(direction).videoContainer}>
                       <Text style={styles(direction).videoText}>
                         {t('Cool Kids 5Second...  ')}
@@ -765,7 +765,7 @@ const FinishBook: React.FC = () => {
                   </View>
                 )}
                 sliderWidth={sliderWidth}
-                itemWidth={scale(160)}
+                itemWidth={scale(140)}
                 inactiveSlideScale={1}
                 inactiveSlideOpacity={0.9}
                 activeSlideAlignment={'start'}
