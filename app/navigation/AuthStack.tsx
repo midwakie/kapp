@@ -677,16 +677,6 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
-        name="SuggestionsForYou"
-        component={SuggestionsForYou}
-        options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
-          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
         name="ClassFilter"
         component={ClassFilter}
         options={{
