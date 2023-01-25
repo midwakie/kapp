@@ -19,11 +19,18 @@ import { useTranslation } from 'react-i18next';
 import { scale } from 'react-native-size-matters';
 import TitleBar from 'app/components/buttons/TitleBar';
 import PlainButton from 'app/components/buttons/PlainButton';
+import {
+  Menu,
+  MenuOption,
+  MenuOptions,
+  MenuTrigger,
+} from 'react-native-popup-menu';
 
-const ParentProfileDetail: React.FC = () => {
+const ParentProfileDetail: React.FC = props => {
   const { control } = useForm();
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
+
   const [data, setData] = useState([
     {
       parentName: 'Abber Shaikh',
@@ -61,6 +68,26 @@ const ParentProfileDetail: React.FC = () => {
       ],
     },
   ]);
+  const [options1, setOption] = useState([
+    {
+      title: 'Switch Profile',
+      image: require('../../assets/switchProfile.png'),
+    },
+    {
+      title: 'Send Invitation',
+      image: require('../../assets/sendInvitation.png'),
+    },
+    {
+      title: 'Edit Profile',
+      image: require('../../assets/pen.png'),
+    },
+    {
+      title: 'Delete Profile',
+      image: require('../../assets/trash.png'),
+    },
+  ]);
+  // const { isCondition } = props.route.params;
+
   return (
     <>
       <ScrollView style={styles(direction).container} bounces={false}>
@@ -103,7 +130,7 @@ const ParentProfileDetail: React.FC = () => {
                             {t(item.noChildrens)}
                           </Text>
                         </View>
-                        <View style={styles(direction).Container42}>
+                        <View style={styles(direction).Container43}>
                           <PlainButton
                             onPress={() => {
                               NavigationService.navigate('');
@@ -111,6 +138,51 @@ const ParentProfileDetail: React.FC = () => {
                             style={styles(direction).text3}
                             text={t('Edit')}
                           />
+                          {/* <Menu>
+                            <MenuTrigger>
+                              <Image
+                                source={require('../../assets/menu.png')}
+                                style={styles(direction).itemMenu}
+                              />
+                            </MenuTrigger>
+                            <MenuOptions
+                              customStyles={{
+                                optionsContainer: {
+                                  borderRadius: scale(14),
+                                  width: scale(214),
+                                  paddingVertical: scale(20),
+                                  backgroundColor: '#EBEEF0',
+                                },
+                              }}>
+                              {options1.map((op, i) => (
+                                <MenuOption
+                                  onSelect={() => {}}
+                                  customStyles={{
+                                    optionWrapper: {
+                                      flexDirection: 'row',
+                                      alignItems: 'center',
+                                      justifyContent: 'space-between',
+                                      paddingHorizontal: scale(20),
+                                      paddingVertical: scale(7),
+                                    },
+                                  }}>
+                                  <Text
+                                    style={
+                                      op.title === t('Delete Profile')
+                                        ? styles(direction)
+                                            .optionTitleStyleColor
+                                        : styles(direction).optionTitleStyle
+                                    }>
+                                    {t(op.title)}
+                                  </Text>
+                                  <Image
+                                    source={op.image}
+                                    style={styles(direction).menuImage}
+                                  />
+                                </MenuOption>
+                              ))}
+                            </MenuOptions>
+                          </Menu> */}
                         </View>
                       </View>
                     </View>
@@ -141,9 +213,7 @@ const ParentProfileDetail: React.FC = () => {
                                 {t(children.schoolName)}
                               </Text>
                             </View>
-                            <View style={styles(direction).Container42}>
-                              {/* <Text style={styles(direction).text33}>
-                                {t('Edit')} */}
+                            <View style={styles(direction).Container43}>
                               <PlainButton
                                 onPress={() => {
                                   NavigationService.navigate('');
@@ -151,7 +221,51 @@ const ParentProfileDetail: React.FC = () => {
                                 style={styles(direction).text3}
                                 text={t('Edit')}
                               />
-                              {/* </Text> */}
+                              {/* <Menu>
+                                <MenuTrigger>
+                                  <Image
+                                    source={require('../../assets/menu.png')}
+                                    style={styles(direction).itemMenu}
+                                  />
+                                </MenuTrigger>
+                                <MenuOptions
+                                  customStyles={{
+                                    optionsContainer: {
+                                      borderRadius: scale(14),
+                                      width: scale(214),
+                                      paddingVertical: scale(20),
+                                      backgroundColor: '#EBEEF0',
+                                    },
+                                  }}>
+                                  {options1.map((op, i) => (
+                                    <MenuOption
+                                      onSelect={() => {}}
+                                      customStyles={{
+                                        optionWrapper: {
+                                          flexDirection: 'row',
+                                          alignItems: 'center',
+                                          justifyContent: 'space-between',
+                                          paddingHorizontal: scale(20),
+                                          paddingVertical: scale(7),
+                                        },
+                                      }}>
+                                      <Text
+                                        style={
+                                          op.title === t('Delete Profile')
+                                            ? styles(direction)
+                                                .optionTitleStyleColor
+                                            : styles(direction).optionTitleStyle
+                                        }>
+                                        {t(op.title)}{' '}
+                                      </Text>
+                                      <Image
+                                        source={op.image}
+                                        style={styles(direction).menuImage}
+                                      />
+                                    </MenuOption>
+                                  ))}
+                                </MenuOptions>
+                              </Menu> */}
                             </View>
                           </View>
 
