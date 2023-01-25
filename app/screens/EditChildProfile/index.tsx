@@ -19,6 +19,7 @@ import CustomInput from 'app/components/inputs/CustomInput';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import RegularButton from 'app/components/buttons/RegularButton';
 import { useTranslation } from 'react-i18next';
+import { scale } from 'react-native-size-matters';
 
 const EditChildProfile: React.FC = () => {
   const { control } = useForm();
@@ -191,7 +192,7 @@ const EditChildProfile: React.FC = () => {
                     style={styles(direction).rightComponent}>
                     <MaterialIcon
                       name={'chevron-down'}
-                      size={35}
+                      size={scale(35)}
                       color={'#03A0E3'}
                     />
                   </TouchableOpacity>
@@ -223,7 +224,7 @@ const EditChildProfile: React.FC = () => {
                 lightColor={'#ffffff'}
                 darkColor={'#A8A8A8'}
                 shapeType={'flat'}
-                radius={12}>
+                radius={scale(12)}>
                 <View style={styles(direction).interestContainer}>
                   <Text style={styles(direction).interestText}>
                     {t('Interests & Hobbies')}
@@ -304,7 +305,11 @@ const EditChildProfile: React.FC = () => {
                 width={'100%'}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
-                colors={['rgba(3, 187, 227, 1)', 'rgba(25, 118, 210, 1)']}
+                colors={[
+                  'rgba(3, 187, 227, 1)',
+                  'rgba(3, 160, 227, 1)',
+                  'rgba(25, 118, 210, 0.87)',
+                ]}
               />
             </View>
           </View>
