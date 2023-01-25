@@ -333,15 +333,17 @@ const ChildFullProfile: React.FC = (props: any) => {
                     </View>
                   </View>
                 </View>
-                <FlatList
-                  numColumns={1}
-                  key={'-'}
-                  keyExtractor={item => '-' + item.id}
-                  data={details}
-                  renderItem={({ item }) => {
-                    return <CardListItem book={item} />;
-                  }}
-                />
+                <View>
+                  <FlatList
+                    numColumns={1}
+                    key={'-'}
+                    keyExtractor={item => '-' + item.id}
+                    data={details}
+                    renderItem={({ item }) => {
+                      return <CardListItem book={item} />;
+                    }}
+                  />
+                </View>
               </View>
             </Neumorphism>
             <View style={styles(direction).marginView}></View>
@@ -760,7 +762,7 @@ const ChildFullProfile: React.FC = (props: any) => {
                     data={slides}
                     renderPagination={(activeIndex: number) => (
                       <View style={styles(direction).paginationContainer}>
-                        <View style={styles(direction).paginationDots}>
+                        <View style={styles(direction).paginationDotsBooks}>
                           {slides.length > 1 &&
                             slides.map((_, i) => (
                               <Image
@@ -781,39 +783,43 @@ const ChildFullProfile: React.FC = (props: any) => {
                     showNextButton={false}
                     renderItem={({ item }) => (
                       <View style={styles(direction).mainContent}>
-                        <TouchableOpacity
-                          onPress={() =>
-                            NavigationService.navigate('BookDetails')
-                          }>
-                          <Image
-                            style={styles(direction).image}
-                            source={item.image}
-                          />
-                        </TouchableOpacity>
-                        <View style={styles(direction).bookNameContainer}>
-                          <Text style={styles(direction).bookTitle}>
-                            {item.text}
-                          </Text>
-                          <Text style={styles(direction).bookPrice}>
-                            {item.price}
-                          </Text>
+                        <View>
+                          <TouchableOpacity
+                            onPress={() =>
+                              NavigationService.navigate('BookDetails')
+                            }>
+                            <Image
+                              style={styles(direction).image}
+                              source={item.image}
+                            />
+                          </TouchableOpacity>
+                          <View style={styles(direction).bookNameContainer}>
+                            <Text style={styles(direction).bookTitle}>
+                              {item.text}
+                            </Text>
+                            <Text style={styles(direction).bookPrice}>
+                              {item.price}
+                            </Text>
+                          </View>
                         </View>
-                        <TouchableOpacity
-                          onPress={() =>
-                            NavigationService.navigate('BookDetails')
-                          }>
-                          <Image
-                            style={styles(direction).image}
-                            source={item.image2}
-                          />
-                        </TouchableOpacity>
-                        <View style={styles(direction).bookNameContainer2}>
-                          <Text style={styles(direction).bookTitle}>
-                            {item.text2}
-                          </Text>
-                          <Text style={styles(direction).bookPrice}>
-                            {item.price2}
-                          </Text>
+                        <View>
+                          <TouchableOpacity
+                            onPress={() =>
+                              NavigationService.navigate('BookDetails')
+                            }>
+                            <Image
+                              style={styles(direction).image}
+                              source={item.image2}
+                            />
+                          </TouchableOpacity>
+                          <View style={styles(direction).bookNameContainer2}>
+                            <Text style={styles(direction).bookTitle}>
+                              {item.text2}
+                            </Text>
+                            <Text style={styles(direction).bookPrice}>
+                              {item.price2}
+                            </Text>
+                          </View>
                         </View>
                       </View>
                     )}
@@ -843,7 +849,7 @@ const ChildFullProfile: React.FC = (props: any) => {
                     data={slidesTwo}
                     renderPagination={(activeIndex: number) => (
                       <View style={styles(direction).paginationContainer}>
-                        <View style={styles(direction).paginationDots}>
+                        <View style={styles(direction).paginationDotsBooks}>
                           {slidesTwo.length > 1 &&
                             slidesTwo.map((_, i) => (
                               <Image
@@ -864,40 +870,44 @@ const ChildFullProfile: React.FC = (props: any) => {
                     showNextButton={false}
                     renderItem={({ item }) => (
                       <View style={styles(direction).mainContent}>
-                        <TouchableOpacity
-                          onPress={() =>
-                            NavigationService.navigate('BookDetails')
-                          }>
-                          <Image
-                            style={styles(direction).image}
-                            source={item.image}
-                          />
-                        </TouchableOpacity>
-                        <View style={styles(direction).bookNameContainer}>
-                          <Text style={styles(direction).bookTitle}>
-                            {item.text}
-                          </Text>
+                        <View>
+                          <TouchableOpacity
+                            onPress={() =>
+                              NavigationService.navigate('BookDetails')
+                            }>
+                            <Image
+                              style={styles(direction).image}
+                              source={item.image}
+                            />
+                          </TouchableOpacity>
+                          <View style={styles(direction).bookNameContainer}>
+                            <Text style={styles(direction).bookTitle}>
+                              {item.text}
+                            </Text>
 
-                          <Text style={styles(direction).bookPrice}>
-                            {item.price}
-                          </Text>
+                            <Text style={styles(direction).bookPrice}>
+                              {item.price}
+                            </Text>
+                          </View>
                         </View>
-                        <TouchableOpacity
-                          onPress={() =>
-                            NavigationService.navigate('BookDetails')
-                          }>
-                          <Image
-                            style={styles(direction).image}
-                            source={item.image2}
-                          />
-                        </TouchableOpacity>
-                        <View style={styles(direction).bookNameContainer2}>
-                          <Text style={styles(direction).bookTitle}>
-                            {item.text2}
-                          </Text>
-                          <Text style={styles(direction).bookPrice}>
-                            {item.price2}
-                          </Text>
+                        <View>
+                          <TouchableOpacity
+                            onPress={() =>
+                              NavigationService.navigate('BookDetails')
+                            }>
+                            <Image
+                              style={styles(direction).image}
+                              source={item.image2}
+                            />
+                          </TouchableOpacity>
+                          <View style={styles(direction).bookNameContainer2}>
+                            <Text style={styles(direction).bookTitle}>
+                              {item.text2}
+                            </Text>
+                            <Text style={styles(direction).bookPrice}>
+                              {item.price2}
+                            </Text>
+                          </View>
                         </View>
                       </View>
                     )}
