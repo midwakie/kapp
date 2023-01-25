@@ -24,6 +24,7 @@ import PlainButton from 'app/components/buttons/PlainButton';
 import CustomInput from 'app/components/inputs/CustomInput';
 import rules from 'app/rules';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import CustomInputDescription from 'app/components/inputs/CustomInputDescription';
 
 const PublishDocument: React.FC = () => {
   const { control } = useForm();
@@ -66,7 +67,22 @@ const PublishDocument: React.FC = () => {
               }}
             />
           </View>
-          <View style={styles(direction).neomorphContainer3}>
+          <View style={styles(direction).inputTextContainer}>
+            <CustomInputDescription
+                control={control}
+                name="Description"
+                // rules={rules.CustomerRules.first_name}
+                placeholder={t('Description')}
+                label={t('Description')}
+                keyboardType="default"
+                autoCapitalize="none"
+                returnKeyType="next"
+                onSubmitEditing={() => {
+                  categoryInputRef?.current.setFocus();
+                }}
+              />
+          </View>
+          {/* <View style={styles(direction).neomorphContainer3}>
             <Neumorphism
               lightColor={'#ffffff'}
               darkColor={'#A8A8A8'}
@@ -82,7 +98,7 @@ const PublishDocument: React.FC = () => {
                 textAlignVertical="top"
               />
             </Neumorphism>
-          </View>
+          </View> */}
           <View style={styles(direction).inputTextContainer2}>
             <CustomInput
               control={control}

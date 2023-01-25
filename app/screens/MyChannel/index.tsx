@@ -118,7 +118,7 @@ const MyChannel: React.FC = props => {
     setData(updatedData);
   };
 
-  const { profileName, isCondition, profileImage } = props.route.params;
+  const { profileName, isCondition, profileImage } = props?.route?.params;
   return (
     <>
       <ScrollView style={styles(direction).container} bounces={false}>
