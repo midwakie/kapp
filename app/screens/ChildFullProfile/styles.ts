@@ -71,23 +71,24 @@ const styles = (direction: string) =>
       // height: '22@s',
     },
     imageContainer: {
-      alignItems: 'flex-start',
-      justifyContent: 'flex-start',
-      // bottom: '80@s',
       width: '100@s',
       height: '100@s',
+      borderRadius: '150@s',
     },
     imageContainer2: {
       height: '30@s',
-      alignItems: 'flex-start',
-      justifyContent: 'flex-start',
       width: '30@s',
       position: 'absolute',
       bottom: '10@s',
-      right: '15@s',
+      right: '21@s',
     },
-    avatarImage: { width: '75@s', height: '90@s', resizeMode: 'cover' },
-    editAvatarImage: { width: '22@s', height: '22@s', resizeMode: 'cover' },
+    avatarImage: {
+      width: '90@s',
+      height: '90@s',
+      resizeMode: 'cover',
+      marginLeft: '-15@s',
+    },
+    editAvatarImage: { width: '22@s', height: '22@s', resizeMode: 'cover', },
     rightComponent: {
       flexDirection: direction === 'rtl' ? 'row-reverse' : 'row',
       left: direction === 'rtl' ? 20 : undefined,
@@ -108,11 +109,10 @@ const styles = (direction: string) =>
       marginLeft: '20@s',
     },
     rectangle: {
-      width: width - s(40),
-      height: '480@s',
-      borderRadius: 15,
+      width: width - scale(40),
+      borderRadius: '15@s',
       backgroundColor: '#EBEEF0',
-      paddingHorizontal: s(10),
+      marginHorizontal: scale(20),
       paddingVertical: '10@s',
     },
     marginView: { marginBottom: '20@s' },
@@ -123,54 +123,56 @@ const styles = (direction: string) =>
       marginLeft: '10@s',
     },
     statContainer: {
-      width: '275@s',
+      width: width - scale(84),
       height: '41@s',
       borderRadius: '9@s',
       alignItems: 'center',
-      paddingHorizontal: '20@s',
+      paddingHorizontal: '10@s',
       justifyContent: 'space-between',
       flexDirection: 'row',
       backgroundColor: '#EBEEF0',
     },
 
     coinContainer2: {
-      width: '75@ms',
-      height: '29@ms',
-      borderRadius: 50,
-      justifyContent: 'space-between',
+      width: '70@s',
+      height: '29@s',
+      borderRadius: '50@s',
+      justifyContent: 'center',
       alignItems: 'center',
-      paddingHorizontal: '12@ms',
+      paddingHorizontal: '10@s',
+      paddingVertical: '5@s',
       flexDirection: 'row',
       backgroundColor: '#EBEEF0',
     },
     coinContainer3: {
-      width: '75@ms',
-      height: '29@ms',
-      borderRadius: 50,
-
-      justifyContent: 'space-between',
+      width: '70@s',
+      height: '29@s',
+      borderRadius: '50@s',
+      justifyContent: 'center',
       alignItems: 'center',
-      paddingHorizontal: '12@ms',
+      paddingHorizontal: '10@s',
+      paddingVertical: '5@s',
       flexDirection: 'row',
       backgroundColor: '#EBEEF0',
     },
     coinImage: {
       alignItems: 'center',
       justifyContent: 'center',
-      height: '14@ms',
-      width: '14@ms',
+      height: '14@s',
+      width: '14@s',
     },
     coinText: {
       fontFamily: 'Nunito-Regular',
       fontSize: '14@s',
       fontWeight: '600',
       color: '#455157',
+      marginLeft: '6.03@s',
     },
     coinContainer1: {
       flexDirection: 'row',
       height: '29@s',
       marginTop: '5@s',
-      width: '100%',
+      marginLeft: '24@s',
       marginBottom: 10,
     },
     editButton: {
@@ -195,6 +197,7 @@ const styles = (direction: string) =>
     innerContainerOne: {
       flexDirection: 'row',
       alignItems: 'center',
+      marginHorizontal: '24@s',
     },
     mainTextContainer: {
       lineHeight: '19@s',
@@ -234,7 +237,7 @@ const styles = (direction: string) =>
       flexDirection: 'row',
       height: '30@s',
       justifyContent: 'flex-end',
-      marginLeft: '28@s',
+      marginLeft: '16@s',
     },
     icon1: {
       height: '25@s',
@@ -378,12 +381,10 @@ const styles = (direction: string) =>
     },
     rectangle4: {
       width: width - s(40),
-      height: '313@s',
       borderRadius: 15,
       backgroundColor: '#EBEEF0',
       justifyContent: 'center',
-      paddingLeft: '5@s',
-      paddingEnd: '5@s',
+      padding: '20@s',
     },
     myBadgesContainer: {
       height: '214@s',
@@ -413,7 +414,6 @@ const styles = (direction: string) =>
     },
     bookShelfTextContainer: {
       marginBottom: '10@s',
-      marginRight: '18@s',
       flexDirection: 'row',
     },
     bookShelfText: {
@@ -421,9 +421,6 @@ const styles = (direction: string) =>
       fontWeight: '800',
       fontSize: '16@s',
       height: '22@s',
-      width: '84@s',
-      marginLeft: '20@s',
-      marginRight: '165@s',
     },
     badgeText: {
       fontFamily: 'Nunito-Regular',
@@ -449,14 +446,13 @@ const styles = (direction: string) =>
     },
     walkThroughContainer: {
       // marginBottom: 28,
-      height: '260@s',
+      height: '245@s',
     },
     walkThroughContainer2: {
       // marginBottom: 28,
       height: '350@s',
     },
     paginationContainer: {
-      marginTop: 10,
       justifyContent: 'center',
     },
     paginationContainerPdf: {
@@ -465,6 +461,14 @@ const styles = (direction: string) =>
       bottom: '10@s',
     },
     paginationDots: {
+      bottom: '45@s',
+      height: '16@s',
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    paginationDotsBooks: {
+      bottom: '15@s',
       height: '16@s',
       flexDirection: 'row',
       justifyContent: 'center',
@@ -472,11 +476,11 @@ const styles = (direction: string) =>
     },
 
     paginationDotsBadge: {
+      bottom: '70@s',
       height: '16@s',
       flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',
-      bottom: '40@s',
     },
     dot: {
       width: '24@s',
@@ -508,18 +512,15 @@ const styles = (direction: string) =>
       position: 'absolute',
       alignItems: 'flex-start',
       justifyContent: 'center',
-      left: '35@s',
-      bottom: '30@s',
+      left: '18.35@s',
+      bottom: '18.35@s',
     },
     bookNameContainer2: {
       position: 'absolute',
-      bottom: '30@s',
-      justifyContent: 'flex-start',
+      left: '18.35@s',
+      bottom: '18.35@s',
+      justifyContent: 'center',
       alignItems: 'flex-start',
-      right: '12@s',
-      width: '120@s',
-      marginStart: '55@s',
-      textAlign: 'center',
     },
 
     bookTitle: {
@@ -534,7 +535,7 @@ const styles = (direction: string) =>
       color: '#03A0E3',
       fontWeight: '600',
       fontSize: '14@s',
-      top: '5@s',
+      top: '1.6@s',
       fontFamily: 'Nunito-regular',
     },
     bookAuthor: {
@@ -867,13 +868,14 @@ const styles = (direction: string) =>
     neomorphContainerCard: {
       justifyContent: 'center',
       alignItems: 'center',
+      marginHorizontal: '24@s',
     },
     neomorphListContainer: {
       justifyContent: 'center',
       alignItems: 'center',
       margin: '20@s',
     },
-    neomorphMargin: { margin: '10@ms' },
+    neomorphMargin: { marginVertical: '10@ms' },
     cardImage: {
       height: '118@ms',
       width: '100%',

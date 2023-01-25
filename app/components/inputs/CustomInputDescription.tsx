@@ -64,7 +64,8 @@ const CustomInputDescription = React.forwardRef(
                 autoCapitalize={autoCapitalize}
                 value={value}
                 // clearButtonMode="while-editing"
-                onSubmitEditing={onSubmitEditing}
+                multiline={true}
+                // onSubmitEditing={onSubmitEditing}
                 onChangeText={onChange}
                 onBlur={() => {
                   setIsFocused(false);
@@ -79,7 +80,7 @@ const CustomInputDescription = React.forwardRef(
                 style={styles(direction).input}
                 secureTextEntry={secureTextEntry}
               />
-              {!isFocused && !value && (
+              {/* {!isFocused && !value && (
                 <Text
                   style={styles(direction).placeHolderText}
                   onPress={() => {
@@ -92,7 +93,7 @@ const CustomInputDescription = React.forwardRef(
                     </Text>
                   )}
                 </Text>
-              )}
+              )} */}
               {rightComponent}
             </View>
             {/* </Neumorphism> */}
@@ -131,7 +132,7 @@ const styles = (direction: string) =>
       resizeMode: 'contain',
     },
     input: {
-      height: '40@ms',
+      height: '100@s',
       paddingVertical: '10@ms',
       paddingHorizontal: '10@s',
       marginLeft: direction === 'rtl' ? undefined : '15@s',

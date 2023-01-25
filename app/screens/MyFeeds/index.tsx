@@ -150,19 +150,21 @@ const MyFeeds: React.FC = (props: any) => {
                             source={require('../../assets/dp.png')}
                             style={styles(direction).image1Style}
                           />
-                          <Text style={styles(direction).profileName}>
-                            {item.profileName}
-                          </Text>
+                          <View>
+                            <Text style={styles(direction).profileName}>
+                              {item.profileName}
+                            </Text>
+                            <Text style={styles(direction).status}>
+                              {item.endDate}
+                            </Text>
+                          </View>
                         </View>
-                        <Text style={styles(direction).status}>
-                          {item.endDate}
-                        </Text>
                         <View style={styles(direction).imageContainer1}>
                           <Image
                             source={item.content}
                             style={styles(direction).imageStyle}
                           />
-                          <TouchableOpacity>
+                          <TouchableOpacity style={styles(direction).imageButtonContainer1}>
                             <Image
                               source={item.icon}
                               style={styles(direction).button}

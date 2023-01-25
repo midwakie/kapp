@@ -12,7 +12,7 @@ const styles = (direction: string) =>
       width: '100%',
       height: '100%',
       backgroundColor: '#EBEEF0',
-      zIndex: -10,
+      marginTop: '85@s',
     },
     safeAreaView: { alignSelf: 'stretch' },
     gradientTextContainer: {
@@ -35,7 +35,7 @@ const styles = (direction: string) =>
       fontFamily: 'Nunito-Regular',
       fontWeight: '800',
       letterSpacing: 0.01,
-      marginBottom: 5,
+      marginBottom: '5@s',
     },
     topContainer: {
       justifyContent: 'center',
@@ -45,33 +45,34 @@ const styles = (direction: string) =>
       marginLeft: '20@s',
     },
     container2: {
-      marginTop: 70,
       width: '100%',
       height: '100%',
     },
     container3: {
-      width: '100%',
-      height: '140@ms',
+      width: '110@s',
+      height: '140@s',
       flexDirection: 'row',
-      marginBottom: 39,
+      marginBottom: '39@s',
+      marginTop: 70,
     },
     neomorphContainer: {
-      marginLeft: 40,
+      marginLeft: '20@s',
+      // justifyContent: 'center',
     },
     neomorphContainer2: {
       paddingHorizontal: '20@s',
       marginBottom: 20,
     },
     imageContainer: {
-      width: '100%',
-      height: '140@ms',
+      width: '110@s',
+      height: '140@s',
       borderRadius: '12@s',
     },
     imageContainer4: {
       alignItems: 'center',
       justifyContent: 'center',
-      width: 78,
-      height: 78,
+      width: '78@s',
+      height: '78@s',
     },
     imageStyle: {
       justifyContent: 'center',
@@ -105,30 +106,30 @@ const styles = (direction: string) =>
       tintColor: 'red',
     },
     container4: {
-      width: '100%',
+      // width: '100%',
       height: '140@ms',
-      paddingHorizontal: 25,
+      paddingHorizontal: '25@s',
     },
     container5: {
       backgroundColor: '#EBEEF0',
       width: '100%',
-      height: '156@ms',
+      height: '156@s',
       borderRadius: 14,
     },
     container6: {
-      paddingHorizontal: 15,
-      paddingVertical: 15,
+      paddingHorizontal: '15@s',
+      paddingVertical: '15@s',
     },
     container7: {
       flexDirection: 'row',
-      marginBottom: 3.26,
+      marginBottom: '3.26@s',
     },
     text1: {
       color: '#758DAC',
       fontSize: '12@s',
       fontWeight: '600',
       fontFamily: 'Nunito-Regular',
-      marginBottom: 10.26,
+      marginBottom: '10.26@s',
     },
     text2: {
       color: '#03A0E3',
@@ -137,7 +138,7 @@ const styles = (direction: string) =>
       fontFamily: 'Nunito-Regular',
       height: '30@s',
       width: '100%',
-      marginBottom: 9,
+      marginBottom: '9@s',
     },
     text3: {
       color: '#03A0E3',
@@ -154,8 +155,8 @@ const styles = (direction: string) =>
       fontFamily: 'Nunito-Regular',
       height: '16@s',
       width: '100%',
-      marginLeft: 20,
-      marginBottom: 35,
+      marginLeft: '20@s',
+      marginBottom: '35@s',
     },
     text5: {
       color: '#2F4868',
@@ -175,7 +176,6 @@ const styles = (direction: string) =>
       width: '76@s',
     },
     text7: {
-      flex: 1,
       color: '#758DAC',
       fontSize: '16@s',
       fontWeight: '600',
@@ -185,9 +185,10 @@ const styles = (direction: string) =>
       marginTop: 12.26,
     },
     starRatingContainer: {
-      marginBottom: 20.26,
+      marginBottom: '20.26@s',
       flexDirection: 'row',
     },
+    titleBarContainer: { position: 'absolute', width: '100%' },
   });
 
 export default styles;
