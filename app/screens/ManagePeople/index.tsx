@@ -101,6 +101,7 @@ const ManagePeople: React.FC = () => {
                 icon={'check'}
                 height={25}
                 width={25}
+                status={false}
               />
             </View>
             <View style={styles(direction).cardRowContainerTwo}>
@@ -124,6 +125,7 @@ const ManagePeople: React.FC = () => {
                 icon={'check'}
                 height={25}
                 width={25}
+                status={false}
               />
             </View>
           </View>

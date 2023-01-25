@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React, { useEffect } from 'react';
 import { SafeAreaView, Text, View } from 'react-native';
 import styles from './styles';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -9,10 +10,29 @@ import rules from 'app/rules';
 import { useForm } from 'react-hook-form';
 import NavigationService from 'app/navigation/NavigationService';
 import { useTranslation } from 'react-i18next';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { requestResetPassword } from 'app/store/actions/resetPasswordAction';
+import { watchResetPasswordSaga } from 'app/store/sagas/resetPasswordSaga';
+import { ICurrentCustomer } from 'app/models/reducers/currentCustomer';
+interface IState {
+  currentCustomerReducer: ICurrentCustomer;
+}
 const ForgotPassword: React.FC = () => {
-  const { control } = useForm();
+  const { control, handleSubmit } = useForm();
+  const dispatch = useDispatch();
   const { t } = useTranslation();
+  useEffect(() => {
+    watchResetPasswordSaga();
+  }, []);
+  const selectedRole = useSelector(
+    (state: IState) => state.currentCustomerReducer.role,
+  );
+  const onSubmit = (data: any) => {
+    data.roleType = selectedRole;
+    dispatch(requestResetPassword(data));
+    NavigationService.navigate('NewPassword');
+  };
+
   return (
     <ScrollView style={styles.container} bounces={false}>
       <SafeAreaView style={styles.safeAreaView}>
@@ -57,9 +77,7 @@ const ForgotPassword: React.FC = () => {
             />
           </View>
           <RegularButton
-            onPress={() => {
-              NavigationService.navigate('NewPassword');
-            }}
+            onPress={handleSubmit(onSubmit)}
             text={t('Send')}
             radius={50}
             height={50}

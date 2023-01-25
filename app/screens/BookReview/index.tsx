@@ -80,33 +80,6 @@ const BookReview: React.FC = () => {
   ]);
   return (
     <>
-      <TitleBar
-        leftComponent={
-          <View style={styles(direction).topContainer}>
-            <RegularButton
-              onPress={() => {
-                NavigationService.goBack();
-              }}
-              icon={'arrow-back'}
-              radius={38}
-              height={38}
-              width={38}
-              colors={['#EBECF0', '#EBECF0']}
-            />
-          </View>
-        }
-        middleComponent={
-          <View style={styles(direction).gradientTextContainer}>
-            <GradientText
-              colors={['#03A0E3', '#0D93CD']}
-              text={t('Book Review')}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 0, y: 1 }}
-              textStyle={styles(direction).gradientTextStyle as TextStyle}
-            />
-          </View>
-        }
-      />
       <ScrollView style={styles(direction).container} bounces={false}>
         <SafeAreaView style={styles(direction).safeAreaView}>
           {data.map((item, index) => (
@@ -231,6 +204,35 @@ const BookReview: React.FC = () => {
           ))}
         </SafeAreaView>
       </ScrollView>
+      <View style={styles(direction).titleBarContainer}>
+        <TitleBar
+          leftComponent={
+            <View style={styles(direction).topContainer}>
+              <RegularButton
+                onPress={() => {
+                  NavigationService.goBack();
+                }}
+                icon={'arrow-back'}
+                radius={38}
+                height={38}
+                width={38}
+                colors={['#EBECF0', '#EBECF0']}
+              />
+            </View>
+          }
+          middleComponent={
+            <View style={styles(direction).gradientTextContainer}>
+              <GradientText
+                colors={['#03A0E3', '#0D93CD']}
+                text={t('Book Review')}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 0, y: 1 }}
+                textStyle={styles(direction).gradientTextStyle as TextStyle}
+              />
+            </View>
+          }
+        />
+      </View>
     </>
   );
 };
