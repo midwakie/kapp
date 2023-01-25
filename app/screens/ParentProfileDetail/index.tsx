@@ -126,7 +126,8 @@ const ParentProfileDetail: React.FC = () => {
                         radius={scale(14)}>
                         <View style={styles(direction).container31}>
                           <View style={styles(direction).row}>
-                            <View style={styles(direction).profileImgContainer1}>
+                            <View
+                              style={styles(direction).profileImgContainer1}>
                               <Image
                                 source={children.childImage}
                                 style={styles(direction).profileImg}
@@ -176,7 +177,8 @@ const ParentProfileDetail: React.FC = () => {
                                         source={teacher[teacherKey]}
                                       />
                                       {teacherKey === 'avatarImage6' && (
-                                        <Text style={styles(direction).plusFour}>
+                                        <Text
+                                          style={styles(direction).plusFour}>
                                           +4
                                         </Text>
                                       )}

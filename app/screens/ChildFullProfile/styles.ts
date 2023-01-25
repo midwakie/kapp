@@ -19,13 +19,13 @@ const styles = (direction: string) =>
       paddingBottom: 25,
       justifyContent: 'center',
       alignItems: 'center',
-      marginTop: '25@s',
+      marginTop: '105@s',
     },
     iconContainer1: {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
-      height: '44@s',
+      // height: '44@s',
       width: '88@s',
     },
     menuContainer: {
@@ -68,7 +68,7 @@ const styles = (direction: string) =>
       width: '100%',
       justifyContent: 'center',
       alignItems: 'center',
-      height: '22@s',
+      // height: '22@s',
     },
     imageContainer: {
       alignItems: 'flex-start',
@@ -109,7 +109,6 @@ const styles = (direction: string) =>
     },
     rectangle: {
       width: width - s(40),
-      height: '480@s',
       borderRadius: 15,
       backgroundColor: '#EBEEF0',
       paddingHorizontal: s(10),
@@ -130,6 +129,7 @@ const styles = (direction: string) =>
       paddingHorizontal: '20@s',
       justifyContent: 'space-between',
       flexDirection: 'row',
+      backgroundColor: '#EBEEF0',
     },
 
     coinContainer2: {
@@ -169,8 +169,9 @@ const styles = (direction: string) =>
       flexDirection: 'row',
       height: '29@s',
       marginTop: '5@s',
-      width: '100%',
-      marginBottom: 10,
+      marginBottom: '10@s',
+      marginHorizontal: '10@s',
+      justifyContent: 'space-between',
     },
     editButton: {
       flexDirection: 'row',
@@ -232,8 +233,7 @@ const styles = (direction: string) =>
     iconMainContainer: {
       flexDirection: 'row',
       height: '30@s',
-      justifyContent: 'flex-end',
-      marginLeft: '28@s',
+      justifyContent: 'center',
     },
     icon1: {
       height: '25@s',
@@ -448,18 +448,16 @@ const styles = (direction: string) =>
     },
     walkThroughContainer: {
       // marginBottom: 28,
-      height: 260,
+      height: '260@s',
     },
     walkThroughContainer2: {
       // marginBottom: 28,
-      height: 350,
+      height: '350@s',
     },
     paginationContainer: {
-      marginTop: 10,
       justifyContent: 'center',
     },
     paginationContainerPdf: {
-      marginTop: 10,
       justifyContent: 'center',
       bottom: '10@s',
     },
@@ -928,6 +926,7 @@ const styles = (direction: string) =>
         .toString(16)
         .padStart(6, '0')}`,
     },
+    titleBarContainer: { position: 'absolute', width: '100%' },
   });
 
 export default styles;
