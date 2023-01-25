@@ -46,7 +46,6 @@ import { ILoading } from 'app/models/reducers/loading';
 import History from 'app/screens/EBooks/History';
 import ChildProfile from 'app/screens/ChildProfile';
 import Home from 'app/screens/Home';
-
 import SuggestionsForYou from 'app/screens/SuggestionsForYou';
 import ClassFilter from 'app/screens/ClassFilter';
 import MyStudentList from 'app/screens/MyStudentList';
@@ -124,6 +123,16 @@ const AuthStack = () => {
       <Stack.Screen
         name="Child"
         component={Child}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="SuggestionsForYou"
+        component={SuggestionsForYou}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation

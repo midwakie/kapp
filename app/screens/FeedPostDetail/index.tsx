@@ -19,6 +19,7 @@ import RegularButton from 'app/components/buttons/RegularButton';
 import { useTranslation } from 'react-i18next';
 import Neumorphism from 'react-native-neumorphism';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { scale } from 'react-native-size-matters';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
@@ -36,8 +37,7 @@ interface IState {
 }
 
 const FeedPostDetail: React.FC = () => {
-  const [modalVisible, setModalVisible] = useState(true);
-
+  const [modalVisible, setModalVisible] = useState(false);
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
 
@@ -441,11 +441,7 @@ const FeedPostDetail: React.FC = () => {
               <View style={styles(direction).modalContainer}>
                 <View style={styles(direction).modalView2}>
                   <View style={styles(direction).iconViewContainer}>
-                    <MaterialIcon
-                      name="warning"
-                      size={scale(80)}
-                      color="#F0374E"
-                    />
+                    <Ionicons name="warning" size={scale(80)} color="#F0374E" />
                   </View>
 
                   <View style={styles(direction).textDeleteConfirmationView}>
@@ -464,7 +460,9 @@ const FeedPostDetail: React.FC = () => {
                       colors={['#03BBE3', '#14A9FD']}
                     />
                     <RegularButton
-                      onPress={() => NavigationService.navigate('Select Role')}
+                      onPress={() => {
+                        NavigationService.goBack();
+                      }}
                       text={t('Cancel')}
                       radius={50}
                       height={50}
