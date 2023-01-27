@@ -89,11 +89,11 @@ const ActivitiesStats: React.FC = () => {
                         <Text style={styles(direction).text2}>
                           {t('Last Week')}
                         </Text>
-                        <MaterialIcon
+                        {/* <MaterialIcon
                           name={'expand-more'}
                           size={scale(12)}
                           color={'#03A0E3'}
-                        />
+                        /> */}
                       </TouchableOpacity>
                     </View>
                   </Neumorphism>

@@ -628,6 +628,16 @@ const Home: React.FC = (props: any) => {
                 end={{ x: 0, y: 1 }}
                 textStyle={styles(false).gradientTextStyle}
               />
+              <RegularButton
+                onPress={() => {
+                  NavigationService.navigate('RecommendedVideos');
+                }}
+                icon={'arrow-forward'}
+                radius={38}
+                height={38}
+                width={38}
+                colors={['#EBECF0', '#EBECF0']}
+              />
             </View>
             <View>
               <FlatList

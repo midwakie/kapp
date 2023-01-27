@@ -148,7 +148,11 @@ const TeachersProfile: React.FC = () => {
             </Neumorphism>
             {data.map((item, index) => {
               return (
-                <View style={{ marginTop: 30 }}>
+                <TouchableOpacity
+                  onPress={() => {
+                    NavigationService.navigate('MyChannel');
+                  }}
+                  style={{ marginTop: 30 }}>
                   <Neumorphism
                     lightColor={'#ffffff'}
                     darkColor={'#A8A8A8'}
@@ -232,7 +236,7 @@ const TeachersProfile: React.FC = () => {
                       </Menu>
                     </View>
                   </Neumorphism>
-                </View>
+                </TouchableOpacity>
               );
             })}
             <View style={{ marginTop: 30 }}>
@@ -250,7 +254,10 @@ const TeachersProfile: React.FC = () => {
                         shapeType={'flat'}
                         radius={scale(150)}>
                         <View style={styles(direction).container8}>
-                          <TouchableOpacity onPress={() => {}}>
+                          <TouchableOpacity
+                            onPress={() => {
+                              NavigationService.navigate('CreateChannel');
+                            }}>
                             <Image
                               style={styles(direction).imageStyle1}
                               source={require('../../assets/plus.png')}

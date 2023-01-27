@@ -137,7 +137,12 @@ const ManageActivities: React.FC = () => {
           <View style={styles(direction).container2}>
             {data.map(item => {
               return (
-                <View key={item.id} style={styles(direction).neomorphContainer}>
+                <TouchableOpacity
+                  onPress={() => {
+                    NavigationService.navigate('ManageActivitiesDetail');
+                  }}
+                  key={item.id}
+                  style={styles(direction).neomorphContainer}>
                   <Neumorphism
                     lightColor={'#ffffff'}
                     darkColor={'#A8A8A8'}
@@ -208,7 +213,7 @@ const ManageActivities: React.FC = () => {
                       </View>
                     </View>
                   </Neumorphism>
-                </View>
+                </TouchableOpacity>
               );
             })}
             <View style={styles(direction).neomorphContainer1}>
@@ -226,7 +231,10 @@ const ManageActivities: React.FC = () => {
                         shapeType={'flat'}
                         radius={scale(150)}>
                         <View style={styles(direction).container8}>
-                          <TouchableOpacity onPress={() => {}}>
+                          <TouchableOpacity
+                            onPress={() => {
+                              NavigationService.navigate('CreateActivity');
+                            }}>
                             <Image
                               style={styles(direction).imageStyle}
                               source={require('../../assets/plus.png')}

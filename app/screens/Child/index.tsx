@@ -17,6 +17,7 @@ import TitleBar from 'app/components/buttons/TitleBar';
 import Neumorphism from 'react-native-neumorphism';
 import VerticalLine from 'app/components/lines/VerticalLine';
 import { DrawerActions } from '@react-navigation/native';
+import NavigationService from 'app/navigation/NavigationService';
 
 const Child: React.FC = (props: any) => {
   const { t, i18n } = useTranslation();
@@ -111,7 +112,10 @@ const Child: React.FC = (props: any) => {
               numColumns={2}
               renderItem={({ item, index }) => (
                 <View style={styles(direction).rowContainer}>
-                  <TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => {
+                      NavigationService.navigate('ChildFullProfile');
+                    }}>
                     <View
                       style={[
                         styles(direction).rectangle2,
