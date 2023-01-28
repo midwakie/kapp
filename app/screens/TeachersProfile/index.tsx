@@ -148,21 +148,22 @@ const TeachersProfile: React.FC = () => {
             </Neumorphism>
             {data.map((item, index) => {
               return (
-                <TouchableOpacity
-                  onPress={() => {
-                    NavigationService.navigate('MyChannel');
-                  }}
-                  style={{ marginTop: 30 }}>
+                <View style={{ marginTop: 30 }}>
                   <Neumorphism
                     lightColor={'#ffffff'}
                     darkColor={'#A8A8A8'}
                     shapeType={'flat'}
                     radius={14}>
                     <View style={styles(direction).rectangle2}>
-                      <Image
-                        source={item.titleImage}
-                        style={styles(direction).imageStyle}
-                      />
+                      <TouchableOpacity
+                        onPress={() => {
+                          NavigationService.navigate('MyChannel');
+                        }}>
+                        <Image
+                          source={item.titleImage}
+                          style={styles(direction).imageStyle}
+                        />
+                      </TouchableOpacity>
                       <View>
                         <Text style={styles(direction).text}>
                           {t(item.titleName)}
@@ -236,7 +237,7 @@ const TeachersProfile: React.FC = () => {
                       </Menu>
                     </View>
                   </Neumorphism>
-                </TouchableOpacity>
+                </View>
               );
             })}
             <View style={{ marginTop: 30 }}>
