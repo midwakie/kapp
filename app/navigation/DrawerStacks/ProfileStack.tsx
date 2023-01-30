@@ -8,6 +8,19 @@ import TeachersProfile from 'app/screens/TeachersProfile';
 import { useSelector } from 'react-redux';
 import { ICurrentCustomer } from 'app/models/reducers/currentCustomer';
 import { ROLES } from 'app/config/role-config';
+import EditChildProfile from 'app/screens/EditChildProfile';
+import ActivitiesStats from 'app/screens/ActivityStatus';
+import Publish from 'app/screens/Publish';
+import PublishNewVideo from 'app/screens/PublishNewVideo';
+import PublishNewDocument from 'app/screens/PublishNewDocument';
+import ManageActivities from 'app/screens/ManageActivities';
+import ManagePeople from 'app/screens/ManagePeople';
+import ManageActivitiesDetail from 'app/screens/ManageActivitiesDetail';
+import ActivityFilter from 'app/screens/ActivityFilter';
+import FeedDetail from 'app/screens/FeedDetail';
+import EditTeacherProfile from 'app/screens/EditTeacherProfile';
+import ChangeSchool from 'app/screens/ChangeSchool';
+import MyChannel from 'app/screens/MyChannel';
 
 const Stack = createStackNavigator();
 const LoggedInStack = createStackNavigator();
@@ -51,6 +64,146 @@ const ProfileStack = () => {
         name="GlobalSearch"
         component={GlobalSearch}
         options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="EditChildProfile"
+        component={EditChildProfile}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ActivitiesStats"
+        component={ActivitiesStats}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Publish"
+        component={Publish}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="PublishNewVideo"
+        component={PublishNewVideo}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="PublishNewDocument"
+        component={PublishNewDocument}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Manage Activities"
+        component={ManageActivities}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ManagePeople"
+        component={ManagePeople}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ManageActivitiesDetail"
+        component={ManageActivitiesDetail}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Activity Filter"
+        component={ActivityFilter}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="FeedDetail"
+        component={FeedDetail}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ChildFullProfile"
+        component={ChildFullProfile}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="EditTeacherProfile"
+        component={EditTeacherProfile}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Change School"
+        component={ChangeSchool}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="MyChannel"
+        component={MyChannel}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
       />

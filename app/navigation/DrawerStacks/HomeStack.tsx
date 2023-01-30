@@ -12,6 +12,9 @@ import ContinueReading from 'app/screens/EBooks/ContinueReading';
 import Favorites from 'app/screens/EBooks/Favorites';
 import BookDetails from 'app/screens/BookDetails';
 import GlobalSearch from 'app/screens/GlobalSearch';
+import RecommendedVideos from 'app/screens/RecommendedVideos';
+import BookReview from 'app/screens/BookReview';
+import AddReview from 'app/screens/AddReview';
 
 const Stack = createStackNavigator();
 const LoggedInStack = createStackNavigator();
@@ -100,6 +103,33 @@ const HomeStack = () => {
         name="GlobalSearch"
         component={GlobalSearch}
         options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="RecommendedVideos"
+        component={RecommendedVideos}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Book Review"
+        component={BookReview}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Add Review"
+        component={AddReview}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
       />
