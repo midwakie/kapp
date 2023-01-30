@@ -92,7 +92,10 @@ const Child: React.FC = (props: any) => {
                 height={'100%'}
                 color={'#A8A8A8'}
               />
-              <TouchableOpacity onPress={() => {}}>
+              <TouchableOpacity
+                onPress={() => {
+                  NavigationService.navigate('GlobalSearch');
+                }}>
                 <View style={styles(direction).searchContainer}>
                   <Image
                     source={require('../../assets/searchIcon.png')}
@@ -114,7 +117,9 @@ const Child: React.FC = (props: any) => {
                 <View style={styles(direction).rowContainer}>
                   <TouchableOpacity
                     onPress={() => {
-                      NavigationService.navigate('ChildFullProfile');
+                      item.id === 1
+                        ? NavigationService.navigate('AccountAction')
+                        : NavigationService.navigate('ChildFullProfile');
                     }}>
                     <View
                       style={[

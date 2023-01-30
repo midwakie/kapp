@@ -35,6 +35,9 @@ import NoInterestAndHobbies from 'app/screens/NoInterestAndHobbie';
 import NoConnection from 'app/screens/NoConnection';
 import NoSearch from 'app/screens/Nosearch';
 import NoNotification from 'app/screens/NoNotification';
+import MyStudentList from 'app/screens/MyStudentList';
+import StudentsStack from './DrawerStacks/StudentsStack';
+import ChildStack from './DrawerStacks/ChildStack';
 
 const Drawer = createDrawerNavigator();
 
@@ -159,13 +162,41 @@ const AppStack = () => {
           gestureEnabled: false,
         }}
       />
-      {selectedRole !== ROLES.PARENT && (
+
+      <Drawer.Screen
+        name="MyChannel"
+        component={MyChannel}
+        options={{
+          drawerLabel: 'My Channel',
+          iconImage: require('../assets/side_menu/myChannel.png'),
+          headerStyle: {
+            backgroundColor: '#976a4a',
+          },
+          gestureEnabled: false,
+        }}
+      />
+
+      {selectedRole === ROLES.TEACHER && (
         <Drawer.Screen
-          name="MyChannel"
-          component={MyChannel}
+          name="StudentsScreen"
+          component={StudentsStack}
           options={{
-            drawerLabel: 'My Channel',
-            iconImage: require('../assets/side_menu/myChannel.png'),
+            drawerLabel: 'Students',
+            iconImage: require('../assets/side_menu/littleKid.png'),
+            headerStyle: {
+              backgroundColor: '#976a4a',
+            },
+            gestureEnabled: false,
+          }}
+        />
+      )}
+      {selectedRole === ROLES.PARENT && (
+        <Drawer.Screen
+          name="ChildScreen"
+          component={ChildStack}
+          options={{
+            drawerLabel: 'Child',
+            iconImage: require('../assets/side_menu/littleKid.png'),
             headerStyle: {
               backgroundColor: '#976a4a',
             },
