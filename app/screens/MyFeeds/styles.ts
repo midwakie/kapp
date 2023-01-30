@@ -89,22 +89,20 @@ const styles = (direction: string) =>
 
     rectangle2: {
       width: '100%',
-      height: '381@s',
       backgroundColor: '#EBEEF0',
+      padding: '20@s',
     },
     text: {
-      marginLeft: '20@s',
       fontSize: '16@ms',
       marginTop: '5@s',
       color: '#758DAC',
       fontWeight: '600',
       fontFamily: 'Nunito',
-      lineHeight: '23@s',
       flexDirection: 'row',
     },
     imageContainer: {
-      paddingTop: '20@s',
       flexDirection: 'row',
+      alignItems: 'center'
     },
     topImage: {
       width: '50@s',
@@ -113,16 +111,20 @@ const styles = (direction: string) =>
     image1Style: {
       width: '50@s',
       height: '50@s',
-      marginLeft: '20@s',
     },
     imageContainer1: {
-      paddingHorizontal: '20@s',
       width: '100%',
       alignItems: 'center',
+      marginTop: '15@s',
+    },
+    imageButtonContainer1: {
+      width: '100%',
+      height: '130@s',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
     imageStyle: {
       width: '100%',
-      marginTop: 15,
       resizeMode: 'stretch',
       height: '130@s',
       position: 'absolute',
@@ -130,7 +132,6 @@ const styles = (direction: string) =>
     button: {
       width: '46@s',
       height: '46@s',
-      marginTop: 64,
       alignSelf: 'center',
       alignItems: 'center',
       justifyContent: 'center',
@@ -154,9 +155,9 @@ const styles = (direction: string) =>
       fontFamily: 'Nunito',
       fontWeight: '600',
       fontSize: '12@s',
-      marginLeft: '85@s',
-      marginTop: '-17@s',
-      marginRight: '155@s',
+      marginLeft: '15@s',
+      // marginTop: '-17@s',
+      // marginRight: '155@s',
       flexDirection: 'row',
     },
     headingText: {
@@ -164,15 +165,12 @@ const styles = (direction: string) =>
       fontWeight: '800',
       fontSize: '18@s',
       flexDirection: 'row',
-      lineHeight: '25@s',
-      marginTop: '62@s',
-      marginLeft: '20@s',
+      marginTop: '20@s',
     },
     iconContainer: {
       width: '100%',
       marginTop: '16@s',
       flexDirection: 'row',
-      marginLeft: '20@s',
       alignSelf: 'stretch',
     },
     topIcon: {
@@ -181,8 +179,8 @@ const styles = (direction: string) =>
       marginTop: '13@s',
     },
     icon: {
-      width: 16.87,
-      height: 14.46,
+      width: '16.87@s',
+      height: '14.46@s',
       marginTop: '8@s',
       marginLeft: '10@s',
     },
@@ -201,6 +199,7 @@ const styles = (direction: string) =>
       width: '70@s',
       height: '32@s',
       color: '#03A0E3',
+      backgroundColor: '#EBEEF0',
     },
   });
 

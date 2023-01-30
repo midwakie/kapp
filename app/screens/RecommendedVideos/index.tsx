@@ -109,67 +109,71 @@ const RecommendedVideos: React.FC = () => {
   };
 
   return (
-    <ScrollView style={styles(direction).container} bounces={false}>
-      <TitleBar
-        leftComponent={
-          <View style={styles(direction).topContainer}>
-            <RegularButton
-              onPress={() => {
-                NavigationService.goBack();
-              }}
-              icon={'arrow-back'}
-              radius={38}
-              height={38}
-              width={38}
-              colors={['#EBECF0', '#EBECF0']}
-            />
+    <>
+      <ScrollView style={styles(direction).container} bounces={false}>
+        <SafeAreaView style={styles(direction).safeAreaView}>
+          <View style={styles(direction).container2}>
+            <View style={styles(direction).cardContainer}>
+              {currentOrientation === 'portrait' ? (
+                <FlatList
+                  numColumns={Math.floor(
+                    Dimensions.get('window').width / scale(158),
+                  )}
+                  key={'_'}
+                  keyExtractor={item => '_' + item.id}
+                  data={books}
+                  renderItem={({ item }) => {
+                    return <CardItem book={item} />;
+                  }}
+                />
+              ) : (
+                <FlatList
+                  key={'#'}
+                  showsHorizontalScrollIndicator={false}
+                  keyExtractor={item => '#' + item.id}
+                  numColumns={Math.floor(
+                    Dimensions.get('window').width / scale(158),
+                  )}
+                  data={books}
+                  renderItem={({ item }) => {
+                    return <CardItem book={item} />;
+                  }}
+                />
+              )}
+            </View>
           </View>
-        }
-        middleComponent={
-          <View style={styles(direction).gradientTextContainer}>
-            <GradientText
-              colors={['#2AA7DD', '#2AA7DD']}
-              text={t('Recommended Videos')}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 0, y: 1 }}
-              textStyle={styles(direction).gradientTextStyle as TextStyle}
-            />
-          </View>
-        }
-      />
-      <SafeAreaView style={styles(direction).safeAreaView}>
-        <View style={styles(direction).container2}>
-          <View style={styles(direction).cardContainer}>
-            {currentOrientation === 'portrait' ? (
-              <FlatList
-                numColumns={Math.floor(
-                  Dimensions.get('window').width / scale(158),
-                )}
-                key={'_'}
-                keyExtractor={item => '_' + item.id}
-                data={books}
-                renderItem={({ item }) => {
-                  return <CardItem book={item} />;
+        </SafeAreaView>
+      </ScrollView>
+      <View style={styles(direction).titleBarContainer}>
+        <TitleBar
+          leftComponent={
+            <View style={styles(direction).topContainer}>
+              <RegularButton
+                onPress={() => {
+                  NavigationService.goBack();
                 }}
+                icon={'arrow-back'}
+                radius={38}
+                height={38}
+                width={38}
+                colors={['#EBECF0', '#EBECF0']}
               />
-            ) : (
-              <FlatList
-                key={'#'}
-                showsHorizontalScrollIndicator={false}
-                keyExtractor={item => '#' + item.id}
-                numColumns={Math.floor(
-                  Dimensions.get('window').width / scale(158),
-                )}
-                data={books}
-                renderItem={({ item }) => {
-                  return <CardItem book={item} />;
-                }}
+            </View>
+          }
+          middleComponent={
+            <View style={styles(direction).gradientTextContainer}>
+              <GradientText
+                colors={['#2AA7DD', '#2AA7DD']}
+                text={t('Recommended Videos')}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 0, y: 1 }}
+                textStyle={styles(direction).gradientTextStyle as TextStyle}
               />
-            )}
-          </View>
-        </View>
-      </SafeAreaView>
-    </ScrollView>
+            </View>
+          }
+        />
+      </View>
+    </>
   );
 };
 export default RecommendedVideos;

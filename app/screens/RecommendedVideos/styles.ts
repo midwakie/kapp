@@ -13,6 +13,7 @@ const styles = (direction: string) =>
       width: '100%',
       height: '100%',
       backgroundColor: '#EBEEF0',
+      marginTop: '85@s',
     },
     safeAreaView: { alignSelf: 'stretch' },
     container2: {
@@ -93,6 +94,7 @@ const styles = (direction: string) =>
       fontWeight: '600',
       color: '#03A0E3',
     },
+    titleBarContainer: { position: 'absolute', width: '100%' },
   });
 
 export default styles;

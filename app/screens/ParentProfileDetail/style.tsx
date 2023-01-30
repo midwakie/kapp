@@ -74,6 +74,27 @@ const styles = (direction: string) =>
       justifyContent: 'flex-start',
       alignItems: 'center',
     },
+    optionTitleStyleColor: {
+      color: '#EC4D61',
+      fontSize: '14@s',
+    },
+    menuImage: {
+      height: '20@s',
+      width: '20@s',
+      resizeMode: 'contain',
+    },
+    optionTitleStyle: {
+      color: '#758DAC',
+      fontSize: '14@s',
+    },
+    itemMenu: {
+      height: '16@s',
+      width: '4@s',
+      resizeMode: 'contain',
+      position: 'absolute',
+      top: '20@s',
+      right: '30@s',
+    },
     profileImgContainer1: {
       height: '73.5@s',
       marginLeft: '23@s',
@@ -150,6 +171,10 @@ const styles = (direction: string) =>
       marginLeft: '48@s',
     },
     Container42: {
+      height: '73.5@s',
+      width: '30%',
+    },
+    Container43: {
       height: '73.5@s',
       width: '30%',
     },
