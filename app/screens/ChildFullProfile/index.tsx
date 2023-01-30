@@ -247,33 +247,35 @@ const ChildFullProfile: React.FC = (props: any) => {
                 </View>
 
                 <View style={styles(direction).coinContainer1}>
-                  <Neumorphism
-                    lightColor={'#ffffff'}
-                    darkColor={'#A8A8A8'}
-                    shapeType={'flat'}
-                    radius={scale(50)}>
-                    <View style={styles(direction).coinContainer2}>
-                      <Image
-                        style={styles(direction).coinImage}
-                        source={require('../../assets/goldCoin1.png')}
-                      />
-                      <Text style={styles(direction).coinText}>{t('450')}</Text>
-                    </View>
-                  </Neumorphism>
-                  <View style={styles(direction).marginViewRow1} />
-                  <Neumorphism
-                    lightColor={'#ffffff'}
-                    darkColor={'#A8A8A8'}
-                    shapeType={'flat'}
-                    radius={scale(50)}>
-                    <View style={styles(direction).coinContainer3}>
-                      <Image
-                        style={styles(direction).coinImage}
-                        source={require('../../assets/greyCoin.png')}
-                      />
-                      <Text style={styles(direction).coinText}>{t('450')}</Text>
-                    </View>
-                  </Neumorphism>
+                  <View style={{flexDirection: 'row'}}>
+                    <Neumorphism
+                      lightColor={'#ffffff'}
+                      darkColor={'#A8A8A8'}
+                      shapeType={'flat'}
+                      radius={scale(50)}>
+                      <View style={styles(direction).coinContainer2}>
+                        <Image
+                          style={styles(direction).coinImage}
+                          source={require('../../assets/goldCoin1.png')}
+                        />
+                        <Text style={styles(direction).coinText}>{t('450')}</Text>
+                      </View>
+                    </Neumorphism>
+                    <View style={styles(direction).marginViewRow1} />
+                    <Neumorphism
+                      lightColor={'#ffffff'}
+                      darkColor={'#A8A8A8'}
+                      shapeType={'flat'}
+                      radius={scale(50)}>
+                      <View style={styles(direction).coinContainer3}>
+                        <Image
+                          style={styles(direction).coinImage}
+                          source={require('../../assets/greyCoin.png')}
+                        />
+                        <Text style={styles(direction).coinText}>{t('450')}</Text>
+                      </View>
+                    </Neumorphism>
+                  </View>
                   <View style={styles(direction).iconContainer}>
                     <View style={styles(direction).iconMainContainer}>
                       <TouchableOpacity
@@ -1152,7 +1154,10 @@ const ChildFullProfile: React.FC = (props: any) => {
                   height={'100%'}
                   color={'#A8A8A8'}
                 />
-                <TouchableOpacity onPress={() => {}}>
+                <TouchableOpacity
+                  onPress={() => {
+                    NavigationService.navigate('GlobalSearch');
+                  }}>
                   <View style={styles(false).searchContainer}>
                     <Image
                       source={require('../../assets/searchIcon.png')}

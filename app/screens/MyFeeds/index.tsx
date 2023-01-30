@@ -117,7 +117,10 @@ const MyFeeds: React.FC = (props: any) => {
                 height={'100%'}
                 color={'#A8A8A8'}
               />
-              <TouchableOpacity onPress={() => {}}>
+              <TouchableOpacity
+                onPress={() => {
+                  NavigationService.navigate('GlobalSearch');
+                }}>
                 <View style={styles(direction).searchContainer}>
                   <Image
                     source={require('../../assets/searchIcon.png')}
@@ -164,7 +167,8 @@ const MyFeeds: React.FC = (props: any) => {
                             source={item.content}
                             style={styles(direction).imageStyle}
                           />
-                          <TouchableOpacity style={styles(direction).imageButtonContainer1}>
+                          <TouchableOpacity
+                            style={styles(direction).imageButtonContainer1}>
                             <Image
                               source={item.icon}
                               style={styles(direction).button}
