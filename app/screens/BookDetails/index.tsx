@@ -17,8 +17,12 @@ import TitleBar from 'app/components/buttons/TitleBar';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import Neumorphism from 'react-native-neumorphism';
 import { ms, scale } from 'react-native-size-matters';
+import { useSelector } from 'react-redux';
 
 const BookDetails: React.FC = () => {
+  const selectedRole = useSelector(
+    (state: IState) => state.currentCustomerReducer.role,
+  );
   const refSlider: React.MutableRefObject<any> = useRef(null);
   const books = [
     {
@@ -182,21 +186,40 @@ const BookDetails: React.FC = () => {
                     )}
                   </Text>
                 </View>
-                <View style={styles(direction).regularButton}>
-                  <RegularButton
-                    onPress={() => {
-                      NavigationService.navigate('AvatarModifier');
-                    }}
-                    text={t('Buy Now!')}
-                    radius={50}
-                    height={50}
-                    width={'100%'}
-                    colors={['#03BBE3', '#14A9FD']}
-                  />
-                  <Text style={styles(direction).askParent}>
-                    {t('Ask Your Parent to Buy')}
-                  </Text>
-                </View>
+                {selectedRole === 'Student' && (
+                  <View style={styles(direction).regularButton}>
+                    <RegularButton
+                      onPress={() => {
+                        NavigationService.navigate('AvatarModifier');
+                      }}
+                      text={t('Buy Now!')}
+                      radius={50}
+                      height={50}
+                      width={'100%'}
+                      colors={['#03BBE3', '#14A9FD']}
+                    />
+                    <Text style={styles(direction).askParent}>
+                      {t('Ask Your Parent to Buy')}
+                    </Text>
+                  </View>
+                )}
+                {selectedRole === 'Parent' && (
+                  <View style={styles(direction).regularButton}>
+                    <RegularButton
+                      onPress={() => {
+                        NavigationService.navigate('AvatarModifier');
+                      }}
+                      text={t('Read Book')}
+                      radius={50}
+                      height={50}
+                      width={'100%'}
+                      colors={['#03BBE3', '#14A9FD']}
+                    />
+                    <Text style={styles(direction).askParent}>
+                      {t('Add Review')}
+                    </Text>
+                  </View>
+                )}
                 <GradientText
                   colors={['#758DAC', '#2F4868']}
                   text={t('Related Books')}
