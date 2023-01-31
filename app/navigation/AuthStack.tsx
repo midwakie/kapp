@@ -676,7 +676,6 @@ const AuthStack = () => {
           headerShown: false,
         }}
       />
-
       <Stack.Screen
         name="ClassFilter"
         component={ClassFilter}

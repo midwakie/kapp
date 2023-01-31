@@ -11,6 +11,7 @@ import Trending from 'app/screens/EBooks/Trending';
 import ContinueReading from 'app/screens/EBooks/ContinueReading';
 import Favorites from 'app/screens/EBooks/Favorites';
 import BookDetails from 'app/screens/BookDetails';
+import GlobalSearch from 'app/screens/GlobalSearch';
 
 const Stack = createStackNavigator();
 const LoggedInStack = createStackNavigator();
@@ -91,6 +92,13 @@ const HomeStack = () => {
       <Stack.Screen
         name="BookDetails"
         component={BookDetails}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="GlobalSearch"
+        component={GlobalSearch}
         options={{
           headerShown: false,
         }}

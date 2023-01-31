@@ -1154,7 +1154,10 @@ const ChildFullProfile: React.FC = (props: any) => {
                   height={'100%'}
                   color={'#A8A8A8'}
                 />
-                <TouchableOpacity onPress={() => {}}>
+                <TouchableOpacity
+                  onPress={() => {
+                    NavigationService.navigate('GlobalSearch');
+                  }}>
                   <View style={styles(false).searchContainer}>
                     <Image
                       source={require('../../assets/searchIcon.png')}
