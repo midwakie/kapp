@@ -73,6 +73,10 @@ const styles = (direction: string) =>
       alignItems: 'center',
       marginBottom: '15@s',
     },
+    neomorphContainer2: {
+      marginTop: '40@s',
+      paddingHorizontal: '30@s',
+    },
     agreeDisagreeContainer: {
       flexDirection: 'row',
       alignItems: 'center',

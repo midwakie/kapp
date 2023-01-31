@@ -78,7 +78,7 @@ const MyStudentList: React.FC = () => {
       <View style={styles(direction).neomorphContainer}>
         <TouchableOpacity
           onPress={() => {
-            NavigationService.navigate('BookDetails');
+            NavigationService.navigate('ChildFullProfile');
           }}>
           <Neumorphism
             style={styles(direction).neomorphMargin}

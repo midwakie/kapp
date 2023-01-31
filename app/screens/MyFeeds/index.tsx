@@ -143,57 +143,76 @@ const MyFeeds: React.FC = (props: any) => {
                     darkColor={'#A8A8A8'}
                     shapeType={'flat'}
                     radius={14}>
-                    <TouchableOpacity
-                      onPress={() => {
-                        NavigationService.navigate('FeedDetail');
-                      }}>
-                      <View style={styles(direction).rectangle2}>
-                        <View style={styles(direction).imageContainer}>
+                    <View style={styles(direction).rectangle2}>
+                      <View style={styles(direction).imageContainer}>
+                        <TouchableOpacity
+                          onPress={() => {
+                            NavigationService.navigate('FeedDetail');
+                          }}>
                           <Image
                             source={require('../../assets/dp.png')}
                             style={styles(direction).image1Style}
                           />
-                          <View>
-                            <Text style={styles(direction).profileName}>
-                              {item.profileName}
-                            </Text>
-                            <Text style={styles(direction).status}>
-                              {item.endDate}
+                        </TouchableOpacity>
+                        <View>
+                          <Text style={styles(direction).profileName}>
+                            {item.profileName}
+                          </Text>
+                          <Text style={styles(direction).status}>
+                            {item.endDate}
+                          </Text>
+                        </View>
+                      </View>
+                      <View style={styles(direction).imageContainer1}>
+                        <Image
+                          source={item.content}
+                          style={styles(direction).imageStyle}
+                        />
+                        <TouchableOpacity
+                          style={styles(direction).imageButtonContainer1}>
+                          <Image
+                            source={item.icon}
+                            style={styles(direction).button}
+                          />
+                        </TouchableOpacity>
+                      </View>
+                      <GradientText
+                        colors={['#758DAC', '#2F4868']}
+                        text={t(item.Title)}
+                        start={{ x: 0, y: 0 }}
+                        end={{ x: 0, y: 1 }}
+                        textStyle={styles(direction).headingText}
+                      />
+                      <Text style={styles(direction).text}>
+                        {item.description}
+                      </Text>
+                      <View style={styles(direction).iconContainer}>
+                        <Neumorphism
+                          lightColor={'#ffffff'}
+                          darkColor={'#A8A8A8'}
+                          shapeType={'flat'}
+                          radius={50}>
+                          <View style={styles(direction).iconBox}>
+                            <MaterialIcon
+                              name={'favorite'}
+                              size={scale(15)}
+                              color={'#C1DBE7'}
+                              style={styles(direction).icon}
+                            />
+                            <Text style={styles(direction).iconText}>
+                              {t('235')}
                             </Text>
                           </View>
-                        </View>
-                        <View style={styles(direction).imageContainer1}>
-                          <Image
-                            source={item.content}
-                            style={styles(direction).imageStyle}
-                          />
-                          <TouchableOpacity
-                            style={styles(direction).imageButtonContainer1}>
-                            <Image
-                              source={item.icon}
-                              style={styles(direction).button}
-                            />
-                          </TouchableOpacity>
-                        </View>
-                        <GradientText
-                          colors={['#758DAC', '#2F4868']}
-                          text={t(item.Title)}
-                          start={{ x: 0, y: 0 }}
-                          end={{ x: 0, y: 1 }}
-                          textStyle={styles(direction).headingText}
-                        />
-                        <Text style={styles(direction).text}>
-                          {item.description}
-                        </Text>
-                        <View style={styles(direction).iconContainer}>
+                        </Neumorphism>
+                        <View style={{ marginLeft: 20 }}>
                           <Neumorphism
                             lightColor={'#ffffff'}
                             darkColor={'#A8A8A8'}
                             shapeType={'flat'}
                             radius={50}>
                             <View style={styles(direction).iconBox}>
-                              <MaterialIcon
-                                name={'favorite'}
+                              <Icon
+                                name={'chat'}
                                 size={scale(15)}
                                 color={'#C1DBE7'}
                                 style={styles(direction).icon}
@@ -203,47 +222,28 @@ const MyFeeds: React.FC = (props: any) => {
                               </Text>
                             </View>
                           </Neumorphism>
-                          <View style={{ marginLeft: 20 }}>
-                            <Neumorphism
-                              lightColor={'#ffffff'}
-                              darkColor={'#A8A8A8'}
-                              shapeType={'flat'}
-                              radius={50}>
-                              <View style={styles(direction).iconBox}>
-                                <Icon
-                                  name={'chat'}
-                                  size={scale(15)}
-                                  color={'#C1DBE7'}
-                                  style={styles(direction).icon}
-                                />
-                                <Text style={styles(direction).iconText}>
-                                  {t('235')}
-                                </Text>
-                              </View>
-                            </Neumorphism>
-                          </View>
-                          <View style={{ marginLeft: 20 }}>
-                            <Neumorphism
-                              lightColor={'#ffffff'}
-                              darkColor={'#A8A8A8'}
-                              shapeType={'flat'}
-                              radius={50}>
-                              <View style={styles(direction).iconBox}>
-                                <MaterialIcon
-                                  name={'visibility'}
-                                  size={scale(15)}
-                                  color={'#84BD47'}
-                                  style={styles(direction).icon}
-                                />
-                                <Text style={styles(direction).iconText}>
-                                  {t('235')}
-                                </Text>
-                              </View>
-                            </Neumorphism>
-                          </View>
+                        </View>
+                        <View style={{ marginLeft: 20 }}>
+                          <Neumorphism
+                            lightColor={'#ffffff'}
+                            darkColor={'#A8A8A8'}
+                            shapeType={'flat'}
+                            radius={50}>
+                            <View style={styles(direction).iconBox}>
+                              <MaterialIcon
+                                name={'visibility'}
+                                size={scale(15)}
+                                color={'#84BD47'}
+                                style={styles(direction).icon}
+                              />
+                              <Text style={styles(direction).iconText}>
+                                {t('235')}
+                              </Text>
+                            </View>
+                          </Neumorphism>
                         </View>
                       </View>
-                    </TouchableOpacity>
+                    </View>
                   </Neumorphism>
                 </View>
               );

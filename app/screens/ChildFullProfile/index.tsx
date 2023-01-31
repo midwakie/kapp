@@ -226,7 +226,11 @@ const ChildFullProfile: React.FC = (props: any) => {
                       style={styles(direction).avatarImage}
                       source={require('../../assets/editChild1.png')}
                     />
-                    <TouchableOpacity style={styles(direction).imageContainer2}>
+                    <TouchableOpacity
+                      onPress={() => {
+                        NavigationService.navigate('EditChildProfile');
+                      }}
+                      style={styles(direction).imageContainer2}>
                       <Image
                         style={styles(direction).editAvatarImage}
                         source={require('../../assets/editChild2.png')}
@@ -247,7 +251,7 @@ const ChildFullProfile: React.FC = (props: any) => {
                 </View>
 
                 <View style={styles(direction).coinContainer1}>
-                  <View style={{flexDirection: 'row'}}>
+                  <View style={{ flexDirection: 'row' }}>
                     <Neumorphism
                       lightColor={'#ffffff'}
                       darkColor={'#A8A8A8'}
@@ -258,7 +262,9 @@ const ChildFullProfile: React.FC = (props: any) => {
                           style={styles(direction).coinImage}
                           source={require('../../assets/goldCoin1.png')}
                         />
-                        <Text style={styles(direction).coinText}>{t('450')}</Text>
+                        <Text style={styles(direction).coinText}>
+                          {t('450')}
+                        </Text>
                       </View>
                     </Neumorphism>
                     <View style={styles(direction).marginViewRow1} />
@@ -272,7 +278,9 @@ const ChildFullProfile: React.FC = (props: any) => {
                           style={styles(direction).coinImage}
                           source={require('../../assets/greyCoin.png')}
                         />
-                        <Text style={styles(direction).coinText}>{t('450')}</Text>
+                        <Text style={styles(direction).coinText}>
+                          {t('450')}
+                        </Text>
                       </View>
                     </Neumorphism>
                   </View>
@@ -383,13 +391,17 @@ const ChildFullProfile: React.FC = (props: any) => {
                     end={{ x: 0, y: 1 }}
                     textStyle={styles(direction).activityText}
                   />
-                  <View style={styles(direction).materialIconView}>
+                  <TouchableOpacity
+                    onPress={() => {
+                      NavigationService.navigate('ActivitiesStats');
+                    }}
+                    style={styles(direction).materialIconView}>
                     <MaterialIcon
                       name={'arrow-forward'}
                       size={ms(20)}
                       color={'#03A0E3'}
                     />
-                  </View>
+                  </TouchableOpacity>
                 </View>
 
                 <View style={styles(direction).progressChartContainer}>
@@ -950,10 +962,14 @@ const ChildFullProfile: React.FC = (props: any) => {
               <View style={styles(direction).rectangle5}>
                 <View style={styles(direction).subContainer2}>
                   <View style={styles(direction).channelImageContainer}>
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => {
+                        NavigationService.navigate('MyChannel');
+                      }}>
                       <Image
                         style={styles(direction).channelImage}
-                        source={require('../../assets/channelImage2.png')}></Image>
+                        source={require('../../assets/channelImage2.png')}
+                      />
                     </TouchableOpacity>
                   </View>
                   <View style={styles(direction).channelTextContainer}>
@@ -1025,10 +1041,14 @@ const ChildFullProfile: React.FC = (props: any) => {
               <View style={styles(direction).rectangle5}>
                 <View style={styles(direction).subContainer2}>
                   <View style={styles(direction).channelImageContainer}>
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => {
+                        NavigationService.navigate('MyChannel');
+                      }}>
                       <Image
                         style={styles(direction).channelImage}
-                        source={require('../../assets/channelImage1.png')}></Image>
+                        source={require('../../assets/channelImage1.png')}
+                      />
                     </TouchableOpacity>
                   </View>
                   <View style={styles(direction).channelTextContainer}>

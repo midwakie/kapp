@@ -204,10 +204,17 @@ const ParentProfileDetail: React.FC = props => {
                           <View style={styles(direction).row}>
                             <View
                               style={styles(direction).profileImgContainer1}>
-                              <Image
-                                source={children.childImage}
-                                style={styles(direction).profileImg}
-                              />
+                              <TouchableOpacity
+                                onPress={() => {
+                                  NavigationService.navigate(
+                                    'ChildFullProfile',
+                                  );
+                                }}>
+                                <Image
+                                  source={children.childImage}
+                                  style={styles(direction).profileImg}
+                                />
+                              </TouchableOpacity>
                             </View>
                             <View style={styles(direction).Container41}>
                               <Text style={styles(direction).text1}>
