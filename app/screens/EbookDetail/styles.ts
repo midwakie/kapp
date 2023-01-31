@@ -350,6 +350,78 @@ const styles = (direction: string) =>
       fontWeight: '600',
       fontFamily: 'Nunito-Regular',
     },
+    container5: {
+      backgroundColor: '#EBEEF0',
+      width: '100%',
+      height: '156@s',
+      borderRadius: 14,
+    },
+    container6: {
+      paddingHorizontal: '15@s',
+      paddingVertical: '15@s',
+    },
+    container7: {
+      flexDirection: 'row',
+      marginBottom: '3.26@s',
+    },
+    text5: {
+      color: '#2F4868',
+      fontSize: '18@s',
+      fontWeight: '600',
+      fontFamily: 'Nunito-Regular',
+      height: '25@s',
+      width: '99@s',
+      flex: 1,
+    },
+    text6: {
+      color: '#03A0E3',
+      fontSize: '12@s',
+      fontWeight: '600',
+      fontFamily: 'Nunito-Regular',
+      height: '16@s',
+      width: '76@s',
+    },
+    imageStyle1: {
+      width: '16.5@s',
+      height: '22@s',
+      marginLeft: '22@s',
+    },
+    imageStyle4: {
+      width: '16.5@s',
+      height: '22@s',
+      marginLeft: '22@s',
+      tintColor: 'red',
+    },
+    text7: {
+      flex: 1,
+      color: '#758DAC',
+      fontSize: '15@s',
+      fontWeight: '600',
+      fontFamily: 'Nunito-Regular',
+      height: '72@s',
+      width: '207@s',
+      marginVertical: '12.26@s',
+    },
+     imageStyle2: {
+      justifyContent: 'center',
+      resizeMode: 'contain',
+      width: '90@s',
+      height: '90@s',
+      position: 'absolute',
+    },
+    imageStyle3: {
+      resizeMode: 'contain',
+      width: '30@s',
+      height: '30@s',
+      marginTop: '10@s',
+      marginLeft: '10@s',
+    },
+    imageContainer4: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: '78@s',
+      height: '78@s',
+    },
   });
 
 export default styles;

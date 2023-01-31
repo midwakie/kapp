@@ -91,49 +91,56 @@ const EbookDetail: React.FC = () => {
     ],
     reviews: [
       {
-        profileName: 'Amira Malik',
+        id: 1,
+        name: 'Amira Malik',
+        date: '19 Oct, 2020',
+        flag: 'Inactive',
         rating: 2,
         description:
-          'There are many variations of passages of Lorem Ipsum available, but the majority ',
-        date: '19 Oct, 2020',
-        flag: require('../../assets/flag.png'),
-        contentUrl: require('../../assets/user.png'),
+          'There are many variations of passages of Lorem Ipsum available, but the majority',
+        Image: require('../../assets/user.png'),
       },
       {
-        profileName: 'Amira Malik',
+        id: 2,
+        name: 'Amira Malik',
+        date: '19 Oct, 2020',
+        flag: 'Inactive',
         rating: 2,
         description:
-          'There are many variations of passages of Lorem Ipsum available, but the majority ',
-        date: '19 Oct, 2020',
-        flag: require('../../assets/flag.png'),
-        contentUrl: require('../../assets/user.png'),
+          'There are many variations of passages of Lorem Ipsum available, but the majority',
+        Image: require('../../assets/user.png'),
       },
       {
-        profileName: 'Amira Malik',
+        id: 3,
+        name: 'Amira Malik',
+        date: '19 Oct, 2020',
+        flag: 'Active',
         rating: 2,
         description:
-          'There are many variations of passages of Lorem Ipsum available, but the majority ',
-        date: '19 Oct, 2020',
-        flag: require('../../assets/flag.png'),
-        contentUrl: require('../../assets/user.png'),
+          'There are many variations of passages of Lorem Ipsum available, but the majority',
+        Image: require('../../assets/user.png'),
       },
       {
-        profileName: 'Fatima Zahra',
-        rating: 2,
-        description:
-          'There are many variations of passages of Lorem Ipsum available, but the majority ',
+        id: 4,
+        name: 'Fatima Zahra',
         date: '10 Sep, 2020',
-        flag: require('../../assets/flag.png'),
-        contentUrl: require('../../assets/user.png'),
-      },
-      {
-        profileName: 'Fatima Zahra',
+        flag: 'Inactive',
         rating: 2,
         description:
-          'There are many variations of passages of Lorem Ipsum available, but the majority ',
+          'There are many variations of passages of Lorem Ipsum available, but the majority.This is some additional text that will be displayed when the "read more" button is clicked.',
+        Image: require('../../assets/user2.png'),
+        expanded: false,
+      },
+      {
+        id: 5,
+        name: 'Fatima Zahra',
         date: '10 Sep, 2020',
-        flag: require('../../assets/flag.png'),
-        contentUrl: require('../../assets/user.png'),
+        flag: 'Inactive',
+        rating: 2,
+        description:
+          'There are many variations of passages of Lorem Ipsum available, but the majority.This is some additional text that will be displayed when the "read more" button is clicked.',
+        Image: require('../../assets/user2.png'),
+        expanded: false,
       },
     ],
   };
@@ -208,7 +215,7 @@ const EbookDetail: React.FC = () => {
                         <View style={styles(direction).buttonRow}>
                           <RegularButton
                             onPress={() => {
-                              NavigationService.navigate('');
+                              NavigationService.navigate('BookSeries');
                             }}
                             text={
                               <Text style={styles(direction).boxText}>
@@ -509,7 +516,7 @@ const EbookDetail: React.FC = () => {
                     }
                     return (
                       <>
-                        <Neumorphism
+                        {/* <Neumorphism
                           style={styles(direction).listingNemorph}
                           lightColor={'#ffffff'}
                           darkColor={'#A8A8A8'}
@@ -554,6 +561,77 @@ const EbookDetail: React.FC = () => {
                                   source={require('../../assets/play.png')}
                                   style={styles(direction).playButton}
                                 />
+                              </View>
+                            </View>
+                          </View>
+                        </Neumorphism> */}
+                        <Neumorphism
+                          style={styles(direction).listingNemorph}
+                          lightColor={'#ffffff'}
+                          darkColor={'#A8A8A8'}
+                          shapeType={'flat'}
+                          radius={scale(14)}>
+                          <View style={styles(direction).container5}>
+                            <View style={styles(direction).container6}>
+                              <View style={styles(direction).container7}>
+                                <Text style={styles(direction).text5}>
+                                  {item.name}
+                                </Text>
+                                <Text style={styles(direction).text6}>
+                                  {item.date}
+                                </Text>
+                                <Image
+                                  source={require('../../assets/emptyFlag.png')}
+                                  style={
+                                    item.flag === 'Active'
+                                      ? styles(direction).imageStyle4
+                                      : styles(direction).imageStyle1
+                                  }
+                                />
+                              </View>
+                              <View style={{ flexDirection: 'row' }}>
+                                <AirbnbRating
+                                  isDisabled={true}
+                                  showRating={false}
+                                  defaultRating={item.rating}
+                                  size={scale(14)}
+                                />
+                              </View>
+                              <View style={{ flexDirection: 'row' }}>
+                                <Text style={styles(direction).text7}>
+                                  {item.description.length > 80 ? (
+                                    <>
+                                      {expanded[item.id] ? (
+                                        <Text>{item.description}</Text>
+                                      ) : (
+                                        <Text>
+                                          {item.description.slice(0, 72)}
+                                        </Text>
+                                      )}
+                                      <Text
+                                        onPress={() => toggleExpand(item.id)}
+                                        style={{ color: '#03A0E3' }}>
+                                        {expanded[item.id]
+                                          ? 'read less'
+                                          : 'read more'}
+                                      </Text>
+                                    </>
+                                  ) : (
+                                    <Text>{item.description}</Text>
+                                  )}
+                                </Text>
+                                <View style={styles(direction).imageContainer4}>
+                                  <Image
+                                    style={styles(direction).imageStyle2}
+                                    source={item.Image}
+                                  />
+                                  <TouchableOpacity>
+                                    <Image
+                                      style={styles(direction).imageStyle3}
+                                      source={require('../../assets/play.png')}
+                                    />
+                                  </TouchableOpacity>
+                                </View>
                               </View>
                             </View>
                           </View>
