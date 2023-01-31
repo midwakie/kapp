@@ -483,7 +483,7 @@ const EbookDetail: React.FC = () => {
                           }
                           style={styles(direction).loadButton}>
                           <Text style={styles(direction).loadMore}>
-                            {'Loard More details'}
+                            {'Load More details'}
                           </Text>
                         </LinearGradient>
                       </TouchableOpacity>

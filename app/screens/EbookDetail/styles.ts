@@ -199,6 +199,7 @@ const styles = (direction: string) =>
       left: 10,
     },
     reviewContainer: {
+      // marginVertical: '20@s',
       width: '100%',
       height: '220@s',
       backgroundColor: '#EBEEF0',
@@ -209,7 +210,8 @@ const styles = (direction: string) =>
       flexDirection: 'row',
       justifyContent: 'space-between',
       paddingHorizontal: 35,
-      paddingVertical: 60,
+      // paddingVertical: 60,
+      marginTop: '40@s',
     },
     reviewColumn1: {
       height: 89,
@@ -271,7 +273,8 @@ const styles = (direction: string) =>
     },
     buttonNeumorph: {
       alignSelf: 'center',
-      bottom: 20,
+      // bottom: '20@s',
+      marginTop: '36.43@s',
     },
     buttonNeumorph2: {
       alignSelf: 'center',
@@ -402,7 +405,7 @@ const styles = (direction: string) =>
       width: '207@s',
       marginVertical: '12.26@s',
     },
-     imageStyle2: {
+    imageStyle2: {
       justifyContent: 'center',
       resizeMode: 'contain',
       width: '90@s',
