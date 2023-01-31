@@ -326,7 +326,6 @@ const FeedPostDetail: React.FC = () => {
                 />
                 <View style={styles(direction).arrow}>
                   <RegularButton
-                    onPress={() => setModalVisible(true)}
                     icon={'chevron-right'}
                     radius={50}
                     height={30}
