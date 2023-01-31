@@ -798,7 +798,7 @@ const ChildFullProfile: React.FC = (props: any) => {
                         <View>
                           <TouchableOpacity
                             onPress={() =>
-                              NavigationService.navigate('BookDetails')
+                              NavigationService.navigate('EbookDetail')
                             }>
                             <Image
                               style={styles(direction).image}
@@ -817,7 +817,7 @@ const ChildFullProfile: React.FC = (props: any) => {
                         <View>
                           <TouchableOpacity
                             onPress={() =>
-                              NavigationService.navigate('BookDetails')
+                              NavigationService.navigate('EbookDetail')
                             }>
                             <Image
                               style={styles(direction).image}
@@ -885,7 +885,7 @@ const ChildFullProfile: React.FC = (props: any) => {
                         <View>
                           <TouchableOpacity
                             onPress={() =>
-                              NavigationService.navigate('BookDetails')
+                              NavigationService.navigate('EbookDetail')
                             }>
                             <Image
                               style={styles(direction).image}
@@ -905,7 +905,7 @@ const ChildFullProfile: React.FC = (props: any) => {
                         <View>
                           <TouchableOpacity
                             onPress={() =>
-                              NavigationService.navigate('BookDetails')
+                              NavigationService.navigate('EbookDetail')
                             }>
                             <Image
                               style={styles(direction).image}

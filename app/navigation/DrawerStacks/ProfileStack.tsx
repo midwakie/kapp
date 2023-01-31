@@ -22,6 +22,10 @@ import EditTeacherProfile from 'app/screens/EditTeacherProfile';
 import ChangeSchool from 'app/screens/ChangeSchool';
 import MyChannel from 'app/screens/MyChannel';
 import ClassFilter from 'app/screens/ClassFilter';
+import CreateChannel from 'app/screens/CreateChannel';
+import CreateActivity from 'app/screens/CreateActivity';
+import AddReview from 'app/screens/AddReview';
+import EbookDetail from 'app/screens/EbookDetail';
 
 const Stack = createStackNavigator();
 const LoggedInStack = createStackNavigator();
@@ -201,6 +205,46 @@ const ProfileStack = () => {
       <Stack.Screen
         name="MyChannel"
         component={MyChannel}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="CreateChannel"
+        component={CreateChannel}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="CreateActivity"
+        component={CreateActivity}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="EbookDetail"
+        component={EbookDetail}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Add Review"
+        component={AddReview}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
