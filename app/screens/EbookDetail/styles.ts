@@ -201,6 +201,7 @@ const styles = (direction: string) =>
     reviewContainer: {
       width: '100%',
       height: '220@s',
+      backgroundColor: '#EBEEF0',
     },
     reviewRowContainer: {
       width: '100%',
