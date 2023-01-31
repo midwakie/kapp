@@ -38,6 +38,11 @@ import NoNotification from 'app/screens/NoNotification';
 import MyStudentList from 'app/screens/MyStudentList';
 import StudentsStack from './DrawerStacks/StudentsStack';
 import ChildStack from './DrawerStacks/ChildStack';
+import MyChannelStack from './DrawerStacks/MyChannelStack';
+import ClubChannel from 'app/screens/ClubChannel';
+import SubscribedChannel from 'app/screens/SubscribedChannel';
+import PopularFeed from 'app/screens/PopularFeed';
+import FeaturedChannel from 'app/screens/FeaturedChannel';
 
 const Drawer = createDrawerNavigator();
 
@@ -164,8 +169,8 @@ const AppStack = () => {
       />
 
       <Drawer.Screen
-        name="MyChannel"
-        component={MyChannel}
+        name="MyChannelScreen"
+        component={MyChannelStack}
         options={{
           drawerLabel: 'My Channel',
           iconImage: require('../assets/side_menu/myChannel.png'),
@@ -223,6 +228,58 @@ const AppStack = () => {
           drawerLabel: 'Kutubi Library',
           iconImage: require('../assets/side_menu/kutubiLibrary.png'),
           isDropDown: true,
+          headerStyle: {
+            backgroundColor: '#976a4a',
+          },
+          gestureEnabled: false,
+        }}
+      />
+      <Drawer.Screen
+        name="SubscribedChannel"
+        component={SubscribedChannel}
+        options={{
+          drawerLabel: 'Subscribed',
+          // iconImage: require('../assets/side_menu/kutubiLibrary.png'),
+          // isDropDown: true,
+          headerStyle: {
+            backgroundColor: '#976a4a',
+          },
+          gestureEnabled: false,
+        }}
+      />
+      <Drawer.Screen
+        name="Club"
+        component={ClubChannel}
+        options={{
+          drawerLabel: 'Club',
+          // iconImage: require('../assets/side_menu/kutubiLibrary.png'),
+          // isDropDown: true,
+          headerStyle: {
+            backgroundColor: '#976a4a',
+          },
+          gestureEnabled: false,
+        }}
+      />
+      <Drawer.Screen
+        name="FeaturedChannel"
+        component={FeaturedChannel}
+        options={{
+          drawerLabel: 'Featured',
+          // iconImage: require('../assets/side_menu/kutubiLibrary.png'),
+          // isDropDown: true,
+          headerStyle: {
+            backgroundColor: '#976a4a',
+          },
+          gestureEnabled: false,
+        }}
+      />
+      <Drawer.Screen
+        name="PopularFeed"
+        component={PopularFeed}
+        options={{
+          drawerLabel: 'Popular',
+          // iconImage: require('../assets/side_menu/kutubiLibrary.png'),
+          // isDropDown: true,
           headerStyle: {
             backgroundColor: '#976a4a',
           },

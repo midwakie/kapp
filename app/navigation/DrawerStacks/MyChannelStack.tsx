@@ -11,7 +11,11 @@ import MyChannel from 'app/screens/MyChannel';
 import MyStudentList from 'app/screens/MyStudentList';
 import ClassFilter from 'app/screens/ClassFilter';
 import ChildFullProfile from 'app/screens/ChildFullProfile';
-import ActivityFilter from 'app/screens/ActivityFilter';
+import Child from 'app/screens/Child';
+import AccountAction from 'app/screens/AccountAction';
+import EditChildProfile from 'app/screens/EditChildProfile';
+import ChangeSchool from 'app/screens/ChangeSchool';
+import HobbiesAndInterest from 'app/screens/HobbiesAndInterests';
 import ManageActivitiesDetail from 'app/screens/ManageActivitiesDetail';
 import ManagePeople from 'app/screens/ManagePeople';
 import ManageActivities from 'app/screens/ManageActivities';
@@ -19,49 +23,19 @@ import PublishNewDocument from 'app/screens/PublishNewDocument';
 import PublishNewVideo from 'app/screens/PublishNewVideo';
 import Publish from 'app/screens/Publish';
 import ActivitiesStats from 'app/screens/ActivityStatus';
-import HobbiesAndInterest from 'app/screens/HobbiesAndInterests';
-import ChangeSchool from 'app/screens/ChangeSchool';
-import EditChildProfile from 'app/screens/EditChildProfile';
+import ActivityFilter from 'app/screens/ActivityFilter';
 
 const Stack = createStackNavigator();
 const LoggedInStack = createStackNavigator();
 interface IState {
   currentCustomerReducer: ICurrentCustomer;
 }
-const StudentsStack = () => {
+const ChildStack = () => {
   const selectedRole = useSelector(
     (state: IState) => state.currentCustomerReducer.role,
   );
   return (
     <LoggedInStack.Navigator>
-      <Stack.Screen
-        name="MyStudentList"
-        component={MyStudentList}
-        options={{
-          headerShown: false,
-        }}
-      />
-
-      <Stack.Screen
-        name="ClassFilter"
-        component={ClassFilter}
-        options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
-          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="ChildFullProfile"
-        component={ChildFullProfile}
-        options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
-          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerShown: false,
-        }}
-      />
       <Stack.Screen
         name="MyChannel"
         component={MyChannel}
@@ -186,4 +160,4 @@ const StudentsStack = () => {
   );
 };
 
-export default StudentsStack;
+export default ChildStack;
