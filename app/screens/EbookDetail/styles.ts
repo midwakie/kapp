@@ -200,6 +200,7 @@ const styles = (direction: string) =>
       left: 10,
     },
     reviewContainer: {
+      // marginVertical: '20@s',
       width: '100%',
       height: '217@s',
       backgroundColor: '#EBEEF0',
@@ -349,7 +350,7 @@ const styles = (direction: string) =>
       width: '207@s',
       marginVertical: '12.26@s',
     },
-     imageStyle2: {
+    imageStyle2: {
       justifyContent: 'center',
       resizeMode: 'contain',
       width: '90@s',
