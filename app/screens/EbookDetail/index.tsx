@@ -483,7 +483,7 @@ const EbookDetail: React.FC = () => {
                           }
                           style={styles(direction).loadButton}>
                           <Text style={styles(direction).loadMore}>
-                            {'Loard More details'}
+                            {'Load More details'}
                           </Text>
                         </LinearGradient>
                       </TouchableOpacity>
@@ -507,7 +507,7 @@ const EbookDetail: React.FC = () => {
                               colors={['#03A0E3', '#1976D2']}
                               style={styles(direction).loadMoreButton}>
                               <Text style={styles(direction).loadMore}>
-                                {'Lord More'}
+                                {'Load More'}
                               </Text>
                             </LinearGradient>
                           </TouchableOpacity>
@@ -516,55 +516,6 @@ const EbookDetail: React.FC = () => {
                     }
                     return (
                       <>
-                        {/* <Neumorphism
-                          style={styles(direction).listingNemorph}
-                          lightColor={'#ffffff'}
-                          darkColor={'#A8A8A8'}
-                          shapeType={'flat'}
-                          radius={scale(14)}>
-                          <View style={styles(direction).listingContainer}>
-                            <View style={styles(direction).profileContainer}>
-                              <View style={{ alignItems: 'flex-start' }}>
-                                <Text style={styles(direction).profileName}>
-                                  {t(item.profileName)}
-                                </Text>
-                                <AirbnbRating
-                                  isDisabled={false}
-                                  showRating={false}
-                                  defaultRating={item.rating}
-                                  size={scale(11)}
-                                  onFinishRating={value => setRating(value)}
-                                />
-                              </View>
-                              <View style={styles(direction).rightContainer}>
-                                <Text style={styles(direction).date}>
-                                  {t(item.date)}
-                                </Text>
-                                <Image
-                                  source={item.flag}
-                                  style={styles(direction).flagImage}
-                                />
-                              </View>
-                            </View>
-                            <View
-                              style={styles(direction).descriptionContainer}>
-                              <Text
-                                style={styles(direction).profileDescription}>
-                                {t(item.description)}
-                              </Text>
-                              <View style={styles(direction).contentImage}>
-                                <Image
-                                  source={item.contentUrl}
-                                  style={styles(direction).content}
-                                />
-                                <Image
-                                  source={require('../../assets/play.png')}
-                                  style={styles(direction).playButton}
-                                />
-                              </View>
-                            </View>
-                          </View>
-                        </Neumorphism> */}
                         <Neumorphism
                           style={styles(direction).listingNemorph}
                           lightColor={'#ffffff'}

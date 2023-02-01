@@ -11,6 +11,7 @@ import { ROLES } from 'app/config/role-config';
 import MyFeeds from 'app/screens/MyFeeds';
 import FeedDetail from 'app/screens/FeedDetail';
 import MyChannel from 'app/screens/MyChannel';
+import FeedDetailReport from 'app/screens/FeedDetailReport';
 
 const Stack = createStackNavigator();
 const LoggedInStack = createStackNavigator();
@@ -51,6 +52,16 @@ const FeedStack = () => {
       <Stack.Screen
         name="MyChannel"
         component={MyChannel}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="FeedDetailReport"
+        component={FeedDetailReport}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation

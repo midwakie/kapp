@@ -19,7 +19,7 @@ const styles = (direction: string) =>
       paddingBottom: 25,
       justifyContent: 'center',
       alignItems: 'center',
-      marginTop: '105@s',
+      marginTop: '110@s',
     },
     iconContainer1: {
       flexDirection: 'row',
@@ -112,7 +112,7 @@ const styles = (direction: string) =>
       width: width - scale(40),
       borderRadius: '15@s',
       backgroundColor: '#EBEEF0',
-      marginHorizontal: scale(20),
+      // marginHorizontal: scale(20),
       paddingVertical: '10@s',
     },
     marginView: { marginBottom: '20@s' },

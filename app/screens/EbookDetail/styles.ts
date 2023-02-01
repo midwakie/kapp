@@ -51,8 +51,8 @@ const styles = (direction: string) =>
       bottom: '25.05@s',
     },
     neomorphContainer3: {
-      marginTop: '66@s',
-      margin: 25,
+      marginTop: '40@s',
+      marginHorizontal: 25,
     },
     bookImage: {
       width: '192@s',
@@ -178,7 +178,7 @@ const styles = (direction: string) =>
     },
     paginationDots: {
       height: '16@s',
-      top: 40,
+      // top: 40,
       flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',
@@ -191,7 +191,8 @@ const styles = (direction: string) =>
     paginationContainer: {
       position: 'absolute',
       alignSelf: 'center',
-      top: 150,
+      // top: 150,
+      marginTop: '165@s',
     },
     slidingContainer: {
       width: '100%',
@@ -200,7 +201,7 @@ const styles = (direction: string) =>
     },
     reviewContainer: {
       width: '100%',
-      height: '220@s',
+      height: '217@s',
       backgroundColor: '#EBEEF0',
     },
     reviewRowContainer: {
@@ -209,7 +210,9 @@ const styles = (direction: string) =>
       flexDirection: 'row',
       justifyContent: 'space-between',
       paddingHorizontal: 35,
-      paddingVertical: 60,
+      // paddingVertical: 60,
+      marginTop: '43@s',
+      marginBottom: '46@s',
     },
     reviewColumn1: {
       height: 89,
@@ -271,7 +274,7 @@ const styles = (direction: string) =>
     },
     buttonNeumorph: {
       alignSelf: 'center',
-      bottom: 20,
+      bottom: '17@s',
     },
     buttonNeumorph2: {
       alignSelf: 'center',
@@ -293,62 +296,6 @@ const styles = (direction: string) =>
       width: '100%',
       height: '156@s',
       backgroundColor: '#EBEEF0',
-    },
-    profileContainer: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      padding: 15,
-    },
-    rightContainer: {
-      flexDirection: 'row',
-      width: 119,
-      justifyContent: 'space-between',
-    },
-    profileName: {
-      fontSize: '18@s',
-      color: '#2F4868',
-      fontWeight: '600',
-      fontFamily: 'Nunito-Regular',
-    },
-    descriptionContainer: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-    },
-    profileDescription: {
-      width: '216@s',
-      height: '72@s',
-      left: 15,
-      textAlign: 'justify',
-      fontSize: '16@s',
-      color: '#758DAC',
-      fontWeight: '600',
-      fontFamily: 'Nunito-Regular',
-    },
-    flagImage: {
-      width: '23@s',
-      height: '22@s',
-    },
-    contentImage: {
-      width: '81.4@s',
-      height: '80@s',
-      alignItems: 'center',
-      justifyContent: 'center',
-      bottom: 10,
-    },
-    content: {
-      width: '100%',
-      height: '80@s',
-      position: 'absolute',
-    },
-    playButton: {
-      width: '33@s',
-      height: '33@s',
-    },
-    date: {
-      fontSize: '12@s',
-      color: '#03A0E3',
-      fontWeight: '600',
-      fontFamily: 'Nunito-Regular',
     },
     container5: {
       backgroundColor: '#EBEEF0',

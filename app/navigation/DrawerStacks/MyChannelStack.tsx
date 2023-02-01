@@ -29,6 +29,7 @@ import SelectEBook from 'app/screens/SelectEBook';
 import AssignActivity from 'app/screens/AssignActivity';
 import FinishBook from 'app/screens/FinishBook';
 import BookSeries from 'app/screens/BookSeries';
+import FeedDetailReport from 'app/screens/FeedDetailReport';
 
 const Stack = createStackNavigator();
 const LoggedInStack = createStackNavigator();
@@ -204,6 +205,26 @@ const ChildStack = () => {
       <Stack.Screen
         name="FinishBook"
         component={FinishBook}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="FeedDetail"
+        component={FeedDetail}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="FeedDetailReport"
+        component={FeedDetailReport}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
