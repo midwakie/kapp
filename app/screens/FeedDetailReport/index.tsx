@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { SafeAreaView, Text, TextStyle, View, TextInput } from 'react-native';
+import {
+  SafeAreaView,
+  Text,
+  TextStyle,
+  View,
+  TextInput,
+  Image,
+} from 'react-native';
 import styles from './styles';
 import NavigationService from 'app/navigation/NavigationService';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -13,6 +20,7 @@ import Neumorphism from 'react-native-neumorphism';
 const FeedDetailReport: React.FC = () => {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
+  const [description, setDescription] = useState('');
   return (
     <>
       <TitleBar
@@ -104,17 +112,21 @@ const FeedDetailReport: React.FC = () => {
                 <View style={styles(direction).rectangle3}>
                   <Text style={styles(direction).bottomText}>{t('Other')}</Text>
                   <View style={{ marginTop: 20 }}>
-                    <Neumorphism
-                      lightColor={'#FFFFFF'}
-                      darkColor={'#A8A8A8'}
-                      shapeType={'pressed'}
-                      radius={14}>
-                      <TextInput
-                        style={styles(direction).inputText}
-                        placeholder={t('Type here..')}
-                        // onChangeText={text => text.setFocus({ text })}
+                    <View style={[styles(direction).inputContainer]}>
+                      <Image
+                        source={require('../../assets/textBox.png')}
+                        style={styles(direction).bg}
                       />
-                    </Neumorphism>
+                      <TextInput
+                        keyboardType="default"
+                        autoCapitalize="none"
+                        value={description}
+                        placeholder={t('Type here..')}
+                        onChangeText={text => setDescription(text)}
+                        placeholderTextColor="#9FA4A7"
+                        style={styles(direction).inputText}
+                      />
+                    </View>
                   </View>
                 </View>
               </Neumorphism>

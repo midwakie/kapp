@@ -20,7 +20,7 @@ const styles = (direction: string) =>
       paddingBottom: 49,
       marginTop: '40@s',
     },
-    safeAreaView: { alignSelf: 'stretch', },
+    safeAreaView: { alignSelf: 'stretch' },
     topContainer: {
       justifyContent: 'center',
       alignItems: 'center',
@@ -95,6 +95,16 @@ const styles = (direction: string) =>
       fontSize: '14@s',
       marginLeft: '25@s',
       paddingBottom: '41@s',
+    },
+    inputContainer: {
+      width: '100%',
+      height: '74@s',
+    },
+    bg: {
+      width: '100%',
+      height: '74@s',
+      position: 'absolute',
+      resizeMode: 'stretch',
     },
   });
 
