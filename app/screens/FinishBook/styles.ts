@@ -495,8 +495,7 @@ const styles = (direction: string) =>
     },
     neomorphContainer2: {
       paddingHorizontal: '20@s',
-      marginBottom: '20@s',
-      marginTop: '19.72@s',
+      marginTop: '20@s',
     },
     container5: {
       backgroundColor: '#EBEEF0',
