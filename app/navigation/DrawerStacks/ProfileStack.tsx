@@ -86,9 +86,6 @@ const ProfileStack = () => {
         name="ActivitiesStats"
         component={ActivitiesStats}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
-          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
       />
@@ -96,9 +93,6 @@ const ProfileStack = () => {
         name="Publish"
         component={Publish}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
-          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
       />
@@ -106,9 +100,6 @@ const ProfileStack = () => {
         name="PublishNewVideo"
         component={PublishNewVideo}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
-          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
       />
@@ -116,9 +107,6 @@ const ProfileStack = () => {
         name="PublishNewDocument"
         component={PublishNewDocument}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
-          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
       />
@@ -126,9 +114,6 @@ const ProfileStack = () => {
         name="Manage Activities"
         component={ManageActivities}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
-          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
       />
@@ -136,9 +121,6 @@ const ProfileStack = () => {
         name="ManagePeople"
         component={ManagePeople}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
-          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
       />
@@ -146,9 +128,6 @@ const ProfileStack = () => {
         name="ManageActivitiesDetail"
         component={ManageActivitiesDetail}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
-          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
       />
@@ -156,9 +135,6 @@ const ProfileStack = () => {
         name="Activity Filter"
         component={ActivityFilter}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
-          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
       />
@@ -166,9 +142,6 @@ const ProfileStack = () => {
         name="FeedDetail"
         component={FeedDetail}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
-          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
       />
@@ -176,9 +149,6 @@ const ProfileStack = () => {
         name="EditTeacherProfile"
         component={EditTeacherProfile}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
-          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
       />
@@ -186,9 +156,6 @@ const ProfileStack = () => {
         name="Change School"
         component={ChangeSchool}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
-          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
       />
@@ -196,9 +163,6 @@ const ProfileStack = () => {
         name="MyChannel"
         component={MyChannel}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
-          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
       />
@@ -206,9 +170,6 @@ const ProfileStack = () => {
         name="CreateChannel"
         component={CreateChannel}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
-          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
       />
@@ -216,9 +177,6 @@ const ProfileStack = () => {
         name="CreateActivity"
         component={CreateActivity}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
-          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
       />
@@ -226,9 +184,6 @@ const ProfileStack = () => {
         name="EbookDetail"
         component={EbookDetail}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
-          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
       />
@@ -236,9 +191,6 @@ const ProfileStack = () => {
         name="Add Review"
         component={AddReview}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
-          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
       />
