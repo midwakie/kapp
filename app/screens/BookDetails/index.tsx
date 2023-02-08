@@ -166,9 +166,14 @@ const BookDetails: React.FC = () => {
                         style={styles(direction).starImage}
                       />
                     </View>
-                    <Text style={styles(direction).reviewText}>
-                      {t('(35 reviews)')}
-                    </Text>
+                    <TouchableOpacity
+                      onPress={() => {
+                        NavigationService.navigate('Book Review');
+                      }}>
+                      <Text style={styles(direction).reviewText}>
+                        {t('(35 reviews)')}
+                      </Text>
+                    </TouchableOpacity>
                   </View>
                   <Text style={styles(direction).priceText}>{t('$24.12')}</Text>
                 </View>
@@ -186,40 +191,41 @@ const BookDetails: React.FC = () => {
                     )}
                   </Text>
                 </View>
-                {selectedRole === 'Student' && (
-                  <View style={styles(direction).regularButton}>
-                    <RegularButton
-                      onPress={() => {
-                        NavigationService.navigate('AvatarModifier');
-                      }}
-                      text={t('Buy Now!')}
-                      radius={50}
-                      height={50}
-                      width={'100%'}
-                      colors={['#03BBE3', '#14A9FD']}
-                    />
-                    <Text style={styles(direction).askParent}>
-                      {t('Ask Your Parent to Buy')}
-                    </Text>
-                  </View>
-                )}
-                {selectedRole === 'Parent' && (
-                  <View style={styles(direction).regularButton}>
-                    <RegularButton
-                      onPress={() => {
-                        NavigationService.navigate('AvatarModifier');
-                      }}
-                      text={t('Read Book')}
-                      radius={50}
-                      height={50}
-                      width={'100%'}
-                      colors={['#03BBE3', '#14A9FD']}
-                    />
+                {/* <View style={styles(direction).regularButton}>
+                  <RegularButton
+                    onPress={() => {
+                      NavigationService.navigate('Delivery Address');
+                    }}
+                    text={t('Buy Now!')}
+                    radius={50}
+                    height={50}
+                    width={'100%'}
+                    colors={['#03BBE3', '#14A9FD']}
+                  />
+                  <Text style={styles(direction).askParent}>
+                    {t('Ask Your Parent to Buy')}
+                  </Text>
+                </View> */}
+                <View style={styles(direction).regularButton}>
+                  <RegularButton
+                    onPress={() => {
+                      NavigationService.navigate('');
+                    }}
+                    text={t('Read a Book')}
+                    radius={50}
+                    height={50}
+                    width={'100%'}
+                    colors={['#03BBE3', '#14A9FD']}
+                  />
+                  <TouchableOpacity
+                    onPress={() => {
+                      NavigationService.navigate('Add Review');
+                    }}>
                     <Text style={styles(direction).askParent}>
                       {t('Add Review')}
                     </Text>
-                  </View>
-                )}
+                  </TouchableOpacity>
+                </View>
                 <GradientText
                   colors={['#758DAC', '#2F4868']}
                   text={t('Related Books')}

@@ -35,6 +35,14 @@ import NoInterestAndHobbies from 'app/screens/NoInterestAndHobbie';
 import NoConnection from 'app/screens/NoConnection';
 import NoSearch from 'app/screens/Nosearch';
 import NoNotification from 'app/screens/NoNotification';
+import MyStudentList from 'app/screens/MyStudentList';
+import StudentsStack from './DrawerStacks/StudentsStack';
+import ChildStack from './DrawerStacks/ChildStack';
+import MyChannelStack from './DrawerStacks/MyChannelStack';
+import ClubChannel from 'app/screens/ClubChannel';
+import SubscribedChannel from 'app/screens/SubscribedChannel';
+import PopularFeed from 'app/screens/PopularFeed';
+import FeaturedChannel from 'app/screens/FeaturedChannel';
 
 const Drawer = createDrawerNavigator();
 
@@ -159,13 +167,41 @@ const AppStack = () => {
           gestureEnabled: false,
         }}
       />
-      {selectedRole !== ROLES.PARENT && (
+
+      <Drawer.Screen
+        name="MyChannelScreen"
+        component={MyChannelStack}
+        options={{
+          drawerLabel: 'My Channel',
+          iconImage: require('../assets/side_menu/myChannel.png'),
+          headerStyle: {
+            backgroundColor: '#976a4a',
+          },
+          gestureEnabled: false,
+        }}
+      />
+
+      {selectedRole === ROLES.TEACHER && (
         <Drawer.Screen
-          name="MyChannel"
-          component={MyChannel}
+          name="StudentsScreen"
+          component={StudentsStack}
           options={{
-            drawerLabel: 'My Channel',
-            iconImage: require('../assets/side_menu/myChannel.png'),
+            drawerLabel: 'Students',
+            iconImage: require('../assets/side_menu/littleKid.png'),
+            headerStyle: {
+              backgroundColor: '#976a4a',
+            },
+            gestureEnabled: false,
+          }}
+        />
+      )}
+      {selectedRole === ROLES.PARENT && (
+        <Drawer.Screen
+          name="ChildScreen"
+          component={ChildStack}
+          options={{
+            drawerLabel: 'Child',
+            iconImage: require('../assets/side_menu/littleKid.png'),
             headerStyle: {
               backgroundColor: '#976a4a',
             },
@@ -192,6 +228,58 @@ const AppStack = () => {
           drawerLabel: 'Kutubi Library',
           iconImage: require('../assets/side_menu/kutubiLibrary.png'),
           isDropDown: true,
+          headerStyle: {
+            backgroundColor: '#976a4a',
+          },
+          gestureEnabled: false,
+        }}
+      />
+      <Drawer.Screen
+        name="SubscribedChannel"
+        component={SubscribedChannel}
+        options={{
+          drawerLabel: 'Subscribed',
+          // iconImage: require('../assets/side_menu/kutubiLibrary.png'),
+          // isDropDown: true,
+          headerStyle: {
+            backgroundColor: '#976a4a',
+          },
+          gestureEnabled: false,
+        }}
+      />
+      <Drawer.Screen
+        name="Club"
+        component={ClubChannel}
+        options={{
+          drawerLabel: 'Club',
+          // iconImage: require('../assets/side_menu/kutubiLibrary.png'),
+          // isDropDown: true,
+          headerStyle: {
+            backgroundColor: '#976a4a',
+          },
+          gestureEnabled: false,
+        }}
+      />
+      <Drawer.Screen
+        name="FeaturedChannel"
+        component={FeaturedChannel}
+        options={{
+          drawerLabel: 'Featured',
+          // iconImage: require('../assets/side_menu/kutubiLibrary.png'),
+          // isDropDown: true,
+          headerStyle: {
+            backgroundColor: '#976a4a',
+          },
+          gestureEnabled: false,
+        }}
+      />
+      <Drawer.Screen
+        name="PopularFeed"
+        component={PopularFeed}
+        options={{
+          drawerLabel: 'Popular',
+          // iconImage: require('../assets/side_menu/kutubiLibrary.png'),
+          // isDropDown: true,
           headerStyle: {
             backgroundColor: '#976a4a',
           },

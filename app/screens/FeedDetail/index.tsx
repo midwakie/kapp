@@ -434,7 +434,11 @@ const FeedDetail: React.FC = () => {
                             {item.user_id === false
                               ? reportOptions.map((op, i) => (
                                   <MenuOption
-                                    onSelect={() => {}}
+                                    onSelect={() => {
+                                      NavigationService.navigate(
+                                        'FeedDetailReport',
+                                      );
+                                    }}
                                     customStyles={{
                                       optionWrapper: {
                                         flexDirection: 'row',

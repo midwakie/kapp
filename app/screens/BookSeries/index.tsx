@@ -149,9 +149,14 @@ const BookSeries: React.FC = () => {
                         size={scale(14)}
                         onFinishRating={value => setRating(value)}
                       />
-                      <Text style={styles(direction).reviewText}>
-                        {t('(35 reviews)')}
-                      </Text>
+                      <TouchableOpacity
+                        onPress={() => {
+                          NavigationService.navigate('Add Review');
+                        }}>
+                        <Text style={styles(direction).reviewText}>
+                          {t('(35 reviews)')}
+                        </Text>
+                      </TouchableOpacity>
                     </View>
                   </View>
                 </View>
@@ -190,10 +195,15 @@ const BookSeries: React.FC = () => {
                   <Carousal
                     data={books}
                     renderItem={({ item, index }) => (
-                      <Image
-                        source={item.img}
-                        style={[styles(direction).badges]}
-                      />
+                      <TouchableOpacity
+                        onPress={() => {
+                          NavigationService.navigate('FinishBook');
+                        }}>
+                        <Image
+                          source={item.img}
+                          style={[styles(direction).badges]}
+                        />
+                      </TouchableOpacity>
                     )}
                     sliderWidth={sliderWidth}
                     itemWidth={scale(160)}

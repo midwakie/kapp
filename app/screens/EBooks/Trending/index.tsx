@@ -99,7 +99,7 @@ const Trending: React.FC = () => {
       <View style={styles(direction).neomorphContainer}>
         <TouchableOpacity
           onPress={() => {
-            NavigationService.navigate('BookDetails');
+            NavigationService.navigate('EbookDetail');
           }}>
           <Neumorphism
             style={styles(direction).neomorphMargin}
@@ -128,7 +128,7 @@ const Trending: React.FC = () => {
       <View style={styles(direction).neomorphContainer}>
         <TouchableOpacity
           onPress={() => {
-            NavigationService.navigate('BookDetails');
+            NavigationService.navigate('EbookDetail');
           }}>
           <Neumorphism
             style={styles(direction).neomorphMargin}

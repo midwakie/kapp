@@ -58,6 +58,10 @@ const FinishBook: React.FC = () => {
   const onSnapToItem1 = index => {
     setActiveIndex1(index);
   };
+  const [activeIndex2, setActiveIndex2] = useState(0);
+  const onSnapToItem2 = index => {
+    setActiveIndex2(index);
+  };
 
   const books = [
     {
@@ -710,15 +714,15 @@ const FinishBook: React.FC = () => {
                 inactiveSlideScale={1}
                 inactiveSlideOpacity={0.9}
                 activeSlideAlignment={'start'}
-                onSnapToItem={onSnapToItem}
+                onSnapToItem={onSnapToItem2}
               />
               <Pagination
                 dotsLength={books.length}
-                activeDotIndex={activeIndex}
+                activeDotIndex={activeIndex2}
                 containerStyle={styles(direction).paginationContainer}
                 inactiveDotOpacity={0.4}
                 inactiveDotScale={0.6}
-                renderDots={(activeIndex: number) => {
+                renderDots={(activeIndex2: number) => {
                   return (
                     <View style={styles(direction).paginationDots}>
                       {books2.length > 1 &&
@@ -727,7 +731,7 @@ const FinishBook: React.FC = () => {
                             key={i}
                             style={styles(direction).dot}
                             source={
-                              i === activeIndex
+                              i === activeIndex2
                                 ? require('../../assets/activeOval.png')
                                 : require('../../assets/oval.png')
                             }

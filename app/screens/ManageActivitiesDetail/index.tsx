@@ -245,7 +245,11 @@ const ManageActivities: React.FC = () => {
                   darkColor={'#A8A8A8'}
                   shapeType={'flat'}
                   radius={50}>
-                  <TouchableOpacity style={styles(direction).topIconContainer}>
+                  <TouchableOpacity
+                    onPress={() => {
+                      NavigationService.navigate('Activity Filter');
+                    }}
+                    style={styles(direction).topIconContainer}>
                     <Image
                       style={styles(direction).coinImage}
                       source={require('../../assets/filter.png')}
