@@ -17,6 +17,7 @@ import TitleBar from 'app/components/buttons/TitleBar';
 import Neumorphism from 'react-native-neumorphism';
 import VerticalLine from 'app/components/lines/VerticalLine';
 import { DrawerActions } from '@react-navigation/native';
+import NavigationService from 'app/navigation/NavigationService';
 
 const Child: React.FC = (props: any) => {
   const { t, i18n } = useTranslation();
@@ -91,7 +92,10 @@ const Child: React.FC = (props: any) => {
                 height={'100%'}
                 color={'#A8A8A8'}
               />
-              <TouchableOpacity onPress={() => {}}>
+              <TouchableOpacity
+                onPress={() => {
+                  NavigationService.navigate('GlobalSearch');
+                }}>
                 <View style={styles(direction).searchContainer}>
                   <Image
                     source={require('../../assets/searchIcon.png')}
@@ -111,7 +115,12 @@ const Child: React.FC = (props: any) => {
               numColumns={2}
               renderItem={({ item, index }) => (
                 <View style={styles(direction).rowContainer}>
-                  <TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => {
+                      item.id === 1
+                        ? NavigationService.navigate('AccountAction')
+                        : NavigationService.navigate('ChildFullProfile');
+                    }}>
                     <View
                       style={[
                         styles(direction).rectangle2,

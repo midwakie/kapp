@@ -251,7 +251,7 @@ const ClubChannel: React.FC = (props: any) => {
                               style={styles(direction).iconBox1}
                               onPress={() => handleLikePress(item.id)}>
                               <Image
-                                source={require('../../assets/love.png')}
+                                source={require('../../assets/whiteLove.png')}
                                 style={[
                                   item.isLiked
                                     ? styles(direction).likeImage
@@ -280,7 +280,7 @@ const ClubChannel: React.FC = (props: any) => {
                                   )
                                 }>
                                 <Image
-                                  source={require('../../assets/chat.png')}
+                                  source={require('../../assets/whiteChat.png')}
                                   style={[
                                     item.id === touchedItemId
                                       ? styles(direction).chatImage

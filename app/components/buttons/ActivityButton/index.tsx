@@ -26,10 +26,7 @@ const ActivityButton = ({
         radius={scale(50)}>
         <View style={styles.textContainer}>
           <Text style={styles.mainText}>{t(title)}</Text>
-          <TouchableOpacity
-            onPress={() => {
-              onPress;
-            }}>
+          <TouchableOpacity onPress={onPress}>
             <Text style={styles.buttonText}>{t(buttonTitle)}</Text>
           </TouchableOpacity>
         </View>

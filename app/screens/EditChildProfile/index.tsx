@@ -285,7 +285,10 @@ const EditChildProfile: React.FC = () => {
                         />
                       </TouchableOpacity>
                     </View>
-                    <TouchableOpacity onPress={() => {}}>
+                    <TouchableOpacity
+                      onPress={() => {
+                        NavigationService.navigate('HobbiesAndInterest');
+                      }}>
                       <Text style={styles(direction).changeText2}>
                         {t('change')}
                       </Text>

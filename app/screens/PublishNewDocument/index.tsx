@@ -130,10 +130,15 @@ const PublishNewDocument: React.FC = () => {
               shapeType={'flat'}
               radius={scale(50)}>
               <View style={styles(direction).topIconContainer}>
-                <Image
-                  style={styles(direction).coinImage}
-                  source={require('../../assets/cancel.png')}
-                />
+                <TouchableOpacity
+                  onPress={() => {
+                    NavigationService.goBack();
+                  }}>
+                  <Image
+                    style={styles(direction).coinImage}
+                    source={require('../../assets/cancel.png')}
+                  />
+                </TouchableOpacity>
               </View>
             </Neumorphism>
           }

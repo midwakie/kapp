@@ -23,20 +23,20 @@ export default function* loginAsync(data: ILoginRequestState) {
   if (response.status && response.status === 200) {
     yield put(
       currentCustomerActions.setCurrentCustomerEmailVerificationStatus(
-        response.data.user.isVerified.email,
+        response.data.data.user.isVerified.email,
       ),
     );
     yield put(
       currentCustomerActions.setCurrentCustomerMobileVerificationStatus(
-        response.data.user.isVerified.mobileNo,
+        response.data.data.user.isVerified.mobileNo,
       ),
     );
-    if (response.data.user.isVerified.email === false) {
+    if (response.data.data.user.isVerified.email === false) {
       yield put(
         otpRequestActions.requestOtp({
-          email: response.data.user.email,
-          mobileNo: response.data.user.mobileNo.toString(),
-          roleType: response.data.user.roleType,
+          email: response.data.data.user.email,
+          mobileNo: response.data.data.user.mobileNo.toString(),
+          roleType: response.data.data.user.roleType,
         }),
       );
     }

@@ -8,6 +8,24 @@ import TeachersProfile from 'app/screens/TeachersProfile';
 import { useSelector } from 'react-redux';
 import { ICurrentCustomer } from 'app/models/reducers/currentCustomer';
 import { ROLES } from 'app/config/role-config';
+import EditChildProfile from 'app/screens/EditChildProfile';
+import ActivitiesStats from 'app/screens/ActivityStatus';
+import Publish from 'app/screens/Publish';
+import PublishNewVideo from 'app/screens/PublishNewVideo';
+import PublishNewDocument from 'app/screens/PublishNewDocument';
+import ManageActivities from 'app/screens/ManageActivities';
+import ManagePeople from 'app/screens/ManagePeople';
+import ManageActivitiesDetail from 'app/screens/ManageActivitiesDetail';
+import ActivityFilter from 'app/screens/ActivityFilter';
+import FeedDetail from 'app/screens/FeedDetail';
+import EditTeacherProfile from 'app/screens/EditTeacherProfile';
+import ChangeSchool from 'app/screens/ChangeSchool';
+import MyChannel from 'app/screens/MyChannel';
+import ClassFilter from 'app/screens/ClassFilter';
+import CreateChannel from 'app/screens/CreateChannel';
+import CreateActivity from 'app/screens/CreateActivity';
+import AddReview from 'app/screens/AddReview';
+import EbookDetail from 'app/screens/EbookDetail';
 
 const Stack = createStackNavigator();
 const LoggedInStack = createStackNavigator();
@@ -50,6 +68,128 @@ const ProfileStack = () => {
       <Stack.Screen
         name="GlobalSearch"
         component={GlobalSearch}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="EditChildProfile"
+        component={EditChildProfile}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ActivitiesStats"
+        component={ActivitiesStats}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Publish"
+        component={Publish}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="PublishNewVideo"
+        component={PublishNewVideo}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="PublishNewDocument"
+        component={PublishNewDocument}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Manage Activities"
+        component={ManageActivities}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ManagePeople"
+        component={ManagePeople}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ManageActivitiesDetail"
+        component={ManageActivitiesDetail}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Activity Filter"
+        component={ActivityFilter}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="FeedDetail"
+        component={FeedDetail}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="EditTeacherProfile"
+        component={EditTeacherProfile}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Change School"
+        component={ChangeSchool}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="MyChannel"
+        component={MyChannel}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="CreateChannel"
+        component={CreateChannel}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="CreateActivity"
+        component={CreateActivity}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="EbookDetail"
+        component={EbookDetail}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Add Review"
+        component={AddReview}
         options={{
           headerShown: false,
         }}

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Image, SafeAreaView, Text, View, TextStyle } from 'react-native';
 
 import styles from './styles';
@@ -25,7 +25,7 @@ const MyChannel: React.FC = props => {
   const { control } = useForm();
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
-  const [visible, setVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const [active, setActive] = useState(false);
   const press = () => {
     setActive(!active);
@@ -170,7 +170,7 @@ const MyChannel: React.FC = props => {
                         ) : (
                           <RegularButton
                             onPress={() => {
-                              NavigationService.navigate(' ');
+                              NavigationService.navigate('Publish');
                             }}
                             text={t('Publish ')}
                             radius={50}
@@ -200,7 +200,18 @@ const MyChannel: React.FC = props => {
                           }}>
                           {options.map((op, i) => (
                             <MenuOption
-                              onSelect={() => {}}
+                              onSelect={() => {
+                                setIsVisible(false);
+                                if (op.title === 'Manage People') {
+                                  NavigationService.navigate('ManagePeople');
+                                } else if (op.title === 'Edit Channel') {
+                                  NavigationService.navigate('EditChannel');
+                                } else if (op.title === 'Manage Activities') {
+                                  NavigationService.navigate(
+                                    'Manage Activities',
+                                  );
+                                }
+                              }}
                               customStyles={{
                                 optionWrapper: {
                                   flexDirection: 'row',
@@ -246,14 +257,23 @@ const MyChannel: React.FC = props => {
                         />
                       </View>
                       <View style={styles(direction).row1}>
-                        <View style={styles(direction).profileImgContainer2}>
-                          <Image
-                            source={item.profileImage}
-                            style={styles(direction).profileImg0}
-                          />
-                        </View>
+                        <TouchableOpacity
+                          onPress={() => {
+                            NavigationService.navigate('FeedDetail');
+                          }}>
+                          <View style={styles(direction).profileImgContainer2}>
+                            <Image
+                              source={item.profileImage}
+                              style={styles(direction).profileImg0}
+                            />
+                          </View>
+                        </TouchableOpacity>
                         <View>
-                          <Text style={styles(direction).text11}>
+                          <Text
+                            onPress={() => {
+                              NavigationService.navigate('FeedDetail');
+                            }}
+                            style={styles(direction).text11}>
                             {t(item.profileName)}
                           </Text>
                           <View style={styles(direction).containerSubTitle}>

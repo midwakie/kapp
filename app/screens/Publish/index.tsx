@@ -31,7 +31,10 @@ const Publish: React.FC = () => {
       <ScrollView style={styles(direction).container} bounces={false}>
         <SafeAreaView style={styles(direction).safeAreaView}>
           <View style={styles(direction).container1}>
-            <TouchableOpacity onPress={() => alert('The box was clicked!')}>
+            <TouchableOpacity
+              onPress={() => {
+                NavigationService.navigate('PublishNewVideo');
+              }}>
               <Neumorphism
                 lightColor={'#ffffff'}
                 darkColor={'#A8A8A8'}
@@ -47,7 +50,9 @@ const Publish: React.FC = () => {
               </Neumorphism>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => alert('The box was clicked!')}
+              onPress={() => {
+                NavigationService.navigate('PublishNewDocument');
+              }}
               style={styles(direction).squareBox1}>
               <Neumorphism
                 lightColor={'#ffffff'}

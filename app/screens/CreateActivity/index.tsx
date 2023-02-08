@@ -106,12 +106,16 @@ const CreateActivity: React.FC = () => {
             </View>
             <ActivityButton
               title="Select EBooks"
-              onPress={undefined}
+              onPress={() => {
+                NavigationService.navigate('SelectEBook');
+              }}
               buttonTitle="Select"
             />
             <ActivityButton
               title="Assign Students"
-              onPress={undefined}
+              onPress={() => {
+                NavigationService.navigate('AssignActivity');
+              }}
               buttonTitle="Assign"
             />
             <View style={{ justifyContent: 'center', alignItems: 'center' }}>
@@ -151,6 +155,18 @@ const CreateActivity: React.FC = () => {
                 onSubmitEditing={() => {
                   activityTitleInputRef?.current.setFocus();
                 }}
+              />
+            </View>
+            <View style={styles(direction).neomorphContainer2}>
+              <RegularButton
+                onPress={() => {
+                  NavigationService.navigate(' ');
+                }}
+                text={t('Save')}
+                radius={50}
+                height={50}
+                width={'100%'}
+                colors={['#03BBE3', '#14A9FD']}
               />
             </View>
           </View>

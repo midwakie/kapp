@@ -89,7 +89,9 @@ const CreateChannel: React.FC = () => {
           </View>
           <View style={styles(direction).bottom}>
             <RegularButton
-              onPress={() => {}}
+              onPress={() => {
+                NavigationService.navigate('ManagePeople');
+              }}
               text={t('Save')}
               radius={50}
               height={50}
