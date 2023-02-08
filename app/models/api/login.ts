@@ -3,9 +3,11 @@ export interface ILoginResponse {
   data: ILoginResponseData;
 }
 export interface ILoginResponseData {
-  message: string;
-  token: Token;
-  user: User;
+  data: {
+    message: string;
+    token: Token;
+    user: User;
+  };
 }
 
 export interface Token {

@@ -155,10 +155,15 @@ const TeachersProfile: React.FC = () => {
                     shapeType={'flat'}
                     radius={14}>
                     <View style={styles(direction).rectangle2}>
-                      <Image
-                        source={item.titleImage}
-                        style={styles(direction).imageStyle}
-                      />
+                      <TouchableOpacity
+                        onPress={() => {
+                          NavigationService.navigate('MyChannel');
+                        }}>
+                        <Image
+                          source={item.titleImage}
+                          style={styles(direction).imageStyle}
+                        />
+                      </TouchableOpacity>
                       <View>
                         <Text style={styles(direction).text}>
                           {t(item.titleName)}
@@ -250,7 +255,10 @@ const TeachersProfile: React.FC = () => {
                         shapeType={'flat'}
                         radius={scale(150)}>
                         <View style={styles(direction).container8}>
-                          <TouchableOpacity onPress={() => {}}>
+                          <TouchableOpacity
+                            onPress={() => {
+                              NavigationService.navigate('CreateChannel');
+                            }}>
                             <Image
                               style={styles(direction).imageStyle1}
                               source={require('../../assets/plus.png')}

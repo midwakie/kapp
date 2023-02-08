@@ -60,7 +60,7 @@ const styles = (direction: string) =>
       alignItems: 'center',
       backgroundColor: '#EBEEF0',
     },
-    insidetext: {
+    insideText: {
       color: '#03A0E3',
       fontWeight: '600',
       fontSize: '16@s',

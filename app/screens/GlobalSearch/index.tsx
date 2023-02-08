@@ -323,7 +323,7 @@ const GlobalSearch: React.FC = () => {
       <View style={styles(direction).neomorphContainer}>
         <TouchableOpacity
           onPress={() => {
-            NavigationService.navigate('BookDetails');
+            NavigationService.navigate('EbookDetail');
           }}>
           <Neumorphism
             style={styles(direction).neomorphMargin}
@@ -351,7 +351,7 @@ const GlobalSearch: React.FC = () => {
       <View style={styles(direction).neomorphContainer}>
         <TouchableOpacity
           onPress={() => {
-            NavigationService.navigate('BookDetails');
+            NavigationService.navigate('EbookDetail');
           }}>
           <Neumorphism
             style={styles(direction).neomorphMargin}
@@ -379,7 +379,7 @@ const GlobalSearch: React.FC = () => {
       <View style={styles(direction).neomorphContainer}>
         <TouchableOpacity
           onPress={() => {
-            NavigationService.navigate('BookDetails');
+            NavigationService.navigate('EbookDetail');
           }}>
           <Neumorphism
             style={styles(direction).neomorphMargin}
@@ -407,7 +407,7 @@ const GlobalSearch: React.FC = () => {
       <View style={styles(direction).neomorphContainer}>
         <TouchableOpacity
           onPress={() => {
-            NavigationService.navigate('BookDetails');
+            NavigationService.navigate('EbookDetail');
           }}>
           <Neumorphism
             style={styles(direction).neomorphMargin}

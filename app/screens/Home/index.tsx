@@ -224,7 +224,7 @@ const Home: React.FC = (props: any) => {
       <View style={styles(false).neomorphContainer}>
         <TouchableOpacity
           onPress={() => {
-            NavigationService.navigate('BookDetails');
+            NavigationService.navigate('EbookDetail');
           }}>
           <Neumorphism
             style={styles(false).neomorphMargin}
@@ -466,7 +466,7 @@ const Home: React.FC = (props: any) => {
                         radius={scale(15.21)}>
                         <TouchableOpacity
                           onPress={() => {
-                            NavigationService.navigate('BookDetails');
+                            NavigationService.navigate('EbookDetail');
                           }}
                           style={styles(false).continueReading}>
                           <Image
@@ -522,7 +522,7 @@ const Home: React.FC = (props: any) => {
                         radius={scale(15.21)}>
                         <TouchableOpacity
                           onPress={() => {
-                            NavigationService.navigate('BookDetails');
+                            NavigationService.navigate('EbookDetail');
                           }}
                           style={styles(false).whatsNew}>
                           <Image
@@ -571,7 +571,7 @@ const Home: React.FC = (props: any) => {
                         radius={scale(15.21)}>
                         <TouchableOpacity
                           onPress={() => {
-                            NavigationService.navigate('BookDetails');
+                            NavigationService.navigate('EbookDetail');
                           }}
                           style={styles(false).favorites}>
                           <Image
@@ -628,6 +628,16 @@ const Home: React.FC = (props: any) => {
                 end={{ x: 0, y: 1 }}
                 textStyle={styles(false).gradientTextStyle}
               />
+              <RegularButton
+                onPress={() => {
+                  NavigationService.navigate('RecommendedVideos');
+                }}
+                icon={'arrow-forward'}
+                radius={38}
+                height={38}
+                width={38}
+                colors={['#EBECF0', '#EBECF0']}
+              />
             </View>
             <View>
               <FlatList
@@ -645,7 +655,7 @@ const Home: React.FC = (props: any) => {
                         radius={scale(15.21)}>
                         <TouchableOpacity
                           onPress={() => {
-                            NavigationService.navigate('BookDetails');
+                            NavigationService.navigate('EbookDetail');
                           }}
                           style={styles(false).videoToChild}>
                           <Image

@@ -119,7 +119,10 @@ const BookReview: React.FC = () => {
                   </View>
 
                   <Text style={styles(direction).text2}>{item.amount}</Text>
-                  <TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => {
+                      NavigationService.navigate('Add Review');
+                    }}>
                     <Text style={styles(direction).text3}>
                       {t('Add Review')}
                     </Text>

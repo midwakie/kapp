@@ -99,7 +99,10 @@ const EditTeacherProfile: React.FC = () => {
                 <Text style={styles(direction).schoolText}>
                   Al Jeel Al Saeed School
                 </Text>
-                <TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    NavigationService.navigate('Change School');
+                  }}>
                   <Text style={styles(direction).changeText1}>
                     {t('Change')}
                   </Text>

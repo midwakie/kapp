@@ -216,6 +216,14 @@ const PopularFeed: React.FC = (props: any) => {
       </ScrollView>
       <View style={styles(direction).titleBarContainer}>
         <TitleBar
+          leftComponent={
+            <View style={styles(direction).topContainer}>
+              <Image
+                source={require('../../assets/toppic.png')}
+                style={styles(direction).topImage}
+              />
+            </View>
+          }
           middleComponent={
             <View style={styles(direction).gradientTextContainer}>
               <GradientText
