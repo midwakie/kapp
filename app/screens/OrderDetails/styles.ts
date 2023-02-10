@@ -74,11 +74,6 @@ const styles = (direction: string) =>
       alignItems: 'center',
       justifyContent: 'center',
     },
-    card: {
-      height: '199@ms',
-      width: '148@ms',
-      backgroundColor: '#EBEEF0',
-    },
     cardListStyle: {
       // borderWidth: 1,
       borderColor: 'white',
@@ -101,27 +96,12 @@ const styles = (direction: string) =>
       justifyContent: 'center',
       alignItems: 'center',
     },
-    neomorphListContainer: {
-      justifyContent: 'center',
-      alignItems: 'center',
-      margin: 20,
-    },
     neomorphMargin: { margin: '10@ms' },
-    cardImage: {
-      height: '118@ms',
-      width: '100%',
-    },
     cardListImage: {
       height: '82@ms',
       width: '82@ms',
       borderRadius: '13@ms',
       margin: '5@ms',
-    },
-    cardContent: {
-      width: '100%',
-      flexDirection: 'column',
-      paddingHorizontal: '11@s',
-      marginTop: 8,
     },
     cardListContent: {
       // borderWidth: 2,
@@ -138,19 +118,6 @@ const styles = (direction: string) =>
       marginBottom: 6,
       lineHeight: '22@s',
     },
-    author: {
-      fontFamily: 'Nunito-Regular',
-      fontSize: '12@ms',
-      fontWeight: '600',
-      color: '#758DAC',
-      marginBottom: 4,
-    },
-    price: {
-      fontFamily: 'Nunito-Regular',
-      fontSize: '12@ms',
-      fontWeight: '700',
-      color: '#03A0E3',
-    },
     priceListStyle: {
       fontFamily: 'Nunito-Regular',
       fontSize: '16@ms',
@@ -162,7 +129,7 @@ const styles = (direction: string) =>
     statusContainer: {
       justifyContent: 'center',
       alignItems: 'center',
-      marginRight: 20,
+      marginRight: '20@s',
     },
     statusOne: {
       fontFamily: 'Nunito-Regular',
