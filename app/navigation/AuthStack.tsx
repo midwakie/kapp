@@ -79,6 +79,8 @@ import Trending from 'app/screens/EBooks/Trending';
 import ContinueReading from 'app/screens/EBooks/ContinueReading';
 import WhatsNew from 'app/screens/EBooks/WhatsNew';
 import Favorites from 'app/screens/EBooks/Favorites';
+import Shop from 'app/screens/Shop';
+import OrderDetails from 'app/screens/OrderDetails';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -737,6 +739,26 @@ const AuthStack = () => {
       <Stack.Screen
         name="FinishBook"
         component={FinishBook}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Shop"
+        component={Shop}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="OrderDetails"
+        component={OrderDetails}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
