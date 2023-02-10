@@ -34,7 +34,6 @@ import FeedDetailReport from 'app/screens/FeedDetailReport';
 import Publish from 'app/screens/Publish';
 import RewardPointFilter from 'app/screens/RewardPointFilter';
 import EditTeacherProfile from 'app/screens/EditTeacherProfile';
-import ChildHome from 'app/screens/ChildHome';
 import MyFeeds from 'app/screens/MyFeeds';
 import BookReview from 'app/screens/BookReview';
 import ChildFullProfile from 'app/screens/ChildFullProfile';
@@ -80,6 +79,7 @@ import ContinueReading from 'app/screens/EBooks/ContinueReading';
 import WhatsNew from 'app/screens/EBooks/WhatsNew';
 import Favorites from 'app/screens/EBooks/Favorites';
 import ShoppingCart from 'app/screens/ShoppingCart';
+import ChatList from 'app/screens/ChatList';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -164,6 +164,16 @@ const AuthStack = () => {
       <Stack.Screen
         name="Child Account"
         component={ChildAccount}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ChatList"
+        component={ChatList}
         options={{
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
