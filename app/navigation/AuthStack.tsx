@@ -125,8 +125,6 @@ const AuthStack = () => {
         name="Welcome"
         component={Landing}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -135,8 +133,6 @@ const AuthStack = () => {
         name="Child"
         component={Child}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -145,8 +141,6 @@ const AuthStack = () => {
         name="SuggestionsForYou"
         component={SuggestionsForYou}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -155,8 +149,6 @@ const AuthStack = () => {
         name="EditChildProfile"
         component={EditChildProfile}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -165,8 +157,6 @@ const AuthStack = () => {
         name="Child Account"
         component={ChildAccount}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -175,8 +165,6 @@ const AuthStack = () => {
         name="ChatList"
         component={ChatList}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -185,18 +173,6 @@ const AuthStack = () => {
         name="Child Profile"
         component={ChildProfile}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
-          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="MyChannel"
-        component={MyChannel}
-        options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -205,8 +181,6 @@ const AuthStack = () => {
         name="ActivitiesStats"
         component={ActivitiesStats}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -215,8 +189,6 @@ const AuthStack = () => {
         name="ShoppingCart"
         component={ShoppingCart}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -225,8 +197,6 @@ const AuthStack = () => {
         name="MyFeeds"
         component={MyFeeds}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -235,8 +205,6 @@ const AuthStack = () => {
         name="TeachersProfile"
         component={TeachersProfile}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -255,8 +223,6 @@ const AuthStack = () => {
         name="AssignActivity"
         component={AssignActivity}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -265,8 +231,6 @@ const AuthStack = () => {
         name="FeedDetailReport"
         component={FeedDetailReport}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -285,8 +249,6 @@ const AuthStack = () => {
         name="EbookDetail"
         component={EbookDetail}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -296,8 +258,6 @@ const AuthStack = () => {
         name="CreateChannel"
         component={CreateChannel}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -306,8 +266,6 @@ const AuthStack = () => {
         name="Sign In"
         component={SignIn}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -316,8 +274,6 @@ const AuthStack = () => {
         name="Sign Up"
         component={SignUp}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -326,8 +282,6 @@ const AuthStack = () => {
         name="Link Child"
         component={LinkChild}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -336,8 +290,6 @@ const AuthStack = () => {
         name="Delivery Address"
         component={DeliveryAddress}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -356,8 +308,6 @@ const AuthStack = () => {
         name="Verify Email"
         component={VerifyEmail}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -366,8 +316,6 @@ const AuthStack = () => {
         name="Verify Mobile"
         component={VerifyMobile}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -376,8 +324,6 @@ const AuthStack = () => {
         name="ChangePassword"
         component={ChangePassword}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -386,8 +332,6 @@ const AuthStack = () => {
         name="ForgotPassword"
         component={ForgotPassword}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -396,8 +340,6 @@ const AuthStack = () => {
         name="NewPassword"
         component={NewPassword}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -406,8 +348,6 @@ const AuthStack = () => {
         name="AvatarCreation"
         component={AvatarCreation}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -426,8 +366,6 @@ const AuthStack = () => {
         name="AccountAction"
         component={AccountAction}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -436,8 +374,6 @@ const AuthStack = () => {
         name="EditTeacherProfile"
         component={EditTeacherProfile}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -446,8 +382,6 @@ const AuthStack = () => {
         name="BookDetails"
         component={BookDetails}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -456,8 +390,6 @@ const AuthStack = () => {
         name="RewardPointFilter"
         component={RewardPointFilter}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -476,8 +408,6 @@ const AuthStack = () => {
         name="Publish"
         component={Publish}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -486,8 +416,6 @@ const AuthStack = () => {
         name="Book Review"
         component={BookReview}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -496,8 +424,6 @@ const AuthStack = () => {
         name="Continue Reading"
         component={ContinueReading}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -506,8 +432,6 @@ const AuthStack = () => {
         name="WhatsNew"
         component={WhatsNew}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -516,8 +440,6 @@ const AuthStack = () => {
         name="Favorites"
         component={Favorites}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -536,8 +458,6 @@ const AuthStack = () => {
         name="Manage Activities"
         component={ManageActivities}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -547,8 +467,6 @@ const AuthStack = () => {
         name="ChildFullProfile"
         component={ChildFullProfile}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -557,8 +475,6 @@ const AuthStack = () => {
         name="ManagePeople"
         component={ManagePeople}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -567,8 +483,6 @@ const AuthStack = () => {
         name="Add Review"
         component={AddReview}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -577,8 +491,6 @@ const AuthStack = () => {
         name="Home"
         component={Home}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -587,8 +499,6 @@ const AuthStack = () => {
         name="Activity Filter"
         component={ActivityFilter}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -597,8 +507,6 @@ const AuthStack = () => {
         name="ParentProfileDetail"
         component={ParentProfileDetail}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -607,8 +515,6 @@ const AuthStack = () => {
         name="CreateActivity"
         component={CreateActivity}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -617,8 +523,6 @@ const AuthStack = () => {
         name="PublishNewDocument"
         component={PublishNewDocument}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -627,8 +531,6 @@ const AuthStack = () => {
         name="TestHardness"
         component={TestHardness}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -637,8 +539,6 @@ const AuthStack = () => {
         name="SubscribedChannel"
         component={SubscribedChannel}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -647,8 +547,6 @@ const AuthStack = () => {
         name="GlobalSearch"
         component={GlobalSearch}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -658,8 +556,6 @@ const AuthStack = () => {
         name="Club Channel"
         component={ClubChannel}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -669,8 +565,6 @@ const AuthStack = () => {
         name="ManageActivitiesDetail"
         component={ManageActivitiesDetail}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -679,8 +573,6 @@ const AuthStack = () => {
         name="PopularFeed"
         component={PopularFeed}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -689,8 +581,6 @@ const AuthStack = () => {
         name="FeedPostDetail"
         component={FeedPostDetail}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -699,8 +589,6 @@ const AuthStack = () => {
         name="FeaturedChannel"
         component={FeaturedChannel}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -709,8 +597,6 @@ const AuthStack = () => {
         name="SelectEBook"
         component={SelectEBook}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -719,8 +605,6 @@ const AuthStack = () => {
         name="BookSeries"
         component={BookSeries}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -729,8 +613,6 @@ const AuthStack = () => {
         name="PublishDocument"
         component={PublishDocument}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -739,8 +621,6 @@ const AuthStack = () => {
         name="ClassFilter"
         component={ClassFilter}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -749,8 +629,6 @@ const AuthStack = () => {
         name="MyStudentList"
         component={MyStudentList}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
@@ -759,8 +637,6 @@ const AuthStack = () => {
         name="FinishBook"
         component={FinishBook}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}

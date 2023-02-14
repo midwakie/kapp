@@ -141,8 +141,6 @@ const styles = (direction: string) =>
     },
     textTimeContainer: {
       width: '70@s',
-
-      //right: '65@s',
     },
     timeText: {
       color: '#03A0E3',
@@ -256,7 +254,7 @@ const styles = (direction: string) =>
     newChatContainer: {
       width: '60@s',
       height: '60@s',
-      //position: 'absolute',
+
       borderRadius: '60@s',
     },
     newChatImage: {

@@ -101,7 +101,6 @@ const ChatList: React.FC = () => {
   const CardListItem = ({ book }: any) => {
     return (
       <View style={styles(direction).neomorphContainer}>
-        {/* <TouchableOpacity onPress={() => {}}> */}
         <Neumorphism
           style={styles(direction).neomorphMargin}
           lightColor={'#ffffff'}
@@ -234,7 +233,6 @@ const ChatList: React.FC = () => {
           </TouchableOpacity>
         </View>
       </View>
-      {/* Title Bar should be placed last to stay on top */}
     </>
   );
 };

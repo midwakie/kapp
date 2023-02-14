@@ -79,7 +79,6 @@ const ShoppingCart: React.FC = () => {
   const CardListItem = ({ book }: any) => {
     return (
       <View style={styles(direction).neomorphContainer}>
-        {/* <TouchableOpacity onPress={() => {}}> */}
         <Neumorphism
           style={styles(direction).neomorphMargin}
           lightColor={'#ffffff'}
@@ -101,9 +100,6 @@ const ShoppingCart: React.FC = () => {
             </View>
 
             <TouchableOpacity>
-              {/* //   onPress={() => {
-            //     this.deleteItemById{id}
-            //   }}> */}
               <Image
                 source={require('../../assets/minus.png')}
                 style={styles(direction).minusImage}
@@ -111,7 +107,6 @@ const ShoppingCart: React.FC = () => {
             </TouchableOpacity>
           </View>
         </Neumorphism>
-        {/* </TouchableOpacity> */}
       </View>
     );
   };
