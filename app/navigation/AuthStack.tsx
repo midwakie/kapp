@@ -80,6 +80,7 @@ import WhatsNew from 'app/screens/EBooks/WhatsNew';
 import Favorites from 'app/screens/EBooks/Favorites';
 import ShoppingCart from 'app/screens/ShoppingCart';
 import ChatList from 'app/screens/ChatList';
+import CreateChat from 'app/screens/CreateChat';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -107,7 +108,7 @@ const AuthStack = () => {
 
   return (
     <AuthenticationStack.Navigator
-      initialRouteName={initialRouteName}
+      initialRouteName={'CreateChat'}
       screenOptions={{
         ...TransitionPresets.SlideFromRightIOS,
       }}>
@@ -164,6 +165,14 @@ const AuthStack = () => {
       <Stack.Screen
         name="ChatList"
         component={ChatList}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="CreateChat"
+        component={CreateChat}
         options={{
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,

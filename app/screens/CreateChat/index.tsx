@@ -27,7 +27,7 @@ import BookDetails from '../BookDetails';
 import { Item } from 'react-native-paper/lib/typescript/components/List/List';
 import { id } from 'date-fns/locale';
 
-const ChatList: React.FC = () => {
+const CreateChat: React.FC = () => {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
   const currentOrientation = useDeviceOrientation();
@@ -101,49 +101,44 @@ const ChatList: React.FC = () => {
   const CardListItem = ({ book }: any) => {
     return (
       <View style={styles(direction).neomorphContainer}>
-        <TouchableOpacity>
-          <Neumorphism
-            style={styles(direction).neomorphMargin}
-            lightColor={'#ffffff'}
-            darkColor={'#C6CEDA'}
-            shapeType={'flat'}
-            radius={scale(14)}>
-            <View style={styles(direction).cardListStyleTwo}>
-              <View style={styles(direction).chatInfo}>
-                <View style={styles(direction).imageViewContainer}>
+        <Neumorphism
+          style={styles(direction).neomorphMargin}
+          lightColor={'#ffffff'}
+          darkColor={'#C6CEDA'}
+          shapeType={'flat'}
+          radius={scale(14)}>
+          <View style={styles(direction).cardListStyleTwo}>
+            <View style={styles(direction).chatInfo}>
+              <View style={styles(direction).imageViewContainer}>
+                <Image source={book.img} style={styles(direction).chatImage} />
+                <View style={styles(direction).onlineViewContainer}>
                   <Image
-                    source={book.img}
-                    style={styles(direction).chatImage}
+                    source={require('../../assets/chatListOnline.png')}
+                    style={styles(direction).onlineImage}
                   />
-                  <View style={styles(direction).onlineViewContainer}>
-                    <Image
-                      source={require('../../assets/chatListOnline.png')}
-                      style={styles(direction).onlineImage}
-                    />
-                  </View>
-                </View>
-                <View style={styles(direction).detailsContainer}>
-                  <Text style={styles(direction).chatName}>{book.name}</Text>
-                  <Text style={styles(direction).chatText}>{book.chat}</Text>
                 </View>
               </View>
-              <View style={styles(direction).thirdContainer}>
-                <Text style={styles(direction).timeText}>{book.textTime}</Text>
-                <View style={styles(direction).blueImageContainer}>
-                  <Image
-                    source={book.unreadImage}
-                    style={styles(direction).unreadImage}
-                  />
-                  <View style={styles(direction).unreadTextContainer}>
-                    <Text style={styles(direction).unreadText}>
-                      {book.unreadText}
-                    </Text>
-                  </View>
+              <View style={styles(direction).detailsContainer}>
+                <Text style={styles(direction).chatName}>{book.name}</Text>
+                <Text style={styles(direction).chatText}>{book.chat}</Text>
+              </View>
+            </View>
+            <View style={styles(direction).thirdContainer}>
+              <Text style={styles(direction).timeText}>{book.textTime}</Text>
+              <View style={styles(direction).blueImageContainer}>
+                <Image
+                  source={book.unreadImage}
+                  style={styles(direction).unreadImage}
+                />
+                <View style={styles(direction).unreadTextContainer}>
+                  <Text style={styles(direction).unreadText}>
+                    {book.unreadText}
+                  </Text>
                 </View>
               </View>
             </View>
-          </Neumorphism>
-        </TouchableOpacity>
+          </View>
+        </Neumorphism>
       </View>
     );
   };
@@ -228,7 +223,6 @@ const ChatList: React.FC = () => {
           }
         />
       </View>
-
       <View style={styles(direction).newChatMainContainer}>
         <View style={styles(direction).newChatContainer}>
           <TouchableOpacity>
@@ -242,4 +236,4 @@ const ChatList: React.FC = () => {
     </>
   );
 };
-export default ChatList;
+export default CreateChat;
