@@ -251,7 +251,7 @@ const ChildFullProfile: React.FC = (props: any) => {
                 </View>
 
                 <View style={styles(direction).coinContainer1}>
-                  <View style={{ flexDirection: 'row' }}>
+                  <View style={styles(direction).row}>
                     <Neumorphism
                       lightColor={'#ffffff'}
                       darkColor={'#A8A8A8'}
@@ -354,7 +354,7 @@ const ChildFullProfile: React.FC = (props: any) => {
                 </View>
               </View>
             </Neumorphism>
-            <View style={styles(direction).marginView}></View>
+            <View style={styles(direction).marginView} />
             <Neumorphism
               lightColor={'#ffffff'}
               darkColor={'#A8A8A8'}
@@ -376,7 +376,7 @@ const ChildFullProfile: React.FC = (props: any) => {
                 />
               </View>
             </Neumorphism>
-            <View style={styles(direction).marginView}></View>
+            <View style={styles(direction).marginView} />
             <Neumorphism
               lightColor={'#ffffff'}
               darkColor={'#A8A8A8'}
@@ -565,7 +565,7 @@ const ChildFullProfile: React.FC = (props: any) => {
                 </View>
               </View>
             </Neumorphism>
-            <View style={styles(direction).marginView}></View>
+            <View style={styles(direction).marginView} />
             <Neumorphism
               lightColor={'#ffffff'}
               darkColor={'#A8A8A8'}
@@ -612,13 +612,15 @@ const ChildFullProfile: React.FC = (props: any) => {
                           <View style={styles(direction).pdfImageContainer}>
                             <Image
                               style={styles(direction).pdfImage}
-                              source={item.Image}></Image>
+                              source={item.Image}
+                            />
                             <TouchableOpacity
                               onPress={() => {}}
                               style={styles(direction).pdfLogoContainer}>
                               <Image
                                 style={styles(direction).pdfLogoImage}
-                                source={item.pdfLogoImage}></Image>
+                                source={item.pdfLogoImage}
+                              />
                             </TouchableOpacity>
                           </View>
                           <View style={styles(direction).subContainerText}>
@@ -633,7 +635,8 @@ const ChildFullProfile: React.FC = (props: any) => {
                             <TouchableOpacity>
                               <Image
                                 style={styles(direction).vectorImage}
-                                source={require('../../assets/likeLogo.png')}></Image>
+                                source={require('../../assets/likeLogo.png')}
+                              />
                             </TouchableOpacity>
                             <Text style={styles(direction).numberText}>
                               {item.likeCount}
@@ -641,7 +644,8 @@ const ChildFullProfile: React.FC = (props: any) => {
                             <TouchableOpacity>
                               <Image
                                 style={styles(direction).vectorImage}
-                                source={require('../../assets/commentLogo.png')}></Image>
+                                source={require('../../assets/commentLogo.png')}
+                              />
                             </TouchableOpacity>
                             <Text style={styles(direction).numberText}>
                               {item.comments}
@@ -649,7 +653,8 @@ const ChildFullProfile: React.FC = (props: any) => {
                             <TouchableOpacity>
                               <Image
                                 style={styles(direction).vectorImage1}
-                                source={require('../../assets/viewLogo.png')}></Image>
+                                source={require('../../assets/viewLogo.png')}
+                              />
                             </TouchableOpacity>
                             <Text style={styles(direction).numberText}>
                               {item.views}
@@ -682,7 +687,8 @@ const ChildFullProfile: React.FC = (props: any) => {
                       name={'arrow-forward'}
                       size={ms(20)}
                       color={'#03A0E3'}
-                      style={styles(direction).activityWorkIcon}></MaterialIcon>
+                      style={styles(direction).activityWorkIcon}
+                    />
                   </TouchableOpacity>
                 </View>
                 <View style={styles(direction).activityWorkText2MainContainer}>
@@ -699,7 +705,8 @@ const ChildFullProfile: React.FC = (props: any) => {
                   <View style={styles(direction).activityWorkImageContainer}>
                     <Image
                       style={styles(direction).activityImage}
-                      source={require('../../assets/channelImage3.png')}></Image>
+                      source={require('../../assets/channelImage3.png')}
+                    />
                   </View>
                   <View
                     style={styles(direction).activityWorkBottomTextContainer}>
@@ -839,7 +846,7 @@ const ChildFullProfile: React.FC = (props: any) => {
                 </View>
               </View>
             </Neumorphism>
-            <View style={styles(direction).marginView}></View>
+            <View style={styles(direction).marginView} />
             <Neumorphism
               lightColor={'#ffffff'}
               darkColor={'#A8A8A8'}
@@ -927,7 +934,7 @@ const ChildFullProfile: React.FC = (props: any) => {
                 </View>
               </View>
             </Neumorphism>
-            <View style={styles(direction).marginView}></View>
+            <View style={styles(direction).marginView} />
 
             {/* <Neumorphism
               lightColor={'#ffffff'}
@@ -990,13 +997,15 @@ const ChildFullProfile: React.FC = (props: any) => {
                   <View style={styles(direction).videoContainer}>
                     <Image
                       style={styles(direction).videoImage}
-                      source={require('../../assets/videoImage1.png')}></Image>
+                      source={require('../../assets/videoImage1.png')}
+                    />
                     <TouchableOpacity
                       onPress={() => {}}
                       style={styles(direction).videoLogoContainer}>
                       <Image
                         style={styles(direction).videoLogoImage}
-                        source={require('../../assets/playLogo.png')}></Image>
+                        source={require('../../assets/playLogo.png')}
+                      />
                     </TouchableOpacity>
                   </View>
                   <View style={styles(direction).subContainerText}>
@@ -1011,7 +1020,8 @@ const ChildFullProfile: React.FC = (props: any) => {
                     <TouchableOpacity>
                       <Image
                         style={styles(direction).vectorImage}
-                        source={require('../../assets/likeLogo.png')}></Image>
+                        source={require('../../assets/likeLogo.png')}
+                      />
                     </TouchableOpacity>
                     <Text style={styles(direction).numberText}>
                       {t('2563')}
@@ -1019,20 +1029,22 @@ const ChildFullProfile: React.FC = (props: any) => {
                     <TouchableOpacity>
                       <Image
                         style={styles(direction).vectorImage}
-                        source={require('../../assets/commentLogo.png')}></Image>
+                        source={require('../../assets/commentLogo.png')}
+                      />
                     </TouchableOpacity>
                     <Text style={styles(direction).numberText}>{t('235')}</Text>
                     <TouchableOpacity>
                       <Image
                         style={styles(direction).vectorImage1}
-                        source={require('../../assets/viewLogo.png')}></Image>
+                        source={require('../../assets/viewLogo.png')}
+                      />
                     </TouchableOpacity>
                     <Text style={styles(direction).numberText}>{t('126')}</Text>
                   </View>
                 </View>
               </View>
             </Neumorphism>
-            <View style={styles(direction).marginView}></View>
+            <View style={styles(direction).marginView} />
             <Neumorphism
               lightColor={'#ffffff'}
               darkColor={'#A8A8A8'}
@@ -1077,12 +1089,14 @@ const ChildFullProfile: React.FC = (props: any) => {
                   <View style={styles(direction).pdfImageContainer}>
                     <Image
                       style={styles(direction).pdfImage}
-                      source={require('../../assets/pdfImage1.png')}></Image>
+                      source={require('../../assets/pdfImage1.png')}
+                    />
                     <View style={styles(direction).pdfLogoContainer}>
                       <TouchableOpacity onPress={() => {}}>
                         <Image
                           style={styles(direction).pdfLogoImage}
-                          source={require('../../assets/pdfLogo.png')}></Image>
+                          source={require('../../assets/pdfLogo.png')}
+                        />
                       </TouchableOpacity>
                     </View>
                   </View>
@@ -1098,7 +1112,8 @@ const ChildFullProfile: React.FC = (props: any) => {
                     <TouchableOpacity>
                       <Image
                         style={styles(direction).vectorImage}
-                        source={require('../../assets/likeLogo.png')}></Image>
+                        source={require('../../assets/likeLogo.png')}
+                      />
                     </TouchableOpacity>
 
                     <Text style={styles(direction).numberText}>
@@ -1107,13 +1122,15 @@ const ChildFullProfile: React.FC = (props: any) => {
                     <TouchableOpacity>
                       <Image
                         style={styles(direction).vectorImage}
-                        source={require('../../assets/commentLogo.png')}></Image>
+                        source={require('../../assets/commentLogo.png')}
+                      />
                     </TouchableOpacity>
                     <Text style={styles(direction).numberText}>{t('235')}</Text>
                     <TouchableOpacity>
                       <Image
                         style={styles(direction).vectorImage1}
-                        source={require('../../assets/viewLogo.png')}></Image>
+                        source={require('../../assets/viewLogo.png')}
+                      />
                     </TouchableOpacity>
                     <Text style={styles(direction).numberText}>{t('126')}</Text>
                   </View>
