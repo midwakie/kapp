@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { DrawerActions } from '@react-navigation/routers';
 import {
   createDrawerNavigator,
@@ -13,41 +13,44 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
-import HomeStack from './DrawerStacks/HomeStack';
 import { useTranslation } from 'react-i18next';
 import { retrieveSelectedLanguage } from 'app/utils/storageUtils';
 import RegularButton from 'app/components/buttons/RegularButton';
-import { s, scale, ScaledSheet } from 'react-native-size-matters';
+import { s, ScaledSheet } from 'react-native-size-matters';
 import { useDispatch, useSelector } from 'react-redux';
 import * as loginActions from 'app/store/actions/loginActions';
-import MyFeeds from 'app/screens/MyFeeds';
-import ParentProfileDetail from 'app/screens/ParentProfileDetail';
 import { ICurrentCustomer } from 'app/models/reducers/currentCustomer';
-import { ROLES } from 'app/config/role-config';
-import ChildFullProfile from 'app/screens/ChildFullProfile';
-import TeachersProfile from 'app/screens/TeachersProfile';
-import MyChannel from 'app/screens/MyChannel';
-import ProfileStack from './DrawerStacks/ProfileStack';
-import FeedStack from './DrawerStacks/FeedStack';
-import NoChat from 'app/screens/NoChat';
-import NoActivity from 'app/screens/NoActivity';
-import NoInterestAndHobbies from 'app/screens/NoInterestAndHobbie';
-import NoConnection from 'app/screens/NoConnection';
-import NoSearch from 'app/screens/Nosearch';
-import NoNotification from 'app/screens/NoNotification';
-import MyStudentList from 'app/screens/MyStudentList';
-import StudentsStack from './DrawerStacks/StudentsStack';
-import ChildStack from './DrawerStacks/ChildStack';
-import MyChannelStack from './DrawerStacks/MyChannelStack';
-import ClubChannel from 'app/screens/ClubChannel';
-import SubscribedChannel from 'app/screens/SubscribedChannel';
-import PopularFeed from 'app/screens/PopularFeed';
-import FeaturedChannel from 'app/screens/FeaturedChannel';
+import { DrawerStacksList } from './DrawerStack';
 
 const Drawer = createDrawerNavigator();
 
 interface IState {
   currentCustomerReducer: ICurrentCustomer;
+}
+export interface IDrawerChildItem {
+  name: string;
+  component: React.ComponentType<any>;
+  drawerLabel: string;
+  isChild: boolean;
+  parentName: string;
+  headerStyle: { backgroundColor: string };
+  gestureEnabled: boolean;
+  availableRoles?: ('Guest' | 'Parent' | 'Student' | 'Teacher')[];
+}
+export interface IDrawerItem {
+  index: number;
+  name: string;
+  component: React.ComponentType<any>;
+  drawerLabel: string;
+  iconImage?: any;
+  isParent?: boolean;
+  collapsed?: boolean;
+  isChild?: boolean;
+  parentName?: string;
+  headerStyle: { backgroundColor: string };
+  gestureEnabled: boolean;
+  childrens?: IDrawerChildItem[];
+  availableRoles?: ('Guest' | 'Parent' | 'Student' | 'Teacher')[];
 }
 
 const AppStack = () => {
@@ -57,6 +60,8 @@ const AppStack = () => {
     let lang: string = (await retrieveSelectedLanguage()) as string;
     i18n.changeLanguage(lang);
   };
+  const [expandedItems, setExpandedItems] = useState<string[]>([]);
+
   const selectedRole = useSelector(
     (state: IState) => state.currentCustomerReducer.role,
   );
@@ -68,6 +73,19 @@ const AppStack = () => {
   const signOut = () => {
     dispatch(loginActions.logOut());
   };
+
+  const toggleExpand = (route: { key: string }) => {
+    if (expandedItems.includes(route.key)) {
+      setExpandedItems(expandedItems.filter(item => item !== route.key));
+    } else {
+      setExpandedItems([...expandedItems, route.key]);
+    }
+  };
+
+  const isItemExpanded = (route: { key: string }) => {
+    return expandedItems.includes(route.key);
+  };
+
   return (
     <Drawer.Navigator
       initialRouteName="Home"
@@ -96,35 +114,118 @@ const AppStack = () => {
             />
           </View>
           <DrawerContentScrollView {...props}>
-            {props.state.routes.map((route, index) => {
-              const { drawerLabel, activeTintColor, iconImage, isDropDown } =
-                props.descriptors[route.key].options;
-              return (
-                <TouchableOpacity
-                  key={index}
-                  style={styles.itemContainer}
-                  onPress={() => props.navigation.navigate(route.name)}>
-                  <Image
-                    source={require('../assets/sideMenuItem.png')}
-                    style={[styles.bg, { tintColor: activeTintColor }]}
-                  />
-                  <View style={styles.side_menu_item}>
-                    <Image source={iconImage} style={styles.itemImage} />
-                    <Text style={styles.side_menu_item_label}>
-                      {drawerLabel}
-                    </Text>
-                    {isDropDown && (
-                      <MaterialIcon
-                        name="keyboard-arrow-down"
-                        size={s(26)}
-                        color={'#9CA8AF'}
-                        style={{ marginLeft: s(20) }}
+            {props.state.routes.map(route => {
+              const {
+                index,
+                drawerLabel,
+                activeTintColor,
+                iconImage,
+                isParent,
+                isChild,
+                childrens,
+                availableRoles,
+              } = props.descriptors[route.key].options;
+              if (availableRoles?.includes(selectedRole)) {
+                if (isParent) {
+                  return (
+                    <View key={index}>
+                      <TouchableOpacity
+                        style={styles.itemContainer}
+                        onPress={() => toggleExpand(route)}>
+                        <Image
+                          source={require('../assets/sideMenuItem.png')}
+                          style={[styles.bg, { tintColor: activeTintColor }]}
+                        />
+                        <View style={styles.side_menu_item}>
+                          <Image source={iconImage} style={styles.itemImage} />
+                          <Text style={styles.side_menu_item_label}>
+                            {drawerLabel}
+                          </Text>
+                          {!isItemExpanded(route) ? (
+                            <MaterialIcon
+                              name="keyboard-arrow-down"
+                              size={s(26)}
+                              color={'#9CA8AF'}
+                              style={{ marginLeft: s(20) }}
+                            />
+                          ) : (
+                            <MaterialIcon
+                              name="keyboard-arrow-up"
+                              size={s(26)}
+                              color={'#9CA8AF'}
+                              style={{ marginLeft: s(20) }}
+                            />
+                          )}
+                        </View>
+                      </TouchableOpacity>
+                      {isItemExpanded(route) &&
+                        childrens.map(
+                          (
+                            childRoute: IDrawerChildItem,
+                            childIndex: number,
+                          ) => {
+                            if (
+                              childRoute?.availableRoles?.includes(selectedRole)
+                            ) {
+                              return (
+                                <TouchableOpacity
+                                  key={childIndex}
+                                  style={styles.itemContainer}
+                                  onPress={() => {
+                                    // props.navigation.dispatch(
+                                    //   DrawerActions.closeDrawer(),
+                                    // );
+                                    props.navigation.navigate(childRoute.name);
+                                  }}>
+                                  <Image
+                                    source={require('../assets/sideMenuItem.png')}
+                                    style={[
+                                      styles.bg,
+                                      { tintColor: activeTintColor },
+                                    ]}
+                                  />
+                                  <View style={styles.side_menu_item}>
+                                    <Image
+                                      source={childRoute.iconImage}
+                                      style={styles.itemImage}
+                                      resizeMode="contain"
+                                    />
+                                    <Text style={styles.side_menu_item_label}>
+                                      {childRoute.drawerLabel}
+                                    </Text>
+                                  </View>
+                                </TouchableOpacity>
+                              );
+                            }
+                          },
+                        )}
+                    </View>
+                  );
+                } else if (!isChild) {
+                  return (
+                    <TouchableOpacity
+                      key={index}
+                      style={styles.itemContainer}
+                      onPress={() => {
+                        props.navigation.dispatch(DrawerActions.closeDrawer());
+                        props.navigation.navigate(route.name);
+                      }}>
+                      <Image
+                        source={require('../assets/sideMenuItem.png')}
+                        style={[styles.bg, { tintColor: activeTintColor }]}
                       />
-                    )}
-                  </View>
-                </TouchableOpacity>
-              );
+                      <View style={styles.side_menu_item}>
+                        <Image source={iconImage} style={styles.itemImage} />
+                        <Text style={styles.side_menu_item_label}>
+                          {drawerLabel}
+                        </Text>
+                      </View>
+                    </TouchableOpacity>
+                  );
+                }
+              }
             })}
+
             <TouchableOpacity onPress={signOut} style={styles.itemContainer}>
               <Image
                 source={require('../assets/sideMenuItem.png')}
@@ -143,221 +244,27 @@ const AppStack = () => {
           </DrawerContentScrollView>
         </SafeAreaView>
       )}>
-      <Drawer.Screen
-        name="HomeScreen"
-        component={HomeStack}
-        options={{
-          drawerLabel: 'Home',
-          iconImage: require('../assets/side_menu/home.png'),
-          headerStyle: {
-            backgroundColor: '#976a4a',
-          },
-          gestureEnabled: false,
-        }}
-      />
-      <Drawer.Screen
-        name="ProfileScreen"
-        component={ProfileStack}
-        options={{
-          drawerLabel: 'Profile',
-          iconImage: require('../assets/side_menu/account.png'),
-          headerStyle: {
-            backgroundColor: '#976a4a',
-          },
-          gestureEnabled: false,
-        }}
-      />
-
-      <Drawer.Screen
-        name="MyChannelScreen"
-        component={MyChannelStack}
-        options={{
-          drawerLabel: 'My Channel',
-          iconImage: require('../assets/side_menu/myChannel.png'),
-          headerStyle: {
-            backgroundColor: '#976a4a',
-          },
-          gestureEnabled: false,
-        }}
-      />
-
-      {selectedRole === ROLES.TEACHER && (
-        <Drawer.Screen
-          name="StudentsScreen"
-          component={StudentsStack}
-          options={{
-            drawerLabel: 'Students',
-            iconImage: require('../assets/side_menu/littleKid.png'),
-            headerStyle: {
-              backgroundColor: '#976a4a',
-            },
-            gestureEnabled: false,
-          }}
-        />
-      )}
-      {selectedRole === ROLES.PARENT && (
-        <Drawer.Screen
-          name="ChildScreen"
-          component={ChildStack}
-          options={{
-            drawerLabel: 'Child',
-            iconImage: require('../assets/side_menu/littleKid.png'),
-            headerStyle: {
-              backgroundColor: '#976a4a',
-            },
-            gestureEnabled: false,
-          }}
-        />
-      )}
-      <Drawer.Screen
-        name="FeedScreen"
-        component={FeedStack}
-        options={{
-          drawerLabel: 'Feeds',
-          iconImage: require('../assets/side_menu/feeds.png'),
-          headerStyle: {
-            backgroundColor: '#976a4a',
-          },
-          gestureEnabled: false,
-        }}
-      />
-      <Drawer.Screen
-        name="KutubiLibrary"
-        component={NoChat}
-        options={{
-          drawerLabel: 'Kutubi Library',
-          iconImage: require('../assets/side_menu/kutubiLibrary.png'),
-          isDropDown: true,
-          headerStyle: {
-            backgroundColor: '#976a4a',
-          },
-          gestureEnabled: false,
-        }}
-      />
-      <Drawer.Screen
-        name="SubscribedChannel"
-        component={SubscribedChannel}
-        options={{
-          drawerLabel: 'Subscribed',
-          // iconImage: require('../assets/side_menu/kutubiLibrary.png'),
-          // isDropDown: true,
-          headerStyle: {
-            backgroundColor: '#976a4a',
-          },
-          gestureEnabled: false,
-        }}
-      />
-      <Drawer.Screen
-        name="Club"
-        component={ClubChannel}
-        options={{
-          drawerLabel: 'Club',
-          // iconImage: require('../assets/side_menu/kutubiLibrary.png'),
-          // isDropDown: true,
-          headerStyle: {
-            backgroundColor: '#976a4a',
-          },
-          gestureEnabled: false,
-        }}
-      />
-      <Drawer.Screen
-        name="FeaturedChannel"
-        component={FeaturedChannel}
-        options={{
-          drawerLabel: 'Featured',
-          // iconImage: require('../assets/side_menu/kutubiLibrary.png'),
-          // isDropDown: true,
-          headerStyle: {
-            backgroundColor: '#976a4a',
-          },
-          gestureEnabled: false,
-        }}
-      />
-      <Drawer.Screen
-        name="PopularFeed"
-        component={PopularFeed}
-        options={{
-          drawerLabel: 'Popular',
-          // iconImage: require('../assets/side_menu/kutubiLibrary.png'),
-          // isDropDown: true,
-          headerStyle: {
-            backgroundColor: '#976a4a',
-          },
-          gestureEnabled: false,
-        }}
-      />
-      <Drawer.Screen
-        name="ActiveWorks"
-        component={NoActivity}
-        options={{
-          drawerLabel: 'Active Works',
-          iconImage: require('../assets/side_menu/activeWork.png'),
-          headerStyle: {
-            backgroundColor: '#976a4a',
-          },
-          gestureEnabled: false,
-        }}
-      />
-      <Drawer.Screen
-        name="Achievements"
-        component={NoInterestAndHobbies}
-        options={{
-          drawerLabel: 'Achievements',
-          iconImage: require('../assets/side_menu/award.png'),
-          headerStyle: {
-            backgroundColor: '#976a4a',
-          },
-          gestureEnabled: false,
-        }}
-      />
-      <Drawer.Screen
-        name="Shop"
-        component={NoSearch}
-        options={{
-          drawerLabel: 'Shop',
-          iconImage: require('../assets/side_menu/shop.png'),
-          headerStyle: {
-            backgroundColor: '#976a4a',
-          },
-          gestureEnabled: false,
-        }}
-      />
-      <Drawer.Screen
-        name="Orders"
-        component={NoSearch}
-        options={{
-          drawerLabel: 'Orders',
-          iconImage: require('../assets/side_menu/orders.png'),
-          headerStyle: {
-            backgroundColor: '#976a4a',
-          },
-          gestureEnabled: false,
-        }}
-      />
-      <Drawer.Screen
-        name="Chat"
-        component={NoChat}
-        options={{
-          drawerLabel: 'Chat',
-          iconImage: require('../assets/side_menu/chat.png'),
-          headerStyle: {
-            backgroundColor: '#976a4a',
-          },
-          gestureEnabled: false,
-        }}
-      />
-      <Drawer.Screen
-        name="Notification"
-        component={NoNotification}
-        options={{
-          drawerLabel: 'Notification',
-          iconImage: require('../assets/side_menu/notifications.png'),
-          headerStyle: {
-            backgroundColor: '#976a4a',
-          },
-          gestureEnabled: false,
-        }}
-      />
+      {DrawerStacksList?.map((drawers, index) => {
+        return (
+          <Drawer.Screen
+            key={index}
+            name={drawers?.name}
+            component={drawers.component}
+            options={{
+              index: drawers.index,
+              drawerLabel: drawers?.drawerLabel,
+              iconImage: drawers.iconImage,
+              headerStyle: drawers?.headerStyle,
+              gestureEnabled: drawers?.gestureEnabled,
+              isParent: drawers?.isParent,
+              collapsed: drawers?.collapsed,
+              isChild: drawers?.isChild,
+              childrens: drawers?.childrens,
+              availableRoles: drawers?.availableRoles,
+            }}
+          />
+        );
+      })}
     </Drawer.Navigator>
   );
 };
