@@ -81,6 +81,8 @@ import WhatsNew from 'app/screens/EBooks/WhatsNew';
 import Favorites from 'app/screens/EBooks/Favorites';
 import Shop from 'app/screens/Shop';
 import OrderDetails from 'app/screens/OrderDetails';
+import RewardPointHistory from 'app/screens/RewardPointHistory';
+import ActivitiesWork from 'app/screens/ActivitiesWork';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -633,6 +635,22 @@ const AuthStack = () => {
       <Stack.Screen
         name="OrderDetails"
         component={OrderDetails}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="RewardPointHistory"
+        component={RewardPointHistory}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ActivitiesWork"
+        component={ActivitiesWork}
         options={{
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
