@@ -173,7 +173,7 @@ const Shop: React.FC = (props: any) => {
                   numColumns={Math.floor(
                     Dimensions.get('window').width / scale(158),
                   )}
-                  data={books}
+                  data={toys}
                   renderItem={({ item }) => {
                     return <CardItem book={item} />;
                   }}
