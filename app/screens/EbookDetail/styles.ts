@@ -23,7 +23,7 @@ const styles = (direction: string) =>
       justifyContent: 'center',
       alignItems: 'center',
       position: 'absolute',
-      width: 38,
+      width: '38@s',
       marginLeft: '20@s',
     },
     gradientTextContainer: {
@@ -61,7 +61,7 @@ const styles = (direction: string) =>
     },
     bookContainer: {
       width: '100%',
-      height: '737@s',
+      height: '765@s',
       backgroundColor: '#EBEEF0',
     },
     bookContainer2: {
@@ -141,15 +141,15 @@ const styles = (direction: string) =>
     },
     row: { flexDirection: 'row' },
     ratingContainer: {
-      width: 145.2,
+      width: '145.2@s',
       alignSelf: 'flex-start',
       flexDirection: 'row',
       justifyContent: 'space-between',
     },
     pageContainer: {
-      width: 107,
-      marginTop: 64,
-      right: 40,
+      width: '107@s',
+      marginTop: '64@s',
+      right: '40@s',
       flexDirection: 'row',
       justifyContent: 'space-between',
     },
@@ -170,10 +170,10 @@ const styles = (direction: string) =>
       width: '100%',
     },
     badges: {
-      width: 150.9,
-      height: 150.9,
+      width: '150.9@s',
+      height: '150.9@s',
       alignSelf: 'center',
-      top: 31,
+      top: '31@s',
       resizeMode: 'stretch',
     },
     paginationDots: {
@@ -186,7 +186,7 @@ const styles = (direction: string) =>
     dot: {
       width: '24@s',
       height: '24@s',
-      marginHorizontal: 4,
+      marginHorizontal: '4@s',
     },
     paginationContainer: {
       position: 'absolute',
@@ -196,8 +196,8 @@ const styles = (direction: string) =>
     },
     slidingContainer: {
       width: '100%',
-      height: 195,
-      left: 10,
+      height: '195@s',
+      left: '10@s',
     },
     reviewContainer: {
       // marginVertical: '20@s',
@@ -216,11 +216,11 @@ const styles = (direction: string) =>
       marginBottom: '46@s',
     },
     reviewColumn1: {
-      height: 89,
+      height: '89@s',
       justifyContent: 'space-between',
     },
     reviewColumn2: {
-      height: 108,
+      height: '108@s',
       justifyContent: 'space-between',
     },
     reviewContainerTitle: {
@@ -230,15 +230,15 @@ const styles = (direction: string) =>
       fontFamily: 'Nunito-Regular',
     },
     counText: {
-      left: 20,
+      left: '20@s',
       fontSize: '38.1@s',
       color: '#03A0E3',
       fontWeight: '600',
       fontFamily: 'Nunito-Regular',
     },
     carousalContainer: {
-      marginTop: 31,
-      marginBottom: 44,
+      marginTop: '31@s',
+      marginBottom: '44@s',
       alignItems: 'center',
     },
     swipeContainer: {
@@ -246,7 +246,7 @@ const styles = (direction: string) =>
       height: '187.6@s',
     },
     activeSlideImage: {
-      width: 156,
+      width: '156@s',
       alignSelf: 'center',
       height: '188@s',
     },
@@ -254,18 +254,18 @@ const styles = (direction: string) =>
       justifyContent: 'center',
       alignItems: 'center',
       position: 'absolute',
-      width: 38,
-      top: 75,
-      left: -10,
+      width: '38@s',
+      top: '75@s',
+      left: '-10@s',
       alignSelf: 'flex-start',
     },
     rightSwipeButton: {
       justifyContent: 'center',
       alignItems: 'center',
       position: 'absolute',
-      width: 38,
-      top: 75,
-      right: -10,
+      width: '38@s',
+      top: '75@s',
+      right: '-10@s',
       alignSelf: 'flex-end',
     },
     loadMore: {
@@ -278,6 +278,7 @@ const styles = (direction: string) =>
       bottom: '17@s',
     },
     buttonNeumorph2: {
+      marginTop: '20@s',
       alignSelf: 'center',
     },
     loadButton: {
@@ -292,7 +293,7 @@ const styles = (direction: string) =>
       alignItems: 'center',
       justifyContent: 'center',
     },
-    listingNemorph: { marginBottom: 20, marginHorizontal: 25 },
+    listingNemorph: { marginTop: '20@s', marginHorizontal: '25@s' },
     listingContainer: {
       width: '100%',
       height: '156@s',

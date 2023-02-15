@@ -156,7 +156,7 @@ const ParentProfileDetail: React.FC = props => {
                               }}>
                               {options1.map((op, i) => (
                                 <MenuOption
-                                  onSelect={menuItem => {
+                                  onSelect={() => {
                                     if (op.title === 'Edit Profile') {
                                       // NavigationService.navigate('')
                                     }

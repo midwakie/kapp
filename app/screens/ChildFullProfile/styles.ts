@@ -204,6 +204,9 @@ const styles = (direction: string) =>
       bottom: '10@s',
       // marginLeft: '100@s',
     },
+    row: {
+      flexDirection: 'row',
+    },
     nameText: {
       color: '#455157',
       fontSize: '14@s',

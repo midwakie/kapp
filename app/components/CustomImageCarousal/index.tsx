@@ -1,5 +1,5 @@
 import { View, Image, useWindowDimensions } from 'react-native';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import Animated, {
   useSharedValue,
   useAnimatedScrollHandler,
@@ -28,22 +28,6 @@ const CustomImageCarousal = ({ data, autoPlay }: any) => {
       x.value = event.contentOffset.x;
     },
   });
-
-//   useEffect(() => {
-//     if (isAutoPlay === true) {
-//       let _offSet = offSet.value;
-//       interval.current = setInterval(() => {
-//         if (_offSet >= Math.floor(SIZE * (data.length - 1) - 10)) {
-//           _offSet = 0;
-//         } else {
-//           _offSet = Math.floor(_offSet + SIZE);
-//         }
-//         scrollViewRef.current.scrollTo({ x: _offSet, y: 0 });
-//       }, 2000);
-//     } else {
-//       clearInterval(interval.current);
-//     }
-//   }, [SIZE, SPACER, isAutoPlay, data.length, offSet.value, scrollViewRef]);
 
   return (
     <View>
@@ -92,5 +76,3 @@ const CustomImageCarousal = ({ data, autoPlay }: any) => {
 };
 
 export default CustomImageCarousal;
-
-
