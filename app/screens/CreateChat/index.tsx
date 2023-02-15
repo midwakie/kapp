@@ -5,7 +5,13 @@ import GradientText from 'app/components/texts/GradientText';
 import RegularButton from 'app/components/buttons/RegularButton';
 import { useTranslation } from 'react-i18next';
 import NavigationService from 'app/navigation/NavigationService';
-import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
+import { useForm } from 'react-hook-form';
+import MaterialIcon from 'react-native-vector-icons/AntDesign';
+import {
+  ScrollView,
+  TextInput,
+  TouchableOpacity,
+} from 'react-native-gesture-handler';
 import VerticalLine from 'app/components/lines/VerticalLine';
 import {
   Image,
@@ -14,29 +20,32 @@ import {
   View,
   FlatList,
   TextStyle,
+  ImageBackground,
   TouchableWithoutFeedback,
   Alert,
   Dimensions,
 } from 'react-native';
 import TitleBar from 'app/components/buttons/TitleBar';
 import Neumorphism from 'react-native-neumorphism';
-import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { ms, scale } from 'react-native-size-matters';
 import useDeviceOrientation from 'app/hooks/useDeviceOrientation';
 import BookDetails from '../BookDetails';
 import { Item } from 'react-native-paper/lib/typescript/components/List/List';
 import { id } from 'date-fns/locale';
+import CustomInput from 'app/components/inputs/CustomInput';
 
 const CreateChat: React.FC = () => {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
+  const [description, setDescription] = useState('');
   const currentOrientation = useDeviceOrientation();
+  const { control } = useForm();
 
   const details = [
     {
       id: 1,
       name: 'Afthab',
-      chat: 'lorum ipsum jhasdbfahbfckabcbadhcadbkhacbkhabcbakcbabchbahbhabdbchadbchabkhbhda',
+      chat: 'Parent',
       img: require('../../assets/chatListOne.png'),
       unreadImage: require('../../assets/chatListUnread.png'),
       unreadText: 7,
@@ -45,7 +54,7 @@ const CreateChat: React.FC = () => {
     {
       id: 2,
       name: 'Science Class',
-      chat: 'Hi',
+      chat: 'Parent',
       img: require('../../assets/chatListTwo.png'),
       unreadImage: require('../../assets/chatListUnread.png'),
       unreadText: 2,
@@ -54,7 +63,7 @@ const CreateChat: React.FC = () => {
     {
       id: 3,
       name: 'Ansari',
-      chat: 'Various versions have',
+      chat: 'Student',
       img: require('../../assets/chatListThree.png'),
       unreadImage: require('../../assets/chatListUnread.png'),
       unreadText: 8,
@@ -62,8 +71,8 @@ const CreateChat: React.FC = () => {
     },
     {
       id: 4,
-      name: 'Sports class',
-      chat: 'Various versions have evolved..',
+      name: 'Rasool',
+      chat: 'Parent',
       img: require('../../assets/chatListFour.png'),
       unreadImage: require('../../assets/chatListUnread.png'),
       unreadText: 6,
@@ -71,8 +80,8 @@ const CreateChat: React.FC = () => {
     },
     {
       id: 5,
-      name: 'Fathima',
-      chat: 'How was english class?',
+      name: 'Farida',
+      chat: 'Student',
       img: require('../../assets/chatListFive.png'),
       unreadImage: require('../../assets/chatListUnread.png'),
       unreadText: 55,
@@ -81,7 +90,7 @@ const CreateChat: React.FC = () => {
     {
       id: 6,
       name: 'Easy Math',
-      chat: 'lorum Ipsum',
+      chat: 'Student',
       img: require('../../assets/chatListOne.png'),
       unreadImage: require('../../assets/chatListUnread.png'),
       unreadText: 2,
@@ -90,7 +99,7 @@ const CreateChat: React.FC = () => {
     {
       id: 7,
       name: 'Mr.Bean',
-      chat: 'hello',
+      chat: 'Parent',
       img: require('../../assets/chatListTwo.png'),
       unreadImage: require('../../assets/chatListUnread.png'),
       unreadText: 1,
@@ -107,37 +116,22 @@ const CreateChat: React.FC = () => {
           darkColor={'#C6CEDA'}
           shapeType={'flat'}
           radius={scale(14)}>
-          <View style={styles(direction).cardListStyleTwo}>
-            <View style={styles(direction).chatInfo}>
-              <View style={styles(direction).imageViewContainer}>
-                <Image source={book.img} style={styles(direction).chatImage} />
-                <View style={styles(direction).onlineViewContainer}>
+          <TouchableOpacity>
+            <View style={styles(direction).cardListStyleTwo}>
+              <View style={styles(direction).chatInfo}>
+                <View style={styles(direction).imageViewContainer}>
                   <Image
-                    source={require('../../assets/chatListOnline.png')}
-                    style={styles(direction).onlineImage}
+                    source={book.img}
+                    style={styles(direction).chatImage}
                   />
                 </View>
-              </View>
-              <View style={styles(direction).detailsContainer}>
-                <Text style={styles(direction).chatName}>{book.name}</Text>
-                <Text style={styles(direction).chatText}>{book.chat}</Text>
-              </View>
-            </View>
-            <View style={styles(direction).thirdContainer}>
-              <Text style={styles(direction).timeText}>{book.textTime}</Text>
-              <View style={styles(direction).blueImageContainer}>
-                <Image
-                  source={book.unreadImage}
-                  style={styles(direction).unreadImage}
-                />
-                <View style={styles(direction).unreadTextContainer}>
-                  <Text style={styles(direction).unreadText}>
-                    {book.unreadText}
-                  </Text>
+                <View style={styles(direction).detailsContainer}>
+                  <Text style={styles(direction).chatName}>{book.name}</Text>
+                  <Text style={styles(direction).chatText}>{book.chat}</Text>
                 </View>
               </View>
             </View>
-          </View>
+          </TouchableOpacity>
         </Neumorphism>
       </View>
     );
@@ -148,6 +142,44 @@ const CreateChat: React.FC = () => {
       <SafeAreaView style={styles(direction).safeAreaView}>
         <ScrollView style={styles(direction).container} bounces={false}>
           <View style={styles(direction).container2}>
+            <View style={styles(direction).inputTextContainer}>
+              <CustomInput
+                control={control}
+                name="search"
+                placeholder={t('Search here..')}
+                keyboardType="default"
+                autoCapitalize="none"
+                returnKeyType="next"
+                rightComponent={
+                  <TouchableOpacity style={styles(direction).searchIcon}>
+                    <MaterialIcon
+                      name={'search1'}
+                      size={scale(20)}
+                      color={'#03A0E3'}
+                    />
+                  </TouchableOpacity>
+                }
+              />
+            </View>
+            <View style={styles(direction).createGroupMainContainer}>
+              <Neumorphism
+                lightColor={'#ffffff'}
+                darkColor={'#C6CEDA'}
+                shapeType={'flat'}
+                radius={scale(8)}>
+                <TouchableOpacity>
+                  <View style={styles(direction).createGroupContainer}>
+                    <Image
+                      source={require('../../assets/createGroupIcon.png')}
+                      style={styles(direction).groupIcon}
+                    />
+                    <Text style={styles(direction).createGroupText}>
+                      {t('Create Group')}
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+              </Neumorphism>
+            </View>
             <View style={styles(direction).cardContainer}>
               <FlatList
                 numColumns={1}
@@ -166,9 +198,15 @@ const CreateChat: React.FC = () => {
         <TitleBar
           leftComponent={
             <View style={styles(direction).topContainer}>
-              <Image
-                source={require('../../assets/topPicAvatar.png')}
-                style={styles(direction).topImage}
+              <RegularButton
+                onPress={() => {
+                  NavigationService.goBack();
+                }}
+                icon={'arrow-back'}
+                radius={38}
+                height={38}
+                width={38}
+                colors={['#EBECF0', '#EBECF0']}
               />
             </View>
           }
@@ -176,62 +214,14 @@ const CreateChat: React.FC = () => {
             <View style={styles(false).gradientTextContainer}>
               <GradientText
                 colors={['#2AA7DD', '#2AA7DD']}
-                text={t('Chats')}
+                text={t('Create Chat')}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 0, y: 1 }}
                 textStyle={styles(direction).gradientTextStyle as TextStyle}
               />
             </View>
           }
-          rightComponent={
-            <Neumorphism
-              lightColor={'#ffffff'}
-              darkColor={'#A8A8A8'}
-              shapeType={'flat'}
-              radius={52}>
-              <View style={styles(false).iconContainer}>
-                <TouchableOpacity
-                  onPress={() => {
-                    props?.navigation.dispatch(DrawerActions.toggleDrawer());
-                  }}>
-                  <View style={styles(false).menuContainer}>
-                    <Image
-                      source={require('../../assets/childHomeMenu.png')}
-                      style={styles(false).iconImageStyle}
-                    />
-                  </View>
-                </TouchableOpacity>
-                <VerticalLine
-                  stroke={1}
-                  opacity={0.3}
-                  height={'100%'}
-                  color={'#A8A8A8'}
-                />
-                <TouchableOpacity
-                  onPress={() => {
-                    NavigationService.navigate('GlobalSearch');
-                  }}>
-                  <View style={styles(false).searchContainer}>
-                    <Image
-                      source={require('../../assets/searchIcon.png')}
-                      style={styles(false).iconImageStyle}
-                    />
-                  </View>
-                </TouchableOpacity>
-              </View>
-            </Neumorphism>
-          }
         />
-      </View>
-      <View style={styles(direction).newChatMainContainer}>
-        <View style={styles(direction).newChatContainer}>
-          <TouchableOpacity>
-            <Image
-              source={require('../../assets/chatListNewChat.png')}
-              style={styles(direction).newChatImage}
-            />
-          </TouchableOpacity>
-        </View>
       </View>
     </>
   );

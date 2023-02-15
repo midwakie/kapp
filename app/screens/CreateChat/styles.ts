@@ -20,19 +20,53 @@ const styles = (direction: string) =>
       width: '100%',
       height: '100%',
       paddingBottom: '25@s',
-
-      backgroundColor: '#EBEEF0',
+      ackgroundColor: '#EBEEF0',
     },
+
+    searchIcon: {
+      right: '20@s',
+    },
+
+    inputTextContainer: {
+      width: '100%',
+      marginTop: '40@s',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    createGroupMainContainer: {
+      flexDirection: 'row-reverse',
+      right: '15@s',
+
+      top: '20@s',
+      marginBottom: '20@s',
+    },
+    createGroupContainer: {
+      width: '140@s',
+      height: '40@s',
+      borderRadius: '8@s',
+      alignItems: 'center',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      paddingHorizontal: '10@s',
+    },
+    groupIcon: {
+      width: '19@s',
+      height: '20@s',
+      resizeMode: 'contain',
+    },
+    createGroupText: {
+      fontFamily: 'Nunito-Regular',
+      fontWeight: '700',
+      fontSize: '14@s',
+      color: '#03A0E3',
+    },
+
     topContainer: {
       justifyContent: 'center',
       alignItems: 'center',
       position: 'absolute',
       width: '38@s',
       marginLeft: '20@s',
-    },
-    topImage: {
-      width: '50@s',
-      height: '50@s',
     },
     gradientTextContainer: {
       width: '100%',
@@ -71,15 +105,6 @@ const styles = (direction: string) =>
       width: '148@ms',
       backgroundColor: '#EBEEF0',
     },
-    cardListStyle: {
-      height: '65@s',
-      width: Dimensions.get('window').width - scale(40),
-      backgroundColor: '#EBEEF0',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      borderRadius: '14@s',
-    },
     cardListStyleTwo: {
       paddingHorizontal: '20@s',
       height: '65@s',
@@ -110,25 +135,7 @@ const styles = (direction: string) =>
       height: '22@s',
       width: '22@s',
     },
-    onlineViewContainer: {
-      width: '12@s',
-      height: '12@s',
-      borderRadius: '12@s',
-      top: '38@s',
-      left: '35@s',
-      position: 'absolute',
-    },
-    onlineImage: {
-      width: '12@s',
-      height: '12@s',
-      position: 'absolute',
-    },
-    blueImageContainer: {
-      height: '22@s',
-      width: '22@s',
-      marginTop: '15@s',
-      resizeMode: 'contain',
-    },
+
     newChatMainContainer: {
       position: 'absolute',
       justifyContent: 'flex-end',
@@ -138,14 +145,6 @@ const styles = (direction: string) =>
     thirdContainer: {
       alignItems: 'flex-end',
       justifyContent: 'flex-end',
-    },
-    textTimeContainer: {
-      width: '70@s',
-    },
-    timeText: {
-      color: '#03A0E3',
-      fontSize: '12@s',
-      fontWeight: '400',
     },
 
     innerDirection: {
@@ -190,7 +189,7 @@ const styles = (direction: string) =>
     detailsContainer: {
       alignItems: 'flex-start',
       flexDirection: 'column',
-      left: '20@s',
+      left: '14@s',
       top: '5@s',
       width: '80%',
     },
@@ -199,9 +198,6 @@ const styles = (direction: string) =>
       fontFamily: 'Nunito-Regular',
       fontSize: '12@s',
       fontWeight: '600',
-      top: '8@s',
-      maxHeight: '16@s',
-      maxWidth: '80%',
       width: '100%',
       color: '#758DAC',
     },

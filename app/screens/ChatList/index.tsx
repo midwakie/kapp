@@ -231,7 +231,8 @@ const ChatList: React.FC = () => {
 
       <View style={styles(direction).newChatMainContainer}>
         <View style={styles(direction).newChatContainer}>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => NavigationService.navigate('CreateChat')}>
             <Image
               source={require('../../assets/chatListNewChat.png')}
               style={styles(direction).newChatImage}
