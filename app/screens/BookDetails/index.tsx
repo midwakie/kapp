@@ -17,8 +17,12 @@ import TitleBar from 'app/components/buttons/TitleBar';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import Neumorphism from 'react-native-neumorphism';
 import { ms, scale } from 'react-native-size-matters';
+import { useSelector } from 'react-redux';
 
 const BookDetails: React.FC = () => {
+  const selectedRole = useSelector(
+    (state: IState) => state.currentCustomerReducer.role,
+  );
   const refSlider: React.MutableRefObject<any> = useRef(null);
   const books = [
     {
