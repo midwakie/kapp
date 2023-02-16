@@ -26,6 +26,8 @@ import VerticalLine from 'app/components/lines/VerticalLine';
 import { DrawerActions } from '@react-navigation/native';
 import useDeviceOrientation from 'app/hooks/useDeviceOrientation';
 import toys from 'app/models/api/toys';
+import { useDispatch } from 'react-redux';
+import { addToCart } from 'app/store/actions/cartActions';
 
 const Shop: React.FC = (props: any) => {
   const { control } = useForm();
@@ -35,6 +37,11 @@ const Shop: React.FC = (props: any) => {
   const [toyActive, setToyActive] = useState(false);
   const [gameActive, setGameActive] = useState(false);
   const [puzzleActive, setPuzzleActive] = useState(false);
+  const dispatch = useDispatch();
+  const handleAddToCart = item => {
+    // dispatch(addToCart(item));
+    NavigationService.navigate('ToyDetail', { book: item });
+  };
   const Toy = () => {
     setToyActive(true);
     setGameActive(false);
@@ -54,7 +61,7 @@ const Shop: React.FC = (props: any) => {
   const CardItem = ({ book }: any) => {
     return (
       <View style={styles(direction).cardContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => handleAddToCart(book)}>
           <Neumorphism
             style={styles(direction).neomorph}
             lightColor={'#ffffff'}
@@ -173,7 +180,7 @@ const Shop: React.FC = (props: any) => {
                   numColumns={Math.floor(
                     Dimensions.get('window').width / scale(158),
                   )}
-                  data={books}
+                  data={toys}
                   renderItem={({ item }) => {
                     return <CardItem book={item} />;
                   }}
