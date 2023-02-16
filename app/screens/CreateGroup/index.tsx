@@ -33,15 +33,19 @@ import BookDetails from '../BookDetails';
 import { Item } from 'react-native-paper/lib/typescript/components/List/List';
 import { id } from 'date-fns/locale';
 import CustomInput from 'app/components/inputs/CustomInput';
+import RadioButton from 'app/components/buttons/RadioButton';
 
-const CreateChat: React.FC = () => {
+const CreateGroup: React.FC = () => {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
   const [description, setDescription] = useState('');
   const currentOrientation = useDeviceOrientation();
   const { control } = useForm();
-
-  const details = [
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const onPress = index => {
+    setSelectedIndex(index);
+  };
+  const [details, setDetails] = useState([
     {
       id: 1,
       name: 'Afthab',
@@ -105,9 +109,9 @@ const CreateChat: React.FC = () => {
       unreadText: 1,
       textTime: 'Yesterday',
     },
-  ];
+  ]);
 
-  const CardListItem = ({ book }: any) => {
+  const CardListItem = ({ book, index }: any) => {
     return (
       <View style={styles(direction).neomorphContainer}>
         <Neumorphism
@@ -116,22 +120,27 @@ const CreateChat: React.FC = () => {
           darkColor={'#C6CEDA'}
           shapeType={'flat'}
           radius={scale(14)}>
-          <TouchableOpacity>
-            <View style={styles(direction).cardListStyleTwo}>
-              <View style={styles(direction).chatInfo}>
-                <View style={styles(direction).imageViewContainer}>
-                  <Image
-                    source={book.img}
-                    style={styles(direction).chatImage}
-                  />
-                </View>
-                <View style={styles(direction).detailsContainer}>
-                  <Text style={styles(direction).chatName}>{book.name}</Text>
-                  <Text style={styles(direction).chatText}>{book.chat}</Text>
-                </View>
+          <View style={styles(direction).cardListStyleTwo}>
+            <View style={styles(direction).chatInfo}>
+              <View style={styles(direction).imageViewContainer}>
+                <Image source={book.img} style={styles(direction).chatImage} />
               </View>
+              <View style={styles(direction).detailsContainer}>
+                <Text style={styles(direction).chatName}>{book.name}</Text>
+                <Text style={styles(direction).chatText}>{book.chat}</Text>
+              </View>
+
+              <RadioButton
+                id={'1'}
+                onPress={() => {
+                  onPress(index);
+                }}
+                selected={setSelectedIndex === index}
+                color={'#03A0E3'}
+                labelStyle={styles(direction).radioLabel}
+              />
             </View>
-          </TouchableOpacity>
+          </View>
         </Neumorphism>
       </View>
     );
@@ -161,22 +170,15 @@ const CreateChat: React.FC = () => {
                 }
               />
             </View>
-            <View style={styles(direction).createGroupMainContainer}>
+            <View style={styles(direction).nextMainContainer}>
               <Neumorphism
                 lightColor={'#ffffff'}
                 darkColor={'#C6CEDA'}
                 shapeType={'flat'}
                 radius={scale(8)}>
-                <TouchableOpacity
-                  onPress={() => NavigationService.navigate('CreateGroup')}>
-                  <View style={styles(direction).createGroupContainer}>
-                    <Image
-                      source={require('../../assets/createGroupIcon.png')}
-                      style={styles(direction).groupIcon}
-                    />
-                    <Text style={styles(direction).createGroupText}>
-                      {t('Create Group')}
-                    </Text>
+                <TouchableOpacity>
+                  <View style={styles(direction).nextContainer}>
+                    <Text style={styles(direction).nextText}>{t('Next')}</Text>
                   </View>
                 </TouchableOpacity>
               </Neumorphism>
@@ -187,9 +189,10 @@ const CreateChat: React.FC = () => {
                 key={'-'}
                 keyExtractor={item => '-' + item.id}
                 data={details}
-                renderItem={({ item }) => {
+                renderItem={({ item, index }) => {
                   return <CardListItem book={item} />;
                 }}
+                extraData={setDetails}
               />
             </View>
           </View>
@@ -215,7 +218,7 @@ const CreateChat: React.FC = () => {
             <View style={styles(false).gradientTextContainer}>
               <GradientText
                 colors={['#2AA7DD', '#2AA7DD']}
-                text={t('Create Chat')}
+                text={t('Create Group')}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 0, y: 1 }}
                 textStyle={styles(direction).gradientTextStyle as TextStyle}
@@ -227,4 +230,4 @@ const CreateChat: React.FC = () => {
     </>
   );
 };
-export default CreateChat;
+export default CreateGroup;
