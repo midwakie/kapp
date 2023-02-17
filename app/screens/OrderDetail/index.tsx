@@ -38,8 +38,6 @@ const OrderDetail: React.FC = () => {
     setShowNumbers(false);
     setCount(number);
   };
-  // const cart = useSelector(state => state.cartReducer);
-  // console.log(cart);
   return (
     <>
       <ScrollView style={styles(direction).container} bounces={false}>

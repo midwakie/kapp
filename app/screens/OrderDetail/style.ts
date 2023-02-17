@@ -31,19 +31,15 @@ const styles = (direction: string) =>
       width: '100%',
       height: '461.92@s',
       resizeMode: 'stretch',
-      // position: 'absolute',
       top: '-36@s',
     },
     neumorphicContainer: {
       top: '-95@s',
-      // marginTop: '370@s',
-      // position: 'absolute',
     },
     container2: {
       backgroundColor: '#EBEEF0',
       width: '100%',
       height: '100%',
-      // paddingBottom: '20@s',
       paddingHorizontal: '20@s',
     },
     lionKing: {
@@ -58,7 +54,6 @@ const styles = (direction: string) =>
       fontSize: '14@s',
       fontWeight: '600',
       color: '#758DAC',
-      // marginTop: '28@s',
     },
     row: {
       flexDirection: 'row',
@@ -113,16 +108,13 @@ const styles = (direction: string) =>
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
-      // alignSelf: 'center',
       backgroundColor: '#EBEEF0',
-      // paddingHorizontal: '15@s',
     },
     text5: {
       fontFamily: 'Nunito-Regular',
       fontSize: '14@s',
       fontWeight: '600',
       color: '#758DAC',
-      // marginLeft: '20@s',
     },
     neomorphContainer2: {
       marginLeft: '62@s',
@@ -170,8 +162,6 @@ const styles = (direction: string) =>
       fontSize: '16@s',
       fontWeight: '600',
       color: '#3B3B48',
-      // marginTop: '10@s',
-      // alignSelf: 'center',
     },
     container5: {
       flexDirection: 'column',
@@ -227,20 +217,13 @@ const styles = (direction: string) =>
       width: 335,
       height: 282,
       borderRadius: 14,
-      // alignSelf: 'center',
-      // alignItems: 'center',
-      // justifyContent: 'center',
     },
     closeButton: {
-      // position: 'absolute',
-      // top: 20,
-      // right: 20,
       alignItems: 'center',
       justifyContent: 'center',
       backgroundColor: '#EBEEF0',
       height: '38@s',
       width: '38@s',
-      // padding: 10,
       borderRadius: 50,
     },
     closeButtonText: {
@@ -266,7 +249,6 @@ const styles = (direction: string) =>
       fontSize: '22@s',
       fontWeight: '700',
       color: '#2F4868',
-      // padding: 10,
       textAlign: 'center',
     },
   });
