@@ -35,7 +35,6 @@ const ShoppingCart: React.FC = () => {
   const currentOrientation = useDeviceOrientation();
   const dispatch = useDispatch();
   const cart = useSelector(state => state.cartReducer.cart);
-  console.log(cart);
 
   const CardListItem = ({ book }: any) => {
     return (
@@ -80,21 +79,20 @@ const ShoppingCart: React.FC = () => {
         <ScrollView style={styles(direction).container} bounces={false}>
           <View style={styles(direction).container2}>
             <View style={styles(direction).cardContainer}>
-              <View style={{ flex: 1 }}>
-                {cart.length > 0 ? (
-                  <FlatList
-                    numColumns={1}
-                    key={'-'}
-                    keyExtractor={item => '-' + item.id}
-                    data={cart}
-                    renderItem={({ item }) => {
-                      return <CardListItem book={item} />;
-                    }}
-                  />
-                ) : (
-                  <Text style={styles(direction).text}>Your cart is empty</Text>
-                )}
-              </View>
+              <FlatList
+                numColumns={1}
+                key={'-'}
+                keyExtractor={item => '-' + item.id}
+                data={cart}
+                renderItem={({ item }) => {
+                  return <CardListItem book={item} />;
+                }}
+                ListEmptyComponent={
+                  <Text style={styles(direction).text}>
+                    {t('Your cart is empty')}
+                  </Text>
+                }
+              />
             </View>
           </View>
         </ScrollView>

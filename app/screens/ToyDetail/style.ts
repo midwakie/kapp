@@ -189,20 +189,22 @@ const styles = (direction: string) =>
     },
     container5: {
       marginTop: '15@s',
-      alignSelf: 'center',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
     text8: {
       fontFamily: 'Nunito-Regular',
       fontSize: '15@s',
       fontWeight: '600',
       color: '#2F4868',
-      marginLeft: '17@s',
+      textAlign: 'center',
     },
     text9: {
       fontFamily: 'Nunito-Regular',
       fontSize: '15@s',
       fontWeight: '600',
       color: '#2F4868',
+      textAlign: 'center',
     },
     buttonConfirmationView: {
       flexDirection: 'row',

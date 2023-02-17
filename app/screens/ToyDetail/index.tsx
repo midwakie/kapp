@@ -205,14 +205,14 @@ const ToyDetail: React.FC = () => {
                               source={require('../../assets/coin.png')}
                             />
                             <Text style={styles(direction).text7}>
-                              Need 80 points
+                              {t('Need 80 points')}
                             </Text>
                             <View style={styles(direction).container5}>
                               <Text style={styles(direction).text8}>
-                                Not enough points
+                                {t('Not enough points')}
                               </Text>
                               <Text style={styles(direction).text9}>
-                                to purchase this product
+                                {t('to purchase this product')}
                               </Text>
                             </View>
                           </View>
@@ -221,7 +221,7 @@ const ToyDetail: React.FC = () => {
                     </Neumorphism>
                     <RegularButton
                       onPress={() => handleAddToCart(book, quantity)}
-                      text={'Add to Cart'}
+                      text={t('Add to Cart')}
                       radius={50}
                       height={'50@s'}
                       width={'149@s'}
@@ -377,7 +377,7 @@ const ToyDetail: React.FC = () => {
                     </Neumorphism>
                     <RegularButton
                       onPress={() => handleAddToCart(book, quantity)}
-                      text={'Add to Cart'}
+                      text={t('Add to Cart')}
                       radius={50}
                       height={'50@s'}
                       width={'200@s'}

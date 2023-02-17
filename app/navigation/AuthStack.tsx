@@ -80,6 +80,7 @@ import CreateGroup from 'app/screens/CreateGroup';
 import Shop from 'app/screens/Shop';
 import ToyDetail from 'app/screens/ToyDetail';
 import OrderDetail from 'app/screens/OrderDetail';
+import OrderList from 'app/screens/OrderList';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -665,8 +666,14 @@ const AuthStack = () => {
         name="OrderDetail"
         component={OrderDetail}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="OrderList"
+        component={OrderList}
+        options={{
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
