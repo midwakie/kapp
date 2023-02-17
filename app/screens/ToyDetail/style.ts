@@ -31,19 +31,18 @@ const styles = (direction: string) =>
       width: '100%',
       height: '461.92@s',
       resizeMode: 'contain',
-      // position: 'absolute',
       top: '-36@s',
     },
     neumorphicContainer: {
       top: '-95@s',
-      // marginTop: '370@s',
-      // position: 'absolute',
+    },
+    neumorphicContainer3: {
+      top: '-50@s',
     },
     container2: {
       backgroundColor: '#EBEEF0',
       width: '100%',
       height: '100%',
-      // paddingBottom: '20@s',
       paddingHorizontal: '20@s',
     },
     lionKing: {
@@ -102,6 +101,13 @@ const styles = (direction: string) =>
       color: '#2F4868',
       marginLeft: '52@s',
     },
+    text10: {
+      fontFamily: 'Nunito-Regular',
+      fontSize: '14@s',
+      fontWeight: '600',
+      color: '#2F4868',
+      marginLeft: '68@s',
+    },
     neumorphicContainer1: {
       marginTop: '43@s',
     },
@@ -110,8 +116,6 @@ const styles = (direction: string) =>
       height: '70@s',
       flexDirection: 'row',
       alignItems: 'center',
-      // justifyContent: 'center',
-      // alignSelf: 'center',
       backgroundColor: '#EBEEF0',
       paddingHorizontal: '15@s',
     },
@@ -120,13 +124,18 @@ const styles = (direction: string) =>
       fontSize: '14@s',
       fontWeight: '600',
       color: '#758DAC',
-      // marginLeft: '20@s',
     },
     neomorphContainer2: {
       marginLeft: '62@s',
     },
+    neomorphContainer5: {
+      marginLeft: '140@s',
+    },
     neomorphContainer3: {
       marginLeft: '26@s',
+    },
+    neomorphContainer6: {
+      marginLeft: '46@s',
     },
     neomorphContainer4: {
       height: '38@s',
@@ -163,6 +172,13 @@ const styles = (direction: string) =>
       color: '#2F4868',
       marginLeft: '26@s',
     },
+    text11: {
+      fontFamily: 'Nunito-Regular',
+      fontSize: '22@s',
+      fontWeight: '700',
+      color: '#2F4868',
+      marginLeft: '46@s',
+    },
     text7: {
       fontFamily: 'Nunito-Regular',
       fontSize: '16@s',
@@ -181,14 +197,12 @@ const styles = (direction: string) =>
       fontWeight: '600',
       color: '#2F4868',
       marginLeft: '17@s',
-      // alignSelf: 'center',
     },
     text9: {
       fontFamily: 'Nunito-Regular',
       fontSize: '15@s',
       fontWeight: '600',
       color: '#2F4868',
-      // alignSelf: 'center',
     },
     buttonConfirmationView: {
       flexDirection: 'row',
@@ -199,6 +213,13 @@ const styles = (direction: string) =>
     button: {
       height: '50@s',
       width: '141@s',
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderRadius: '50@s',
+    },
+    button1: {
+      height: '50@s',
+      width: '191@s',
       alignItems: 'center',
       justifyContent: 'center',
       borderRadius: '50@s',
@@ -227,20 +248,13 @@ const styles = (direction: string) =>
       width: 335,
       height: 282,
       borderRadius: 14,
-      // alignSelf: 'center',
-      // alignItems: 'center',
-      // justifyContent: 'center',
     },
     closeButton: {
-      // position: 'absolute',
-      // top: 20,
-      // right: 20,
       alignItems: 'center',
       justifyContent: 'center',
       backgroundColor: '#EBEEF0',
       height: '38@s',
       width: '38@s',
-      // padding: 10,
       borderRadius: 50,
     },
     closeButtonText: {

@@ -43,6 +43,8 @@ import ClubChannel from 'app/screens/ClubChannel';
 import SubscribedChannel from 'app/screens/SubscribedChannel';
 import PopularFeed from 'app/screens/PopularFeed';
 import FeaturedChannel from 'app/screens/FeaturedChannel';
+import Shop from 'app/screens/Shop';
+import ShopStack from './DrawerStacks/ShopStack';
 
 const Drawer = createDrawerNavigator();
 
@@ -312,7 +314,7 @@ const AppStack = () => {
       />
       <Drawer.Screen
         name="Shop"
-        component={NoSearch}
+        component={ShopStack}
         options={{
           drawerLabel: 'Shop',
           iconImage: require('../assets/side_menu/shop.png'),

@@ -14,16 +14,26 @@ export const cartReducer = createReducer(initialState, {
   [ADD_TO_CART](state, action) {
     const itemInCart = state.cart.find(item => item.id === action.payload.id);
     if (itemInCart) {
-      itemInCart.quantity = action.payload.quantity;
-      itemInCart.price = itemInCart.quantity * action.payload.price;
-      return { ...state };
+      const newQuantity = itemInCart.quantity + action.payload.quantity;
+      const newPrice =
+        itemInCart.price + action.payload.price * action.payload.quantity;
+      const updatedItem = {
+        ...itemInCart,
+        quantity: newQuantity,
+        price: newPrice,
+      };
+      const updatedCart = state.cart.map(item =>
+        item.id === itemInCart.id ? updatedItem : item,
+      );
+      return { ...state, cart: updatedCart };
     } else {
+      const newItem = {
+        ...action.payload,
+        price: action.payload.price * action.payload.quantity,
+      };
       return {
         ...state,
-        cart: [
-          ...state.cart,
-          { ...action.payload, quantity: 1, price: action.payload.price },
-        ],
+        cart: [...state.cart, newItem],
       };
     }
   },

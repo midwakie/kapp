@@ -34,7 +34,6 @@ import FeedDetailReport from 'app/screens/FeedDetailReport';
 import Publish from 'app/screens/Publish';
 import RewardPointFilter from 'app/screens/RewardPointFilter';
 import EditTeacherProfile from 'app/screens/EditTeacherProfile';
-import ChildHome from 'app/screens/ChildHome';
 import MyFeeds from 'app/screens/MyFeeds';
 import BookReview from 'app/screens/BookReview';
 import ChildFullProfile from 'app/screens/ChildFullProfile';
@@ -74,6 +73,10 @@ import PublishDocument from 'app/screens/PublishDocument';
 import ContinueReading from 'app/screens/EBooks/ContinueReading';
 import WhatsNew from 'app/screens/EBooks/WhatsNew';
 import Favorites from 'app/screens/EBooks/Favorites';
+import ShoppingCart from 'app/screens/ShoppingCart';
+import ChatList from 'app/screens/ChatList';
+import CreateChat from 'app/screens/CreateChat';
+import CreateGroup from 'app/screens/CreateGroup';
 import Shop from 'app/screens/Shop';
 import ToyDetail from 'app/screens/ToyDetail';
 import OrderDetail from 'app/screens/OrderDetail';
@@ -104,7 +107,7 @@ const AuthStack = () => {
 
   return (
     <AuthenticationStack.Navigator
-      initialRouteName={'Shop'}
+      initialRouteName={initialRouteName}
       screenOptions={{
         ...TransitionPresets.SlideFromRightIOS,
       }}>
@@ -159,6 +162,30 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
+        name="ChatList"
+        component={ChatList}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="CreateGroup"
+        component={CreateGroup}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="CreateChat"
+        component={CreateChat}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
         name="Child Profile"
         component={ChildProfile}
         options={{
@@ -167,16 +194,16 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
-        name="MyChannel"
-        component={MyChannel}
+        name="ActivitiesStats"
+        component={ActivitiesStats}
         options={{
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
       />
       <Stack.Screen
-        name="ActivitiesStats"
-        component={ActivitiesStats}
+        name="ShoppingCart"
+        component={ShoppingCart}
         options={{
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
