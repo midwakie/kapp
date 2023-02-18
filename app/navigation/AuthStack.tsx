@@ -42,7 +42,6 @@ import EditChildProfile from 'app/screens/EditChildProfile';
 import RecommendedVideos from 'app/screens/RecommendedVideos';
 import ManageActivities from 'app/screens/ManageActivities';
 import { ILoading } from 'app/models/reducers/loading';
-import History from 'app/screens/EBooks/History';
 import ChildProfile from 'app/screens/ChildProfile';
 import Home from 'app/screens/Home';
 import SuggestionsForYou from 'app/screens/SuggestionsForYou';
@@ -71,10 +70,6 @@ import BookSeries from 'app/screens/BookSeries';
 import FinishBook from 'app/screens/FinishBook';
 import SelectEBook from 'app/screens/SelectEBook';
 import PublishDocument from 'app/screens/PublishDocument';
-import Biology from 'app/screens/EBooks/Biology';
-import Painting from 'app/screens/EBooks/Painting';
-import Sports from 'app/screens/EBooks/Sports';
-import Trending from 'app/screens/EBooks/Trending';
 import ContinueReading from 'app/screens/EBooks/ContinueReading';
 import WhatsNew from 'app/screens/EBooks/WhatsNew';
 import Favorites from 'app/screens/EBooks/Favorites';
@@ -83,7 +78,9 @@ import ChatList from 'app/screens/ChatList';
 import CreateChat from 'app/screens/CreateChat';
 import CreateGroup from 'app/screens/CreateGroup';
 import Shop from 'app/screens/Shop';
-import OrderDetails from 'app/screens/OrderDetails';
+import ToyDetail from 'app/screens/ToyDetail';
+import OrderDetail from 'app/screens/OrderDetail';
+import OrderList from 'app/screens/OrderList';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -658,8 +655,24 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
-        name="OrderDetails"
-        component={OrderDetails}
+        name="ToyDetail"
+        component={ToyDetail}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="OrderDetail"
+        component={OrderDetail}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="OrderList"
+        component={OrderList}
         options={{
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,

@@ -104,8 +104,12 @@ const styles = (direction: string) =>
     minusImage: {
       height: '26@s',
       width: '26@s',
-      marginRight: '20@s',
       resizeMode: 'contain',
+    },
+    minusTouch: {
+      height: '26@s',
+      width: '26@s',
+      marginRight: '20@s',
     },
 
     innerDirection: {
@@ -117,9 +121,20 @@ const styles = (direction: string) =>
     cardContainer: {
       marginTop: '20@s',
       justifyContent: 'center',
+      textAlign: 'center',
       alignItems: 'center',
       height: '100%',
       width: '100%',
+    },
+    text: {
+      marginTop: '100@s',
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: '100%',
+      color: '#3B3B48',
+      fontSize: '20@s',
+      fontFamily: 'Nunito-Regular',
+      fontWeight: '700',
     },
     neomorphContainer: {
       justifyContent: 'center',

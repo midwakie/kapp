@@ -249,5 +249,11 @@
   "Send Invitation": "Send Invitation",
   "Edit Profile": "Edit Profile",
   "Delete Profile": "Delete Profile",
-  "Cart List":"Cart List"
+  "Cart List":"Cart List",
+  "Add to Cart":"Add to Cart",
+  "Not enough points": "Not enough points",
+  "to purchase this product": "to purchase this product",
+  "Need 80 points":"Need 80 points",
+  "How Many?": "How Many?",
+  "Your cart is empty": "Your cart is empty"
 }

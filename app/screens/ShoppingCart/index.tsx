@@ -16,6 +16,7 @@ import {
   TouchableWithoutFeedback,
   Alert,
   Dimensions,
+  Pressable,
 } from 'react-native';
 import TitleBar from 'app/components/buttons/TitleBar';
 import Neumorphism from 'react-native-neumorphism';
@@ -25,56 +26,15 @@ import useDeviceOrientation from 'app/hooks/useDeviceOrientation';
 import BookDetails from '../BookDetails';
 import { Item } from 'react-native-paper/lib/typescript/components/List/List';
 import { id } from 'date-fns/locale';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeFromCart } from 'app/store/actions/cartActions';
 
 const ShoppingCart: React.FC = () => {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
   const currentOrientation = useDeviceOrientation();
-
-  const details = [
-    {
-      id: 1,
-      name: 'Lion King',
-      price: '$12.50',
-      img: require('../../assets/lionKing.png'),
-    },
-    {
-      id: 2,
-      name: 'Mickey Mouse',
-      price: '$12',
-      img: require('../../assets/mickeyMouse.png'),
-    },
-    {
-      id: 3,
-      name: 'Pink Panther',
-      price: '$5',
-      img: require('../../assets/lionKing.png'),
-    },
-    {
-      id: 4,
-      name: 'Kung Fu Panda',
-      price: '$16.50',
-      img: require('../../assets/lionKing.png'),
-    },
-    {
-      id: 5,
-      name: 'Science',
-      price: '$12',
-      img: require('../../assets/mickeyMouse.png'),
-    },
-    {
-      id: 6,
-      name: 'Easy Maths',
-      price: '$8',
-      img: require('../../assets/lionKing.png'),
-    },
-    {
-      id: 7,
-      name: 'Mr.Bean',
-      price: '$12.50',
-      img: require('../../assets/mickeyMouse.png'),
-    },
-  ];
+  const dispatch = useDispatch();
+  const cart = useSelector(state => state.cartReducer.cart);
 
   const CardListItem = ({ book }: any) => {
     return (
@@ -94,17 +54,19 @@ const ShoppingCart: React.FC = () => {
                 />
               </View>
               <View style={styles(direction).detailsContainer}>
-                <Text style={styles(direction).productName}>{book.name}</Text>
-                <Text style={styles(direction).priceText}>{book.price}</Text>
+                <Text style={styles(direction).productName}>{book.title}</Text>
+                <Text
+                  style={styles(direction).priceText}>{`$${book.price}`}</Text>
               </View>
             </View>
-
-            <TouchableOpacity>
-              <Image
-                source={require('../../assets/minus.png')}
-                style={styles(direction).minusImage}
-              />
-            </TouchableOpacity>
+            <View style={styles(direction).minusTouch}>
+              <Pressable onPress={() => dispatch(removeFromCart(book))}>
+                <Image
+                  source={require('../../assets/remove.png')}
+                  style={styles(direction).minusImage}
+                />
+              </Pressable>
+            </View>
           </View>
         </Neumorphism>
       </View>
@@ -121,10 +83,15 @@ const ShoppingCart: React.FC = () => {
                 numColumns={1}
                 key={'-'}
                 keyExtractor={item => '-' + item.id}
-                data={details}
+                data={cart}
                 renderItem={({ item }) => {
                   return <CardListItem book={item} />;
                 }}
+                ListEmptyComponent={
+                  <Text style={styles(direction).text}>
+                    {t('Your cart is empty')}
+                  </Text>
+                }
               />
             </View>
           </View>
