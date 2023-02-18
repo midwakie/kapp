@@ -75,319 +75,166 @@ const ToyDetail: React.FC = () => {
               />
             </View>
           </View>
-          {currentOrientation === 'portrait' ? (
-            <View style={styles(direction).neumorphicContainer}>
-              <Neumorphism
-                lightColor={'#A8A8A8'}
-                darkColor={'#E5E5E5'}
-                shapeType={'flat'}
-                radius={scale(25)}>
-                <View style={styles(direction).container2}>
-                  <Text style={styles(direction).lionKing}>{book.title}</Text>
-                  <Text style={styles(direction).description}>
-                    {book.description}
-                  </Text>
-                  <View style={styles(direction).row}>
-                    <Text style={styles(direction).text}>Color</Text>
-                    <Text style={styles(direction).text1}>{book.color}</Text>
-                  </View>
-                  <View style={styles(direction).row1}>
-                    <Text style={styles(direction).text}>Material</Text>
-                    <Text style={styles(direction).text2}>{book.material}</Text>
-                  </View>
-                  <View style={styles(direction).row1}>
-                    <Text style={styles(direction).text}>Age Group</Text>
-                    <Text style={styles(direction).text3}>{book.age}</Text>
-                  </View>
-                  <View style={styles(direction).row1}>
-                    <Text style={styles(direction).text}>Weight</Text>
-                    <Text style={styles(direction).text4}>{book.weight}</Text>
-                  </View>
-                  <View style={styles(direction).row1}>
-                    <Text style={styles(direction).text}>Price</Text>
-                    <Text
-                      style={styles(direction).text10}>{`$${book.price}`}</Text>
-                  </View>
-                  <View style={styles(direction).neumorphicContainer1}>
-                    <Neumorphism
-                      lightColor={'#ffffff'}
-                      darkColor={'#A8A8A8'}
-                      shapeType={'flat'}
-                      radius={scale(14)}>
-                      <View style={styles(direction).container3}>
-                        <Text style={styles(direction).text5}>
-                          {t('How Many?')}
-                        </Text>
-                        <TouchableOpacity
-                          onPress={handleDecrement}
-                          style={styles(direction).neomorphContainer2}>
-                          <Neumorphism
-                            lightColor={'#ffffff'}
-                            darkColor={'#A8A8A8'}
-                            shapeType={'flat'}
-                            radius={scale(150)}>
-                            <View style={styles(direction).container4}>
-                              <Image
-                                style={styles(direction).imageStyle1}
-                                source={require('../../assets/minus.png')}
-                              />
-                            </View>
-                          </Neumorphism>
-                        </TouchableOpacity>
-                        <Text style={styles(direction).text6}>{quantity}</Text>
-                        <TouchableOpacity
-                          onPress={handleIncrement}
-                          style={styles(direction).neomorphContainer3}>
-                          <Neumorphism
-                            lightColor={'#ffffff'}
-                            darkColor={'#A8A8A8'}
-                            shapeType={'flat'}
-                            radius={scale(150)}>
-                            <View style={styles(direction).container4}>
-                              <Image
-                                style={styles(direction).imageStyle1}
-                                source={require('../../assets/plus.png')}
-                              />
-                            </View>
-                          </Neumorphism>
-                        </TouchableOpacity>
-                      </View>
-                    </Neumorphism>
-                  </View>
-                  <View style={styles(direction).buttonConfirmationView}>
-                    <Neumorphism
-                      lightColor={'#ffffff'}
-                      darkColor={'#A8A8A8'}
-                      shapeType={'flat'}
-                      radius={scale(50)}>
+          <View
+            style={
+              currentOrientation === 'portrait'
+                ? styles(direction).neumorphicContainer
+                : styles(direction).neumorphicContainerLandscape
+            }>
+            <Neumorphism
+              lightColor={'#A8A8A8'}
+              darkColor={'#E5E5E5'}
+              shapeType={'flat'}
+              radius={scale(25)}>
+              <View style={styles(direction).container2}>
+                <Text style={styles(direction).lionKing}>{book.title}</Text>
+                <Text style={styles(direction).description}>
+                  {book.description}
+                </Text>
+                <View style={styles(direction).row}>
+                  <Text style={styles(direction).text}>Color</Text>
+                  <Text style={styles(direction).text1}>{book.color}</Text>
+                </View>
+                <View style={styles(direction).row1}>
+                  <Text style={styles(direction).text}>Material</Text>
+                  <Text style={styles(direction).text2}>{book.material}</Text>
+                </View>
+                <View style={styles(direction).row1}>
+                  <Text style={styles(direction).text}>Age Group</Text>
+                  <Text style={styles(direction).text3}>{book.age}</Text>
+                </View>
+                <View style={styles(direction).row1}>
+                  <Text style={styles(direction).text}>Weight</Text>
+                  <Text style={styles(direction).text4}>{book.weight}</Text>
+                </View>
+                <View style={styles(direction).row1}>
+                  <Text style={styles(direction).text}>Price</Text>
+                  <Text
+                    style={styles(direction).text10}>{`$${book.price}`}</Text>
+                </View>
+                <View style={styles(direction).neumorphicContainer1}>
+                  <Neumorphism
+                    lightColor={'#ffffff'}
+                    darkColor={'#A8A8A8'}
+                    shapeType={'flat'}
+                    radius={scale(14)}>
+                    <View style={styles(direction).container3}>
+                      <Text style={styles(direction).text5}>
+                        {t('How Many?')}
+                      </Text>
                       <TouchableOpacity
-                        onPress={() => setModalVisible(!modalVisible)}>
-                        <LinearGradient
-                          colors={['#FF6F81', '#F0374E']}
-                          style={styles(direction).button}>
-                          <View style={styles(direction).contentContainer}>
+                        onPress={handleDecrement}
+                        style={styles(direction).neomorphContainer2}>
+                        <Neumorphism
+                          lightColor={'#ffffff'}
+                          darkColor={'#A8A8A8'}
+                          shapeType={'flat'}
+                          radius={scale(150)}>
+                          <View style={styles(direction).container4}>
                             <Image
                               style={styles(direction).imageStyle1}
-                              source={require('../../assets/coin.png')}
+                              source={require('../../assets/minus.png')}
                             />
-                            <Text style={styles(direction).buttonText}>
-                              {book.coin}
-                            </Text>
                           </View>
-                        </LinearGradient>
+                        </Neumorphism>
                       </TouchableOpacity>
-                      <Modal
-                        animationType="fade"
-                        transparent={true}
-                        visible={modalVisible}
-                        onRequestClose={() => setModalVisible(false)}>
-                        <View style={styles(direction).modalContainer}>
-                          <View style={styles(direction).modalView}>
-                            <View style={styles(direction).neomorphContainer4}>
-                              <Neumorphism
-                                lightColor={'#ffffff'}
-                                darkColor={'#A8A8A8'}
-                                shapeType={'flat'}
-                                radius={scale(50)}>
-                                <View style={styles(direction).closeButton}>
-                                  <TouchableOpacity
-                                    onPress={() => setModalVisible(false)}>
-                                    <Image
-                                      style={styles(direction).coinImage}
-                                      source={require('../../assets/cancel.png')}
-                                    />
-                                  </TouchableOpacity>
-                                </View>
-                              </Neumorphism>
-                            </View>
-                            <Image
-                              style={styles(direction).imageStyle2}
-                              source={require('../../assets/coin.png')}
-                            />
-                            <Text style={styles(direction).text7}>
-                              {t('Need 80 points')}
-                            </Text>
-                            <View style={styles(direction).container5}>
-                              <Text style={styles(direction).text8}>
-                                {t('Not enough points')}
-                              </Text>
-                              <Text style={styles(direction).text9}>
-                                {t('to purchase this product')}
-                              </Text>
-                            </View>
-                          </View>
-                        </View>
-                      </Modal>
-                    </Neumorphism>
-                    <RegularButton
-                      onPress={() => handleAddToCart(book, quantity)}
-                      text={t('Add to Cart')}
-                      radius={50}
-                      height={'50@s'}
-                      width={'149@s'}
-                      colors={['#03BBE3', '#14A9FD']}
-                    />
-                  </View>
-                </View>
-              </Neumorphism>
-            </View>
-          ) : (
-            <View style={styles(direction).neumorphicContainer3}>
-              <Neumorphism
-                lightColor={'#A8A8A8'}
-                darkColor={'#E5E5E5'}
-                shapeType={'flat'}
-                radius={scale(25)}>
-                <View style={styles(direction).container2}>
-                  <Text style={styles(direction).lionKing}>{book.title}</Text>
-                  <Text style={styles(direction).description}>
-                    {book.description}
-                  </Text>
-                  <View style={styles(direction).row}>
-                    <Text style={styles(direction).text}>Color</Text>
-                    <Text style={styles(direction).text1}>{book.color}</Text>
-                  </View>
-                  <View style={styles(direction).row1}>
-                    <Text style={styles(direction).text}>Material</Text>
-                    <Text style={styles(direction).text2}>{book.material}</Text>
-                  </View>
-                  <View style={styles(direction).row1}>
-                    <Text style={styles(direction).text}>Age Group</Text>
-                    <Text style={styles(direction).text3}>{book.age}</Text>
-                  </View>
-                  <View style={styles(direction).row1}>
-                    <Text style={styles(direction).text}>Weight</Text>
-                    <Text style={styles(direction).text4}>{book.weight}</Text>
-                  </View>
-                  <View style={styles(direction).row1}>
-                    <Text style={styles(direction).text}>Price</Text>
-                    <Text
-                      style={styles(direction).text10}>{`$${book.price}`}</Text>
-                  </View>
-                  <View style={styles(direction).neumorphicContainer1}>
-                    <Neumorphism
-                      lightColor={'#ffffff'}
-                      darkColor={'#A8A8A8'}
-                      shapeType={'flat'}
-                      radius={scale(14)}>
-                      <View style={styles(direction).container3}>
-                        <Text style={styles(direction).text5}>
-                          {t('How Many?')}
-                        </Text>
-                        <TouchableOpacity
-                          onPress={handleDecrement}
-                          style={styles(direction).neomorphContainer5}>
-                          <Neumorphism
-                            lightColor={'#ffffff'}
-                            darkColor={'#A8A8A8'}
-                            shapeType={'flat'}
-                            radius={scale(150)}>
-                            <View style={styles(direction).container4}>
-                              <Image
-                                style={styles(direction).imageStyle1}
-                                source={require('../../assets/minus.png')}
-                              />
-                            </View>
-                          </Neumorphism>
-                        </TouchableOpacity>
-                        <Text style={styles(direction).text11}>{quantity}</Text>
-                        <TouchableOpacity
-                          onPress={handleIncrement}
-                          style={styles(direction).neomorphContainer6}>
-                          <Neumorphism
-                            lightColor={'#ffffff'}
-                            darkColor={'#A8A8A8'}
-                            shapeType={'flat'}
-                            radius={scale(150)}>
-                            <View style={styles(direction).container4}>
-                              <Image
-                                style={styles(direction).imageStyle1}
-                                source={require('../../assets/plus.png')}
-                              />
-                            </View>
-                          </Neumorphism>
-                        </TouchableOpacity>
-                      </View>
-                    </Neumorphism>
-                  </View>
-                  <View style={styles(direction).buttonConfirmationView}>
-                    <Neumorphism
-                      lightColor={'#ffffff'}
-                      darkColor={'#A8A8A8'}
-                      shapeType={'flat'}
-                      radius={scale(50)}>
+                      <Text style={styles(direction).text6}>{quantity}</Text>
                       <TouchableOpacity
-                        onPress={() => setModalVisible(!modalVisible)}>
-                        <LinearGradient
-                          colors={['#FF6F81', '#F0374E']}
-                          style={styles(direction).button1}>
-                          <View style={styles(direction).contentContainer}>
+                        onPress={handleIncrement}
+                        style={styles(direction).neomorphContainer3}>
+                        <Neumorphism
+                          lightColor={'#ffffff'}
+                          darkColor={'#A8A8A8'}
+                          shapeType={'flat'}
+                          radius={scale(150)}>
+                          <View style={styles(direction).container4}>
                             <Image
                               style={styles(direction).imageStyle1}
-                              source={require('../../assets/coin.png')}
+                              source={require('../../assets/plus.png')}
                             />
-                            <Text style={styles(direction).buttonText}>
-                              {book.coin}
-                            </Text>
                           </View>
-                        </LinearGradient>
+                        </Neumorphism>
                       </TouchableOpacity>
-                      <Modal
-                        animationType="fade"
-                        transparent={true}
-                        visible={modalVisible}
-                        onRequestClose={() => setModalVisible(false)}>
-                        <View style={styles(direction).modalContainer}>
-                          <View style={styles(direction).modalView}>
-                            <View style={styles(direction).neomorphContainer4}>
-                              <Neumorphism
-                                lightColor={'#ffffff'}
-                                darkColor={'#A8A8A8'}
-                                shapeType={'flat'}
-                                radius={scale(50)}>
-                                <View style={styles(direction).closeButton}>
-                                  <TouchableOpacity
-                                    onPress={() => setModalVisible(false)}>
-                                    <Image
-                                      style={styles(direction).coinImage}
-                                      source={require('../../assets/cancel.png')}
-                                    />
-                                  </TouchableOpacity>
-                                </View>
-                              </Neumorphism>
-                            </View>
-                            <Image
-                              style={styles(direction).imageStyle2}
-                              source={require('../../assets/coin.png')}
-                            />
-                            <Text style={styles(direction).text7}>
-                              Need 80 points
+                    </View>
+                  </Neumorphism>
+                </View>
+                <View style={styles(direction).buttonConfirmationView}>
+                  <Neumorphism
+                    lightColor={'#ffffff'}
+                    darkColor={'#A8A8A8'}
+                    shapeType={'flat'}
+                    radius={scale(50)}>
+                    <TouchableOpacity
+                      onPress={() => setModalVisible(!modalVisible)}>
+                      <LinearGradient
+                        colors={['#FF6F81', '#F0374E']}
+                        style={styles(direction).button}>
+                        <View style={styles(direction).contentContainer}>
+                          <Image
+                            style={styles(direction).imageStyle1}
+                            source={require('../../assets/coin.png')}
+                          />
+                          <Text style={styles(direction).buttonText}>
+                            {book.coin}
+                          </Text>
+                        </View>
+                      </LinearGradient>
+                    </TouchableOpacity>
+                    <Modal
+                      animationType="fade"
+                      transparent={true}
+                      visible={modalVisible}
+                      onRequestClose={() => setModalVisible(false)}>
+                      <View style={styles(direction).modalContainer}>
+                        <View style={styles(direction).modalView}>
+                          <View style={styles(direction).neomorphContainer4}>
+                            <Neumorphism
+                              lightColor={'#ffffff'}
+                              darkColor={'#A8A8A8'}
+                              shapeType={'flat'}
+                              radius={scale(50)}>
+                              <View style={styles(direction).closeButton}>
+                                <TouchableOpacity
+                                  onPress={() => setModalVisible(false)}>
+                                  <Image
+                                    style={styles(direction).coinImage}
+                                    source={require('../../assets/cancel.png')}
+                                  />
+                                </TouchableOpacity>
+                              </View>
+                            </Neumorphism>
+                          </View>
+                          <Image
+                            style={styles(direction).imageStyle2}
+                            source={require('../../assets/coin.png')}
+                          />
+                          <Text style={styles(direction).text7}>
+                            {t('Need 80 points')}
+                          </Text>
+                          <View style={styles(direction).container5}>
+                            <Text style={styles(direction).text8}>
+                              {t('Not enough points')}
                             </Text>
-                            <View style={styles(direction).container5}>
-                              <Text style={styles(direction).text8}>
-                                Not enough points
-                              </Text>
-                              <Text style={styles(direction).text9}>
-                                to purchase this product
-                              </Text>
-                            </View>
+                            <Text style={styles(direction).text9}>
+                              {t('to purchase this product')}
+                            </Text>
                           </View>
                         </View>
-                      </Modal>
-                    </Neumorphism>
-                    <RegularButton
-                      onPress={() => handleAddToCart(book, quantity)}
-                      text={t('Add to Cart')}
-                      radius={50}
-                      height={'50@s'}
-                      width={'200@s'}
-                      colors={['#03BBE3', '#14A9FD']}
-                    />
-                  </View>
+                      </View>
+                    </Modal>
+                  </Neumorphism>
+                  <RegularButton
+                    onPress={() => handleAddToCart(book, quantity)}
+                    text={t('Add to Cart')}
+                    radius={50}
+                    height={'50@s'}
+                    width={'149@s'}
+                    colors={['#03BBE3', '#14A9FD']}
+                  />
                 </View>
-              </Neumorphism>
-            </View>
-          )}
+              </View>
+            </Neumorphism>
+          </View>
         </SafeAreaView>
       </ScrollView>
     </>

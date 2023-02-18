@@ -30,35 +30,51 @@ const OrderList: React.FC = (props: any) => {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
   const currentOrientation = useDeviceOrientation();
+  const handleAddToCart = item => {
+    NavigationService.navigate('OrderDetail', { order: item });
+  };
+
   const orders = [
     {
       id: 1,
       title: 'Lion King',
-      price: '$15.30',
+      price: 15.3,
       status: 'Done',
       date: 'Sun, 29 Oct',
+      quantity: 2,
+      address:
+        '51, Al Bastakiya, Near Al Fahidi Round, Opposite Al Mussalla Post Office, Al Fahidi Street, Meena Bazaar, Dubai',
       img: require('../../assets/toyOne.png'),
     },
     {
       id: 2,
       title: 'Happy Lemon',
-      price: '$20.30',
+      price: 20.3,
       status: 'Done',
       date: 'Sun, 29 Oct',
+      quantity: 2,
+      address:
+        '51, Al Bastakiya, Near Al Fahidi Round, Opposite Al Mussalla Post Office, Al Fahidi Street, Meena Bazaar, Dubai',
       img: require('../../assets/book2.png'),
     },
     {
       id: 3,
       title: 'Ninja Turtle',
-      price: '$25.30',
+      price: 25.3,
       status: 'Return',
+      quantity: 2,
+      address:
+        '51, Al Bastakiya, Near Al Fahidi Round, Opposite Al Mussalla Post Office, Al Fahidi Street, Meena Bazaar, Dubai',
       img: require('../../assets/toyThree.png'),
     },
     {
       id: 4,
       title: 'Unicorn',
       status: 'Undone',
-      price: '$10.30',
+      price: 10.3,
+      quantity: 2,
+      address:
+        '51, Al Bastakiya, Near Al Fahidi Round, Opposite Al Mussalla Post Office, Al Fahidi Street, Meena Bazaar, Dubai',
       img: require('../../assets/toyFour.png'),
     },
     {
@@ -66,14 +82,20 @@ const OrderList: React.FC = (props: any) => {
       title: 'Journey of the Star',
       status: 'Done',
       date: 'Sun, 29 Oct',
-      price: '$15.30',
+      quantity: 2,
+      price: 15.3,
+      address:
+        '51, Al Bastakiya, Near Al Fahidi Round, Opposite Al Mussalla Post Office, Al Fahidi Street, Meena Bazaar, Dubai',
       img: require('../../assets/book.png'),
     },
     {
       id: 6,
       title: 'Nasa Boy',
-      price: '$35.30',
+      price: 35.3,
       status: 'Undone',
+      quantity: 2,
+      address:
+        '51, Al Bastakiya, Near Al Fahidi Round, Opposite Al Mussalla Post Office, Al Fahidi Street, Meena Bazaar, Dubai',
       img: require('../../assets/book2.png'),
     },
   ];
@@ -81,10 +103,7 @@ const OrderList: React.FC = (props: any) => {
   const CardListItem = ({ order }: any) => {
     return (
       <View style={styles(direction).neomorphContainer}>
-        <TouchableOpacity
-          onPress={() => {
-            NavigationService.navigate();
-          }}>
+        <TouchableOpacity onPress={() => handleAddToCart(order)}>
           <Neumorphism
             style={styles(direction).neomorphMargin}
             lightColor={'#ffffff'}
@@ -102,7 +121,7 @@ const OrderList: React.FC = (props: any) => {
                     {order.title.slice(0, 15)}
                   </Text>
                   <Text style={styles(direction).priceListStyle}>
-                    {order.price}
+                    ${order.price}
                   </Text>
                 </View>
               </View>

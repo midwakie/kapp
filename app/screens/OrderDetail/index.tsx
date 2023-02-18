@@ -25,28 +25,23 @@ import HorizontalLine from 'app/components/lines/HorizontalLine';
 import LinearGradient from 'react-native-linear-gradient';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import { useSelector } from 'react-redux';
+import { useRoute } from '@react-navigation/native';
+import useDeviceOrientation from 'app/hooks/useDeviceOrientation';
 
 const OrderDetail: React.FC = () => {
   const { control } = useForm();
 
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
-  const [count, setCount] = useState(2);
-  const [showNumbers, setShowNumbers] = useState(false);
-
-  const handleSelect = number => {
-    setShowNumbers(false);
-    setCount(number);
-  };
+  const route = useRoute();
+  const order = route.params?.order;
+  const currentOrientation = useDeviceOrientation();
   return (
     <>
       <ScrollView style={styles(direction).container} bounces={false}>
         <SafeAreaView style={styles(direction).safeAreaView}>
           <View style={styles(direction).imageContainer}>
-            <Image
-              source={require('../../assets/lion.png')}
-              style={styles(direction).imageStyle}
-            />
+            <Image source={order.img} style={styles(direction).imageStyle} />
             <View style={styles(direction).topContainer}>
               <RegularButton
                 onPress={() => {
@@ -60,14 +55,30 @@ const OrderDetail: React.FC = () => {
               />
             </View>
           </View>
-          <View style={styles(direction).neumorphicContainer}>
+          <View
+            style={
+              currentOrientation === 'portrait'
+                ? styles(direction).neumorphicContainer
+                : styles(direction).neumorphicContainerLandscape
+            }>
             <Neumorphism
               lightColor={'#A8A8A8'}
               darkColor={'#E5E5E5'}
               shapeType={'flat'}
               radius={scale(25)}>
               <View style={styles(direction).container2}>
-                <Text style={styles(direction).lionKing}>Lion King</Text>
+                <Text style={styles(direction).lionKing}>{order.title}</Text>
+
+                <Text
+                  style={
+                    order.status === 'Done'
+                      ? styles(direction).statusOne
+                      : styles(direction).statusTwo
+                  }>
+                  {order.status === 'Done' ? 'Delivered' : 'On the Way'}
+                </Text>
+                <Text style={styles(direction).text11}>{order.date}</Text>
+                <Text style={styles(direction).text10}>{order.address}</Text>
                 <View style={styles(direction).row}>
                   <Text style={styles(direction).category}>Category</Text>
                   <Text style={styles(direction).text}>Soft Toys</Text>
@@ -81,59 +92,18 @@ const OrderDetail: React.FC = () => {
                       radius={scale(14)}>
                       <View style={styles(direction).container3}>
                         <Text style={styles(direction).text7}>Qty</Text>
-                        <Text style={styles(direction).text6}>{count}</Text>
-                        <MaterialIcon
-                          name={
-                            showNumbers
-                              ? 'keyboard-arrow-up'
-                              : 'keyboard-arrow-down'
-                          }
-                          size={s(28)}
-                          color={'#03A0E3'}
-                          style={{ marginLeft: s(20) }}
-                          onPress={() => setShowNumbers(!showNumbers)}
-                        />
+                        <Text style={styles(direction).text6}>
+                          {order.quantity}
+                        </Text>
                       </View>
                     </Neumorphism>
                   </View>
-                  {showNumbers && (
-                    <ScrollView style={styles(direction).numbersContainer}>
-                      {Array.from({ length: 10 }, (_, i) => i + 1).map(
-                        number => (
-                          <Text
-                            key={number}
-                            style={styles(direction).number}
-                            onPress={() => handleSelect(number)}>
-                            {number}
-                          </Text>
-                        ),
-                      )}
-                    </ScrollView>
-                  )}
                   <View style={styles(direction).container5}>
                     <Text style={styles(direction).text8}>Total Amount</Text>
                     <Text style={styles(direction).text9}>
-                      ${12.25 * count}
+                      ${order.price * order.quantity}
                     </Text>
                   </View>
-                </View>
-                <View style={styles(direction).buttonConfirmationView}>
-                  <RegularButton
-                    onPress={''}
-                    text={'Buy Now!'}
-                    radius={50}
-                    height={'50@s'}
-                    width={'141@s'}
-                    colors={['#FF6F81', '#F0374E']}
-                  />
-                  <RegularButton
-                    onPress={''}
-                    text={'Add to Cart'}
-                    radius={50}
-                    height={'50@s'}
-                    width={'149@s'}
-                    colors={['#03BBE3', '#14A9FD']}
-                  />
                 </View>
               </View>
             </Neumorphism>

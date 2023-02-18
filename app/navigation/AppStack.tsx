@@ -46,6 +46,7 @@ import FeaturedChannel from 'app/screens/FeaturedChannel';
 import Shop from 'app/screens/Shop';
 import ShopStack from './DrawerStacks/ShopStack';
 import OrderList from 'app/screens/OrderList';
+import OrderStack from './DrawerStacks/OrderStack';
 
 const Drawer = createDrawerNavigator();
 
@@ -319,7 +320,7 @@ const AppStack = () => {
       />
       <Drawer.Screen
         name="Orders"
-        component={OrderList}
+        component={OrderStack}
         options={{
           drawerLabel: 'Orders',
           iconImage: require('../assets/side_menu/orders.png'),
