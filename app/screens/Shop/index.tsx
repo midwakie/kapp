@@ -113,7 +113,9 @@ const Shop: React.FC = (props: any) => {
                       source={require('../../assets/rubberDuck.png')}
                       style={styles(direction).categoryImage}
                     />
-                    <Text style={styles(direction).toysText}>Soft Toys</Text>
+                    <Text style={styles(direction).toysText}>
+                      {t('Soft Toys')}
+                    </Text>
                   </View>
                 </TouchableWithoutFeedback>
               </Neumorphism>
@@ -129,7 +131,7 @@ const Shop: React.FC = (props: any) => {
                       source={require('../../assets/gameConsole.png')}
                       style={styles(direction).categoryImage}
                     />
-                    <Text style={styles(direction).gameText}>Game</Text>
+                    <Text style={styles(direction).gameText}>{t('Game')}</Text>
                   </View>
                 </TouchableWithoutFeedback>
               </Neumorphism>
@@ -147,7 +149,9 @@ const Shop: React.FC = (props: any) => {
                       source={require('../../assets/puzzleRed.png')}
                       style={styles(direction).categoryImage}
                     />
-                    <Text style={styles(direction).puzzleText}>Puzzles</Text>
+                    <Text style={styles(direction).puzzleText}>
+                      {t('Puzzles')}
+                    </Text>
                   </View>
                 </TouchableWithoutFeedback>
               </Neumorphism>

@@ -110,7 +110,7 @@ const RewardPointHistory: React.FC = () => {
                 <Text style={styles(direction).coinText}>450</Text>
               </View>
               <Text style={styles(direction).rewardText}>
-                Your available reward points
+                {t('Your available reward points')}
               </Text>
             </View>
             <View style={styles(direction).gridViewContainer}>

@@ -54,7 +54,6 @@ const styles = (direction: string) =>
     progressBarContainer: {
       alignContent: 'center',
       marginBottom: '10@s',
-      // borderWidth: 2,
       flexDirection: 'row',
       width: '50%',
 
