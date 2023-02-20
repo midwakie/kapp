@@ -15,11 +15,10 @@ const styles = (direction: string) =>
     },
     safeAreaView: { alignSelf: 'stretch' },
     container2: {
-      paddingHorizontal: '10@ms',
       marginTop: '85@s',
       width: '100%',
       height: '100%',
-      paddingBottom: '25@s',
+      paddingBottom: '100@s',
       backgroundColor: '#EBEEF0',
     },
     topContainer: {
@@ -137,8 +136,7 @@ const styles = (direction: string) =>
       fontWeight: '700',
     },
     neomorphContainer: {
-      justifyContent: 'center',
-      alignItems: 'center',
+      margin: '10@s',
     },
     neomorphListContainer: {
       justifyContent: 'center',
@@ -146,6 +144,12 @@ const styles = (direction: string) =>
       margin: '20@s',
     },
     neomorphMargin: { margin: '10@ms' },
+    neomorphMargin1: {
+      paddingHorizontal: '20@s',
+      bottom: '20@s',
+      position: 'absolute',
+      width: '100%',
+    },
     cardImage: {
       height: '118@ms',
       width: '100%',
@@ -188,6 +192,12 @@ const styles = (direction: string) =>
       color: '#03A0E3',
       marginTop: '8@s',
     },
+    priceText1: {
+      fontFamily: 'Nunito-Regular',
+      fontSize: '16@s',
+      fontWeight: '700',
+      color: '#03A0E3',
+    },
     priceListStyle: {
       fontFamily: 'Nunito-Regular',
       fontSize: '16@ms',
@@ -202,6 +212,20 @@ const styles = (direction: string) =>
     titleBarContainer: {
       position: 'absolute',
       width: '100%',
+    },
+    row: {
+      flexDirection: 'row',
+      padding: '10@s',
+      justifyContent: 'space-between',
+    },
+    text8: {
+      fontFamily: 'Nunito-Regular',
+      fontSize: '16@s',
+      fontWeight: '600',
+      color: '#3B3B48',
+    },
+    container5: {
+      flexDirection: 'column',
     },
   });
 
