@@ -7,7 +7,7 @@ const width =
     ? Dimensions.get('window').height
     : Dimensions.get('window').width;
 
-const styles = (direction: string, isPressed: boolean) =>
+const styles = (direction: string, isPressed?: boolean) =>
   ScaledSheet.create({
     container: {
       width: '100%',

@@ -26,7 +26,7 @@ import VerticalLine from 'app/components/lines/VerticalLine';
 import { DrawerActions } from '@react-navigation/native';
 import useDeviceOrientation from 'app/hooks/useDeviceOrientation';
 
-const OrderDetails: React.FC = (props: any) => {
+const OrderList: React.FC = (props: any) => {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
   const currentOrientation = useDeviceOrientation();
@@ -206,4 +206,4 @@ const OrderDetails: React.FC = (props: any) => {
   );
 };
 
-export default OrderDetails;
+export default OrderList;

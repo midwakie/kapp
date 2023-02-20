@@ -35,6 +35,9 @@ const Shop: React.FC = (props: any) => {
   const [toyActive, setToyActive] = useState(false);
   const [gameActive, setGameActive] = useState(false);
   const [puzzleActive, setPuzzleActive] = useState(false);
+  const handleAddToCart = item => {
+    NavigationService.navigate('ToyDetail', { book: item });
+  };
   const Toy = () => {
     setToyActive(true);
     setGameActive(false);
@@ -54,7 +57,7 @@ const Shop: React.FC = (props: any) => {
   const CardItem = ({ book }: any) => {
     return (
       <View style={styles(direction).cardContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => handleAddToCart(book)}>
           <Neumorphism
             style={styles(direction).neomorph}
             lightColor={'#ffffff'}
@@ -70,7 +73,8 @@ const Shop: React.FC = (props: any) => {
                   {book.title}
                 </Text>
                 <View style={styles(direction).cardContentPriceCoin}>
-                  <Text style={styles(direction).price}>{book.price}</Text>
+                  <Text
+                    style={styles(direction).price}>{`$${book.price}`}</Text>
                   <View style={styles(direction).cardContentCoin}>
                     <Image
                       source={require('../../assets/coin.png')}
@@ -232,7 +236,10 @@ const Shop: React.FC = (props: any) => {
                   height={'100%'}
                   color={'#A8A8A8'}
                 />
-                <TouchableOpacity onPress={() => {}}>
+                <TouchableOpacity
+                  onPress={() => {
+                    NavigationService.navigate('GlobalSearch');
+                  }}>
                   <View style={styles(direction).searchContainer}>
                     <Image
                       source={require('../../assets/searchIcon.png')}

@@ -70,7 +70,7 @@ const FeedDetail: React.FC = () => {
 
   const [data, setdata] = useState([
     {
-      channnelId: 1,
+      channelId: 1,
       headerImage: require('../../assets/topbg.png'),
       title: 'Easy Mathes Tricks',
       description:
