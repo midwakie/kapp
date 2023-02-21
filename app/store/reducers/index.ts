@@ -8,6 +8,7 @@ import * as registerReducer from './registerReducer';
 import * as otpRequestReducer from './otpRequestReducer';
 import * as otpVerifyReducer from './otpVerifyReducer';
 import * as themeReducer from './themeReducer';
+import * as cartReducer from './cartReducer';
 export default Object.assign(
   currentCustomerReducer,
   loadingReducer,
@@ -16,4 +17,5 @@ export default Object.assign(
   otpRequestReducer,
   otpVerifyReducer,
   themeReducer,
+  cartReducer,
 );

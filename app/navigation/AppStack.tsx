@@ -43,6 +43,9 @@ import ClubChannel from 'app/screens/ClubChannel';
 import SubscribedChannel from 'app/screens/SubscribedChannel';
 import PopularFeed from 'app/screens/PopularFeed';
 import FeaturedChannel from 'app/screens/FeaturedChannel';
+import Shop from 'app/screens/Shop';
+import ShopStack from './DrawerStacks/ShopStack';
+import OrderList from 'app/screens/OrderList';
 
 const Drawer = createDrawerNavigator();
 
@@ -239,8 +242,6 @@ const AppStack = () => {
         component={SubscribedChannel}
         options={{
           drawerLabel: 'Subscribed',
-          // iconImage: require('../assets/side_menu/kutubiLibrary.png'),
-          // isDropDown: true,
           headerStyle: {
             backgroundColor: '#976a4a',
           },
@@ -252,8 +253,6 @@ const AppStack = () => {
         component={ClubChannel}
         options={{
           drawerLabel: 'Club',
-          // iconImage: require('../assets/side_menu/kutubiLibrary.png'),
-          // isDropDown: true,
           headerStyle: {
             backgroundColor: '#976a4a',
           },
@@ -265,8 +264,6 @@ const AppStack = () => {
         component={FeaturedChannel}
         options={{
           drawerLabel: 'Featured',
-          // iconImage: require('../assets/side_menu/kutubiLibrary.png'),
-          // isDropDown: true,
           headerStyle: {
             backgroundColor: '#976a4a',
           },
@@ -278,8 +275,6 @@ const AppStack = () => {
         component={PopularFeed}
         options={{
           drawerLabel: 'Popular',
-          // iconImage: require('../assets/side_menu/kutubiLibrary.png'),
-          // isDropDown: true,
           headerStyle: {
             backgroundColor: '#976a4a',
           },
@@ -312,7 +307,7 @@ const AppStack = () => {
       />
       <Drawer.Screen
         name="Shop"
-        component={NoSearch}
+        component={ShopStack}
         options={{
           drawerLabel: 'Shop',
           iconImage: require('../assets/side_menu/shop.png'),
@@ -324,7 +319,7 @@ const AppStack = () => {
       />
       <Drawer.Screen
         name="Orders"
-        component={NoSearch}
+        component={OrderList}
         options={{
           drawerLabel: 'Orders',
           iconImage: require('../assets/side_menu/orders.png'),
@@ -376,8 +371,6 @@ const styles = ScaledSheet.create({
     paddingLeft: '35@s',
     paddingRight: '30@s',
     flexDirection: 'row',
-    // borderTopWidth: 1,
-    // borderTopColor: '#FFFFFF',
   },
   bg: {
     width: '100%',
