@@ -57,6 +57,9 @@ const ShoppingCart: React.FC = () => {
                 <Text style={styles(direction).productName}>{book.title}</Text>
                 <Text
                   style={styles(direction).priceText}>{`$${book.price}`}</Text>
+                <Text style={styles(direction).priceText}>
+                  Qty: {book.quantity}
+                </Text>
               </View>
             </View>
             <View style={styles(direction).minusTouch}>
@@ -111,7 +114,9 @@ const ShoppingCart: React.FC = () => {
                           }>{`$${total}`}</Text>
                       </View>
                       <RegularButton
-                        onPress={''}
+                        onPress={() =>
+                          NavigationService.navigate('DeliveryAddress')
+                        }
                         text={'Continue'}
                         radius={50}
                         height={'50@s'}

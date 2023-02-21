@@ -12,6 +12,7 @@ import RegularButton from 'app/components/buttons/RegularButton';
 import { useTranslation } from 'react-i18next';
 import { scale } from 'react-native-size-matters';
 import TitleBar from 'app/components/buttons/TitleBar';
+import { useSelector } from 'react-redux';
 
 const DeliveryAddress: React.FC = () => {
   const { control } = useForm();
@@ -21,6 +22,9 @@ const DeliveryAddress: React.FC = () => {
   const invitationCodeInputRef: React.RefObject<any> = React.createRef();
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
+  const cart = useSelector(state => state.cartReducer.cart);
+  const total = cart.reduce((acc, item) => acc + item.price, 0);
+  const discountedTotal = total * 0.95;
   return (
     <>
       <TitleBar
@@ -119,7 +123,7 @@ const DeliveryAddress: React.FC = () => {
               <View style={styles(direction).container3}>
                 <View style={styles(direction).row}>
                   <Text style={styles(direction).text1}>{t('Amount')}</Text>
-                  <Text style={styles(direction).text1}>{t('$15.50')}</Text>
+                  <Text style={styles(direction).text1}>{`$${total}`}</Text>
                 </View>
                 <View style={styles(direction).row}>
                   <Text style={styles(direction).text1}>{t('Discount')}</Text>
@@ -135,11 +139,14 @@ const DeliveryAddress: React.FC = () => {
                   <Text style={styles(direction).text2}>
                     {t('Total Amount')}
                   </Text>
-                  <Text style={styles(direction).text2}>{t('$14.72')}</Text>
+                  <Text
+                    style={
+                      styles(direction).text2
+                    }>{`$${discountedTotal}`}</Text>
                 </View>
               </View>
             </Neumorphism>
-            <View style={{ marginTop: 40 }}>
+            <View style={styles(direction).container4}>
               <RegularButton
                 onPress={() => {
                   NavigationService.navigate(' ');

@@ -1,5 +1,5 @@
 const ApiConfig = {
-  BASE_URL: 'http://3.110.104.230/server/v1/',
+  BASE_URL: 'https://api.kutubiapp.com/server/v1/',
 
   // AUTHORIZATION //
   REGISTER: 'auth/register',

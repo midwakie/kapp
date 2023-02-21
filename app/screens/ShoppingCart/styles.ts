@@ -170,7 +170,7 @@ const styles = (direction: string) =>
       alignItems: 'flex-start',
       flexDirection: 'column',
       left: '13@s',
-      top: '15@s',
+      top: '6@s',
     },
     title: {
       fontFamily: 'Nunito-Regular',
@@ -190,7 +190,7 @@ const styles = (direction: string) =>
       fontSize: '16@s',
       fontWeight: '700',
       color: '#03A0E3',
-      marginTop: '8@s',
+      marginTop: '5@s',
     },
     priceText1: {
       fontFamily: 'Nunito-Regular',

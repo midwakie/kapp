@@ -9,6 +9,7 @@ import MyFeeds from 'app/screens/MyFeeds';
 import Shop from 'app/screens/Shop';
 import ToyDetail from 'app/screens/ToyDetail';
 import ShoppingCart from 'app/screens/ShoppingCart';
+import DeliveryAddress from 'app/screens/DeliveryAddress';
 
 const Stack = createStackNavigator();
 const LoggedInStack = createStackNavigator();
@@ -45,6 +46,13 @@ const ShopStack = () => {
       <Stack.Screen
         name="GlobalSearch"
         component={GlobalSearch}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="DeliveryAddress"
+        component={DeliveryAddress}
         options={{
           headerShown: false,
         }}
