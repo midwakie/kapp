@@ -81,6 +81,8 @@ import Shop from 'app/screens/Shop';
 import ToyDetail from 'app/screens/ToyDetail';
 import OrderDetail from 'app/screens/OrderDetail';
 import OrderList from 'app/screens/OrderList';
+import RewardPointHistory from 'app/screens/RewardPointHistory';
+import ActivitiesWork from 'app/screens/ActivitiesWork';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -108,7 +110,7 @@ const AuthStack = () => {
 
   return (
     <AuthenticationStack.Navigator
-      initialRouteName={initialRouteName}
+      initialRouteName={'Shop'}
       screenOptions={{
         ...TransitionPresets.SlideFromRightIOS,
       }}>
@@ -671,8 +673,16 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
-        name="OrderList"
-        component={OrderList}
+        name="RewardPointHistory"
+        component={RewardPointHistory}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ActivitiesWork"
+        component={ActivitiesWork}
         options={{
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
