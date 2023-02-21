@@ -30,11 +30,14 @@ const styles = (direction: string) =>
     imageStyle: {
       width: '100%',
       height: '461.92@s',
-      resizeMode: 'stretch',
+      resizeMode: 'contain',
       top: '-36@s',
     },
     neumorphicContainer: {
       top: '-95@s',
+    },
+    neumorphicContainerLandscape: {
+      top: '-50@s',
     },
     container2: {
       backgroundColor: '#EBEEF0',
@@ -55,6 +58,20 @@ const styles = (direction: string) =>
       fontWeight: '600',
       color: '#758DAC',
     },
+    statusOne: {
+      fontFamily: 'Nunito-Regular',
+      fontSize: '16@ms',
+      fontWeight: '700',
+      color: '#84BD47',
+      marginTop: '13@s',
+    },
+    statusTwo: {
+      fontFamily: 'Nunito-Regular',
+      fontSize: '16@ms',
+      fontWeight: '700',
+      color: '#EC4D61',
+      marginTop: '13@s',
+    },
     row: {
       flexDirection: 'row',
       marginTop: '28@s',
@@ -69,6 +86,19 @@ const styles = (direction: string) =>
       fontWeight: '600',
       color: '#2F4868',
       marginLeft: '40@s',
+    },
+    text10: {
+      fontFamily: 'Nunito-Regular',
+      fontSize: '14@s',
+      fontWeight: '600',
+      color: '#2F4868',
+      marginTop: '18@s',
+    },
+    text11: {
+      fontFamily: 'Nunito-Regular',
+      fontSize: '14@s',
+      fontWeight: '600',
+      color: '#2F4868',
     },
     text1: {
       fontFamily: 'Nunito-Regular',

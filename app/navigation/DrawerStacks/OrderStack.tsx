@@ -2,57 +2,48 @@ import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import GlobalSearch from 'app/screens/GlobalSearch';
+import ParentProfileDetail from 'app/screens/ParentProfileDetail';
+import ChildFullProfile from 'app/screens/ChildFullProfile';
+import TeachersProfile from 'app/screens/TeachersProfile';
 import { useSelector } from 'react-redux';
 import { ICurrentCustomer } from 'app/models/reducers/currentCustomer';
 import { ROLES } from 'app/config/role-config';
 import MyFeeds from 'app/screens/MyFeeds';
-import Shop from 'app/screens/Shop';
-import ToyDetail from 'app/screens/ToyDetail';
-import ShoppingCart from 'app/screens/ShoppingCart';
-import DeliveryAddress from 'app/screens/DeliveryAddress';
+import FeedDetail from 'app/screens/FeedDetail';
+import MyChannel from 'app/screens/MyChannel';
+import FeedDetailReport from 'app/screens/FeedDetailReport';
+import OrderList from 'app/screens/OrderList';
+import OrderDetail from 'app/screens/OrderDetail';
 
 const Stack = createStackNavigator();
 const LoggedInStack = createStackNavigator();
 interface IState {
   currentCustomerReducer: ICurrentCustomer;
 }
-const ShopStack = () => {
+const OrderStack = () => {
   const selectedRole = useSelector(
     (state: IState) => state.currentCustomerReducer.role,
   );
   return (
     <LoggedInStack.Navigator>
       <Stack.Screen
-        name="Shop"
-        component={Shop}
+        name="OrderList"
+        component={OrderList}
         options={{
           headerShown: false,
         }}
       />
       <Stack.Screen
-        name="ToyDetail"
-        component={ToyDetail}
+        name="OrderDetail"
+        component={OrderDetail}
         options={{
           headerShown: false,
         }}
       />
-      <Stack.Screen
-        name="ShoppingCart"
-        component={ShoppingCart}
-        options={{
-          headerShown: false,
-        }}
-      />
+
       <Stack.Screen
         name="GlobalSearch"
         component={GlobalSearch}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="DeliveryAddress"
-        component={DeliveryAddress}
         options={{
           headerShown: false,
         }}
@@ -61,4 +52,4 @@ const ShopStack = () => {
   );
 };
 
-export default ShopStack;
+export default OrderStack;

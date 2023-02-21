@@ -35,12 +35,12 @@ const ShoppingCart: React.FC = () => {
   const currentOrientation = useDeviceOrientation();
   const dispatch = useDispatch();
   const cart = useSelector(state => state.cartReducer.cart);
+  const total = cart.reduce((acc, item) => acc + item.price, 0);
 
   const CardListItem = ({ book }: any) => {
     return (
       <View style={styles(direction).neomorphContainer}>
         <Neumorphism
-          style={styles(direction).neomorphMargin}
           lightColor={'#ffffff'}
           darkColor={'#C6CEDA'}
           shapeType={'flat'}
@@ -57,6 +57,9 @@ const ShoppingCart: React.FC = () => {
                 <Text style={styles(direction).productName}>{book.title}</Text>
                 <Text
                   style={styles(direction).priceText}>{`$${book.price}`}</Text>
+                <Text style={styles(direction).priceText}>
+                  Qty: {book.quantity}
+                </Text>
               </View>
             </View>
             <View style={styles(direction).minusTouch}>
@@ -93,6 +96,37 @@ const ShoppingCart: React.FC = () => {
                   </Text>
                 }
               />
+              {cart?.length > 0 && (
+                <View style={styles(direction).neomorphMargin1}>
+                  <Neumorphism
+                    lightColor={'#ffffff'}
+                    darkColor={'#C6CEDA'}
+                    shapeType={'flat'}
+                    radius={scale(14)}>
+                    <View style={styles(direction).row}>
+                      <View style={styles(direction).container5}>
+                        <Text style={styles(direction).text8}>
+                          Total Amount
+                        </Text>
+                        <Text
+                          style={
+                            styles(direction).priceText1
+                          }>{`$${total}`}</Text>
+                      </View>
+                      <RegularButton
+                        onPress={() =>
+                          NavigationService.navigate('DeliveryAddress')
+                        }
+                        text={'Continue'}
+                        radius={50}
+                        height={'50@s'}
+                        width={'141@s'}
+                        colors={['#FF6F81', '#F0374E']}
+                      />
+                    </View>
+                  </Neumorphism>
+                </View>
+              )}
             </View>
           </View>
         </ScrollView>

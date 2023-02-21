@@ -76,9 +76,30 @@ const styles = (direction: string, isPressed?: boolean) =>
       justifyContent: 'center',
     },
     heading: {
-      justifyContent: 'flex-start',
-      alignItems: 'flex-start',
+      justifyContent: 'space-between',
+      alignItems: 'center',
       marginTop: '40@s',
+      flexDirection: 'row',
+    },
+    icon: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginRight: 10,
+    },
+    pop: {
+      position: 'absolute',
+      height: 20,
+      width: 20,
+      borderRadius: 10,
+      backgroundColor: 'red',
+      justifyContent: 'center',
+      alignItems: 'center',
+      top: -13,
+      right: -5,
+    },
+    text: {
+      color: 'white',
+      fontWeight: 'bold',
     },
     bubbleContainer: {
       justifyContent: 'space-between',
@@ -173,7 +194,6 @@ const styles = (direction: string, isPressed?: boolean) =>
     imageContainer: {
       justifyContent: 'center',
       alignItems: 'center',
-      // width: 140,
       height: '120@s',
     },
     cardImage: {
@@ -185,9 +205,6 @@ const styles = (direction: string, isPressed?: boolean) =>
       marginTop: 15,
       paddingHorizontal: 15,
       height: 65,
-      // borderWidth: 2,
-      // justifyContent: 'center',
-      // alignItems: 'center',
     },
     cardTitleText: {
       marginBottom: 8,

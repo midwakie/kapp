@@ -26,6 +26,8 @@ import VerticalLine from 'app/components/lines/VerticalLine';
 import { DrawerActions } from '@react-navigation/native';
 import useDeviceOrientation from 'app/hooks/useDeviceOrientation';
 import toys from 'app/models/api/toys';
+import { useSelector } from 'react-redux';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const Shop: React.FC = (props: any) => {
   const { control } = useForm();
@@ -35,6 +37,7 @@ const Shop: React.FC = (props: any) => {
   const [toyActive, setToyActive] = useState(false);
   const [gameActive, setGameActive] = useState(false);
   const [puzzleActive, setPuzzleActive] = useState(false);
+  const cart = useSelector(state => state.cartReducer.cart);
   const handleAddToCart = item => {
     NavigationService.navigate('ToyDetail', { book: item });
   };
@@ -103,6 +106,17 @@ const Shop: React.FC = (props: any) => {
                 end={{ x: 0, y: 1 }}
                 textStyle={styles(direction).gradientTextStyle as TextStyle}
               />
+              <View style={styles(direction).icon}>
+                <TouchableOpacity
+                  onPress={() => NavigationService.navigate('ShoppingCart')}>
+                  <MaterialIcons name="shopping-cart" size={30} color="black" />
+                  {cart?.length > 0 && (
+                    <View style={styles(direction).pop}>
+                      <Text style={styles(direction).text}>{cart.length}</Text>
+                    </View>
+                  )}
+                </TouchableOpacity>
+              </View>
             </View>
             <View style={styles(direction).bubbleContainer}>
               <Neumorphism

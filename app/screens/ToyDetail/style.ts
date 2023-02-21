@@ -36,7 +36,7 @@ const styles = (direction: string) =>
     neumorphicContainer: {
       top: '-95@s',
     },
-    neumorphicContainer3: {
+    neumorphicContainerLandscape: {
       top: '-50@s',
     },
     container2: {
@@ -117,6 +117,7 @@ const styles = (direction: string) =>
       flexDirection: 'row',
       alignItems: 'center',
       backgroundColor: '#EBEEF0',
+      justifyContent: 'space-between',
       paddingHorizontal: '15@s',
     },
     text5: {
