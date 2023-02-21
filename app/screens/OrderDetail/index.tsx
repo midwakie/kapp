@@ -71,11 +71,11 @@ const OrderDetail: React.FC = () => {
 
                 <Text
                   style={
-                    order.status === 'Done'
+                    order.status === 'Delivered'
                       ? styles(direction).statusOne
                       : styles(direction).statusTwo
                   }>
-                  {order.status === 'Done' ? 'Delivered' : 'On the Way'}
+                  {order.status}
                 </Text>
                 <Text style={styles(direction).text11}>{order.date}</Text>
                 <Text style={styles(direction).text10}>{order.address}</Text>

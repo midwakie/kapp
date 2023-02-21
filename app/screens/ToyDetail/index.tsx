@@ -109,8 +109,7 @@ const ToyDetail: React.FC = () => {
                 </View>
                 <View style={styles(direction).row1}>
                   <Text style={styles(direction).text}>Price</Text>
-                  <Text
-                    style={styles(direction).text10}>{`$${book.price}`}</Text>
+                  <Text style={styles(direction).text10}>${book.price}</Text>
                 </View>
                 <View style={styles(direction).neumorphicContainer1}>
                   <Neumorphism

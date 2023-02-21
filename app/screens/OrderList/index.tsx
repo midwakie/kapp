@@ -39,7 +39,7 @@ const OrderList: React.FC = (props: any) => {
       id: 1,
       title: 'Lion King',
       price: 15.3,
-      status: 'Done',
+      status: 'Delivered',
       date: 'Sun, 29 Oct',
       quantity: 2,
       address:
@@ -50,7 +50,7 @@ const OrderList: React.FC = (props: any) => {
       id: 2,
       title: 'Happy Lemon',
       price: 20.3,
-      status: 'Done',
+      status: 'On the way',
       date: 'Sun, 29 Oct',
       quantity: 2,
       address:
@@ -61,7 +61,8 @@ const OrderList: React.FC = (props: any) => {
       id: 3,
       title: 'Ninja Turtle',
       price: 25.3,
-      status: 'Return',
+      status: 'Cancel',
+      date: 'Sun, 29 Oct',
       quantity: 2,
       address:
         '51, Al Bastakiya, Near Al Fahidi Round, Opposite Al Mussalla Post Office, Al Fahidi Street, Meena Bazaar, Dubai',
@@ -70,7 +71,8 @@ const OrderList: React.FC = (props: any) => {
     {
       id: 4,
       title: 'Unicorn',
-      status: 'Undone',
+      status: 'Delivered',
+      date: 'Sun, 29 Oct',
       price: 10.3,
       quantity: 2,
       address:
@@ -80,7 +82,7 @@ const OrderList: React.FC = (props: any) => {
     {
       id: 5,
       title: 'Journey of the Star',
-      status: 'Done',
+      status: 'Delivered',
       date: 'Sun, 29 Oct',
       quantity: 2,
       price: 15.3,
@@ -92,7 +94,8 @@ const OrderList: React.FC = (props: any) => {
       id: 6,
       title: 'Nasa Boy',
       price: 35.3,
-      status: 'Undone',
+      status: 'Delivered',
+      date: 'Sun, 29 Oct',
       quantity: 2,
       address:
         '51, Al Bastakiya, Near Al Fahidi Round, Opposite Al Mussalla Post Office, Al Fahidi Street, Meena Bazaar, Dubai',
@@ -128,14 +131,14 @@ const OrderList: React.FC = (props: any) => {
               <View style={styles(direction).statusContainer}>
                 <Text
                   style={
-                    order.status === 'Done'
+                    order.status === 'Delivered'
                       ? styles(direction).statusOne
                       : styles(direction).statusTwo
                   }>
-                  {order.status === 'Done' ? 'Delivered' : 'On the Way'}
+                  {order.status}
                 </Text>
                 <Text style={styles(direction).dateText}>
-                  {order.status === 'Done' ? order.date : ''}
+                  {order.status === 'Delivered' ? order.date : ''}
                 </Text>
               </View>
             </View>
