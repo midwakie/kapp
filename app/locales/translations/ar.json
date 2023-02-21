@@ -258,5 +258,8 @@
   "Send Invitation": "إرسال دعوة",
   "Edit Profile": "تعديل الملف الشخصي",
   "Delete Profile": "حذف الملف الشخصي",
-  "Cart List":"قائمة عربة التسوق"
+  "Cart List":"قائمة عربة التسوق",
+  "Create Group":"إنشاء مجموعة",
+  "Create Chat":"إنشاء محادثة",
+
 }

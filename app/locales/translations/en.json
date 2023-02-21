@@ -249,5 +249,7 @@
   "Send Invitation": "Send Invitation",
   "Edit Profile": "Edit Profile",
   "Delete Profile": "Delete Profile",
-  "Cart List":"Cart List"
+  "Cart List":"Cart List",
+  "Create Chat":"Create Chat",
+  "Create Group":"Create Group",
 }
