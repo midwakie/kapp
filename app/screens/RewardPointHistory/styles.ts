@@ -15,11 +15,42 @@ const styles = (direction: string) =>
     },
     safeAreaView: { alignSelf: 'stretch' },
     container2: {
+      paddingHorizontal: '10@ms',
       marginTop: '85@s',
       width: '100%',
-      height: '100%',
-      paddingBottom: '100@s',
+      paddingBottom: '25@s',
       backgroundColor: '#EBEEF0',
+    },
+    rewardPoint: {
+      height: 164,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    coinContainer: {
+      marginBottom: 5,
+      justifyContent: 'center',
+      alignItems: 'center',
+      flexDirection: 'row',
+    },
+    coin: {
+      height: '40@s',
+      width: '40@s',
+      marginRight: '15@s',
+      resizeMode: 'contain',
+    },
+    coinText: {
+      color: '#3B3B48',
+      fontFamily: 'Nunito-Regular',
+      fontWeight: '600',
+      fontSize: '38@s',
+      lineHeight: '52@s',
+    },
+    rewardText: {
+      fontFamily: 'Nunito-Regular',
+      fontSize: '16@s',
+      fontWeight: '600',
+      lineHeight: '22@s',
+      color: '#2F4868',
     },
     topContainer: {
       justifyContent: 'center',
@@ -27,6 +58,10 @@ const styles = (direction: string) =>
       position: 'absolute',
       width: '38@s',
       marginLeft: '20@s',
+    },
+    topImage: {
+      width: '50@s',
+      height: '50@s',
     },
     gradientTextContainer: {
       width: '100%',
@@ -41,7 +76,7 @@ const styles = (direction: string) =>
       fontWeight: '700',
     },
     gridViewContainer: {
-      marginTop: '85@s',
+      // marginTop: '20@s',
       padding: '10@s',
       backgroundColor: '#EBEEF0',
     },
@@ -54,8 +89,9 @@ const styles = (direction: string) =>
       height: '40@s',
       backgroundColor: '#EBEEF0',
     },
-    productName: {
+    gridText: {
       color: '#3B3B48',
+      textAlign: 'center',
       fontSize: '16@s',
       fontFamily: 'Nunito-Regular',
       fontWeight: '600',
@@ -66,6 +102,61 @@ const styles = (direction: string) =>
       backgroundColor: '#EBEEF0',
     },
     cardListStyle: {
+      paddingVertical: '25@s',
+      paddingHorizontal: '20@s',
+      height: '134@s',
+      borderWidth: 1,
+      borderColor: 'white',
+      width: Dimensions.get('window').width - scale(40),
+      backgroundColor: '#EBEEF0',
+      borderRadius: '14@s',
+    },
+    productContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+    },
+    productText: {
+      fontFamily: 'Nunito-Regular',
+      fontSize: '14@s',
+      fontWeight: '600',
+      lineHeight: '19@s',
+      // letterSpacing: '0.01em',
+      color: '#3B3B48',
+    },
+    productTextTwo: {
+      fontFamily: 'Nunito-Regular',
+      fontSize: '14@s',
+      fontWeight: '600',
+      lineHeight: '19@s',
+      // letterSpacing: '0.01em',
+      color: '#03A0E3',
+      textDecorationLine: 'underline',
+      marginBottom: '10@s',
+    },
+    productDetailsText: {
+      fontFamily: 'Nunito-Regular',
+      fontSize: '12@s',
+      fontWeight: '600',
+      lineHeight: '16@s',
+      color: '#758DAC',
+      marginBottom: '4@s',
+    },
+    rewardOne: {
+      fontFamily: 'Nunito-Regular',
+      fontWeight: '700',
+      fontSize: '16@s',
+      lineHeight: '22@s',
+      color: '#EC4D61',
+    },
+    rewardTwo: {
+      fontFamily: 'Nunito-Regular',
+      fontWeight: '700',
+      fontSize: '16@s',
+      lineHeight: '22@s',
+      color: '#84BD47',
+    },
+    cardListStyleTwo: {
+      paddingHorizontal: '20@s',
       height: '65@s',
       width: Dimensions.get('window').width - scale(40),
       backgroundColor: '#EBEEF0',
@@ -74,41 +165,17 @@ const styles = (direction: string) =>
       alignItems: 'center',
       borderRadius: '14@s',
     },
-    cardListStyleTwo: {
-      paddingHorizontal: '5@s',
-      height: '92@s',
-      width: Dimensions.get('window').width - scale(40),
-      backgroundColor: '#EBEEF0',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
+    filterViewContainer: {
+      height: '38@s',
+      width: '38@s',
+      borderRadius: '38@s',
+      justifyContent: 'center',
       alignItems: 'center',
-      borderRadius: '14@s',
     },
-
-    imageViewContainer: {
-      width: '82@s',
-      height: '82@s',
-
-      borderRadius: '13@s',
-    },
-    productImage: {
-      width: '82@s',
-      height: '82@s',
-      borderRadius: '13@s',
+    filterImage: {
+      height: '17@s',
+      width: '17@s',
       resizeMode: 'contain',
-    },
-    productInfo: {
-      flexDirection: 'row',
-    },
-    minusImage: {
-      height: '26@s',
-      width: '26@s',
-      resizeMode: 'contain',
-    },
-    minusTouch: {
-      height: '26@s',
-      width: '26@s',
-      marginRight: '20@s',
     },
 
     innerDirection: {
@@ -120,23 +187,14 @@ const styles = (direction: string) =>
     cardContainer: {
       marginTop: '20@s',
       justifyContent: 'center',
-      textAlign: 'center',
       alignItems: 'center',
       height: '100%',
       width: '100%',
-    },
-    text: {
-      marginTop: '100@s',
-      justifyContent: 'center',
-      alignItems: 'center',
-      width: '100%',
-      color: '#3B3B48',
-      fontSize: '20@s',
-      fontFamily: 'Nunito-Regular',
-      fontWeight: '700',
+      paddingBottom: '10@s',
     },
     neomorphContainer: {
-      margin: '10@s',
+      justifyContent: 'center',
+      alignItems: 'center',
     },
     neomorphListContainer: {
       justifyContent: 'center',
@@ -144,12 +202,6 @@ const styles = (direction: string) =>
       margin: '20@s',
     },
     neomorphMargin: { margin: '10@ms' },
-    neomorphMargin1: {
-      paddingHorizontal: '20@s',
-      bottom: '20@s',
-      position: 'absolute',
-      width: '100%',
-    },
     cardImage: {
       height: '118@ms',
       width: '100%',
@@ -166,11 +218,11 @@ const styles = (direction: string) =>
       paddingHorizontal: '11@s',
       marginTop: '8@s',
     },
-    detailsContainer: {
+    cardListContent: {
+      paddingLeft: '10@s',
+      justifyContent: 'center',
       alignItems: 'flex-start',
       flexDirection: 'column',
-      left: '13@s',
-      top: '6@s',
     },
     title: {
       fontFamily: 'Nunito-Regular',
@@ -185,16 +237,9 @@ const styles = (direction: string) =>
       color: '#758DAC',
       marginBottom: '4@s',
     },
-    priceText: {
+    price: {
       fontFamily: 'Nunito-Regular',
-      fontSize: '16@s',
-      fontWeight: '700',
-      color: '#03A0E3',
-      marginTop: '5@s',
-    },
-    priceText1: {
-      fontFamily: 'Nunito-Regular',
-      fontSize: '16@s',
+      fontSize: '12@ms',
       fontWeight: '700',
       color: '#03A0E3',
     },
@@ -209,24 +254,7 @@ const styles = (direction: string) =>
       width: '53@s',
       textAlign: 'right',
     },
-    titleBarContainer: {
-      position: 'absolute',
-      width: '100%',
-    },
-    row: {
-      flexDirection: 'row',
-      padding: '10@s',
-      justifyContent: 'space-between',
-    },
-    text8: {
-      fontFamily: 'Nunito-Regular',
-      fontSize: '16@s',
-      fontWeight: '600',
-      color: '#3B3B48',
-    },
-    container5: {
-      flexDirection: 'column',
-    },
+    titleBarContainer: { position: 'absolute', width: '100%' },
   });
 
 export default styles;
