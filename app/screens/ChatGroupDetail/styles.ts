@@ -16,7 +16,7 @@ const styles = (direction: string) =>
     safeAreaView: { alignSelf: 'stretch' },
     container2: {
       paddingHorizontal: '10@ms',
-      marginTop: 115,
+      marginTop: '115@s',
       width: '100%',
       height: '100%',
       paddingBottom: 25,
@@ -26,7 +26,7 @@ const styles = (direction: string) =>
       justifyContent: 'center',
       alignItems: 'center',
       position: 'absolute',
-      width: 38,
+      width: '38@s',
       marginLeft: '20@s',
     },
     gradientTextContainer: {
@@ -73,8 +73,8 @@ const styles = (direction: string) =>
       lineHeight: '30@s',
     },
     gridViewContainer: {
-      padding: 10,
-      marginRight: 8,
+      padding: '10@s',
+      marginRight: '8@s',
       justifyContent: 'flex-end',
       alignItems: 'flex-end',
       alignSelf: 'flex-end',
@@ -82,7 +82,7 @@ const styles = (direction: string) =>
     },
     innerView: {
       flexDirection: 'row',
-      marginLeft: 10,
+      marginLeft: '10@s',
     },
     gridView: {
       paddingHorizontal: '10@ms',
@@ -111,7 +111,7 @@ const styles = (direction: string) =>
       alignItems: 'center',
     },
     cardContainer: {
-      marginTop: 20,
+      marginTop: '20@s',
       justifyContent: 'center',
       alignItems: 'center',
       height: '100%',
