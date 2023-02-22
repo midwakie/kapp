@@ -83,6 +83,7 @@ import OrderDetail from 'app/screens/OrderDetail';
 import OrderList from 'app/screens/OrderList';
 import RewardPointHistory from 'app/screens/RewardPointHistory';
 import ActivitiesWork from 'app/screens/ActivitiesWork';
+import ChatGroupDetail from 'app/screens/ChatGroupDetail';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -110,7 +111,7 @@ const AuthStack = () => {
 
   return (
     <AuthenticationStack.Navigator
-      initialRouteName={'Shop'}
+      initialRouteName={initialRouteName}
       screenOptions={{
         ...TransitionPresets.SlideFromRightIOS,
       }}>
@@ -683,6 +684,14 @@ const AuthStack = () => {
       <Stack.Screen
         name="ActivitiesWork"
         component={ActivitiesWork}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ChatGroupDetail"
+        component={ChatGroupDetail}
         options={{
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
