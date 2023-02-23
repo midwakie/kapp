@@ -73,6 +73,8 @@ import PublishDocument from 'app/screens/PublishDocument';
 import ContinueReading from 'app/screens/EBooks/ContinueReading';
 import WhatsNew from 'app/screens/EBooks/WhatsNew';
 import Favorites from 'app/screens/EBooks/Favorites';
+import MakePayment from 'app/screens/MakePayment';
+import CardPayment from 'app/screens/CardPayment';
 import ShoppingCart from 'app/screens/ShoppingCart';
 import ChatList from 'app/screens/ChatList';
 import CreateChat from 'app/screens/CreateChat';
@@ -642,6 +644,16 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
+        name="MakePayment"
+        component={MakePayment}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
         name="FinishBook"
         component={FinishBook}
         options={{
@@ -693,6 +705,16 @@ const AuthStack = () => {
         name="ChatGroupDetail"
         component={ChatGroupDetail}
         options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="CardPayment"
+        component={CardPayment}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
