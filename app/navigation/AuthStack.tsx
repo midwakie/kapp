@@ -110,7 +110,7 @@ const AuthStack = () => {
 
   return (
     <AuthenticationStack.Navigator
-      initialRouteName={'Shop'}
+      initialRouteName={initialRouteName}
       screenOptions={{
         ...TransitionPresets.SlideFromRightIOS,
       }}>
