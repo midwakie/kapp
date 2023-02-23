@@ -19,6 +19,7 @@ import { useTranslation } from 'react-i18next';
 import { scale } from 'react-native-size-matters';
 import TitleBar from 'app/components/buttons/TitleBar';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useSelector } from 'react-redux';
 
 const CardPayment: React.FC = () => {
   const { control } = useForm();
@@ -27,6 +28,9 @@ const CardPayment: React.FC = () => {
   const mobileNumberInputRef: React.RefObject<any> = React.createRef();
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
+  const cart = useSelector(state => state.cartReducer.cart);
+  const total = cart.reduce((acc, item) => acc + item.price, 0);
+  const discountedTotal = total * 0.95;
   return (
     <>
       <ScrollView style={styles(direction).container} bounces={false}>
@@ -104,7 +108,7 @@ const CardPayment: React.FC = () => {
               <View style={styles(direction).container3}>
                 <View style={styles(direction).row}>
                   <Text style={styles(direction).text1}>{t('Amount')}</Text>
-                  <Text style={styles(direction).text1}>{t('$15.50')}</Text>
+                  <Text style={styles(direction).text1}>${total}</Text>
                 </View>
                 <View style={styles(direction).row}>
                   <Text style={styles(direction).text1}>{t('Discount')}</Text>
@@ -120,7 +124,9 @@ const CardPayment: React.FC = () => {
                   <Text style={styles(direction).text2}>
                     {t('Total Amount')}
                   </Text>
-                  <Text style={styles(direction).text2}>{t('$14.72')}</Text>
+                  <Text style={styles(direction).text2}>
+                    ${discountedTotal}
+                  </Text>
                 </View>
               </View>
             </Neumorphism>
