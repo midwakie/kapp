@@ -17,16 +17,16 @@ const styles = (direction: string) =>
     },
     safeAreaView: { alignSelf: 'stretch' },
     container2: {
-      marginTop: 10,
+      marginTop: '10@s',
       width: '100%',
       height: '100%',
-      paddingBottom: 25,
+      paddingBottom: '25@s',
     },
     topContainer: {
       justifyContent: 'center',
       alignItems: 'center',
       position: 'absolute',
-      width: 38,
+      width: '38@s',
       marginLeft: '20@s',
     },
     gradientTextContainer: {
@@ -44,7 +44,7 @@ const styles = (direction: string) =>
     cardContainer: {
       justifyContent: 'center',
       alignItems: 'center',
-      marginTop: 40,
+      marginTop: '40@s',
     },
     neomorphContainer: {
       justifyContent: 'center',
