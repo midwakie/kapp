@@ -78,11 +78,11 @@ const styles = (direction: string) =>
       alignSelf: 'center',
     },
     neomorphContainer: {
-      marginBottom: 20,
+      marginBottom: '20@s',
     },
     neomorphContainer1: {
-      marginTop: 30,
-      marginBottom: 30,
+      marginTop: '30@s',
+      marginBottom: '30@s',
     },
     neomorphContainer2: {
       width: '40@s',
@@ -168,13 +168,10 @@ const styles = (direction: string) =>
       alignSelf: 'center',
       marginTop: 4,
       color: 'white',
-      // resizeMode: 'contain',
-      // width: '14@s',
-      // height: '14@s',
     },
     leftContainer: {
       flex: 1,
-      marginLeft: 20,
+      marginLeft: '20@s',
     },
     rightContainer: {
       flex: 4,
