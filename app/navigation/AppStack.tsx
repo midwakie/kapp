@@ -283,8 +283,6 @@ const styles = ScaledSheet.create({
     paddingLeft: '35@s',
     paddingRight: '30@s',
     flexDirection: 'row',
-    // borderTopWidth: 1,
-    // borderTopColor: '#FFFFFF',
   },
   bg: {
     width: '100%',

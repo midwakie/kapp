@@ -6,6 +6,7 @@ import * as registerActions from './registerActions';
 import * as otpRequestActions from './otpRequestActions';
 import * as otpVerifyActions from './otpVerifyActions';
 import * as themeActions from './themeActions';
+import * as cartActions from './cartActions';
 
 export const ActionCreators = Object.assign(
   {},
@@ -16,4 +17,5 @@ export const ActionCreators = Object.assign(
   otpRequestActions,
   otpVerifyActions,
   themeActions,
+  cartActions,
 );

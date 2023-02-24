@@ -96,6 +96,9 @@ const styles = (direction: string) =>
       fontWeight: '700',
       fontFamily: 'Nunito-Regular',
     },
+    container4: {
+      marginTop: '40@s',
+    },
   });
 
 export default styles;
