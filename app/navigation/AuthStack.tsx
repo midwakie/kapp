@@ -115,7 +115,7 @@ const AuthStack = () => {
 
   return (
     <AuthenticationStack.Navigator
-      initialRouteName={initialRouteName}
+      initialRouteName={'ActivitiesWorkDetail'}
       screenOptions={{
         ...TransitionPresets.SlideFromRightIOS,
       }}>
@@ -130,8 +130,8 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
-        name="OrderDetails"
-        component={OrderDetails}
+        name="OrderDetail"
+        component={OrderDetail}
         options={{
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
@@ -695,14 +695,7 @@ const AuthStack = () => {
           headerShown: false,
         }}
       />
-      <Stack.Screen
-        name="OrderDetail"
-        component={OrderDetail}
-        options={{
-          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerShown: false,
-        }}
-      />
+
       <Stack.Screen
         name="RewardPointHistory"
         component={RewardPointHistory}

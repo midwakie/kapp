@@ -92,6 +92,7 @@ const styles = (direction: string) =>
 
     neomorphContainer: {
       marginTop: '40@s',
+      paddingBottom: '100@s',
     },
 
     text1: {

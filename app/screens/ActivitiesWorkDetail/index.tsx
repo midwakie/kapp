@@ -48,7 +48,6 @@ const ActivitiesWorkDetail: React.FC = () => {
       expanded: false,
       studentImage: require('../../assets/studentOne.png'),
       studentName: 'Abeer Shaikh',
-
       Image: require('../../assets/user.png'),
       videoImage1: require('../../assets/user.png'),
       videoImage2: require('../../assets/user.png'),
@@ -58,8 +57,6 @@ const ActivitiesWorkDetail: React.FC = () => {
     {
       videoImage: [
         { id: 1, Image: require('../../assets/user.png') },
-        { id: 2, Image: require('../../assets/user.png') },
-        { id: 2, Image: require('../../assets/user.png') },
         { id: 2, Image: require('../../assets/user.png') },
       ],
     },
@@ -177,7 +174,7 @@ const ActivitiesWorkDetail: React.FC = () => {
                       <View style={styles(direction).gradientContainer}>
                         <GradientText
                           colors={['#758DAC', '#2F4868']}
-                          text={t('Activities Work')}
+                          text={t('Activities Videos')}
                           start={{ x: 0, y: 0 }}
                           end={{ x: 0, y: 1 }}
                           textStyle={
@@ -185,76 +182,21 @@ const ActivitiesWorkDetail: React.FC = () => {
                           }
                         />
                       </View>
-                      <FlatList
-                        key={'#'}
-                        keyExtractor={item => '#' + item.id}
-                        numColumns={numColumns}
-                        data={video.image}
-                        renderItem={({ item }) => {
-                          return <CardItem videoImage={item} />;
-                        }}
-                      />
-                    </View>
-                  </Neumorphism>
-                </View>
-              );
-            })}
-
-            {video.map(item => {
-              return (
-                <View style={styles(direction).neomorphContainer4}>
-                  <Neumorphism
-                    lightColor={'#ffffff'}
-                    darkColor={'#A8A8A8'}
-                    shapeType={'flat'}
-                    radius={scale(14)}>
-                    <View style={styles(direction).childExpansionContainer}>
-                      <View style={styles(direction).childContainer}>
-                        <View style={styles(direction).studentProfile}>
-                          <Image
-                            source={item.studentImage}
-                            style={styles(direction).studentProfile1}
-                          />
-                        </View>
-                        <View style={styles(direction).textContainer}>
-                          <Text style={styles(direction).name}>
-                            {t(item.studentName)}
-                          </Text>
-                        </View>
-
-                        <TouchableOpacity
-                          style={styles(direction).down}
-                          onPress={() => {
-                            if (activeId !== item.id) {
-                              setActiveId(item.id);
-                              setIsVideoVisible(true);
-                              setIsFlatListVisible(true);
-                            } else {
-                              setActiveId(null);
-                              setIsVideoVisible(false);
-                              setIsFlatListVisible(false);
-                            }
-                          }}>
-                          <MaterialIcon
-                            name={`chevron-${
-                              activeId === item.id ? 'up' : 'down'
-                            }`}
-                            size={35}
-                            color={'#03A0E3'}
-                          />
-                        </TouchableOpacity>
-                      </View>
-                      {/* {isVideoVisible && activeId === item.id && (
-                        // <FlatList
-                        //   key={'#'}
-                        //   keyExtractor={item => '#' + item.id}
-                        //   numColumns={numColumns}
-                        //   data={item.videoImage}
-                        //   renderItem={({ item }) => {
-                        //     return <CardItem videoImage={item} />;
-                        //   }}
-                        // />
-                      )} */}
+                      {video.map(item => {
+                        return (
+                          <View style={styles(direction).neomorphContainer4}>
+                            <FlatList
+                              key={'#'}
+                              keyExtractor={item => '#' + item.id}
+                              numColumns={numColumns}
+                              data={item.videoImage}
+                              renderItem={({ item }) => {
+                                return <CardItem videoImage={item} />;
+                              }}
+                            />
+                          </View>
+                        );
+                      })}
                     </View>
                   </Neumorphism>
                 </View>
