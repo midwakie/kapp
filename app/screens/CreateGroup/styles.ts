@@ -54,6 +54,16 @@ const styles = (direction: string) =>
       height: '20@s',
       resizeMode: 'contain',
     },
+
+    roundCheckBox: {
+      height: '18@s',
+      width: '18@s',
+      borderRadius: '18@s',
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderWidth: '0.5@s',
+      borderColor: '#03A0E3',
+    },
     radioLabel: {
       fontFamily: 'Nunito-Regular',
       fontWeight: '700',
@@ -143,7 +153,8 @@ const styles = (direction: string) =>
     },
     chatInfo: {
       flexDirection: 'row',
-
+      alignItems: 'center',
+      justifyContent: 'space-between',
       width: '70%',
     },
     unreadImage: {
