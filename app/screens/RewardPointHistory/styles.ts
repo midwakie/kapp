@@ -22,12 +22,12 @@ const styles = (direction: string) =>
       backgroundColor: '#EBEEF0',
     },
     rewardPoint: {
-      height: 164,
+      height: '164@s',
       justifyContent: 'center',
       alignItems: 'center',
     },
     coinContainer: {
-      marginBottom: 5,
+      marginBottom: '5@s',
       justifyContent: 'center',
       alignItems: 'center',
       flexDirection: 'row',

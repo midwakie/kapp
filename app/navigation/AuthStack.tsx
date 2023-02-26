@@ -80,12 +80,15 @@ import ChatList from 'app/screens/ChatList';
 import CreateChat from 'app/screens/CreateChat';
 import CreateGroup from 'app/screens/CreateGroup';
 import Shop from 'app/screens/Shop';
+
+import ActivitiesWorkDetail from 'app/screens/ActivitiesWorkDetail';
 import ToyDetail from 'app/screens/ToyDetail';
 import OrderDetail from 'app/screens/OrderDetail';
 import OrderList from 'app/screens/OrderList';
 import RewardPointHistory from 'app/screens/RewardPointHistory';
 import ActivitiesWork from 'app/screens/ActivitiesWork';
 import BookShelf from 'app/screens/BookShelf';
+import ChatGroupDetail from 'app/screens/ChatGroupDetail';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -128,8 +131,24 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
+        name="OrderDetail"
+        component={OrderDetail}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
         name="Welcome"
         component={Landing}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ActivitiesWorkDetail"
+        component={ActivitiesWorkDetail}
         options={{
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
@@ -677,14 +696,7 @@ const AuthStack = () => {
           headerShown: false,
         }}
       />
-      <Stack.Screen
-        name="OrderDetail"
-        component={OrderDetail}
-        options={{
-          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerShown: false,
-        }}
-      />
+
       <Stack.Screen
         name="RewardPointHistory"
         component={RewardPointHistory}
@@ -696,6 +708,14 @@ const AuthStack = () => {
       <Stack.Screen
         name="ActivitiesWork"
         component={ActivitiesWork}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ChatGroupDetail"
+        component={ChatGroupDetail}
         options={{
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,

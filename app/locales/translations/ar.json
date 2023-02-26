@@ -258,6 +258,9 @@
   "Send Invitation": "إرسال دعوة",
   "Edit Profile": "تعديل الملف الشخصي",
   "Delete Profile": "حذف الملف الشخصي",
+  "Cart List":"قائمة عربة التسوق",
+  "Create Group":"إنشاء مجموعة",
+  "Create Chat":"إنشاء محادثة",
   "Toy Shop": "متجر الألعاب",
   "Find Your Favorite Toys": "ابحث عن ألعابك المفضلة",
   "Soft Toys": "لعب الاطفال الطرية",
@@ -267,11 +270,11 @@
   "Recent Transactions": "التحويلات الاخيرة",
   "Activities Work": "عمل الأنشطة",
   "Order List": "لائحة الطلبات",
-  "Cart List":"قائمة عربة التسوق",
   "Add to Cart": "أضف إلى السلة",
   "Not enough points": "لا ما يكفي من النقاط",
   "to purchase this product": "لشراء هذا المنتج",
   "Need 80 points":"تحتاج 80 نقطة",
   "How Many?":"كم عدد؟",
-  "Your cart is empty":"عربة التسوق فارغة"
+  "Your cart is empty":"عربة التسوق فارغة",
+  "Activity Videos":"مقاطع فيديو النشاط",
 }

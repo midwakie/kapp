@@ -249,6 +249,8 @@
   "Send Invitation": "Send Invitation",
   "Edit Profile": "Edit Profile",
   "Delete Profile": "Delete Profile",
+  "Create Chat":"Create Chat",
+  "Create Group":"Create Group",
   "Toy Shop": "Toy Shop",
   "Find Your Favorite Toys": "Find Your Favorite Toys",
   "Soft Toys": "Soft Toys",
@@ -264,5 +266,6 @@
   "to purchase this product": "to purchase this product",
   "Need 80 points":"Need 80 points",
   "How Many?": "How Many?",
-  "Your cart is empty": "Your cart is empty"
+  "Your cart is empty": "Your cart is empty",
+  "Activity Videos": "Activity Videos"
 }
