@@ -120,7 +120,7 @@ const ActivitiesWork: React.FC = () => {
               return (
                 <TouchableOpacity
                   onPress={() => {
-                    NavigationService.navigate('ManageActivitiesDetail');
+                    NavigationService.navigate('ActivitiesWorkDetail');
                   }}
                   key={item.id}
                   style={styles(direction).neomorphContainer}>

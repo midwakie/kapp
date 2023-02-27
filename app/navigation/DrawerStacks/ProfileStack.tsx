@@ -26,6 +26,11 @@ import CreateChannel from 'app/screens/CreateChannel';
 import CreateActivity from 'app/screens/CreateActivity';
 import AddReview from 'app/screens/AddReview';
 import EbookDetail from 'app/screens/EbookDetail';
+import ActivitiesWork from 'app/screens/ActivitiesWork';
+import ActivitiesWorkDetail from 'app/screens/ActivitiesWorkDetail';
+import RewardPointHistory from 'app/screens/RewardPointHistory';
+import RewardPointFilter from 'app/screens/RewardPointFilter';
+import BookShelf from 'app/screens/BookShelf';
 
 const Stack = createStackNavigator();
 const LoggedInStack = createStackNavigator();
@@ -190,6 +195,41 @@ const ProfileStack = () => {
       <Stack.Screen
         name="Add Review"
         component={AddReview}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ActivitiesWork"
+        component={ActivitiesWork}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ActivitiesWorkDetail"
+        component={ActivitiesWorkDetail}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="RewardPointHistory"
+        component={RewardPointHistory}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="RewardPointFilter"
+        component={RewardPointFilter}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="BookShelf"
+        component={BookShelf}
         options={{
           headerShown: false,
         }}
