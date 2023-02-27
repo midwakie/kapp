@@ -23,11 +23,13 @@ import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { ms, scale } from 'react-native-size-matters';
 import useDeviceOrientation from 'app/hooks/useDeviceOrientation';
 
-const ChatGroupDetail: React.FC = () => {
+const ChatGroupDetail: React.FC = props => {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
   const currentOrientation = useDeviceOrientation();
   const [selectedFilter, setSelectedFilter] = useState('grid');
+  const profileImage = (props && props?.route?.params?.profileImage) || '';
+  const title = (props && props?.route?.params?.title) || '';
   const books = [
     {
       id: 1,
@@ -125,13 +127,11 @@ const ChatGroupDetail: React.FC = () => {
           <View style={styles(direction).container2}>
             <View style={styles(direction).imageContainer}>
               <Image
-                source={require('../../assets/scienceClass.png')}
+                source={{ uri: profileImage }}
                 style={styles(direction).imageContainerImage}
               />
               <View style={styles(direction).imageText}>
-                <Text style={styles(direction).classText}>
-                  {t('Science Class')}
-                </Text>
+                <Text style={styles(direction).classText}>{t(title)}</Text>
               </View>
             </View>
             <View style={styles(direction).gridViewContainer}>

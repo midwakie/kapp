@@ -25,6 +25,7 @@ import {
 } from 'react-native-popup-menu';
 import { showMessage } from 'react-native-flash-message';
 import CustomInput from 'app/components/inputs/CustomInput';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const ChatRoom: React.FC = props => {
   const channelId = (props && props?.route?.params?.channelId) || '';
@@ -200,10 +201,18 @@ const ChatRoom: React.FC = props => {
           }
           middleComponent={
             <View style={styles(direction).gradientTextContainer}>
-              <Image
-                source={{ uri: profileImage }}
-                style={styles(direction).topImage}
-              />
+              <TouchableOpacity
+                onPress={() => {
+                  NavigationService.navigate('ChatGroupDetail', {
+                    profileImage: profileImage,
+                    title: channelName,
+                  });
+                }}>
+                <Image
+                  source={{ uri: profileImage }}
+                  style={styles(direction).topImage}
+                />
+              </TouchableOpacity>
               <GradientText
                 colors={['#2AA7DD', '#2AA7DD']}
                 text={channelName}
