@@ -17,25 +17,17 @@ import HomeStack from './DrawerStacks/HomeStack';
 import { useTranslation } from 'react-i18next';
 import { retrieveSelectedLanguage } from 'app/utils/storageUtils';
 import RegularButton from 'app/components/buttons/RegularButton';
-import { s, scale, ScaledSheet } from 'react-native-size-matters';
+import { s, ScaledSheet } from 'react-native-size-matters';
 import { useDispatch, useSelector } from 'react-redux';
 import * as loginActions from 'app/store/actions/loginActions';
-import MyFeeds from 'app/screens/MyFeeds';
-import ParentProfileDetail from 'app/screens/ParentProfileDetail';
 import { ICurrentCustomer } from 'app/models/reducers/currentCustomer';
 import { ROLES } from 'app/config/role-config';
-import ChildFullProfile from 'app/screens/ChildFullProfile';
-import TeachersProfile from 'app/screens/TeachersProfile';
-import MyChannel from 'app/screens/MyChannel';
 import ProfileStack from './DrawerStacks/ProfileStack';
 import FeedStack from './DrawerStacks/FeedStack';
 import NoChat from 'app/screens/NoChat';
 import NoActivity from 'app/screens/NoActivity';
 import NoInterestAndHobbies from 'app/screens/NoInterestAndHobbie';
-import NoConnection from 'app/screens/NoConnection';
-import NoSearch from 'app/screens/Nosearch';
 import NoNotification from 'app/screens/NoNotification';
-import MyStudentList from 'app/screens/MyStudentList';
 import StudentsStack from './DrawerStacks/StudentsStack';
 import ChildStack from './DrawerStacks/ChildStack';
 import MyChannelStack from './DrawerStacks/MyChannelStack';
@@ -44,6 +36,8 @@ import ClubChannel from 'app/screens/ClubChannel';
 import SubscribedChannel from 'app/screens/SubscribedChannel';
 import PopularFeed from 'app/screens/PopularFeed';
 import FeaturedChannel from 'app/screens/FeaturedChannel';
+import ShopStack from './DrawerStacks/ShopStack';
+import OrderStack from './DrawerStacks/OrderStack';
 
 const Drawer = createDrawerNavigator();
 
@@ -240,8 +234,6 @@ const AppStack = () => {
         component={SubscribedChannel}
         options={{
           drawerLabel: 'Subscribed',
-          // iconImage: require('../assets/side_menu/kutubiLibrary.png'),
-          // isDropDown: true,
           headerStyle: {
             backgroundColor: '#976a4a',
           },
@@ -253,8 +245,6 @@ const AppStack = () => {
         component={ClubChannel}
         options={{
           drawerLabel: 'Club',
-          // iconImage: require('../assets/side_menu/kutubiLibrary.png'),
-          // isDropDown: true,
           headerStyle: {
             backgroundColor: '#976a4a',
           },
@@ -266,8 +256,6 @@ const AppStack = () => {
         component={FeaturedChannel}
         options={{
           drawerLabel: 'Featured',
-          // iconImage: require('../assets/side_menu/kutubiLibrary.png'),
-          // isDropDown: true,
           headerStyle: {
             backgroundColor: '#976a4a',
           },
@@ -279,8 +267,6 @@ const AppStack = () => {
         component={PopularFeed}
         options={{
           drawerLabel: 'Popular',
-          // iconImage: require('../assets/side_menu/kutubiLibrary.png'),
-          // isDropDown: true,
           headerStyle: {
             backgroundColor: '#976a4a',
           },
@@ -313,7 +299,7 @@ const AppStack = () => {
       />
       <Drawer.Screen
         name="Shop"
-        component={NoSearch}
+        component={ShopStack}
         options={{
           drawerLabel: 'Shop',
           iconImage: require('../assets/side_menu/shop.png'),
@@ -325,7 +311,7 @@ const AppStack = () => {
       />
       <Drawer.Screen
         name="Orders"
-        component={NoSearch}
+        component={OrderStack}
         options={{
           drawerLabel: 'Orders',
           iconImage: require('../assets/side_menu/orders.png'),
@@ -377,8 +363,6 @@ const styles = ScaledSheet.create({
     paddingLeft: '35@s',
     paddingRight: '30@s',
     flexDirection: 'row',
-    // borderTopWidth: 1,
-    // borderTopColor: '#FFFFFF',
   },
   bg: {
     width: '100%',

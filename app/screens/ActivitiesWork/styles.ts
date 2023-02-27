@@ -47,9 +47,25 @@ const styles = (direction: string) =>
     },
     container4: {
       flexDirection: 'row',
-      marginBottom: 9,
+      marginBottom: 6,
       justifyContent: 'space-between',
+      paddingLeft: '25@s',
+    },
+    progressBarContainer: {
+      alignContent: 'center',
+      marginBottom: '10@s',
+      flexDirection: 'row',
+      width: '50%',
+
       paddingHorizontal: '25@s',
+    },
+    percentageText: {
+      marginLeft: 10,
+      fontFamily: 'Nunito-Regular',
+      fontWeight: '600',
+      fontSize: '10@s',
+      lineHeight: '14@s',
+      color: '#3B3B48',
     },
     container5: {
       flexDirection: 'row',
@@ -58,45 +74,22 @@ const styles = (direction: string) =>
       paddingRight: '19@s',
     },
     container6: {
-      flexDirection: 'row',
-      marginLeft: '25@s',
-      marginBottom: '10@s',
-    },
-    container7: {
-      flexDirection: 'row',
-      paddingVertical: '15@s',
-      width: '100%',
-      backgroundColor: '#EBEEF0',
-    },
-    container8: {
-      width: '40@s',
-      height: '40@s',
-      borderRadius: '150@s',
-      backgroundColor: '#EBEEF0',
+      alignContent: 'center',
       alignItems: 'center',
-      justifyContent: 'center',
-      alignSelf: 'center',
+      paddingHorizontal: '25@s',
+      flexDirection: 'row',
+    },
+    parentImage: { height: '30@s', width: '30@s', resizeMode: 'contain' },
+    parentText: {
+      marginLeft: '20@s',
+      fontFamily: 'Nunito-Regular',
+      fontSize: '14@s',
+      fontWeight: '600',
+      lineHeight: '19@s',
+      color: '#455157',
     },
     neomorphContainer: {
-      marginBottom: '20@s',
-    },
-    neomorphContainer1: {
-      marginTop: '30@s',
-      marginBottom: '30@s',
-    },
-    neomorphContainer2: {
-      width: '40@s',
-      height: '40@s',
-    },
-    imageContainer: {
-      width: '100%',
-      height: '25@s',
-      flexDirection: 'row',
-    },
-    imageStyle: {
-      resizeMode: 'contain',
-      width: '18@s',
-      height: '18@s',
+      marginBottom: 20,
     },
     text1: {
       color: '#03A0E3',
@@ -139,43 +132,6 @@ const styles = (direction: string) =>
       fontFamily: 'Nunito-Regular',
       width: '103@s',
       height: '19@s',
-    },
-    text8: {
-      color: '#758DAC',
-      fontSize: '14@s',
-      fontWeight: '600',
-      fontFamily: 'Nunito-Regular',
-      height: '19@s',
-      width: '170@s',
-      // alignSelf: 'center',
-      // marginLeft: 20,
-    },
-    interestIcon1: {
-      flexDirection: 'row',
-      height: '25@s',
-      width: '25@s',
-    },
-    interestIcons: {
-      height: '25@s',
-      width: '25@s',
-      marginLeft: '-9@s',
-      alignItems: 'center',
-      overflow: 'hidden',
-    },
-    imageRound: { width: '100%', height: '100%', resizeMode: 'cover' },
-    plusFour: {
-      position: 'absolute',
-      alignSelf: 'center',
-      marginTop: 4,
-      color: 'white',
-    },
-    leftContainer: {
-      flex: 1,
-      marginLeft: '20@s',
-    },
-    rightContainer: {
-      flex: 4,
-      alignSelf: 'center',
     },
   });
 

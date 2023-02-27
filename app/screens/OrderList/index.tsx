@@ -26,54 +26,79 @@ import VerticalLine from 'app/components/lines/VerticalLine';
 import { DrawerActions } from '@react-navigation/native';
 import useDeviceOrientation from 'app/hooks/useDeviceOrientation';
 
-const OrderDetails: React.FC = (props: any) => {
+const OrderList: React.FC = (props: any) => {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
   const currentOrientation = useDeviceOrientation();
+  const handleAddToCart = item => {
+    NavigationService.navigate('OrderDetail', { order: item });
+  };
+
   const orders = [
     {
       id: 1,
       title: 'Lion King',
-      price: '$15.30',
-      status: 'Done',
+      price: 15.3,
+      status: 'Delivered',
       date: 'Sun, 29 Oct',
+      quantity: 2,
+      address:
+        '51, Al Bastakiya, Near Al Fahidi Round, Opposite Al Mussalla Post Office, Al Fahidi Street, Meena Bazaar, Dubai',
       img: require('../../assets/toyOne.png'),
     },
     {
       id: 2,
       title: 'Happy Lemon',
-      price: '$20.30',
-      status: 'Done',
+      price: 20.3,
+      status: 'On the way',
       date: 'Sun, 29 Oct',
+      quantity: 2,
+      address:
+        '51, Al Bastakiya, Near Al Fahidi Round, Opposite Al Mussalla Post Office, Al Fahidi Street, Meena Bazaar, Dubai',
       img: require('../../assets/book2.png'),
     },
     {
       id: 3,
       title: 'Ninja Turtle',
-      price: '$25.30',
-      status: 'Return',
+      price: 25.3,
+      status: 'Cancel',
+      date: 'Sun, 29 Oct',
+      quantity: 2,
+      address:
+        '51, Al Bastakiya, Near Al Fahidi Round, Opposite Al Mussalla Post Office, Al Fahidi Street, Meena Bazaar, Dubai',
       img: require('../../assets/toyThree.png'),
     },
     {
       id: 4,
       title: 'Unicorn',
-      status: 'Undone',
-      price: '$10.30',
+      status: 'Delivered',
+      date: 'Sun, 29 Oct',
+      price: 10.3,
+      quantity: 2,
+      address:
+        '51, Al Bastakiya, Near Al Fahidi Round, Opposite Al Mussalla Post Office, Al Fahidi Street, Meena Bazaar, Dubai',
       img: require('../../assets/toyFour.png'),
     },
     {
       id: 5,
       title: 'Journey of the Star',
-      status: 'Done',
+      status: 'Delivered',
       date: 'Sun, 29 Oct',
-      price: '$15.30',
+      quantity: 2,
+      price: 15.3,
+      address:
+        '51, Al Bastakiya, Near Al Fahidi Round, Opposite Al Mussalla Post Office, Al Fahidi Street, Meena Bazaar, Dubai',
       img: require('../../assets/book.png'),
     },
     {
       id: 6,
       title: 'Nasa Boy',
-      price: '$35.30',
-      status: 'Undone',
+      price: 35.3,
+      status: 'Delivered',
+      date: 'Sun, 29 Oct',
+      quantity: 2,
+      address:
+        '51, Al Bastakiya, Near Al Fahidi Round, Opposite Al Mussalla Post Office, Al Fahidi Street, Meena Bazaar, Dubai',
       img: require('../../assets/book2.png'),
     },
   ];
@@ -81,10 +106,7 @@ const OrderDetails: React.FC = (props: any) => {
   const CardListItem = ({ order }: any) => {
     return (
       <View style={styles(direction).neomorphContainer}>
-        <TouchableOpacity
-          onPress={() => {
-            NavigationService.navigate();
-          }}>
+        <TouchableOpacity onPress={() => handleAddToCart(order)}>
           <Neumorphism
             style={styles(direction).neomorphMargin}
             lightColor={'#ffffff'}
@@ -102,21 +124,21 @@ const OrderDetails: React.FC = (props: any) => {
                     {order.title.slice(0, 15)}
                   </Text>
                   <Text style={styles(direction).priceListStyle}>
-                    {order.price}
+                    ${order.price}
                   </Text>
                 </View>
               </View>
               <View style={styles(direction).statusContainer}>
                 <Text
                   style={
-                    order.status === 'Done'
+                    order.status === 'Delivered'
                       ? styles(direction).statusOne
                       : styles(direction).statusTwo
                   }>
-                  {order.status === 'Done' ? 'Delivered' : 'On the Way'}
+                  {order.status}
                 </Text>
                 <Text style={styles(direction).dateText}>
-                  {order.status === 'Done' ? order.date : ''}
+                  {order.status === 'Delivered' ? order.date : ''}
                 </Text>
               </View>
             </View>
@@ -206,4 +228,4 @@ const OrderDetails: React.FC = (props: any) => {
   );
 };
 
-export default OrderDetails;
+export default OrderList;

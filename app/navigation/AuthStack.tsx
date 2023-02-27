@@ -34,7 +34,6 @@ import FeedDetailReport from 'app/screens/FeedDetailReport';
 import Publish from 'app/screens/Publish';
 import RewardPointFilter from 'app/screens/RewardPointFilter';
 import EditTeacherProfile from 'app/screens/EditTeacherProfile';
-import ChildHome from 'app/screens/ChildHome';
 import MyFeeds from 'app/screens/MyFeeds';
 import BookReview from 'app/screens/BookReview';
 import ChildFullProfile from 'app/screens/ChildFullProfile';
@@ -43,7 +42,6 @@ import EditChildProfile from 'app/screens/EditChildProfile';
 import RecommendedVideos from 'app/screens/RecommendedVideos';
 import ManageActivities from 'app/screens/ManageActivities';
 import { ILoading } from 'app/models/reducers/loading';
-import History from 'app/screens/EBooks/History';
 import ChildProfile from 'app/screens/ChildProfile';
 import Home from 'app/screens/Home';
 import SuggestionsForYou from 'app/screens/SuggestionsForYou';
@@ -72,17 +70,25 @@ import BookSeries from 'app/screens/BookSeries';
 import FinishBook from 'app/screens/FinishBook';
 import SelectEBook from 'app/screens/SelectEBook';
 import PublishDocument from 'app/screens/PublishDocument';
-import Biology from 'app/screens/EBooks/Biology';
-import Painting from 'app/screens/EBooks/Painting';
-import Sports from 'app/screens/EBooks/Sports';
-import Trending from 'app/screens/EBooks/Trending';
 import ContinueReading from 'app/screens/EBooks/ContinueReading';
 import WhatsNew from 'app/screens/EBooks/WhatsNew';
 import Favorites from 'app/screens/EBooks/Favorites';
-import Shop from 'app/screens/Shop';
-import OrderDetails from 'app/screens/OrderDetails';
+import MakePayment from 'app/screens/MakePayment';
+import CardPayment from 'app/screens/CardPayment';
+import ShoppingCart from 'app/screens/ShoppingCart';
 import ChatList from 'app/screens/ChatList';
+import CreateChat from 'app/screens/CreateChat';
+import CreateGroup from 'app/screens/CreateGroup';
+import Shop from 'app/screens/Shop';
 import ChatRoom from 'app/screens/ChatRoom';
+
+import ActivitiesWorkDetail from 'app/screens/ActivitiesWorkDetail';
+import ToyDetail from 'app/screens/ToyDetail';
+import OrderDetail from 'app/screens/OrderDetail';
+import OrderList from 'app/screens/OrderList';
+import RewardPointHistory from 'app/screens/RewardPointHistory';
+import ActivitiesWork from 'app/screens/ActivitiesWork';
+import ChatGroupDetail from 'app/screens/ChatGroupDetail';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -125,8 +131,24 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
+        name="OrderDetail"
+        component={OrderDetail}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
         name="Welcome"
         component={Landing}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ActivitiesWorkDetail"
+        component={ActivitiesWorkDetail}
         options={{
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
@@ -165,6 +187,30 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
+        name="ChatList"
+        component={ChatList}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="CreateGroup"
+        component={CreateGroup}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="CreateChat"
+        component={CreateChat}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
         name="Child Profile"
         component={ChildProfile}
         options={{
@@ -173,16 +219,16 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
-        name="MyChannel"
-        component={MyChannel}
+        name="ActivitiesStats"
+        component={ActivitiesStats}
         options={{
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
       />
       <Stack.Screen
-        name="ActivitiesStats"
-        component={ActivitiesStats}
+        name="ShoppingCart"
+        component={ShoppingCart}
         options={{
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
@@ -617,6 +663,32 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
+        name="ChatList"
+        component={ChatList}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ChatRoom"
+        component={ChatRoom}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="MakePayment"
+        component={MakePayment}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
         name="FinishBook"
         component={FinishBook}
         options={{
@@ -633,25 +705,43 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
-        name="OrderDetails"
-        component={OrderDetails}
+        name="ToyDetail"
+        component={ToyDetail}
         options={{
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
       />
       <Stack.Screen
-        name="ChatList"
-        component={ChatList}
+        name="RewardPointHistory"
+        component={RewardPointHistory}
         options={{
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
       />
       <Stack.Screen
-        name="ChatRoom"
-        component={ChatRoom}
+        name="ActivitiesWork"
+        component={ActivitiesWork}
         options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ChatGroupDetail"
+        component={ChatGroupDetail}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="CardPayment"
+        component={CardPayment}
+        options={{
+          // When logging out, a pop animation feels intuitive
+          // You can remove this if you want the default 'push' animation
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}

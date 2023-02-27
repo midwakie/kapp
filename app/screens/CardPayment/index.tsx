@@ -1,5 +1,11 @@
 import React from 'react';
-import { SafeAreaView, Text, TextStyle, View } from 'react-native';
+import {
+  SafeAreaView,
+  Text,
+  TextStyle,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import styles from './styles';
 import NavigationService from 'app/navigation/NavigationService';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -12,57 +18,26 @@ import RegularButton from 'app/components/buttons/RegularButton';
 import { useTranslation } from 'react-i18next';
 import { scale } from 'react-native-size-matters';
 import TitleBar from 'app/components/buttons/TitleBar';
-import { useSelector } from 'react-redux';
+import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const DeliveryAddress: React.FC = () => {
+const CardPayment: React.FC = () => {
   const { control } = useForm();
   const addressInputRef: React.RefObject<any> = React.createRef();
   const emailInputRef: React.RefObject<any> = React.createRef();
   const mobileNumberInputRef: React.RefObject<any> = React.createRef();
-  const invitationCodeInputRef: React.RefObject<any> = React.createRef();
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
-  const cart = useSelector(state => state.cartReducer.cart);
-  const total = cart.reduce((acc, item) => acc + item.price, 0);
-  const discountedTotal = total * 0.95;
   return (
     <>
-      <TitleBar
-        leftComponent={
-          <View style={styles(direction).topContainer}>
-            <RegularButton
-              onPress={() => {
-                NavigationService.goBack();
-              }}
-              icon={'arrow-back'}
-              radius={38}
-              height={38}
-              width={38}
-              colors={['#EBECF0', '#EBECF0']}
-            />
-          </View>
-        }
-        middleComponent={
-          <View style={styles(direction).gradientTextContainer}>
-            <GradientText
-              colors={['#2AA7DD', '#2AA7DD']}
-              text={t('Delivery Address')}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 0, y: 1 }}
-              textStyle={styles(direction).gradientTextStyle as TextStyle}
-            />
-          </View>
-        }
-      />
       <ScrollView style={styles(direction).container} bounces={false}>
         <SafeAreaView style={styles(direction).safeAreaView}>
           <View style={styles(direction).container2}>
             <View style={styles(direction).inputTextContainer}>
               <CustomInput
                 control={control}
-                name="name"
-                placeholder={t('Name')}
-                label={t('Name')}
+                name="Card Number"
+                placeholder={t('Card Number')}
+                label={t('Card Number')}
                 keyboardType="default"
                 autoCapitalize="none"
                 returnKeyType="next"
@@ -75,10 +50,10 @@ const DeliveryAddress: React.FC = () => {
               <CustomInput
                 control={control}
                 ref={addressInputRef}
-                name="address"
+                name="Card Holder Name"
                 rules={rules.CustomerRules.address_number}
-                placeholder={t('Address')}
-                label={t('Address')}
+                placeholder={t('Card Holder Name')}
+                label={t('Card Holder Name')}
                 keyboardType="default"
                 autoCapitalize="none"
                 returnKeyType="next"
@@ -90,26 +65,32 @@ const DeliveryAddress: React.FC = () => {
             <View style={styles(direction).inputTextContainer}>
               <CustomInput
                 control={control}
-                ref={mobileNumberInputRef}
-                name="mobile_number"
-                placeholder={t('Mobile Number')}
-                label={t('Mobile Number')}
+                name="Validity"
+                placeholder={t('Validity')}
+                label={t('Validity')}
                 keyboardType="default"
                 autoCapitalize="none"
                 returnKeyType="next"
-                onSubmitEditing={() => {
-                  invitationCodeInputRef?.current.setFocus();
-                }}
+                onSubmitEditing={() => {}}
+                rightComponent={
+                  <TouchableOpacity style={styles(direction).rightComponent}>
+                    <MaterialIcon
+                      name={'chevron-down'}
+                      size={35}
+                      color={'#03A0E3'}
+                    />
+                  </TouchableOpacity>
+                }
               />
             </View>
             <View style={styles(direction).inputTextContainer1}>
               <CustomInput
                 control={control}
                 ref={emailInputRef}
-                name="email"
+                name="CVV"
                 rules={rules.AuthRules.email}
-                placeholder={t('Email')}
-                label={t('Email')}
+                placeholder={t('CVV')}
+                label={t('CVV')}
                 keyboardType="email-address"
                 autoCapitalize="none"
                 returnKeyType="next"
@@ -123,7 +104,7 @@ const DeliveryAddress: React.FC = () => {
               <View style={styles(direction).container3}>
                 <View style={styles(direction).row}>
                   <Text style={styles(direction).text1}>{t('Amount')}</Text>
-                  <Text style={styles(direction).text1}>{`$${total}`}</Text>
+                  <Text style={styles(direction).text1}>{t('$15.50')}</Text>
                 </View>
                 <View style={styles(direction).row}>
                   <Text style={styles(direction).text1}>{t('Discount')}</Text>
@@ -139,19 +120,16 @@ const DeliveryAddress: React.FC = () => {
                   <Text style={styles(direction).text2}>
                     {t('Total Amount')}
                   </Text>
-                  <Text
-                    style={
-                      styles(direction).text2
-                    }>{`$${discountedTotal}`}</Text>
+                  <Text style={styles(direction).text2}>{t('$14.72')}</Text>
                 </View>
               </View>
             </Neumorphism>
-            <View style={styles(direction).container4}>
+            <View style={{ marginTop: 40 }}>
               <RegularButton
                 onPress={() => {
                   NavigationService.navigate(' ');
                 }}
-                text={t('Continue ')}
+                text={t('Make Payment')}
                 radius={50}
                 height={50}
                 width={'100%'}
@@ -161,8 +139,37 @@ const DeliveryAddress: React.FC = () => {
           </View>
         </SafeAreaView>
       </ScrollView>
+      <View style={styles(direction).titleBarContainer}>
+        <TitleBar
+          leftComponent={
+            <View style={styles(direction).topContainer}>
+              <RegularButton
+                onPress={() => {
+                  NavigationService.goBack();
+                }}
+                icon={'arrow-back'}
+                radius={38}
+                height={38}
+                width={38}
+                colors={['#EBECF0', '#EBECF0']}
+              />
+            </View>
+          }
+          middleComponent={
+            <View style={styles(direction).gradientTextContainer}>
+              <GradientText
+                colors={['#2AA7DD', '#2AA7DD']}
+                text={t('Make Payment')}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 0, y: 1 }}
+                textStyle={styles(direction).gradientTextStyle as TextStyle}
+              />
+            </View>
+          }
+        />
+      </View>
     </>
   );
 };
 
-export default DeliveryAddress;
+export default CardPayment;

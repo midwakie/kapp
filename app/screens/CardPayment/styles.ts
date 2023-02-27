@@ -12,7 +12,6 @@ const styles = (direction: string) =>
       width: '100%',
       height: '100%',
       backgroundColor: '#EBEEF0',
-      zIndex: -10,
     },
     safeAreaView: { alignSelf: 'stretch' },
     gradientTextContainer: {
@@ -35,23 +34,23 @@ const styles = (direction: string) =>
       marginLeft: '20@s',
     },
     container2: {
-      marginTop: 40,
+      marginTop: '115@s',
       paddingHorizontal: '30@s',
       width: '100%',
       height: '100%',
-      paddingBottom: 25,
+      paddingBottom: '25@s',
     },
     inputTextContainer: {
       width: '100%',
       justifyContent: 'center',
       alignItems: 'center',
-      marginBottom: 20,
+      marginBottom: '20@s',
     },
     inputTextContainer1: {
       width: '100%',
       justifyContent: 'center',
       alignItems: 'center',
-      marginBottom: 40,
+      marginBottom: '40@s',
     },
     rightComponent: {
       flexDirection: direction === 'rtl' ? 'row-reverse' : 'row',
@@ -71,12 +70,12 @@ const styles = (direction: string) =>
       flexDirection: 'row',
       justifyContent: 'space-between',
       height: '22@s',
-      marginBottom: 18,
+      marginBottom: '18@s',
     },
     row1: {
       flexDirection: 'row',
       justifyContent: 'space-between',
-      marginBottom: 36,
+      marginBottom: '36@s',
       height: '22@s',
     },
     row2: {
@@ -96,9 +95,7 @@ const styles = (direction: string) =>
       fontWeight: '700',
       fontFamily: 'Nunito-Regular',
     },
-    container4: {
-      marginTop: '40@s',
-    },
+    titleBarContainer: { position: 'absolute', width: '100%' },
   });
 
 export default styles;

@@ -7,7 +7,7 @@ const width =
     ? Dimensions.get('window').height
     : Dimensions.get('window').width;
 
-const styles = (direction: string, isPressed: boolean) =>
+const styles = (direction: string, isPressed?: boolean) =>
   ScaledSheet.create({
     container: {
       width: '100%',
@@ -17,11 +17,11 @@ const styles = (direction: string, isPressed: boolean) =>
     },
     safeAreaView: { alignSelf: 'stretch' },
     container2: {
-      paddingHorizontal: 20,
-      marginTop: 10,
+      paddingHorizontal: '20@s',
+      marginTop: '10@s',
       width: '100%',
       height: '100%',
-      paddingBottom: 25,
+      paddingBottom: '25@s',
     },
     gradientTextContainer: {
       width: '126@s',
@@ -76,9 +76,30 @@ const styles = (direction: string, isPressed: boolean) =>
       justifyContent: 'center',
     },
     heading: {
-      justifyContent: 'flex-start',
-      alignItems: 'flex-start',
+      justifyContent: 'space-between',
+      alignItems: 'center',
       marginTop: '40@s',
+      flexDirection: 'row',
+    },
+    icon: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginRight: 10,
+    },
+    pop: {
+      position: 'absolute',
+      height: '20@s',
+      width: '20@s',
+      borderRadius: '10@s',
+      backgroundColor: 'red',
+      justifyContent: 'center',
+      alignItems: 'center',
+      top: '-13@s',
+      right: '-5@s',
+    },
+    text: {
+      color: 'white',
+      fontWeight: 'bold',
     },
     bubbleContainer: {
       justifyContent: 'space-between',
@@ -152,12 +173,12 @@ const styles = (direction: string, isPressed: boolean) =>
     },
 
     cardContainer: {
-      marginTop: 10,
+      marginTop: '10@s',
       justifyContent: 'center',
       alignItems: 'center',
     },
     card: {
-      borderRadius: 14,
+      borderRadius: '14@s',
       borderWidth: 1,
       borderColor: 'white',
       borderTopColor: '#E2E2E2',
@@ -165,15 +186,14 @@ const styles = (direction: string, isPressed: boolean) =>
       width: '140@s',
     },
     neomorph: {
-      margin: 10,
-      marginBottom: 20,
+      margin: '10@s',
+      marginBottom: '20@s',
       height: '190@s',
       width: '140@s',
     },
     imageContainer: {
       justifyContent: 'center',
       alignItems: 'center',
-      // width: 140,
       height: '120@s',
     },
     cardImage: {
@@ -182,19 +202,16 @@ const styles = (direction: string, isPressed: boolean) =>
       width: '100%',
     },
     cardContent: {
-      marginTop: 15,
-      paddingHorizontal: 15,
-      height: 65,
-      // borderWidth: 2,
-      // justifyContent: 'center',
-      // alignItems: 'center',
+      marginTop: '15@s',
+      paddingHorizontal: '15@s',
+      height: '65@s',
     },
     cardTitleText: {
-      marginBottom: 8,
+      marginBottom: '8@s',
       fontFamily: 'Nunito-Regular',
       fontWeight: '600',
-      fontSize: 14,
-      lineHeight: 19,
+      fontSize: '14@s',
+      lineHeight: '19@s',
       color: '#2F4868',
     },
     cardContentPriceCoin: {
@@ -203,25 +220,25 @@ const styles = (direction: string, isPressed: boolean) =>
     },
     price: {
       color: '#758DAC',
-      fontSize: 12,
+      fontSize: '12@s',
       fontFamily: 'Nunito-Regular',
       fontWeight: '600',
-      lineHeight: 16,
+      lineHeight: '16@s',
     },
     cardContentCoin: {
       flexDirection: 'row',
     },
     cardCoin: {
-      height: 18,
-      width: 18,
+      height: '18@s',
+      width: '18@s',
       resizeMode: 'contain',
     },
     coinText: {
       color: '#758DAC',
-      fontSize: 12,
+      fontSize: '12@s',
       fontFamily: 'Nunito-Regular',
       fontWeight: '600',
-      lineHeight: 16,
+      lineHeight: '16@s',
     },
   });
 

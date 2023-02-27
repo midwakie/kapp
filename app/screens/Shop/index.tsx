@@ -26,6 +26,8 @@ import VerticalLine from 'app/components/lines/VerticalLine';
 import { DrawerActions } from '@react-navigation/native';
 import useDeviceOrientation from 'app/hooks/useDeviceOrientation';
 import toys from 'app/models/api/toys';
+import { useSelector } from 'react-redux';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const Shop: React.FC = (props: any) => {
   const { control } = useForm();
@@ -35,6 +37,10 @@ const Shop: React.FC = (props: any) => {
   const [toyActive, setToyActive] = useState(false);
   const [gameActive, setGameActive] = useState(false);
   const [puzzleActive, setPuzzleActive] = useState(false);
+  const cart = useSelector(state => state.cartReducer.cart);
+  const handleAddToCart = item => {
+    NavigationService.navigate('ToyDetail', { book: item });
+  };
   const Toy = () => {
     setToyActive(true);
     setGameActive(false);
@@ -54,7 +60,7 @@ const Shop: React.FC = (props: any) => {
   const CardItem = ({ book }: any) => {
     return (
       <View style={styles(direction).cardContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => handleAddToCart(book)}>
           <Neumorphism
             style={styles(direction).neomorph}
             lightColor={'#ffffff'}
@@ -70,7 +76,8 @@ const Shop: React.FC = (props: any) => {
                   {book.title}
                 </Text>
                 <View style={styles(direction).cardContentPriceCoin}>
-                  <Text style={styles(direction).price}>{book.price}</Text>
+                  <Text
+                    style={styles(direction).price}>{`$${book.price}`}</Text>
                   <View style={styles(direction).cardContentCoin}>
                     <Image
                       source={require('../../assets/coin.png')}
@@ -99,6 +106,17 @@ const Shop: React.FC = (props: any) => {
                 end={{ x: 0, y: 1 }}
                 textStyle={styles(direction).gradientTextStyle as TextStyle}
               />
+              <View style={styles(direction).icon}>
+                <TouchableOpacity
+                  onPress={() => NavigationService.navigate('ShoppingCart')}>
+                  <MaterialIcons name="shopping-cart" size={30} color="black" />
+                  {cart?.length > 0 && (
+                    <View style={styles(direction).pop}>
+                      <Text style={styles(direction).text}>{cart.length}</Text>
+                    </View>
+                  )}
+                </TouchableOpacity>
+              </View>
             </View>
             <View style={styles(direction).bubbleContainer}>
               <Neumorphism
@@ -113,7 +131,9 @@ const Shop: React.FC = (props: any) => {
                       source={require('../../assets/rubberDuck.png')}
                       style={styles(direction).categoryImage}
                     />
-                    <Text style={styles(direction).toysText}>Soft Toys</Text>
+                    <Text style={styles(direction).toysText}>
+                      {t('Soft Toys')}
+                    </Text>
                   </View>
                 </TouchableWithoutFeedback>
               </Neumorphism>
@@ -129,7 +149,7 @@ const Shop: React.FC = (props: any) => {
                       source={require('../../assets/gameConsole.png')}
                       style={styles(direction).categoryImage}
                     />
-                    <Text style={styles(direction).gameText}>Game</Text>
+                    <Text style={styles(direction).gameText}>{t('Game')}</Text>
                   </View>
                 </TouchableWithoutFeedback>
               </Neumorphism>
@@ -147,7 +167,9 @@ const Shop: React.FC = (props: any) => {
                       source={require('../../assets/puzzleRed.png')}
                       style={styles(direction).categoryImage}
                     />
-                    <Text style={styles(direction).puzzleText}>Puzzles</Text>
+                    <Text style={styles(direction).puzzleText}>
+                      {t('Puzzles')}
+                    </Text>
                   </View>
                 </TouchableWithoutFeedback>
               </Neumorphism>
@@ -173,7 +195,7 @@ const Shop: React.FC = (props: any) => {
                   numColumns={Math.floor(
                     Dimensions.get('window').width / scale(158),
                   )}
-                  data={books}
+                  data={toys}
                   renderItem={({ item }) => {
                     return <CardItem book={item} />;
                   }}
@@ -228,7 +250,10 @@ const Shop: React.FC = (props: any) => {
                   height={'100%'}
                   color={'#A8A8A8'}
                 />
-                <TouchableOpacity onPress={() => {}}>
+                <TouchableOpacity
+                  onPress={() => {
+                    NavigationService.navigate('GlobalSearch');
+                  }}>
                   <View style={styles(direction).searchContainer}>
                     <Image
                       source={require('../../assets/searchIcon.png')}
