@@ -25,6 +25,9 @@ const DeliveryAddress: React.FC = () => {
   const cart = useSelector(state => state.cartReducer.cart);
   const total = cart.reduce((acc, item) => acc + item.price, 0);
   const discountedTotal = total * 0.95;
+  const MakePayment = item => {
+    NavigationService.navigate('MakePayment', { item });
+  };
   return (
     <>
       <TitleBar
@@ -148,9 +151,7 @@ const DeliveryAddress: React.FC = () => {
             </Neumorphism>
             <View style={styles(direction).container4}>
               <RegularButton
-                onPress={() => {
-                  NavigationService.navigate(' ');
-                }}
+                onPress={() => MakePayment(discountedTotal)}
                 text={t('Continue ')}
                 radius={50}
                 height={50}

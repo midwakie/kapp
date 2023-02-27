@@ -257,7 +257,11 @@ const ChildFullProfile: React.FC = (props: any) => {
                       darkColor={'#A8A8A8'}
                       shapeType={'flat'}
                       radius={scale(50)}>
-                      <View style={styles(direction).coinContainer2}>
+                      <TouchableOpacity
+                        style={styles(direction).coinContainer2}
+                        onPress={() => {
+                          NavigationService.navigate('RewardPointHistory');
+                        }}>
                         <Image
                           style={styles(direction).coinImage}
                           source={require('../../assets/goldCoin1.png')}
@@ -265,7 +269,7 @@ const ChildFullProfile: React.FC = (props: any) => {
                         <Text style={styles(direction).coinText}>
                           {t('450')}
                         </Text>
-                      </View>
+                      </TouchableOpacity>
                     </Neumorphism>
                     <View style={styles(direction).marginViewRow1} />
                     <Neumorphism
@@ -682,7 +686,10 @@ const ChildFullProfile: React.FC = (props: any) => {
                     end={{ x: 0, y: 1 }}
                     textStyle={styles(direction).activityWorkText}
                   />
-                  <TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => {
+                      NavigationService.navigate('ActivitiesWork');
+                    }}>
                     <MaterialIcon
                       name={'arrow-forward'}
                       size={ms(20)}
@@ -765,7 +772,11 @@ const ChildFullProfile: React.FC = (props: any) => {
               darkColor={'#A8A8A8'}
               shapeType={'flat'}
               radius={scale(14)}>
-              <View style={styles(direction).rectangle4}>
+              <TouchableOpacity
+                style={styles(direction).rectangle4}
+                onPress={() => {
+                  NavigationService.navigate('BookShelf');
+                }}>
                 <View style={styles(direction).bookShelfTextContainer}>
                   <GradientText
                     colors={['#758DAC', '#2F4868']}
@@ -844,7 +855,7 @@ const ChildFullProfile: React.FC = (props: any) => {
                     )}
                   />
                 </View>
-              </View>
+              </TouchableOpacity>
             </Neumorphism>
             <View style={styles(direction).marginView} />
             <Neumorphism
@@ -935,32 +946,6 @@ const ChildFullProfile: React.FC = (props: any) => {
               </View>
             </Neumorphism>
             <View style={styles(direction).marginView} />
-
-            {/* <Neumorphism
-              lightColor={'#ffffff'}
-              darkColor={'#A8A8A8'}
-              shapeType={'flat'}
-              radius={scale(14)}>
-              <View style={styles(direction).rectangleNoChannel}>
-                <Image
-                  style={styles(direction).noChannelImage}
-                  source={require('../../assets/noChannelImage.png')}></Image>
-                <Text style={styles(direction).noChannelText}>
-                  {t('You have not created any channel')}
-                </Text>
-                <View style={styles(direction).buttonContainer}>
-                  <RegularButton
-                    onPress={() => {}}
-                    text={t('Create Channel')}
-                    radius={50}
-                    height={50}
-                    width={'100%'}
-                    colors={['#03BBE3', '#14A9FD']}
-                  />
-                </View>
-              </View>
-            </Neumorphism>
-            <View style={styles(direction).marginView}></View> */}
             <Neumorphism
               lightColor={'#ffffff'}
               darkColor={'#A8A8A8'}

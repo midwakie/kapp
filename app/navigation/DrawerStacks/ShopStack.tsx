@@ -10,6 +10,8 @@ import Shop from 'app/screens/Shop';
 import ToyDetail from 'app/screens/ToyDetail';
 import ShoppingCart from 'app/screens/ShoppingCart';
 import DeliveryAddress from 'app/screens/DeliveryAddress';
+import MakePayment from 'app/screens/MakePayment';
+import CardPayment from 'app/screens/CardPayment';
 
 const Stack = createStackNavigator();
 const LoggedInStack = createStackNavigator();
@@ -53,6 +55,20 @@ const ShopStack = () => {
       <Stack.Screen
         name="DeliveryAddress"
         component={DeliveryAddress}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="MakePayment"
+        component={MakePayment}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="CardPayment"
+        component={CardPayment}
         options={{
           headerShown: false,
         }}
