@@ -5,7 +5,6 @@ import {
   Image,
   SafeAreaView,
   ScrollView,
-  StyleSheet,
   Text,
   TouchableOpacity,
   TouchableWithoutFeedback,
@@ -251,7 +250,7 @@ function EBook(props: EBookProps) {
               ]}
             />
           </TouchableWithoutFeedback>
-          <TouchableWithoutFeedback onPress={() => goNext()}>
+          <TouchableWithoutFeedback onPress={() => onChangePlaySpeed()}>
             <View style={styles(direction).speedControlContainer}>
               <Text style={styles(direction).speedControlText}>
                 {availableSpeeds[speedIndex]}x
