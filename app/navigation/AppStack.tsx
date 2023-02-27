@@ -31,6 +31,7 @@ import NoNotification from 'app/screens/NoNotification';
 import StudentsStack from './DrawerStacks/StudentsStack';
 import ChildStack from './DrawerStacks/ChildStack';
 import MyChannelStack from './DrawerStacks/MyChannelStack';
+import ChatStack from './DrawerStacks/ChatStack';
 import ClubChannel from 'app/screens/ClubChannel';
 import SubscribedChannel from 'app/screens/SubscribedChannel';
 import PopularFeed from 'app/screens/PopularFeed';
@@ -322,7 +323,7 @@ const AppStack = () => {
       />
       <Drawer.Screen
         name="Chat"
-        component={NoChat}
+        component={ChatStack}
         options={{
           drawerLabel: 'Chat',
           iconImage: require('../assets/side_menu/chat.png'),
