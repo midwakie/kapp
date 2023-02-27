@@ -34,6 +34,9 @@ import { Item } from 'react-native-paper/lib/typescript/components/List/List';
 import { id } from 'date-fns/locale';
 import CustomInput from 'app/components/inputs/CustomInput';
 import RadioButton from 'app/components/buttons/RadioButton';
+import RadioButtonSelect from 'app/components/RadioButtonSelect';
+import Checkbox from 'app/components/checkbox';
+import CheckBoxRound from 'app/components/CheckBoxRound';
 
 const CreateGroup: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -129,15 +132,18 @@ const CreateGroup: React.FC = () => {
                 <Text style={styles(direction).chatName}>{book.name}</Text>
                 <Text style={styles(direction).chatText}>{book.chat}</Text>
               </View>
-
-              <RadioButton
-                id={'1'}
-                onPress={() => {
-                  onPress(index);
-                }}
-                selected={setSelectedIndex === index}
+            </View>
+            <View style={styles(direction).roundCheckBox}>
+              <CheckBoxRound
                 color={'#03A0E3'}
-                labelStyle={styles(direction).radioLabel}
+                iconColor={'#FFFFFF'}
+                height={16}
+                width={16}
+                status={false}
+                borderRadius={''}
+                icon={''}
+                iconSize={0}
+                borderWidth={0}
               />
             </View>
           </View>

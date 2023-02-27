@@ -1,8 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './styles';
 import GradientText from 'app/components/texts/GradientText';
-import RegularButton from 'app/components/buttons/RegularButton';
 import { useTranslation } from 'react-i18next';
 import NavigationService from 'app/navigation/NavigationService';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
@@ -14,94 +12,68 @@ import {
   View,
   FlatList,
   TextStyle,
-  TouchableWithoutFeedback,
-  Alert,
-  Dimensions,
 } from 'react-native';
 import TitleBar from 'app/components/buttons/TitleBar';
 import Neumorphism from 'react-native-neumorphism';
-import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { ms, scale } from 'react-native-size-matters';
 import useDeviceOrientation from 'app/hooks/useDeviceOrientation';
-import BookDetails from '../BookDetails';
-import { Item } from 'react-native-paper/lib/typescript/components/List/List';
-import { id } from 'date-fns/locale';
+import { ICurrentCustomer } from 'app/models/reducers/currentCustomer';
+import { useSelector } from 'react-redux';
+import { getToken } from 'app/services/twilio-api';
+import { TwilioService } from 'app/services/twilio-service';
+import { DrawerActions } from '@react-navigation/native';
+import { showMessage } from 'react-native-flash-message';
+import { Member } from 'twilio-chat';
 
-const ChatList: React.FC = () => {
+interface IState {
+  currentCustomerReducer: ICurrentCustomer;
+}
+
+const ChatList: React.FC = (props: any) => {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
-  const currentOrientation = useDeviceOrientation();
+  const channelPaginator = useRef();
+  const [channel, setChannels] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  const details = [
-    {
-      id: 1,
-      name: 'Afthab',
-      chat: 'lorum ipsum jhasdbfahbfckabcbadhcadbkhacbkhabcbakcbabchbahbhabdbchadbchabkhbhda',
-      img: require('../../assets/chatListOne.png'),
-      unreadImage: require('../../assets/chatListUnread.png'),
-      unreadText: 7,
-      textTime: 'Just Now',
-    },
-    {
-      id: 2,
-      name: 'Science Class',
-      chat: 'Hi',
-      img: require('../../assets/chatListTwo.png'),
-      unreadImage: require('../../assets/chatListUnread.png'),
-      unreadText: 2,
-      textTime: '10:08',
-    },
-    {
-      id: 3,
-      name: 'Ansari',
-      chat: 'Various versions have',
-      img: require('../../assets/chatListThree.png'),
-      unreadImage: require('../../assets/chatListUnread.png'),
-      unreadText: 8,
-      textTime: '8:10',
-    },
-    {
-      id: 4,
-      name: 'Sports class',
-      chat: 'Various versions have evolved..',
-      img: require('../../assets/chatListFour.png'),
-      unreadImage: require('../../assets/chatListUnread.png'),
-      unreadText: 6,
-      textTime: '11:08',
-    },
-    {
-      id: 5,
-      name: 'Fathima',
-      chat: 'How was english class?',
-      img: require('../../assets/chatListFive.png'),
-      unreadImage: require('../../assets/chatListUnread.png'),
-      unreadText: 55,
-      textTime: '11:08',
-    },
-    {
-      id: 6,
-      name: 'Easy Math',
-      chat: 'lorum Ipsum',
-      img: require('../../assets/chatListOne.png'),
-      unreadImage: require('../../assets/chatListUnread.png'),
-      unreadText: 2,
-      textTime: '11:08',
-    },
-    {
-      id: 7,
-      name: 'Mr.Bean',
-      chat: 'hello',
-      img: require('../../assets/chatListTwo.png'),
-      unreadImage: require('../../assets/chatListUnread.png'),
-      unreadText: 1,
-      textTime: 'Yesterday',
-    },
-  ];
+  const role = useSelector(
+    (state: IState) => state.currentCustomerReducer.role,
+  );
+
+  let identity = '';
+  if (role === 'Student') {
+    identity = 'Student1';
+  } else if (role === 'Teacher') {
+    identity = 'Teacher1';
+  } else if (role === 'Parent') {
+    identity = 'Parent1';
+  }
+  const username = identity;
+
+  useEffect(() => {
+    getToken(username).then(function (token) {
+      TwilioService.getInstance().getChatClient(token);
+    });
+
+    fetch(`http://192.168.1.7:3001/channels/${identity}`)
+      .then(response => response.json())
+      .then(Channles => {
+        setChannels(Channles);
+      });
+  }, [identity, username]);
 
   const CardListItem = ({ book }: any) => {
     return (
       <View style={styles(direction).neomorphContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            NavigationService.navigate('ChatRoom', {
+              channelName: book.friendlyName,
+              channelId: book.sid,
+              username: identity,
+              profileImage: book.customAttribute,
+            });
+          }}>
           <Neumorphism
             style={styles(direction).neomorphMargin}
             lightColor={'#ffffff'}
@@ -112,31 +84,39 @@ const ChatList: React.FC = () => {
               <View style={styles(direction).chatInfo}>
                 <View style={styles(direction).imageViewContainer}>
                   <Image
-                    source={book.img}
+                    source={{ uri: book.customAttribute }}
                     style={styles(direction).chatImage}
                   />
-                  <View style={styles(direction).onlineViewContainer}>
-                    <Image
-                      source={require('../../assets/chatListOnline.png')}
-                      style={styles(direction).onlineImage}
-                    />
-                  </View>
+                  {book.state === true && (
+                    <View style={styles(direction).onlineViewContainer}>
+                      <Image
+                        source={require('../../assets/chatListOnline.png')}
+                        style={styles(direction).onlineImage}
+                      />
+                    </View>
+                  )}
                 </View>
                 <View style={styles(direction).detailsContainer}>
-                  <Text style={styles(direction).chatName}>{book.name}</Text>
-                  <Text style={styles(direction).chatText}>{book.chat}</Text>
+                  <Text style={styles(direction).chatName}>
+                    {book.friendlyName}
+                  </Text>
+                  <Text style={styles(direction).chatText}>
+                    {book.lastMessage}
+                  </Text>
                 </View>
               </View>
               <View style={styles(direction).thirdContainer}>
-                <Text style={styles(direction).timeText}>{book.textTime}</Text>
+                <Text style={styles(direction).timeText}>{book.time}</Text>
                 <View style={styles(direction).blueImageContainer}>
-                  <Image
-                    source={book.unreadImage}
-                    style={styles(direction).unreadImage}
-                  />
+                  {book.count && (
+                    <Image
+                      source={require('../../assets/chatListUnread.png')}
+                      style={styles(direction).unreadImage}
+                    />
+                  )}
                   <View style={styles(direction).unreadTextContainer}>
                     <Text style={styles(direction).unreadText}>
-                      {book.unreadText}
+                      {book.count}
                     </Text>
                   </View>
                 </View>
@@ -156,9 +136,9 @@ const ChatList: React.FC = () => {
             <View style={styles(direction).cardContainer}>
               <FlatList
                 numColumns={1}
-                key={'-'}
-                keyExtractor={item => '-' + item.id}
-                data={details}
+                data={channel}
+                key={`FlatList-${Date.now()}`}
+                keyExtractor={item => item.id}
                 renderItem={({ item }) => {
                   return <CardListItem book={item} />;
                 }}
@@ -167,18 +147,18 @@ const ChatList: React.FC = () => {
           </View>
         </ScrollView>
       </SafeAreaView>
-      <View style={styles(false).titleBarContainer}>
+      <View style={styles(direction).titleBarContainer}>
         <TitleBar
           leftComponent={
             <View style={styles(direction).topContainer}>
               <Image
-                source={require('../../assets/topPicAvatar.png')}
+                source={require('../../assets/ParentShop.png')}
                 style={styles(direction).topImage}
               />
             </View>
           }
           middleComponent={
-            <View style={styles(false).gradientTextContainer}>
+            <View style={styles(direction).gradientTextContainer}>
               <GradientText
                 colors={['#2AA7DD', '#2AA7DD']}
                 text={t('Chats')}
@@ -194,15 +174,15 @@ const ChatList: React.FC = () => {
               darkColor={'#A8A8A8'}
               shapeType={'flat'}
               radius={52}>
-              <View style={styles(false).iconContainer}>
+              <View style={styles(direction).iconContainer}>
                 <TouchableOpacity
                   onPress={() => {
                     props?.navigation.dispatch(DrawerActions.toggleDrawer());
                   }}>
-                  <View style={styles(false).menuContainer}>
+                  <View style={styles(direction).menuContainer}>
                     <Image
                       source={require('../../assets/childHomeMenu.png')}
-                      style={styles(false).iconImageStyle}
+                      style={styles(direction).iconImageStyle}
                     />
                   </View>
                 </TouchableOpacity>
@@ -216,10 +196,10 @@ const ChatList: React.FC = () => {
                   onPress={() => {
                     NavigationService.navigate('GlobalSearch');
                   }}>
-                  <View style={styles(false).searchContainer}>
+                  <View style={styles(direction).searchContainer}>
                     <Image
                       source={require('../../assets/searchIcon.png')}
-                      style={styles(false).iconImageStyle}
+                      style={styles(direction).iconImageStyle}
                     />
                   </View>
                 </TouchableOpacity>

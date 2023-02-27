@@ -19,6 +19,7 @@ import { useTranslation } from 'react-i18next';
 import { scale } from 'react-native-size-matters';
 import TitleBar from 'app/components/buttons/TitleBar';
 import RadioButton from 'app/components/buttons/RadioButton';
+import { useRoute } from '@react-navigation/native';
 
 const MakePayment: React.FC = props => {
   const { control } = useForm();
@@ -43,6 +44,8 @@ const MakePayment: React.FC = props => {
   const [radioButtonMaster, setRadioButtonMaster] = useState(false);
   const [radioButtonVisa, setRadioButtonVisa] = useState(false);
   const [radioButtonBank, setRadioButtonBank] = useState(false);
+  const route = useRoute();
+  const item = route.params?.item;
   return (
     <>
       <ScrollView style={styles(direction).container} bounces={false}>
@@ -143,7 +146,7 @@ const MakePayment: React.FC = props => {
                     <Text style={styles(direction).text1}>
                       {t('Total Amount')}
                     </Text>
-                    <Text style={styles(direction).text2}>{t('$14.72')}</Text>
+                    <Text style={styles(direction).text2}>${item}</Text>
                   </View>
                 </View>
               </Neumorphism>
@@ -152,7 +155,9 @@ const MakePayment: React.FC = props => {
             <View style={styles(direction).button}>
               <RegularButton
                 onPress={() => {
-                  NavigationService.navigate(' ');
+                  if (radioButtonVisa || radioButtonMaster) {
+                    NavigationService.navigate('CardPayment');
+                  }
                 }}
                 text={t('Make Payment ')}
                 radius={50}

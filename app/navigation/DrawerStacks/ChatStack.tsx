@@ -5,42 +5,48 @@ import GlobalSearch from 'app/screens/GlobalSearch';
 import { useSelector } from 'react-redux';
 import { ICurrentCustomer } from 'app/models/reducers/currentCustomer';
 import { ROLES } from 'app/config/role-config';
-import MyFeeds from 'app/screens/MyFeeds';
-import Shop from 'app/screens/Shop';
-import ToyDetail from 'app/screens/ToyDetail';
-import ShoppingCart from 'app/screens/ShoppingCart';
-import DeliveryAddress from 'app/screens/DeliveryAddress';
-import MakePayment from 'app/screens/MakePayment';
-import CardPayment from 'app/screens/CardPayment';
+import ChatList from 'app/screens/ChatList';
+import ChatRoom from 'app/screens/ChatRoom';
+import CreateChat from 'app/screens/CreateChat';
+import CreateGroup from 'app/screens/CreateGroup';
+import ChatGroupDetail from 'app/screens/ChatGroupDetail';
 
 const Stack = createStackNavigator();
 const LoggedInStack = createStackNavigator();
 interface IState {
   currentCustomerReducer: ICurrentCustomer;
 }
-const ShopStack = () => {
+const ChatStack = () => {
   const selectedRole = useSelector(
     (state: IState) => state.currentCustomerReducer.role,
   );
   return (
     <LoggedInStack.Navigator>
       <Stack.Screen
-        name="Shop"
-        component={Shop}
+        name="ChatList"
+        component={ChatList}
+        options={{
+          headerShown: false,
+        }}
+      />
+
+      <Stack.Screen
+        name="ChatRoom"
+        component={ChatRoom}
         options={{
           headerShown: false,
         }}
       />
       <Stack.Screen
-        name="ToyDetail"
-        component={ToyDetail}
+        name="CreateChat"
+        component={CreateChat}
         options={{
           headerShown: false,
         }}
       />
       <Stack.Screen
-        name="ShoppingCart"
-        component={ShoppingCart}
+        name="CreateGroup"
+        component={CreateGroup}
         options={{
           headerShown: false,
         }}
@@ -53,22 +59,8 @@ const ShopStack = () => {
         }}
       />
       <Stack.Screen
-        name="DeliveryAddress"
-        component={DeliveryAddress}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="MakePayment"
-        component={MakePayment}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="CardPayment"
-        component={CardPayment}
+        name="ChatGroupDetail"
+        component={ChatGroupDetail}
         options={{
           headerShown: false,
         }}
@@ -77,4 +69,4 @@ const ShopStack = () => {
   );
 };
 
-export default ShopStack;
+export default ChatStack;
