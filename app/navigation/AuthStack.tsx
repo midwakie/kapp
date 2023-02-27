@@ -81,6 +81,8 @@ import WhatsNew from 'app/screens/EBooks/WhatsNew';
 import Favorites from 'app/screens/EBooks/Favorites';
 import Shop from 'app/screens/Shop';
 import OrderDetails from 'app/screens/OrderDetails';
+import ChatList from 'app/screens/ChatList';
+import ChatRoom from 'app/screens/ChatRoom';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -633,6 +635,22 @@ const AuthStack = () => {
       <Stack.Screen
         name="OrderDetails"
         component={OrderDetails}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ChatList"
+        component={ChatList}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ChatRoom"
+        component={ChatRoom}
         options={{
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
