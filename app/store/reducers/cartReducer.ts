@@ -4,6 +4,7 @@ import {
   REMOVE_FROM_CART,
   INCREMENT_QUANTITY,
   DECREMENT_QUANTITY,
+  LOG_OUT,
 } from '../actions/types';
 
 const initialState = {
@@ -72,5 +73,8 @@ export const cartReducer = createReducer(initialState, {
         )
         .filter(item => item.quantity > 0),
     };
+  },
+  [LOG_OUT](state) {
+    return { ...state, cart: [] };
   },
 });

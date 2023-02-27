@@ -129,7 +129,9 @@ const RewardPointHistory: React.FC = () => {
                     shapeType={'flat'}
                     radius={scale(38)}>
                     <TouchableOpacity
-                      onPress={() => NavigationService.navigate('ClassFilter')}>
+                      onPress={() =>
+                        NavigationService.navigate('RewardPointFilter')
+                      }>
                       <View style={styles(direction).filterViewContainer}>
                         <Image
                           source={require('../../assets/filterImage.png')}

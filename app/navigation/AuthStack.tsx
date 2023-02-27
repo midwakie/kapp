@@ -88,6 +88,7 @@ import OrderDetail from 'app/screens/OrderDetail';
 import OrderList from 'app/screens/OrderList';
 import RewardPointHistory from 'app/screens/RewardPointHistory';
 import ActivitiesWork from 'app/screens/ActivitiesWork';
+import BookShelf from 'app/screens/BookShelf';
 import ChatGroupDetail from 'app/screens/ChatGroupDetail';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
@@ -740,8 +741,14 @@ const AuthStack = () => {
         name="CardPayment"
         component={CardPayment}
         options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="BookShelf"
+        component={BookShelf}
+        options={{
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
         }}
