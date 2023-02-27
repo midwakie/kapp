@@ -155,7 +155,9 @@ const MakePayment: React.FC = props => {
             <View style={styles(direction).button}>
               <RegularButton
                 onPress={() => {
-                  NavigationService.navigate('CardPayment');
+                  if (radioButtonVisa || radioButtonMaster) {
+                    NavigationService.navigate('CardPayment');
+                  }
                 }}
                 text={t('Make Payment ')}
                 radius={50}
