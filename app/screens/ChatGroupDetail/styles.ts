@@ -47,7 +47,7 @@ const styles = (direction: string) =>
       alignItems: 'center',
     },
     imageContainerImage: {
-      resizeMode: 'center',
+      resizeMode: 'stretch',
       width: '335@s',
       height: '160@s',
     },

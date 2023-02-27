@@ -9,6 +9,7 @@ import ChatList from 'app/screens/ChatList';
 import ChatRoom from 'app/screens/ChatRoom';
 import CreateChat from 'app/screens/CreateChat';
 import CreateGroup from 'app/screens/CreateGroup';
+import ChatGroupDetail from 'app/screens/ChatGroupDetail';
 
 const Stack = createStackNavigator();
 const LoggedInStack = createStackNavigator();
@@ -53,6 +54,13 @@ const ChatStack = () => {
       <Stack.Screen
         name="GlobalSearch"
         component={GlobalSearch}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ChatGroupDetail"
+        component={ChatGroupDetail}
         options={{
           headerShown: false,
         }}
