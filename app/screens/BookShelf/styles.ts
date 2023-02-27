@@ -185,6 +185,13 @@ const styles = (direction: string) =>
       lineHeight: '14@s',
       color: '#3B3B48',
     },
+    percentageText1: {
+      fontFamily: 'Nunito-Regular',
+      fontWeight: '600',
+      fontSize: '10@s',
+      lineHeight: '14@s',
+      color: '#3B3B48',
+    },
   });
 
 export default styles;

@@ -160,10 +160,8 @@ const BookShelf: React.FC = () => {
                     {book.title}
                   </Text>
                   <Text style={styles(direction).author}>{book.author}</Text>
-                </View>
-                <View style={styles(direction).progressBarContainer}>
                   <ProgressBar percentage={book.percentage} />
-                  <Text style={styles(direction).percentageText}>
+                  <Text style={styles(direction).percentageText1}>
                     {book.percentage}
                   </Text>
                 </View>
