@@ -23,7 +23,6 @@ export class TwilioService {
     }
     if (!TwilioService.chatClient && twilioToken) {
       return Client.create(twilioToken).then((client) => {
-        console.log('client created:-',client);
         TwilioService.chatClient = client;
         return TwilioService.chatClient;
       });
@@ -32,7 +31,6 @@ export class TwilioService {
   }
 
   clientShutdown() {
-    console.log('clientShutdown : -');
     TwilioService.chatClient?.shutdown();
     TwilioService.chatClient = null;
   }
@@ -52,13 +50,11 @@ export class TwilioService {
   }
 
   parseChannels(channels) {
-    console.log('parseChannels : -', channels);
     return channels.map(this.parseChannel);
   }
 
 
   parseChannel(channel) {
-    console.log('parseChanneldetails--------------', channel);
     const extraData = [
       { id: 'CH824c73c98d63477f853fa1ec3ead4f97', name: 'https://s3.ap-south-1.amazonaws.com/cdn.kutubiapp.com/mobile/Ellipse_5.png' },
       { id: 'CH21da2d3900a74bc186c04931edaa22e6', name: 'https://s3.ap-south-1.amazonaws.com/cdn.kutubiapp.com/mobile/Rectangle_135.png' },
@@ -84,13 +80,10 @@ export class TwilioService {
   }
 
  parseMessages(messages) {
-    console.log('parseMessages : -', messages);
-
     return messages.map(this.parseMessage).reverse();
   }
 
 parseMessage(message) {
-    console.log('parseMessage : -', message);
     return {
       _id: message.sid,
       text: message.body,

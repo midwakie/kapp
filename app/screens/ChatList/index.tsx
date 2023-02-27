@@ -52,7 +52,6 @@ const ChatList: React.FC = (props: any) => {
 
   useEffect(() => {
     getToken(username).then(function (token) {
-      console.log('token 123----', token);
       TwilioService.getInstance().getChatClient(token);
     });
 
