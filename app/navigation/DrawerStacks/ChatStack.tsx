@@ -7,6 +7,8 @@ import { ICurrentCustomer } from 'app/models/reducers/currentCustomer';
 import { ROLES } from 'app/config/role-config';
 import ChatList from 'app/screens/ChatList';
 import ChatRoom from 'app/screens/ChatRoom';
+import CreateChat from 'app/screens/CreateChat';
+import CreateGroup from 'app/screens/CreateGroup';
 
 const Stack = createStackNavigator();
 const LoggedInStack = createStackNavigator();
@@ -30,6 +32,27 @@ const ChatStack = () => {
       <Stack.Screen
         name="ChatRoom"
         component={ChatRoom}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="CreateChat"
+        component={CreateChat}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="CreateGroup"
+        component={CreateGroup}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="GlobalSearch"
+        component={GlobalSearch}
         options={{
           headerShown: false,
         }}
