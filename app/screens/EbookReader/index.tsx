@@ -210,10 +210,12 @@ function EBook(props: EBookProps) {
     outputRange: ['0deg', '180deg'],
   });
 
+  console.log('width---', width);
+
   const RenderPlayerController = () => {
     if (endPageReached) {
       return (
-        <View>
+        <View style={styles(direction).finishControlWrapper}>
           <RegularButton
             onPress={() => {
               NavigationService.navigate('FinishBook');
@@ -223,7 +225,7 @@ function EBook(props: EBookProps) {
             }
             radius={60}
             height={40}
-            width={width}
+            width={width > 450 ? 450 : width}
             colors={['#EBEEF0', '#EBEEF0']}
           />
         </View>
@@ -250,7 +252,7 @@ function EBook(props: EBookProps) {
               ]}
             />
           </TouchableWithoutFeedback>
-          <TouchableWithoutFeedback onPress={() => onChangePlaySpeed()}>
+          <TouchableWithoutFeedback onPress={() => goNext()}>
             <View style={styles(direction).speedControlContainer}>
               <Text style={styles(direction).speedControlText}>
                 {availableSpeeds[speedIndex]}x

@@ -57,7 +57,7 @@ const styles = (direction: string) =>
       fontWeight: 'bold',
     },
     trackWrapper: {
-      marginHorizontal: 12,
+      marginHorizontal: 24,
     },
     trackStyle: {
       backgroundColor: '#dadada',
@@ -65,6 +65,10 @@ const styles = (direction: string) =>
     trackThumbStyle: {
       width: 15,
       height: 15,
+    },
+    finishControlWrapper: {
+      alignItems: 'center',
+      justifyContent: 'center',
     },
     playControlWrapper: {
       flexDirection: 'row',
@@ -94,6 +98,7 @@ const styles = (direction: string) =>
       fontWeight: '700',
       fontFamily: 'Nunito-Regular',
       textAlign: 'center',
+      alignSelf: 'center',
     },
     controllerImg: {
       height: 35,
