@@ -189,14 +189,6 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
-        name="ChatList"
-        component={ChatList}
-        options={{
-          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
         name="CreateGroup"
         component={CreateGroup}
         options={{
