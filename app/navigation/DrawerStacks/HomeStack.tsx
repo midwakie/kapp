@@ -18,6 +18,7 @@ import AddReview from 'app/screens/AddReview';
 import EbookDetail from 'app/screens/EbookDetail';
 import BookSeries from 'app/screens/BookSeries';
 import FinishBook from 'app/screens/FinishBook';
+import EBookReader from 'app/screens/EbookReader';
 
 const Stack = createStackNavigator();
 const LoggedInStack = createStackNavigator();
@@ -156,6 +157,13 @@ const HomeStack = () => {
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
           // animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="EBookReader"
+        component={EBookReader}
+        options={{
           headerShown: false,
         }}
       />

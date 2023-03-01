@@ -90,6 +90,7 @@ import RewardPointHistory from 'app/screens/RewardPointHistory';
 import ActivitiesWork from 'app/screens/ActivitiesWork';
 import BookShelf from 'app/screens/BookShelf';
 import ChatGroupDetail from 'app/screens/ChatGroupDetail';
+import EBookReader from 'app/screens/EbookReader';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -634,6 +635,14 @@ const AuthStack = () => {
       <Stack.Screen
         name="BookSeries"
         component={BookSeries}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="EBookReader"
+        component={EBookReader}
         options={{
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,

@@ -18,6 +18,7 @@ const styles = (radius: any, height: any, width: any) =>
       margin: '10@ms',
       color: '#ffffff',
       backgroundColor: 'transparent',
+      alignSelf: 'center',
     },
   });
 

@@ -11,6 +11,7 @@ import {
   Image,
   SafeAreaView,
   Text,
+  TextStyle,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -20,6 +21,23 @@ import Neumorphism from 'react-native-neumorphism';
 import { ms, scale } from 'react-native-size-matters';
 import { AirbnbRating } from 'react-native-ratings';
 import Carousal, { Pagination } from 'react-native-snap-carousel';
+
+const sampleEbookData = [
+  {
+    book: 'https://s3.ap-south-1.amazonaws.com/cdn.kutubiapp.com/test/sample3/OEBPS/content.opf',
+    soundMapFile:
+      'https://s3.ap-south-1.amazonaws.com/cdn.kutubiapp.com/test/sample2/soundpdfmap.json',
+    sound:
+      'https://s3.ap-south-1.amazonaws.com/cdn.kutubiapp.com/test/sample3/audio.mp3',
+  },
+  {
+    book: 'https://s3.ap-south-1.amazonaws.com/cdn.kutubiapp.com/test/sample2/OEBPS/content.opf',
+    soundMapFile:
+      'https://s3.ap-south-1.amazonaws.com/cdn.kutubiapp.com/test/sample1/soundpdfmap.json',
+    sound:
+      'https://s3.ap-south-1.amazonaws.com/cdn.kutubiapp.com/test/sample2/audio.mp3',
+  },
+];
 
 const BookSeries: React.FC = () => {
   const refSlider: React.MutableRefObject<any> = useRef(null);
@@ -196,8 +214,14 @@ const BookSeries: React.FC = () => {
                     data={books}
                     renderItem={({ item, index }) => (
                       <TouchableOpacity
+                        key={index}
                         onPress={() => {
-                          NavigationService.navigate('FinishBook');
+                          NavigationService.navigate('EBookReader', {
+                            book: sampleEbookData?.[index]?.book,
+                            sound: sampleEbookData?.[index]?.sound,
+                            soundMapFile:
+                              sampleEbookData?.[index]?.soundMapFile,
+                          });
                         }}>
                         <Image
                           source={item.img}
