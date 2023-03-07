@@ -72,6 +72,24 @@ const TeachersProfile: React.FC = () => {
       image: require('../../assets/trash.png'),
     },
   ]);
+  const [options1, setOption] = useState([
+    {
+      title: 'Switch Profile',
+      image: require('../../assets/switchProfile.png'),
+    },
+    {
+      title: 'Send Invitation',
+      image: require('../../assets/sendInvitation.png'),
+    },
+    {
+      title: 'Edit Profile',
+      image: require('../../assets/pen.png'),
+    },
+    {
+      title: 'Delete Profile',
+      image: require('../../assets/trash.png'),
+    },
+  ]);
   return (
     <>
       <TitleBar
@@ -110,7 +128,7 @@ const TeachersProfile: React.FC = () => {
               shapeType={'flat'}
               radius={14}>
               <View style={styles(direction).rectangle}>
-                <View style={{ marginLeft: 30 }}>
+                <View style={styles(direction).neumorphic}>
                   <Image
                     source={require('../../assets/editTeacher.png')}
                     style={styles(direction).profileImageStyle}
@@ -130,25 +148,68 @@ const TeachersProfile: React.FC = () => {
                   </View>
                 </View>
                 <View>
-                  <Text style={styles(direction).text}>
+                  <Text style={styles(direction).text5}>
                     {t('Hubbir Qureshi')}
                   </Text>
                   <Text style={styles(direction).text2}>
                     {t('Next Generation School')}
                   </Text>
                 </View>
-                <PlainButton
-                  onPress={() => {
-                    NavigationService.navigate('EditTeacherProfile');
-                  }}
-                  style={styles(direction).text3}
-                  text={t('Edit')}
-                />
+                <View style={styles(direction).container3}>
+                  <Menu>
+                    <MenuTrigger>
+                      <Image
+                        source={require('../../assets/menu.png')}
+                        style={styles(direction).itemMenu}
+                      />
+                    </MenuTrigger>
+                    <MenuOptions
+                      customStyles={{
+                        optionsContainer: {
+                          borderRadius: scale(14),
+                          width: scale(214),
+                          paddingVertical: scale(20),
+                          backgroundColor: '#EBEEF0',
+                        },
+                      }}>
+                      {options1.map((op, i) => (
+                        <MenuOption
+                          onSelect={() => {
+                            if (op.title === 'Edit Profile') {
+                              NavigationService.navigate('EditTeacherProfile');
+                            }
+                          }}
+                          customStyles={{
+                            optionWrapper: {
+                              flexDirection: 'row',
+                              alignItems: 'center',
+                              justifyContent: 'space-between',
+                              paddingHorizontal: scale(20),
+                              paddingVertical: scale(7),
+                            },
+                          }}>
+                          <Text
+                            style={
+                              op.title === t('Delete Profile')
+                                ? styles(direction).optionTitleStyleColor
+                                : styles(direction).optionTitleStyle
+                            }>
+                            {t(op.title)}
+                          </Text>
+                          <Image
+                            source={op.image}
+                            style={styles(direction).menuImage}
+                          />
+                        </MenuOption>
+                      ))}
+                    </MenuOptions>
+                  </Menu>
+                </View>
               </View>
             </Neumorphism>
             {data.map((item, index) => {
               return (
-                <View style={{ marginTop: 30 }}>
+                <View style={styles(direction).neumorphic1}>
                   <Neumorphism
                     lightColor={'#ffffff'}
                     darkColor={'#A8A8A8'}
@@ -164,11 +225,11 @@ const TeachersProfile: React.FC = () => {
                           style={styles(direction).imageStyle}
                         />
                       </TouchableOpacity>
-                      <View>
+                      <View style={styles(direction).margin}>
                         <Text style={styles(direction).text}>
                           {t(item.titleName)}
                         </Text>
-                        <View style={{ flexDirection: 'row' }}>
+                        <View style={styles(direction).direction}>
                           <Text style={styles(direction).status}>
                             {t(item.subscribers)}
                           </Text>
@@ -176,65 +237,70 @@ const TeachersProfile: React.FC = () => {
                             {t(item.count)}
                           </Text>
                         </View>
-                        <Text style={styles(direction).text4}>
+                        <Text style={styles(direction).text6}>
                           {t(item.standard)}
                         </Text>
                       </View>
-                      <Menu>
-                        <MenuTrigger>
-                          <Image
-                            source={require('../../assets/menu.png')}
-                            style={styles(direction).menu}
-                          />
-                        </MenuTrigger>
-                        <MenuOptions
-                          customStyles={{
-                            optionsContainer: {
-                              borderRadius: scale(14),
-                              width: scale(214),
-                              paddingVertical: scale(20),
-                              marginTop: 40,
-                              marginLeft: -35,
-                              backgroundColor: '#EBEEF0',
-                            },
-                          }}>
-                          {options.map((op, i) => (
-                            <MenuOption
-                              onSelect={() => {
-                                [
-                                  op.title === 'Edit Channel'
-                                    ? NavigationService.navigate('MyChannel', {
-                                        titleName: item.titleName,
-                                        isCondition: false,
-                                      })
-                                    : NavigationService.navigate(''),
-                                ];
-                              }}
-                              customStyles={{
-                                optionWrapper: {
-                                  flexDirection: 'row',
-                                  alignItems: 'center',
-                                  justifyContent: 'space-between',
-                                  paddingHorizontal: scale(20),
-                                  paddingVertical: scale(9),
-                                },
-                              }}>
-                              <Text
-                                style={
-                                  op.title === 'Delete Channel'
-                                    ? styles(direction).optionTitleStyle2
-                                    : styles(direction).optionTitleStyle
-                                }>
-                                {op.title}{' '}
-                              </Text>
-                              <Image
-                                source={op.image}
-                                style={styles(direction).menuImage}
-                              />
-                            </MenuOption>
-                          ))}
-                        </MenuOptions>
-                      </Menu>
+                      <View style={styles(direction).container4}>
+                        <Menu>
+                          <MenuTrigger>
+                            <Image
+                              source={require('../../assets/menu.png')}
+                              style={styles(direction).menu}
+                            />
+                          </MenuTrigger>
+                          <MenuOptions
+                            customStyles={{
+                              optionsContainer: {
+                                borderRadius: scale(14),
+                                width: scale(214),
+                                paddingVertical: scale(20),
+                                marginTop: 40,
+                                marginLeft: -35,
+                                backgroundColor: '#EBEEF0',
+                              },
+                            }}>
+                            {options.map((op, i) => (
+                              <MenuOption
+                                onSelect={() => {
+                                  [
+                                    op.title === 'Edit Channel'
+                                      ? NavigationService.navigate(
+                                          'MyChannel',
+                                          {
+                                            titleName: item.titleName,
+                                            isCondition: false,
+                                          },
+                                        )
+                                      : NavigationService.navigate(''),
+                                  ];
+                                }}
+                                customStyles={{
+                                  optionWrapper: {
+                                    flexDirection: 'row',
+                                    alignItems: 'center',
+                                    justifyContent: 'space-between',
+                                    paddingHorizontal: scale(20),
+                                    paddingVertical: scale(9),
+                                  },
+                                }}>
+                                <Text
+                                  style={
+                                    op.title === 'Delete Channel'
+                                      ? styles(direction).optionTitleStyle2
+                                      : styles(direction).optionTitleStyle
+                                  }>
+                                  {op.title}{' '}
+                                </Text>
+                                <Image
+                                  source={op.image}
+                                  style={styles(direction).menuImage}
+                                />
+                              </MenuOption>
+                            ))}
+                          </MenuOptions>
+                        </Menu>
+                      </View>
                     </View>
                   </Neumorphism>
                 </View>

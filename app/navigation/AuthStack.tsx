@@ -93,6 +93,7 @@ import ChatGroupDetail from 'app/screens/ChatGroupDetail';
 import EBookReader from 'app/screens/EbookReader';
 import ChangeEmailId from 'app/screens/ChangeEmailId';
 import ChangeMobileNumber from 'app/screens/ChangeMobileNumber';
+import AccountChangePassword from 'app/screens/AccountChangePassword';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -767,6 +768,14 @@ const AuthStack = () => {
       <Stack.Screen
         name="ChangeMobileNumber"
         component={ChangeMobileNumber}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="AccountChangePassword"
+        component={AccountChangePassword}
         options={{
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
