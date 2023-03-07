@@ -1,6 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useRef } from 'react';
-import { Image, SafeAreaView, Text, TextInput, TextStyle, View } from 'react-native';
+import {
+  Image,
+  SafeAreaView,
+  Text,
+  TextInput,
+  TextStyle,
+  View,
+} from 'react-native';
 import NavigationService from 'app/navigation/NavigationService';
 import { ScrollView } from 'react-native-gesture-handler';
 import Neumorphism from 'react-native-neumorphism';
@@ -43,9 +50,7 @@ const ChangeMobileNumber: React.FC = () => {
             </View>
             <View style={styles(direction).neomorphContainer2}>
               <RegularButton
-                onPress={() => {
-                  NavigationService.navigate(' ');
-                }}
+                onPress={undefined}
                 text={t('Update')}
                 radius={50}
                 height={50}
