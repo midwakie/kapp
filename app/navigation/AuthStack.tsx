@@ -91,6 +91,9 @@ import ActivitiesWork from 'app/screens/ActivitiesWork';
 import BookShelf from 'app/screens/BookShelf';
 import ChatGroupDetail from 'app/screens/ChatGroupDetail';
 import EBookReader from 'app/screens/EbookReader';
+import ChangeEmailId from 'app/screens/ChangeEmailId';
+import ChangeMobileNumber from 'app/screens/ChangeMobileNumber';
+import AccountChangePassword from 'app/screens/AccountChangePassword';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -183,14 +186,6 @@ const AuthStack = () => {
       <Stack.Screen
         name="Child Account"
         component={ChildAccount}
-        options={{
-          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="ChatList"
-        component={ChatList}
         options={{
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
@@ -757,6 +752,30 @@ const AuthStack = () => {
       <Stack.Screen
         name="BookShelf"
         component={BookShelf}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ChangeEmailId"
+        component={ChangeEmailId}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ChangeMobileNumber"
+        component={ChangeMobileNumber}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="AccountChangePassword"
+        component={AccountChangePassword}
         options={{
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,

@@ -31,6 +31,8 @@ import ActivitiesWorkDetail from 'app/screens/ActivitiesWorkDetail';
 import RewardPointHistory from 'app/screens/RewardPointHistory';
 import RewardPointFilter from 'app/screens/RewardPointFilter';
 import BookShelf from 'app/screens/BookShelf';
+import EditParentProfile from 'app/screens/EditParentProfile';
+import HobbiesAndInterest from 'app/screens/HobbiesAndInterests';
 
 const Stack = createStackNavigator();
 const LoggedInStack = createStackNavigator();
@@ -88,6 +90,13 @@ const ProfileStack = () => {
         }}
       />
       <Stack.Screen
+        name="EditParentProfile"
+        component={EditParentProfile}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
         name="ActivitiesStats"
         component={ActivitiesStats}
         options={{
@@ -132,6 +141,13 @@ const ProfileStack = () => {
       <Stack.Screen
         name="ManageActivitiesDetail"
         component={ManageActivitiesDetail}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="HobbiesAndInterest"
+        component={HobbiesAndInterest}
         options={{
           headerShown: false,
         }}

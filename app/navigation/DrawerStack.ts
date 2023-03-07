@@ -14,6 +14,9 @@ import NoSearch from 'app/screens/Nosearch';
 import NoNotification from 'app/screens/NoNotification';
 import { IDrawerItem } from './AppStack';
 import StudentsStack from './DrawerStacks/StudentsStack';
+import ChatStack from './DrawerStacks/ChatStack';
+import OrderStack from './DrawerStacks/OrderStack';
+import ShopStack from './DrawerStacks/ShopStack';
 
 export const DrawerStacksList: IDrawerItem[] = [
   {
@@ -231,7 +234,7 @@ export const DrawerStacksList: IDrawerItem[] = [
   {
     index: 10,
     name: 'Shop',
-    component: NoSearch,
+    component: ShopStack,
     drawerLabel: 'Shop',
     iconImage: require('../assets/side_menu/shop.png'),
     headerStyle: {
@@ -243,7 +246,7 @@ export const DrawerStacksList: IDrawerItem[] = [
   {
     index: 11,
     name: 'Orders',
-    component: NoSearch,
+    component: OrderStack,
     drawerLabel: 'Orders',
     iconImage: require('../assets/side_menu/orders.png'),
     headerStyle: {
@@ -255,7 +258,7 @@ export const DrawerStacksList: IDrawerItem[] = [
   {
     index: 12,
     name: 'Chat',
-    component: NoChat,
+    component: ChatStack,
     drawerLabel: 'Chat',
     iconImage: require('../assets/side_menu/chat.png'),
     headerStyle: {
