@@ -34,38 +34,26 @@ const styles = (direction: string) =>
       marginLeft: '20@s',
     },
     container1: {
-      marginTop: '85@s',
+      marginTop: '90@s',
       paddingHorizontal: '20@s',
       width: '100%',
       height: '100%',
       paddingBottom: '25@s',
     },
     container2: {
-      // backgroundColor: '#EBEEF0',
       width: '100%',
       height: '132@s',
-      // borderRadius: 14,s
       marginBottom: '30@s',
-      // paddingHorizontal: '25@s',
-      // paddingVertical: '25@s',
     },
     container21: {
-      // backgroundColor: '#EBEEF0',
       width: '100%',
       height: '147@s',
-      // borderRadius: 14,s
       marginBottom: '30@s',
-      // paddingHorizontal: '25@s',
-      // paddingVertical: '25@s',
     },
     container22: {
-      // backgroundColor: '#EBEEF0',
       width: '100%',
       height: '142@s',
-      // borderRadius: 14,s
       marginTop: '30@s',
-      // paddingHorizontal: '25@s',
-      // paddingVertical: '25@s',
     },
     profileImgContainer: {
       height: '132@s',
@@ -91,14 +79,10 @@ const styles = (direction: string) =>
       height: '16@s',
       width: '4@s',
       resizeMode: 'contain',
-      position: 'absolute',
-      top: '20@s',
-      right: '30@s',
     },
     profileImgContainer1: {
       height: '73.5@s',
       marginLeft: '23@s',
-      flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
     },
@@ -107,12 +91,6 @@ const styles = (direction: string) =>
       width: '50@s',
       resizeMode: 'contain',
       marginBottom: '14@s',
-      marginTop: '15@s',
-    },
-    profileImg1: {
-      height: '100%',
-      width: '100%',
-      resizeMode: 'contain',
     },
 
     inputTextContainer: {
@@ -167,7 +145,7 @@ const styles = (direction: string) =>
 
     Container4: {
       height: '132@s',
-      paddingTop: '28@s',
+      paddingTop: '8@s',
       marginLeft: '48@s',
     },
     Container42: {
@@ -175,8 +153,8 @@ const styles = (direction: string) =>
       width: '30%',
     },
     Container43: {
-      height: '73.5@s',
-      width: '30%',
+      position: 'absolute',
+      right: '20@s',
     },
     textContainer4: {
       flex: 0.3,
@@ -185,12 +163,16 @@ const styles = (direction: string) =>
     },
     Container41: {
       height: '73.5@s',
-      paddingTop: '15@s',
+      paddingTop: '5@s',
       marginLeft: '20@s',
     },
     row: {
       flexDirection: 'row',
-      // justifyContent: 'space-between',
+      marginTop: '20@s',
+    },
+    row3: {
+      flexDirection: 'row',
+      marginTop: '10@s',
     },
     row2: {
       flexDirection: 'row',
@@ -234,7 +216,7 @@ const styles = (direction: string) =>
       paddingHorizontal: '20@s',
     },
     Container52: {
-      height: '73.5@s',
+      flexDirection: 'column',
     },
     text1: {
       color: '#455157',
