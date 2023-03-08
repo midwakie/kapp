@@ -81,7 +81,6 @@ import CreateChat from 'app/screens/CreateChat';
 import CreateGroup from 'app/screens/CreateGroup';
 import Shop from 'app/screens/Shop';
 import ChatRoom from 'app/screens/ChatRoom';
-
 import ActivitiesWorkDetail from 'app/screens/ActivitiesWorkDetail';
 import ToyDetail from 'app/screens/ToyDetail';
 import OrderDetail from 'app/screens/OrderDetail';
@@ -94,6 +93,7 @@ import EBookReader from 'app/screens/EbookReader';
 import ChangeEmailId from 'app/screens/ChangeEmailId';
 import ChangeMobileNumber from 'app/screens/ChangeMobileNumber';
 import AccountChangePassword from 'app/screens/AccountChangePassword';
+import MyAccount from 'app/screens/MyAccount';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -146,6 +146,14 @@ const AuthStack = () => {
       <Stack.Screen
         name="Welcome"
         component={Landing}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="MyAccount"
+        component={MyAccount}
         options={{
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
