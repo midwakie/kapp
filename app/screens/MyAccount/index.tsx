@@ -206,7 +206,7 @@ const MyAccount: React.FC = () => {
                     </TouchableOpacity>
                   </Neumorphism>
                   <Text style={styles(direction).addAccountText}>
-                    Add Account
+                    {t('Add Account')}
                   </Text>
                 </View>
               </Neumorphism>
