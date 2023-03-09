@@ -94,6 +94,7 @@ import EBookReader from 'app/screens/EbookReader';
 import ChangeEmailId from 'app/screens/ChangeEmailId';
 import ChangeMobileNumber from 'app/screens/ChangeMobileNumber';
 import AccountChangePassword from 'app/screens/AccountChangePassword';
+import AccountDetail from 'app/screens/AccountDetail';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -776,6 +777,14 @@ const AuthStack = () => {
       <Stack.Screen
         name="AccountChangePassword"
         component={AccountChangePassword}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="AccountDetail"
+        component={AccountDetail}
         options={{
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
