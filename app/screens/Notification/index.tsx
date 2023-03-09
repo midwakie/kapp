@@ -131,7 +131,7 @@ const Notification: React.FC = (props: any) => {
                   ) : null}
                 </View>
               </View>
-              <Text style={styles(direction).time}>{notification.time}</Text>
+              <Text style={styles(direction).time}>{notification?.time}</Text>
             </View>
           </Neumorphism>
         </TouchableOpacity>
