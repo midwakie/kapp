@@ -127,8 +127,8 @@ const styles = (direction: string) =>
       right: '20@s',
     },
     itemMenu: {
-      height: '16@s',
-      width: '4@s',
+      height: '20@s',
+      width: '5@s',
       resizeMode: 'contain',
     },
     editContainer: {
@@ -198,9 +198,9 @@ const styles = (direction: string) =>
       marginTop: '6@s',
     },
     menu: {
-      height: '16@s',
-      width: '4@s',
-      top: '39@s',
+      height: '20@s',
+      width: '5@s',
+      top: '30@s',
       resizeMode: 'contain',
     },
     menuImage: {
