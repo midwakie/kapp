@@ -81,6 +81,7 @@ import ChangeMobileNumber from 'app/screens/ChangeMobileNumber';
 import AccountChangePassword from 'app/screens/AccountChangePassword';
 import MyAccount from 'app/screens/MyAccount';
 import Notification from 'app/screens/Notification';
+import Notification from 'app/screens/Notification';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
