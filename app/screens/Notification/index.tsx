@@ -119,7 +119,7 @@ const Notification: React.FC = (props: any) => {
                   <Text style={styles(direction).description}>
                     {notification.description2}
                   </Text>
-                  {notification.isButton && (
+                  {notification.isButton ? (
                     <View style={styles(direction).innerDirection}>
                       <TouchableOpacity style={styles(direction).button}>
                         <Text style={styles(direction).buttonText}>Accept</Text>
@@ -128,7 +128,7 @@ const Notification: React.FC = (props: any) => {
                         <Text style={styles(direction).buttonText}>Reject</Text>
                       </TouchableOpacity>
                     </View>
-                  )}
+                  ) : null}
                 </View>
               </View>
               <Text style={styles(direction).time}>{notification.time}</Text>
