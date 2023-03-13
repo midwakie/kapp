@@ -81,6 +81,7 @@ const styles = (direction: string) =>
       fontWeight: '600',
       fontSize: '12@s',
       fontFamily: 'Nunito-Regular',
+      left: '10@s',
     },
     socialContainer: {
       width: width - 60,
@@ -97,7 +98,7 @@ const styles = (direction: string) =>
       borderRadius: '50@s',
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#EBEEF0'
+      backgroundColor: '#EBEEF0',
     },
     socialButtonStyle: {
       width: '23@s',

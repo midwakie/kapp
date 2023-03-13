@@ -81,7 +81,7 @@ import ChangeMobileNumber from 'app/screens/ChangeMobileNumber';
 import AccountChangePassword from 'app/screens/AccountChangePassword';
 import MyAccount from 'app/screens/MyAccount';
 import Notification from 'app/screens/Notification';
-import Notification from 'app/screens/Notification';
+import MyChannel from 'app/screens/MyChannel';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -142,6 +142,14 @@ const AuthStack = () => {
       <Stack.Screen
         name="MyAccount"
         component={MyAccount}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="MyChannel"
+        component={MyChannel}
         options={{
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
