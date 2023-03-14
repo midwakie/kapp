@@ -399,17 +399,16 @@ const SignUp: React.FC = () => {
               {t('I Agree to Terms & Conditions')}
             </Text>
           </View>
-          {/* {checked ? ( */}
+
           <RegularButton
-            disabled={!checked}
             onPress={handleSubmit(signUpUser)}
             text={t('Sign up')}
             radius={50}
             height={50}
             width={'100%'}
-            colors={['#03BBE3', '#14A9FD']}
+            colors={checked ? ['#03BBE3', '#14A9FD'] : ['#A8A8A8', '#A8A8A8']}
+            disabled={!checked}
           />
-          {/* ) : null} */}
 
           <View style={styles(direction).socialContainer}>
             <TouchableOpacity>
