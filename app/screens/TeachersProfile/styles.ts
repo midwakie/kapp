@@ -56,18 +56,24 @@ const styles = (direction: string) =>
       width: '100%',
       height: '132@s',
       borderRadius: 14,
-      justifyContent: 'space-between',
-      //   alignItems: 'center',
       backgroundColor: '#EBEEF0',
       flexDirection: 'row',
+    },
+    neumorphic: {
+      marginLeft: '30@s',
+    },
+    neumorphic1: {
+      marginTop: '30@s',
     },
     rectangle2: {
       width: '100%',
       height: '93@s',
       borderRadius: 14,
-      justifyContent: 'space-between',
       backgroundColor: '#EBEEF0',
       flexDirection: 'row',
+    },
+    margin: {
+      marginLeft: '22@s',
     },
     rectangle3: {
       width: '100%',
@@ -82,7 +88,18 @@ const styles = (direction: string) =>
       color: '#2F4868',
       fontWeight: '700',
       fontFamily: 'Nunito-Regular',
-      top: '20@s',
+      top: '24@s',
+    },
+    direction: {
+      flexDirection: 'row',
+    },
+    text5: {
+      fontSize: '14@ms',
+      color: '#2F4868',
+      fontWeight: '700',
+      fontFamily: 'Nunito-Regular',
+      top: '24@s',
+      marginLeft: '40@s',
     },
     text2: {
       fontFamily: 'Nunito-Regular',
@@ -90,6 +107,7 @@ const styles = (direction: string) =>
       fontSize: '12@s',
       color: '#455157',
       top: '29@s',
+      marginLeft: '40@s',
     },
     status: {
       width: '97@s',
@@ -99,16 +117,19 @@ const styles = (direction: string) =>
       color: '#03A0E3',
       top: '22@s',
     },
-    text3: {
-      width: '26@s',
-      height: '19@s',
-      fontFamily: 'Nunito-Regular',
-      fontWeight: '600',
-      fontSize: '14@s',
-      color: '#FD4449',
+    container3: {
       position: 'absolute',
-      top: '15@s',
       right: '20@s',
+      top: '20@s',
+    },
+    container4: {
+      position: 'absolute',
+      right: '20@s',
+    },
+    itemMenu: {
+      height: '20@s',
+      width: '5@s',
+      resizeMode: 'contain',
     },
     editContainer: {
       justifyContent: direction === 'rtl' ? 'flex-start' : 'flex-end',
@@ -116,6 +137,14 @@ const styles = (direction: string) =>
       marginBottom: 98,
     },
     text4: {
+      fontFamily: 'Nunito-Regular',
+      fontWeight: '600',
+      fontSize: '12@ms',
+      color: '#455157',
+      top: '22@s',
+      marginLeft: '10@s',
+    },
+    text6: {
       fontFamily: 'Nunito-Regular',
       fontWeight: '600',
       fontSize: '12@ms',
@@ -169,16 +198,19 @@ const styles = (direction: string) =>
       marginTop: '6@s',
     },
     menu: {
-      height: '16@s',
-      width: '4@s',
-      top: '39@s',
-      right: '20@s',
+      height: '20@s',
+      width: '5@s',
+      top: '30@s',
       resizeMode: 'contain',
     },
     menuImage: {
       height: '20@s',
       width: '20@s',
       resizeMode: 'contain',
+    },
+    optionTitleStyleColor: {
+      color: '#EC4D61',
+      fontSize: '14@s',
     },
     optionTitleStyle: {
       color: '#758DAC',

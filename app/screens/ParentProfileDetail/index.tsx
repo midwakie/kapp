@@ -86,7 +86,6 @@ const ParentProfileDetail: React.FC = props => {
       image: require('../../assets/trash.png'),
     },
   ]);
-  // const { isCondition } = props.route.params;
 
   return (
     <>
@@ -131,13 +130,6 @@ const ParentProfileDetail: React.FC = props => {
                           </Text>
                         </View>
                         <View style={styles(direction).Container43}>
-                          {/* <PlainButton
-                            onPress={() => {
-                              NavigationService.navigate('');
-                            }}
-                            style={styles(direction).text3}
-                            text={t('Edit')}
-                          /> */}
                           <Menu>
                             <MenuTrigger>
                               <Image
@@ -158,7 +150,9 @@ const ParentProfileDetail: React.FC = props => {
                                 <MenuOption
                                   onSelect={() => {
                                     if (op.title === 'Edit Profile') {
-                                      // NavigationService.navigate('')
+                                      NavigationService.navigate(
+                                        'EditParentProfile',
+                                      );
                                     }
                                   }}
                                   customStyles={{
@@ -201,7 +195,7 @@ const ParentProfileDetail: React.FC = props => {
                         shapeType={'flat'}
                         radius={scale(14)}>
                         <View style={styles(direction).container31}>
-                          <View style={styles(direction).row}>
+                          <View style={styles(direction).row3}>
                             <View
                               style={styles(direction).profileImgContainer1}>
                               <TouchableOpacity
@@ -225,13 +219,6 @@ const ParentProfileDetail: React.FC = props => {
                               </Text>
                             </View>
                             <View style={styles(direction).Container43}>
-                              {/* <PlainButton
-                                onPress={() => {
-                                  NavigationService.navigate('');
-                                }}
-                                style={styles(direction).text3}
-                                text={t('Edit')}
-                              /> */}
                               <Menu>
                                 <MenuTrigger>
                                   <Image

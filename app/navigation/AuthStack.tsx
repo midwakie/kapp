@@ -26,29 +26,21 @@ import LinkChild from 'app/screens/LinkChild';
 import ChangeSchool from 'app/screens/ChangeSchool';
 import DeliveryAddress from 'app/screens/DeliveryAddress';
 import CreateChannel from 'app/screens/CreateChannel';
-import MyChannel from 'app/screens/MyChannel';
 import BookDetails from 'app/screens/BookDetails';
 import ChildAccount from 'app/screens/ChildAccount';
 import ActivitiesStats from 'app/screens/ActivityStatus';
 import FeedDetailReport from 'app/screens/FeedDetailReport';
-import Publish from 'app/screens/Publish';
 import RewardPointFilter from 'app/screens/RewardPointFilter';
 import EditTeacherProfile from 'app/screens/EditTeacherProfile';
 import MyFeeds from 'app/screens/MyFeeds';
-import BookReview from 'app/screens/BookReview';
-import ChildFullProfile from 'app/screens/ChildFullProfile';
 import FeedDetail from 'app/screens/FeedDetail';
 import EditChildProfile from 'app/screens/EditChildProfile';
-import RecommendedVideos from 'app/screens/RecommendedVideos';
-import ManageActivities from 'app/screens/ManageActivities';
 import { ILoading } from 'app/models/reducers/loading';
 import ChildProfile from 'app/screens/ChildProfile';
 import Home from 'app/screens/Home';
 import SuggestionsForYou from 'app/screens/SuggestionsForYou';
 import ClassFilter from 'app/screens/ClassFilter';
 import MyStudentList from 'app/screens/MyStudentList';
-import ManagePeople from 'app/screens/ManagePeople';
-import AddReview from 'app/screens/AddReview';
 import ActivityFilter from 'app/screens/ActivityFilter';
 import ParentProfileDetail from 'app/screens/ParentProfileDetail';
 import TeachersProfile from 'app/screens/TeachersProfile';
@@ -70,27 +62,24 @@ import BookSeries from 'app/screens/BookSeries';
 import FinishBook from 'app/screens/FinishBook';
 import SelectEBook from 'app/screens/SelectEBook';
 import PublishDocument from 'app/screens/PublishDocument';
-import ContinueReading from 'app/screens/EBooks/ContinueReading';
-import WhatsNew from 'app/screens/EBooks/WhatsNew';
-import Favorites from 'app/screens/EBooks/Favorites';
 import MakePayment from 'app/screens/MakePayment';
 import CardPayment from 'app/screens/CardPayment';
 import ShoppingCart from 'app/screens/ShoppingCart';
 import ChatList from 'app/screens/ChatList';
 import CreateChat from 'app/screens/CreateChat';
 import CreateGroup from 'app/screens/CreateGroup';
-import Shop from 'app/screens/Shop';
 import ChatRoom from 'app/screens/ChatRoom';
-
 import ActivitiesWorkDetail from 'app/screens/ActivitiesWorkDetail';
-import ToyDetail from 'app/screens/ToyDetail';
 import OrderDetail from 'app/screens/OrderDetail';
-import OrderList from 'app/screens/OrderList';
 import RewardPointHistory from 'app/screens/RewardPointHistory';
 import ActivitiesWork from 'app/screens/ActivitiesWork';
 import BookShelf from 'app/screens/BookShelf';
 import ChatGroupDetail from 'app/screens/ChatGroupDetail';
 import EBookReader from 'app/screens/EbookReader';
+import ChangeEmailId from 'app/screens/ChangeEmailId';
+import ChangeMobileNumber from 'app/screens/ChangeMobileNumber';
+import AccountChangePassword from 'app/screens/AccountChangePassword';
+import Notification from 'app/screens/Notification';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -183,14 +172,6 @@ const AuthStack = () => {
       <Stack.Screen
         name="Child Account"
         component={ChildAccount}
-        options={{
-          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="ChatList"
-        component={ChatList}
         options={{
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
@@ -438,87 +419,6 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
-        name="Publish"
-        component={Publish}
-        options={{
-          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="Book Review"
-        component={BookReview}
-        options={{
-          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="Continue Reading"
-        component={ContinueReading}
-        options={{
-          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="WhatsNew"
-        component={WhatsNew}
-        options={{
-          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="Favorites"
-        component={Favorites}
-        options={{
-          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="RecommendedVideos"
-        component={RecommendedVideos}
-        options={{
-          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="Manage Activities"
-        component={ManageActivities}
-        options={{
-          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerShown: false,
-        }}
-      />
-
-      <Stack.Screen
-        name="ChildFullProfile"
-        component={ChildFullProfile}
-        options={{
-          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="ManagePeople"
-        component={ManagePeople}
-        options={{
-          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="Add Review"
-        component={AddReview}
-        options={{
-          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
         name="Home"
         component={Home}
         options={{
@@ -707,22 +607,6 @@ const AuthStack = () => {
         }}
       />
       <Stack.Screen
-        name="Shop"
-        component={Shop}
-        options={{
-          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="ToyDetail"
-        component={ToyDetail}
-        options={{
-          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
         name="RewardPointHistory"
         component={RewardPointHistory}
         options={{
@@ -757,6 +641,38 @@ const AuthStack = () => {
       <Stack.Screen
         name="BookShelf"
         component={BookShelf}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ChangeEmailId"
+        component={ChangeEmailId}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ChangeMobileNumber"
+        component={ChangeMobileNumber}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="AccountChangePassword"
+        component={AccountChangePassword}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Notification"
+        component={Notification}
         options={{
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
