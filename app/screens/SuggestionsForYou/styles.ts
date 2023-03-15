@@ -13,6 +13,34 @@ const styles = (direction: string) =>
       height: '100%',
       backgroundColor: '#EBEEF0',
     },
+    mainContainer: {
+      borderWidth: 4,
+    },
+    image: {
+      height: '199@ms',
+      width: '175@ms',
+    },
+    bookPrice: {
+      color: '#03A0E3',
+      fontWeight: '600',
+      fontSize: '14@s',
+      top: '1.6@s',
+      fontFamily: 'Nunito-regular',
+    },
+    bookTitle: {
+      color: '#EBEEF0',
+      fontWeight: '600',
+      fontSize: '14@s',
+      textAlign: 'auto',
+      fontFamily: 'Nunito-regular',
+    },
+    bookNameContainer: {
+      position: 'absolute',
+      alignItems: 'flex-start',
+      justifyContent: 'center',
+      left: '15@s',
+      bottom: '18.35@s',
+    },
     safeAreaView: { alignSelf: 'stretch' },
     container2: {
       paddingHorizontal: '10@ms',
@@ -68,10 +96,12 @@ const styles = (direction: string) =>
       fontWeight: '600',
     },
     card: {
+      alignItems: 'center',
       height: '199@ms',
-      width: '148@ms',
+      width: '155@ms',
       backgroundColor: '#EBEEF0',
     },
+
     cardListStyle: {
       height: '92@ms',
       width: Dimensions.get('window').width - scale(40),
@@ -98,10 +128,7 @@ const styles = (direction: string) =>
       margin: 20,
     },
     neomorphMargin: { margin: '10@ms' },
-    cardImage: {
-      height: '118@ms',
-      width: '100%',
-    },
+
     cardListImage: {
       height: '82@ms',
       width: '82@ms',
@@ -132,7 +159,6 @@ const styles = (direction: string) =>
       fontSize: '12@ms',
       fontWeight: '600',
       color: '#758DAC',
-      marginBottom: 4,
     },
     price: {
       fontFamily: 'Nunito-Regular',
