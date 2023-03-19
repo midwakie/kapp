@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import {
   Animated,
@@ -33,6 +34,18 @@ interface EBookProps {
   soundMapFile?: string;
 }
 
+export interface SoundMapFileType {
+  contents: SoundMapFileContentType[];
+  hasNextPage: boolean;
+  page: number;
+}
+
+export interface SoundMapFileContentType {
+  endAt: string | number;
+  epubCfi: string;
+  startAt: string | number;
+}
+
 function EBook(props: EBookProps) {
   const { width, height } = useWindowDimensions();
   const { t, i18n } = useTranslation();
@@ -53,7 +66,7 @@ function EBook(props: EBookProps) {
   const [rotationPlayButtonAnimation] = useState(new Animated.Value(0));
   const [trackThumbPosition, setTrackThumbPosition] = useState(0);
   const [endPageReached, setEndPageReached] = useState(false);
-  const [soundMapData, setSoundMapData] = useState([]);
+  const [soundMapData, setSoundMapData] = useState<SoundMapFileType[]>([]);
 
   useEffect(() => {
     setupMusicPlayer();
@@ -84,7 +97,8 @@ function EBook(props: EBookProps) {
       });
       setCurrentMusicState('PLAYING');
       if (
-        position >= soundData?.contents[soundData?.contents?.length - 1]?.endAt
+        position >=
+        Number(soundData?.contents[soundData?.contents?.length - 1]?.endAt)
       ) {
         const content = soundData?.contents?.[0];
         const startAt = Number(content?.startAt);
@@ -102,8 +116,6 @@ function EBook(props: EBookProps) {
       });
     }
   };
-
-  //   console.log(soundMapData);
 
   const pauseTrack = async () => {
     await TrackPlayer.pause();
@@ -125,7 +137,7 @@ function EBook(props: EBookProps) {
 
   const getData = async () => {
     await axios
-      .get(soundMapFile)
+      .get(soundMapFile as string)
       .then(function (response) {
         setSoundMapData(response?.data);
       })
@@ -151,13 +163,26 @@ function EBook(props: EBookProps) {
     if (currentMusicState === 'PLAYING') {
       const currentContents = soundData?.contents;
       const currentContentIndex = currentContents.findIndex(content => {
-        return position >= content.startAt && position < content.endAt;
+        return (
+          position >= Number(content.startAt) &&
+          position < Number(content.endAt)
+        );
       });
+
+      if (currentContentIndex === -1) {
+        pauseTrack();
+        if (!endPageReached) {
+          setTimeout(() => {
+            goNext();
+          }, 2000);
+        }
+      }
 
       currentContents.forEach(content => {
         const { epubCfi, startAt, endAt } = content;
 
-        const isMusicInRange = position >= startAt && position < endAt;
+        const isMusicInRange =
+          position >= Number(startAt) && position < Number(endAt);
         const hasMark = markedEpub === epubCfi ? true : false;
 
         if (markedEpub && markedEpub !== epubCfi) {
@@ -178,9 +203,13 @@ function EBook(props: EBookProps) {
         }
         if (
           currentContentIndex === currentContents.length - 1 &&
-          position >= currentContents[currentContents?.length - 1]?.endAt
+          position >=
+            Number(currentContents[currentContents?.length - 1]?.endAt)
         ) {
           pauseTrack();
+          setTimeout(() => {
+            goNext();
+          }, 500);
         }
       });
     } else {
@@ -191,6 +220,9 @@ function EBook(props: EBookProps) {
   }, [position]);
 
   const onChangePageLocation = () => {
+    setTimeout(() => {
+      handleTrackPlayPauseButton();
+    }, 2000);
     setEndPageReached(false);
   };
 
@@ -209,8 +241,6 @@ function EBook(props: EBookProps) {
     inputRange: [0, 1],
     outputRange: ['0deg', '180deg'],
   });
-
-  console.log('width---', width);
 
   const RenderPlayerController = () => {
     if (endPageReached) {
@@ -321,8 +351,6 @@ function EBook(props: EBookProps) {
               height={height - 180}
               fileSystem={useFileSystem}
               onLocationChange={onChangePageLocation}
-              onReady={() => console.log('on ready')}
-              onLocationsReady={() => console.log('location ready')}
               onFinish={() => setEndPageReached(true)}
               onSwipeRight={() => setTrackThumbPosition(prev => prev - 1)}
               onSwipeLeft={() => setTrackThumbPosition(prev => prev + 1)}
