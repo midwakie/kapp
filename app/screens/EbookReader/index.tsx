@@ -69,15 +69,10 @@ function EBook(props: EBookProps) {
   const [soundMapData, setSoundMapData] = useState<SoundMapFileType[]>([]);
 
   useEffect(() => {
-    setupMusicPlayer();
-    () => {
+    return () => {
       TrackPlayer.reset();
     };
   }, []);
-
-  const setupMusicPlayer = async () => {
-    await TrackPlayer.setupPlayer();
-  };
 
   const onChangePlaySpeed = () => {
     const newSpeedIndex = (speedIndex + 1) % availableSpeeds.length;
