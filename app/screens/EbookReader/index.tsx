@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   Animated,
   Easing,
@@ -51,11 +51,12 @@ function EBook(props: EBookProps) {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
   const { position } = useProgress();
+
   const { book, sound, soundMapFile } = props;
 
   const { addMark, removeMark, currentLocation, goNext } = useReader();
 
-  const currentPage = currentLocation?.start?.index || 0;
+  const currentPageRef = useRef(currentLocation?.start?.index || 0);
 
   const [darkMode, setDarkMode] = useState(false);
   const [speedIndex, setSpeedIndex] = useState(2);
@@ -69,6 +70,20 @@ function EBook(props: EBookProps) {
   const [soundMapData, setSoundMapData] = useState<SoundMapFileType[]>([]);
 
   useEffect(() => {
+    if (currentLocation?.start?.index) {
+      currentPageRef.current = currentLocation?.start?.index;
+    }
+  }, [currentLocation?.start?.index]);
+
+  useEffect(() => {
+    TrackPlayer.add({
+      id: 'trackId',
+      url:
+        sound ||
+        'https://s3.ap-south-1.amazonaws.com/cdn.kutubiapp.com/test/sample3/audio.mp3',
+      title: 'Track Title',
+      artist: 'Track Artist',
+    });
     return () => {
       TrackPlayer.reset();
     };
@@ -80,16 +95,10 @@ function EBook(props: EBookProps) {
     TrackPlayer.setRate(availableSpeeds[newSpeedIndex]);
   };
 
-  const playTrack = async (url: string) => {
-    const soundData = soundMapData[currentPage];
+  const playTrack = async () => {
+    const soundData = soundMapData[currentPageRef?.current];
 
     if (soundData?.contents?.length) {
-      await TrackPlayer.add({
-        id: 'trackId',
-        url: url,
-        title: 'Track Title',
-        artist: 'Track Artist',
-      });
       setCurrentMusicState('PLAYING');
       if (
         position >=
@@ -148,7 +157,7 @@ function EBook(props: EBookProps) {
   }, []);
 
   useEffect(() => {
-    const soundData = soundMapData[currentPage];
+    const soundData = soundMapData[currentPageRef?.current];
     if (!soundData?.contents?.length) {
       if (currentMusicState === 'PLAYING') {
         pauseTrack();
@@ -164,7 +173,10 @@ function EBook(props: EBookProps) {
         );
       });
 
-      if (currentContentIndex === -1) {
+      if (
+        currentContentIndex === -1 &&
+        position >= Number(currentContents[currentContents?.length - 1].endAt)
+      ) {
         pauseTrack();
         if (!endPageReached) {
           setTimeout(() => {
@@ -202,9 +214,6 @@ function EBook(props: EBookProps) {
             Number(currentContents[currentContents?.length - 1]?.endAt)
         ) {
           pauseTrack();
-          setTimeout(() => {
-            goNext();
-          }, 500);
         }
       });
     } else {
@@ -215,9 +224,11 @@ function EBook(props: EBookProps) {
   }, [position]);
 
   const onChangePageLocation = () => {
-    setTimeout(() => {
-      handleTrackPlayPauseButton();
-    }, 2000);
+    if (currentMusicState === 'PLAYING' || currentMusicState === 'PAUSE') {
+      setTimeout(() => {
+        handleTrackPlayPauseButton();
+      }, 2000);
+    }
     setEndPageReached(false);
   };
 
@@ -225,10 +236,7 @@ function EBook(props: EBookProps) {
     if (currentMusicState === 'PLAYING') {
       pauseTrack();
     } else {
-      playTrack(
-        sound ||
-          'https://s3.ap-south-1.amazonaws.com/cdn.kutubiapp.com/test/sample3/audio.mp3',
-      );
+      playTrack();
     }
   };
 
@@ -355,7 +363,9 @@ function EBook(props: EBookProps) {
           <View style={styles(direction).playerModuleWrapper}>
             <View style={styles(direction).pageNoWrapper}>
               <Text style={styles(direction).pageNoDetailsText}>
-                {`Page ${currentPage + 1} of ${soundMapData?.length}`}
+                {`Page ${currentPageRef?.current + 1} of ${
+                  soundMapData?.length
+                }`}
               </Text>
             </View>
             <View style={styles(direction).trackWrapper}>
