@@ -187,6 +187,7 @@ function EBook(props: EBookProps) {
         if (!endPageReached) {
           setTimeout(() => {
             goNext();
+            setTrackThumbPosition(prev => prev + 1);
           }, soundData?.startDelay);
         }
       }
