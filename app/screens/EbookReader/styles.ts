@@ -36,7 +36,7 @@ const styles = (direction: string) =>
       width: '23@s',
     },
     epubReaderWrapper: {
-      marginTop: '45@s',
+      marginTop: '50@s',
       justifyContent: 'center',
       alignItems: 'center',
     },
