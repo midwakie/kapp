@@ -25,6 +25,7 @@ import RegularButton from 'app/components/buttons/RegularButton';
 
 import styles from './styles';
 import { useRoute } from '@react-navigation/native';
+import ReaderJson from 'app/readerJson';
 
 const availableSpeeds = [0.5, 0.75, 1.0, 1.25, 1.5];
 
@@ -38,6 +39,7 @@ export interface SoundMapFileType {
   contents: SoundMapFileContentType[];
   hasNextPage: boolean;
   page: number;
+  startDelay: number;
 }
 
 export interface SoundMapFileContentType {
@@ -140,21 +142,25 @@ function EBook(props: EBookProps) {
   };
 
   const getData = async () => {
-    await axios
-      .get(soundMapFile as string)
-      .then(function (response) {
-        setSoundMapData(response?.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    setSoundMapData(ReaderJson);
   };
+  // const getData = async () => {
+  //   await axios
+  //     .get(soundMapFile as string)
+  //     .then(function (response) {
+  //       setSoundMapData(response?.data);
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // };
 
   useEffect(() => {
     if (soundMapFile) {
       getData();
     }
   }, []);
+  console.log('curent page-------', soundMapData[currentPageRef?.current]);
 
   useEffect(() => {
     const soundData = soundMapData[currentPageRef?.current];
@@ -181,7 +187,7 @@ function EBook(props: EBookProps) {
         if (!endPageReached) {
           setTimeout(() => {
             goNext();
-          }, 2000);
+          }, soundData?.startDelay);
         }
       }
 
@@ -351,7 +357,7 @@ function EBook(props: EBookProps) {
                 'https://s3.ap-south-1.amazonaws.com/cdn.kutubiapp.com/test/sample3/OEBPS/content.opf'
               }
               width={width - 80}
-              height={height - 180}
+              height={height - 135}
               fileSystem={useFileSystem}
               onLocationChange={onChangePageLocation}
               onFinish={() => setEndPageReached(true)}
