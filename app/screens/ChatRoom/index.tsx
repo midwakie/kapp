@@ -4,7 +4,15 @@ import GradientText from 'app/components/texts/GradientText';
 import RegularButton from 'app/components/buttons/RegularButton';
 import { useTranslation } from 'react-i18next';
 import NavigationService from 'app/navigation/NavigationService';
-import { Image, Text, TextInput, TextStyle, View } from 'react-native';
+import {
+  Image,
+  Modal,
+  Text,
+  TextInput,
+  TextStyle,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native';
 import TitleBar from 'app/components/buttons/TitleBar';
 import Neumorphism from 'react-native-neumorphism';
 import { ms, scale } from 'react-native-size-matters';
@@ -24,7 +32,6 @@ import {
   MenuTrigger,
 } from 'react-native-popup-menu';
 import { showMessage } from 'react-native-flash-message';
-import CustomInput from 'app/components/inputs/CustomInput';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const ChatRoom: React.FC = props => {
@@ -37,6 +44,13 @@ const ChatRoom: React.FC = props => {
   const [messages, setMessages] = useState([]);
   const chatClientChannel = useRef();
   const chatMessagesPaginator = useRef();
+  const [modalVisible, setModalVisible] = useState(false);
+  const [messageCoordinates, setMessageCoordinates] = useState({
+    x: 0,
+    y: 0,
+    width: 0,
+    height: 0,
+  });
 
   const setChannelEvents = useCallback(channel => {
     chatClientChannel.current = channel;
@@ -152,7 +166,11 @@ const ChatRoom: React.FC = props => {
       </View>
     );
   };
-
+  const handleLongPress = (context, message) => {
+    const { x, y, width, height } = context.touchables[0].measure();
+    setMessageCoordinates({ x, y, width, height });
+    setModalVisible(true);
+  };
   return (
     <>
       <GiftedChat
@@ -182,7 +200,65 @@ const ChatRoom: React.FC = props => {
             />
           </Send>
         )}
+        onLongPress={handleLongPress}
       />
+      <Modal animationType="fade" transparent={true} visible={modalVisible}>
+        <TouchableWithoutFeedback onPress={() => setModalVisible(false)}>
+          <View style={styles(direction).modalContainer}>
+            <View
+              style={[
+                styles(direction).modalView,
+                {
+                  top: messageCoordinates.y + messageCoordinates.height,
+                  left: messageCoordinates.x + messageCoordinates.width / 2,
+                },
+              ]}>
+              <View style={styles(direction).optionContainer}>
+                <View style={styles(direction).messageOptions}>
+                  <Text style={styles(direction).optionText}>Forward</Text>
+                  <Image
+                    source={require('../../assets/replyIcon.png')}
+                    style={styles(direction).icon}
+                    resizeMode="contain"
+                  />
+                </View>
+                <View style={styles(direction).messageOptions}>
+                  <Text style={styles(direction).optionText}>Copy</Text>
+                  <Image
+                    source={require('../../assets/copyIcon.png')}
+                    style={styles(direction).icon}
+                    resizeMode="contain"
+                  />
+                </View>
+                <View style={styles(direction).messageOptions}>
+                  <Text style={styles(direction).optionText}>Delivered to</Text>
+                  <Image
+                    source={require('../../assets/checkMark.png')}
+                    style={styles(direction).icon}
+                    resizeMode="contain"
+                  />
+                </View>
+                <View style={styles(direction).messageOptions}>
+                  <Text style={styles(direction).optionText}>Viewed by</Text>
+                  <Image
+                    source={require('../../assets/viewLogo.png')}
+                    style={styles(direction).icon}
+                    resizeMode="contain"
+                  />
+                </View>
+                <View style={styles(direction).messageOptions}>
+                  <Text style={styles(direction).optionDelete}> Delete </Text>
+                  <Image
+                    source={require('../../assets/trash.png')}
+                    style={styles(direction).icon}
+                    resizeMode="contain"
+                  />
+                </View>
+              </View>
+            </View>
+          </View>
+        </TouchableWithoutFeedback>
+      </Modal>
       <View style={styles(direction).titleBarContainer}>
         <TitleBar
           leftComponent={

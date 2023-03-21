@@ -82,6 +82,10 @@ const styles = (direction: string) =>
       marginTop: '10@s',
       tintColor: '#EC4D61',
     },
+    icon: {
+      width: '20@s',
+      height: '20@s',
+    },
     rightBubble: {
       backgroundColor: '#03A0E3',
       borderTopEndRadius: 12,
@@ -109,6 +113,51 @@ const styles = (direction: string) =>
     },
     messageWidth: { width: '100%' },
     footerHeight: { height: '102@s' },
+    modalContainer: {
+      // flex: 1,
+      borderWidth: 2,
+      // height: '100%',
+      justifyContent: 'flex-end',
+      // alignItems: 'center',
+      backgroundColor: 'rgba(98,98,98,0.5)',
+    },
+    textView: {
+      width: '238@s',
+      backgroundColor: '#03A0E3',
+      height: '44@s',
+      marginBottom: '102@s',
+      marginLeft: '117@s',
+    },
+    modalView: {
+      borderWidth: 1,
+      borderColor: 'white',
+      // justifyContent: 'center',
+      // alignItems: 'center',
+      borderRadius: '15@s',
+      backgroundColor: '#EBEEF0',
+      height: '237@s',
+      width: '176@s',
+      marginBottom: '16@s',
+      marginLeft: '117@s',
+      // width: width - 20,
+    },
+    optionContainer: { flexDirection: 'column' },
+    optionText: {
+      fontSize: '14@s',
+      color: '#758DAC',
+      fontFamily: 'Nunito-Regular',
+    },
+    optionDelete: {
+      fontSize: '14@s',
+      color: '#FD4449',
+      fontFamily: 'Nunito-Regular',
+    },
+    messageOptions: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginHorizontal: 25,
+      marginVertical: 15,
+    },
   });
 
 export default styles;
