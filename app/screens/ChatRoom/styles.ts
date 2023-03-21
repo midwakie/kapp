@@ -35,7 +35,6 @@ const styles = (direction: string) =>
       alignItems: 'center',
       height: '33@s',
       flexDirection: 'row',
-      // paddingHorizontal: '30@s',
     },
     gradientTextStyle: {
       fontSize: '14@s',
@@ -65,7 +64,6 @@ const styles = (direction: string) =>
       height: '40@s',
       alignItems: 'flex-start',
       marginHorizontal: '58@s',
-      // flex: 1,
     },
     sendIcon: {
       width: '24@s',
@@ -114,11 +112,8 @@ const styles = (direction: string) =>
     messageWidth: { width: '100%' },
     footerHeight: { height: '102@s' },
     modalContainer: {
-      // flex: 1,
       borderWidth: 2,
-      // height: '100%',
       justifyContent: 'flex-end',
-      // alignItems: 'center',
       backgroundColor: 'rgba(98,98,98,0.5)',
     },
     textView: {
@@ -131,15 +126,12 @@ const styles = (direction: string) =>
     modalView: {
       borderWidth: 1,
       borderColor: 'white',
-      // justifyContent: 'center',
-      // alignItems: 'center',
       borderRadius: '15@s',
       backgroundColor: '#EBEEF0',
       height: '237@s',
       width: '176@s',
       marginBottom: '16@s',
       marginLeft: '117@s',
-      // width: width - 20,
     },
     optionContainer: { flexDirection: 'column' },
     optionText: {
