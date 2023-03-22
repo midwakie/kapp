@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import * as React from 'react';
+import { StatusBar } from 'react-native';
 import { NavigationContainer, Theme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useSelector } from 'react-redux';
+import TrackPlayer from 'react-native-track-player';
 import { navigationRef } from './NavigationService';
 import ThemeController from '../components/ThemeController';
-import { StatusBar } from 'react-native';
 import { ILoginState } from 'app/models/reducers/login';
 import AppStack from './AppStack';
 import AuthStack from './AuthStack';
@@ -55,6 +56,16 @@ const App: React.FC<IProps> = (props: IProps) => {
 
   const { isFirstLaunch, isLoading: onboardingIsLoading } =
     useGetOnboardingStatus();
+
+  const setupMusicPlayer = async () => {
+    await TrackPlayer.setupPlayer();
+  };
+
+  React.useEffect(() => {
+    if (isLoggedIn) {
+      setupMusicPlayer();
+    }
+  }, [isLoggedIn]);
 
   return (
     <NavigationContainer ref={navigationRef}>
