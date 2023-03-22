@@ -31,7 +31,7 @@ const CardPayment: React.FC = () => {
   const cart = useSelector(state => state.cartReducer.cart);
   const total = cart.reduce((acc, item) => acc + item.price, 0);
   const discountedTotal = total * 0.95;
-  const roundedPrice = discountedTotal.toFixed(2);
+  const roundedPrice = discountedTotal?.toFixed(2);
   return (
     <>
       <ScrollView style={styles(direction).container} bounces={false}>
