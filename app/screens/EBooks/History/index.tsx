@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import styles from '../styles';
 import GradientText from 'app/components/texts/GradientText';
@@ -34,56 +33,56 @@ const History: React.FC = () => {
       title: 'Kung Fu Panda',
       author: 'By Martin Luther',
       price: '$15.30',
-      img: require('../../../assets/book.png'),
+      img: require('../../../assets/sampleImageOne.png'),
     },
     {
       id: 2,
       title: 'Happy Lemon',
       author: 'By Abhishek',
       price: '$20.30',
-      img: require('../../../assets/book2.png'),
+      img: require('../../../assets/sampleImageTwo.png'),
     },
     {
       id: 3,
       title: 'Billy & Shmilli',
       author: 'By Harish S',
       price: '$25.30',
-      img: require('../../../assets/book3.png'),
+      img: require('../../../assets/sampleImageOne.png'),
     },
     {
       id: 4,
       title: 'Story Book',
       author: 'By Anil Bose',
       price: '$10.30',
-      img: require('../../../assets/book4.png'),
+      img: require('../../../assets/sampleImageTwo.png'),
     },
     {
       id: 5,
       title: 'Journey of the Star',
       author: 'By Sijin',
       price: '$15.30',
-      img: require('../../../assets/book.png'),
+      img: require('../../../assets/sampleImageOne.png'),
     },
     {
       id: 6,
       title: 'Nasa Boy',
       author: 'By Rashid ',
       price: '$35.30',
-      img: require('../../../assets/book2.png'),
+      img: require('../../../assets/sampleImageTwo.png'),
     },
     {
       id: 7,
       title: 'Sample Text',
       author: 'By Shiva',
       price: '$30.30',
-      img: require('../../../assets/book3.png'),
+      img: require('../../../assets/sampleImageOne.png'),
     },
     {
       id: 8,
       title: 'Cool Kids 5',
       author: 'By Tibu PS',
       price: '$45.30',
-      img: require('../../../assets/book4.png'),
+      img: require('../../../assets/sampleImageTwo.png'),
     },
   ];
   const dropDown = () => {
@@ -108,13 +107,11 @@ const History: React.FC = () => {
             shapeType={'flat'}
             radius={scale(14)}>
             <View style={styles(direction).card}>
-              <Image source={book.img} style={styles(direction).cardImage} />
-              <View style={styles(direction).cardContent}>
-                <Text style={styles(direction).title} numberOfLines={1}>
-                  {book.title}
-                </Text>
+              <Image style={styles(direction).image} source={book.img} />
+              <View style={styles(direction).bookNameContainer}>
+                <Text style={styles(direction).bookTitle}>{book.title}</Text>
                 <Text style={styles(direction).author}>{book.author}</Text>
-                <Text style={styles(direction).price}>{book.price}</Text>
+                <Text style={styles(direction).bookPrice}>{book.price}</Text>
               </View>
             </View>
           </Neumorphism>
@@ -128,7 +125,7 @@ const History: React.FC = () => {
       <View style={styles(direction).neomorphContainer}>
         <TouchableOpacity
           onPress={() => {
-            NavigationService.navigate('EbookDetail');
+            NavigationService.navigate('BookDetails');
           }}>
           <Neumorphism
             style={styles(direction).neomorphMargin}
@@ -149,7 +146,6 @@ const History: React.FC = () => {
                   <Text style={styles(direction).author}>{book.author}</Text>
                 </View>
               </View>
-              <Text style={styles(direction).priceListStyle}>{book.price}</Text>
             </View>
           </Neumorphism>
         </TouchableOpacity>

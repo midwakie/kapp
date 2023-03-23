@@ -5,6 +5,7 @@ import { TouchableOpacity } from 'react-native';
 import styles from './styles';
 import { ms, s, scale } from 'react-native-size-matters';
 import { CheckBoxProps } from './types';
+import rules from 'app/rules';
 const Checkbox = ({
   borderWidth,
   height,

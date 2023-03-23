@@ -37,7 +37,7 @@ interface IState {
 const SignUp: React.FC = () => {
   const [showPassword, setShowPassword] = React.useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
-  const [checked, setChecked] = React.useState(true);
+  const [checked, setChecked] = React.useState(false);
   const [mobileNo, setMobileNo] = React.useState('');
   const [country, setCountry] = React.useState('');
   const { control, handleSubmit, watch, setValue } = useForm();
@@ -399,14 +399,17 @@ const SignUp: React.FC = () => {
               {t('I Agree to Terms & Conditions')}
             </Text>
           </View>
+
           <RegularButton
             onPress={handleSubmit(signUpUser)}
             text={t('Sign up')}
             radius={50}
             height={50}
             width={'100%'}
-            colors={['#03BBE3', '#14A9FD']}
+            colors={checked ? ['#03BBE3', '#14A9FD'] : ['#A8A8A8', '#A8A8A8']}
+            disabled={!checked}
           />
+
           <View style={styles(direction).socialContainer}>
             <TouchableOpacity>
               <Neumorphism
@@ -468,7 +471,7 @@ const SignUp: React.FC = () => {
               }}
               style={styles(direction).signUpButton}
               containerStyle={styles(direction).signUpButtonContainer}
-              text={t('Sign in')}
+              text={t('Sign In')}
             />
           </View>
         </View>

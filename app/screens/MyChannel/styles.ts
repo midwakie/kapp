@@ -32,6 +32,10 @@ const styles = (direction: string, active?: boolean) =>
       fontWeight: '600',
       textAlign: 'center',
     },
+    menuContainer: {
+      marginLeft: '30@s',
+      marginTop: '40@s',
+    },
     topContainer: {
       justifyContent: 'center',
       alignItems: 'center',
