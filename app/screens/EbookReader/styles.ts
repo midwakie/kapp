@@ -4,43 +4,31 @@ import { ScaledSheet } from 'react-native-size-matters';
 const styles = (direction: string) =>
   ScaledSheet.create({
     container: {
-      width: '100%',
-      height: '100%',
-      backgroundColor: '#FFFFFF',
-      zIndex: -10,
+      flex: 1,
     },
-    safeAreaView: { alignSelf: 'stretch' },
-    container2: {
-      marginTop: 8,
-      width: '100%',
-      height: '100%',
-      marginBottom: '40@s',
-    },
-    topContainer: {
-      justifyContent: 'center',
+    headerContainer: {
+      flexDirection: 'row',
       alignItems: 'center',
-      position: 'absolute',
-      marginLeft: '12@s',
-      marginTop: '7.9@s',
-    },
-    topContainer2: {
-      justifyContent: 'center',
-      alignItems: 'center',
-      position: 'absolute',
-      marginTop: '19@s',
-
-      right: '12@s',
+      justifyContent: 'space-between',
+      paddingHorizontal: '12@s',
+      paddingVertical: '12@s',
     },
     loveImg: {
       height: '23@s',
       width: '23@s',
     },
+    contentContainer: {
+      flex: 1,
+    },
     epubReaderWrapper: {
-      marginTop: '50@s',
+      // marginTop: '50@s',
       justifyContent: 'center',
       alignItems: 'center',
     },
-
+    bottomContainer: {
+      position: 'absolute',
+      bottom: 10,
+    },
     pageNoWrapper: {
       alignSelf: 'flex-end',
       marginRight: '12@s',
@@ -48,7 +36,7 @@ const styles = (direction: string) =>
     playerModuleWrapper: {
       position: 'absolute',
       bottom: 0,
-      marginBottom: '70@s',
+      marginBottom: '40@s',
       width: '100%',
     },
     pageNoDetailsText: {
@@ -72,7 +60,6 @@ const styles = (direction: string) =>
     },
     playControlWrapper: {
       flexDirection: 'row',
-      bottom: 0,
       width: '94%',
       alignItems: 'center',
       justifyContent: 'space-between',
