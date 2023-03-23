@@ -38,6 +38,9 @@ export interface SoundMapFileType {
   contents: SoundMapFileContentType[];
   hasNextPage: boolean;
   page: number;
+  startDelay: number;
+  endDelay: number;
+  isAudio: boolean;
 }
 
 export interface SoundMapFileContentType {
@@ -45,6 +48,9 @@ export interface SoundMapFileContentType {
   epubCfi: string;
   startAt: string | number;
 }
+
+const darkModeColor = '#343a52';
+const white = '#ffffff';
 
 function EBook(props: EBookProps) {
   const { width, height } = useWindowDimensions();
@@ -68,6 +74,7 @@ function EBook(props: EBookProps) {
   const [trackThumbPosition, setTrackThumbPosition] = useState(0);
   const [endPageReached, setEndPageReached] = useState(false);
   const [soundMapData, setSoundMapData] = useState<SoundMapFileType[]>([]);
+  const [autoPlayActivated, setAutoPlayActivated] = useState(false);
 
   useEffect(() => {
     if (currentLocation?.start?.index) {
@@ -95,21 +102,45 @@ function EBook(props: EBookProps) {
     TrackPlayer.setRate(availableSpeeds[newSpeedIndex]);
   };
 
-  const playTrack = async () => {
+  const playTrack = async (mode: 'manual' | 'auto') => {
     const soundData = soundMapData[currentPageRef?.current];
 
     if (soundData?.contents?.length) {
-      setCurrentMusicState('PLAYING');
-      if (
-        position >=
-        Number(soundData?.contents[soundData?.contents?.length - 1]?.endAt)
-      ) {
-        const content = soundData?.contents?.[0];
-        const startAt = Number(content?.startAt);
-        TrackPlayer.seekTo(startAt);
+      if (mode === 'manual') {
+        setAutoPlayActivated(true);
       }
+      setCurrentMusicState('PLAYING');
+      // if (
+      //   position >=
+      //   Number(soundData?.contents[soundData?.contents?.length - 1]?.endAt)
+      // ) {
+      const content = soundData?.contents?.[0];
+      const startAt = Number(content?.startAt);
+      console.log('start', startAt);
+
+      TrackPlayer.seekTo(startAt);
+      // }
 
       await TrackPlayer.play();
+      if (!autoPlayActivated) {
+        Animated.timing(rotationPlayButtonAnimation, {
+          toValue: 1,
+          duration: 300,
+          easing: Easing.linear,
+          useNativeDriver: true,
+        }).start(() => {
+          rotationPlayButtonAnimation.setValue(0);
+        });
+      }
+    }
+  };
+
+  // console.log('auto play', autoPlayActivated);
+
+  const pauseTrack = async () => {
+    await TrackPlayer.pause();
+    setCurrentMusicState('PAUSE');
+    if (!autoPlayActivated) {
       Animated.timing(rotationPlayButtonAnimation, {
         toValue: 1,
         duration: 300,
@@ -119,19 +150,6 @@ function EBook(props: EBookProps) {
         rotationPlayButtonAnimation.setValue(0);
       });
     }
-  };
-
-  const pauseTrack = async () => {
-    await TrackPlayer.pause();
-    setCurrentMusicState('PAUSE');
-    Animated.timing(rotationPlayButtonAnimation, {
-      toValue: 1,
-      duration: 300,
-      easing: Easing.linear,
-      useNativeDriver: true,
-    }).start(() => {
-      rotationPlayButtonAnimation.setValue(0);
-    });
   };
 
   const removeExistingMarks = (markedEfci: string) => {
@@ -181,7 +199,7 @@ function EBook(props: EBookProps) {
         if (!endPageReached) {
           setTimeout(() => {
             goNext();
-          }, 2000);
+          }, soundMapData[currentPageRef?.current]?.endDelay);
         }
       }
 
@@ -226,17 +244,22 @@ function EBook(props: EBookProps) {
   const onChangePageLocation = () => {
     if (currentMusicState === 'PLAYING' || currentMusicState === 'PAUSE') {
       setTimeout(() => {
-        handleTrackPlayPauseButton();
-      }, 2000);
+        handleTrackPlayPauseButton('auto');
+      }, soundMapData[currentPageRef?.current]?.startDelay);
     }
     setEndPageReached(false);
   };
 
-  const handleTrackPlayPauseButton = () => {
+  // console.log('cuurent page ref', soundMapData[currentPageRef?.current]);
+
+  const handleTrackPlayPauseButton = (mode: 'manual' | 'auto') => {
     if (currentMusicState === 'PLAYING') {
+      if (mode === 'manual') {
+        setAutoPlayActivated(false);
+      }
       pauseTrack();
     } else {
-      playTrack();
+      playTrack(mode);
     }
   };
 
@@ -244,6 +267,59 @@ function EBook(props: EBookProps) {
     inputRange: [0, 1],
     outputRange: ['0deg', '180deg'],
   });
+
+  const RenderHeader = () => {
+    return (
+      <View style={styles(direction).headerContainer}>
+        <RegularButton
+          onPress={() => {
+            NavigationService.goBack();
+          }}
+          icon={'arrow-back'}
+          radius={38}
+          height={38}
+          width={38}
+          colors={['#EBECF0', '#EBECF0']}
+        />
+        <TouchableOpacity>
+          <View>
+            <Image
+              source={require('../../assets/love2.png')}
+              style={styles(direction).loveImg}
+            />
+          </View>
+        </TouchableOpacity>
+      </View>
+    );
+  };
+
+  const RenderEpubReader = () => {
+    return (
+      <View style={[styles(direction).epubReaderWrapper]}>
+        <Reader
+          src={
+            book ||
+            'https://s3.ap-south-1.amazonaws.com/cdn.kutubiapp.com/test/sample3/OEBPS/content.opf'
+          }
+          width={width}
+          height={height}
+          fileSystem={useFileSystem}
+          onLocationChange={onChangePageLocation}
+          onFinish={() => setEndPageReached(true)}
+          onSwipeRight={() => {
+            setAutoPlayActivated(false);
+            setTrackThumbPosition(prev => prev - 1);
+          }}
+          onSwipeLeft={() => {
+            setAutoPlayActivated(false);
+            setTrackThumbPosition(prev => prev + 1);
+          }}
+          onResized={() => console.log('resized')}
+          onLayout={() => console.log('layout change')}
+        />
+      </View>
+    );
+  };
 
   const RenderPlayerController = () => {
     if (endPageReached) {
@@ -272,10 +348,13 @@ function EBook(props: EBookProps) {
               style={styles(direction).controllerImg}
             />
           </TouchableWithoutFeedback>
-          <TouchableWithoutFeedback onPress={handleTrackPlayPauseButton}>
+          <TouchableWithoutFeedback
+            onPress={() => {
+              handleTrackPlayPauseButton('manual');
+            }}>
             <Animated.Image
               source={
-                currentMusicState === 'PLAYING'
+                currentMusicState === 'PLAYING' || autoPlayActivated
                   ? require('../../assets/epubpause.png')
                   : require('../../assets/epubplay.png')
               }
@@ -319,47 +398,13 @@ function EBook(props: EBookProps) {
   return (
     <SafeAreaView
       style={[
-        styles(direction).safeAreaView,
-        { backgroundColor: darkMode ? '#343a52' : '#ffffff' },
+        styles(direction).container,
+        { backgroundColor: darkMode ? darkModeColor : white },
       ]}>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles(direction).container2}>
-          <View style={styles(direction).topContainer}>
-            <RegularButton
-              onPress={() => {
-                NavigationService.goBack();
-              }}
-              icon={'arrow-back'}
-              radius={38}
-              height={38}
-              width={38}
-              colors={['#EBECF0', '#EBECF0']}
-            />
-          </View>
-          <TouchableOpacity>
-            <View style={styles(direction).topContainer2}>
-              <Image
-                source={require('../../assets/love2.png')}
-                style={styles(direction).loveImg}
-              />
-            </View>
-          </TouchableOpacity>
-          <View style={styles(direction).epubReaderWrapper}>
-            <Reader
-              src={
-                book ||
-                'https://s3.ap-south-1.amazonaws.com/cdn.kutubiapp.com/test/sample3/OEBPS/content.opf'
-              }
-              width={width - 80}
-              height={height - 180}
-              fileSystem={useFileSystem}
-              onLocationChange={onChangePageLocation}
-              onFinish={() => setEndPageReached(true)}
-              onSwipeRight={() => setTrackThumbPosition(prev => prev - 1)}
-              onSwipeLeft={() => setTrackThumbPosition(prev => prev + 1)}
-            />
-          </View>
-
+      <View style={styles(direction).contentContainer}>
+        {RenderHeader()}
+        {RenderEpubReader()}
+        <View style={[styles(direction).bottomContainer, { width: width }]}>
           <View style={styles(direction).playerModuleWrapper}>
             <View style={styles(direction).pageNoWrapper}>
               <Text style={styles(direction).pageNoDetailsText}>
@@ -378,10 +423,10 @@ function EBook(props: EBookProps) {
                 disabled
               />
             </View>
-            {RenderPlayerController()}
           </View>
+          {RenderPlayerController()}
         </View>
-      </ScrollView>
+      </View>
     </SafeAreaView>
   );
 }

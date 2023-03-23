@@ -8,6 +8,7 @@ import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import Neumorphism from 'react-native-neumorphism';
 import GradientText from 'app/components/texts/GradientText';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
+import { ScaledSheet } from 'react-native-size-matters';
 import {
   Menu,
   MenuOptions,
@@ -19,7 +20,8 @@ import RegularButton from 'app/components/buttons/RegularButton';
 import { useTranslation } from 'react-i18next';
 import { scale } from 'react-native-size-matters';
 import TitleBar from 'app/components/buttons/TitleBar';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/SimpleLineIcons';
+import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 
 const MyChannel: React.FC = props => {
   const { control } = useForm();
@@ -182,56 +184,61 @@ const MyChannel: React.FC = props => {
                       </View>
                     </View>
                     {isCondition === false && (
-                      <Menu>
-                        <MenuTrigger>
-                          <Image
-                            source={require('../../assets/menu.png')}
-                            style={styles(direction).menu}
-                          />
-                        </MenuTrigger>
-                        <MenuOptions
-                          customStyles={{
-                            optionsContainer: {
-                              borderRadius: scale(14),
-                              width: scale(214),
-                              paddingVertical: scale(20),
-                              backgroundColor: '#EBEEF0',
-                            },
-                          }}>
-                          {options.map((op, i) => (
-                            <MenuOption
-                              onSelect={() => {
-                                setIsVisible(false);
-                                if (op.title === 'Manage People') {
-                                  NavigationService.navigate('ManagePeople');
-                                } else if (op.title === 'Edit Channel') {
-                                  NavigationService.navigate('EditChannel');
-                                } else if (op.title === 'Manage Activities') {
-                                  NavigationService.navigate(
-                                    'Manage Activities',
-                                  );
-                                }
-                              }}
-                              customStyles={{
-                                optionWrapper: {
-                                  flexDirection: 'row',
-                                  alignItems: 'center',
-                                  justifyContent: 'space-between',
-                                  paddingHorizontal: scale(20),
-                                  paddingVertical: scale(7),
-                                },
-                              }}>
-                              <Text style={styles(direction).optionTitleStyle}>
-                                {op.title}{' '}
-                              </Text>
-                              <Image
-                                source={op.image}
-                                style={styles(direction).menuImage}
-                              />
-                            </MenuOption>
-                          ))}
-                        </MenuOptions>
-                      </Menu>
+                      <View style={styles(direction).menuContainer}>
+                        <Menu>
+                          <MenuTrigger>
+                            <SimpleLineIcons
+                              name={'options-vertical'}
+                              size={scale(16)}
+                              color={'#758DAC'}
+                            />
+                          </MenuTrigger>
+
+                          <MenuOptions
+                            customStyles={{
+                              optionsContainer: {
+                                borderRadius: scale(14),
+                                width: scale(214),
+                                paddingVertical: scale(20),
+                                backgroundColor: '#EBEEF0',
+                              },
+                            }}>
+                            {options.map((op, i) => (
+                              <MenuOption
+                                onSelect={() => {
+                                  setIsVisible(false);
+                                  if (op.title === 'Manage People') {
+                                    NavigationService.navigate('ManagePeople');
+                                  } else if (op.title === 'Edit Channel') {
+                                    NavigationService.navigate('EditChannel');
+                                  } else if (op.title === 'Manage Activities') {
+                                    NavigationService.navigate(
+                                      'Manage Activities',
+                                    );
+                                  }
+                                }}
+                                customStyles={{
+                                  optionWrapper: {
+                                    flexDirection: 'row',
+                                    alignItems: 'center',
+                                    justifyContent: 'space-between',
+                                    paddingHorizontal: scale(20),
+                                    paddingVertical: scale(7),
+                                  },
+                                }}>
+                                <Text
+                                  style={styles(direction).optionTitleStyle}>
+                                  {op.title}{' '}
+                                </Text>
+                                <Image
+                                  source={op.image}
+                                  style={styles(direction).menuImage}
+                                />
+                              </MenuOption>
+                            ))}
+                          </MenuOptions>
+                        </Menu>
+                      </View>
                     )}
                   </View>
                 </View>
@@ -283,9 +290,10 @@ const MyChannel: React.FC = props => {
                             {isCondition === false && (
                               <Menu>
                                 <MenuTrigger>
-                                  <Image
-                                    source={require('../../assets/menu.png')}
-                                    style={styles(direction).itemMenu}
+                                  <SimpleLineIcons
+                                    name={'options-vertical'}
+                                    size={scale(16)}
+                                    color={'#758DAC'}
                                   />
                                 </MenuTrigger>
                                 <MenuOptions
