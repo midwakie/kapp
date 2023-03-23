@@ -80,6 +80,7 @@ import ChangeEmailId from 'app/screens/ChangeEmailId';
 import ChangeMobileNumber from 'app/screens/ChangeMobileNumber';
 import AccountChangePassword from 'app/screens/AccountChangePassword';
 import MyAccount from 'app/screens/MyAccount';
+import AccountDetail from 'app/screens/AccountDetail';
 import Notification from 'app/screens/Notification';
 import MyChannel from 'app/screens/MyChannel';
 import ChildFullProfile from 'app/screens/ChildFullProfile';
@@ -693,6 +694,14 @@ const AuthStack = () => {
       <Stack.Screen
         name="AccountChangePassword"
         component={AccountChangePassword}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="AccountDetail"
+        component={AccountDetail}
         options={{
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,

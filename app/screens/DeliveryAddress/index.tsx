@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, Text, TextStyle, View } from 'react-native';
+import { Image, SafeAreaView, Text, TextStyle, View } from 'react-native';
 import styles from './styles';
 import NavigationService from 'app/navigation/NavigationService';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -13,21 +13,29 @@ import { useTranslation } from 'react-i18next';
 import { scale } from 'react-native-size-matters';
 import TitleBar from 'app/components/buttons/TitleBar';
 import { useSelector } from 'react-redux';
+import PhoneInput from 'react-native-phone-number-input';
 
 const DeliveryAddress: React.FC = () => {
-  const { control } = useForm();
   const addressInputRef: React.RefObject<any> = React.createRef();
+  const schoolLocationInputRef: React.RefObject<any> = React.createRef();
+  const { control, handleSubmit } = useForm();
   const emailInputRef: React.RefObject<any> = React.createRef();
+  const lastNameInputRef: React.RefObject<any> = React.createRef();
   const mobileNumberInputRef: React.RefObject<any> = React.createRef();
-  const invitationCodeInputRef: React.RefObject<any> = React.createRef();
+  const [mobileNo, setMobileNo] = React.useState('');
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
   const cart = useSelector(state => state.cartReducer.cart);
   const total = cart.reduce((acc, item) => acc + item.price, 0);
   const discountedTotal = total * 0.95;
+  const roundedPrice = discountedTotal.toFixed(2);
   const MakePayment = item => {
     NavigationService.navigate('MakePayment', { item });
   };
+  const Deliver = handleSubmit(() => {
+    MakePayment(roundedPrice);
+  });
+
   return (
     <>
       <TitleBar
@@ -64,13 +72,14 @@ const DeliveryAddress: React.FC = () => {
               <CustomInput
                 control={control}
                 name="name"
+                rules={rules.CustomerRules.first_name}
                 placeholder={t('Name')}
                 label={t('Name')}
                 keyboardType="default"
                 autoCapitalize="none"
                 returnKeyType="next"
                 onSubmitEditing={() => {
-                  addressInputRef?.current.setFocus();
+                  lastNameInputRef?.current.setFocus();
                 }}
               />
             </View>
@@ -79,7 +88,7 @@ const DeliveryAddress: React.FC = () => {
                 control={control}
                 ref={addressInputRef}
                 name="address"
-                rules={rules.CustomerRules.address_number}
+                rules={rules.CustomerRules.address_street}
                 placeholder={t('Address')}
                 label={t('Address')}
                 keyboardType="default"
@@ -91,17 +100,36 @@ const DeliveryAddress: React.FC = () => {
               />
             </View>
             <View style={styles(direction).inputTextContainer}>
-              <CustomInput
-                control={control}
-                ref={mobileNumberInputRef}
-                name="mobile_number"
-                placeholder={t('Mobile Number')}
-                label={t('Mobile Number')}
-                keyboardType="default"
-                autoCapitalize="none"
-                returnKeyType="next"
-                onSubmitEditing={() => {
-                  invitationCodeInputRef?.current.setFocus();
+              <Image
+                source={require('../../assets/inputBg.png')}
+                style={styles(direction).bg}
+              />
+              <PhoneInput
+                defaultCode="AE"
+                layout="second"
+                onChangeFormattedText={text => {
+                  setMobileNo(text);
+                }}
+                disabled={false}
+                placeholder={`${t('Mobile Number')}*`}
+                flagButtonStyle={styles(direction).flagButtonStyle}
+                codeTextStyle={styles(direction).mobileCodeTextStyle}
+                countryPickerButtonStyle={
+                  styles(direction).countryPickerButtonStyle
+                }
+                textContainerStyle={styles(direction).textContainerStyle}
+                containerStyle={styles(direction).mobileInputContainerStyle}
+                textInputStyle={styles(direction).mobileTextInputStyle}
+                textInputProps={{
+                  placeholderTextColor: '#758DAC',
+                  blurOnSubmit: false,
+                  returnKeyType: 'next',
+                  onSubmitEditing: () => {
+                    schoolLocationInputRef?.current.setFocus();
+                  },
+                  // @ts-ignore
+                  ref: mobileNumberInputRef,
+                  keyboardType: 'phone-pad',
                 }}
               />
             </View>
@@ -116,6 +144,10 @@ const DeliveryAddress: React.FC = () => {
                 keyboardType="email-address"
                 autoCapitalize="none"
                 returnKeyType="next"
+                onSubmitEditing={() => {
+                  //@ts-ignore
+                  mobileNumberInputRef?.current.focus();
+                }}
               />
             </View>
             <Neumorphism
@@ -143,15 +175,13 @@ const DeliveryAddress: React.FC = () => {
                     {t('Total Amount')}
                   </Text>
                   <Text
-                    style={
-                      styles(direction).text2
-                    }>{`$${discountedTotal}`}</Text>
+                    style={styles(direction).text2}>{`$${roundedPrice}`}</Text>
                 </View>
               </View>
             </Neumorphism>
             <View style={styles(direction).container4}>
               <RegularButton
-                onPress={() => MakePayment(discountedTotal)}
+                onPress={Deliver}
                 text={t('Continue ')}
                 radius={50}
                 height={50}
