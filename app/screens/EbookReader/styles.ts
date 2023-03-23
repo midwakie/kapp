@@ -48,7 +48,7 @@ const styles = (direction: string) =>
     playerModuleWrapper: {
       position: 'absolute',
       bottom: 0,
-      marginBottom: '30@s',
+      marginBottom: '70@s',
       width: '100%',
     },
     pageNoDetailsText: {
