@@ -10,6 +10,9 @@ const ApiConfig = {
 
   // USER //
   FETCH_USER_DETAILS: '/user/fetchUserDetails',
+
+  // TWILIO //
+  GET_TOKEN: '/chat/token',
 };
 
 export default ApiConfig;

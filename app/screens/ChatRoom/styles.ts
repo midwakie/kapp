@@ -35,7 +35,6 @@ const styles = (direction: string) =>
       alignItems: 'center',
       height: '33@s',
       flexDirection: 'row',
-      // paddingHorizontal: '30@s',
     },
     gradientTextStyle: {
       fontSize: '14@s',
@@ -65,7 +64,6 @@ const styles = (direction: string) =>
       height: '40@s',
       alignItems: 'flex-start',
       marginHorizontal: '58@s',
-      // flex: 1,
     },
     sendIcon: {
       width: '24@s',
@@ -81,6 +79,10 @@ const styles = (direction: string) =>
       marginLeft: '20@s',
       marginTop: '10@s',
       tintColor: '#EC4D61',
+    },
+    icon: {
+      width: '20@s',
+      height: '20@s',
     },
     rightBubble: {
       backgroundColor: '#03A0E3',
@@ -109,6 +111,45 @@ const styles = (direction: string) =>
     },
     messageWidth: { width: '100%' },
     footerHeight: { height: '102@s' },
+    modalContainer: {
+      borderWidth: 2,
+      justifyContent: 'flex-end',
+      backgroundColor: 'rgba(98,98,98,0.5)',
+    },
+    textView: {
+      width: '238@s',
+      backgroundColor: '#03A0E3',
+      height: '44@s',
+      marginBottom: '102@s',
+      marginLeft: '117@s',
+    },
+    modalView: {
+      borderWidth: 1,
+      borderColor: 'white',
+      borderRadius: '15@s',
+      backgroundColor: '#EBEEF0',
+      height: '237@s',
+      width: '176@s',
+      marginBottom: '16@s',
+      marginLeft: '117@s',
+    },
+    optionContainer: { flexDirection: 'column' },
+    optionText: {
+      fontSize: '14@s',
+      color: '#758DAC',
+      fontFamily: 'Nunito-Regular',
+    },
+    optionDelete: {
+      fontSize: '14@s',
+      color: '#FD4449',
+      fontFamily: 'Nunito-Regular',
+    },
+    messageOptions: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginHorizontal: 25,
+      marginVertical: 15,
+    },
   });
 
 export default styles;
