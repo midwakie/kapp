@@ -273,7 +273,6 @@ function EBook(props: EBookProps) {
     outputRange: ['0deg', '180deg'],
   });
 
-
   const RenderHeader = () => {
     return (
       <View style={styles(direction).headerContainer}>

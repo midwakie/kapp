@@ -282,7 +282,7 @@
   "Change": "يتغير",
   "Manage Password": "إدارة كلمة المرور",
   "Signout Account": "حساب تسجيل الخروج",
-  "Add Profile": "إضافة ملف التعريف"
+  "Add Profile": "إضافة ملف التعريف",
   "Account":"حساب",
   "Add Account":"إضافة حساب",
   "Biology": "مادة الاحياء",
@@ -292,6 +292,4 @@
   "Trending":"الشائع",
   "Sports":"رياضات",
   "Continue Reading":"أكمل القراءة"
-
-
 }
