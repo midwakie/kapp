@@ -11,6 +11,7 @@ import {
   TouchableWithoutFeedback,
   View,
   useWindowDimensions,
+  ImageBackground,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { Reader, ReaderProvider, useReader } from '@epubjs-react-native/core';
@@ -25,6 +26,9 @@ import RegularButton from 'app/components/buttons/RegularButton';
 
 import styles from './styles';
 import { useRoute } from '@react-navigation/native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { scale } from 'react-native-size-matters';
+import Neumorphism from 'react-native-neumorphism';
 
 const availableSpeeds = [0.5, 0.75, 1.0, 1.25, 1.5];
 
@@ -199,6 +203,7 @@ function EBook(props: EBookProps) {
         if (!endPageReached) {
           setTimeout(() => {
             goNext();
+            setTrackThumbPosition(prev => prev + 1);
           }, soundMapData[currentPageRef?.current]?.endDelay);
         }
       }
@@ -268,27 +273,27 @@ function EBook(props: EBookProps) {
     outputRange: ['0deg', '180deg'],
   });
 
+
   const RenderHeader = () => {
     return (
       <View style={styles(direction).headerContainer}>
-        <RegularButton
-          onPress={() => {
-            NavigationService.goBack();
-          }}
-          icon={'arrow-back'}
-          radius={38}
-          height={38}
-          width={38}
-          colors={['#EBECF0', '#EBECF0']}
-        />
-        <TouchableOpacity>
-          <View>
-            <Image
-              source={require('../../assets/love2.png')}
-              style={styles(direction).loveImg}
-            />
+        <Neumorphism
+          lightColor={'#ffffff'}
+          darkColor={'#ffffff'}
+          shapeType={'flat'}
+          radius={scale(50)}>
+          <View style={styles(direction).topIconContainer}>
+            <TouchableWithoutFeedback
+              onPress={() => {
+                NavigationService.goBack();
+              }}>
+              <Image
+                style={styles(direction).cancelImage}
+                source={require('../../assets/cancel.png')}
+              />
+            </TouchableWithoutFeedback>
           </View>
-        </TouchableOpacity>
+        </Neumorphism>
       </View>
     );
   };
@@ -343,9 +348,12 @@ function EBook(props: EBookProps) {
       return (
         <View style={styles(direction).playControlWrapper}>
           <TouchableWithoutFeedback>
+            <Ionicons name="share-social" size={scale(30)} color="#00008b" />
+          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback>
             <Image
-              source={require('../../assets/hamburger.png')}
-              style={styles(direction).controllerImg}
+              source={require('../../assets/love2.png')}
+              style={styles(direction).loveImg}
             />
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback
@@ -401,9 +409,13 @@ function EBook(props: EBookProps) {
         styles(direction).container,
         { backgroundColor: darkMode ? darkModeColor : white },
       ]}>
-      <View style={styles(direction).contentContainer}>
-        {RenderHeader()}
-        {RenderEpubReader()}
+      <View style={[styles(direction).contentContainer]}>
+        <ImageBackground
+          source={require('../../assets/bookBg1.png')}
+          style={styles(direction).imageBg}>
+          {RenderHeader()}
+          {RenderEpubReader()}
+        </ImageBackground>
         <View style={[styles(direction).bottomContainer, { width: width }]}>
           <View style={styles(direction).playerModuleWrapper}>
             <View style={styles(direction).pageNoWrapper}>
@@ -418,6 +430,7 @@ function EBook(props: EBookProps) {
                 trackStyle={styles(direction).trackStyle}
                 thumbStyle={styles(direction).trackThumbStyle}
                 maximumValue={soundMapData?.length}
+                minimumTrackTintColor={'#006400'}
                 value={trackThumbPosition}
                 step={1}
                 disabled
