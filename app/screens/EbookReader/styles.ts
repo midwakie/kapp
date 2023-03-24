@@ -11,7 +11,7 @@ const styles = (direction: string) =>
       alignItems: 'center',
       alignSelf: 'flex-end',
       paddingHorizontal: '12@s',
-      paddingVertical: '12@s',
+      height: 60,
     },
     topIconContainer: {
       alignItems: 'center',
@@ -31,26 +31,20 @@ const styles = (direction: string) =>
     contentContainer: {
       flex: 1,
     },
-    imageBg: { flex: 1, opacity: 0.6 },
+    imageBg: {},
     epubReaderWrapper: {
       // marginTop: '50@s',
       justifyContent: 'center',
       alignItems: 'center',
     },
     bottomContainer: {
-      position: 'absolute',
-      bottom: 10,
+      backgroundColor: '#ffffff',
     },
     pageNoWrapper: {
       alignSelf: 'flex-end',
       marginRight: '12@s',
     },
-    playerModuleWrapper: {
-      position: 'absolute',
-      bottom: 0,
-      marginBottom: '40@s',
-      width: '100%',
-    },
+    playerModuleWrapper: {},
     pageNoDetailsText: {
       color: '#000000',
       fontSize: 12,
@@ -69,15 +63,18 @@ const styles = (direction: string) =>
       backgroundColor: '#006400',
     },
     finishControlWrapper: {
+      backgroundColor: '#ffffff',
       alignItems: 'center',
       justifyContent: 'center',
     },
     playControlWrapper: {
       flexDirection: 'row',
-      width: '94%',
+      width: '100%',
+      paddingHorizontal: 10,
       alignItems: 'center',
       justifyContent: 'space-between',
       alignSelf: 'center',
+      backgroundColor: '#ffffff',
     },
     speedControlContainer: {
       height: 35,
@@ -102,9 +99,8 @@ const styles = (direction: string) =>
       alignSelf: 'center',
     },
     controllerImg: {
-      height: '45@s',
-      width: '45@s',
-      marginLeft: '20@s',
+      height: '35@s',
+      width: '35@s',
       resizeMode: 'contain',
     },
   });

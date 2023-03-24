@@ -2,12 +2,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
   Animated,
-  Easing,
   Image,
   SafeAreaView,
-  ScrollView,
   Text,
-  TouchableOpacity,
   TouchableWithoutFeedback,
   View,
   useWindowDimensions,
@@ -29,6 +26,7 @@ import { useRoute } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { scale } from 'react-native-size-matters';
 import Neumorphism from 'react-native-neumorphism';
+import { debounce } from 'app/utils/debounce';
 
 const availableSpeeds = [0.5, 0.75, 1.0, 1.25, 1.5];
 
@@ -67,10 +65,13 @@ function EBook(props: EBookProps) {
   const { addMark, removeMark, currentLocation, goNext } = useReader();
 
   const currentPageRef = useRef(currentLocation?.start?.index || 0);
+  const goNextTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
+  const [currentPage, setCurrentpage] = useState(0);
   const [darkMode, setDarkMode] = useState(false);
   const [speedIndex, setSpeedIndex] = useState(2);
-  const [markedEpub, setMarkedEpub] = useState('');
+  const [prevMarkedEpub, setPrevMarkedEpub] = useState('');
+  const [currentMarkedEpub, setCurrentMarkedEpub] = useState('');
   const [currentMusicState, setCurrentMusicState] = useState<
     'IDLE' | 'PLAYING' | 'PAUSE' | 'STOP'
   >('IDLE');
@@ -79,87 +80,6 @@ function EBook(props: EBookProps) {
   const [endPageReached, setEndPageReached] = useState(false);
   const [soundMapData, setSoundMapData] = useState<SoundMapFileType[]>([]);
   const [autoPlayActivated, setAutoPlayActivated] = useState(false);
-
-  useEffect(() => {
-    if (currentLocation?.start?.index) {
-      currentPageRef.current = currentLocation?.start?.index;
-    }
-  }, [currentLocation?.start?.index]);
-
-  useEffect(() => {
-    TrackPlayer.add({
-      id: 'trackId',
-      url:
-        sound ||
-        'https://s3.ap-south-1.amazonaws.com/cdn.kutubiapp.com/test/sample3/audio.mp3',
-      title: 'Track Title',
-      artist: 'Track Artist',
-    });
-    return () => {
-      TrackPlayer.reset();
-    };
-  }, []);
-
-  const onChangePlaySpeed = () => {
-    const newSpeedIndex = (speedIndex + 1) % availableSpeeds.length;
-    setSpeedIndex(newSpeedIndex);
-    TrackPlayer.setRate(availableSpeeds[newSpeedIndex]);
-  };
-
-  const playTrack = async (mode: 'manual' | 'auto') => {
-    const soundData = soundMapData[currentPageRef?.current];
-
-    if (soundData?.contents?.length) {
-      if (mode === 'manual') {
-        setAutoPlayActivated(true);
-      }
-      setCurrentMusicState('PLAYING');
-      // if (
-      //   position >=
-      //   Number(soundData?.contents[soundData?.contents?.length - 1]?.endAt)
-      // ) {
-      const content = soundData?.contents?.[0];
-      const startAt = Number(content?.startAt);
-      console.log('start', startAt);
-
-      TrackPlayer.seekTo(startAt);
-      // }
-
-      await TrackPlayer.play();
-      if (!autoPlayActivated) {
-        Animated.timing(rotationPlayButtonAnimation, {
-          toValue: 1,
-          duration: 300,
-          easing: Easing.linear,
-          useNativeDriver: true,
-        }).start(() => {
-          rotationPlayButtonAnimation.setValue(0);
-        });
-      }
-    }
-  };
-
-  // console.log('auto play', autoPlayActivated);
-
-  const pauseTrack = async () => {
-    await TrackPlayer.pause();
-    setCurrentMusicState('PAUSE');
-    if (!autoPlayActivated) {
-      Animated.timing(rotationPlayButtonAnimation, {
-        toValue: 1,
-        duration: 300,
-        easing: Easing.linear,
-        useNativeDriver: true,
-      }).start(() => {
-        rotationPlayButtonAnimation.setValue(0);
-      });
-    }
-  };
-
-  const removeExistingMarks = (markedEfci: string) => {
-    removeMark(markedEfci, 'highlight');
-    setMarkedEpub('');
-  };
 
   const getData = async () => {
     await axios
@@ -179,94 +99,157 @@ function EBook(props: EBookProps) {
   }, []);
 
   useEffect(() => {
-    const soundData = soundMapData[currentPageRef?.current];
-    if (!soundData?.contents?.length) {
-      if (currentMusicState === 'PLAYING') {
-        pauseTrack();
-      }
-      return;
-    }
-    if (currentMusicState === 'PLAYING') {
-      const currentContents = soundData?.contents;
-      const currentContentIndex = currentContents.findIndex(content => {
-        return (
-          position >= Number(content.startAt) &&
-          position < Number(content.endAt)
-        );
-      });
+    TrackPlayer.add({
+      id: 'trackId',
+      url:
+        sound ||
+        'https://s3.ap-south-1.amazonaws.com/cdn.kutubiapp.com/test/sample3/audio.mp3',
+      title: 'Track Title',
+      artist: 'Track Artist',
+    });
+    return () => {
+      TrackPlayer.pause();
+      TrackPlayer.reset();
+    };
+  }, []);
 
-      if (
-        currentContentIndex === -1 &&
-        position >= Number(currentContents[currentContents?.length - 1].endAt)
-      ) {
-        pauseTrack();
-        if (!endPageReached) {
-          setTimeout(() => {
-            goNext();
-            setTrackThumbPosition(prev => prev + 1);
-          }, soundMapData[currentPageRef?.current]?.endDelay);
-        }
-      }
-
-      currentContents.forEach(content => {
-        const { epubCfi, startAt, endAt } = content;
-
-        const isMusicInRange =
-          position >= Number(startAt) && position < Number(endAt);
-        const hasMark = markedEpub === epubCfi ? true : false;
-
-        if (markedEpub && markedEpub !== epubCfi) {
-          removeExistingMarks(markedEpub);
-        }
-
-        if (currentContentIndex === -1) {
-          pauseTrack();
-          removeExistingMarks(epubCfi);
-          return;
-        }
-
-        if (isMusicInRange && !hasMark) {
-          addMark('highlight', epubCfi);
-          setMarkedEpub(epubCfi);
-        } else if (!isMusicInRange && hasMark) {
-          removeExistingMarks(epubCfi);
-        }
-        if (
-          currentContentIndex === currentContents.length - 1 &&
-          position >=
-            Number(currentContents[currentContents?.length - 1]?.endAt)
-        ) {
-          pauseTrack();
-        }
-      });
-    } else {
-      if (markedEpub) {
-        removeExistingMarks(markedEpub);
+  useEffect(() => {
+    if (currentLocation?.start?.index) {
+      currentPageRef.current = currentLocation?.start?.index;
+      setCurrentpage(currentLocation?.start?.index);
+      TrackPlayer.seekTo(
+        Number(soundMapData[currentPageRef?.current]?.contents?.[0]?.startAt),
+      );
+      if (autoPlayActivated) {
+        setTimeout(() => {
+          playTrack('auto');
+        }, soundMapData[currentPageRef?.current]?.startDelay || 3000);
       }
     }
-  }, [position]);
+  }, [currentLocation?.start?.index]);
 
-  const onChangePageLocation = () => {
-    if (currentMusicState === 'PLAYING' || currentMusicState === 'PAUSE') {
-      setTimeout(() => {
-        handleTrackPlayPauseButton('auto');
-      }, soundMapData[currentPageRef?.current]?.startDelay);
+  const onChangePlaySpeed = () => {
+    const newSpeedIndex = (speedIndex + 1) % availableSpeeds.length;
+    setSpeedIndex(newSpeedIndex);
+    TrackPlayer.setRate(availableSpeeds[newSpeedIndex]);
+  };
+
+  const onChangePageLocation = async () => {
+    if (goNextTimeoutRef.current) {
+      clearTimeout(goNextTimeoutRef.current);
+      goNextTimeoutRef.current = null;
     }
     setEndPageReached(false);
   };
 
-  // console.log('cuurent page ref', soundMapData[currentPageRef?.current]);
+  const goNextWithDelay = () => {
+    goNextTimeoutRef.current = setTimeout(() => {
+      goNext();
+    }, soundMapData[currentPageRef?.current]?.endDelay || 3000);
+  };
 
-  const handleTrackPlayPauseButton = (mode: 'manual' | 'auto') => {
-    if (currentMusicState === 'PLAYING') {
-      if (mode === 'manual') {
-        setAutoPlayActivated(false);
+  const debouncedGoNextWithDelay = debounce(goNextWithDelay, 1000);
+
+  const playTrack = async (type: 'manual' | 'auto') => {
+    const soundData = soundMapData[currentPageRef?.current];
+    if (soundData?.contents?.length) {
+      if (type === 'auto') {
+        if (
+          position >= Number(soundData?.contents[0]?.startAt) &&
+          position <=
+            Number(soundData?.contents[soundData?.contents?.length - 1]?.endAt)
+        ) {
+          await TrackPlayer.play();
+        }
       }
-      pauseTrack();
     } else {
-      playTrack(mode);
+      if (!autoPlayActivated || currentMusicState !== 'PLAYING') {
+        debouncedGoNextWithDelay();
+      }
     }
   };
+
+  const pauseTrack = async () => {
+    if (goNextTimeoutRef.current) {
+      clearTimeout(goNextTimeoutRef.current);
+      goNextTimeoutRef.current = null;
+    }
+    await TrackPlayer.pause();
+    // Animated.timing(rotationPlayButtonAnimation, {
+    //   toValue: 1,
+    //   duration: 300,
+    //   easing: Easing.linear,
+    //   useNativeDriver: true,
+    // }).start(() => {
+    //   rotationPlayButtonAnimation.setValue(0);
+    // });
+  };
+
+  const onPressPlayButton = () => {
+    setAutoPlayActivated(true);
+    setCurrentMusicState('PLAYING');
+    playTrack('auto');
+  };
+
+  const onPressPauseButton = () => {
+    setCurrentMusicState('PAUSE');
+    setAutoPlayActivated(false);
+    pauseTrack();
+  };
+
+  useEffect(() => {
+    if (prevMarkedEpub) {
+      removeMark(prevMarkedEpub, 'highlight');
+    }
+  }, [prevMarkedEpub]);
+
+  useEffect(() => {
+    if (currentMarkedEpub) {
+      addMark('highlight', currentMarkedEpub);
+    }
+  }, [currentMarkedEpub]);
+
+  const handleTrackPositionChange = () => {
+    const soundData = soundMapData[currentPageRef?.current];
+    if (position) {
+      if (
+        position >= Number(soundData?.contents[0]?.startAt) &&
+        position <=
+          Number(soundData?.contents[soundData?.contents?.length - 1]?.endAt)
+      ) {
+        const currentPositionIndex = soundData?.contents?.findIndex(content => {
+          return (
+            position >= Number(content.startAt) &&
+            position < Number(content.endAt)
+          );
+        });
+        if (
+          currentMarkedEpub !==
+          soundData?.contents[currentPositionIndex]?.epubCfi
+        ) {
+          if (currentMarkedEpub) {
+            setPrevMarkedEpub(currentMarkedEpub);
+          }
+          setCurrentMarkedEpub(
+            soundData?.contents[currentPositionIndex]?.epubCfi,
+          );
+        }
+      } else if (
+        position >
+        Number(soundData?.contents[soundData?.contents?.length - 1]?.endAt)
+      ) {
+        pauseTrack();
+        if (autoPlayActivated) {
+          removeMark(currentMarkedEpub, 'highlight');
+          debouncedGoNextWithDelay();
+        }
+      }
+    }
+  };
+
+  useEffect(() => {
+    handleTrackPositionChange();
+  }, [position]);
 
   const spin = rotationPlayButtonAnimation.interpolate({
     inputRange: [0, 1],
@@ -306,16 +289,16 @@ function EBook(props: EBookProps) {
             'https://s3.ap-south-1.amazonaws.com/cdn.kutubiapp.com/test/sample3/OEBPS/content.opf'
           }
           width={width}
-          height={height}
+          height={height - height / 4}
           fileSystem={useFileSystem}
           onLocationChange={onChangePageLocation}
           onFinish={() => setEndPageReached(true)}
           onSwipeRight={() => {
-            setAutoPlayActivated(false);
+            // setAutoPlayActivated(false);
             setTrackThumbPosition(prev => prev - 1);
           }}
           onSwipeLeft={() => {
-            setAutoPlayActivated(false);
+            // setAutoPlayActivated(false);
             setTrackThumbPosition(prev => prev + 1);
           }}
           onResized={() => console.log('resized')}
@@ -355,22 +338,33 @@ function EBook(props: EBookProps) {
               style={styles(direction).loveImg}
             />
           </TouchableWithoutFeedback>
-          <TouchableWithoutFeedback
-            onPress={() => {
-              handleTrackPlayPauseButton('manual');
-            }}>
-            <Animated.Image
-              source={
-                currentMusicState === 'PLAYING' || autoPlayActivated
-                  ? require('../../assets/epubpause.png')
-                  : require('../../assets/epubplay.png')
-              }
-              style={[
-                styles(direction).controllerImg,
-                { transform: [{ rotate: spin }] },
-              ]}
-            />
-          </TouchableWithoutFeedback>
+          {currentMusicState === 'PLAYING' ? (
+            <TouchableWithoutFeedback
+              onPress={() => {
+                onPressPauseButton();
+              }}>
+              <Animated.Image
+                source={require('../../assets/epubpause.png')}
+                style={[
+                  styles(direction).controllerImg,
+                  { transform: [{ rotate: spin }] },
+                ]}
+              />
+            </TouchableWithoutFeedback>
+          ) : (
+            <TouchableWithoutFeedback
+              onPress={() => {
+                onPressPlayButton();
+              }}>
+              <Animated.Image
+                source={require('../../assets/epubplay.png')}
+                style={[
+                  styles(direction).controllerImg,
+                  { transform: [{ rotate: spin }] },
+                ]}
+              />
+            </TouchableWithoutFeedback>
+          )}
           <TouchableWithoutFeedback onPress={() => onChangePlaySpeed()}>
             <View style={styles(direction).speedControlContainer}>
               <Text style={styles(direction).speedControlText}>
@@ -414,30 +408,34 @@ function EBook(props: EBookProps) {
           style={styles(direction).imageBg}>
           {RenderHeader()}
           {RenderEpubReader()}
-        </ImageBackground>
-        <View style={[styles(direction).bottomContainer, { width: width }]}>
-          <View style={styles(direction).playerModuleWrapper}>
-            <View style={styles(direction).pageNoWrapper}>
-              <Text style={styles(direction).pageNoDetailsText}>
-                {`Page ${currentPageRef?.current + 1} of ${
-                  soundMapData?.length
-                }`}
-              </Text>
+          <View
+            style={[
+              styles(direction).bottomContainer,
+              { width: width, height: 60 },
+            ]}>
+            <View style={styles(direction).playerModuleWrapper}>
+              <View style={styles(direction).pageNoWrapper}>
+                <Text style={styles(direction).pageNoDetailsText}>
+                  {`Page ${currentPageRef?.current + 1} of ${
+                    soundMapData?.length
+                  }`}
+                </Text>
+              </View>
+              <View style={styles(direction).trackWrapper}>
+                <Slider
+                  trackStyle={styles(direction).trackStyle}
+                  thumbStyle={styles(direction).trackThumbStyle}
+                  maximumValue={soundMapData?.length}
+                  minimumTrackTintColor={'#006400'}
+                  value={trackThumbPosition}
+                  step={1}
+                  disabled
+                />
+              </View>
             </View>
-            <View style={styles(direction).trackWrapper}>
-              <Slider
-                trackStyle={styles(direction).trackStyle}
-                thumbStyle={styles(direction).trackThumbStyle}
-                maximumValue={soundMapData?.length}
-                minimumTrackTintColor={'#006400'}
-                value={trackThumbPosition}
-                step={1}
-                disabled
-              />
-            </View>
+            {RenderPlayerController()}
           </View>
-          {RenderPlayerController()}
-        </View>
+        </ImageBackground>
       </View>
     </SafeAreaView>
   );
