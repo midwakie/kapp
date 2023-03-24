@@ -220,7 +220,7 @@ function EBook(props: EBookProps) {
 
   const handleTrackPositionChange = () => {
     const soundData = soundMapData[currentPageRef?.current];
-    if (position) {
+    if (position && autoPlayActivated) {
       if (
         position >= Number(soundData?.contents[0]?.startAt) &&
         position <=
@@ -303,11 +303,9 @@ function EBook(props: EBookProps) {
           onLocationChange={onChangePageLocation}
           onFinish={() => setEndPageReached(true)}
           onSwipeRight={() => {
-            // setAutoPlayActivated(false);
             setTrackThumbPosition(prev => prev - 1);
           }}
           onSwipeLeft={() => {
-            // setAutoPlayActivated(false);
             setTrackThumbPosition(prev => prev + 1);
           }}
           onResized={() => console.log('resized')}
