@@ -45,12 +45,6 @@ const ChatRoom: React.FC = props => {
   const chatClientChannel = useRef();
   const chatMessagesPaginator = useRef();
   const [modalVisible, setModalVisible] = useState(false);
-  const [messageCoordinates, setMessageCoordinates] = useState({
-    x: 0,
-    y: 0,
-    width: 0,
-    height: 0,
-  });
 
   const setChannelEvents = useCallback(channel => {
     chatClientChannel.current = channel;
@@ -166,9 +160,7 @@ const ChatRoom: React.FC = props => {
       </View>
     );
   };
-  const handleLongPress = (context, message) => {
-    const { x, y, width, height } = context.touchables[0].measure();
-    setMessageCoordinates({ x, y, width, height });
+  const handleLongPress = () => {
     setModalVisible(true);
   };
   return (
@@ -205,14 +197,7 @@ const ChatRoom: React.FC = props => {
       <Modal animationType="fade" transparent={true} visible={modalVisible}>
         <TouchableWithoutFeedback onPress={() => setModalVisible(false)}>
           <View style={styles(direction).modalContainer}>
-            <View
-              style={[
-                styles(direction).modalView,
-                {
-                  top: messageCoordinates.y + messageCoordinates.height,
-                  left: messageCoordinates.x + messageCoordinates.width / 2,
-                },
-              ]}>
+            <View style={[styles(direction).modalView]}>
               <View style={styles(direction).optionContainer}>
                 <View style={styles(direction).messageOptions}>
                   <Text style={styles(direction).optionText}>Forward</Text>

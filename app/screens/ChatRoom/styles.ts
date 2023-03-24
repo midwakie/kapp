@@ -113,6 +113,7 @@ const styles = (direction: string) =>
     footerHeight: { height: '102@s' },
     modalContainer: {
       borderWidth: 2,
+      flex: 1,
       justifyContent: 'flex-end',
       backgroundColor: 'rgba(98,98,98,0.5)',
     },
