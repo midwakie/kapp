@@ -79,7 +79,12 @@ import EBookReader from 'app/screens/EbookReader';
 import ChangeEmailId from 'app/screens/ChangeEmailId';
 import ChangeMobileNumber from 'app/screens/ChangeMobileNumber';
 import AccountChangePassword from 'app/screens/AccountChangePassword';
+import MyAccount from 'app/screens/MyAccount';
+import AccountDetail from 'app/screens/AccountDetail';
 import Notification from 'app/screens/Notification';
+import MyChannel from 'app/screens/MyChannel';
+import ChildFullProfile from 'app/screens/ChildFullProfile';
+import Biology from 'app/screens/EBooks/Biology';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -107,7 +112,7 @@ const AuthStack = () => {
 
   return (
     <AuthenticationStack.Navigator
-      initialRouteName={initialRouteName}
+      initialRouteName={'Biology'}
       screenOptions={{
         ...TransitionPresets.SlideFromRightIOS,
       }}>
@@ -132,6 +137,38 @@ const AuthStack = () => {
       <Stack.Screen
         name="Welcome"
         component={Landing}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Biology"
+        component={Biology}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ChildFullProfile"
+        component={ChildFullProfile}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="MyAccount"
+        component={MyAccount}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="MyChannel"
+        component={MyChannel}
         options={{
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
@@ -657,6 +694,14 @@ const AuthStack = () => {
       <Stack.Screen
         name="AccountChangePassword"
         component={AccountChangePassword}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="AccountDetail"
+        component={AccountDetail}
         options={{
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,

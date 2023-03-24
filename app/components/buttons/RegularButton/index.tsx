@@ -17,6 +17,7 @@ const RegularButton = ({
   width,
   start,
   end,
+  disabled = false,
 }: RegularButtonProps) => {
   return (
     <Neumorphism
@@ -26,7 +27,8 @@ const RegularButton = ({
       radius={radius}>
       <TouchableOpacity
         style={styles(radius, height, width).touchableOpacity}
-        onPress={onPress}>
+        onPress={onPress}
+        disabled={disabled}>
         <LinearGradient
           colors={colors}
           start={start || { x: 0, y: 0 }}
