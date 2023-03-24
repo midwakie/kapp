@@ -8,5 +8,5 @@ export type RegularButtonProps = {
   width: number | string;
   start?: any | null;
   end?: any | null;
-  disabled: boolean;
+  disabled?: boolean;
 };
