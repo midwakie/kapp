@@ -148,6 +148,15 @@ function EBook(props: EBookProps) {
     }, soundMapData[currentPageRef?.current]?.endDelay || 3000);
   };
 
+  useEffect(() => {
+    if (endPageReached) {
+      if (goNextTimeoutRef.current) {
+        clearTimeout(goNextTimeoutRef.current);
+        goNextTimeoutRef.current = null;
+      }
+    }
+  }, [endPageReached]);
+
   const debouncedGoNextWithDelay = debounce(goNextWithDelay, 1000);
 
   const playTrack = async (type: 'manual' | 'auto') => {
