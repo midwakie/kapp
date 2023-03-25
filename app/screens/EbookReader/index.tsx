@@ -9,6 +9,7 @@ import {
   View,
   useWindowDimensions,
   ImageBackground,
+  ScrollView,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { Reader, ReaderProvider, useReader } from '@epubjs-react-native/core';
@@ -303,15 +304,27 @@ function EBook(props: EBookProps) {
           fileSystem={useFileSystem}
           onLocationChange={onChangePageLocation}
           onFinish={() => setEndPageReached(true)}
-          // onSwipeRight={() => {
-          //   setTrackThumbPosition(prev => prev - 1);
-          // }}
-          // onSwipeLeft={() => {
-          //   setTrackThumbPosition(prev => prev + 1);
-          // }}
           onResized={() => console.log('resized')}
           onLayout={() => console.log('layout change')}
         />
+        <View style={styles(direction).playerModuleWrapper}>
+          <View style={styles(direction).pageNoWrapper}>
+            <Text style={styles(direction).pageNoDetailsText}>
+              {`${currentPageRef?.current + 1} of ${soundMapData?.length}`}
+            </Text>
+          </View>
+          <View style={styles(direction).trackWrapper}>
+            <Slider
+              trackStyle={styles(direction).trackStyle}
+              thumbStyle={styles(direction).trackThumbStyle}
+              maximumValue={soundMapData?.length}
+              minimumTrackTintColor={'#006400'}
+              value={trackThumbPosition}
+              step={1}
+              disabled
+            />
+          </View>
+        </View>
       </View>
     );
   };
@@ -411,39 +424,21 @@ function EBook(props: EBookProps) {
         { backgroundColor: darkMode ? darkModeColor : white },
       ]}>
       <View style={[styles(direction).contentContainer]}>
-        <ImageBackground
-          source={require('../../assets/bookBg1.png')}
-          style={styles(direction).imageBg}>
-          {RenderHeader()}
-          {RenderEpubReader()}
-          <View
-            style={[
-              styles(direction).bottomContainer,
-              { width: width, height: 60 },
-            ]}>
-            <View style={styles(direction).playerModuleWrapper}>
-              <View style={styles(direction).pageNoWrapper}>
-                <Text style={styles(direction).pageNoDetailsText}>
-                  {`Page ${currentPageRef?.current + 1} of ${
-                    soundMapData?.length
-                  }`}
-                </Text>
-              </View>
-              <View style={styles(direction).trackWrapper}>
-                <Slider
-                  trackStyle={styles(direction).trackStyle}
-                  thumbStyle={styles(direction).trackThumbStyle}
-                  maximumValue={soundMapData?.length}
-                  minimumTrackTintColor={'#006400'}
-                  value={trackThumbPosition}
-                  step={1}
-                  disabled
-                />
-              </View>
+        <ScrollView>
+          <ImageBackground
+            source={require('../../assets/bookBg1.png')}
+            style={styles(direction).imageBg}>
+            {RenderHeader()}
+            {RenderEpubReader()}
+            <View
+              style={[
+                styles(direction).bottomContainer,
+                { width: width, height: 60 },
+              ]}>
+              {RenderPlayerController()}
             </View>
-            {RenderPlayerController()}
-          </View>
-        </ImageBackground>
+          </ImageBackground>
+        </ScrollView>
       </View>
     </SafeAreaView>
   );
