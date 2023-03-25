@@ -114,18 +114,18 @@ function EBook(props: EBookProps) {
   }, []);
 
   useEffect(() => {
-    if (currentLocation?.start?.index) {
-      currentPageRef.current = currentLocation?.start?.index;
-      setCurrentpage(currentLocation?.start?.index);
-      setTrackThumbPosition(currentLocation?.start?.index);
-      TrackPlayer.seekTo(
-        Number(soundMapData[currentPageRef?.current]?.contents?.[0]?.startAt),
-      );
-      if (autoPlayActivated) {
-        setTimeout(() => {
-          playTrack('auto');
-        }, soundMapData[currentPageRef?.current]?.startDelay || 3000);
-      }
+    currentPageRef.current = currentLocation?.start?.index || 0;
+    setCurrentpage(currentLocation?.start?.index || 0);
+    setTrackThumbPosition(currentLocation?.start?.index || 0);
+    TrackPlayer.seekTo(
+      Number(
+        soundMapData?.[currentPageRef?.current]?.contents?.[0]?.startAt || 0,
+      ),
+    );
+    if (autoPlayActivated) {
+      setTimeout(() => {
+        playTrack('auto');
+      }, soundMapData[currentPageRef?.current]?.startDelay || 3000);
     }
   }, [currentLocation?.start?.index]);
 
@@ -161,7 +161,7 @@ function EBook(props: EBookProps) {
   const debouncedGoNextWithDelay = debounce(goNextWithDelay, 1000);
 
   const playTrack = async (type: 'manual' | 'auto') => {
-    const soundData = soundMapData[currentPageRef?.current];
+    const soundData = soundMapData?.[currentPageRef?.current];
     if (soundData?.contents?.length) {
       if (type === 'auto') {
         if (
@@ -220,8 +220,8 @@ function EBook(props: EBookProps) {
   }, [currentMarkedEpub]);
 
   const handleTrackPositionChange = () => {
-    const soundData = soundMapData[currentPageRef?.current];
-    if (position && autoPlayActivated) {
+    const soundData = soundMapData?.[currentPageRef?.current];
+    if (position && autoPlayActivated && soundData) {
       if (
         position >= Number(soundData?.contents[0]?.startAt) &&
         position <=
