@@ -425,15 +425,20 @@ function EBook(props: EBookProps) {
     <SafeAreaView
       style={[styles(direction).container, { backgroundColor: white }]}>
       <View style={[styles(direction).contentContainer]}>
-        {RenderHeader()}
-        {RenderEpubReader()}
-        <View
-          style={[
-            styles(direction).bottomContainer,
-            { width: width, backgroundColor: darkMode ? darkModeColor : white },
-          ]}>
-          {RenderPlayerController()}
-        </View>
+        <ScrollView>
+          {RenderHeader()}
+          {RenderEpubReader()}
+          <View
+            style={[
+              styles(direction).bottomContainer,
+              {
+                width: width,
+                backgroundColor: darkMode ? darkModeColor : white,
+              },
+            ]}>
+            {RenderPlayerController()}
+          </View>
+        </ScrollView>
       </View>
     </SafeAreaView>
   );
