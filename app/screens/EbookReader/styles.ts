@@ -99,8 +99,8 @@ const styles = (direction: string) =>
       alignSelf: 'center',
     },
     controllerImg: {
-      height: '35@s',
-      width: '35@s',
+      height: '38@s',
+      width: '38@s',
       resizeMode: 'contain',
     },
   });
