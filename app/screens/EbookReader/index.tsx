@@ -117,6 +117,7 @@ function EBook(props: EBookProps) {
     if (currentLocation?.start?.index) {
       currentPageRef.current = currentLocation?.start?.index;
       setCurrentpage(currentLocation?.start?.index);
+      setTrackThumbPosition(currentLocation?.start?.index);
       TrackPlayer.seekTo(
         Number(soundMapData[currentPageRef?.current]?.contents?.[0]?.startAt),
       );
@@ -302,12 +303,12 @@ function EBook(props: EBookProps) {
           fileSystem={useFileSystem}
           onLocationChange={onChangePageLocation}
           onFinish={() => setEndPageReached(true)}
-          onSwipeRight={() => {
-            setTrackThumbPosition(prev => prev - 1);
-          }}
-          onSwipeLeft={() => {
-            setTrackThumbPosition(prev => prev + 1);
-          }}
+          // onSwipeRight={() => {
+          //   setTrackThumbPosition(prev => prev - 1);
+          // }}
+          // onSwipeLeft={() => {
+          //   setTrackThumbPosition(prev => prev + 1);
+          // }}
           onResized={() => console.log('resized')}
           onLayout={() => console.log('layout change')}
         />
