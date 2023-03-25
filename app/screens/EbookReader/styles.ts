@@ -38,11 +38,13 @@ const styles = (direction: string) =>
       alignItems: 'center',
     },
     bottomContainer: {
-      backgroundColor: '#ffffff',
+      height: '100@s',
+      // paddingBottom: 15,
     },
     pageNoWrapper: {
       alignSelf: 'flex-end',
       marginRight: '12@s',
+      top: '5@s',
     },
     playerModuleWrapper: {},
     pageNoDetailsText: {
@@ -74,7 +76,6 @@ const styles = (direction: string) =>
       alignItems: 'center',
       justifyContent: 'space-between',
       alignSelf: 'center',
-      backgroundColor: '#ffffff',
     },
     speedControlContainer: {
       height: 35,

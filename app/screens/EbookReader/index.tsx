@@ -406,44 +406,41 @@ function EBook(props: EBookProps) {
 
   return (
     <SafeAreaView
-      style={[
-        styles(direction).container,
-        { backgroundColor: darkMode ? darkModeColor : white },
-      ]}>
+      style={[styles(direction).container, { backgroundColor: white }]}>
       <View style={[styles(direction).contentContainer]}>
-        <ImageBackground
-          source={require('../../assets/bookBg1.png')}
-          style={styles(direction).imageBg}>
-          {RenderHeader()}
-          {RenderEpubReader()}
-          <View
-            style={[
-              styles(direction).bottomContainer,
-              { width: width, height: 60 },
-            ]}>
-            <View style={styles(direction).playerModuleWrapper}>
-              <View style={styles(direction).pageNoWrapper}>
-                <Text style={styles(direction).pageNoDetailsText}>
-                  {`Page ${currentPageRef?.current + 1} of ${
-                    soundMapData?.length
-                  }`}
-                </Text>
-              </View>
-              <View style={styles(direction).trackWrapper}>
-                <Slider
-                  trackStyle={styles(direction).trackStyle}
-                  thumbStyle={styles(direction).trackThumbStyle}
-                  maximumValue={soundMapData?.length}
-                  minimumTrackTintColor={'#006400'}
-                  value={trackThumbPosition}
-                  step={1}
-                  disabled
-                />
-              </View>
+        {RenderHeader()}
+        {RenderEpubReader()}
+        <View
+          style={[
+            styles(direction).bottomContainer,
+            { width: width, backgroundColor: darkMode ? darkModeColor : white },
+          ]}>
+          <View style={styles(direction).playerModuleWrapper}>
+            <View style={styles(direction).pageNoWrapper}>
+              <Text
+                style={[
+                  styles(direction).pageNoDetailsText,
+                  { color: darkMode ? white : '#000000' },
+                ]}>
+                {`Page ${currentPageRef?.current + 1} of ${
+                  soundMapData?.length
+                }`}
+              </Text>
             </View>
-            {RenderPlayerController()}
+            <View style={styles(direction).trackWrapper}>
+              <Slider
+                trackStyle={styles(direction).trackStyle}
+                thumbStyle={styles(direction).trackThumbStyle}
+                maximumValue={soundMapData?.length}
+                minimumTrackTintColor={'#006400'}
+                value={trackThumbPosition}
+                step={1}
+                disabled
+              />
+            </View>
           </View>
-        </ImageBackground>
+          {RenderPlayerController()}
+        </View>
       </View>
     </SafeAreaView>
   );
