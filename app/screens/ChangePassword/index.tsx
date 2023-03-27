@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
 import NavigationService from 'app/navigation/NavigationService';
 import styles from './styles';
 import RegularButton from 'app/components/buttons/RegularButton';
@@ -12,15 +12,43 @@ import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTranslation } from 'react-i18next';
 import { navigateToForgotPassword } from 'app/store/actions/navigationActions';
 import { scale } from 'react-native-size-matters';
+import { useDispatch, useSelector } from 'react-redux';
+import { ICurrentCustomer } from 'app/models/reducers/currentCustomer';
+import { useRoute } from '@react-navigation/native';
+import { requestResetPassword } from 'app/store/actions/resetPasswordAction';
+interface IState {
+  currentCustomerReducer: ICurrentCustomer;
+}
 
 const ChangePassword: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showSecPassword, setShowSecPassword] = useState(false);
-  const { control } = useForm();
+  const { control, handleSubmit } = useForm();
   const inputRef: React.RefObject<any> = React.createRef();
   const inputSecRef: React.RefObject<any> = React.createRef();
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
+  const route = useRoute();
+  const email = route.params?.email;
+  const selectedRole = useSelector(
+    (state: IState) => state.currentCustomerReducer.role,
+  );
+  const dispatch = useDispatch();
+
+  const onSubmit = async (data: any) => {
+    if (data.password !== data.confirm_password) {
+      Alert.alert('Kutubi', 'Passwords do not match');
+      return;
+    }
+    dispatch(
+      requestResetPassword({
+        email: email.email,
+        password: data.password,
+        roleType: selectedRole,
+      }),
+    );
+    NavigationService.reset('Sign In');
+  };
   return (
     <ScrollView style={styles(direction).container} bounces={false}>
       <SafeAreaView style={styles(direction).safeAreaView}>
@@ -124,9 +152,7 @@ const ChangePassword: React.FC = () => {
           </View>
           <View style={styles(direction).regularButton}>
             <RegularButton
-              onPress={() => {
-                NavigationService.reset('Select Role');
-              }}
+              onPress={handleSubmit(onSubmit)}
               text={t('Send')}
               radius={50}
               height={50}

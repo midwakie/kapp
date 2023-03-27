@@ -15,6 +15,9 @@ import {
 import Navigator from 'app/navigation';
 import configureStore from 'app/store';
 import { MenuProvider } from 'react-native-popup-menu';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient();
 
 LogBox.ignoreAllLogs(true);
 
@@ -30,11 +33,13 @@ const RootNavigation: React.FC = () => {
 const EntryPoint: React.FC = () => {
   return (
     <MenuProvider>
-      <Provider store={store}>
-        <PersistGate loading={<ActivityIndicator />} persistor={persistor}>
-          <RootNavigation />
-        </PersistGate>
-      </Provider>
+      <QueryClientProvider client={queryClient}>
+        <Provider store={store}>
+          <PersistGate loading={<ActivityIndicator />} persistor={persistor}>
+            <RootNavigation />
+          </PersistGate>
+        </Provider>
+      </QueryClientProvider>
     </MenuProvider>
   );
 };

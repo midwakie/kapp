@@ -187,36 +187,6 @@ const Home: React.FC = (props: any) => {
       pages: 290,
       img: require('../../assets/book.png'),
     },
-    {
-      id: 2,
-      title: 'Happy Lemon',
-      author: 'Caroline Eliot',
-      price: '$20.30',
-      rating: 3,
-      ratingCount: 35,
-      pages: 290,
-      img: require('../../assets/book2.png'),
-    },
-    {
-      id: 3,
-      title: 'Billy & Shmilli',
-      author: 'Martin Luther',
-      price: '$25.30',
-      rating: 2,
-      ratingCount: 25,
-      pages: 290,
-      img: require('../../assets/book3.png'),
-    },
-    {
-      id: 4,
-      title: 'Story Book',
-      author: 'Caroline Eliot',
-      price: '$10.30',
-      rating: 3,
-      ratingCount: 35,
-      pages: 290,
-      img: require('../../assets/book4.png'),
-    },
   ];
 
   const CardListItem = ({ book }: any) => {

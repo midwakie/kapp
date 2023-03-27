@@ -62,7 +62,10 @@ const styles = (direction: string) =>
     },
     textView: {
       paddingHorizontal: '20@s',
-      marginTop: '25@s',
+      marginTop: '19@s',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
     },
     classText: {
       color: '#FFFFFF',
@@ -89,12 +92,12 @@ const styles = (direction: string) =>
       alignItems: 'center',
       justifyContent: 'space-between',
       flexDirection: 'row',
-      width: '138@s',
+      width: '140@s',
       height: '40@s',
       backgroundColor: '#EBEEF0',
     },
     gridText: {
-      marginLeft: '30@s',
+      marginLeft: '10@s',
       color: '#FD4449',
       fontSize: '14@s',
       fontFamily: 'Nunito-Regular',
@@ -122,10 +125,14 @@ const styles = (direction: string) =>
       alignItems: 'center',
     },
     neomorphMargin: { margin: '10@ms' },
+    deleteImg: {
+      height: '20@ms',
+      width: '20@ms',
+    },
     cardListImage: {
       height: '40@ms',
       width: '40@ms',
-      borderRadius: '13@ms',
+      borderRadius: '150@ms',
       margin: '5@ms',
     },
     childDetailContainer: {
@@ -143,6 +150,31 @@ const styles = (direction: string) =>
       fontSize: '12@ms',
       fontWeight: '600',
       color: '#758DAC',
+    },
+    minusTouch: {
+      position: 'absolute',
+      right: '25@s',
+      height: '26@s',
+      width: '26@s',
+    },
+    minusImage: {
+      height: '26@s',
+      width: '26@s',
+      resizeMode: 'contain',
+    },
+    imageStyle: {
+      resizeMode: 'contain',
+      width: '18@s',
+      height: '18@s',
+    },
+    container8: {
+      width: '40@s',
+      height: '40@s',
+      borderRadius: '150@s',
+      backgroundColor: '#EBEEF0',
+      alignItems: 'center',
+      justifyContent: 'center',
+      alignSelf: 'center',
     },
     titleBarContainer: { position: 'absolute', width: '100%' },
   });

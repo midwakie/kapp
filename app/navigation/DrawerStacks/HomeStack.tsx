@@ -19,6 +19,7 @@ import EbookDetail from 'app/screens/EbookDetail';
 import BookSeries from 'app/screens/BookSeries';
 import FinishBook from 'app/screens/FinishBook';
 import EBookReader from 'app/screens/EbookReader';
+import BookShelf from 'app/screens/BookShelf';
 
 const Stack = createStackNavigator();
 const LoggedInStack = createStackNavigator();
@@ -163,6 +164,13 @@ const HomeStack = () => {
       <Stack.Screen
         name="EBookReader"
         component={EBookReader}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="BookShelf"
+        component={BookShelf}
         options={{
           headerShown: false,
         }}

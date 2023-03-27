@@ -73,7 +73,6 @@ const BookReview: React.FC = () => {
           description:
             'There are many variations of passages of Lorem Ipsum available, but the majority.This is some additional text that will be displayed when the "read more" button is clicked.',
           Image: require('../../assets/user2.png'),
-          expanded: false,
         },
       ],
     },

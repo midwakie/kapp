@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useEffect } from 'react';
-import { SafeAreaView, Text, View } from 'react-native';
+import React from 'react';
+import { Alert, SafeAreaView, Text, View } from 'react-native';
 import styles from './styles';
 import { ScrollView } from 'react-native-gesture-handler';
 import RegularButton from 'app/components/buttons/RegularButton';
@@ -11,28 +11,40 @@ import { useForm } from 'react-hook-form';
 import NavigationService from 'app/navigation/NavigationService';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import { requestResetPassword } from 'app/store/actions/resetPasswordAction';
-import { watchResetPasswordSaga } from 'app/store/sagas/resetPasswordSaga';
 import { ICurrentCustomer } from 'app/models/reducers/currentCustomer';
+import ApiConfig from 'app/config/api-config';
+import axios from 'axios';
 interface IState {
   currentCustomerReducer: ICurrentCustomer;
 }
+
 const ForgotPassword: React.FC = () => {
   const { control, handleSubmit } = useForm();
-  const dispatch = useDispatch();
   const { t } = useTranslation();
-  useEffect(() => {
-    watchResetPasswordSaga();
-  }, []);
   const selectedRole = useSelector(
     (state: IState) => state.currentCustomerReducer.role,
   );
-  const onSubmit = (data: any) => {
-    data.roleType = selectedRole;
-    dispatch(requestResetPassword(data));
-    NavigationService.navigate('NewPassword');
+  const onSubmit = async (data: any) => {
+    try {
+      const response = await axios.post(
+        `${ApiConfig.BASE_URL}${ApiConfig.OTP_REQUEST}`,
+        {
+          roleType: selectedRole,
+          email: data.email,
+        },
+      );
+      if (response.status === 200) {
+        NavigationService.navigate('NewPassword', { email: data });
+        console.log(response.data.message);
+      } else {
+        setTimeout(() => {
+          Alert.alert('Kutubi', response.data.message);
+        }, 200);
+      }
+    } catch (error) {
+      console.log('Error2:', error);
+    }
   };
-
   return (
     <ScrollView style={styles.container} bounces={false}>
       <SafeAreaView style={styles.safeAreaView}>

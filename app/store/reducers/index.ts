@@ -9,6 +9,7 @@ import * as otpRequestReducer from './otpRequestReducer';
 import * as otpVerifyReducer from './otpVerifyReducer';
 import * as themeReducer from './themeReducer';
 import * as cartReducer from './cartReducer';
+import * as resetPasswordReducer from './resetPasswordReducer';
 export default Object.assign(
   currentCustomerReducer,
   loadingReducer,
@@ -18,4 +19,5 @@ export default Object.assign(
   otpVerifyReducer,
   themeReducer,
   cartReducer,
+  resetPasswordReducer,
 );

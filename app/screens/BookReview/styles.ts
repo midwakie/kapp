@@ -57,7 +57,6 @@ const styles = (direction: string) =>
     },
     neomorphContainer: {
       marginLeft: '20@s',
-      // justifyContent: 'center',
     },
     neomorphContainer2: {
       paddingHorizontal: '20@s',
@@ -106,14 +105,12 @@ const styles = (direction: string) =>
       tintColor: 'red',
     },
     container4: {
-      // width: '100%',
       height: '140@ms',
       paddingHorizontal: '25@s',
     },
     container5: {
       backgroundColor: '#EBEEF0',
       width: '100%',
-      height: '156@s',
       borderRadius: 14,
     },
     container6: {
@@ -180,7 +177,6 @@ const styles = (direction: string) =>
       fontSize: '16@s',
       fontWeight: '600',
       fontFamily: 'Nunito-Regular',
-      height: '72@s',
       width: '207@s',
       marginTop: 12.26,
     },

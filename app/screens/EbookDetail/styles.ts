@@ -178,7 +178,6 @@ const styles = (direction: string) =>
     },
     paginationDots: {
       height: '16@s',
-      // top: 40,
       flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',
@@ -191,7 +190,6 @@ const styles = (direction: string) =>
     paginationContainer: {
       position: 'absolute',
       alignSelf: 'center',
-      // top: 150,
       marginTop: '165@s',
     },
     slidingContainer: {
@@ -200,7 +198,6 @@ const styles = (direction: string) =>
       left: '10@s',
     },
     reviewContainer: {
-      // marginVertical: '20@s',
       width: '100%',
       height: '217@s',
       backgroundColor: '#EBEEF0',
@@ -211,7 +208,6 @@ const styles = (direction: string) =>
       flexDirection: 'row',
       justifyContent: 'space-between',
       paddingHorizontal: 35,
-      // paddingVertical: 60,
       marginTop: '43@s',
       marginBottom: '46@s',
     },
@@ -302,7 +298,6 @@ const styles = (direction: string) =>
     container5: {
       backgroundColor: '#EBEEF0',
       width: '100%',
-      height: '156@s',
       borderRadius: 14,
     },
     container6: {
@@ -347,9 +342,8 @@ const styles = (direction: string) =>
       fontSize: '15@s',
       fontWeight: '600',
       fontFamily: 'Nunito-Regular',
-      height: '72@s',
       width: '207@s',
-      marginVertical: '12.26@s',
+      top: '12.26@s',
     },
     imageStyle2: {
       justifyContent: 'center',

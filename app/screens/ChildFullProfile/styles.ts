@@ -202,7 +202,6 @@ const styles = (direction: string) =>
     mainTextContainer: {
       lineHeight: '19@s',
       bottom: '10@s',
-      // marginLeft: '100@s',
     },
     row: {
       flexDirection: 'row',
@@ -257,12 +256,11 @@ const styles = (direction: string) =>
     },
     imageRound: { width: '100%', height: '100%', resizeMode: 'cover' },
 
-    plusFourImage: {
+    plusFour: {
       position: 'absolute',
       alignSelf: 'center',
-      resizeMode: 'contain',
-      width: '14@s',
-      height: '14@s',
+      marginTop: 4,
+      color: 'white',
     },
     rectangle2: {
       width: width - s(40),
@@ -448,11 +446,9 @@ const styles = (direction: string) =>
       width: '123@s',
     },
     walkThroughContainer: {
-      // marginBottom: 28,
       height: '245@s',
     },
     walkThroughContainer2: {
-      // marginBottom: 28,
       height: '350@s',
     },
     paginationContainer: {
@@ -772,7 +768,6 @@ const styles = (direction: string) =>
       marginLeft: '128@s',
     },
     activityWorkText2Container: {
-      paddingHorizontal: '20@ms',
       marginTop: '40@s',
       alignItems: 'flex-start',
     },
@@ -811,16 +806,13 @@ const styles = (direction: string) =>
     },
     activityWorkText2MainContainer: {
       flexDirection: 'row',
-      paddingHorizontal: '20@s',
+      paddingHorizontal: '25@s',
       alignItems: 'flex-start',
     },
     activityWorkBottomTextContainer: {
       marginLeft: '20@s',
 
       width: '50%',
-    },
-    activityWorkBottomTextContainer2: {
-      marginLeft: '2@s',
     },
     teacherRecommendedText: {
       color: '#758DAC',

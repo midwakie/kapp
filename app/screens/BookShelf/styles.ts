@@ -16,7 +16,7 @@ const styles = (direction: string) =>
     safeAreaView: { alignSelf: 'stretch' },
     container2: {
       paddingHorizontal: '10@ms',
-      marginTop: '10@s',
+      marginTop: '85@s',
       width: '100%',
       height: '100%',
       paddingBottom: '25@s',

@@ -7,6 +7,7 @@ import {
   TextStyle,
   View,
   TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
 import styles from './styles';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -21,56 +22,24 @@ import HorizontalLine from 'app/components/lines/HorizontalLine';
 import VerticalLine from 'app/components/lines/VerticalLine';
 import { DrawerActions } from '@react-navigation/native';
 import NavigationService from 'app/navigation/NavigationService';
+import ApiConfig from 'app/config/api-config';
+import { useQuery } from 'react-query';
 
 const MyFeeds: React.FC = (props: any) => {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
-  const [data, setdata] = useState([
-    {
-      headerImage: require('../../assets/toppic.png'),
-      profileImage: require('../../assets/dp.png'),
-      profileName: 'Dream Star Kid',
-      endDate: '5 min ago',
-      content: require('../../assets/esl.png'),
-      icon: require('../../assets/play.png'),
-      Title: 'Very Productive Activities',
-      description:
-        'There are many variations of passages Lorem Ipsum available, but the majority',
-    },
-    {
-      headerImage: require('../../assets/toppic.png'),
-      profileImage: require('../../assets/dp.png'),
-      profileName: 'Dream Star Kid',
-      endDate: '6 min ago',
-      content: require('../../assets/feedpic2.png'),
-      icon: require('../../assets/docs.png'),
-      Title: 'Very Productive Activities',
-      description:
-        'There are many variations of passages Lorem Ipsum available, but the majority',
-    },
-    {
-      headerImage: require('../../assets/toppic.png'),
-      profileImage: require('../../assets/dp.png'),
-      profileName: 'Dream Star Kid',
-      endDate: '7 min ago',
-      content: require('../../assets/feedpic2.png'),
-      icon: require('../../assets/docs.png'),
-      Title: 'Very Productive Activities',
-      description:
-        'There are many variations of passages Lorem Ipsum available, but the majority',
-    },
-    {
-      headerImage: require('../../assets/toppic.png'),
-      profileImage: require('../../assets/dp.png'),
-      profileName: 'Dream Star ',
-      endDate: '7 min ago',
-      content: require('../../assets/feedpic2.png'),
-      icon: require('../../assets/docs.png'),
-      Title: 'Very Productive Activities',
-      description:
-        'There are many variations of passages Lorem Ipsum available, but the majority',
-    },
-  ]);
+
+  const { isLoading, data } = useQuery('myFeeds', async () => {
+    try {
+      const response = await fetch(ApiConfig.BASE_URL2 + ApiConfig.My_FEEDS);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    } catch (catchError: any) {
+      console.error(catchError);
+    }
+  });
   return (
     <>
       <TitleBar
@@ -134,85 +103,77 @@ const MyFeeds: React.FC = (props: any) => {
       />
       <ScrollView style={styles(direction).container} bounces={false}>
         <SafeAreaView style={styles(direction).safeAreaView}>
-          <View style={styles(direction).container2}>
-            {data.map((item, index) => {
-              return (
-                <View style={{ marginBottom: 30 }}>
-                  <Neumorphism
-                    lightColor={'#ffffff'}
-                    darkColor={'#A8A8A8'}
-                    shapeType={'flat'}
-                    radius={14}>
-                    <View style={styles(direction).rectangle2}>
-                      <View style={styles(direction).imageContainer}>
-                        <TouchableOpacity
-                          onPress={() => {
-                            NavigationService.navigate('FeedDetail');
-                          }}>
-                          <Image
-                            source={require('../../assets/dp.png')}
-                            style={styles(direction).image1Style}
-                          />
-                        </TouchableOpacity>
-                        <View>
-                          <Text style={styles(direction).profileName}>
-                            {item.profileName}
-                          </Text>
-                          <Text style={styles(direction).status}>
-                            {item.endDate}
-                          </Text>
-                        </View>
-                      </View>
-                      <View style={styles(direction).imageContainer1}>
-                        <Image
-                          source={item.content}
-                          style={styles(direction).imageStyle}
-                        />
-                        <TouchableOpacity
-                          style={styles(direction).imageButtonContainer1}>
-                          <Image
-                            source={item.icon}
-                            style={styles(direction).button}
-                          />
-                        </TouchableOpacity>
-                      </View>
-                      <GradientText
-                        colors={['#758DAC', '#2F4868']}
-                        text={t(item.Title)}
-                        start={{ x: 0, y: 0 }}
-                        end={{ x: 0, y: 1 }}
-                        textStyle={styles(direction).headingText}
-                      />
-                      <Text style={styles(direction).text}>
-                        {item.description}
-                      </Text>
-                      <View style={styles(direction).iconContainer}>
-                        <Neumorphism
-                          lightColor={'#ffffff'}
-                          darkColor={'#A8A8A8'}
-                          shapeType={'flat'}
-                          radius={50}>
-                          <View style={styles(direction).iconBox}>
-                            <MaterialIcon
-                              name={'favorite'}
-                              size={scale(15)}
-                              color={'#C1DBE7'}
-                              style={styles(direction).icon}
+          {isLoading ? (
+            <ActivityIndicator size="large" color="#03A0E3" />
+          ) : (
+            <View style={styles(direction).container2}>
+              {data?.myFeeds.map((item, index) => {
+                return (
+                  <View style={{ marginBottom: 30 }}>
+                    <Neumorphism
+                      lightColor={'#ffffff'}
+                      darkColor={'#A8A8A8'}
+                      shapeType={'flat'}
+                      radius={14}>
+                      <View style={styles(direction).rectangle2}>
+                        <View style={styles(direction).imageContainer}>
+                          <TouchableOpacity
+                            onPress={() => {
+                              NavigationService.navigate('FeedDetail');
+                            }}>
+                            <Image
+                              source={{
+                                uri:
+                                  ApiConfig.BASE_ASSET_URL + item.profileImage,
+                              }}
+                              style={styles(direction).image1Style}
                             />
-                            <Text style={styles(direction).iconText}>
-                              {t('235')}
+                          </TouchableOpacity>
+                          <View>
+                            <Text style={styles(direction).profileName}>
+                              {item.profileName}
+                            </Text>
+                            <Text style={styles(direction).status}>
+                              {item.endDate}
                             </Text>
                           </View>
-                        </Neumorphism>
-                        <View style={{ marginLeft: 20 }}>
+                        </View>
+                        <View style={styles(direction).imageContainer1}>
+                          <Image
+                            source={{
+                              uri: ApiConfig.BASE_ASSET_URL + item.content,
+                            }}
+                            style={styles(direction).imageStyle}
+                          />
+                          <TouchableOpacity
+                            style={styles(direction).imageButtonContainer1}>
+                            <Image
+                              source={{
+                                uri: ApiConfig.BASE_ASSET_URL + item.icon,
+                              }}
+                              style={styles(direction).button}
+                            />
+                          </TouchableOpacity>
+                        </View>
+                        <GradientText
+                          colors={['#758DAC', '#2F4868']}
+                          text={t(item.Title)}
+                          start={{ x: 0, y: 0 }}
+                          end={{ x: 0, y: 1 }}
+                          textStyle={styles(direction).headingText}
+                        />
+                        <Text style={styles(direction).text}>
+                          {item.description}
+                        </Text>
+                        <View style={styles(direction).iconContainer}>
                           <Neumorphism
                             lightColor={'#ffffff'}
                             darkColor={'#A8A8A8'}
                             shapeType={'flat'}
                             radius={50}>
                             <View style={styles(direction).iconBox}>
-                              <Icon
-                                name={'chat'}
+                              <MaterialIcon
+                                name={'favorite'}
                                 size={scale(15)}
                                 color={'#C1DBE7'}
                                 style={styles(direction).icon}
@@ -222,33 +183,52 @@ const MyFeeds: React.FC = (props: any) => {
                               </Text>
                             </View>
                           </Neumorphism>
-                        </View>
-                        <View style={{ marginLeft: 20 }}>
-                          <Neumorphism
-                            lightColor={'#ffffff'}
-                            darkColor={'#A8A8A8'}
-                            shapeType={'flat'}
-                            radius={50}>
-                            <View style={styles(direction).iconBox}>
-                              <MaterialIcon
-                                name={'visibility'}
-                                size={scale(15)}
-                                color={'#84BD47'}
-                                style={styles(direction).icon}
-                              />
-                              <Text style={styles(direction).iconText}>
-                                {t('235')}
-                              </Text>
-                            </View>
-                          </Neumorphism>
+                          <View style={{ marginLeft: 20 }}>
+                            <Neumorphism
+                              lightColor={'#ffffff'}
+                              darkColor={'#A8A8A8'}
+                              shapeType={'flat'}
+                              radius={50}>
+                              <View style={styles(direction).iconBox}>
+                                <Icon
+                                  name={'chat'}
+                                  size={scale(15)}
+                                  color={'#C1DBE7'}
+                                  style={styles(direction).icon}
+                                />
+                                <Text style={styles(direction).iconText}>
+                                  {t('235')}
+                                </Text>
+                              </View>
+                            </Neumorphism>
+                          </View>
+                          <View style={{ marginLeft: 20 }}>
+                            <Neumorphism
+                              lightColor={'#ffffff'}
+                              darkColor={'#A8A8A8'}
+                              shapeType={'flat'}
+                              radius={50}>
+                              <View style={styles(direction).iconBox}>
+                                <MaterialIcon
+                                  name={'visibility'}
+                                  size={scale(15)}
+                                  color={'#84BD47'}
+                                  style={styles(direction).icon}
+                                />
+                                <Text style={styles(direction).iconText}>
+                                  {t('235')}
+                                </Text>
+                              </View>
+                            </Neumorphism>
+                          </View>
                         </View>
                       </View>
-                    </View>
-                  </Neumorphism>
-                </View>
-              );
-            })}
-          </View>
+                    </Neumorphism>
+                  </View>
+                );
+              })}
+            </View>
+          )}
         </SafeAreaView>
       </ScrollView>
     </>
