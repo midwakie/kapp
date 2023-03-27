@@ -307,7 +307,11 @@ function EBook(props: EBookProps) {
           onResized={() => console.log('resized')}
           onLayout={() => console.log('layout change')}
         />
-        <View style={styles(direction).playerModuleWrapper}>
+        <View
+          style={[
+            styles(direction).playerModuleWrapper,
+            { backgroundColor: darkMode ? darkModeColor : white },
+          ]}>
           <View style={styles(direction).pageNoWrapper}>
             <Text style={styles(direction).pageNoDetailsText}>
               {`${currentPageRef?.current + 1} of ${soundMapData?.length}`}
@@ -419,25 +423,21 @@ function EBook(props: EBookProps) {
 
   return (
     <SafeAreaView
-      style={[
-        styles(direction).container,
-        { backgroundColor: darkMode ? darkModeColor : white },
-      ]}>
+      style={[styles(direction).container, { backgroundColor: white }]}>
       <View style={[styles(direction).contentContainer]}>
         <ScrollView>
-          <ImageBackground
-            source={require('../../assets/bookBg1.png')}
-            style={styles(direction).imageBg}>
-            {RenderHeader()}
-            {RenderEpubReader()}
-            <View
-              style={[
-                styles(direction).bottomContainer,
-                { width: width, height: 60 },
-              ]}>
-              {RenderPlayerController()}
-            </View>
-          </ImageBackground>
+          {RenderHeader()}
+          {RenderEpubReader()}
+          <View
+            style={[
+              styles(direction).bottomContainer,
+              {
+                width: width,
+                backgroundColor: darkMode ? darkModeColor : white,
+              },
+            ]}>
+            {RenderPlayerController()}
+          </View>
         </ScrollView>
       </View>
     </SafeAreaView>

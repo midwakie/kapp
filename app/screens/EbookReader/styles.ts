@@ -30,7 +30,7 @@ const styles = (direction: string) =>
     },
     contentContainer: {
       flex: 1,
-      backgroundColor: '#000000',
+      // backgroundColor: '#000000',
     },
     imageBg: {},
     epubReaderWrapper: {
@@ -39,20 +39,22 @@ const styles = (direction: string) =>
       alignItems: 'center',
     },
     bottomContainer: {
-      backgroundColor: '#ffffff',
+      height: '50@s',
+      // paddingBottom: 15,
     },
     pageNoWrapper: {
       alignSelf: 'flex-end',
       marginRight: '12@s',
-      backgroundColor: 'rgba(255,255,255, .8)',
+      top: '5@s',
+      // backgroundColor: 'rgba(255,255,255, .8)',
+      backgroundColor: '#D9D9D9',
       paddingHorizontal: 15,
       paddingVertical: 5,
       borderRadius: 10,
     },
     playerModuleWrapper: {
-      position: 'absolute',
+      // position: 'absolute',
       width: '100%',
-      bottom: 5,
     },
     pageNoDetailsText: {
       color: '#000000',
@@ -63,7 +65,7 @@ const styles = (direction: string) =>
       marginHorizontal: 24,
     },
     trackStyle: {
-      backgroundColor: '#ffffff',
+      backgroundColor: '#D9D9D9',
       height: '4@s',
     },
     trackThumbStyle: {
@@ -82,8 +84,7 @@ const styles = (direction: string) =>
       paddingHorizontal: 10,
       alignItems: 'center',
       justifyContent: 'space-between',
-      backgroundColor: '#ffffff',
-      paddingVertical: 5,
+      alignSelf: 'center',
     },
     speedControlContainer: {
       height: 35,
