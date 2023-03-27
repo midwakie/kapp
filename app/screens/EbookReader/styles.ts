@@ -40,8 +40,6 @@ const styles = (direction: string) =>
     },
     bottomContainer: {
       height: '50@s',
-      position: 'absolute',
-      bottom: 0,
       // paddingBottom: 15,
     },
     pageNoWrapper: {
@@ -57,7 +55,6 @@ const styles = (direction: string) =>
     playerModuleWrapper: {
       // position: 'absolute',
       width: '100%',
-      bottom: 5,
     },
     pageNoDetailsText: {
       color: '#000000',
