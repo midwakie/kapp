@@ -408,6 +408,8 @@ PODS:
   - RNScreens (3.13.1):
     - React-Core
     - React-RCTImage
+  - RNShare (8.2.1):
+    - React-Core
   - RNSVG (11.0.1):
     - React
   - RNVectorIcons (9.1.0):
@@ -491,6 +493,7 @@ DEPENDENCIES:
   - RNLocalize (from `../node_modules/react-native-localize`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
+  - RNShare (from `../node_modules/react-native-share`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - "vahesaroyan-react-native-bubble-select (from `../node_modules/@vahesaroyan/react-native-bubble-select`)"
@@ -609,6 +612,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
     :path: "../node_modules/react-native-screens"
+  RNShare:
+    :path: "../node_modules/react-native-share"
   RNSVG:
     :path: "../node_modules/react-native-svg"
   RNVectorIcons:
@@ -679,6 +684,7 @@ SPEC CHECKSUMS:
   RNLocalize: 0df7970cfc60389f00eb62fd7c097dc75af3fb4f
   RNReanimated: 32c91e28f5780937b8efc07ddde1bab8d373fe0b
   RNScreens: 40a2cb40a02a609938137a1e0acfbf8fc9eebf19
+  RNShare: eaee3dd5a06dad397c7d3b14762007035c5de405
   RNSVG: 67f1f12dae2cef6ed59a42cae74a6b8f5a9e7b46
   RNVectorIcons: 7923e585eaeb139b9f4531d25a125a1500162a0b
   SwiftAudioEx: 83eabba2940924fc1c0d5cb0896049921365229c
