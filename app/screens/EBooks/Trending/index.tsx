@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import styles from '../styles';
 import GradientText from 'app/components/texts/GradientText';
@@ -67,15 +66,13 @@ const Trending: React.FC = () => {
             radius={scale(14)}>
             <View style={styles(direction).card}>
               <Image
+                style={styles(direction).image}
                 source={{ uri: ApiConfig.BASE_ASSET_URL + book.img }}
-                style={styles(direction).cardImage}
               />
-              <View style={styles(direction).cardContent}>
-                <Text style={styles(direction).title} numberOfLines={1}>
-                  {book.title}
-                </Text>
+              <View style={styles(direction).bookNameContainer}>
+                <Text style={styles(direction).bookTitle}>{book.title}</Text>
                 <Text style={styles(direction).author}>{book.author}</Text>
-                <Text style={styles(direction).price}>{book.price}</Text>
+                <Text style={styles(direction).bookPrice}>{book.price}</Text>
               </View>
             </View>
           </Neumorphism>
@@ -89,7 +86,7 @@ const Trending: React.FC = () => {
       <View style={styles(direction).neomorphContainer}>
         <TouchableOpacity
           onPress={() => {
-            NavigationService.navigate('EbookDetail');
+            NavigationService.navigate('BookDetails');
           }}>
           <Neumorphism
             style={styles(direction).neomorphMargin}
@@ -110,7 +107,6 @@ const Trending: React.FC = () => {
                   <Text style={styles(direction).author}>{book.author}</Text>
                 </View>
               </View>
-              <Text style={styles(direction).priceListStyle}>{book.price}</Text>
             </View>
           </Neumorphism>
         </TouchableOpacity>

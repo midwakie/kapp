@@ -31,6 +31,7 @@ const CardPayment: React.FC = () => {
   const cart = useSelector(state => state.cartReducer.cart);
   const total = cart.reduce((acc, item) => acc + item.price, 0);
   const discountedTotal = total * 0.95;
+  const roundedPrice = discountedTotal?.toFixed(2);
   return (
     <>
       <ScrollView style={styles(direction).container} bounces={false}>
@@ -124,9 +125,7 @@ const CardPayment: React.FC = () => {
                   <Text style={styles(direction).text2}>
                     {t('Total Amount')}
                   </Text>
-                  <Text style={styles(direction).text2}>
-                    ${discountedTotal}
-                  </Text>
+                  <Text style={styles(direction).text2}>${roundedPrice}</Text>
                 </View>
               </View>
             </Neumorphism>

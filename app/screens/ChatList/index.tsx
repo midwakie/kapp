@@ -52,10 +52,11 @@ const ChatList: React.FC = (props: any) => {
 
   useEffect(() => {
     getToken(username).then(function (token) {
+      console.log('token twilio: -----', token);
       TwilioService.getInstance().getChatClient(token);
     });
 
-    fetch(`http://192.168.1.7:3001/channels/${identity}`)
+    fetch(`http://192.168.1.10:3001/channels/${identity}`)
       .then(response => response.json())
       .then(Channles => {
         setChannels(Channles);
@@ -106,7 +107,9 @@ const ChatList: React.FC = (props: any) => {
                 </View>
               </View>
               <View style={styles(direction).thirdContainer}>
-                <Text style={styles(direction).timeText}>{book.time}</Text>
+                <Text style={styles(direction).timeText}>
+                  {book.MessageTime}
+                </Text>
                 <View style={styles(direction).blueImageContainer}>
                   {book.count && (
                     <Image

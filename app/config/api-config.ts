@@ -20,6 +20,8 @@ const ApiConfig = {
   My_FEEDS: 'myFeeds.json',
   CHILD_PROFILE: 'childProfile.json',
   BOOK_DETAIL: 'bookDetail.json',
+  // TWILIO //
+  GET_TOKEN: '/chat/token',
 };
 
 export default ApiConfig;
