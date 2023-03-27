@@ -8,6 +8,7 @@ import logoutSaga from './logoutSaga';
 import registerSaga from './registerSaga';
 import otpRequestSaga from './otpRequestSaga';
 import otpVerifySaga from './otpVerifySaga';
+import resetPasswordSaga from './resetPasswordSaga';
 
 export default function* watch() {
   yield all([
@@ -16,5 +17,6 @@ export default function* watch() {
     takeEvery(types.REGISTER_REQUEST, registerSaga),
     takeEvery(types.OTP_REQUEST, otpRequestSaga),
     takeEvery(types.OTP_VERIFY, otpVerifySaga),
+    takeEvery(types.RESET_PASSWORD_REQUEST, resetPasswordSaga),
   ]);
 }

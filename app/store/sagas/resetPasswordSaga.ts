@@ -6,7 +6,7 @@ import {
   resetPasswordFailure,
 } from 'app/store/actions/resetPasswordAction';
 
-function* resetPasswordSaga(action: any): any {
+export default function* resetPasswordSaga(action: any): any {
   try {
     const response = yield call(resetPassword, action.payload);
     yield put(resetPasswordSuccess(response));

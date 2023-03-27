@@ -12,102 +12,37 @@ import {
   View,
   FlatList,
   TextStyle,
-  TouchableWithoutFeedback,
-  Alert,
-  Dimensions,
+  ActivityIndicator,
 } from 'react-native';
 import TitleBar from 'app/components/buttons/TitleBar';
 import Neumorphism from 'react-native-neumorphism';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { ms, scale } from 'react-native-size-matters';
-import useDeviceOrientation from 'app/hooks/useDeviceOrientation';
 import ProgressBar from 'app/components/ProgressBar';
+import { useQuery } from 'react-query';
+import ApiConfig from 'app/config/api-config';
 
 const BookShelf: React.FC = () => {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
-  const currentOrientation = useDeviceOrientation();
-  const [selectedFilter, setSelectedFilter] = useState('grid');
-  const books = [
-    {
-      id: 1,
-      title: 'Kung Fu Panda',
-      author: 'By Martin Luther',
-      price: '$15.30',
-      percentage: '65%',
-      img: require('../../assets/book.png'),
-    },
-    {
-      id: 2,
-      title: 'Happy Lemon',
-      author: 'By Abhishek',
-      price: '$20.30',
-      percentage: '25%',
-      img: require('../../assets/book2.png'),
-    },
-    {
-      id: 3,
-      title: 'Billy & Shmilli',
-      author: 'By Harish S',
-      price: '$25.30',
-      percentage: '99%',
-      img: require('../../assets/book3.png'),
-    },
-    {
-      id: 4,
-      title: 'Story Book',
-      author: 'By Anil Bose',
-      price: '$10.30',
-      percentage: '50%',
-      img: require('../../assets/book4.png'),
-    },
-    {
-      id: 5,
-      title: 'Journey of the Star',
-      author: 'By Sijin',
-      price: '$15.30',
-      percentage: '100%',
-      img: require('../../assets/book.png'),
-    },
-    {
-      id: 6,
-      title: 'Nasa Boy',
-      author: 'By Rashid ',
-      price: '$35.30',
-      percentage: '25%',
-      img: require('../../assets/book2.png'),
-    },
-    {
-      id: 7,
-      title: 'Sample Text',
-      author: 'By Shiva',
-      price: '$30.30',
-      percentage: '45%',
-      img: require('../../assets/book3.png'),
-    },
-    {
-      id: 8,
-      title: 'Cool Kids 5',
-      author: 'By Tibu PS',
-      price: '$45.30',
-      percentage: '60%',
-      img: require('../../assets/book4.png'),
-    },
-  ];
-  const dropDown = () => {
-    if (selectedFilter === 'grid') {
-      setSelectedFilter('list');
-    } else {
-      setSelectedFilter('grid');
-    }
-  };
 
+  const { isLoading, data } = useQuery('books', async () => {
+    try {
+      const response = await fetch(ApiConfig.BASE_URL2 + ApiConfig.BOOK);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    } catch (catchError: any) {
+      console.error(catchError);
+    }
+  });
   const CardItem = ({ book }: any) => {
     return (
       <View style={styles(direction).neomorphContainer}>
         <TouchableOpacity
           onPress={() => {
-            NavigationService.navigate('BookDetails');
+            NavigationService.navigate('EbookDetail');
           }}>
           <Neumorphism
             style={styles(direction).neomorphMargin}
@@ -116,7 +51,10 @@ const BookShelf: React.FC = () => {
             shapeType={'flat'}
             radius={scale(14)}>
             <View style={styles(direction).card}>
-              <Image source={book.img} style={styles(direction).cardImage} />
+              <Image
+                source={{ uri: ApiConfig.BASE_ASSET_URL + book.img }}
+                style={styles(direction).cardImage}
+              />
               <View style={styles(direction).cardContent}>
                 <Text style={styles(direction).title} numberOfLines={1}>
                   {book.title}
@@ -136,117 +74,28 @@ const BookShelf: React.FC = () => {
     );
   };
 
-  const CardListItem = ({ book }: any) => {
-    return (
-      <View style={styles(direction).neomorphContainer}>
-        <TouchableOpacity
-          onPress={() => {
-            NavigationService.navigate('BookDetails');
-          }}>
-          <Neumorphism
-            style={styles(direction).neomorphMargin}
-            lightColor={'#ffffff'}
-            darkColor={'#C6CEDA'}
-            shapeType={'flat'}
-            radius={scale(14)}>
-            <View style={styles(direction).cardListStyle}>
-              <View style={styles(direction).innerDirection}>
-                <Image
-                  source={book.img}
-                  style={styles(direction).cardListImage}
-                />
-                <View style={styles(direction).cardListContent}>
-                  <Text style={styles(direction).title} numberOfLines={1}>
-                    {book.title}
-                  </Text>
-                  <Text style={styles(direction).author}>{book.author}</Text>
-                  <ProgressBar percentage={book.percentage} />
-                  <Text style={styles(direction).percentageText1}>
-                    {book.percentage}
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </Neumorphism>
-        </TouchableOpacity>
-      </View>
-    );
-  };
-
   return (
     <>
       <SafeAreaView style={styles(direction).safeAreaView}>
-        <View style={styles(direction).container2}>
-          <View style={styles(direction).gridViewContainer}>
-            <Neumorphism
-              lightColor={'#FEFEFF'}
-              darkColor={'#C6CEDA'}
-              shapeType={'flat'}
-              radius={scale(8)}>
-              <TouchableOpacity
-                onPress={dropDown}
-                style={styles(direction).gridView}>
-                <Text style={styles(direction).gridText}>
-                  {selectedFilter === 'grid' ? 'List View' : 'Grid View'}
-                </Text>
-                {selectedFilter === 'grid' ? (
-                  <MaterialIcon
-                    name={'view-list'}
-                    size={scale(20)}
-                    color={'#000000'}
-                  />
-                ) : (
-                  <MaterialIcon
-                    name={'view-grid'}
-                    size={scale(20)}
-                    color={'#000000'}
-                  />
-                )}
-              </TouchableOpacity>
-            </Neumorphism>
-          </View>
-          <ScrollView style={styles(direction).container} bounces={false}>
-            <View style={styles(direction).cardContainer}>
-              {selectedFilter === 'grid' ? (
-                currentOrientation === 'portrait' ? (
-                  <FlatList
-                    numColumns={Math.floor(
-                      Dimensions.get('window').width / ms(158),
-                    )}
-                    key={'_'}
-                    keyExtractor={item => '_' + item.id}
-                    data={books}
-                    renderItem={({ item }) => {
-                      return <CardItem book={item} />;
-                    }}
-                  />
-                ) : (
-                  <FlatList
-                    key={'#'}
-                    keyExtractor={item => '#' + item.id}
-                    numColumns={Math.floor(
-                      Dimensions.get('window').width / ms(158),
-                    )}
-                    data={books}
-                    renderItem={({ item }) => {
-                      return <CardItem book={item} />;
-                    }}
-                  />
-                )
-              ) : (
+        <ScrollView style={styles(direction).container} bounces={false}>
+          <View style={styles(direction).container2}>
+            {isLoading ? (
+              <ActivityIndicator size="large" color="#03A0E3" />
+            ) : (
+              <View style={styles(direction).cardContainer}>
                 <FlatList
-                  numColumns={1}
-                  key={'-'}
-                  keyExtractor={item => '-' + item.id}
-                  data={books}
+                  numColumns={2}
+                  key={'_'}
+                  keyExtractor={item => '_' + item.id}
+                  data={data.books}
                   renderItem={({ item }) => {
-                    return <CardListItem book={item} />;
+                    return <CardItem book={item} />;
                   }}
                 />
-              )}
-            </View>
-          </ScrollView>
-        </View>
+              </View>
+            )}
+          </View>
+        </ScrollView>
       </SafeAreaView>
       <View style={styles(direction).titleBarContainer}>
         <TitleBar

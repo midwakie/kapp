@@ -13,15 +13,15 @@ import {
   View,
   FlatList,
   TextStyle,
-  TouchableWithoutFeedback,
-  Alert,
-  Dimensions,
 } from 'react-native';
 import TitleBar from 'app/components/buttons/TitleBar';
 import Neumorphism from 'react-native-neumorphism';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { ms, scale } from 'react-native-size-matters';
 import useDeviceOrientation from 'app/hooks/useDeviceOrientation';
+import { ICurrentCustomer } from 'app/models/reducers/currentCustomer';
+import { useSelector } from 'react-redux';
+import { ROLES } from 'app/config/role-config';
 
 const ChatGroupDetail: React.FC = props => {
   const { t, i18n } = useTranslation();
@@ -30,6 +30,12 @@ const ChatGroupDetail: React.FC = props => {
   const [selectedFilter, setSelectedFilter] = useState('grid');
   const profileImage = (props && props?.route?.params?.profileImage) || '';
   const title = (props && props?.route?.params?.title) || '';
+  interface IState {
+    currentCustomerReducer: ICurrentCustomer;
+  }
+  const selectedRole = useSelector(
+    (state: IState) => state.currentCustomerReducer.role,
+  );
   const books = [
     {
       id: 1,
@@ -92,10 +98,7 @@ const ChatGroupDetail: React.FC = props => {
   const CardListItem = ({ book }: any) => {
     return (
       <View style={styles(direction).neomorphContainer}>
-        <TouchableOpacity
-          onPress={() => {
-            NavigationService.navigate('EbookDetail');
-          }}>
+        <View>
           <Neumorphism
             style={styles(direction).neomorphMargin}
             lightColor={'#ffffff'}
@@ -104,18 +107,30 @@ const ChatGroupDetail: React.FC = props => {
             radius={scale(14)}>
             <View style={styles(direction).cardListStyle}>
               <View style={styles(direction).innerView}>
-                <Image
-                  source={book.img}
-                  style={styles(direction).cardListImage}
-                />
+                <TouchableOpacity>
+                  <Image
+                    source={book.img}
+                    style={styles(direction).cardListImage}
+                  />
+                </TouchableOpacity>
                 <View style={styles(direction).childDetailContainer}>
                   <Text style={styles(direction).childName}>{book.name}</Text>
                   <Text style={styles(direction).student}>{book.role}</Text>
                 </View>
               </View>
+              {selectedRole === ROLES.TEACHER ? (
+                <View style={styles(direction).minusTouch}>
+                  <TouchableOpacity>
+                    <Image
+                      source={require('../../assets/remove.png')}
+                      style={styles(direction).minusImage}
+                    />
+                  </TouchableOpacity>
+                </View>
+              ) : null}
             </View>
           </Neumorphism>
-        </TouchableOpacity>
+        </View>
       </View>
     );
   };
@@ -140,13 +155,27 @@ const ChatGroupDetail: React.FC = props => {
                 darkColor={'#C6CEDA'}
                 shapeType={'flat'}
                 radius={scale(8)}>
-                <TouchableOpacity
-                  onPress={null}
-                  style={styles(direction).gridView}>
-                  <Text style={styles(direction).gridText}>
-                    {t('Leave Group')}
-                  </Text>
-                </TouchableOpacity>
+                {selectedRole === ROLES.TEACHER ? (
+                  <TouchableOpacity
+                    onPress={null}
+                    style={styles(direction).gridView}>
+                    <Image
+                      source={require('../../assets/delete.png')}
+                      style={styles(direction).deleteImg}
+                    />
+                    <Text style={styles(direction).gridText}>
+                      {t('Delete Group')}
+                    </Text>
+                  </TouchableOpacity>
+                ) : (
+                  <TouchableOpacity
+                    onPress={null}
+                    style={styles(direction).gridView}>
+                    <Text style={styles(direction).gridText}>
+                      {t('Leave Group')}
+                    </Text>
+                  </TouchableOpacity>
+                )}
               </Neumorphism>
             </View>
             <View style={styles(direction).textView}>
@@ -157,6 +186,22 @@ const ChatGroupDetail: React.FC = props => {
                 end={{ x: 0, y: 1 }}
                 textStyle={styles(direction).gradientTextStyle as TextStyle}
               />
+              {selectedRole === ROLES.TEACHER ? (
+                <Neumorphism
+                  lightColor={'#ffffff'}
+                  darkColor={'#A8A8A8'}
+                  shapeType={'flat'}
+                  radius={scale(150)}>
+                  <View style={styles(direction).container8}>
+                    <TouchableOpacity>
+                      <Image
+                        style={styles(direction).imageStyle}
+                        source={require('../../assets/plus.png')}
+                      />
+                    </TouchableOpacity>
+                  </View>
+                </Neumorphism>
+              ) : null}
             </View>
             <View style={styles(direction).cardContainer}>
               <FlatList

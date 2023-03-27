@@ -8,7 +8,7 @@ export interface IResetPasswordRequestState {
 
 export interface IResetPasswordRequestData {
   email: string;
-  mobileNo: string;
+  mobileNo?: string;
   password: string;
   roleType: string;
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, SafeAreaView, Text, View } from 'react-native';
+import { Alert, Image, SafeAreaView, Text, View } from 'react-native';
 import styles from './styles';
 import NavigationService from 'app/navigation/NavigationService';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -11,12 +11,73 @@ import RegularButton from 'app/components/buttons/RegularButton';
 import HorizontalLine from 'app/components/lines/HorizontalLine';
 import CustomOTPInput from 'app/components/inputs/CustomOTPInput';
 import { useTranslation } from 'react-i18next';
-import Neomorph from 'app/components/neomorph';
-import LinearGradient from 'react-native-linear-gradient';
+import { useRoute } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
+import { ICurrentCustomer } from 'app/models/reducers/currentCustomer';
+import ApiConfig from 'app/config/api-config';
+import axios from 'axios';
+interface IState {
+  currentCustomerReducer: ICurrentCustomer;
+}
 
 const NewPassword: React.FC = () => {
-  const { control } = useForm();
+  const { control, handleSubmit } = useForm();
   const { t } = useTranslation();
+  const route = useRoute();
+  const email = route.params?.email;
+  const selectedRole = useSelector(
+    (state: IState) => state.currentCustomerReducer.role,
+  );
+  const onSubmit = async (data: any) => {
+    try {
+      const response = await axios.post(
+        `${ApiConfig.BASE_URL}${ApiConfig.OTP_VERIFY}`,
+        {
+          roleType: selectedRole,
+          email: email.email,
+          otp: data.otp,
+        },
+      );
+      if (response.status === 200) {
+        NavigationService.navigate('ChangePassword', { email });
+        console.log(response.data.message);
+      }
+    } catch (error: any) {
+      if (error.response && error.response.status === 422) {
+        setTimeout(() => {
+          Alert.alert('Kutubi', error.response.data.message);
+        }, 200);
+      } else {
+        console.log('Error:', error);
+      }
+    }
+  };
+
+  const onResend = async () => {
+    try {
+      const response = await axios.post(
+        `${ApiConfig.BASE_URL}${ApiConfig.OTP_REQUEST}`,
+        {
+          roleType: selectedRole,
+          email: email.email,
+          isResend: true,
+        },
+      );
+      if (response.status === 200) {
+        setTimeout(() => {
+          Alert.alert('Kutubi', response.data.message);
+        }, 200);
+      }
+    } catch (error: any) {
+      if (error.response && error.response.status === 422) {
+        setTimeout(() => {
+          Alert.alert('Kutubi', error.response.data.message);
+        }, 200);
+      } else {
+        console.log('Error:', error);
+      }
+    }
+  };
   return (
     <ScrollView style={styles.container} bounces={false}>
       <SafeAreaView style={styles.safeAreaView}>
@@ -51,14 +112,12 @@ const NewPassword: React.FC = () => {
           <View style={styles.inputTextContainer}>
             <CustomOTPInput
               control={control}
-              name="otp_email"
-              rules={rules.AuthRules.email}
+              name="otp"
+              rules={rules.AuthRules.verification}
             />
           </View>
           <RegularButton
-            onPress={() => {
-              NavigationService.navigate('ChangePassword');
-            }}
+            onPress={handleSubmit(onSubmit)}
             text={`${t('Verify')}`}
             radius={50}
             height={50}
@@ -71,7 +130,7 @@ const NewPassword: React.FC = () => {
             </Text>
             <HorizontalLine width={8} />
             <PlainButton
-              onPress={() => {}}
+              onPress={onResend}
               style={styles.signUpButton}
               containerStyle={styles.signUpButtonContainer}
               text={t('Resend Code')}
