@@ -30,6 +30,8 @@ import {
 } from 'react-native-popup-menu';
 import RadioButton from 'app/components/buttons/RadioButton';
 import { persistSelectedLanguage } from 'app/utils/storageUtils';
+import { useDispatch } from 'react-redux';
+import * as loginActions from 'app/store/actions/loginActions';
 
 const CreateChat: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -49,6 +51,10 @@ const CreateChat: React.FC = () => {
     i18n.changeLanguage('ar');
     setRadioButtonEnglish(!radioButtonEnglish);
     setRadioButtonArabic(!radioButtonArabic);
+  };
+  const dispatch = useDispatch();
+  const signOut = () => {
+    dispatch(loginActions.logOut());
   };
 
   const details = [
@@ -279,7 +285,7 @@ const CreateChat: React.FC = () => {
                       </Text>
                     </View>
                     <View>
-                      <TouchableOpacity>
+                      <TouchableOpacity onPress={signOut}>
                         <MaterialIcon
                           name={'exit-outline'}
                           size={scale(30)}
@@ -633,10 +639,10 @@ const CreateChat: React.FC = () => {
             </View>
           }
           middleComponent={
-            <View style={styles(false).gradientTextContainer}>
+            <View style={styles(direction).gradientTextContainer}>
               <GradientText
                 colors={['#2AA7DD', '#2AA7DD']}
-                text={t('Create Chat')}
+                text={t('Account Details')}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 0, y: 1 }}
                 textStyle={styles(direction).gradientTextStyle as TextStyle}
