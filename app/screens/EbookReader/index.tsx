@@ -15,8 +15,13 @@ import { useTranslation } from 'react-i18next';
 import { Reader, ReaderProvider, useReader } from '@epubjs-react-native/core';
 import { useFileSystem } from '@epubjs-react-native/file-system';
 import TrackPlayer, { useProgress } from 'react-native-track-player';
+import {
+  activateKeepAwake,
+  deactivateKeepAwake,
+} from '@sayem314/react-native-keep-awake';
 import { Switch } from 'react-native-switch';
 import Slider from 'react-native-slider';
+import Share from 'react-native-share';
 import axios from 'axios';
 
 import NavigationService from 'app/navigation/NavigationService';
@@ -82,6 +87,15 @@ function EBook(props: EBookProps) {
   const [soundMapData, setSoundMapData] = useState<SoundMapFileType[]>([]);
   const [autoPlayActivated, setAutoPlayActivated] = useState(false);
 
+  const shareOptions = {
+    title: 'Enjoy this book with your friends',
+    message:
+      "Hey, I just finished reading this book and thought you might enjoy it too. I've attached the EPUB file for you to read on your device",
+    url:
+      book ||
+      'https://s3.ap-south-1.amazonaws.com/cdn.kutubiapp.com/test/sample3/OEBPS/content.opf',
+  };
+
   const getData = async () => {
     await axios
       .get(soundMapFile as string)
@@ -130,6 +144,20 @@ function EBook(props: EBookProps) {
     }
   }, [currentLocation?.start?.index]);
 
+  const shareEpubLink = async () => {
+    try {
+      await Share.open(shareOptions)
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => {
+          err && console.log(err);
+        });
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
   const onChangePlaySpeed = () => {
     const newSpeedIndex = (speedIndex + 1) % availableSpeeds.length;
     setSpeedIndex(newSpeedIndex);
@@ -156,6 +184,9 @@ function EBook(props: EBookProps) {
         clearTimeout(goNextTimeoutRef.current);
         goNextTimeoutRef.current = null;
       }
+      setAutoPlayActivated(false);
+      setCurrentMusicState('STOP');
+      deactivateKeepAwake();
     }
   }, [endPageReached]);
 
@@ -163,18 +194,13 @@ function EBook(props: EBookProps) {
 
   const playTrack = async (type: 'manual' | 'auto') => {
     const soundData = soundMapData?.[currentPageRef?.current];
+    activateKeepAwake();
     if (soundData?.contents?.length) {
       if (type === 'auto') {
-        if (
-          position >= Number(soundData?.contents[0]?.startAt) &&
-          position <=
-            Number(soundData?.contents[soundData?.contents?.length - 1]?.endAt)
-        ) {
-          await TrackPlayer.play();
-        }
+        await TrackPlayer.play();
       }
     } else {
-      if (!autoPlayActivated || currentMusicState !== 'PLAYING') {
+      if (autoPlayActivated || currentLocation?.start?.index === 0) {
         debouncedGoNextWithDelay();
       }
     }
@@ -186,6 +212,7 @@ function EBook(props: EBookProps) {
       goNextTimeoutRef.current = null;
     }
     await TrackPlayer.pause();
+    deactivateKeepAwake();
     // Animated.timing(rotationPlayButtonAnimation, {
     //   toValue: 1,
     //   duration: 300,
@@ -346,7 +373,7 @@ function EBook(props: EBookProps) {
             }
             radius={60}
             height={40}
-            width={width > 450 ? 450 : width}
+            width={width > 450 ? 450 : width - 50}
             colors={['#EBEEF0', '#EBEEF0']}
           />
         </View>
@@ -354,7 +381,7 @@ function EBook(props: EBookProps) {
     } else {
       return (
         <View style={styles(direction).playControlWrapper}>
-          <TouchableWithoutFeedback>
+          <TouchableWithoutFeedback onPress={() => shareEpubLink()}>
             <Ionicons name="share-social" size={scale(30)} color="#00008b" />
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback>

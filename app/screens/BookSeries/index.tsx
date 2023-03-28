@@ -26,7 +26,7 @@ const sampleEbookData = [
   {
     book: 'https://s3.ap-south-1.amazonaws.com/cdn.kutubiapp.com/test/sample3/OEBPS/content.opf',
     soundMapFile:
-      'https://s3.ap-south-1.amazonaws.com/cdn.kutubiapp.com/test/sample1/NewreaderContent.json',
+      'https://s3.ap-south-1.amazonaws.com/cdn.kutubiapp.com/test/sample1/epubJson.json',
     sound:
       'https://s3.ap-south-1.amazonaws.com/cdn.kutubiapp.com/test/sample3/audio.mp3',
   },
