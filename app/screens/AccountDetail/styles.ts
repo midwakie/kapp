@@ -37,7 +37,7 @@ const styles = (direction: string) =>
       paddingHorizontal: '30@s',
     },
     gradientTextStyle: {
-      fontSize: '18@s',
+      fontSize: '16@s',
       fontFamily: 'Nunito-Regular',
       fontWeight: '700',
     },

@@ -17,6 +17,7 @@ import StudentsStack from './DrawerStacks/StudentsStack';
 import ChatStack from './DrawerStacks/ChatStack';
 import OrderStack from './DrawerStacks/OrderStack';
 import ShopStack from './DrawerStacks/ShopStack';
+import AccountStack from './DrawerStacks/AccountStack';
 
 export const DrawerStacksList: IDrawerItem[] = [
   {
@@ -273,6 +274,18 @@ export const DrawerStacksList: IDrawerItem[] = [
     component: NoNotification,
     drawerLabel: 'Notification',
     iconImage: require('../assets/side_menu/notifications.png'),
+    headerStyle: {
+      backgroundColor: '#976a4a',
+    },
+    gestureEnabled: false,
+    availableRoles: ['Guest', 'Parent', 'Student', 'Teacher'],
+  },
+  {
+    index: 14,
+    name: 'Account',
+    component: AccountStack,
+    drawerLabel: 'Account',
+    iconImage: require('../assets/side_menu/account.png'),
     headerStyle: {
       backgroundColor: '#976a4a',
     },

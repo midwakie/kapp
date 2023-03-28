@@ -33,8 +33,9 @@ import BookDetails from '../BookDetails';
 import { Item } from 'react-native-paper/lib/typescript/components/List/List';
 import { id } from 'date-fns/locale';
 import CustomInput from 'app/components/inputs/CustomInput';
+import { DrawerActions } from '@react-navigation/native';
 
-const MyAccount: React.FC = () => {
+const MyAccount: React.FC = (props: any) => {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
   const [description, setDescription] = useState('');
@@ -119,7 +120,10 @@ const MyAccount: React.FC = () => {
           shapeType={'flat'}
           radius={scale(14)}>
           <View style={styles(direction).cardListStyleTwo}>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                NavigationService.navigate('AccountDetail');
+              }}>
               <View style={styles(direction).chatInfo}>
                 <View style={styles(direction).imageViewContainer}>
                   <Image
@@ -260,7 +264,10 @@ const MyAccount: React.FC = () => {
                   height={'100%'}
                   color={'#A8A8A8'}
                 />
-                <TouchableOpacity onPress={() => {}}>
+                <TouchableOpacity
+                  onPress={() => {
+                    NavigationService.navigate('GlobalSearch');
+                  }}>
                   <View style={styles(direction).searchContainer}>
                     <Image
                       source={require('../../assets/searchIcon.png')}
