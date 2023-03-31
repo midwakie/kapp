@@ -20,6 +20,7 @@ import {
   TouchableWithoutFeedback,
   Alert,
   Dimensions,
+  ActivityIndicator,
 } from 'react-native';
 import TitleBar from 'app/components/buttons/TitleBar';
 import Neumorphism from 'react-native-neumorphism';
@@ -30,6 +31,8 @@ import CustomInput from 'app/components/inputs/CustomInput';
 import { useForm } from 'react-hook-form';
 import HorizontalLine from 'app/components/lines/HorizontalLine';
 import { channel } from 'redux-saga';
+import ApiConfig from 'app/config/api-config';
+import { useQuery } from 'react-query';
 
 const GlobalSearch: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -85,115 +88,7 @@ const GlobalSearch: React.FC = () => {
   const currentOrientation = useDeviceOrientation();
 
   const [selectedFilter, setSelectedFilter] = useState('grid');
-  const books = [
-    {
-      id: 1,
-      title: 'Kung Fu Panda',
-      author: 'By Martin Luther',
-      price: '$15.30',
-      img: require('../../assets/book.png'),
-    },
-    {
-      id: 2,
-      title: 'Happy Lemon',
-      author: 'By Abhishek',
-      price: '$20.30',
-      img: require('../.././assets/book2.png'),
-    },
-    {
-      id: 3,
-      title: 'Billy & Shmilli',
-      author: 'By Harish S',
-      price: '$25.30',
-      img: require('../../assets/book3.png'),
-    },
-    {
-      id: 4,
-      title: 'Story Book',
-      author: 'By Anil Bose',
-      price: '$10.30',
-      img: require('../../assets/book4.png'),
-    },
-    {
-      id: 5,
-      title: 'Journey of the Star',
-      author: 'By Sijin',
-      price: '$15.30',
-      img: require('../../assets/book.png'),
-    },
-    {
-      id: 6,
-      title: 'Nasa Boy',
-      author: 'By Rashid ',
-      price: '$35.30',
-      img: require('../../assets/book2.png'),
-    },
-    {
-      id: 7,
-      title: 'Sample Text',
-      author: 'By Shiva',
-      price: '$30.30',
-      img: require('../../assets/book3.png'),
-    },
-    {
-      id: 8,
-      title: 'Cool Kids 5',
-      author: 'By Tibu PS',
-      price: '$45.30',
-      img: require('../../assets/book4.png'),
-    },
-  ];
-  const Channels = [
-    {
-      id: 1,
-      title: 'Kung Fu Panda',
-      author: '256k Subscriber',
-      img: require('../../assets/book.png'),
-    },
-    {
-      id: 2,
-      title: 'Happy Lemon',
-      author: '256k Subscriber',
-      img: require('../.././assets/book2.png'),
-    },
-    {
-      id: 3,
-      title: 'Billy & Shmilli',
-      author: '256k Subscriber',
-      img: require('../../assets/book3.png'),
-    },
-    {
-      id: 4,
-      title: 'Story Book',
-      author: '256k Subscriber',
-      img: require('../../assets/book4.png'),
-    },
-    {
-      id: 5,
-      title: 'Journey of the Star',
-      author: '256k Subscriber',
-      img: require('../../assets/book.png'),
-    },
-    {
-      id: 6,
-      title: 'Nasa Boy',
-      author: '256k Subscriber',
-      price: '$35.30',
-      img: require('../../assets/book2.png'),
-    },
-    {
-      id: 7,
-      title: 'Sample Text',
-      author: '256k Subscriber',
-      img: require('../../assets/book3.png'),
-    },
-    {
-      id: 8,
-      title: 'Cool Kids 5',
-      author: '256k Subscriber',
-      img: require('../../assets/book4.png'),
-    },
-  ];
+
   const feeds = [
     {
       id: 1,
@@ -317,6 +212,32 @@ const GlobalSearch: React.FC = () => {
       setSelectedFilter('grid');
     }
   };
+  const { isLoading, data } = useQuery('channels', async () => {
+    try {
+      const response = await fetch(ApiConfig.BASE_URL2 + ApiConfig.CHANNELS);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    } catch (catchError: any) {
+      console.error(catchError);
+    }
+  });
+
+  const { isLoading: isLoadingBooks, data: books } = useQuery(
+    'books',
+    async () => {
+      try {
+        const response = await fetch(ApiConfig.BASE_URL2 + ApiConfig.BOOKS);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      } catch (catchError: any) {
+        console.error(catchError);
+      }
+    },
+  );
 
   const CardItem = ({ book }: any) => {
     return (
@@ -332,7 +253,10 @@ const GlobalSearch: React.FC = () => {
             shapeType={'flat'}
             radius={scale(14)}>
             <View style={styles(direction).card}>
-              <Image source={book.img} style={styles(direction).cardImage} />
+              <Image
+                source={{ uri: ApiConfig.BASE_ASSET_URL + book.img }}
+                style={styles(direction).cardImage}
+              />
               <View style={styles(direction).cardContent}>
                 <Text style={styles(direction).title} numberOfLines={1}>
                   {book.title}
@@ -360,7 +284,10 @@ const GlobalSearch: React.FC = () => {
             shapeType={'flat'}
             radius={scale(14)}>
             <View style={styles(direction).card1}>
-              <Image source={channel.img} style={styles(direction).cardImage} />
+              <Image
+                source={{ uri: ApiConfig.BASE_ASSET_URL + channel.img }}
+                style={styles(direction).cardImage}
+              />
               <View style={styles(direction).cardContent}>
                 <Text style={styles(direction).title} numberOfLines={1}>
                   {channel.title}
@@ -439,190 +366,199 @@ const GlobalSearch: React.FC = () => {
       <ScrollView style={styles(direction).container} bounces={false}>
         <SafeAreaView style={styles(direction).safeAreaView}>
           <View style={styles(direction).container2}>
-            <View style={styles(direction).inputTextContainer}>
-              <CustomInput
-                control={control}
-                name="search"
-                placeholder={t('Search here..')}
-                keyboardType="default"
-                autoCapitalize="none"
-                returnKeyType="next"
-                rightComponent={
-                  <TouchableOpacity style={styles(direction).searchIcon}>
-                    <MaterialIcon
-                      name={'search1'}
-                      size={scale(20)}
-                      color={'#03A0E3'}
-                    />
-                  </TouchableOpacity>
-                }
-              />
-            </View>
-            <View style={styles(direction, active).categoryListContainer}>
-              <ScrollView
-                // style={{ flexDirection: 'row', height: 50 }}
-                style={{ flex: 1 }}
-                horizontal={true}
-                showsHorizontalScrollIndicator={false}>
-                <View style={styles(direction).container4}>
-                  <View style={styles(direction).row2}>
-                    <RegularButton
-                      onPress={Press}
-                      text={
-                        <Text style={styles(direction, active).buttonText}>
-                          {t('Ebooks')}
-                        </Text>
-                      }
-                      radius={50}
-                      height={'50@s'}
-                      width={'90@s'}
-                      colors={
-                        active ? ['#03BBE3', '#03A0E3'] : ['#EBEEF0', '#EBEEF0']
-                      }
-                    />
-                    <HorizontalLine
-                      stroke={0.01}
-                      opacity={0}
-                      width={scale(20)}
-                      color={'transparent'}
-                    />
-                    <RegularButton
-                      onPress={Press1}
-                      text={
-                        <Text style={styles(direction, active1).buttonText}>
-                          {t('Channels')}
-                        </Text>
-                      }
-                      radius={50}
-                      height={'50@s'}
-                      width={'100%'}
-                      colors={
-                        active1
-                          ? ['#03BBE3', '#03A0E3']
-                          : ['#EBEEF0', '#EBEEF0']
-                      }
-                    />
-                    <HorizontalLine
-                      stroke={0.01}
-                      opacity={0}
-                      width={scale(20)}
-                      color={'transparent'}
-                    />
-                    <RegularButton
-                      onPress={Press2}
-                      text={
-                        <Text style={styles(direction, active2).buttonText}>
-                          {t('Feeds')}
-                        </Text>
-                      }
-                      radius={50}
-                      height={'50@s'}
-                      width={'90@s'}
-                      colors={
-                        active2
-                          ? ['#03BBE3', '#03A0E3']
-                          : ['#EBEEF0', '#EBEEF0']
-                      }
-                    />
-                    <HorizontalLine
-                      stroke={0.01}
-                      opacity={0}
-                      width={scale(20)}
-                      color={'transparent'}
-                    />
-                    <RegularButton
-                      onPress={Press3}
-                      text={
-                        <Text style={styles(direction, active3).buttonText}>
-                          {t('Chats')}
-                        </Text>
-                      }
-                      radius={50}
-                      height={'50@s'}
-                      width={'90@s'}
-                      colors={
-                        active3
-                          ? ['#03BBE3', '#03A0E3']
-                          : ['#EBEEF0', '#EBEEF0']
-                      }
-                    />
-                    <HorizontalLine
-                      stroke={0.01}
-                      opacity={0}
-                      width={scale(20)}
-                      color={'transparent'}
-                    />
-                    <RegularButton
-                      onPress={Press4}
-                      text={
-                        <Text style={styles(direction, active4).buttonText}>
-                          {t('Products')}
-                        </Text>
-                      }
-                      radius={50}
-                      height={'50@s'}
-                      width={'100%'}
-                      colors={
-                        active4
-                          ? ['#03BBE3', '#03A0E3']
-                          : ['#EBEEF0', '#EBEEF0']
-                      }
-                    />
-                  </View>
+            {isLoading ? (
+              <ActivityIndicator size="large" color="#03A0E3" />
+            ) : (
+              <>
+                <View style={styles(direction).inputTextContainer}>
+                  <CustomInput
+                    control={control}
+                    name="search"
+                    s
+                    placeholder={t('Search here..')}
+                    keyboardType="default"
+                    autoCapitalize="none"
+                    returnKeyType="next"
+                    rightComponent={
+                      <TouchableOpacity style={styles(direction).searchIcon}>
+                        <MaterialIcon
+                          name={'search1'}
+                          size={scale(20)}
+                          color={'#03A0E3'}
+                        />
+                      </TouchableOpacity>
+                    }
+                  />
                 </View>
-              </ScrollView>
-            </View>
-            {active && (
-              <FlatList
-                key={'#'}
-                keyExtractor={item => '#' + item.id}
-                numColumns={Math.floor(
-                  Dimensions.get('window').width / ms(158),
+                <View style={styles(direction, active).categoryListContainer}>
+                  <ScrollView
+                    // style={{ flexDirection: 'row', height: 50 }}
+                    style={{ flex: 1 }}
+                    horizontal={true}
+                    showsHorizontalScrollIndicator={false}>
+                    <View style={styles(direction).container4}>
+                      <View style={styles(direction).row2}>
+                        <RegularButton
+                          onPress={Press}
+                          text={
+                            <Text style={styles(direction, active).buttonText}>
+                              {t('Ebooks')}
+                            </Text>
+                          }
+                          radius={50}
+                          height={'50@s'}
+                          width={'90@s'}
+                          colors={
+                            active
+                              ? ['#03BBE3', '#03A0E3']
+                              : ['#EBEEF0', '#EBEEF0']
+                          }
+                        />
+                        <HorizontalLine
+                          stroke={0.01}
+                          opacity={0}
+                          width={scale(20)}
+                          color={'transparent'}
+                        />
+                        <RegularButton
+                          onPress={Press1}
+                          text={
+                            <Text style={styles(direction, active1).buttonText}>
+                              {t('Channels')}
+                            </Text>
+                          }
+                          radius={50}
+                          height={'50@s'}
+                          width={'100%'}
+                          colors={
+                            active1
+                              ? ['#03BBE3', '#03A0E3']
+                              : ['#EBEEF0', '#EBEEF0']
+                          }
+                        />
+                        <HorizontalLine
+                          stroke={0.01}
+                          opacity={0}
+                          width={scale(20)}
+                          color={'transparent'}
+                        />
+                        <RegularButton
+                          onPress={Press2}
+                          text={
+                            <Text style={styles(direction, active2).buttonText}>
+                              {t('Feeds')}
+                            </Text>
+                          }
+                          radius={50}
+                          height={'50@s'}
+                          width={'90@s'}
+                          colors={
+                            active2
+                              ? ['#03BBE3', '#03A0E3']
+                              : ['#EBEEF0', '#EBEEF0']
+                          }
+                        />
+                        <HorizontalLine
+                          stroke={0.01}
+                          opacity={0}
+                          width={scale(20)}
+                          color={'transparent'}
+                        />
+                        <RegularButton
+                          onPress={Press3}
+                          text={
+                            <Text style={styles(direction, active3).buttonText}>
+                              {t('Chats')}
+                            </Text>
+                          }
+                          radius={50}
+                          height={'50@s'}
+                          width={'90@s'}
+                          colors={
+                            active3
+                              ? ['#03BBE3', '#03A0E3']
+                              : ['#EBEEF0', '#EBEEF0']
+                          }
+                        />
+                        <HorizontalLine
+                          stroke={0.01}
+                          opacity={0}
+                          width={scale(20)}
+                          color={'transparent'}
+                        />
+                        <RegularButton
+                          onPress={Press4}
+                          text={
+                            <Text style={styles(direction, active4).buttonText}>
+                              {t('Products')}
+                            </Text>
+                          }
+                          radius={50}
+                          height={'50@s'}
+                          width={'100%'}
+                          colors={
+                            active4
+                              ? ['#03BBE3', '#03A0E3']
+                              : ['#EBEEF0', '#EBEEF0']
+                          }
+                        />
+                      </View>
+                    </View>
+                  </ScrollView>
+                </View>
+                {active && (
+                  <FlatList
+                    key={'#'}
+                    keyExtractor={item => '#' + item.id}
+                    numColumns={Math.floor(
+                      Dimensions.get('window').width / ms(158),
+                    )}
+                    data={books?.books}
+                    renderItem={({ item }) => {
+                      return <CardItem book={item} />;
+                    }}
+                  />
                 )}
-                data={books}
-                renderItem={({ item }) => {
-                  return <CardItem book={item} />;
-                }}
-              />
-            )}
-            {active1 && (
-              <FlatList
-                key={'#'}
-                keyExtractor={item => '#' + item.id}
-                numColumns={Math.floor(
-                  Dimensions.get('window').width / ms(158),
+                {active1 && (
+                  <FlatList
+                    key={'#'}
+                    keyExtractor={item => '#' + item.id}
+                    numColumns={Math.floor(
+                      Dimensions.get('window').width / ms(158),
+                    )}
+                    data={data?.channels}
+                    renderItem={({ item }) => {
+                      return <ChannelCardItem channel={item} />;
+                    }}
+                  />
                 )}
-                data={Channels}
-                renderItem={({ item }) => {
-                  return <ChannelCardItem channel={item} />;
-                }}
-              />
-            )}
-            {active2 && (
-              <FlatList
-                key={'#'}
-                keyExtractor={item => '#' + item.id}
-                numColumns={Math.floor(
-                  Dimensions.get('window').width / ms(158),
+                {active2 && (
+                  <FlatList
+                    key={'#'}
+                    keyExtractor={item => '#' + item.id}
+                    numColumns={Math.floor(
+                      Dimensions.get('window').width / ms(158),
+                    )}
+                    data={feeds}
+                    renderItem={({ item }) => {
+                      return <FeedsCardItem feeds={item} />;
+                    }}
+                  />
                 )}
-                data={feeds}
-                renderItem={({ item }) => {
-                  return <FeedsCardItem feeds={item} />;
-                }}
-              />
-            )}
-            {active4 && (
-              <FlatList
-                key={'#'}
-                keyExtractor={item => '#' + item.id}
-                numColumns={Math.floor(
-                  Dimensions.get('window').width / ms(158),
+                {active4 && (
+                  <FlatList
+                    key={'#'}
+                    keyExtractor={item => '#' + item.id}
+                    numColumns={Math.floor(
+                      Dimensions.get('window').width / ms(158),
+                    )}
+                    data={products}
+                    renderItem={({ item }) => {
+                      return <ProductsCardItem products={item} />;
+                    }}
+                  />
                 )}
-                data={products}
-                renderItem={({ item }) => {
-                  return <ProductsCardItem products={item} />;
-                }}
-              />
+              </>
             )}
           </View>
         </SafeAreaView>

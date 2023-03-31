@@ -24,6 +24,8 @@ const ApiConfig = {
   BOOK_DETAIL: 'bookDetail.json',
   SHOP: 'shop.json',
   MY_CHANNEL: 'myChannel.json',
+  BOOKS: 'books.json',
+  CHANNELS: 'channels.json',
   // TWILIO //
   GET_TOKEN: '/chat/token',
 };

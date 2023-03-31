@@ -39,8 +39,9 @@ const styles = (direction: string) =>
       alignItems: 'center',
     },
     bottomContainer: {
+      position: 'absolute',
       height: '50@s',
-      // paddingBottom: 15,
+      bottom: 0,
     },
     pageNoWrapper: {
       alignSelf: 'flex-end',

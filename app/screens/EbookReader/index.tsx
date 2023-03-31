@@ -334,28 +334,6 @@ function EBook(props: EBookProps) {
           onResized={() => console.log('resized')}
           onLayout={() => console.log('layout change')}
         />
-        <View
-          style={[
-            styles(direction).playerModuleWrapper,
-            { backgroundColor: darkMode ? darkModeColor : white },
-          ]}>
-          <View style={styles(direction).pageNoWrapper}>
-            <Text style={styles(direction).pageNoDetailsText}>
-              {`${currentPageRef?.current + 1} of ${soundMapData?.length}`}
-            </Text>
-          </View>
-          <View style={styles(direction).trackWrapper}>
-            <Slider
-              trackStyle={styles(direction).trackStyle}
-              thumbStyle={styles(direction).trackThumbStyle}
-              maximumValue={soundMapData?.length}
-              minimumTrackTintColor={'#006400'}
-              value={trackThumbPosition}
-              step={1}
-              disabled
-            />
-          </View>
-        </View>
       </View>
     );
   };
@@ -463,6 +441,28 @@ function EBook(props: EBookProps) {
                 backgroundColor: darkMode ? darkModeColor : white,
               },
             ]}>
+            <View
+              style={[
+                styles(direction).playerModuleWrapper,
+                { backgroundColor: darkMode ? darkModeColor : white },
+              ]}>
+              <View style={styles(direction).pageNoWrapper}>
+                <Text style={styles(direction).pageNoDetailsText}>
+                  {`${currentPageRef?.current + 1} of ${soundMapData?.length}`}
+                </Text>
+              </View>
+              <View style={styles(direction).trackWrapper}>
+                <Slider
+                  trackStyle={styles(direction).trackStyle}
+                  thumbStyle={styles(direction).trackThumbStyle}
+                  maximumValue={soundMapData?.length}
+                  minimumTrackTintColor={'#006400'}
+                  value={trackThumbPosition}
+                  step={1}
+                  disabled
+                />
+              </View>
+            </View>
             {RenderPlayerController()}
           </View>
         </ScrollView>
