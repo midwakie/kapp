@@ -11,15 +11,19 @@ const ApiConfig = {
   OTP_REQUEST: 'auth/otpRequest',
   OTP_VERIFY: 'auth/otpVerify',
   RESET_PASSWORD: 'auth/resetPassword',
+  REFRESH_TOKEN: 'auth/refreshToken',
 
   // USER //
-  FETCH_USER_DETAILS: '/user/fetchUserDetails',
+  FETCH_USER_DETAILS: 'user/',
+  UPDATE_MOBILE: 'user/updateMobile',
 
   //JSON//
   BOOK: 'books.json',
   My_FEEDS: 'myFeeds.json',
   CHILD_PROFILE: 'childProfile.json',
   BOOK_DETAIL: 'bookDetail.json',
+  SHOP: 'shop.json',
+  MY_CHANNEL: 'myChannel.json',
   // TWILIO //
   GET_TOKEN: '/chat/token',
 };

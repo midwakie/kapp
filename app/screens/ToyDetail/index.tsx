@@ -31,6 +31,7 @@ import {
   incrementQuantity,
 } from 'app/store/actions/cartActions';
 import useDeviceOrientation from 'app/hooks/useDeviceOrientation';
+import ApiConfig from 'app/config/api-config';
 
 const ToyDetail: React.FC = () => {
   const route = useRoute();
@@ -61,7 +62,10 @@ const ToyDetail: React.FC = () => {
       <ScrollView style={styles(direction).container} bounces={false}>
         <SafeAreaView style={styles(direction).safeAreaView}>
           <View style={styles(direction).imageContainer}>
-            <Image source={book.img} style={styles(direction).imageStyle} />
+            <Image
+              source={{ uri: ApiConfig.BASE_ASSET_URL + book.img }}
+              style={styles(direction).imageStyle}
+            />
             <View style={styles(direction).topContainer}>
               <RegularButton
                 onPress={() => {

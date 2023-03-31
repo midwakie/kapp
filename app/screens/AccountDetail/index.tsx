@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './styles';
 import GradientText from 'app/components/texts/GradientText';
 import RegularButton from 'app/components/buttons/RegularButton';
@@ -16,6 +16,7 @@ import {
   TextStyle,
   TouchableWithoutFeedback,
   Modal,
+  AsyncStorage,
 } from 'react-native';
 import TitleBar from 'app/components/buttons/TitleBar';
 import Neumorphism from 'react-native-neumorphism';
@@ -32,8 +33,11 @@ import RadioButton from 'app/components/buttons/RadioButton';
 import { persistSelectedLanguage } from 'app/utils/storageUtils';
 import { useDispatch } from 'react-redux';
 import * as loginActions from 'app/store/actions/loginActions';
+import { useQuery } from 'react-query';
+import ApiConfig from 'app/config/api-config';
+import { refreshAuthToken } from '../../models/api/refreshToken';
 
-const CreateChat: React.FC = () => {
+const AccountDetail: React.FC = () => {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
   const currentOrientation = useDeviceOrientation();
@@ -57,18 +61,6 @@ const CreateChat: React.FC = () => {
     dispatch(loginActions.logOut());
   };
 
-  const details = [
-    {
-      id: 1,
-      account: 'abeershaikh786@gmail.com',
-      page: () => NavigationService.navigate('ChangeEmailId'),
-    },
-    {
-      id: 2,
-      account: '+971-565-5523-01',
-      page: () => NavigationService.navigate('ChangeMobileNumber'),
-    },
-  ];
   const [parentData, setParentData] = useState({
     img: require('../../assets/parentOne.png'),
     name: 'Abeer Shaikh',
@@ -102,49 +94,34 @@ const CreateChat: React.FC = () => {
       image: require('../../assets/trash.png'),
     },
   ]);
-  const CardListItem = ({ book }: any) => {
-    return (
-      <View style={styles(direction).neomorphContainer}>
-        <Neumorphism
-          style={styles(direction).neomorphMargin}
-          lightColor={'#ffffff'}
-          darkColor={'#C6CEDA'}
-          shapeType={'flat'}
-          radius={scale(14)}>
-          <View style={styles(direction).cardListStyleTwo}>
-            <View style={styles(direction).chatInfo}>
-              <Text style={styles(direction).cardListAccountText}>
-                {book.account}
-              </Text>
-            </View>
-            <View>
-              <TouchableOpacity onPress={book.page}>
-                <Text style={styles(direction).chatName}> {t('Change')}</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </Neumorphism>
-      </View>
+
+  async function fetchUserDetails() {
+    let authToken = await AsyncStorage.getItem('authToken');
+    const headers = { Authorization: `Bearer ${authToken}` };
+    let response = await fetch(
+      ApiConfig.BASE_URL + ApiConfig.FETCH_USER_DETAILS,
+      { headers },
     );
-  };
+    if (response.status === 403) {
+      authToken = await refreshAuthToken();
+      headers.Authorization = `Bearer ${authToken}`;
+      response = await fetch(
+        ApiConfig.BASE_URL + ApiConfig.FETCH_USER_DETAILS,
+        { headers },
+      );
+    }
+    const userDetails = await response.json();
+    return userDetails;
+  }
+
+  const { isLoading, data } = useQuery('userDetails', fetchUserDetails);
 
   return (
     <>
       <SafeAreaView style={styles(direction).safeAreaView}>
         <ScrollView style={styles(direction).container} bounces={false}>
           <View style={styles(direction).container2}>
-            <View style={styles(direction).cardContainer}>
-              <FlatList
-                numColumns={1}
-                key={'-'}
-                keyExtractor={item => '-' + item.id}
-                data={details}
-                renderItem={({ item }) => {
-                  return <CardListItem book={item} />;
-                }}
-              />
-            </View>
-            <View>
+            <View style={styles(direction).container3}>
               <View style={styles(direction).neomorphContainer}>
                 <Neumorphism
                   style={styles(direction).neomorphMargin}
@@ -155,13 +132,39 @@ const CreateChat: React.FC = () => {
                   <View style={styles(direction).cardListStyleTwo}>
                     <View style={styles(direction).chatInfo}>
                       <Text style={styles(direction).cardListAccountText}>
-                        {t('Manage Password')}
+                        {t(data?.message?.email)}
                       </Text>
                     </View>
                     <View>
                       <TouchableOpacity
                         onPress={() => {
-                          NavigationService.navigate('AccountChangePassword');
+                          NavigationService.navigate('ChangeEmailId');
+                        }}>
+                        <Text style={styles(direction).chatName}>
+                          {t('Change')}
+                        </Text>
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                </Neumorphism>
+              </View>
+              <View style={styles(direction).neomorphContainer}>
+                <Neumorphism
+                  style={styles(direction).neomorphMargin}
+                  lightColor={'#ffffff'}
+                  darkColor={'#C6CEDA'}
+                  shapeType={'flat'}
+                  radius={scale(14)}>
+                  <View style={styles(direction).cardListStyleTwo}>
+                    <View style={styles(direction).chatInfo}>
+                      <Text style={styles(direction).cardListAccountText}>
+                        {t(data?.message?.mobileNo)}
+                      </Text>
+                    </View>
+                    <View>
+                      <TouchableOpacity
+                        onPress={() => {
+                          NavigationService.navigate('ChangeMobileNumber');
                         }}>
                         <Text style={styles(direction).chatName}>
                           {t('Change')}
@@ -654,4 +657,4 @@ const CreateChat: React.FC = () => {
     </>
   );
 };
-export default CreateChat;
+export default AccountDetail;
