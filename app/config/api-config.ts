@@ -14,8 +14,7 @@ const ApiConfig = {
   REFRESH_TOKEN: 'auth/refreshToken',
 
   // USER //
-  FETCH_USER_DETAILS: 'user/',
-  UPDATE_MOBILE: 'user/updateMobile',
+  USER: 'user/',
 
   //JSON//
   BOOK: 'books.json',
@@ -24,7 +23,6 @@ const ApiConfig = {
   BOOK_DETAIL: 'bookDetail.json',
   SHOP: 'shop.json',
   MY_CHANNEL: 'myChannel.json',
-  BOOKS: 'books.json',
   CHANNELS: 'channels.json',
   // TWILIO //
   GET_TOKEN: '/chat/token',

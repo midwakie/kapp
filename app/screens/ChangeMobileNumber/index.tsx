@@ -26,6 +26,9 @@ import rules from 'app/rules';
 import PhoneInput from 'react-native-phone-number-input';
 import ApiConfig from 'app/config/api-config';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
+import { fetchUserDetails } from '../../models/api/fetchUserDetails';
+import { updateMobileNumber } from '../../models/api/updateMobileNumber';
+
 const ChangeMobileNumber: React.FC = () => {
   const { control, handleSubmit } = useForm();
   const emailInputRef: React.RefObject<any> = React.createRef();
@@ -34,46 +37,10 @@ const ChangeMobileNumber: React.FC = () => {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
   const queryClient = useQueryClient();
-  async function fetchUserDetails() {
-    const authToken = await AsyncStorage.getItem('authToken');
-    const headers = { Authorization: `Bearer ${authToken}` };
-    const response = await fetch(
-      ApiConfig.BASE_URL + ApiConfig.FETCH_USER_DETAILS,
-      { headers },
-    );
-    const userDetails = await response.json();
-    setMobileNo(userDetails.message.mobileNo);
-    return userDetails;
-  }
   const { isLoading, data } = useQuery('userDetails', fetchUserDetails);
 
-  const updateMobileNumberMutation = useMutation(
-    async (newMobileNumber: string) => {
-      try {
-        const authToken = await AsyncStorage.getItem('authToken');
-        const headers = {
-          Authorization: `Bearer ${authToken}`,
-          'Content-Type': 'application/json',
-        };
-        const body = JSON.stringify({ mobileNo: newMobileNumber });
-        const response = await fetch(
-          ApiConfig.BASE_URL + ApiConfig.UPDATE_MOBILE,
-          { method: 'PUT', headers, body },
-        );
-        const updatedUserDetails = await response.json();
-        setTimeout(() => {
-          Alert.alert('Kutubi', updatedUserDetails.message);
-        }, 200);
-        if (response.status === 200) {
-          NavigationService.navigate('AccountDetail');
-          queryClient.invalidateQueries('userDetails');
-        }
-        return updatedUserDetails;
-      } catch (error) {
-        console.error(error);
-        throw error;
-      }
-    },
+  const updateMobileNumberMutation = useMutation((newMobileNumber: string) =>
+    updateMobileNumber(newMobileNumber, queryClient),
   );
 
   const handleUpdateMobileNumber = () => {
@@ -84,7 +51,9 @@ const ChangeMobileNumber: React.FC = () => {
       <ScrollView style={styles(direction).container} bounces={false}>
         <SafeAreaView style={styles(direction).safeAreaView}>
           <View style={styles(direction).container2}>
-            <Text style={styles(direction).text}>{mobileNo}</Text>
+            <Text style={styles(direction).text}>
+              {data?.message?.mobileNo}
+            </Text>
             <View style={styles(direction).inputTextContainer}>
               <Image
                 source={require('../../assets/inputBg.png')}

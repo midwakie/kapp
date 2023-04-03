@@ -36,6 +36,7 @@ import * as loginActions from 'app/store/actions/loginActions';
 import { useQuery } from 'react-query';
 import ApiConfig from 'app/config/api-config';
 import { refreshAuthToken } from '../../models/api/refreshToken';
+import { fetchUserDetails } from '../../models/api/fetchUserDetails';
 
 const AccountDetail: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -94,26 +95,6 @@ const AccountDetail: React.FC = () => {
       image: require('../../assets/trash.png'),
     },
   ]);
-
-  async function fetchUserDetails() {
-    let authToken = await AsyncStorage.getItem('authToken');
-    const headers = { Authorization: `Bearer ${authToken}` };
-    let response = await fetch(
-      ApiConfig.BASE_URL + ApiConfig.FETCH_USER_DETAILS,
-      { headers },
-    );
-    if (response.status === 403) {
-      authToken = await refreshAuthToken();
-      headers.Authorization = `Bearer ${authToken}`;
-      response = await fetch(
-        ApiConfig.BASE_URL + ApiConfig.FETCH_USER_DETAILS,
-        { headers },
-      );
-    }
-    const userDetails = await response.json();
-    return userDetails;
-  }
-
   const { isLoading, data } = useQuery('userDetails', fetchUserDetails);
 
   return (
@@ -165,6 +146,32 @@ const AccountDetail: React.FC = () => {
                       <TouchableOpacity
                         onPress={() => {
                           NavigationService.navigate('ChangeMobileNumber');
+                        }}>
+                        <Text style={styles(direction).chatName}>
+                          {t('Change')}
+                        </Text>
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                </Neumorphism>
+              </View>
+              <View style={styles(direction).neomorphContainer}>
+                <Neumorphism
+                  style={styles(direction).neomorphMargin}
+                  lightColor={'#ffffff'}
+                  darkColor={'#C6CEDA'}
+                  shapeType={'flat'}
+                  radius={scale(14)}>
+                  <View style={styles(direction).cardListStyleTwo}>
+                    <View style={styles(direction).chatInfo}>
+                      <Text style={styles(direction).cardListAccountText}>
+                        {t('Manage Password')}
+                      </Text>
+                    </View>
+                    <View>
+                      <TouchableOpacity
+                        onPress={() => {
+                          NavigationService.navigate('AccountChangePassword');
                         }}>
                         <Text style={styles(direction).chatName}>
                           {t('Change')}
