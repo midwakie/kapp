@@ -8,7 +8,6 @@ import {
   TouchableWithoutFeedback,
   View,
   useWindowDimensions,
-  ImageBackground,
   ScrollView,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
@@ -463,9 +462,9 @@ function EBook(props: EBookProps) {
                 />
               </View>
             </View>
-            {RenderPlayerController()}
           </View>
         </ScrollView>
+        {RenderPlayerController()}
       </View>
     </SafeAreaView>
   );

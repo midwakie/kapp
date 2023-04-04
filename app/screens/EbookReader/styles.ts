@@ -86,6 +86,7 @@ const styles = (direction: string) =>
       alignItems: 'center',
       justifyContent: 'space-between',
       alignSelf: 'center',
+      paddingVertical: 10,
     },
     speedControlContainer: {
       height: 35,
