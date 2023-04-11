@@ -7,6 +7,7 @@ import {
   View,
   Image,
   TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
 import styles from './styles';
 import NavigationService from 'app/navigation/NavigationService';
@@ -24,40 +25,13 @@ import {
   MenuOptions,
   MenuTrigger,
 } from 'react-native-popup-menu';
+import ApiConfig from 'app/config/api-config';
+import { useQuery } from 'react-query';
 
 const TeachersProfile: React.FC = () => {
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
-  const [data, setdata] = useState([
-    {
-      titleImage: require('../../assets/teacherPic1.png'),
-      titleName: 'Arabic Language (ST 2)',
-      subscribers: '256k Subscribers',
-      count: '132 Videos',
-      standard: 'Standard 2',
-    },
-    {
-      titleImage: require('../../assets/teacherPic2.png'),
-      titleName: 'English Language (ST 2)',
-      subscribers: '256k Subscribers',
-      count: '132 Videos',
-      standard: 'Standard 2',
-    },
-    {
-      titleImage: require('../../assets/teacherPic1.png'),
-      titleName: 'Arabic Language (ST 2)',
-      subscribers: '256k Subscribers',
-      count: '132 Videos',
-      standard: 'Standard 2',
-    },
-    {
-      titleImage: require('../../assets/teacherPic2.png'),
-      titleName: 'English Language (ST 2)',
-      subscribers: '256k Subscribers',
-      count: '132 Videos',
-      standard: 'Standard 2',
-    },
-  ]);
+
   const [options, setOptions] = useState([
     {
       title: 'Channel Privacy',
@@ -90,6 +64,21 @@ const TeachersProfile: React.FC = () => {
       image: require('../../assets/trash.png'),
     },
   ]);
+
+  const { isLoading, data } = useQuery('teacher', async () => {
+    try {
+      const response = await fetch(
+        ApiConfig.BASE_URL2 + ApiConfig.TEACHER_PROFILE,
+      );
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    } catch (catchError: any) {
+      console.error(catchError);
+    }
+  });
+  console.log(data);
   return (
     <>
       <TitleBar
@@ -121,228 +110,241 @@ const TeachersProfile: React.FC = () => {
       />
       <ScrollView style={styles(direction).container} bounces={false}>
         <SafeAreaView style={styles(direction).safeAreaView}>
-          <View style={styles(direction).container2}>
-            <Neumorphism
-              lightColor={'#ffffff'}
-              darkColor={'#A8A8A8'}
-              shapeType={'flat'}
-              radius={14}>
-              <View style={styles(direction).rectangle}>
-                <View style={styles(direction).neumorphic}>
-                  <Image
-                    source={require('../../assets/editTeacher.png')}
-                    style={styles(direction).profileImageStyle}
-                  />
-                  <View style={{ marginTop: scale(14) }}>
-                    <Neumorphism
-                      lightColor={'#ffffff'}
-                      darkColor={'#A8A8A8'}
-                      shapeType={'flat'}
-                      radius={scale(14)}>
-                      <View style={styles(direction).box}>
-                        <Text style={styles(direction).insideText}>
-                          {t('Teacher')}
-                        </Text>
-                      </View>
-                    </Neumorphism>
-                  </View>
-                </View>
-                <View>
-                  <Text style={styles(direction).text5}>
-                    {t('Hubbir Qureshi')}
-                  </Text>
-                  <Text style={styles(direction).text2}>
-                    {t('Next Generation School')}
-                  </Text>
-                </View>
-                <View style={styles(direction).container3}>
-                  <Menu>
-                    <MenuTrigger>
-                      <Image
-                        source={require('../../assets/menu.png')}
-                        style={styles(direction).itemMenu}
-                      />
-                    </MenuTrigger>
-                    <MenuOptions
-                      customStyles={{
-                        optionsContainer: {
-                          borderRadius: scale(14),
-                          width: scale(214),
-                          paddingVertical: scale(20),
-                          backgroundColor: '#EBEEF0',
-                        },
-                      }}>
-                      {options1.map((op, i) => (
-                        <MenuOption
-                          onSelect={() => {
-                            if (op.title === 'Edit Profile') {
-                              NavigationService.navigate('EditTeacherProfile');
-                            }
-                          }}
-                          customStyles={{
-                            optionWrapper: {
-                              flexDirection: 'row',
-                              alignItems: 'center',
-                              justifyContent: 'space-between',
-                              paddingHorizontal: scale(20),
-                              paddingVertical: scale(7),
-                            },
-                          }}>
-                          <Text
-                            style={
-                              op.title === t('Delete Profile')
-                                ? styles(direction).optionTitleStyleColor
-                                : styles(direction).optionTitleStyle
-                            }>
-                            {t(op.title)}
-                          </Text>
-                          <Image
-                            source={op.image}
-                            style={styles(direction).menuImage}
-                          />
-                        </MenuOption>
-                      ))}
-                    </MenuOptions>
-                  </Menu>
-                </View>
-              </View>
-            </Neumorphism>
-            {data.map((item, index) => {
-              return (
-                <View style={styles(direction).neumorphic1}>
-                  <Neumorphism
-                    lightColor={'#ffffff'}
-                    darkColor={'#A8A8A8'}
-                    shapeType={'flat'}
-                    radius={14}>
-                    <View style={styles(direction).rectangle2}>
-                      <TouchableOpacity
-                        onPress={() => {
-                          NavigationService.navigate('MyChannel');
-                        }}>
-                        <Image
-                          source={item.titleImage}
-                          style={styles(direction).imageStyle}
-                        />
-                      </TouchableOpacity>
-                      <View style={styles(direction).margin}>
-                        <Text style={styles(direction).text}>
-                          {t(item.titleName)}
-                        </Text>
-                        <View style={styles(direction).direction}>
-                          <Text style={styles(direction).status}>
-                            {t(item.subscribers)}
-                          </Text>
-                          <Text style={styles(direction).text4}>
-                            {t(item.count)}
-                          </Text>
-                        </View>
-                        <Text style={styles(direction).text6}>
-                          {t(item.standard)}
-                        </Text>
-                      </View>
-                      <View style={styles(direction).container4}>
-                        <Menu>
-                          <MenuTrigger>
-                            <Image
-                              source={require('../../assets/menu.png')}
-                              style={styles(direction).menu}
-                            />
-                          </MenuTrigger>
-                          <MenuOptions
-                            customStyles={{
-                              optionsContainer: {
-                                borderRadius: scale(14),
-                                width: scale(214),
-                                paddingVertical: scale(20),
-                                marginTop: 40,
-                                marginLeft: -35,
-                                backgroundColor: '#EBEEF0',
-                              },
-                            }}>
-                            {options.map((op, i) => (
-                              <MenuOption
-                                onSelect={() => {
-                                  [
-                                    op.title === 'Edit Channel'
-                                      ? NavigationService.navigate(
-                                          'MyChannel',
-                                          {
-                                            titleName: item.titleName,
-                                            isCondition: false,
-                                          },
-                                        )
-                                      : NavigationService.navigate(''),
-                                  ];
-                                }}
-                                customStyles={{
-                                  optionWrapper: {
-                                    flexDirection: 'row',
-                                    alignItems: 'center',
-                                    justifyContent: 'space-between',
-                                    paddingHorizontal: scale(20),
-                                    paddingVertical: scale(9),
-                                  },
-                                }}>
-                                <Text
-                                  style={
-                                    op.title === 'Delete Channel'
-                                      ? styles(direction).optionTitleStyle2
-                                      : styles(direction).optionTitleStyle
-                                  }>
-                                  {op.title}{' '}
-                                </Text>
-                                <Image
-                                  source={op.image}
-                                  style={styles(direction).menuImage}
-                                />
-                              </MenuOption>
-                            ))}
-                          </MenuOptions>
-                        </Menu>
-                      </View>
-                    </View>
-                  </Neumorphism>
-                </View>
-              );
-            })}
-            <View style={{ marginTop: 30 }}>
+          {isLoading ? (
+            <ActivityIndicator size="large" color="#03A0E3" />
+          ) : (
+            <View style={styles(direction).container2}>
               <Neumorphism
                 lightColor={'#ffffff'}
                 darkColor={'#A8A8A8'}
                 shapeType={'flat'}
                 radius={14}>
-                <View style={styles(direction).rectangle3}>
-                  <View style={styles(direction).leftContainer}>
-                    <View style={styles(direction).neomorphContainer2}>
+                <View style={styles(direction).rectangle}>
+                  <View style={styles(direction).neumorphic}>
+                    <Image
+                      source={{
+                        uri:
+                          ApiConfig.BASE_ASSET_URL +
+                          data?.teacher?.teacherInfo?.profileImg,
+                      }}
+                      style={styles(direction).profileImageStyle}
+                    />
+                    <View style={{ marginTop: scale(14) }}>
                       <Neumorphism
                         lightColor={'#ffffff'}
                         darkColor={'#A8A8A8'}
                         shapeType={'flat'}
-                        radius={scale(150)}>
-                        <View style={styles(direction).container8}>
-                          <TouchableOpacity
-                            onPress={() => {
-                              NavigationService.navigate('CreateChannel');
-                            }}>
-                            <Image
-                              style={styles(direction).imageStyle1}
-                              source={require('../../assets/plus.png')}
-                            />
-                          </TouchableOpacity>
+                        radius={scale(14)}>
+                        <View style={styles(direction).box}>
+                          <Text style={styles(direction).insideText}>
+                            {t(data?.teacher?.teacherInfo?.labelText)}
+                          </Text>
                         </View>
                       </Neumorphism>
                     </View>
                   </View>
-                  <View style={styles(direction).rightContainer}>
-                    <Text style={styles(direction).inputText}>
-                      {t('Create New Channel')}
+                  <View>
+                    <Text style={styles(direction).text5}>
+                      {t(data?.teacher?.teacherInfo?.teacherName)}
                     </Text>
+                    <Text style={styles(direction).text2}>
+                      {t(data?.teacher?.teacherInfo?.schoolName)}
+                    </Text>
+                  </View>
+                  <View style={styles(direction).container3}>
+                    <Menu>
+                      <MenuTrigger>
+                        <Image
+                          source={require('../../assets/menu.png')}
+                          style={styles(direction).itemMenu}
+                        />
+                      </MenuTrigger>
+                      <MenuOptions
+                        customStyles={{
+                          optionsContainer: {
+                            borderRadius: scale(14),
+                            width: scale(214),
+                            paddingVertical: scale(20),
+                            backgroundColor: '#EBEEF0',
+                          },
+                        }}>
+                        {options1.map((op, i) => (
+                          <MenuOption
+                            onSelect={() => {
+                              if (op.title === 'Edit Profile') {
+                                NavigationService.navigate(
+                                  'EditTeacherProfile',
+                                );
+                              }
+                            }}
+                            customStyles={{
+                              optionWrapper: {
+                                flexDirection: 'row',
+                                alignItems: 'center',
+                                justifyContent: 'space-between',
+                                paddingHorizontal: scale(20),
+                                paddingVertical: scale(7),
+                              },
+                            }}>
+                            <Text
+                              style={
+                                op.title === t('Delete Profile')
+                                  ? styles(direction).optionTitleStyleColor
+                                  : styles(direction).optionTitleStyle
+                              }>
+                              {t(op.title)}
+                            </Text>
+                            <Image
+                              source={op.image}
+                              style={styles(direction).menuImage}
+                            />
+                          </MenuOption>
+                        ))}
+                      </MenuOptions>
+                    </Menu>
                   </View>
                 </View>
               </Neumorphism>
+              {data?.teacher?.teacherInfo?.channels?.map((teacher, index) => {
+                return (
+                  <View style={styles(direction).neumorphic1}>
+                    <Neumorphism
+                      lightColor={'#ffffff'}
+                      darkColor={'#A8A8A8'}
+                      shapeType={'flat'}
+                      radius={14}>
+                      <View style={styles(direction).rectangle2}>
+                        <TouchableOpacity
+                          onPress={() => {
+                            NavigationService.navigate('MyChannel');
+                          }}>
+                          <Image
+                            source={{
+                              uri:
+                                ApiConfig.BASE_ASSET_URL + teacher?.titleImage,
+                            }}
+                            style={styles(direction).imageStyle}
+                          />
+                        </TouchableOpacity>
+                        <View style={styles(direction).margin}>
+                          <Text style={styles(direction).text}>
+                            {t(teacher?.titleName)}
+                          </Text>
+                          <View style={styles(direction).direction}>
+                            <Text style={styles(direction).status}>
+                              {t(teacher?.subscribers)}
+                            </Text>
+                            <Text style={styles(direction).text4}>
+                              {t(teacher?.count)}
+                            </Text>
+                          </View>
+                          <Text style={styles(direction).text6}>
+                            {t(teacher?.standard)}
+                          </Text>
+                        </View>
+                        <View style={styles(direction).container4}>
+                          <Menu>
+                            <MenuTrigger>
+                              <Image
+                                source={require('../../assets/menu.png')}
+                                style={styles(direction).menu}
+                              />
+                            </MenuTrigger>
+                            <MenuOptions
+                              customStyles={{
+                                optionsContainer: {
+                                  borderRadius: scale(14),
+                                  width: scale(214),
+                                  paddingVertical: scale(20),
+                                  marginTop: 40,
+                                  marginLeft: -35,
+                                  backgroundColor: '#EBEEF0',
+                                },
+                              }}>
+                              {options.map((op, i) => (
+                                <MenuOption
+                                  onSelect={() => {
+                                    [
+                                      op.title === 'Edit Channel'
+                                        ? NavigationService.navigate(
+                                            'MyChannel',
+                                            {
+                                              titleName: item.titleName,
+                                              isCondition: false,
+                                            },
+                                          )
+                                        : NavigationService.navigate(''),
+                                    ];
+                                  }}
+                                  customStyles={{
+                                    optionWrapper: {
+                                      flexDirection: 'row',
+                                      alignItems: 'center',
+                                      justifyContent: 'space-between',
+                                      paddingHorizontal: scale(20),
+                                      paddingVertical: scale(9),
+                                    },
+                                  }}>
+                                  <Text
+                                    style={
+                                      op.title === 'Delete Channel'
+                                        ? styles(direction).optionTitleStyle2
+                                        : styles(direction).optionTitleStyle
+                                    }>
+                                    {op.title}{' '}
+                                  </Text>
+                                  <Image
+                                    source={op.image}
+                                    style={styles(direction).menuImage}
+                                  />
+                                </MenuOption>
+                              ))}
+                            </MenuOptions>
+                          </Menu>
+                        </View>
+                      </View>
+                    </Neumorphism>
+                  </View>
+                );
+              })}
+              <View style={{ marginTop: 30 }}>
+                <Neumorphism
+                  lightColor={'#ffffff'}
+                  darkColor={'#A8A8A8'}
+                  shapeType={'flat'}
+                  radius={14}>
+                  <View style={styles(direction).rectangle3}>
+                    <View style={styles(direction).leftContainer}>
+                      <View style={styles(direction).neomorphContainer2}>
+                        <Neumorphism
+                          lightColor={'#ffffff'}
+                          darkColor={'#A8A8A8'}
+                          shapeType={'flat'}
+                          radius={scale(150)}>
+                          <View style={styles(direction).container8}>
+                            <TouchableOpacity
+                              onPress={() => {
+                                NavigationService.navigate('CreateChannel');
+                              }}>
+                              <Image
+                                style={styles(direction).imageStyle1}
+                                source={require('../../assets/plus.png')}
+                              />
+                            </TouchableOpacity>
+                          </View>
+                        </Neumorphism>
+                      </View>
+                    </View>
+                    <View style={styles(direction).rightContainer}>
+                      <Text style={styles(direction).inputText}>
+                        {t('Create New Channel')}
+                      </Text>
+                    </View>
+                  </View>
+                </Neumorphism>
+              </View>
             </View>
-          </View>
+          )}
         </SafeAreaView>
       </ScrollView>
     </>

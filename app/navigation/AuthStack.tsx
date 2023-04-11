@@ -85,6 +85,7 @@ import Notification from 'app/screens/Notification';
 import MyChannel from 'app/screens/MyChannel';
 import ChildFullProfile from 'app/screens/ChildFullProfile';
 import Biology from 'app/screens/EBooks/Biology';
+import Shop from 'app/screens/Shop';
 const Stack = createStackNavigator();
 const AuthenticationStack = createStackNavigator();
 interface IState {
@@ -129,6 +130,22 @@ const AuthStack = () => {
       <Stack.Screen
         name="OrderDetail"
         component={OrderDetail}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Shop"
+        component={Shop}
+        options={{
+          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="TeachersProfile"
+        component={TeachersProfile}
         options={{
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
@@ -257,14 +274,6 @@ const AuthStack = () => {
       <Stack.Screen
         name="MyFeeds"
         component={MyFeeds}
-        options={{
-          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="TeachersProfile"
-        component={TeachersProfile}
         options={{
           animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
           headerShown: false,
