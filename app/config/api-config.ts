@@ -11,16 +11,18 @@ const ApiConfig = {
   OTP_REQUEST: 'auth/otpRequest',
   OTP_VERIFY: 'auth/otpVerify',
   RESET_PASSWORD: 'auth/resetPassword',
+  REFRESH_TOKEN: 'auth/refreshToken',
 
   // USER //
-  FETCH_USER_DETAILS: '/user/fetchUserDetails',
+  USER: 'user/',
 
   //JSON//
   BOOK: 'books.json',
   My_FEEDS: 'myFeeds.json',
   CHILD_PROFILE: 'childProfile.json',
   BOOK_DETAIL: 'bookDetail.json',
-  BOOKS: 'books.json',
+  SHOP: 'shop.json',
+  MY_CHANNEL: 'myChannel.json',
   CHANNELS: 'channels.json',
   // TWILIO //
   GET_TOKEN: '/chat/token',
