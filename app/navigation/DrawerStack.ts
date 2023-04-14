@@ -18,6 +18,7 @@ import ChatStack from './DrawerStacks/ChatStack';
 import OrderStack from './DrawerStacks/OrderStack';
 import ShopStack from './DrawerStacks/ShopStack';
 import AccountStack from './DrawerStacks/AccountStack';
+import Notification from 'app/screens/Notification';
 
 export const DrawerStacksList: IDrawerItem[] = [
   {
@@ -271,7 +272,7 @@ export const DrawerStacksList: IDrawerItem[] = [
   {
     index: 13,
     name: 'Notification',
-    component: NoNotification,
+    component: Notification,
     drawerLabel: 'Notification',
     iconImage: require('../assets/side_menu/notifications.png'),
     headerStyle: {

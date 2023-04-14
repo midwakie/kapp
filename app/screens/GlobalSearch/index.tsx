@@ -228,7 +228,7 @@ const GlobalSearch: React.FC = () => {
     'books',
     async () => {
       try {
-        const response = await fetch(ApiConfig.BASE_URL2 + ApiConfig.BOOKS);
+        const response = await fetch(ApiConfig.BASE_URL2 + ApiConfig.BOOK);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

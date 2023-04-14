@@ -28,6 +28,7 @@ import { Item } from 'react-native-paper/lib/typescript/components/List/List';
 import { id } from 'date-fns/locale';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeFromCart } from 'app/store/actions/cartActions';
+import ApiConfig from 'app/config/api-config';
 
 const ShoppingCart: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -49,7 +50,7 @@ const ShoppingCart: React.FC = () => {
             <View style={styles(direction).productInfo}>
               <View style={styles(direction).imageViewContainer}>
                 <Image
-                  source={book.img}
+                  source={{ uri: ApiConfig.BASE_ASSET_URL + book.img }}
                   style={styles(direction).productImage}
                 />
               </View>

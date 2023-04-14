@@ -1,6 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import { Image, SafeAreaView, Text, View, TextStyle } from 'react-native';
+import {
+  Image,
+  SafeAreaView,
+  Text,
+  View,
+  TextStyle,
+  Pressable,
+  ActivityIndicator,
+} from 'react-native';
 
 import styles from './styles';
 import NavigationService from 'app/navigation/NavigationService';
@@ -22,6 +30,8 @@ import { scale } from 'react-native-size-matters';
 import TitleBar from 'app/components/buttons/TitleBar';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
+import { useQuery, useQueryClient } from 'react-query';
+import ApiConfig from 'app/config/api-config';
 
 const MyChannel: React.FC = props => {
   const { control } = useForm();
@@ -29,45 +39,21 @@ const MyChannel: React.FC = props => {
   const direction: string = i18n.dir();
   const [isVisible, setIsVisible] = useState(false);
   const [active, setActive] = useState(false);
+  const queryClient = useQueryClient();
   const press = () => {
     setActive(!active);
   };
-  const [data, setData] = useState([
-    {
-      id: 1,
-      profileImage: require('../../assets/myChannel1.png'),
-      profileName: 'Angry Bird 2',
-      status: '1256 View , 1 Hours Ago',
-      isLiked: false,
-      likeCount: 2356,
-      contentImage: require('../../assets/myChannel2.png'),
-    },
-    {
-      id: 2,
-      profileImage: require('../../assets/myChannel1.png'),
-      profileName: 'Angry Bird 2',
-      isLiked: false,
-      likeCount: 2356,
-      status: '1256 View , 1 Hours Ago',
-      contentImage: require('../../assets/myChannel4.png'),
-    },
-    {
-      id: 3,
-      profileImage: require('../../assets/myChannel1.png'),
-      profileName: 'Angry Bird 2',
-      status: '1256 View , 1 Hours Ago',
-      isLiked: false,
-      likeCount: 2356,
-      contentImage: require('../../assets/myChannel5.png'),
-    },
-  ]);
-  const [data1, setData1] = useState([
-    {
-      profileImage: require('../../assets/myChannel1.png'),
-      channelName: 'Dream Star Kid',
-      subscribers: '256k subscribers',
-    },
-  ]);
+  const { isLoading, data } = useQuery('myChannel', async () => {
+    try {
+      const response = await fetch(ApiConfig.BASE_URL2 + ApiConfig.MY_CHANNEL);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    } catch (catchError: any) {
+      console.error(catchError);
+    }
+  });
 
   const [options, setOptions] = useState([
     {
@@ -106,18 +92,31 @@ const MyChannel: React.FC = props => {
       image: require('../../assets/trash.png'),
     },
   ]);
-  const handleLikePress = id => {
-    const updatedData = data.map(item => {
-      if (item.id === id) {
+  const handleLikePress = async (id: string) => {
+    try {
+      const newData = data.myChannel.posts.map(item => {
+        if (item.id === id) {
+          return {
+            ...item,
+            isLiked: !item.isLiked,
+            likeCount: item.likeCount + (item.isLiked ? -1 : 1),
+          };
+        }
+        return item;
+      });
+
+      await queryClient.setQueryData('myChannel', (prevData: any) => {
         return {
-          ...item,
-          isLiked: !item.isLiked,
-          likeCount: item.likeCount + (item.isLiked ? -1 : 1),
+          ...prevData,
+          myChannel: {
+            ...prevData.myChannel,
+            posts: newData,
+          },
         };
-      }
-      return item;
-    });
-    setData(updatedData);
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const isCondition = (props && props?.route?.params?.isCondition) || false;
@@ -125,25 +124,31 @@ const MyChannel: React.FC = props => {
   const profileImage = (props && props?.route?.params?.profileImage) || '';
   return (
     <>
-      <ScrollView style={styles(direction).container} bounces={false}>
-        <SafeAreaView style={styles(direction).safeAreaView}>
+      <SafeAreaView style={styles(direction).safeAreaView}>
+        <ScrollView style={styles(direction).container} bounces={false}>
           <View style={styles(direction).container1}>
-            {data1.map((item, index) => {
-              return (
+            {isLoading ? (
+              <ActivityIndicator size="large" color="#03A0E3" />
+            ) : (
+              <>
                 <View style={styles(direction).row}>
                   <View style={styles(direction).profileImgContainer0}>
                     <Image
-                      source={require('../../assets/myChannel1.png')}
+                      source={{
+                        uri:
+                          ApiConfig.BASE_ASSET_URL +
+                          data?.myChannel?.profileImage,
+                      }}
                       style={styles(direction).profileImg0}
                     />
                   </View>
                   <View style={{ flexDirection: 'row' }}>
                     <View>
                       <Text style={styles(direction).text1}>
-                        {t(item.channelName)}
+                        {t(data?.myChannel?.channelName)}
                       </Text>
                       <Text style={styles(direction).text2}>
-                        {t(item.subscribers)}
+                        {t(data?.myChannel?.subscribers)}
                       </Text>
                       <View style={{ marginTop: 17, marginLeft: 35 }}>
                         {isCondition ? (
@@ -242,137 +247,152 @@ const MyChannel: React.FC = props => {
                     )}
                   </View>
                 </View>
-              );
-            })}
-            {data.map((item, index) => {
-              return (
-                <View style={styles(direction).container5}>
-                  <Neumorphism
-                    lightColor={'#ffffff'}
-                    darkColor={'#A8A8A8'}
-                    shapeType={'flat'}
-                    radius={scale(14)}>
-                    <View style={styles(direction).container2}>
-                      <View style={styles(direction).profileImgContainer1}>
-                        <Image
-                          source={item.contentImage}
-                          style={styles(direction).profileImg1}
-                        />
-                        <Image
-                          source={require('../../assets/playIcon.png')}
-                          style={styles(direction).profileImg2}
-                        />
-                      </View>
-                      <View style={styles(direction).row1}>
-                        <TouchableOpacity
-                          onPress={() => {
-                            NavigationService.navigate('FeedDetail');
-                          }}>
-                          <View style={styles(direction).profileImgContainer2}>
+
+                {data?.myChannel?.posts?.map((item, index) => {
+                  return (
+                    <View style={styles(direction).container5}>
+                      <Neumorphism
+                        lightColor={'#ffffff'}
+                        darkColor={'#A8A8A8'}
+                        shapeType={'flat'}
+                        radius={scale(14)}>
+                        <View style={styles(direction).container2}>
+                          <View style={styles(direction).profileImgContainer1}>
                             <Image
-                              source={item.profileImage}
-                              style={styles(direction).profileImg0}
+                              source={{
+                                uri:
+                                  ApiConfig.BASE_ASSET_URL + item.contentImage,
+                              }}
+                              style={styles(direction).profileImg1}
+                            />
+                            <Image
+                              source={require('../../assets/playIcon.png')}
+                              style={styles(direction).profileImg2}
                             />
                           </View>
-                        </TouchableOpacity>
-                        <View>
-                          <Text
-                            onPress={() => {
-                              NavigationService.navigate('FeedDetail');
-                            }}
-                            style={styles(direction).text11}>
-                            {t(item.profileName)}
-                          </Text>
-                          <View style={styles(direction).containerSubTitle}>
-                            <Text style={styles(direction).text22}>
-                              {t(item.status)}
-                            </Text>
-                            {isCondition === false && (
-                              <Menu>
-                                <MenuTrigger>
-                                  <SimpleLineIcons
-                                    name={'options-vertical'}
-                                    size={scale(16)}
-                                    color={'#758DAC'}
-                                  />
-                                </MenuTrigger>
-                                <MenuOptions
-                                  customStyles={{
-                                    optionsContainer: {
-                                      borderRadius: scale(14),
-                                      width: scale(214),
-                                      paddingVertical: scale(20),
-                                      backgroundColor: '#EBEEF0',
-                                    },
-                                  }}>
-                                  {options1.map((op, i) => (
-                                    <MenuOption
-                                      onSelect={() => {}}
+                          <View style={styles(direction).row1}>
+                            <TouchableOpacity
+                              onPress={() => {
+                                NavigationService.navigate('FeedDetail');
+                              }}>
+                              <View
+                                style={styles(direction).profileImgContainer2}>
+                                <Image
+                                  source={{
+                                    uri:
+                                      ApiConfig.BASE_ASSET_URL +
+                                      item.profileImage,
+                                  }}
+                                  style={styles(direction).profileImg0}
+                                />
+                              </View>
+                            </TouchableOpacity>
+                            <View>
+                              <Text
+                                onPress={() => {
+                                  NavigationService.navigate('FeedDetail');
+                                }}
+                                style={styles(direction).text11}>
+                                {t(item.profileName)}
+                              </Text>
+                              <View style={styles(direction).containerSubTitle}>
+                                <Text style={styles(direction).text22}>
+                                  {t(item.views) + ' View, '}
+                                  {t(item.lastActivity)}
+                                </Text>
+                                {isCondition === false && (
+                                  <Menu>
+                                    <MenuTrigger>
+                                      <SimpleLineIcons
+                                        name={'options-vertical'}
+                                        size={scale(16)}
+                                        color={'#758DAC'}
+                                      />
+                                    </MenuTrigger>
+                                    <MenuOptions
                                       customStyles={{
-                                        optionWrapper: {
-                                          flexDirection: 'row',
-                                          alignItems: 'center',
-                                          justifyContent: 'space-between',
-                                          paddingHorizontal: scale(20),
-                                          paddingVertical: scale(7),
+                                        optionsContainer: {
+                                          borderRadius: scale(14),
+                                          width: scale(214),
+                                          paddingVertical: scale(20),
+                                          backgroundColor: '#EBEEF0',
                                         },
                                       }}>
-                                      <Text
-                                        style={
-                                          op.title === 'Delete'
-                                            ? styles(direction)
-                                                .optionTitleStyleColor
-                                            : styles(direction).optionTitleStyle
-                                        }>
-                                        {op.title}{' '}
-                                      </Text>
-                                      <Image
-                                        source={op.image}
-                                        style={styles(direction).menuImage}
-                                      />
-                                    </MenuOption>
-                                  ))}
-                                </MenuOptions>
-                              </Menu>
-                            )}
-                          </View>
-                          <View style={styles(direction).row3}>
-                            <TouchableOpacity
-                              onPress={() => handleLikePress(item.id)}>
-                              <Image
-                                source={require('../../assets/love.png')}
-                                style={styles(direction).icon}
-                              />
-                            </TouchableOpacity>
-                            <Text style={styles(direction).text23}>
-                              {item.likeCount}
-                            </Text>
-                            <Image
-                              source={require('../../assets/chat.png')}
-                              style={styles(direction).icon2}
-                            />
-                            <Text style={styles(direction).text23}>
-                              {t('2563')}
-                            </Text>
+                                      {options1.map((op, i) => (
+                                        <MenuOption
+                                          onSelect={() => {}}
+                                          customStyles={{
+                                            optionWrapper: {
+                                              flexDirection: 'row',
+                                              alignItems: 'center',
+                                              justifyContent: 'space-between',
+                                              paddingHorizontal: scale(20),
+                                              paddingVertical: scale(7),
+                                            },
+                                          }}>
+                                          <Text
+                                            style={
+                                              op.title === 'Delete'
+                                                ? styles(direction)
+                                                    .optionTitleStyleColor
+                                                : styles(direction)
+                                                    .optionTitleStyle
+                                            }>
+                                            {op.title}{' '}
+                                          </Text>
+                                          <Image
+                                            source={op.image}
+                                            style={styles(direction).menuImage}
+                                          />
+                                        </MenuOption>
+                                      ))}
+                                    </MenuOptions>
+                                  </Menu>
+                                )}
+                              </View>
+                              <View style={styles(direction).row3}>
+                                <Pressable
+                                  onPress={() => handleLikePress(item.id)}>
+                                  <Image
+                                    source={require('../../assets/whiteLove.png')}
+                                    style={[
+                                      item.isLiked
+                                        ? styles(direction).likeImage
+                                        : styles(direction).icon,
+                                    ]}
+                                  />
+                                </Pressable>
+                                <Text style={styles(direction).text23}>
+                                  {item.likeCount}
+                                </Text>
+                                <Image
+                                  source={require('../../assets/chat.png')}
+                                  style={styles(direction).icon2}
+                                />
+                                <Text style={styles(direction).text23}>
+                                  {t(item.comments)}
+                                </Text>
 
-                            <Image
-                              source={require('../../assets/eye.png')}
-                              style={styles(direction).icon3}
-                            />
-                            <Text style={styles(direction).text24}>
-                              {t('2563')}
-                            </Text>
+                                <Image
+                                  source={require('../../assets/eye.png')}
+                                  style={styles(direction).icon3}
+                                />
+                                <Text style={styles(direction).text24}>
+                                  {t(item.view)}
+                                </Text>
+                              </View>
+                            </View>
                           </View>
                         </View>
-                      </View>
+                      </Neumorphism>
                     </View>
-                  </Neumorphism>
-                </View>
-              );
-            })}
+                  );
+                })}
+              </>
+            )}
           </View>
-        </SafeAreaView>
-      </ScrollView>
+        </ScrollView>
+      </SafeAreaView>
       <View style={styles(direction).titleBarContainer}>
         <TitleBar
           leftComponent={

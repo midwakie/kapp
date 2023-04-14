@@ -14,17 +14,21 @@ import HorizontalLine from 'app/components/lines/HorizontalLine';
 import styles from './style';
 import CustomInput from 'app/components/inputs/CustomInput';
 import rules from 'app/rules';
+import { fetchUserDetails } from 'app/models/api/fetchUserDetails';
+import { useQuery } from 'react-query';
+
 const ChangeEmailId: React.FC = () => {
   const { control } = useForm();
   const emailInputRef: React.RefObject<any> = React.createRef();
   const { t, i18n } = useTranslation();
   const direction: string = i18n.dir();
+  const { isLoading, data } = useQuery('userDetails', fetchUserDetails);
   return (
     <>
       <ScrollView style={styles(direction).container} bounces={false}>
         <SafeAreaView style={styles(direction).safeAreaView}>
           <View style={styles(direction).container2}>
-            <Text style={styles(direction).text}>abeershaikh786@gmail.com</Text>
+            <Text style={styles(direction).text}>{data?.message?.email}</Text>
             <View style={styles(direction).inputTextContainer}>
               <CustomInput
                 control={control}

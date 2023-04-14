@@ -6,7 +6,7 @@
 import { call, put } from 'redux-saga/effects';
 // import { delay } from 'redux-saga';
 
-import { Alert } from 'react-native';
+import { Alert, AsyncStorage } from 'react-native';
 import loginUser from 'app/services/loginUser';
 import * as loginActions from 'app/store/actions/loginActions';
 import * as currentCustomerActions from 'app/store/actions/currentCustomerActions';
@@ -21,6 +21,11 @@ export default function* loginAsync(data: ILoginRequestState) {
   //how to call api
   const response: ILoginResponse = yield call(loginUser, data.payload);
   if (response.status && response.status === 200) {
+    yield AsyncStorage.setItem(
+      'refreshToken',
+      response.data.data.token.refreshToken,
+    );
+    yield AsyncStorage.setItem('authToken', response.data.data.token.authToken);
     yield put(
       currentCustomerActions.setCurrentCustomerEmailVerificationStatus(
         response.data.data.user.isVerified.email,

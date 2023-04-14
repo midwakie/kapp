@@ -22,6 +22,9 @@ const styles = (direction: string) =>
       paddingBottom: '25@s',
       backgroundColor: '#EBEEF0',
     },
+    container3: {
+      marginTop: '20@s',
+    },
     topContainer: {
       justifyContent: 'center',
       alignItems: 'center',
@@ -196,12 +199,6 @@ const styles = (direction: string) =>
       height: '20@s',
       width: '20@s',
       resizeMode: 'contain',
-    },
-    cardContainer: {
-      marginTop: '20@s',
-      justifyContent: 'center',
-      alignItems: 'center',
-      width: '100%',
     },
     neomorphContainer: {
       justifyContent: 'center',

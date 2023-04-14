@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useCallback, useState } from 'react';
 import {
+  ActivityIndicator,
   Dimensions,
   FlatList,
   Image,
@@ -25,9 +26,10 @@ import TitleBar from 'app/components/buttons/TitleBar';
 import VerticalLine from 'app/components/lines/VerticalLine';
 import { DrawerActions } from '@react-navigation/native';
 import useDeviceOrientation from 'app/hooks/useDeviceOrientation';
-import toys from 'app/models/api/toys';
 import { useSelector } from 'react-redux';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { useQuery } from 'react-query';
+import ApiConfig from 'app/config/api-config';
 
 const Shop: React.FC = (props: any) => {
   const { control } = useForm();
@@ -41,6 +43,17 @@ const Shop: React.FC = (props: any) => {
   const handleAddToCart = item => {
     NavigationService.navigate('ToyDetail', { book: item });
   };
+  const { isLoading, data } = useQuery('shop', async () => {
+    try {
+      const response = await fetch(ApiConfig.BASE_URL2 + ApiConfig.SHOP);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    } catch (catchError: any) {
+      console.error(catchError);
+    }
+  });
   const Toy = () => {
     setToyActive(true);
     setGameActive(false);
@@ -69,7 +82,10 @@ const Shop: React.FC = (props: any) => {
             radius={scale(14)}>
             <View style={styles(direction).card}>
               <View style={styles(direction).imageContainer}>
-                <Image source={book.img} style={styles(direction).cardImage} />
+                <Image
+                  source={{ uri: ApiConfig.BASE_ASSET_URL + book.img }}
+                  style={styles(direction).cardImage}
+                />
               </View>
               <View style={styles(direction).cardContent}>
                 <Text style={styles(direction).cardTitleText}>
@@ -174,34 +190,38 @@ const Shop: React.FC = (props: any) => {
                 </TouchableWithoutFeedback>
               </Neumorphism>
             </View>
-            <View style={styles(direction).cardContainer}>
-              {currentOrientation === 'portrait' ? (
-                <FlatList
-                  numColumns={Math.floor(
-                    Dimensions.get('window').width / scale(158),
-                  )}
-                  key={'_'}
-                  keyExtractor={item => '_' + item.id}
-                  data={toys}
-                  renderItem={({ item }) => {
-                    return <CardItem book={item} />;
-                  }}
-                />
-              ) : (
-                <FlatList
-                  key={'#'}
-                  showsHorizontalScrollIndicator={false}
-                  keyExtractor={item => '#' + item.id}
-                  numColumns={Math.floor(
-                    Dimensions.get('window').width / scale(158),
-                  )}
-                  data={toys}
-                  renderItem={({ item }) => {
-                    return <CardItem book={item} />;
-                  }}
-                />
-              )}
-            </View>
+            {isLoading ? (
+              <ActivityIndicator size="large" color="#03A0E3" />
+            ) : (
+              <View style={styles(direction).cardContainer}>
+                {currentOrientation === 'portrait' ? (
+                  <FlatList
+                    numColumns={Math.floor(
+                      Dimensions.get('window').width / scale(158),
+                    )}
+                    key={'_'}
+                    keyExtractor={item => '_' + item.id}
+                    data={data.items}
+                    renderItem={({ item }) => {
+                      return <CardItem book={item} />;
+                    }}
+                  />
+                ) : (
+                  <FlatList
+                    key={'#'}
+                    showsHorizontalScrollIndicator={false}
+                    keyExtractor={item => '#' + item.id}
+                    numColumns={Math.floor(
+                      Dimensions.get('window').width / scale(158),
+                    )}
+                    data={data.items}
+                    renderItem={({ item }) => {
+                      return <CardItem book={item} />;
+                    }}
+                  />
+                )}
+              </View>
+            )}
           </View>
         </SafeAreaView>
       </ScrollView>
