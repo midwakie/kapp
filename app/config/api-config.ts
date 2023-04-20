@@ -5,8 +5,8 @@ const ApiConfig = {
   // BASE_ASSET_URL:
   //   'https://s3.ap-south-1.amazonaws.com/cdn.kutubiapp.com/mobile/dummy/images/',
 
-  BASE_URL2: 'http://192.168.1.8:3000/data/',
-  BASE_ASSET_URL: 'http://192.168.1.8:3000/images/',
+  BASE_URL2: 'http://192.168.1.13:3000/data/',
+  BASE_ASSET_URL: 'http://192.168.1.13:3000/images/',
 
   // AUTHORIZATION //
   REGISTER: 'auth/register',
@@ -28,7 +28,6 @@ const ApiConfig = {
   MY_CHANNEL: 'myChannel.json',
   CHANNELS: 'channels.json',
   PARENT: 'parentProfile.json',
-  MY_CHANNEL: 'myChannel.json',
   TEACHER_PROFILE: 'teacherProfile.json',
   // TWILIO //
   GET_TOKEN: '/chat/token',
